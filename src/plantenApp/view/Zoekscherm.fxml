@@ -39,7 +39,7 @@
                                                             <Font name="System Bold" size="14.0" />
                                                          </font>
                                                       </Label>
-                                                      <ComboBox prefHeight="30.0" prefWidth="150.0" />
+                                                      <ComboBox fx:id="cboType" prefHeight="30.0" prefWidth="150.0" />
                                                    </children>
                                                 </HBox>
                                                 <Label minWidth="20.0" />
@@ -50,7 +50,7 @@
                                                             <Font name="System Bold" size="14.0" />
                                                          </font>
                                                       </Label>
-                                                      <ComboBox prefHeight="30.0" prefWidth="150.0" />
+                                                      <ComboBox fx:id="cboFamilie" prefHeight="30.0" prefWidth="150.0" />
                                                    </children>
                                                 </HBox>
                                              </children>
@@ -94,7 +94,7 @@
                                              <children>
                                                 <HBox>
                                                    <children>
-                                                      <ComboBox prefHeight="30.0" prefWidth="120.0" />
+                                                      <ComboBox fx:id="cboBladkleur" prefHeight="30.0" prefWidth="120.0" />
                                                       <Button minHeight="30.0" minWidth="30.0" mnemonicParsing="false" style="-fx-background-color: green;" />
                                                    </children>
                                                 </HBox>
@@ -111,7 +111,7 @@
                                                 </HBox>
                                                 <HBox>
                                                    <children>
-                                                      <ComboBox prefHeight="30.0" prefWidth="120.0" />
+                                                      <ComboBox fx:id="cboBloeikleur" prefHeight="30.0" prefWidth="120.0" />
                                                       <Button minHeight="30.0" minWidth="30.0" mnemonicParsing="false" style="-fx-background-color: magenta;" />
                                                    </children>
                                                 </HBox>
@@ -186,7 +186,7 @@
                                                       <CheckBox fx:id="chkGrondsoort_K" mnemonicParsing="false" prefHeight="30.0" prefWidth="40.0" text="K" />
                                                    </children>
                                                 </HBox>
-                                                <ComboBox prefHeight="30.0" prefWidth="120.0" />
+                                                <ComboBox fx:id="cboBladgrootte" prefHeight="30.0" prefWidth="120.0" />
                                              </children>
                                           </VBox>
                                        </children>
@@ -201,7 +201,7 @@
                                                       <Font name="System Bold" size="14.0" />
                                                    </font>
                                                 </Label>
-                                                <ComboBox prefHeight="30.0" prefWidth="250.0" />
+                                                <ComboBox fx:id="cboHabitat" prefHeight="30.0" prefWidth="250.0" />
                                              </children>
                                           </VBox>
                                        </children>
@@ -379,14 +379,14 @@
                                                                   </Label>
                                                                </children>
                                                             </HBox>
-                                                            <ComboBox prefHeight="30.0" prefWidth="240.0" />
+                                                            <ComboBox fx:id="cboReactieAnta" prefHeight="30.0" prefWidth="240.0" />
                                                             <Label prefHeight="30.0">
                                                                <font>
                                                                   <Font name="System Bold" size="14.0" />
                                                                </font>
                                                             </Label>
-                                                            <ComboBox prefHeight="30.0" prefWidth="240.0" />
-                                                            <ComboBox prefHeight="30.0" prefWidth="240.0" />
+                                                            <ComboBox fx:id="cboOntwikkel" prefHeight="30.0" prefWidth="240.0" />
+                                                            <ComboBox fx:id="cboLevensduur" prefHeight="30.0" prefWidth="240.0" />
                                                             <HBox>
                                                                <children>
                                                                   <CheckBox fx:id="chkSociabiliteit_1" mnemonicParsing="false" prefHeight="30.0" prefWidth="50.0" text="I">
@@ -625,9 +625,9 @@
                                                                   <Font name="System Bold" size="14.0" />
                                                                </font>
                                                             </Label>
-                                                            <ComboBox prefHeight="30.0" prefWidth="200.0" />
-                                                            <ComboBox prefHeight="30.0" prefWidth="200.0" />
-                                                            <ComboBox prefHeight="30.0" prefWidth="200.0" />
+                                                            <ComboBox fx:id="cboBladvorm" prefHeight="30.0" prefWidth="200.0" />
+                                                            <ComboBox fx:id="cboRatioBloeiBlad" prefHeight="30.0" prefWidth="200.0" />
+                                                            <ComboBox fx:id="cboSpruitfenologie" prefHeight="30.0" prefWidth="200.0" />
                                                             <Label prefHeight="30.0">
                                                                <font>
                                                                   <Font name="System Bold" size="14.0" />
@@ -746,18 +746,18 @@
                                                                                     <Font size="14.0" />
                                                                                  </font>
                                                                               </CheckBox>
-                                                                              <ComboBox prefHeight="30.0" prefWidth="80.0" />
-                                                                              <ComboBox prefHeight="30.0" prefWidth="80.0" />
-                                                                              <ComboBox prefHeight="30.0" prefWidth="80.0" />
-                                                                              <ComboBox prefHeight="30.0" prefWidth="80.0" />
-                                                                              <ComboBox prefHeight="30.0" prefWidth="80.0" />
-                                                                              <ComboBox prefHeight="30.0" prefWidth="80.0" />
-                                                                              <ComboBox prefHeight="30.0" prefWidth="80.0" />
-                                                                              <ComboBox prefHeight="30.0" prefWidth="80.0" />
-                                                                              <ComboBox prefHeight="30.0" prefWidth="80.0" />
-                                                                              <ComboBox prefHeight="30.0" prefWidth="80.0" />
-                                                                              <ComboBox prefHeight="30.0" prefWidth="80.0" />
-                                                                              <ComboBox prefHeight="30.0" prefWidth="80.0" />
+                                                                              <ComboBox fx:id="cboBladkleurJan" prefHeight="30.0" prefWidth="80.0" />
+                                                                              <ComboBox fx:id="cboBladkleurFeb" prefHeight="30.0" prefWidth="80.0" />
+                                                                              <ComboBox fx:id="cboBladkleurMaa" prefHeight="30.0" prefWidth="80.0" />
+                                                                              <ComboBox fx:id="cboBladkleurApr" prefHeight="30.0" prefWidth="80.0" />
+                                                                              <ComboBox fx:id="cboBladkleurMei" prefHeight="30.0" prefWidth="80.0" />
+                                                                              <ComboBox fx:id="cboBladkleurJun" prefHeight="30.0" prefWidth="80.0" />
+                                                                              <ComboBox fx:id="cboBladkleurJul" prefHeight="30.0" prefWidth="80.0" />
+                                                                              <ComboBox fx:id="cboBladkleurAug" prefHeight="30.0" prefWidth="80.0" />
+                                                                              <ComboBox fx:id="cboBladkleurSep" prefHeight="30.0" prefWidth="80.0" />
+                                                                              <ComboBox fx:id="cboBladkleurOkt" prefHeight="30.0" prefWidth="80.0" />
+                                                                              <ComboBox fx:id="cboBladkleurNov" prefHeight="30.0" prefWidth="80.0" />
+                                                                              <ComboBox fx:id="cboBladkleurDec" prefHeight="30.0" prefWidth="80.0" />
                                                                            </children>
                                                                         </HBox>
                                                                         <HBox>
@@ -809,18 +809,18 @@
                                                                                     <Font size="14.0" />
                                                                                  </font>
                                                                               </CheckBox>
-                                                                              <ComboBox prefHeight="30.0" prefWidth="80.0" />
-                                                                              <ComboBox prefHeight="30.0" prefWidth="80.0" />
-                                                                              <ComboBox prefHeight="30.0" prefWidth="80.0" />
-                                                                              <ComboBox prefHeight="30.0" prefWidth="80.0" />
-                                                                              <ComboBox prefHeight="30.0" prefWidth="80.0" />
-                                                                              <ComboBox prefHeight="30.0" prefWidth="80.0" />
-                                                                              <ComboBox prefHeight="30.0" prefWidth="80.0" />
-                                                                              <ComboBox prefHeight="30.0" prefWidth="80.0" />
-                                                                              <ComboBox prefHeight="30.0" prefWidth="80.0" />
-                                                                              <ComboBox prefHeight="30.0" prefWidth="80.0" />
-                                                                              <ComboBox prefHeight="30.0" prefWidth="80.0" />
-                                                                              <ComboBox prefHeight="30.0" prefWidth="80.0" />
+                                                                              <ComboBox fx:id="cboBloeikleurJan" prefHeight="30.0" prefWidth="80.0" />
+                                                                              <ComboBox fx:id="cboBloeikleurFeb" prefHeight="30.0" prefWidth="80.0" />
+                                                                              <ComboBox fx:id="cboBloeikleurMaa" prefHeight="30.0" prefWidth="80.0" />
+                                                                              <ComboBox fx:id="cboBloeikleurApr" prefHeight="30.0" prefWidth="80.0" />
+                                                                              <ComboBox fx:id="cboBloeikleurMei" prefHeight="30.0" prefWidth="80.0" />
+                                                                              <ComboBox fx:id="cboBloeikleurJun" prefHeight="30.0" prefWidth="80.0" />
+                                                                              <ComboBox fx:id="cboBloeikleurJul" prefHeight="30.0" prefWidth="80.0" />
+                                                                              <ComboBox fx:id="cboBloeikleurAug" prefHeight="30.0" prefWidth="80.0" />
+                                                                              <ComboBox fx:id="cboBloeikleurSep" prefHeight="30.0" prefWidth="80.0" />
+                                                                              <ComboBox fx:id="cboBloeikleurOkt" prefHeight="30.0" prefWidth="80.0" />
+                                                                              <ComboBox fx:id="cboBloeikleurNov" prefHeight="30.0" prefWidth="80.0" />
+                                                                              <ComboBox fx:id="cboBloeikleurDec" prefHeight="30.0" prefWidth="80.0" />
                                                                            </children>
                                                                         </HBox>
                                                                      </children>
