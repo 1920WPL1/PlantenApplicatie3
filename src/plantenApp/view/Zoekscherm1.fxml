@@ -1,0 +1,382 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Slider?>
+<?import javafx.scene.control.Spinner?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.TitledPane?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox prefHeight="859.0" prefWidth="1278.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="plantenApp.Controller">
+    <stylesheets>
+        <URL value="@Zoekscherm.css" />
+    </stylesheets>
+  <children>
+      <ScrollPane prefHeight="916.0" prefWidth="1305.0">
+         <content>
+          <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="1600.0" prefWidth="1282.0" style="-fx-background-color: lightgray;" styleClass="Background" stylesheets="@Zoekscherm.css">
+            <children>
+                  <ComboBox fx:id="cboType" layoutX="14.0" layoutY="14.0" prefWidth="150.0" promptText="type" />
+                  <ComboBox fx:id="cboFamilie" layoutX="188.0" layoutY="14.0" prefWidth="150.0" promptText="familie" />
+                  <TextField fx:id="txtNaam" layoutX="14.0" layoutY="46.0" prefHeight="77.0" prefWidth="369.0" promptText="Hello World" styleClass="zoekbalk" />
+                  <TitledPane animated="false" layoutX="12.0" layoutY="211.0" prefHeight="578.0" prefWidth="1252.0" text="Advanced Search">
+                    <content>
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                           <children>
+                              <TabPane prefHeight="622.0" prefWidth="1249.0" tabClosingPolicy="UNAVAILABLE">
+                                <tabs>
+                                  <Tab text="Fenotype">
+                                       <content>
+                                          <AnchorPane prefHeight="548.0" prefWidth="1248.0">
+                                             <children>
+                                                <ComboBox fx:id="cboRatio" layoutX="14.0" layoutY="14.0" prefWidth="150.0" promptText="ratio bloei/blad" />
+                                                <ComboBox fx:id="cboSpruitFenologie" layoutX="182.0" layoutY="14.0" prefWidth="150.0" promptText="spruitfenologie" />
+                                                <Label layoutX="15.0" layoutY="50.0" text="Bloeiwijze" />
+                                                <Label layoutX="17.0" layoutY="170.0" text="habitus" />
+                                                <ImageView fx:id="imgAar" fitHeight="77.0" fitWidth="103.0" layoutX="14.0" layoutY="76.0" pickOnBounds="true" preserveRatio="true">
+                                                   <image>
+                                                      <Image url="@img/aar.jpg" />
+                                                   </image>
+                                                </ImageView>
+                                                <ImageView fx:id="imgBredePluim" fitHeight="77.0" fitWidth="103.0" layoutX="105.0" layoutY="76.0" pickOnBounds="true" preserveRatio="true">
+                                                   <image>
+                                                      <Image url="@img/bredepluim.jpg" />
+                                                   </image>
+                                                </ImageView>
+                                                <ImageView fx:id="imgEtage" fitHeight="77.0" fitWidth="103.0" layoutX="190.0" layoutY="76.0" pickOnBounds="true" preserveRatio="true">
+                                                   <image>
+                                                      <Image url="@img/etage.jpg" />
+                                                   </image>
+                                                </ImageView>
+                                                <ImageView fx:id="imgKnop" fitHeight="77.0" fitWidth="103.0" layoutX="271.0" layoutY="76.0" pickOnBounds="true" preserveRatio="true">
+                                                   <image>
+                                                      <Image url="@img/knop.jpg" />
+                                                   </image>
+                                                </ImageView>
+                                                <ImageView fx:id="imgScherm" fitHeight="77.0" fitWidth="103.0" layoutX="356.0" layoutY="76.0" pickOnBounds="true" preserveRatio="true">
+                                                   <image>
+                                                      <Image url="@img/scherm.jpg" />
+                                                   </image>
+                                                </ImageView>
+                                                <ImageView fx:id="imgSmallePluim" fitHeight="77.0" fitWidth="103.0" layoutX="443.0" layoutY="76.0" pickOnBounds="true" preserveRatio="true">
+                                                   <image>
+                                                      <Image url="@img/smallepluim.jpg" />
+                                                   </image>
+                                                </ImageView>
+                                                <ImageView fx:id="imgMargriet" fitHeight="77.0" fitWidth="103.0" layoutX="527.0" layoutY="76.0" pickOnBounds="true" preserveRatio="true">
+                                                   <image>
+                                                      <Image url="@img/margrietachtig.jpg" />
+                                                   </image>
+                                                </ImageView>
+                                                <ImageView fx:id="imgPlatScherm" fitHeight="77.0" fitWidth="103.0" layoutX="614.0" layoutY="76.0" pickOnBounds="true" preserveRatio="true">
+                                                   <image>
+                                                      <Image url="@img/platscherm-schotel.jpg" />
+                                                   </image>
+                                                </ImageView>
+                                                <ComboBox fx:id="cboBladvorm" layoutX="348.0" layoutY="14.0" prefWidth="150.0" promptText="Bladvorm" />
+                                                <RadioButton fx:id="rdbBloeiwijze1" layoutX="71.0" layoutY="145.0" mnemonicParsing="false">
+                                                   <toggleGroup>
+                                                      <ToggleGroup fx:id="bloeiwijze" />
+                                                   </toggleGroup></RadioButton>
+                                                <RadioButton fx:id="rdbBloeiwijze2" layoutX="164.0" layoutY="145.0" mnemonicParsing="false" toggleGroup="$bloeiwijze" />
+                                                <RadioButton fx:id="rdbBloeiwijze3" layoutX="249.0" layoutY="145.0" mnemonicParsing="false" toggleGroup="$bloeiwijze" />
+                                                <RadioButton fx:id="rdbBloeiwijze4" layoutX="332.0" layoutY="145.0" mnemonicParsing="false" toggleGroup="$bloeiwijze" />
+                                                <RadioButton fx:id="rdbBloeiwijze5" layoutX="415.0" layoutY="145.0" mnemonicParsing="false" toggleGroup="$bloeiwijze" />
+                                                <RadioButton fx:id="rdbBloeiwijze6" layoutX="498.0" layoutY="145.0" mnemonicParsing="false" toggleGroup="$bloeiwijze" />
+                                                <RadioButton fx:id="rdbBloeiwijze7" layoutX="584.0" layoutY="145.0" mnemonicParsing="false" toggleGroup="$bloeiwijze" />
+                                                <RadioButton fx:id="rdbBloeiwijze8" layoutX="673.0" layoutY="145.0" mnemonicParsing="false" toggleGroup="$bloeiwijze" />
+                                                <ImageView fx:id="imgAar1" fitHeight="77.0" fitWidth="103.0" layoutX="16.0" layoutY="187.0" pickOnBounds="true" preserveRatio="true">
+                                                   <image>
+                                                      <Image url="@img/Habitus_01.png" />
+                                                   </image>
+                                                </ImageView>
+                                                <ImageView fx:id="imgAar2" fitHeight="77.0" fitWidth="103.0" layoutX="105.0" layoutY="187.0" pickOnBounds="true" preserveRatio="true">
+                                                   <image>
+                                                      <Image url="@img/Habitus_02.png" />
+                                                   </image>
+                                                </ImageView>
+                                                <ImageView fx:id="imgAar3" fitHeight="77.0" fitWidth="103.0" layoutX="197.0" layoutY="187.0" pickOnBounds="true" preserveRatio="true">
+                                                   <image>
+                                                      <Image url="@img/Habitus_03.png" />
+                                                   </image>
+                                                </ImageView>
+                                                <ImageView fx:id="imgAar4" fitHeight="77.0" fitWidth="103.0" layoutX="282.0" layoutY="187.0" pickOnBounds="true" preserveRatio="true">
+                                                   <image>
+                                                      <Image url="@img/Habitus_04.png" />
+                                                   </image>
+                                                </ImageView>
+                                                <ImageView fx:id="imgAar5" fitHeight="77.0" fitWidth="103.0" layoutX="367.0" layoutY="187.0" pickOnBounds="true" preserveRatio="true">
+                                                   <image>
+                                                      <Image url="@img/Habitus_05.png" />
+                                                   </image>
+                                                </ImageView>
+                                                <CheckBox fx:id="chkHabitus3" layoutX="79.0" layoutY="247.0" mnemonicParsing="false" />
+                                                <CheckBox fx:id="chkHabitus4" layoutX="164.0" layoutY="247.0" mnemonicParsing="false" />
+                                                <CheckBox fx:id="chkHabitus5" layoutX="257.0" layoutY="247.0" mnemonicParsing="false" />
+                                                <CheckBox fx:id="chkHabitus6" layoutX="340.0" layoutY="247.0" mnemonicParsing="false" />
+                                                <CheckBox fx:id="chkHabitus9" layoutX="423.0" layoutY="247.0" mnemonicParsing="false" />
+                                                <ImageView fx:id="imgAar11" fitHeight="77.0" fitWidth="103.0" layoutX="13.0" layoutY="278.0" pickOnBounds="true" preserveRatio="true">
+                                                   <image>
+                                                      <Image url="@img/Habitus_06.png" />
+                                                   </image>
+                                                </ImageView>
+                                                <ImageView fx:id="imgAar21" fitHeight="77.0" fitWidth="103.0" layoutX="103.0" layoutY="276.0" pickOnBounds="true" preserveRatio="true">
+                                                   <image>
+                                                      <Image url="@img/Habitus_07.png" />
+                                                   </image>
+                                                </ImageView>
+                                                <ImageView fx:id="imgAar31" fitHeight="77.0" fitWidth="103.0" layoutX="195.0" layoutY="276.0" pickOnBounds="true" preserveRatio="true">
+                                                   <image>
+                                                      <Image url="@img/Habitus_08.png" />
+                                                   </image>
+                                                </ImageView>
+                                                <ImageView fx:id="imgAar41" fitHeight="77.0" fitWidth="103.0" layoutX="280.0" layoutY="276.0" pickOnBounds="true" preserveRatio="true">
+                                                   <image>
+                                                      <Image url="@img/Habitus_09.png" />
+                                                   </image>
+                                                </ImageView>
+                                                <ImageView fx:id="imgAar51" fitHeight="77.0" fitWidth="103.0" layoutX="365.0" layoutY="276.0" pickOnBounds="true" preserveRatio="true">
+                                                   <image>
+                                                      <Image url="@img/Habitus_10.png" />
+                                                   </image>
+                                                </ImageView>
+                                                <ImageView fx:id="imgAar12" fitHeight="77.0" fitWidth="103.0" layoutX="14.0" layoutY="366.0" pickOnBounds="true" preserveRatio="true">
+                                                   <image>
+                                                      <Image url="@img/Habitus_11.png" />
+                                                   </image>
+                                                </ImageView>
+                                                <ImageView fx:id="imgAar22" fitHeight="77.0" fitWidth="103.0" layoutX="103.0" layoutY="366.0" pickOnBounds="true" preserveRatio="true">
+                                                   <image>
+                                                      <Image url="@img/Habitus_12.png" />
+                                                   </image>
+                                                </ImageView>
+                                                <ImageView fx:id="imgAar32" fitHeight="77.0" fitWidth="103.0" layoutX="195.0" layoutY="366.0" pickOnBounds="true" preserveRatio="true">
+                                                   <image>
+                                                      <Image url="@img/Habitus_13.png" />
+                                                   </image>
+                                                </ImageView>
+                                                <ImageView fx:id="imgAar42" fitHeight="77.0" fitWidth="103.0" layoutX="280.0" layoutY="366.0" pickOnBounds="true" preserveRatio="true">
+                                                   <image>
+                                                      <Image url="@img/Habitus_14.png" />
+                                                   </image>
+                                                </ImageView>
+                                                <ImageView fx:id="imgAar52" fitHeight="77.0" fitWidth="103.0" layoutX="365.0" layoutY="366.0" pickOnBounds="true" preserveRatio="true">
+                                                   <image>
+                                                      <Image url="@img/Habitus_15.png" />
+                                                   </image>
+                                                </ImageView>
+                                                <CheckBox fx:id="chkHabitus1" layoutX="71.0" layoutY="337.0" mnemonicParsing="false" />
+                                                <CheckBox fx:id="chkHabitus2" layoutX="164.0" layoutY="427.0" mnemonicParsing="false" />
+                                                <CheckBox fx:id="chkHabitus7" layoutX="164.0" layoutY="337.0" mnemonicParsing="false" />
+                                                <CheckBox fx:id="chkHabitus10" layoutX="340.0" layoutY="337.0" mnemonicParsing="false" />
+                                                <CheckBox fx:id="chkHabitus13" layoutX="71.0" layoutY="427.0" mnemonicParsing="false" />
+                                                <CheckBox fx:id="chkHabitus8" layoutX="257.0" layoutY="337.0" mnemonicParsing="false" />
+                                                <CheckBox fx:id="chkHabitus11" layoutX="423.0" layoutY="337.0" mnemonicParsing="false" />
+                                                <CheckBox fx:id="chkHabitus14" layoutX="257.0" layoutY="427.0" mnemonicParsing="false" />
+                                                <CheckBox fx:id="chkHabitus12" layoutX="431.0" layoutY="427.0" mnemonicParsing="false" />
+                                                <CheckBox fx:id="chkHabitus15" layoutX="340.0" layoutY="427.0" mnemonicParsing="false" />
+                                                <ImageView fitHeight="330.0" fitWidth="725.0" layoutX="514.0" layoutY="181.0" pickOnBounds="true" preserveRatio="true">
+                                                   <image>
+                                                      <Image url="@img/LevensvormenvolgensRaunkiaer.gif" />
+                                                   </image>
+                                                </ImageView>
+                                                <CheckBox fx:id="chkLevensvorm1" layoutX="542.0" layoutY="482.0" mnemonicParsing="false" />
+                                                <CheckBox fx:id="chkLevensvorm2" layoutX="576.0" layoutY="482.0" mnemonicParsing="false" />
+                                                <CheckBox fx:id="chkLevensvorm3" layoutX="617.0" layoutY="482.0" mnemonicParsing="false" />
+                                                <CheckBox fx:id="chkLevensvorm4" layoutX="659.0" layoutY="482.0" mnemonicParsing="false" />
+                                                <CheckBox fx:id="chkLevensvorm5" layoutX="721.0" layoutY="482.0" mnemonicParsing="false" />
+                                                <CheckBox fx:id="chkLevensvorm6" layoutX="820.0" layoutY="482.0" mnemonicParsing="false" />
+                                                <CheckBox fx:id="chkLevensvorm7" layoutX="953.0" layoutY="482.0" mnemonicParsing="false" />
+                                                <CheckBox fx:id="chkLevensvorm8" layoutX="1029.0" layoutY="482.0" mnemonicParsing="false" />
+                                                <CheckBox fx:id="chkLevensvorm9" layoutX="1136.0" layoutY="482.0" mnemonicParsing="false" />
+                                             </children>
+                                          </AnchorPane>
+                                       </content>
+                                    </Tab>
+                                  <Tab text="Abiotische Factoren">
+                                       <content>
+                                          <AnchorPane prefHeight="200.0" prefWidth="200.0">
+                                             <children>
+                                                <ComboBox fx:id="cboReactie" layoutX="14.0" layoutY="50.0" prefHeight="25.0" prefWidth="480.0" promptText="Reactie antagonistische omgeving" />
+                                                <Slider fx:id="slrVoedingsbehoefte" blockIncrement="1.0" disable="true" layoutX="147.0" layoutY="16.0" max="6.0" prefHeight="14.0" prefWidth="214.0" value="3.0" />
+                                                <CheckBox fx:id="chkVoedingsbehoefte" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onMouseClicked="#Clicked_VoedingsBehoefte" text="Voedingsbehoefte" />
+                                             </children>
+                                          </AnchorPane>
+                                       </content>
+                                    </Tab>
+                                    <Tab text="Commensalisme">
+                                      <content>
+                                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                             <children>
+                                                <ImageView fitHeight="359.0" fitWidth="495.0" layoutX="545.0" layoutY="30.0" pickOnBounds="true" preserveRatio="true">
+                                                   <image>
+                                                      <Image url="@img/20-Figure4-1.png" />
+                                                   </image>
+                                                </ImageView>
+                                                <Label layoutX="14.0" layoutY="51.0" text="Concurrentiekracht" />
+                                                <CheckBox fx:id="chkOntwikkelingsnelheid" layoutX="14.0" layoutY="330.0" mnemonicParsing="false" onMouseClicked="#Clicked_Ontwikkelingssnelheid" text="Ontwikkelingssnelheid" />
+                                                <CheckBox layoutX="14.0" layoutY="120.0" mnemonicParsing="false" text="Woekerende soort, worteluitlopers" />
+                                                <CheckBox layoutX="12.0" layoutY="168.0" mnemonicParsing="false" text="Robuuste, meestal grote plant, ook als solitair" />
+                                                <CheckBox layoutX="15.0" layoutY="68.0" mnemonicParsing="false" text="Zogenaamde bodembedekker, weinig verdraagzaam" />
+                                                <CheckBox layoutX="12.0" layoutY="144.0" mnemonicParsing="false" text="Weinig of niet woekerend, goed te combineren" />
+                                                <CheckBox layoutX="11.0" layoutY="217.0" mnemonicParsing="false" text="Kortlevende plant" />
+                                                <CheckBox layoutX="11.0" layoutY="93.0" mnemonicParsing="false" text="Verdraagzame bodembedekker, ook voor een soortenrijke aanplant" />
+                                                <CheckBox layoutX="8.0" layoutY="194.0" mnemonicParsing="false" text="Zich sterk uitzaaiende soort" />
+                                                <CheckBox layoutX="9.0" layoutY="242.0" mnemonicParsing="false" text="Geeft een goede snijbloem" />
+                                                <Label layoutX="15.0" layoutY="14.0" text="sociabiliteit" />
+                                                <CheckBox fx:id="chkSocI" layoutX="97.0" layoutY="14.0" mnemonicParsing="false" text="I" />
+                                                <CheckBox fx:id="chkSocII" layoutX="138.0" layoutY="14.0" mnemonicParsing="false" text="II" />
+                                                <CheckBox fx:id="chkSocIII" layoutX="178.0" layoutY="14.0" mnemonicParsing="false" text="III" />
+                                                <CheckBox fx:id="chkSocIV" layoutX="222.0" layoutY="14.0" mnemonicParsing="false" text="IV" />
+                                                <CheckBox fx:id="chkSocV" layoutX="265.0" layoutY="14.0" mnemonicParsing="false" text="V" />
+                                                <Slider fx:id="slrOntwikkelingssnelheid" blockIncrement="1.0" disable="true" layoutX="165.0" layoutY="331.0" majorTickUnit="2.0" max="2.0" minorTickCount="1" prefHeight="14.0" prefWidth="214.0" showTickMarks="true" snapToTicks="true" value="1.0" />
+                                                <ImageView fitHeight="32.0" fitWidth="35.0" layoutX="168.0" layoutY="297.0" pickOnBounds="true" preserveRatio="true">
+                                                   <image>
+                                                      <Image url="@img/21-512.png" />
+                                                   </image>
+                                                </ImageView>
+                                                <ImageView fitHeight="47.0" fitWidth="57.0" layoutX="333.0" layoutY="290.0" pickOnBounds="true" preserveRatio="true">
+                                                   <image>
+                                                      <Image url="@img/cheetah-10698-12140-550x550.png" />
+                                                   </image>
+                                                </ImageView>
+                                                <RadioButton layoutX="705.0" layoutY="23.0" mnemonicParsing="false">
+                                                   <toggleGroup>
+                                                      <ToggleGroup fx:id="strategie" />
+                                                   </toggleGroup></RadioButton>
+                                                <RadioButton layoutX="791.0" layoutY="185.0" mnemonicParsing="false" toggleGroup="$strategie" />
+                                                <RadioButton layoutX="617.0" layoutY="185.0" mnemonicParsing="false" toggleGroup="$strategie" />
+                                                <RadioButton layoutX="704.0" layoutY="225.0" mnemonicParsing="false" toggleGroup="$strategie" />
+                                                <RadioButton layoutX="873.0" layoutY="347.0" mnemonicParsing="false" toggleGroup="$strategie" />
+                                                <RadioButton layoutX="705.0" layoutY="347.0" mnemonicParsing="false" toggleGroup="$strategie" />
+                                                <RadioButton layoutX="545.0" layoutY="347.0" mnemonicParsing="false" toggleGroup="$strategie" />
+                                                <CheckBox layoutX="18.0" layoutY="273.0" mnemonicParsing="false" text="Stelt meer eisen qua ‘eten en drinken’ of winterbescherming" />
+                                             </children>
+                                          </AnchorPane>
+                                      </content>
+                                    </Tab>
+                                    <Tab text="Extra eigenschappen">
+                                      <content>
+                                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                             <children>
+                                                <Slider fx:id="slrPollenwaarde" disable="true" layoutX="127.0" layoutY="19.0" max="6.0" prefHeight="14.0" prefWidth="229.0" value="3.0" />
+                                                <Slider fx:id="slrNectarwaarde" disable="true" layoutX="128.0" layoutY="42.0" max="6.0" prefHeight="14.0" prefWidth="227.0" value="3.0" />
+                                                <RadioButton layoutX="128.0" layoutY="73.0" mnemonicParsing="false" text="ja">
+                                                   <toggleGroup>
+                                                      <ToggleGroup fx:id="bijvriendelijk" />
+                                                   </toggleGroup></RadioButton>
+                                                <RadioButton layoutX="225.0" layoutY="73.0" mnemonicParsing="false" text="niet gespecifieerd" toggleGroup="$bijvriendelijk" />
+                                                <RadioButton layoutX="170.0" layoutY="73.0" mnemonicParsing="false" text="nee" toggleGroup="$bijvriendelijk" />
+                                                <RadioButton layoutX="128.0" layoutY="98.0" mnemonicParsing="false" text="ja">
+                                                   <toggleGroup>
+                                                      <ToggleGroup fx:id="vlindervriendelijk" />
+                                                   </toggleGroup></RadioButton>
+                                                <RadioButton layoutX="225.0" layoutY="98.0" mnemonicParsing="false" text="niet gespecifieerd" toggleGroup="$vlindervriendelijk" />
+                                                <RadioButton layoutX="170.0" layoutY="98.0" mnemonicParsing="false" text="nee" toggleGroup="$vlindervriendelijk" />
+                                                <RadioButton layoutX="128.0" layoutY="122.0" mnemonicParsing="false" text="ja">
+                                                   <toggleGroup>
+                                                      <ToggleGroup fx:id="eetbaar" />
+                                                   </toggleGroup></RadioButton>
+                                                <RadioButton layoutX="225.0" layoutY="122.0" mnemonicParsing="false" text="niet gespecifieerd" toggleGroup="$eetbaar" />
+                                                <RadioButton layoutX="170.0" layoutY="122.0" mnemonicParsing="false" text="nee" toggleGroup="$eetbaar" />
+                                                <RadioButton layoutX="128.0" layoutY="149.0" mnemonicParsing="false" text="ja">
+                                                   <toggleGroup>
+                                                      <ToggleGroup fx:id="kruidgebruik" />
+                                                   </toggleGroup></RadioButton>
+                                                <RadioButton layoutX="225.0" layoutY="149.0" mnemonicParsing="false" text="niet gespecifieerd" toggleGroup="$kruidgebruik" />
+                                                <RadioButton layoutX="170.0" layoutY="149.0" mnemonicParsing="false" text="nee" toggleGroup="$kruidgebruik" />
+                                                <RadioButton layoutX="128.0" layoutY="178.0" mnemonicParsing="false" text="ja">
+                                                   <toggleGroup>
+                                                      <ToggleGroup fx:id="geurend" />
+                                                   </toggleGroup></RadioButton>
+                                                <RadioButton layoutX="225.0" layoutY="178.0" mnemonicParsing="false" text="niet gespecifieerd" toggleGroup="$geurend" />
+                                                <RadioButton layoutX="170.0" layoutY="178.0" mnemonicParsing="false" text="nee" toggleGroup="$geurend" />
+                                                <RadioButton layoutX="128.0" layoutY="210.0" mnemonicParsing="false" text="ja">
+                                                   <toggleGroup>
+                                                      <ToggleGroup fx:id="vorstgevoelig" />
+                                                   </toggleGroup></RadioButton>
+                                                <RadioButton layoutX="225.0" layoutY="210.0" mnemonicParsing="false" text="niet gespecifieerd" toggleGroup="$vorstgevoelig" />
+                                                <RadioButton layoutX="170.0" layoutY="210.0" mnemonicParsing="false" text="nee" toggleGroup="$vorstgevoelig" />
+                                                <Label layoutX="25.0" layoutY="74.0" text="bijvriendelijk" />
+                                                <Label layoutX="26.0" layoutY="99.0" text="vlindervriendelijk" />
+                                                <Label layoutX="26.0" layoutY="123.0" text="eetbaar" />
+                                                <Label layoutX="26.0" layoutY="150.0" text="kruidgebruik" />
+                                                <Label layoutX="29.0" layoutY="179.0" text="geurend" />
+                                                <Label layoutX="29.0" layoutY="211.0" text="vorstgevoelig" />
+                                                <CheckBox fx:id="chkPollenwaarde" layoutX="29.0" layoutY="17.0" mnemonicParsing="false" onMouseClicked="#Clicked_Pollenwaarde" text="pollenwaarde" />
+                                                <CheckBox fx:id="chkNectarwaarde" layoutX="29.0" layoutY="40.0" mnemonicParsing="false" onMouseClicked="#Clicked_Nectarwaarde" text="nectarwaarde" />
+                                             </children>
+                                          </AnchorPane>
+                                      </content>
+                                    </Tab>
+                                    <Tab text="Beheer">
+                                      <content>
+                                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                             <children>
+                                                <Label layoutX="14.0" layoutY="54.0" text="frequentie per X jaar" />
+                                                <Spinner fx:id="cboFrequentie" layoutX="131.0" layoutY="50.0" prefHeight="25.0" prefWidth="56.0" />
+                                                <ComboBox fx:id="cboMaand" layoutX="233.0" layoutY="50.0" prefWidth="150.0" promptText="Maand" />
+                                                <ComboBox fx:id="cboBehandeling" layoutX="14.0" layoutY="14.0" prefHeight="25.0" prefWidth="369.0" promptText="Behandeling" />
+                                             </children>
+                                          </AnchorPane>
+                                      </content>
+                                    </Tab>
+                                </tabs>
+                              </TabPane>
+                           </children>
+                        </AnchorPane>
+                    </content>
+                  </TitledPane>
+                  <Spinner fx:id="nudMinBloeiHoogte" layoutX="1057.0" layoutY="52.0" prefHeight="25.0" prefWidth="61.0" />
+                  <Spinner fx:id="nudMinBladHoogte" layoutX="1057.0" layoutY="80.0" prefHeight="25.0" prefWidth="61.0" />
+                  <Spinner fx:id="nudMaxBloeiHoogte" layoutX="1163.0" layoutY="52.0" prefHeight="25.0" prefWidth="61.0" />
+                  <Spinner fx:id="nudMaxBladHoogte" layoutX="1163.0" layoutY="80.0" prefHeight="25.0" prefWidth="61.0" />
+                  <Label layoutX="1131.0" layoutY="56.0" text="tot" />
+                  <Label layoutX="1131.0" layoutY="84.0" text="tot" />
+                  <Label layoutX="983.0" layoutY="55.0" text="Bloeihoogte" />
+                  <Label layoutX="983.0" layoutY="83.0" text="Bladhoogte" />
+                  <Label layoutX="982.0" layoutY="131.0" text="Bladkleur" />
+                  <Label layoutX="1156.0" layoutY="131.0" text="Bloeikleur" />
+                  <ComboBox fx:id="cboHabitat" layoutX="689.0" layoutY="27.0" prefHeight="25.0" prefWidth="241.0" promptText="Habitat" />
+                  <CheckBox fx:id="chkZand" layoutX="827.0" layoutY="131.0" mnemonicParsing="false" text="Z" />
+                  <CheckBox fx:id="chkLeem" layoutX="867.0" layoutY="131.0" mnemonicParsing="false" text="L" />
+                  <CheckBox fx:id="chkKlei" layoutX="902.0" layoutY="131.0" mnemonicParsing="false" text="K" />
+                  <Label layoutX="849.0" layoutY="103.0" text="Grondsoort:" />
+                  <Slider fx:id="slrBezonning" blockIncrement="1.0" disable="true" layoutX="567.0" layoutY="94.0" majorTickUnit="5.0" max="5.0" minorTickCount="0" prefHeight="14.0" prefWidth="214.0" showTickMarks="true" snapToTicks="true" />
+                  <Slider fx:id="slrVochtbehoefte" blockIncrement="1.0" disable="true" layoutX="567.0" layoutY="151.0" max="5.0" prefHeight="14.0" prefWidth="214.0" />
+                  <Button fx:id="btnZoek" layoutX="50.0" layoutY="133.0" mnemonicParsing="false" onMouseClicked="#Clicked_Search" prefHeight="43.0" prefWidth="298.0" stylesheets="@Zoekscherm.css" text="Search">
+                     <font>
+                        <Font size="27.0" />
+                     </font>
+                  </Button>
+                  <ComboBox fx:id="cboBladgrootte" layoutX="434.0" layoutY="27.0" prefHeight="25.0" prefWidth="168.0" promptText="bladgrootte" />
+      
+                  <Button fx:id="btnExit" layoutX="1236.0" layoutY="-7.0" mnemonicParsing="false" prefHeight="14.0" prefWidth="16.0" styleClass="SystemTray" text="X" />
+                  <Button fx:id="btnminimize" layoutX="1163.0" layoutY="-13.0" mnemonicParsing="false" prefHeight="57.0" prefWidth="50.0" styleClass="SystemTray" text="–" />
+                  <Button fx:id="btnMaximize" layoutX="1199.0" layoutY="-13.0" mnemonicParsing="false" onMouseClicked="#Clicked_Resize" prefHeight="57.0" prefWidth="50.0" styleClass="SystemTray" text="■" />
+                  <CheckBox fx:id="chkBezonning" layoutX="457.0" layoutY="92.0" mnemonicParsing="false" onMouseClicked="#Clicked_Bezonning" text="Bezonning" />
+                  <CheckBox fx:id="chkVochtbehoefte" layoutX="457.0" layoutY="150.0" mnemonicParsing="false" onMouseClicked="#Clicked_Vochtbehoefte" text="Vochtbehoefte" />
+                  <ListView fx:id="lsvUitvoer" layoutX="14.0" layoutY="789.0" prefHeight="800.0" prefWidth="1248.0" />
+      
+      
+      
+            </children>
+          </AnchorPane>
+         </content>
+      </ScrollPane>
+  </children>
+</VBox>
