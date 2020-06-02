@@ -60,7 +60,7 @@
                                                 <Font name="System Bold" size="14.0" />
                                              </font>
                                           </Label>
-                                          <TextField prefHeight="30.0" promptText="Familie Geslacht Soort Variant" />
+                                          <TextField fx:id="txtSearch" prefHeight="30.0" promptText="Familie Geslacht Soort Variant" />
                                        </children>
                                     </VBox>
                                     <Label minWidth="20.0" />
@@ -100,13 +100,13 @@
                                                 </HBox>
                                                 <HBox>
                                                    <children>
-                                                      <Spinner prefHeight="30.0" prefWidth="65.0" />
+                                                      <Spinner fx:id="nudMinBladhoogte" prefHeight="30.0" prefWidth="65.0" />
                                                       <Label alignment="CENTER" minWidth="10.0" prefHeight="30.0" prefWidth="20.0" text=" - ">
                                                          <font>
                                                             <Font name="System Bold" size="14.0" />
                                                          </font>
                                                       </Label>
-                                                      <Spinner prefHeight="30.0" prefWidth="65.0" />
+                                                      <Spinner fx:id="nudMaxBladhoogte" prefHeight="30.0" prefWidth="65.0" />
                                                    </children>
                                                 </HBox>
                                                 <HBox>
@@ -117,13 +117,13 @@
                                                 </HBox>
                                                 <HBox>
                                                    <children>
-                                                      <Spinner prefHeight="30.0" prefWidth="65.0" />
+                                                      <Spinner fx:id="nudMinBloeihoogte" prefHeight="30.0" prefWidth="65.0" />
                                                       <Label alignment="CENTER" minWidth="10.0" prefHeight="30.0" prefWidth="20.0" text=" - ">
                                                          <font>
                                                             <Font name="System Bold" size="14.0" />
                                                          </font>
                                                       </Label>
-                                                      <Spinner prefHeight="30.0" prefWidth="65.0" />
+                                                      <Spinner fx:id="nudBloeiHoogte" prefHeight="30.0" prefWidth="65.0" />
                                                    </children>
                                                 </HBox>
                                              </children>
@@ -161,7 +161,7 @@
                                              <children>
                                                 <HBox>
                                                    <children>
-                                                      <Slider max="5.0" prefHeight="30.0" prefWidth="80.0" />
+                                                      <Slider fx:id="sldBezonning" max="5.0" prefHeight="30.0" prefWidth="80.0" />
                                                       <Label alignment="CENTER" prefHeight="30.0" text="None">
                                                          <font>
                                                             <Font size="14.0" />
@@ -171,7 +171,7 @@
                                                 </HBox>
                                                 <HBox>
                                                    <children>
-                                                      <Slider max="7.0" prefHeight="30.0" prefWidth="80.0" />
+                                                      <Slider fx:id="sldVochtbehoefte" max="7.0" prefHeight="30.0" prefWidth="80.0" />
                                                       <Label alignment="CENTER" prefHeight="30.0" text="None">
                                                          <font>
                                                             <Font size="14.0" />
@@ -181,9 +181,9 @@
                                                 </HBox>
                                                 <HBox>
                                                    <children>
-                                                      <CheckBox mnemonicParsing="false" prefHeight="30.0" prefWidth="40.0" text="Z" />
-                                                      <CheckBox mnemonicParsing="false" prefHeight="30.0" prefWidth="40.0" text="L" />
-                                                      <CheckBox mnemonicParsing="false" prefHeight="30.0" prefWidth="40.0" text="K" />
+                                                      <CheckBox fx:id="chkGrondsoort_Z" mnemonicParsing="false" prefHeight="30.0" prefWidth="40.0" text="Z" />
+                                                      <CheckBox fx:id="chkGrondsoort_L" mnemonicParsing="false" prefHeight="30.0" prefWidth="40.0" text="L" />
+                                                      <CheckBox fx:id="chkGrondsoort_K" mnemonicParsing="false" prefHeight="30.0" prefWidth="40.0" text="K" />
                                                    </children>
                                                 </HBox>
                                                 <ComboBox prefHeight="30.0" prefWidth="120.0" />
@@ -230,12 +230,12 @@
                                                                   <Font name="System Bold" size="14.0" />
                                                                </font>
                                                             </Label>
-                                                            <CheckBox mnemonicParsing="false" prefHeight="30.0" text="Voedingsbehoefte: ">
+                                                            <CheckBox fx:id="chkVoedingsbehoefte" mnemonicParsing="false" prefHeight="30.0" text="Voedingsbehoefte: ">
                                                                <font>
                                                                   <Font size="14.0" />
                                                                </font>
                                                             </CheckBox>
-                                                            <CheckBox mnemonicParsing="false" prefHeight="30.0" text="Reactie antagonistische omgeving: ">
+                                                            <CheckBox fx:id="chkReactieAntagonistischeOmg" mnemonicParsing="false" prefHeight="30.0" text="Reactie antagonistische omgeving: ">
                                                                <font>
                                                                   <Font size="14.0" />
                                                                </font>
@@ -245,22 +245,22 @@
                                                                   <Font name="System Bold" size="14.0" />
                                                                </font>
                                                             </Label>
-                                                            <CheckBox mnemonicParsing="false" prefHeight="30.0" text="Ontwikkelingssnelheid: ">
+                                                            <CheckBox fx:id="chkOntwikkelingssnelheid" mnemonicParsing="false" prefHeight="30.0" text="Ontwikkelingssnelheid: ">
                                                                <font>
                                                                   <Font size="14.0" />
                                                                </font>
                                                             </CheckBox>
-                                                            <CheckBox mnemonicParsing="false" prefHeight="30.0" text="Levensduur/Concurrentiekracht: ">
+                                                            <CheckBox fx:id="chkLevensduur_concurrentiekracht" mnemonicParsing="false" prefHeight="30.0" text="Levensduur/Concurrentiekracht: ">
                                                                <font>
                                                                   <Font size="14.0" />
                                                                </font>
                                                             </CheckBox>
-                                                            <CheckBox mnemonicParsing="false" prefHeight="30.0" text="Sociabiliteit: ">
+                                                            <CheckBox fx:id="chkSociabiliteit" mnemonicParsing="false" prefHeight="30.0" text="Sociabiliteit: ">
                                                                <font>
                                                                   <Font size="14.0" />
                                                                </font>
                                                             </CheckBox>
-                                                            <CheckBox mnemonicParsing="false" prefHeight="30.0" text="Strategie: ">
+                                                            <CheckBox fx:id="chkStrategie" mnemonicParsing="false" prefHeight="30.0" text="Strategie: ">
                                                                <font>
                                                                   <Font size="14.0" />
                                                                </font>
@@ -280,42 +280,42 @@
                                                                   <Font name="System Bold" size="14.0" />
                                                                </font>
                                                             </Label>
-                                                            <CheckBox mnemonicParsing="false" prefHeight="30.0" text="Nectarwaarde: ">
+                                                            <CheckBox fx:id="chkNectarwaarde" mnemonicParsing="false" prefHeight="30.0" text="Nectarwaarde: ">
                                                                <font>
                                                                   <Font size="14.0" />
                                                                </font>
                                                             </CheckBox>
-                                                            <CheckBox mnemonicParsing="false" prefHeight="30.0" text="Pollenwaarde: ">
+                                                            <CheckBox fx:id="chkPollenwaarde" mnemonicParsing="false" prefHeight="30.0" text="Pollenwaarde: ">
                                                                <font>
                                                                   <Font size="14.0" />
                                                                </font>
                                                             </CheckBox>
-                                                            <CheckBox mnemonicParsing="false" prefHeight="30.0" text="Bijvriendelijk: ">
+                                                            <CheckBox fx:id="chkBijvriendelijk" mnemonicParsing="false" prefHeight="30.0" text="Bijvriendelijk: ">
                                                                <font>
                                                                   <Font size="14.0" />
                                                                </font>
                                                             </CheckBox>
-                                                            <CheckBox mnemonicParsing="false" prefHeight="30.0" text="Vlindervriendelijk: ">
+                                                            <CheckBox fx:id="chkVlindervriendelijk" mnemonicParsing="false" prefHeight="30.0" text="Vlindervriendelijk: ">
                                                                <font>
                                                                   <Font size="14.0" />
                                                                </font>
                                                             </CheckBox>
-                                                            <CheckBox mnemonicParsing="false" prefHeight="30.0" text="Eetbaar: ">
+                                                            <CheckBox fx:id="chkEetbaar" mnemonicParsing="false" prefHeight="30.0" text="Eetbaar: ">
                                                                <font>
                                                                   <Font size="14.0" />
                                                                </font>
                                                             </CheckBox>
-                                                            <CheckBox mnemonicParsing="false" prefHeight="30.0" text="Kruidgebruik: ">
+                                                            <CheckBox fx:id="chkKruidgebruik" mnemonicParsing="false" prefHeight="30.0" text="Kruidgebruik: ">
                                                                <font>
                                                                   <Font size="14.0" />
                                                                </font>
                                                             </CheckBox>
-                                                            <CheckBox mnemonicParsing="false" prefHeight="30.0" text="Geurend: ">
+                                                            <CheckBox fx:id="chkGeurend" mnemonicParsing="false" prefHeight="30.0" text="Geurend: ">
                                                                <font>
                                                                   <Font size="14.0" />
                                                                </font>
                                                             </CheckBox>
-                                                            <CheckBox mnemonicParsing="false" prefHeight="30.0" text="Vorstgevoelig: ">
+                                                            <CheckBox fx:id="chkVorstgevoelig" mnemonicParsing="false" prefHeight="30.0" text="Vorstgevoelig: ">
                                                                <font>
                                                                   <Font size="14.0" />
                                                                </font>
@@ -325,17 +325,17 @@
                                                                   <Font name="System Bold" size="14.0" />
                                                                </font>
                                                             </Label>
-                                                            <CheckBox mnemonicParsing="false" prefHeight="30.0" text="Bladvorm:">
+                                                            <CheckBox fx:id="chkBladvorm" mnemonicParsing="false" prefHeight="30.0" text="Bladvorm:">
                                                                <font>
                                                                   <Font size="14.0" />
                                                                </font>
                                                             </CheckBox>
-                                                            <CheckBox mnemonicParsing="false" prefHeight="30.0" text="Ratio bloei/blad: ">
+                                                            <CheckBox fx:id="chkRatio_bloei_blad" mnemonicParsing="false" prefHeight="30.0" text="Ratio bloei/blad: ">
                                                                <font>
                                                                   <Font size="14.0" />
                                                                </font>
                                                             </CheckBox>
-                                                            <CheckBox mnemonicParsing="false" prefHeight="30.0" text="Spruitfenologie: ">
+                                                            <CheckBox fx:id="chkSpruitfenologie" mnemonicParsing="false" prefHeight="30.0" text="Spruitfenologie: ">
                                                                <font>
                                                                   <Font size="14.0" />
                                                                </font>
@@ -345,17 +345,17 @@
                                                                   <Font name="System Bold" size="14.0" />
                                                                </font>
                                                             </Label>
-                                                            <CheckBox mnemonicParsing="false" prefHeight="30.0" text="Behandeling">
+                                                            <CheckBox fx:id="chkBehandeling" mnemonicParsing="false" prefHeight="30.0" text="Behandeling">
                                                                <font>
                                                                   <Font size="14.0" />
                                                                </font>
                                                             </CheckBox>
-                                                            <CheckBox mnemonicParsing="false" prefHeight="30.0" text="Maand">
+                                                            <CheckBox fx:id="chkMaand" mnemonicParsing="false" prefHeight="30.0" text="Maand">
                                                                <font>
                                                                   <Font size="14.0" />
                                                                </font>
                                                             </CheckBox>
-                                                            <CheckBox mnemonicParsing="false" prefHeight="30.0" text="per x jaar">
+                                                            <CheckBox fx:id="chkPerXJaar" mnemonicParsing="false" prefHeight="30.0" text="per x jaar">
                                                                <font>
                                                                   <Font size="14.0" />
                                                                </font>
@@ -371,7 +371,7 @@
                                                             </Label>
                                                             <HBox>
                                                                <children>
-                                                                  <Slider prefHeight="30.0" prefWidth="174.0" />
+                                                                  <Slider fx:id="sldVoedingsbehoefte" prefHeight="30.0" prefWidth="174.0" />
                                                                   <Label alignment="CENTER" prefHeight="30.0" prefWidth="30.0" text="0">
                                                                      <font>
                                                                         <Font size="14.0" />
@@ -389,27 +389,27 @@
                                                             <ComboBox prefHeight="30.0" prefWidth="240.0" />
                                                             <HBox>
                                                                <children>
-                                                                  <CheckBox mnemonicParsing="false" prefHeight="30.0" prefWidth="50.0" text="I">
+                                                                  <CheckBox fx:id="chkSociabiliteit_1" mnemonicParsing="false" prefHeight="30.0" prefWidth="50.0" text="I">
                                                                      <font>
                                                                         <Font size="14.0" />
                                                                      </font>
                                                                   </CheckBox>
-                                                                  <CheckBox mnemonicParsing="false" prefHeight="30.0" prefWidth="50.0" text="II">
+                                                                  <CheckBox fx:id="chkSociabiliteit_2" mnemonicParsing="false" prefHeight="30.0" prefWidth="50.0" text="II">
                                                                      <font>
                                                                         <Font size="14.0" />
                                                                      </font>
                                                                   </CheckBox>
-                                                                  <CheckBox mnemonicParsing="false" prefHeight="30.0" prefWidth="50.0" text="III">
+                                                                  <CheckBox fx:id="chkSociabiliteit_3" mnemonicParsing="false" prefHeight="30.0" prefWidth="50.0" text="III">
                                                                      <font>
                                                                         <Font size="14.0" />
                                                                      </font>
                                                                   </CheckBox>
-                                                                  <CheckBox mnemonicParsing="false" prefHeight="30.0" prefWidth="50.0" text="IV">
+                                                                  <CheckBox fx:id="chkSociabiliteit_4" mnemonicParsing="false" prefHeight="30.0" prefWidth="50.0" text="IV">
                                                                      <font>
                                                                         <Font size="14.0" />
                                                                      </font>
                                                                   </CheckBox>
-                                                                  <CheckBox mnemonicParsing="false" prefHeight="30.0" prefWidth="50.0" text="V">
+                                                                  <CheckBox fx:id="chkSociabiliteit_5" mnemonicParsing="false" prefHeight="30.0" prefWidth="50.0" text="V">
                                                                      <font>
                                                                         <Font size="14.0" />
                                                                      </font>
@@ -420,13 +420,13 @@
                                                                <children>
                                                                   <HBox>
                                                                      <children>
-                                                                        <RadioButton mnemonicParsing="false" prefHeight="30.0" prefWidth="90.0" text="Onbekend">
+                                                                        <RadioButton fx:id="rdbStrategie_Onbekend" mnemonicParsing="false" prefHeight="30.0" prefWidth="90.0" text="Onbekend">
                                                                            <font>
                                                                               <Font size="14.0" />
                                                                            </font>
                                                                         </RadioButton>
                                                                         <Label prefHeight="30.0" prefWidth="30.0" />
-                                                                        <RadioButton mnemonicParsing="false" prefHeight="30.0" prefWidth="30.0" text="C">
+                                                                        <RadioButton fx:id="rdbStrategie_C" mnemonicParsing="false" prefHeight="30.0" prefWidth="30.0" text="C">
                                                                            <font>
                                                                               <Font size="14.0" />
                                                                            </font>
@@ -439,17 +439,17 @@
                                                                      <children>
                                                                         <Label prefHeight="30.0" prefWidth="30.0" />
                                                                         <Label prefHeight="30.0" prefWidth="65.0" />
-                                                                        <RadioButton mnemonicParsing="false" prefHeight="30.0" prefWidth="25.0">
+                                                                        <RadioButton fx:id="rdbStrategie_CR" mnemonicParsing="false" prefHeight="30.0" prefWidth="25.0">
                                                                            <font>
                                                                               <Font size="14.0" />
                                                                            </font>
                                                                         </RadioButton>
-                                                                        <RadioButton mnemonicParsing="false" prefHeight="30.0" prefWidth="25.0">
+                                                                        <RadioButton fx:id="rdbStrategie_CRS" mnemonicParsing="false" prefHeight="30.0" prefWidth="25.0">
                                                                            <font>
                                                                               <Font size="14.0" />
                                                                            </font>
                                                                         </RadioButton>
-                                                                        <RadioButton mnemonicParsing="false" prefHeight="30.0" prefWidth="30.0">
+                                                                        <RadioButton fx:id="rdbStrategie_CS" mnemonicParsing="false" prefHeight="30.0" prefWidth="30.0">
                                                                            <font>
                                                                               <Font size="14.0" />
                                                                            </font>
@@ -460,19 +460,19 @@
                                                                   <HBox>
                                                                      <children>
                                                                         <Label prefHeight="30.0" prefWidth="63.0" />
-                                                                        <RadioButton mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" prefHeight="30.0" prefWidth="30.0" text="R">
+                                                                        <RadioButton fx:id="rdbStrategie_R" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" prefHeight="30.0" prefWidth="30.0" text="R">
                                                                            <font>
                                                                               <Font size="14.0" />
                                                                            </font>
                                                                         </RadioButton>
                                                                         <Label prefHeight="30.0" prefWidth="23.0" />
-                                                                        <RadioButton mnemonicParsing="false" prefHeight="30.0" prefWidth="30.0">
+                                                                        <RadioButton fx:id="rdbStrategie_RS" mnemonicParsing="false" prefHeight="30.0" prefWidth="30.0">
                                                                            <font>
                                                                               <Font size="14.0" />
                                                                            </font>
                                                                         </RadioButton>
                                                                         <Label prefHeight="30.0" prefWidth="11.0" />
-                                                                        <RadioButton mnemonicParsing="false" prefHeight="30.0" prefWidth="30.0" text="S">
+                                                                        <RadioButton fx:id="rdbStrategie_S" mnemonicParsing="false" prefHeight="30.0" prefWidth="30.0" text="S">
                                                                            <font>
                                                                               <Font size="14.0" />
                                                                            </font>
@@ -488,7 +488,7 @@
                                                             </Label>
                                                             <HBox>
                                                                <children>
-                                                                  <Slider prefHeight="30.0" prefWidth="174.0" />
+                                                                  <Slider fx:id="sldNectarwaarde" prefHeight="30.0" prefWidth="174.0" />
                                                                   <Label alignment="CENTER" prefHeight="30.0" prefWidth="30.0" text="0">
                                                                      <font>
                                                                         <Font size="14.0" />
@@ -498,7 +498,7 @@
                                                             </HBox>
                                                             <HBox>
                                                                <children>
-                                                                  <Slider prefHeight="30.0" prefWidth="174.0" />
+                                                                  <Slider fx:id="sldPollenwaarde" prefHeight="30.0" prefWidth="174.0" />
                                                                   <Label alignment="CENTER" prefHeight="30.0" prefWidth="30.0" text="0">
                                                                      <font>
                                                                         <Font size="14.0" />
@@ -508,36 +508,17 @@
                                                             </HBox>
                                                             <HBox>
                                                                <children>
-                                                                  <RadioButton mnemonicParsing="false" prefHeight="30.0" prefWidth="50.0" text="Ja">
+                                                                  <RadioButton fx:id="rdbBijvriendelijk_Ja" mnemonicParsing="false" prefHeight="30.0" prefWidth="50.0" text="Ja">
                                                                      <font>
                                                                         <Font size="14.0" />
                                                                      </font>
                                                                   </RadioButton>
-                                                                  <RadioButton mnemonicParsing="false" prefHeight="30.0" prefWidth="60.0" text="Nee">
+                                                                  <RadioButton fx:id="rdbBijvriendelijk_Nee" mnemonicParsing="false" prefHeight="30.0" prefWidth="60.0" text="Nee">
                                                                      <font>
                                                                         <Font size="14.0" />
                                                                      </font>
                                                                   </RadioButton>
-                                                                  <RadioButton mnemonicParsing="false" prefHeight="30.0" text="Onbekend">
-                                                                     <font>
-                                                                        <Font size="14.0" />
-                                                                     </font>
-                                                                  </RadioButton>
-                                                               </children>
-                                                            </HBox>
-                                                            <HBox>
-                                                               <children>
-                                                                  <RadioButton mnemonicParsing="false" prefHeight="30.0" prefWidth="50.0" text="Ja">
-                                                                     <font>
-                                                                        <Font size="14.0" />
-                                                                     </font>
-                                                                  </RadioButton>
-                                                                  <RadioButton mnemonicParsing="false" prefHeight="30.0" prefWidth="60.0" text="Nee">
-                                                                     <font>
-                                                                        <Font size="14.0" />
-                                                                     </font>
-                                                                  </RadioButton>
-                                                                  <RadioButton mnemonicParsing="false" prefHeight="30.0" text="Onbekend">
+                                                                  <RadioButton fx:id="rdbBijvriendelijk_Onbekend" mnemonicParsing="false" prefHeight="30.0" text="Onbekend">
                                                                      <font>
                                                                         <Font size="14.0" />
                                                                      </font>
@@ -546,36 +527,17 @@
                                                             </HBox>
                                                             <HBox>
                                                                <children>
-                                                                  <RadioButton mnemonicParsing="false" prefHeight="30.0" prefWidth="50.0" text="Ja">
+                                                                  <RadioButton fx:id="rdbVlindervriendelijk_Ja" mnemonicParsing="false" prefHeight="30.0" prefWidth="50.0" text="Ja">
                                                                      <font>
                                                                         <Font size="14.0" />
                                                                      </font>
                                                                   </RadioButton>
-                                                                  <RadioButton mnemonicParsing="false" prefHeight="30.0" prefWidth="60.0" text="Nee">
+                                                                  <RadioButton fx:id="rdbVlindervriendelijk_Nee" mnemonicParsing="false" prefHeight="30.0" prefWidth="60.0" text="Nee">
                                                                      <font>
                                                                         <Font size="14.0" />
                                                                      </font>
                                                                   </RadioButton>
-                                                                  <RadioButton mnemonicParsing="false" prefHeight="30.0" text="Onbekend">
-                                                                     <font>
-                                                                        <Font size="14.0" />
-                                                                     </font>
-                                                                  </RadioButton>
-                                                               </children>
-                                                            </HBox>
-                                                            <HBox>
-                                                               <children>
-                                                                  <RadioButton mnemonicParsing="false" prefHeight="30.0" prefWidth="50.0" text="Ja">
-                                                                     <font>
-                                                                        <Font size="14.0" />
-                                                                     </font>
-                                                                  </RadioButton>
-                                                                  <RadioButton mnemonicParsing="false" prefHeight="30.0" prefWidth="60.0" text="Nee">
-                                                                     <font>
-                                                                        <Font size="14.0" />
-                                                                     </font>
-                                                                  </RadioButton>
-                                                                  <RadioButton mnemonicParsing="false" prefHeight="30.0" text="Onbekend">
+                                                                  <RadioButton fx:id="rdbVlindervriendelijk_Onbekend" mnemonicParsing="false" prefHeight="30.0" text="Onbekend">
                                                                      <font>
                                                                         <Font size="14.0" />
                                                                      </font>
@@ -584,17 +546,17 @@
                                                             </HBox>
                                                             <HBox>
                                                                <children>
-                                                                  <RadioButton mnemonicParsing="false" prefHeight="30.0" prefWidth="50.0" text="Ja">
+                                                                  <RadioButton fx:id="rdbEetbaar_Ja" mnemonicParsing="false" prefHeight="30.0" prefWidth="50.0" text="Ja">
                                                                      <font>
                                                                         <Font size="14.0" />
                                                                      </font>
                                                                   </RadioButton>
-                                                                  <RadioButton mnemonicParsing="false" prefHeight="30.0" prefWidth="60.0" text="Nee">
+                                                                  <RadioButton fx:id="rdbEetbaar_Nee" mnemonicParsing="false" prefHeight="30.0" prefWidth="60.0" text="Nee">
                                                                      <font>
                                                                         <Font size="14.0" />
                                                                      </font>
                                                                   </RadioButton>
-                                                                  <RadioButton mnemonicParsing="false" prefHeight="30.0" text="Onbekend">
+                                                                  <RadioButton fx:id="rdbEetbaar_Onbekend" mnemonicParsing="false" prefHeight="30.0" text="Onbekend">
                                                                      <font>
                                                                         <Font size="14.0" />
                                                                      </font>
@@ -603,17 +565,55 @@
                                                             </HBox>
                                                             <HBox>
                                                                <children>
-                                                                  <RadioButton mnemonicParsing="false" prefHeight="30.0" prefWidth="50.0" text="Ja">
+                                                                  <RadioButton fx:id="rdbKruidgebruik_Ja" mnemonicParsing="false" prefHeight="30.0" prefWidth="50.0" text="Ja">
                                                                      <font>
                                                                         <Font size="14.0" />
                                                                      </font>
                                                                   </RadioButton>
-                                                                  <RadioButton mnemonicParsing="false" prefHeight="30.0" prefWidth="60.0" text="Nee">
+                                                                  <RadioButton fx:id="rdbKruidgebruik_Nee" mnemonicParsing="false" prefHeight="30.0" prefWidth="60.0" text="Nee">
                                                                      <font>
                                                                         <Font size="14.0" />
                                                                      </font>
                                                                   </RadioButton>
-                                                                  <RadioButton mnemonicParsing="false" prefHeight="30.0" text="Onbekend">
+                                                                  <RadioButton fx:id="rdbKruidgebruik_Onbekend" mnemonicParsing="false" prefHeight="30.0" text="Onbekend">
+                                                                     <font>
+                                                                        <Font size="14.0" />
+                                                                     </font>
+                                                                  </RadioButton>
+                                                               </children>
+                                                            </HBox>
+                                                            <HBox>
+                                                               <children>
+                                                                  <RadioButton fx:id="rdbGeurend_Ja" mnemonicParsing="false" prefHeight="30.0" prefWidth="50.0" text="Ja">
+                                                                     <font>
+                                                                        <Font size="14.0" />
+                                                                     </font>
+                                                                  </RadioButton>
+                                                                  <RadioButton fx:id="rdbGeurend_Nee" mnemonicParsing="false" prefHeight="30.0" prefWidth="60.0" text="Nee">
+                                                                     <font>
+                                                                        <Font size="14.0" />
+                                                                     </font>
+                                                                  </RadioButton>
+                                                                  <RadioButton fx:id="rdbGeurend_Onbekend" mnemonicParsing="false" prefHeight="30.0" text="Onbekend">
+                                                                     <font>
+                                                                        <Font size="14.0" />
+                                                                     </font>
+                                                                  </RadioButton>
+                                                               </children>
+                                                            </HBox>
+                                                            <HBox>
+                                                               <children>
+                                                                  <RadioButton fx:id="rdbVorstgevoelig_Ja" mnemonicParsing="false" prefHeight="30.0" prefWidth="50.0" text="Ja">
+                                                                     <font>
+                                                                        <Font size="14.0" />
+                                                                     </font>
+                                                                  </RadioButton>
+                                                                  <RadioButton fx:id="rdbVorstgevoelig_Nee" mnemonicParsing="false" prefHeight="30.0" prefWidth="60.0" text="Nee">
+                                                                     <font>
+                                                                        <Font size="14.0" />
+                                                                     </font>
+                                                                  </RadioButton>
+                                                                  <RadioButton fx:id="rdbVorstgevoelig_Onbekend" mnemonicParsing="false" prefHeight="30.0" text="Onbekend">
                                                                      <font>
                                                                         <Font size="14.0" />
                                                                      </font>
@@ -635,7 +635,7 @@
                                                             </Label>
                                                             <ComboBox prefHeight="30.0" prefWidth="200.0" />
                                                             <ComboBox prefHeight="30.0" prefWidth="200.0" />
-                                                            <Spinner prefHeight="30.0" prefWidth="80.0" />
+                                                            <Spinner fx:id="nudPerXJaar" prefHeight="30.0" prefWidth="80.0" />
                                                          </children>
                                                       </VBox>
                                                    </children>
@@ -711,7 +711,7 @@
                                                                                     <Font size="14.0" />
                                                                                  </font>
                                                                               </Label>
-                                                                              <Label prefHeight="30.0" prefWidth="80.0" text="Dec">
+                                                                              <Label prefHeight="30.0" prefWidth="59.0" text="Dec">
                                                                                  <font>
                                                                                     <Font size="14.0" />
                                                                                  </font>
@@ -720,28 +720,28 @@
                                                                         </HBox>
                                                                         <HBox>
                                                                            <children>
-                                                                              <CheckBox mnemonicParsing="false" prefHeight="30.0" prefWidth="150.0" text="Max bladhoogte">
+                                                                              <CheckBox fx:id="chkMaxBladhoogte" mnemonicParsing="false" prefHeight="30.0" prefWidth="150.0" text="Max bladhoogte">
                                                                                  <font>
                                                                                     <Font size="14.0" />
                                                                                  </font>
                                                                               </CheckBox>
-                                                                              <Spinner prefHeight="30.0" prefWidth="80.0" />
-                                                                              <Spinner prefHeight="30.0" prefWidth="80.0" />
-                                                                              <Spinner prefHeight="30.0" prefWidth="80.0" />
-                                                                              <Spinner prefHeight="30.0" prefWidth="80.0" />
-                                                                              <Spinner prefHeight="30.0" prefWidth="80.0" />
-                                                                              <Spinner prefHeight="30.0" prefWidth="80.0" />
-                                                                              <Spinner prefHeight="30.0" prefWidth="80.0" />
-                                                                              <Spinner prefHeight="30.0" prefWidth="80.0" />
-                                                                              <Spinner prefHeight="30.0" prefWidth="80.0" />
-                                                                              <Spinner prefHeight="30.0" prefWidth="80.0" />
-                                                                              <Spinner prefHeight="30.0" prefWidth="80.0" />
-                                                                              <Spinner prefHeight="30.0" prefWidth="80.0" />
+                                                                              <Spinner fx:id="nudMaxBladhoogte_Jan" prefHeight="30.0" prefWidth="80.0" />
+                                                                              <Spinner fx:id="nudMaxBladhoogte_Feb" prefHeight="30.0" prefWidth="80.0" />
+                                                                              <Spinner fx:id="nudMaxBladhoogte_Maa" prefHeight="30.0" prefWidth="80.0" />
+                                                                              <Spinner fx:id="nudMaxBladhoogte_Apr" prefHeight="30.0" prefWidth="80.0" />
+                                                                              <Spinner fx:id="nudMaxBladhoogte_Mei" prefHeight="30.0" prefWidth="80.0" />
+                                                                              <Spinner fx:id="nudMaxBladhoogte_Jun" prefHeight="30.0" prefWidth="80.0" />
+                                                                              <Spinner fx:id="nudMaxBladhoogte_Jul" prefHeight="30.0" prefWidth="80.0" />
+                                                                              <Spinner fx:id="nudMaxBladhoogte_Aug" prefHeight="30.0" prefWidth="80.0" />
+                                                                              <Spinner fx:id="nudMaxBladhoogte_Sept" prefHeight="30.0" prefWidth="80.0" />
+                                                                              <Spinner fx:id="nudMaxBladhoogte_Okt" prefHeight="30.0" prefWidth="80.0" />
+                                                                              <Spinner fx:id="nudMaxBladhoogte_Nov" prefHeight="30.0" prefWidth="80.0" />
+                                                                              <Spinner fx:id="nudMaxBladhoogte_Dec" prefHeight="30.0" prefWidth="80.0" />
                                                                            </children>
                                                                         </HBox>
                                                                         <HBox>
                                                                            <children>
-                                                                              <CheckBox mnemonicParsing="false" prefHeight="30.0" prefWidth="150.0" text="Bladkleur">
+                                                                              <CheckBox fx:id="chkBladkleur" mnemonicParsing="false" prefHeight="30.0" prefWidth="150.0" text="Bladkleur">
                                                                                  <font>
                                                                                     <Font size="14.0" />
                                                                                  </font>
@@ -762,49 +762,49 @@
                                                                         </HBox>
                                                                         <HBox>
                                                                            <children>
-                                                                              <CheckBox mnemonicParsing="false" prefHeight="30.0" prefWidth="150.0" text="Min bloeihoogte">
+                                                                              <CheckBox fx:id="chkMinBloeihoogte" mnemonicParsing="false" prefHeight="30.0" prefWidth="150.0" text="Min bloeihoogte">
                                                                                  <font>
                                                                                     <Font size="14.0" />
                                                                                  </font>
                                                                               </CheckBox>
-                                                                              <Spinner prefHeight="30.0" prefWidth="80.0" />
-                                                                              <Spinner prefHeight="30.0" prefWidth="80.0" />
-                                                                              <Spinner prefHeight="30.0" prefWidth="80.0" />
-                                                                              <Spinner prefHeight="30.0" prefWidth="80.0" />
-                                                                              <Spinner prefHeight="30.0" prefWidth="80.0" />
-                                                                              <Spinner prefHeight="30.0" prefWidth="80.0" />
-                                                                              <Spinner prefHeight="30.0" prefWidth="80.0" />
-                                                                              <Spinner prefHeight="30.0" prefWidth="80.0" />
-                                                                              <Spinner prefHeight="30.0" prefWidth="80.0" />
-                                                                              <Spinner prefHeight="30.0" prefWidth="80.0" />
-                                                                              <Spinner prefHeight="30.0" prefWidth="80.0" />
-                                                                              <Spinner prefHeight="30.0" prefWidth="80.0" />
+                                                                              <Spinner fx:id="nudMinBloeihoogte_Jan" prefHeight="30.0" prefWidth="80.0" />
+                                                                              <Spinner fx:id="nudMinBloeihoogte_Feb" prefHeight="30.0" prefWidth="80.0" />
+                                                                              <Spinner fx:id="nudMinBloeihoogte_Maa" prefHeight="30.0" prefWidth="80.0" />
+                                                                              <Spinner fx:id="nudMinBloeihoogte_Apr" prefHeight="30.0" prefWidth="80.0" />
+                                                                              <Spinner fx:id="nudMinBloeihoogte_Mei" prefHeight="30.0" prefWidth="80.0" />
+                                                                              <Spinner fx:id="nudMinBloeihoogte_Jun" prefHeight="30.0" prefWidth="80.0" />
+                                                                              <Spinner fx:id="nudMinBloeihoogte_Jul" prefHeight="30.0" prefWidth="80.0" />
+                                                                              <Spinner fx:id="nudMinBloeihoogte_Aug" prefHeight="30.0" prefWidth="80.0" />
+                                                                              <Spinner fx:id="nudMinBloeihoogte_Sept" prefHeight="30.0" prefWidth="80.0" />
+                                                                              <Spinner fx:id="nudMinBloeihoogte_Okt" prefHeight="30.0" prefWidth="80.0" />
+                                                                              <Spinner fx:id="nudMinBloeihoogte_Nov" prefHeight="30.0" prefWidth="80.0" />
+                                                                              <Spinner fx:id="nudMinBloeihoogte_Dec" prefHeight="30.0" prefWidth="80.0" />
                                                                            </children>
                                                                         </HBox>
                                                                         <HBox>
                                                                            <children>
-                                                                              <CheckBox mnemonicParsing="false" prefHeight="30.0" prefWidth="150.0" text="Max bloeihoogte">
+                                                                              <CheckBox fx:id="chkMaxBloeihoogte" mnemonicParsing="false" prefHeight="30.0" prefWidth="150.0" text="Max bloeihoogte">
                                                                                  <font>
                                                                                     <Font size="14.0" />
                                                                                  </font>
                                                                               </CheckBox>
-                                                                              <Spinner prefHeight="30.0" prefWidth="80.0" />
-                                                                              <Spinner prefHeight="30.0" prefWidth="80.0" />
-                                                                              <Spinner prefHeight="30.0" prefWidth="80.0" />
-                                                                              <Spinner prefHeight="30.0" prefWidth="80.0" />
-                                                                              <Spinner prefHeight="30.0" prefWidth="80.0" />
-                                                                              <Spinner prefHeight="30.0" prefWidth="80.0" />
-                                                                              <Spinner prefHeight="30.0" prefWidth="80.0" />
-                                                                              <Spinner prefHeight="30.0" prefWidth="80.0" />
-                                                                              <Spinner prefHeight="30.0" prefWidth="80.0" />
-                                                                              <Spinner prefHeight="30.0" prefWidth="80.0" />
-                                                                              <Spinner prefHeight="30.0" prefWidth="80.0" />
-                                                                              <Spinner prefHeight="30.0" prefWidth="80.0" />
+                                                                              <Spinner fx:id="nudMaxBloeihoogte_Jan" prefHeight="30.0" prefWidth="80.0" />
+                                                                              <Spinner fx:id="nudMaxBloeihoogte_Feb" prefHeight="30.0" prefWidth="80.0" />
+                                                                              <Spinner fx:id="nudMaxBloeihoogte_Maa" prefHeight="30.0" prefWidth="80.0" />
+                                                                              <Spinner fx:id="nudMaxBloeihoogte_Apr" prefHeight="30.0" prefWidth="80.0" />
+                                                                              <Spinner fx:id="nudMaxBloeihoogte_Mei" prefHeight="30.0" prefWidth="80.0" />
+                                                                              <Spinner fx:id="nudMaxBloeihoogte_Jun" prefHeight="30.0" prefWidth="80.0" />
+                                                                              <Spinner fx:id="nudMaxBloeihoogte_Jul" prefHeight="30.0" prefWidth="80.0" />
+                                                                              <Spinner fx:id="nudMaxBloeihoogte_Aug" prefHeight="30.0" prefWidth="80.0" />
+                                                                              <Spinner fx:id="nudMaxBloeihoogte_Sept" prefHeight="30.0" prefWidth="80.0" />
+                                                                              <Spinner fx:id="nudMaxBloeihoogte_Okt" prefHeight="30.0" prefWidth="80.0" />
+                                                                              <Spinner fx:id="nudMaxBloeihoogte_Nov" prefHeight="30.0" prefWidth="80.0" />
+                                                                              <Spinner fx:id="nudMaxBloeihoogte_Dec" prefHeight="30.0" prefWidth="80.0" />
                                                                            </children>
                                                                         </HBox>
                                                                         <HBox>
                                                                            <children>
-                                                                              <CheckBox mnemonicParsing="false" prefHeight="30.0" prefWidth="150.0" text="Bloeikleur">
+                                                                              <CheckBox fx:id="chkBloeikleur" mnemonicParsing="false" prefHeight="30.0" prefWidth="150.0" text="Bloeikleur">
                                                                                  <font>
                                                                                     <Font size="14.0" />
                                                                                  </font>
@@ -835,7 +835,7 @@
                                                                <children>
                                                                   <HBox layoutX="14.0" layoutY="14.0">
                                                                      <children>
-                                                                        <CheckBox mnemonicParsing="false" prefHeight="30.0">
+                                                                        <CheckBox fx:id="chkHabitus" mnemonicParsing="false" prefHeight="30.0">
                                                                            <font>
                                                                               <Font size="14.0" />
                                                                            </font>
@@ -843,150 +843,150 @@
                                                                         <Label minWidth="20.0" />
                                                                         <VBox>
                                                                            <children>
-                                                                              <RadioButton mnemonicParsing="false" prefHeight="30.0" prefWidth="80.0" text="Habitus" />
+                                                                              <RadioButton fx:id="rdbHabitus_1" mnemonicParsing="false" prefHeight="30.0" prefWidth="80.0" text="Habitus" />
                                                                               <ImageView fitHeight="80.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true">
                                                                                  <image>
-                                                                                    <Image url="@../view/img/Habitus_15.png" />
+                                                                                    <Image url="@img/Habitus_01.png" />
                                                                                  </image>
                                                                               </ImageView>
                                                                            </children>
                                                                         </VBox>
                                                                         <VBox>
                                                                            <children>
-                                                                              <RadioButton mnemonicParsing="false" prefHeight="30.0" prefWidth="80.0" text="Habitus" />
+                                                                              <RadioButton fx:id="rdbHabitus_2" mnemonicParsing="false" prefHeight="30.0" prefWidth="80.0" text="Habitus" />
                                                                               <ImageView fitHeight="80.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true">
                                                                                  <image>
-                                                                                    <Image url="@../view/img/Habitus_01.png" />
+                                                                                    <Image url="@img/Habitus_02.png" />
                                                                                  </image>
                                                                               </ImageView>
                                                                            </children>
                                                                         </VBox>
                                                                         <VBox>
                                                                            <children>
-                                                                              <RadioButton mnemonicParsing="false" prefHeight="30.0" prefWidth="80.0" text="Habitus" />
+                                                                              <RadioButton fx:id="rdbHabitus_3" mnemonicParsing="false" prefHeight="30.0" prefWidth="80.0" text="Habitus" />
                                                                               <ImageView fitHeight="80.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true">
                                                                                  <image>
-                                                                                    <Image url="@../view/img/Habitus_02.png" />
+                                                                                    <Image url="@img/Habitus_03.png" />
                                                                                  </image>
                                                                               </ImageView>
                                                                            </children>
                                                                         </VBox>
                                                                         <VBox>
                                                                            <children>
-                                                                              <RadioButton mnemonicParsing="false" prefHeight="30.0" prefWidth="80.0" text="Habitus" />
+                                                                              <RadioButton fx:id="rdbHabitus_4" mnemonicParsing="false" prefHeight="30.0" prefWidth="80.0" text="Habitus" />
                                                                               <ImageView fitHeight="80.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true">
                                                                                  <image>
-                                                                                    <Image url="@../view/img/Habitus_03.png" />
+                                                                                    <Image url="@img/Habitus_04.png" />
                                                                                  </image>
                                                                               </ImageView>
                                                                            </children>
                                                                         </VBox>
                                                                         <VBox>
                                                                            <children>
-                                                                              <RadioButton mnemonicParsing="false" prefHeight="30.0" prefWidth="80.0" text="Habitus" />
+                                                                              <RadioButton fx:id="rdbHabitus_5" mnemonicParsing="false" prefHeight="30.0" prefWidth="80.0" text="Habitus" />
                                                                               <ImageView fitHeight="80.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true">
                                                                                  <image>
-                                                                                    <Image url="@../view/img/Habitus_04.png" />
+                                                                                    <Image url="@img/Habitus_05.png" />
                                                                                  </image>
                                                                               </ImageView>
                                                                            </children>
                                                                         </VBox>
                                                                         <VBox>
                                                                            <children>
-                                                                              <RadioButton mnemonicParsing="false" prefHeight="30.0" prefWidth="80.0" text="Habitus" />
+                                                                              <RadioButton fx:id="rdbHabitus_6" mnemonicParsing="false" prefHeight="30.0" prefWidth="80.0" text="Habitus" />
                                                                               <ImageView fitHeight="80.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true">
                                                                                  <image>
-                                                                                    <Image url="@../view/img/Habitus_05.png" />
+                                                                                    <Image url="@img/Habitus_06.png" />
                                                                                  </image>
                                                                               </ImageView>
                                                                            </children>
                                                                         </VBox>
                                                                         <VBox>
                                                                            <children>
-                                                                              <RadioButton mnemonicParsing="false" prefHeight="30.0" prefWidth="80.0" text="Habitus" />
+                                                                              <RadioButton fx:id="rdbHabitus_7" mnemonicParsing="false" prefHeight="30.0" prefWidth="80.0" text="Habitus" />
                                                                               <ImageView fitHeight="80.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true">
                                                                                  <image>
-                                                                                    <Image url="@../view/img/Habitus_06.png" />
+                                                                                    <Image url="@img/Habitus_07.png" />
                                                                                  </image>
                                                                               </ImageView>
                                                                            </children>
                                                                         </VBox>
                                                                         <VBox>
                                                                            <children>
-                                                                              <RadioButton mnemonicParsing="false" prefHeight="30.0" prefWidth="80.0" text="Habitus" />
+                                                                              <RadioButton fx:id="rdbHabitus_8" mnemonicParsing="false" prefHeight="30.0" prefWidth="80.0" text="Habitus" />
                                                                               <ImageView fitHeight="80.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true">
                                                                                  <image>
-                                                                                    <Image url="@../view/img/Habitus_07.png" />
+                                                                                    <Image url="@img/Habitus_08.png" />
                                                                                  </image>
                                                                               </ImageView>
                                                                            </children>
                                                                         </VBox>
                                                                         <VBox>
                                                                            <children>
-                                                                              <RadioButton mnemonicParsing="false" prefHeight="30.0" prefWidth="80.0" text="Habitus" />
+                                                                              <RadioButton fx:id="rdbHabitus_9" mnemonicParsing="false" prefHeight="30.0" prefWidth="80.0" text="Habitus" />
                                                                               <ImageView fitHeight="80.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true">
                                                                                  <image>
-                                                                                    <Image url="@../view/img/Habitus_08.png" />
+                                                                                    <Image url="@img/Habitus_09.png" />
                                                                                  </image>
                                                                               </ImageView>
                                                                            </children>
                                                                         </VBox>
                                                                         <VBox>
                                                                            <children>
-                                                                              <RadioButton mnemonicParsing="false" prefHeight="30.0" prefWidth="80.0" text="Habitus" />
+                                                                              <RadioButton fx:id="rdbHabitus_10" mnemonicParsing="false" prefHeight="30.0" prefWidth="80.0" text="Habitus" />
                                                                               <ImageView fitHeight="80.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true">
                                                                                  <image>
-                                                                                    <Image url="@../view/img/Habitus_09.png" />
+                                                                                    <Image url="@img/Habitus_10.png" />
                                                                                  </image>
                                                                               </ImageView>
                                                                            </children>
                                                                         </VBox>
                                                                         <VBox>
                                                                            <children>
-                                                                              <RadioButton mnemonicParsing="false" prefHeight="30.0" prefWidth="80.0" text="Habitus" />
+                                                                              <RadioButton fx:id="rdbHabitus_11" mnemonicParsing="false" prefHeight="30.0" prefWidth="80.0" text="Habitus" />
                                                                               <ImageView fitHeight="80.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true">
                                                                                  <image>
-                                                                                    <Image url="@../view/img/Habitus_10.png" />
+                                                                                    <Image url="@img/Habitus_11.png" />
                                                                                  </image>
                                                                               </ImageView>
                                                                            </children>
                                                                         </VBox>
                                                                         <VBox>
                                                                            <children>
-                                                                              <RadioButton mnemonicParsing="false" prefHeight="30.0" prefWidth="80.0" text="Habitus" />
+                                                                              <RadioButton fx:id="rdbHabitus_12" mnemonicParsing="false" prefHeight="30.0" prefWidth="80.0" text="Habitus" />
                                                                               <ImageView fitHeight="80.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true">
                                                                                  <image>
-                                                                                    <Image url="@../view/img/Habitus_11.png" />
+                                                                                    <Image url="@img/Habitus_12.png" />
                                                                                  </image>
                                                                               </ImageView>
                                                                            </children>
                                                                         </VBox>
                                                                         <VBox>
                                                                            <children>
-                                                                              <RadioButton mnemonicParsing="false" prefHeight="30.0" prefWidth="80.0" text="Habitus" />
+                                                                              <RadioButton fx:id="rdbHabitus_13" mnemonicParsing="false" prefHeight="30.0" prefWidth="80.0" text="Habitus" />
                                                                               <ImageView fitHeight="80.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true">
                                                                                  <image>
-                                                                                    <Image url="@../view/img/Habitus_12.png" />
+                                                                                    <Image url="@img/Habitus_13.png" />
                                                                                  </image>
                                                                               </ImageView>
                                                                            </children>
                                                                         </VBox>
                                                                         <VBox>
                                                                            <children>
-                                                                              <RadioButton mnemonicParsing="false" prefHeight="30.0" prefWidth="80.0" text="Habitus" />
+                                                                              <RadioButton fx:id="rdbHabitus_14" mnemonicParsing="false" prefHeight="30.0" prefWidth="80.0" text="Habitus" />
                                                                               <ImageView fitHeight="80.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true">
                                                                                  <image>
-                                                                                    <Image url="@../view/img/Habitus_13.png" />
+                                                                                    <Image url="@img/Habitus_14.png" />
                                                                                  </image>
                                                                               </ImageView>
                                                                            </children>
                                                                         </VBox>
                                                                         <VBox>
                                                                            <children>
-                                                                              <RadioButton mnemonicParsing="false" prefHeight="30.0" prefWidth="80.0" text="Habitus" />
+                                                                              <RadioButton fx:id="rdbHabitus_15" mnemonicParsing="false" prefHeight="30.0" prefWidth="80.0" text="Habitus" />
                                                                               <ImageView fitHeight="80.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true">
                                                                                  <image>
-                                                                                    <Image url="@../view/img/Habitus_14.png" />
+                                                                                    <Image url="@img/Habitus_15.png" />
                                                                                  </image>
                                                                               </ImageView>
                                                                            </children>
@@ -1003,7 +1003,7 @@
                                                                <children>
                                                                   <HBox layoutX="14.0" layoutY="14.0">
                                                                      <children>
-                                                                        <CheckBox mnemonicParsing="false" prefHeight="30.0">
+                                                                        <CheckBox fx:id="chkBloeiwijze" mnemonicParsing="false" prefHeight="30.0">
                                                                            <font>
                                                                               <Font size="14.0" />
                                                                            </font>
@@ -1011,80 +1011,80 @@
                                                                         <Label minWidth="20.0" />
                                                                         <VBox>
                                                                            <children>
-                                                                              <RadioButton mnemonicParsing="false" prefHeight="30.0" prefWidth="80.0" text="Aar" />
+                                                                              <RadioButton fx:id="rdbBloeiwijze_Aar" mnemonicParsing="false" prefHeight="30.0" prefWidth="80.0" text="Aar" />
                                                                               <ImageView fitHeight="80.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true">
                                                                                  <image>
-                                                                                    <Image url="@../view/img/aar.jpg" />
+                                                                                    <Image url="@img/aar.jpg" />
                                                                                  </image>
                                                                               </ImageView>
                                                                            </children>
                                                                         </VBox>
                                                                         <VBox>
                                                                            <children>
-                                                                              <RadioButton mnemonicParsing="false" prefHeight="30.0" prefWidth="80.0" text="Brede pluim" />
+                                                                              <RadioButton fx:id="rdbBloeiwijze_BredePluim" mnemonicParsing="false" prefHeight="30.0" prefWidth="80.0" text="Brede pluim" />
                                                                               <ImageView fitHeight="80.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true">
                                                                                  <image>
-                                                                                    <Image url="@../view/img/bredepluim.jpg" />
+                                                                                    <Image url="@img/bredepluim.jpg" />
                                                                                  </image>
                                                                               </ImageView>
                                                                            </children>
                                                                         </VBox>
                                                                         <VBox>
                                                                            <children>
-                                                                              <RadioButton mnemonicParsing="false" prefHeight="30.0" prefWidth="80.0" text="Etage" />
+                                                                              <RadioButton fx:id="rdbBloeiwijze_Etage" mnemonicParsing="false" prefHeight="30.0" prefWidth="80.0" text="Etage" />
                                                                               <ImageView fitHeight="80.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true">
                                                                                  <image>
-                                                                                    <Image url="@../view/img/etage.jpg" />
+                                                                                    <Image url="@img/etage.jpg" />
                                                                                  </image>
                                                                               </ImageView>
                                                                            </children>
                                                                         </VBox>
                                                                         <VBox>
                                                                            <children>
-                                                                              <RadioButton mnemonicParsing="false" prefHeight="30.0" prefWidth="80.0" text="Bol of knop" />
+                                                                              <RadioButton fx:id="rdbBloeiwijze_BolofKnop" mnemonicParsing="false" prefHeight="30.0" prefWidth="80.0" text="Bol of knop" />
                                                                               <ImageView fitHeight="80.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true">
                                                                                  <image>
-                                                                                    <Image url="@../view/img/knop.jpg" />
+                                                                                    <Image url="@img/knop.jpg" />
                                                                                  </image>
                                                                               </ImageView>
                                                                            </children>
                                                                         </VBox>
                                                                         <VBox>
                                                                            <children>
-                                                                              <RadioButton mnemonicParsing="false" prefHeight="30.0" prefWidth="80.0" text="Margrietachtig" />
+                                                                              <RadioButton fx:id="rdbBloeiwijze_Margrietachtig" mnemonicParsing="false" prefHeight="30.0" prefWidth="80.0" text="Margrietachtig" />
                                                                               <ImageView fitHeight="80.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true">
                                                                                  <image>
-                                                                                    <Image url="@../view/img/margrietachtig.jpg" />
+                                                                                    <Image url="@img/margrietachtig.jpg" />
                                                                                  </image>
                                                                               </ImageView>
                                                                            </children>
                                                                         </VBox>
                                                                         <VBox>
                                                                            <children>
-                                                                              <RadioButton mnemonicParsing="false" prefHeight="30.0" prefWidth="80.0" text="Schotel" />
+                                                                              <RadioButton fx:id="rdbBloeiwijze_Schotel" mnemonicParsing="false" prefHeight="30.0" prefWidth="80.0" text="Schotel" />
                                                                               <ImageView fitHeight="80.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true">
                                                                                  <image>
-                                                                                    <Image url="@../view/img/platscherm-schotel.jpg" />
+                                                                                    <Image url="@img/platscherm-schotel.jpg" />
                                                                                  </image>
                                                                               </ImageView>
                                                                            </children>
                                                                         </VBox>
                                                                         <VBox>
                                                                            <children>
-                                                                              <RadioButton mnemonicParsing="false" prefHeight="30.0" prefWidth="80.0" text="Scherm" />
+                                                                              <RadioButton fx:id="rdbBloeiwijze_Schotel" mnemonicParsing="false" prefHeight="30.0" prefWidth="80.0" text="Scherm" />
                                                                               <ImageView fitHeight="80.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true">
                                                                                  <image>
-                                                                                    <Image url="@../view/img/scherm.jpg" />
+                                                                                    <Image url="@img/scherm.jpg" />
                                                                                  </image>
                                                                               </ImageView>
                                                                            </children>
                                                                         </VBox>
                                                                         <VBox>
                                                                            <children>
-                                                                              <RadioButton mnemonicParsing="false" prefHeight="30.0" prefWidth="80.0" text="Smalle pluim" />
+                                                                              <RadioButton fx:id="rdbBloeiwijze_SmallePluim" mnemonicParsing="false" prefHeight="30.0" prefWidth="80.0" text="Smalle pluim" />
                                                                               <ImageView fitHeight="80.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true">
                                                                                  <image>
-                                                                                    <Image url="@../view/img/smallepluim.jpg" />
+                                                                                    <Image url="@img/smallepluim.jpg" />
                                                                                  </image>
                                                                               </ImageView>
                                                                            </children>
@@ -1101,7 +1101,7 @@
                                                                <children>
                                                                   <HBox layoutX="14.0" layoutY="14.0">
                                                                      <children>
-                                                                        <CheckBox mnemonicParsing="false" prefHeight="30.0">
+                                                                        <CheckBox fx:id="chkLevensvormVolgensRaunkhiaer" mnemonicParsing="false" prefHeight="30.0">
                                                                            <font>
                                                                               <Font size="14.0" />
                                                                            </font>
@@ -1109,52 +1109,52 @@
                                                                         <Label minWidth="20.0" />
                                                                         <ImageView fitHeight="226.0" fitWidth="469.0" pickOnBounds="true" preserveRatio="true">
                                                                            <image>
-                                                                              <Image url="@../view/img/LevensvormenvolgensRaunkiaer.gif" />
+                                                                              <Image url="@img/LevensvormenvolgensRaunkiaer.gif" />
                                                                            </image>
                                                                         </ImageView>
                                                                         <VBox>
                                                                            <children>
-                                                                              <RadioButton mnemonicParsing="false" prefHeight="25.0" text="1. Hydrofyt">
+                                                                              <RadioButton fx:id="rdbLevensvorm_1" mnemonicParsing="false" prefHeight="25.0" text="1. Hydrofyt">
                                                                                  <font>
                                                                                     <Font size="14.0" />
                                                                                  </font>
                                                                               </RadioButton>
-                                                                              <RadioButton mnemonicParsing="false" prefHeight="25.0" text="2. Hydrofyt">
+                                                                              <RadioButton fx:id="rdbLevensvorm_2" mnemonicParsing="false" prefHeight="25.0" text="2. Hydrofyt">
                                                                                  <font>
                                                                                     <Font size="14.0" />
                                                                                  </font>
                                                                               </RadioButton>
-                                                                              <RadioButton mnemonicParsing="false" prefHeight="25.0" text="3. Helofyt">
+                                                                              <RadioButton fx:id="rdbLevensvorm_3" mnemonicParsing="false" prefHeight="25.0" text="3. Helofyt">
                                                                                  <font>
                                                                                     <Font size="14.0" />
                                                                                  </font>
                                                                               </RadioButton>
-                                                                              <RadioButton mnemonicParsing="false" prefHeight="25.0" text="4. Cryptophyt ">
+                                                                              <RadioButton fx:id="rdbLevensvorm_4" mnemonicParsing="false" prefHeight="25.0" text="4. Cryptophyt ">
                                                                                  <font>
                                                                                     <Font size="14.0" />
                                                                                  </font>
                                                                               </RadioButton>
-                                                                              <RadioButton mnemonicParsing="false" prefHeight="25.0" text="5. Cryptophyt ">
+                                                                              <RadioButton fx:id="rdbLevensvorm_5" mnemonicParsing="false" prefHeight="25.0" text="5. Cryptophyt ">
                                                                                  <font>
                                                                                     <Font size="14.0" />
                                                                                  </font>
                                                                               </RadioButton>
-                                                                              <RadioButton mnemonicParsing="false" prefHeight="25.0" text="6. Hemikryptofyt ">
+                                                                              <RadioButton fx:id="rdbLevensvorm_6" mnemonicParsing="false" prefHeight="25.0" text="6. Hemikryptofyt ">
                                                                                  <font>
                                                                                     <Font size="14.0" />
                                                                                  </font>
                                                                               </RadioButton>
-                                                                              <RadioButton mnemonicParsing="false" prefHeight="25.0" text="7. Chamaefyt">
+                                                                              <RadioButton fx:id="rdbLevensvorm_7" mnemonicParsing="false" prefHeight="25.0" text="7. Chamaefyt">
                                                                                  <font>
                                                                                     <Font size="14.0" />
                                                                                  </font>
                                                                               </RadioButton>
-                                                                              <RadioButton mnemonicParsing="false" prefHeight="25.0" text="8. Chamaefyt">
+                                                                              <RadioButton fx:id="rdbLevensvorm_8" mnemonicParsing="false" prefHeight="25.0" text="8. Chamaefyt">
                                                                                  <font>
                                                                                     <Font size="14.0" />
                                                                                  </font>
                                                                               </RadioButton>
-                                                                              <RadioButton mnemonicParsing="false" prefHeight="25.0" text="9. Fanerophyt">
+                                                                              <RadioButton fx:id="rdbLevensvorm_9" mnemonicParsing="false" prefHeight="25.0" text="9. Fanerophyt">
                                                                                  <font>
                                                                                     <Font size="14.0" />
                                                                                  </font>
