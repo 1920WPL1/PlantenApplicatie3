@@ -45,7 +45,7 @@ public class FenotypeDAO implements Queries {
                     rs.getString("bloeiwijze"),
                     rs.getInt("bladgrootte"),
                     rs.getString("ratio_bloei_blad"),
-                    rs.getString("spruitfenelogie"),
+                    rs.getString("spruitfenologie"),
                     getByIdMulti(id)
             );
         }
