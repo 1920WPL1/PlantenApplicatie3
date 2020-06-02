@@ -108,14 +108,14 @@ public class Controller {
         dbConnection = Database.getInstance().getConnection();
 
         /*instellen exit, minimize en resize button*/
-        ScreenControl();
+        //ScreenControl();
 
         /*infotabel object aanmaken*/
         InfoTablesDAO infotablesDAO = new InfoTablesDAO(dbConnection);
-        infoTables = infotablesDAO.getInfoTables();
+       // infoTables = infotablesDAO.getInfoTables();
 
         /*comboboxes vullen*/
-        FillComboboxes(infoTables);
+       // FillComboboxes(infoTables);
 
 
     }
@@ -152,6 +152,7 @@ public class Controller {
 
     }
 
+
     /**
      @author bradley
      Functie om scherm aan te passen tussen volledig scherm en normale grootte
@@ -172,7 +173,7 @@ public class Controller {
      @author bradley
      Functie om scherm beheer knoppen te gebruiken
      */
-    public void ScreenControl(){
+   /* public void ScreenControl(){
         btnExit.setOnAction(e ->
                 ((Stage) ((Button) e.getSource()).getScene().getWindow()).close()
         );
@@ -187,9 +188,9 @@ public class Controller {
      @author bradley
      wanneer hier op geklikt wordt, wordt de schermgrootte aangepast
      */
-    public void Clicked_Resize(MouseEvent mouseEvent) {
+    /*public void Clicked_Resize(MouseEvent mouseEvent) {
         resize();
-    }
+    }*/
 
     /**
      * @author Bradley Velghe
@@ -197,7 +198,7 @@ public class Controller {
      * @param slider
      * @return true > slider is beweegbaar || false > slider is niet beweegbaar
      */
-    public boolean Togledisable(CheckBox box, Slider slider){
+  /*  public boolean Togledisable(CheckBox box, Slider slider){
         if(box.isSelected()){
             slider.setDisable(false);
             return true;
@@ -205,8 +206,8 @@ public class Controller {
             slider.setDisable(true);
             return false;
         }
-    }
-
+    }*/
+/*
     public void Clicked_Bezonning(MouseEvent mouseEvent) {
         Togledisable(chkBezonning, slrBezonning);
     }
@@ -229,7 +230,7 @@ public class Controller {
 
     public void Clicked_Nectarwaarde(MouseEvent mouseEvent) {
         Togledisable(chkNectarwaarde, slrNectarwaarde);
-    }
+    }*/
 }
 
 

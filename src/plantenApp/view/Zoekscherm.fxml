@@ -16,7 +16,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="1860.0" minHeight="-Infinity" minWidth="1860.0" prefHeight="1080.0" prefWidth="1860.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="1860.0" minHeight="-Infinity" minWidth="1860.0" prefHeight="1080.0" prefWidth="1860.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="plantenApp.Controller">
    <children>
       <VBox prefHeight="2228.0" prefWidth="1860.0">
          <children>
@@ -846,7 +846,7 @@
                                                                               <RadioButton mnemonicParsing="false" prefHeight="30.0" prefWidth="80.0" text="Habitus" />
                                                                               <ImageView fitHeight="80.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true">
                                                                                  <image>
-                                                                                    <Image url="@../Images/img/Habitus_15.png" />
+                                                                                    <Image url="@../view/img/Habitus_15.png" />
                                                                                  </image>
                                                                               </ImageView>
                                                                            </children>
@@ -856,7 +856,7 @@
                                                                               <RadioButton mnemonicParsing="false" prefHeight="30.0" prefWidth="80.0" text="Habitus" />
                                                                               <ImageView fitHeight="80.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true">
                                                                                  <image>
-                                                                                    <Image url="@../Images/img/Habitus_01.png" />
+                                                                                    <Image url="@../view/img/Habitus_01.png" />
                                                                                  </image>
                                                                               </ImageView>
                                                                            </children>
@@ -866,7 +866,7 @@
                                                                               <RadioButton mnemonicParsing="false" prefHeight="30.0" prefWidth="80.0" text="Habitus" />
                                                                               <ImageView fitHeight="80.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true">
                                                                                  <image>
-                                                                                    <Image url="@../Images/img/Habitus_02.png" />
+                                                                                    <Image url="@../view/img/Habitus_02.png" />
                                                                                  </image>
                                                                               </ImageView>
                                                                            </children>
@@ -876,7 +876,7 @@
                                                                               <RadioButton mnemonicParsing="false" prefHeight="30.0" prefWidth="80.0" text="Habitus" />
                                                                               <ImageView fitHeight="80.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true">
                                                                                  <image>
-                                                                                    <Image url="@../Images/img/Habitus_03.png" />
+                                                                                    <Image url="@../view/img/Habitus_03.png" />
                                                                                  </image>
                                                                               </ImageView>
                                                                            </children>
@@ -886,7 +886,7 @@
                                                                               <RadioButton mnemonicParsing="false" prefHeight="30.0" prefWidth="80.0" text="Habitus" />
                                                                               <ImageView fitHeight="80.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true">
                                                                                  <image>
-                                                                                    <Image url="@../Images/img/Habitus_04.png" />
+                                                                                    <Image url="@../view/img/Habitus_04.png" />
                                                                                  </image>
                                                                               </ImageView>
                                                                            </children>
@@ -896,7 +896,7 @@
                                                                               <RadioButton mnemonicParsing="false" prefHeight="30.0" prefWidth="80.0" text="Habitus" />
                                                                               <ImageView fitHeight="80.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true">
                                                                                  <image>
-                                                                                    <Image url="@../Images/img/Habitus_05.png" />
+                                                                                    <Image url="@../view/img/Habitus_05.png" />
                                                                                  </image>
                                                                               </ImageView>
                                                                            </children>
@@ -906,7 +906,7 @@
                                                                               <RadioButton mnemonicParsing="false" prefHeight="30.0" prefWidth="80.0" text="Habitus" />
                                                                               <ImageView fitHeight="80.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true">
                                                                                  <image>
-                                                                                    <Image url="@../Images/img/Habitus_06.png" />
+                                                                                    <Image url="@../view/img/Habitus_06.png" />
                                                                                  </image>
                                                                               </ImageView>
                                                                            </children>
@@ -916,7 +916,7 @@
                                                                               <RadioButton mnemonicParsing="false" prefHeight="30.0" prefWidth="80.0" text="Habitus" />
                                                                               <ImageView fitHeight="80.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true">
                                                                                  <image>
-                                                                                    <Image url="@../Images/img/Habitus_07.png" />
+                                                                                    <Image url="@../view/img/Habitus_07.png" />
                                                                                  </image>
                                                                               </ImageView>
                                                                            </children>
@@ -926,7 +926,7 @@
                                                                               <RadioButton mnemonicParsing="false" prefHeight="30.0" prefWidth="80.0" text="Habitus" />
                                                                               <ImageView fitHeight="80.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true">
                                                                                  <image>
-                                                                                    <Image url="@../Images/img/Habitus_08.png" />
+                                                                                    <Image url="@../view/img/Habitus_08.png" />
                                                                                  </image>
                                                                               </ImageView>
                                                                            </children>
@@ -936,7 +936,7 @@
                                                                               <RadioButton mnemonicParsing="false" prefHeight="30.0" prefWidth="80.0" text="Habitus" />
                                                                               <ImageView fitHeight="80.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true">
                                                                                  <image>
-                                                                                    <Image url="@../Images/img/Habitus_09.png" />
+                                                                                    <Image url="@../view/img/Habitus_09.png" />
                                                                                  </image>
                                                                               </ImageView>
                                                                            </children>
@@ -946,7 +946,7 @@
                                                                               <RadioButton mnemonicParsing="false" prefHeight="30.0" prefWidth="80.0" text="Habitus" />
                                                                               <ImageView fitHeight="80.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true">
                                                                                  <image>
-                                                                                    <Image url="@../Images/img/Habitus_10.png" />
+                                                                                    <Image url="@../view/img/Habitus_10.png" />
                                                                                  </image>
                                                                               </ImageView>
                                                                            </children>
@@ -956,7 +956,7 @@
                                                                               <RadioButton mnemonicParsing="false" prefHeight="30.0" prefWidth="80.0" text="Habitus" />
                                                                               <ImageView fitHeight="80.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true">
                                                                                  <image>
-                                                                                    <Image url="@../Images/img/Habitus_11.png" />
+                                                                                    <Image url="@../view/img/Habitus_11.png" />
                                                                                  </image>
                                                                               </ImageView>
                                                                            </children>
@@ -966,7 +966,7 @@
                                                                               <RadioButton mnemonicParsing="false" prefHeight="30.0" prefWidth="80.0" text="Habitus" />
                                                                               <ImageView fitHeight="80.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true">
                                                                                  <image>
-                                                                                    <Image url="@../Images/img/Habitus_12.png" />
+                                                                                    <Image url="@../view/img/Habitus_12.png" />
                                                                                  </image>
                                                                               </ImageView>
                                                                            </children>
@@ -976,7 +976,7 @@
                                                                               <RadioButton mnemonicParsing="false" prefHeight="30.0" prefWidth="80.0" text="Habitus" />
                                                                               <ImageView fitHeight="80.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true">
                                                                                  <image>
-                                                                                    <Image url="@../Images/img/Habitus_13.png" />
+                                                                                    <Image url="@../view/img/Habitus_13.png" />
                                                                                  </image>
                                                                               </ImageView>
                                                                            </children>
@@ -986,7 +986,7 @@
                                                                               <RadioButton mnemonicParsing="false" prefHeight="30.0" prefWidth="80.0" text="Habitus" />
                                                                               <ImageView fitHeight="80.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true">
                                                                                  <image>
-                                                                                    <Image url="@../Images/img/Habitus_14.png" />
+                                                                                    <Image url="@../view/img/Habitus_14.png" />
                                                                                  </image>
                                                                               </ImageView>
                                                                            </children>
@@ -1014,7 +1014,7 @@
                                                                               <RadioButton mnemonicParsing="false" prefHeight="30.0" prefWidth="80.0" text="Aar" />
                                                                               <ImageView fitHeight="80.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true">
                                                                                  <image>
-                                                                                    <Image url="@../Images/img/aar.jpg" />
+                                                                                    <Image url="@../view/img/aar.jpg" />
                                                                                  </image>
                                                                               </ImageView>
                                                                            </children>
@@ -1024,7 +1024,7 @@
                                                                               <RadioButton mnemonicParsing="false" prefHeight="30.0" prefWidth="80.0" text="Brede pluim" />
                                                                               <ImageView fitHeight="80.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true">
                                                                                  <image>
-                                                                                    <Image url="@../Images/img/bredepluim.jpg" />
+                                                                                    <Image url="@../view/img/bredepluim.jpg" />
                                                                                  </image>
                                                                               </ImageView>
                                                                            </children>
@@ -1034,7 +1034,7 @@
                                                                               <RadioButton mnemonicParsing="false" prefHeight="30.0" prefWidth="80.0" text="Etage" />
                                                                               <ImageView fitHeight="80.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true">
                                                                                  <image>
-                                                                                    <Image url="@../Images/img/etage.jpg" />
+                                                                                    <Image url="@../view/img/etage.jpg" />
                                                                                  </image>
                                                                               </ImageView>
                                                                            </children>
@@ -1044,7 +1044,7 @@
                                                                               <RadioButton mnemonicParsing="false" prefHeight="30.0" prefWidth="80.0" text="Bol of knop" />
                                                                               <ImageView fitHeight="80.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true">
                                                                                  <image>
-                                                                                    <Image url="@../Images/img/knop.jpg" />
+                                                                                    <Image url="@../view/img/knop.jpg" />
                                                                                  </image>
                                                                               </ImageView>
                                                                            </children>
@@ -1054,7 +1054,7 @@
                                                                               <RadioButton mnemonicParsing="false" prefHeight="30.0" prefWidth="80.0" text="Margrietachtig" />
                                                                               <ImageView fitHeight="80.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true">
                                                                                  <image>
-                                                                                    <Image url="@../Images/img/margrietachtig.jpg" />
+                                                                                    <Image url="@../view/img/margrietachtig.jpg" />
                                                                                  </image>
                                                                               </ImageView>
                                                                            </children>
@@ -1064,7 +1064,7 @@
                                                                               <RadioButton mnemonicParsing="false" prefHeight="30.0" prefWidth="80.0" text="Schotel" />
                                                                               <ImageView fitHeight="80.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true">
                                                                                  <image>
-                                                                                    <Image url="@../Images/img/platscherm-schotel.jpg" />
+                                                                                    <Image url="@../view/img/platscherm-schotel.jpg" />
                                                                                  </image>
                                                                               </ImageView>
                                                                            </children>
@@ -1074,7 +1074,7 @@
                                                                               <RadioButton mnemonicParsing="false" prefHeight="30.0" prefWidth="80.0" text="Scherm" />
                                                                               <ImageView fitHeight="80.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true">
                                                                                  <image>
-                                                                                    <Image url="@../Images/img/scherm.jpg" />
+                                                                                    <Image url="@../view/img/scherm.jpg" />
                                                                                  </image>
                                                                               </ImageView>
                                                                            </children>
@@ -1084,7 +1084,7 @@
                                                                               <RadioButton mnemonicParsing="false" prefHeight="30.0" prefWidth="80.0" text="Smalle pluim" />
                                                                               <ImageView fitHeight="80.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true">
                                                                                  <image>
-                                                                                    <Image url="@../Images/img/smallepluim.jpg" />
+                                                                                    <Image url="@../view/img/smallepluim.jpg" />
                                                                                  </image>
                                                                               </ImageView>
                                                                            </children>
@@ -1109,7 +1109,7 @@
                                                                         <Label minWidth="20.0" />
                                                                         <ImageView fitHeight="226.0" fitWidth="469.0" pickOnBounds="true" preserveRatio="true">
                                                                            <image>
-                                                                              <Image url="@../Images/img/LevensvormenvolgensRaunkiaer.gif" />
+                                                                              <Image url="@../view/img/LevensvormenvolgensRaunkiaer.gif" />
                                                                            </image>
                                                                         </ImageView>
                                                                         <VBox>
