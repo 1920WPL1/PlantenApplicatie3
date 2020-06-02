@@ -1071,7 +1071,7 @@
                                                                         </VBox>
                                                                         <VBox>
                                                                            <children>
-                                                                              <RadioButton fx:id="rdbBloeiwijze_Schotel" mnemonicParsing="false" prefHeight="30.0" prefWidth="80.0" text="Scherm" />
+                                                                              <RadioButton fx:id="rdbBloeiwijze_Scherm" mnemonicParsing="false" prefHeight="30.0" prefWidth="80.0" text="Scherm" />
                                                                               <ImageView fitHeight="80.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true">
                                                                                  <image>
                                                                                     <Image url="@img/scherm.jpg" />
