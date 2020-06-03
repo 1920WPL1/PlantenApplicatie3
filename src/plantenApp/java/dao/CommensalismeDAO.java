@@ -1,7 +1,8 @@
 package plantenApp.java.dao;
 
-import plantenApp.java.model.CommMulti_Eigenschap;
-import plantenApp.java.model.Commensalisme;
+import plantenApp.java.model.*;
+import plantenApp.java.utils.ArrayBindings;
+import plantenApp.java.utils.Bindings;
 import plantenApp.java.utils.DaoUtils;
 
 import java.sql.Connection;
@@ -12,7 +13,9 @@ import java.util.ArrayList;
 import java.util.EnumMap;
 import java.util.List;
 
-/**@author Siebe*/
+/**
+ * @author Siebe
+ */
 public class CommensalismeDAO implements Queries {
     private Connection dbConnection;
     private PreparedStatement stmtSelectCommeByID;
@@ -32,9 +35,9 @@ public class CommensalismeDAO implements Queries {
     //region GET
 
     /**
-     * @author Siebe
      * @param id -> plant_id
      * @return alle abiotische factoren van de specifieke plant
+     * @author Siebe
      */
     public Commensalisme getById(int id) throws SQLException {
         //Dao
@@ -60,10 +63,10 @@ public class CommensalismeDAO implements Queries {
     }
 
     /**
-     * @author Siebe
-     * word alleen gebruikt in getById
      * @param id -> plant_id
      * @return -> alle commensalisme_multi van de specifieke plant
+     * @author Siebe
+     * word alleen gebruikt in getById
      */
     private ArrayList<CommMulti_Eigenschap> getByIdMulti(int id) throws SQLException {
         //Dao
@@ -91,7 +94,7 @@ public class CommensalismeDAO implements Queries {
 
     //region FILTER
 
-    public ArrayList<Integer> FilterOn(List<Integer> plantIds, EnumMap) throws SQLException {
+    public ArrayList<Integer> FilterOn(List<Integer> plantIds, BindingData bindingData) throws SQLException {
         //Dao
 
         //Items
@@ -101,25 +104,33 @@ public class CommensalismeDAO implements Queries {
         //SQLcommand
         stmtSelectIdsByComm.setString(1, sPlantIds);
 
-        stmtSelectIdsByComm.setString(2, strategie);
-        stmtSelectIdsByComm.setInt(3, DoSearch);
+        stmtSelectIdsByComm.setString(2, bindingData.dataBindings.get(Bindings.STRATEGIE).getValue().get());
+        stmtSelectIdsByComm.setInt(3, (bindingData.dataBindings.get(Bindings.STRATEGIE).getDoSearch()) ? 0 : 1);
 
-        stmtSelectIdsByComm.setString(4, ontwikkelingssnelheid);
-        stmtSelectIdsByComm.setInt(5, DoSearch);
+        stmtSelectIdsByComm.setString(4, bindingData.dataBindings.get(Bindings.ONTWIKKELINGSSNELHEID).getValue().get());
+        stmtSelectIdsByComm.setInt(5, (bindingData.dataBindings.get(Bindings.ONTWIKKELINGSSNELHEID).getDoSearch()) ? 0 : 1);
 
         ResultSet rs = stmtSelectIdsByComm.executeQuery();
-        while (rs.next()){
+        while (rs.next()) {
             ids.add(rs.getInt(0));
         }
 
         //Multi
-        ids = FilterOnMulti("Sociabiliteit",ids);
+        PropertyClass<ArrayList<ValueWithBoolean>> sociabiliteitData = bindingData.arrayDataBindings.get(ArrayBindings.SOCIABILITEIT);
+        if (sociabiliteitData.getDoSearch()) {
+            for (int i = 0; i < sociabiliteitData.getValue().size(); i++) {
+                if (sociabiliteitData.getValue().get(i).getBool()) {
+                    ids = FilterOnMulti("sociabiliteit",sociabiliteitData.getValue().get(i).get(),ids);
+                }
+
+            }
+        }
 
         //Output
         return ids;
     }
 
-    private ArrayList<Integer> FilterOnMulti(String eigenschap,List<Integer> plantIds, EnumMap) throws SQLException {
+    private ArrayList<Integer> FilterOnMulti(String eigenschap, String value, List<Integer> plantIds) throws SQLException {
         //Dao
 
         //Items
@@ -131,11 +142,11 @@ public class CommensalismeDAO implements Queries {
 
         stmtSelectIdsByCommMulti.setString(2, eigenschap);
 
-        stmtSelectIdsByCommMulti.setInt(3, waarde);
-        stmtSelectIdsByCommMulti.setInt(4, DoSearch);
+        stmtSelectIdsByCommMulti.setString(3, value);
+        //.setInt(4, DoSearch);
 
         ResultSet rs = stmtSelectIdsByCommMulti.executeQuery();
-        while (rs.next()){
+        while (rs.next()) {
             ids.add(rs.getInt(0));
         }
 

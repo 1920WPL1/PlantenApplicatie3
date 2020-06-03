@@ -1,13 +1,11 @@
 package plantenApp.java.dao;
 
-import plantenApp.java.model.AbioMulti_Eigenschap;
-import plantenApp.java.model.AbiotischeFactoren;
+import plantenApp.java.model.*;
+import plantenApp.java.utils.ArrayBindings;
+import plantenApp.java.utils.Bindings;
 import plantenApp.java.utils.DaoUtils;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.EnumMap;
 import java.util.List;
@@ -96,7 +94,7 @@ public class AbiotischeFactorenDAO implements Queries {
 
     //region FILTER
 
-    public ArrayList<Integer> FilterOn(List<Integer> plantIds, EnumMap) throws SQLException {
+    public ArrayList<Integer> FilterOn(List<Integer> plantIds, BindingData bindingData) throws SQLException {
         //Dao
 
         //Items
@@ -106,33 +104,45 @@ public class AbiotischeFactorenDAO implements Queries {
         //SQLcommand
         stmtSelectIdsByAbio.setString(1, sPlantIds);
 
-        stmtSelectIdsByAbio.setString(2, bezonning);
-        stmtSelectIdsByAbio.setString(3, DoSearch);
+        stmtSelectIdsByAbio.setString(2, bindingData.dataBindings.get(Bindings.BEZONNING).getValue().get());
+        stmtSelectIdsByAbio.setInt(3, (bindingData.dataBindings.get(Bindings.STRATEGIE).getDoSearch()) ? 0 : 1);
 
-        stmtSelectIdsByAbio.setString(4, grondsoort);
-        stmtSelectIdsByAbio.setString(5, DoSearch);
+        ArrayList<ValueWithBoolean> grondsoortData = bindingData.arrayDataBindings.get(ArrayBindings.GRONDSOORT).getValue();
+        StringBuilder grondsoortValue = new StringBuilder();
+        for (int i=0;i<grondsoortData.size();i++)
+        {
+            if (grondsoortData.get(0).getBool()) {
+                grondsoortValue.append(grondsoortData.get(0).get());
+            }
+        }
 
-        stmtSelectIdsByAbio.setString(6, vochtbehoefte);
-        stmtSelectIdsByAbio.setString(7, DoSearch);
 
-        stmtSelectIdsByAbio.setString(8, voedingsbehoefte);
-        stmtSelectIdsByAbio.setString(9, DoSearch);
+        stmtSelectIdsByAbio.setString(4, grondsoortValue.toString());
+        stmtSelectIdsByAbio.setInt(5, (bindingData.arrayDataBindings.get(ArrayBindings.GRONDSOORT).getDoSearch()) ? 0 : 1);
 
-        stmtSelectIdsByAbio.setString(10, reactie_antagonistische_omg);
-        stmtSelectIdsByAbio.setInt(11, DoSearch);
+        stmtSelectIdsByAbio.setString(6, bindingData.dataBindings.get(Bindings.VOCHTBEHOEFTE).getValue().get());
+        stmtSelectIdsByAbio.setInt(7, (bindingData.dataBindings.get(Bindings.STRATEGIE).getDoSearch()) ? 0 : 1);
+
+        stmtSelectIdsByAbio.setString(8, bindingData.dataBindings.get(Bindings.VOEDINGSBEHOEFTE).getValue().get());
+        stmtSelectIdsByAbio.setInt(9, (bindingData.dataBindings.get(Bindings.STRATEGIE).getDoSearch()) ? 0 : 1);
+
+        stmtSelectIdsByAbio.setString(10, bindingData.dataBindings.get(Bindings.REACTIEANTAGONISTISCHEOMGEVING).getValue().get());
+        stmtSelectIdsByAbio.setInt(11, (bindingData.dataBindings.get(Bindings.STRATEGIE).getDoSearch()) ? 0 : 1);
 
         ResultSet rs = stmtSelectIdsByAbio.executeQuery();
-        while (rs.next()){
+        while (rs.next()) {
             ids.add(rs.getInt(0));
         }
 
-        ids = FilterOnMulti("habitat",ids,habitat);
+        if (bindingData.dataBindings.get(Bindings.HABITAT).getDoSearch()){
+            ids = FilterOnMulti("Habitat", bindingData.dataBindings.get(Bindings.HABITAT).getValue().get(), ids);
+        }
 
         //Output
         return ids;
     }
 
-    private ArrayList<Integer> FilterOnMulti(String eigenschap,List<Integer> plantIds, EnumMap) throws SQLException {
+    private ArrayList<Integer> FilterOnMulti(String eigenschap, String value, List<Integer> plantIds) throws SQLException {
         //Dao
 
         //Items
@@ -144,11 +154,10 @@ public class AbiotischeFactorenDAO implements Queries {
 
         stmtSelectIdsByAbioMulti.setString(2, eigenschap);
 
-        stmtSelectIdsByAbioMulti.setInt(3, waarde);
-        stmtSelectIdsByAbioMulti.setInt(4, DoSearch);
+        stmtSelectIdsByAbioMulti.setString(3, value);
 
         ResultSet rs = stmtSelectIdsByAbioMulti.executeQuery();
-        while (rs.next()){
+        while (rs.next()) {
             ids.add(rs.getInt(0));
         }
 

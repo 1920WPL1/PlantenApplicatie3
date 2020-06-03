@@ -26,44 +26,44 @@ public interface Queries {
             "SELECT plant_id FROM plant WHERE " +
                     "plant_id IN ? " +
                     "AND " +
-                    "type = ? OR  1=? " +
+                    "(type = ? OR  1=?) " +
                     "AND " +
-                    "familie = ? OR 1=?" +
+                    "(familie = ? OR 1=?) " +
                     "AND " +
-                    "fgsv LIKE ? OR 1=?";
+                    "(fgsv LIKE ? OR 1=?) ";
 
     String GETIDSBYEXTRA =
             "SELECT plant_id FROM extra WHERE " +
                     "plant_id IN ? " +
                     "AND " +
-                    "nectarwaarde = ? OR 1=?" +
+                    "(nectarwaarde = ? OR 1=?) " +
                     "AND " +
-                    "pollenwaarde = ? OR 1=?" +
+                    "(pollenwaarde = ? OR 1=?) " +
                     "AND " +
-                    "bijvriendelijk = ? OR 1=?" +
+                    "(bijvriendelijk = ? OR 1=?) " +
                     "AND " +
-                    "eetbaar = ? OR 1=?" +
+                    "(eetbaar = ? OR 1=?) " +
                     "AND " +
-                    "kruidgebruik = ? OR 1=?" +
+                    "(kruidgebruik = ? OR 1=?) " +
                     "AND " +
-                    "geurend = ? OR 1=?" +
+                    "(geurend = ? OR 1=?) " +
                     "AND " +
-                    "vorstgevoelig = ? OR 1=?";
+                    "(vorstgevoelig = ? OR 1=?) ";
 
     String GETIDSBYABIO =
             "SELECT plant_id FROM abiotische_factoren " +
                     "WHERE " +
                     "plant_id IN ? " +
                     "AND " +
-                    "bezonning = ? OR 1=?" +
+                    "(bezonning = ? OR 1=?) " +
                     "AND " +
-                    "grondsoort = ? OR 1=?" +
+                    "(grondsoort = ? OR 1=?) " +
                     "AND " +
-                    "vochtbehoefte = ? OR 1=?" +
+                    "(vochtbehoefte = ? OR 1=?) " +
                     "AND " +
-                    "voedingsbehoefte = ? OR 1=?" +
+                    "(voedingsbehoefte = ? OR 1=?) " +
                     "AND " +
-                    "reactie_antagonistische_omg = ? OR 1=?";
+                    "(reactie_antagonistische_omg = ? OR 1=?) ";
     String GETIDSBYABIOMULTI =
             "SELECT plant_id FROM abiotische_factoren " +
                     "WHERE " +
@@ -71,16 +71,16 @@ public interface Queries {
                     "AND " +
                     "eigenschap = ? "+
                     "AND " +
-                    "waarde = ? OR 1=?";
+                    "waarde = ? ";
 
     String GETIDSBYCOMM =
             "SELECT plant_id FROM commensalisme " +
                     "WHERE " +
                     "plant_id IN ? " +
                     "AND " +
-                    "strategie = ? OR 1=?" +
+                    "(strategie = ? OR 1=?) " +
                     "AND " +
-                    "ontwikkelingssnelheid = ? OR 1=?";
+                    "(ontwikkelingssnelheid = ? OR 1=?) ";
     String GETIDSBYCOMMMULTI =
             "SELECT plant_id FROM commensalisme_multi " +
                     "WHERE " +
@@ -88,56 +88,55 @@ public interface Queries {
                     "AND " +
                     "eigenschap = ? "+
                     "AND " +
-                    "waarde = ? OR 1=?";
-
+                    "waarde = ? ";
     String GETIDSBYFENO =
             "SELECT plant_id FROM commensalisme " +
                     "WHERE " +
                     "plant_id IN ? " +
                     "AND " +
-                    "bladvorm = ? OR 1=?" +
+                    "(bladvorm = ? OR 1=?) " +
                     "AND " +
-                    "levensvorm = ? OR 1=?" +
+                    "(levensvorm = ? OR 1=?) " +
                     "AND " +
-                    "habitus = ? OR 1=?" +
+                    "(habitus = ? OR 1=?) " +
                     "AND " +
-                    "bloeiwijze = ? OR 1=?" +
+                    "(bloeiwijze = ? OR 1=?) " +
                     "AND " +
-                    "bladgrootte = ? OR 1=?" +
+                    "(bladgrootte = ? OR 1=?) " +
                     "AND " +
-                    "ratio_bloei_blad = ? OR 1=?" +
+                    "(ratio_bloei_blad = ? OR 1=?) " +
                     "AND " +
-                    "spruitfenologie = ? OR 1=?";
+                    "(spruitfenologie = ? OR 1=?) ";
     String GETIDSBYFENOMULTI =
             "SELECT plant_id FROM commensalisme_multi " +
                     "WHERE " +
                     "plant_id IN ? " +
                     "AND " +
-                    "eigenschap = ? "+
+                    "eigenschap "+
                     "AND " +
-                    "jan = ? OR 1=?" +
+                    "jan = ?" +
                     "AND " +
-                    "feb = ? OR 1=?" +
+                    "feb = ?" +
                     "AND " +
-                    "maa = ? OR 1=?" +
+                    "maa = ?" +
                     "AND " +
-                    "apr = ? OR 1=?" +
+                    "apr = ?" +
                     "AND " +
-                    "mei = ? OR 1=?" +
+                    "mei = ?" +
                     "AND " +
-                    "jun = ? OR 1=?" +
+                    "jun = ?" +
                     "AND " +
-                    "jul = ? OR 1=?" +
+                    "jul = ?" +
                     "AND " +
-                    "aug = ? OR 1=?" +
+                    "aug = ?" +
                     "AND " +
-                    "sep = ? OR 1=?" +
+                    "sep = ?" +
                     "AND " +
-                    "okt = ? OR 1=?" +
+                    "okt = ?" +
                     "AND " +
-                    "nov = ? OR 1=?" +
+                    "nov = ?" +
                     "AND " +
-                    "dec = ? OR 1=?";
+                    "dec = ?";
     String GETIDSBYBEHEER =
             "SELECT plant_id FROM Beheer " +
                     "WHERE " +
