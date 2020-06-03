@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="mssql-jdbc-7.4.1.jre111">
+    <CLASSES>
+<<<<<<< Updated upstream:.idea/libraries/mssql_jdbc_7_4_1_jre11.xml
+      <root url="jar://C:/Progs/Java/Libraries/mssql-jdbc-7.4.1.jre11.jar!/" />
+=======
+      <root url="jar://$PROJECT_DIR$/../../mssql-jdbc-7.4.1.jre11.jar!/" />
+>>>>>>> Stashed changes:.idea/libraries/mssql_jdbc_7_4_1_jre111.xml
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
