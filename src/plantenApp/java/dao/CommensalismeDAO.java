@@ -104,8 +104,9 @@ public class CommensalismeDAO implements Queries {
         //SQLcommand
         stmtSelectIdsByComm.setString(1, sPlantIds);
 
-        stmtSelectIdsByComm.setString(2, bindingData.dataBindings.get(Bindings.STRATEGIE).getValue().get());
-        stmtSelectIdsByComm.setInt(3, (bindingData.dataBindings.get(Bindings.STRATEGIE).getDoSearch()) ? 0 : 1);
+        //TODO: convert to array
+        //stmtSelectIdsByComm.setString(2, bindingData.dataBindings.get(Bindings.STRATEGIE).getValue().get());
+        //stmtSelectIdsByComm.setInt(3, (bindingData.dataBindings.get(Bindings.STRATEGIE).getDoSearch()) ? 0 : 1);
 
         stmtSelectIdsByComm.setString(4, bindingData.dataBindings.get(Bindings.ONTWIKKELINGSSNELHEID).getValue().get());
         stmtSelectIdsByComm.setInt(5, (bindingData.dataBindings.get(Bindings.ONTWIKKELINGSSNELHEID).getDoSearch()) ? 0 : 1);
@@ -116,11 +117,11 @@ public class CommensalismeDAO implements Queries {
         }
 
         //Multi
-        PropertyClass<ArrayList<ValueWithBoolean>> sociabiliteitData = bindingData.arrayDataBindings.get(ArrayBindings.SOCIABILITEIT);
+        PropertyClass<ValueWithBoolean[]> sociabiliteitData = bindingData.arrayDataBindings.get(ArrayBindings.SOCIABILITEIT);
         if (sociabiliteitData.getDoSearch()) {
-            for (int i = 0; i < sociabiliteitData.getValue().size(); i++) {
-                if (sociabiliteitData.getValue().get(i).getBool()) {
-                    ids = FilterOnMulti("sociabiliteit",sociabiliteitData.getValue().get(i).get(),ids);
+            for (int i = 0; i < sociabiliteitData.getValue().length; i++) {
+                if (sociabiliteitData.getValue()[i].getBool()) {
+                    ids = FilterOnMulti("sociabiliteit",sociabiliteitData.getValue()[i].get(),ids);
                 }
 
             }

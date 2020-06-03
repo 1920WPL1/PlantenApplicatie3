@@ -105,14 +105,15 @@ public class AbiotischeFactorenDAO implements Queries {
         stmtSelectIdsByAbio.setString(1, sPlantIds);
 
         stmtSelectIdsByAbio.setString(2, bindingData.dataBindings.get(Bindings.BEZONNING).getValue().get());
-        stmtSelectIdsByAbio.setInt(3, (bindingData.dataBindings.get(Bindings.STRATEGIE).getDoSearch()) ? 0 : 1);
+        //TODO: fix dit
+        //stmtSelectIdsByAbio.setInt(3, (bindingData.dataBindings.get(Bindings.STRATEGIE).getDoSearch()) ? 0 : 1);
 
-        ArrayList<ValueWithBoolean> grondsoortData = bindingData.arrayDataBindings.get(ArrayBindings.GRONDSOORT).getValue();
+        ValueWithBoolean[] grondsoortData = bindingData.arrayDataBindings.get(ArrayBindings.GRONDSOORT).getValue();
         StringBuilder grondsoortValue = new StringBuilder();
-        for (int i=0;i<grondsoortData.size();i++)
+        for (int i=0;i<grondsoortData.length;i++)
         {
-            if (grondsoortData.get(0).getBool()) {
-                grondsoortValue.append(grondsoortData.get(0).get());
+            if (grondsoortData[i].getBool()) {
+                grondsoortValue.append(grondsoortData[i].get());
             }
         }
 
@@ -121,13 +122,13 @@ public class AbiotischeFactorenDAO implements Queries {
         stmtSelectIdsByAbio.setInt(5, (bindingData.arrayDataBindings.get(ArrayBindings.GRONDSOORT).getDoSearch()) ? 0 : 1);
 
         stmtSelectIdsByAbio.setString(6, bindingData.dataBindings.get(Bindings.VOCHTBEHOEFTE).getValue().get());
-        stmtSelectIdsByAbio.setInt(7, (bindingData.dataBindings.get(Bindings.STRATEGIE).getDoSearch()) ? 0 : 1);
+        stmtSelectIdsByAbio.setInt(7, (bindingData.dataBindings.get(Bindings.VOCHTBEHOEFTE).getDoSearch()) ? 0 : 1);
 
         stmtSelectIdsByAbio.setString(8, bindingData.dataBindings.get(Bindings.VOEDINGSBEHOEFTE).getValue().get());
-        stmtSelectIdsByAbio.setInt(9, (bindingData.dataBindings.get(Bindings.STRATEGIE).getDoSearch()) ? 0 : 1);
+        stmtSelectIdsByAbio.setInt(9, (bindingData.dataBindings.get(Bindings.VOEDINGSBEHOEFTE).getDoSearch()) ? 0 : 1);
 
         stmtSelectIdsByAbio.setString(10, bindingData.dataBindings.get(Bindings.REACTIEANTAGONISTISCHEOMGEVING).getValue().get());
-        stmtSelectIdsByAbio.setInt(11, (bindingData.dataBindings.get(Bindings.STRATEGIE).getDoSearch()) ? 0 : 1);
+        stmtSelectIdsByAbio.setInt(11, (bindingData.dataBindings.get(Bindings.REACTIEANTAGONISTISCHEOMGEVING).getDoSearch()) ? 0 : 1);
 
         ResultSet rs = stmtSelectIdsByAbio.executeQuery();
         while (rs.next()) {
