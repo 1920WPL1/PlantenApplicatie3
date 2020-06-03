@@ -30,10 +30,6 @@ public enum Bindings {
     VOCHTBEHOEFTE,
     BLADGROOTTE,
     HABITAT,
-    STRATEGIE,
-    HABITUS,
-    BLOEIWIJZE,
-    LEVENSVORM,
     TYPE,
     FAMILIE,
     SEARCH

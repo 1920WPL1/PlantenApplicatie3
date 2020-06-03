@@ -6,11 +6,14 @@ import plantenApp.java.model.InfoTables;
 import javafx.scene.control.*;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
+import plantenApp.java.utils.ArrayBindings;
 import plantenApp.java.utils.Bindings;
 
 
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.util.ArrayList;
+
 public class Controller {
     public ComboBox cboBladkleur;
     public ComboBox cboBloeikleur;
@@ -108,7 +111,7 @@ public class Controller {
     public RadioButton rdbVorstgevoelig_Nee;
     public RadioButton rdbVorstgevoelig_Onbekend;
     public Spinner nudPerXJaar;
-    public CheckBox chkMaxBladhoogte;
+    public CheckBox chkMaxBladhoogtePerMaand;
     public Spinner nudMaxBladhoogte_Jan;
     public Spinner nudMaxBladhoogte_Feb;
     public Spinner nudMaxBladhoogte_Maa;
@@ -121,8 +124,8 @@ public class Controller {
     public Spinner nudMaxBladhoogte_Okt;
     public Spinner nudMaxBladhoogte_Nov;
     public Spinner nudMaxBladhoogte_Dec;
-    public CheckBox chkBladkleur;
-    public CheckBox chkMinBloeihoogte;
+    public CheckBox chkBladkleurPerMaand;
+    public CheckBox chkMinBloeihoogtePerMaand;
     public Spinner nudMinBloeihoogte_Jan;
     public Spinner nudMinBloeihoogte_Feb;
     public Spinner nudMinBloeihoogte_Maa;
@@ -135,7 +138,7 @@ public class Controller {
     public Spinner nudMinBloeihoogte_Okt;
     public Spinner nudMinBloeihoogte_Nov;
     public Spinner nudMinBloeihoogte_Dec;
-    public CheckBox chkMaxBloeihoogte;
+    public CheckBox chkMaxBloeihoogtePerMaand;
     public Spinner nudMaxBloeihoogte_Jan;
     public Spinner nudMaxBloeihoogte_Feb;
     public Spinner nudMaxBloeihoogte_Maa;
@@ -148,7 +151,7 @@ public class Controller {
     public Spinner nudMaxBloeihoogte_Okt;
     public Spinner nudMaxBloeihoogte_Nov;
     public Spinner nudMaxBloeihoogte_Dec;
-    public CheckBox chkBloeikleur;
+    public CheckBox chkBloeikleurPerMaand;
     public CheckBox chkHabitus;
     public RadioButton rdbHabitus_1;
     public RadioButton rdbHabitus_2;
@@ -189,8 +192,6 @@ public class Controller {
     public ComboBox cboHabitat;
     public ComboBox cboBladvorm;
     public RadioButton rdbBloeiwijze_Schotel;
-
-    public ToggleGroup tglBijVriendelijk;
     public CheckBox chkHabitat;
     public CheckBox chkType;
     public CheckBox chkFamilie;
@@ -226,7 +227,18 @@ public class Controller {
         Bind(Bindings.FAMILIE, chkFamilie, cboFamilie);
         Bind(Bindings.TYPE, chkType, cboType);
 
-        
+        bindingData.arrayDataBindings.get(ArrayBindings.GRONDSOORT).DoSearchProperty().bind(chkGrondsoort.selectedProperty());
+        cboBladkleurSep.disableProperty().bind(chkBladKleur.selectedProperty());
+
+        ArrayList<CheckBox> listGrondSoort = new ArrayList<CheckBox>();
+        listGrondSoort.add(chkGrondsoort_Z);
+        listGrondSoort.add(chkGrondsoort_L);
+        listGrondSoort.add(chkGrondsoort_K);
+
+
+
+
+
     }
 
     /**
@@ -237,8 +249,7 @@ public class Controller {
     public void Bind(Bindings E, CheckBox checkBox, Slider slider){
         slider.disableProperty().bind(checkBox.selectedProperty().not());
         bindingData.dataBindings.get(E).DoSearchProperty().bind(checkBox.selectedProperty());
-
-//       bindingData.dataBindings.get(E).getValue().valueProperty().bind(slider.valueProperty().asString());
+        bindingData.dataBindings.get(E).getValue().valueProperty().bind(slider.valueProperty().asString());
     }
 
     /**
@@ -265,14 +276,22 @@ public class Controller {
         bindingData.dataBindings.get(E).getValue().valueProperty().bind(spinner.valueProperty().asString());
     }
 
-    /**
-     * @Author bradley
-     * @param E binding Enumeration
-     * @param group welke radiobutton van uit een group gebind moet worden
-     */
-    public void Bind(Bindings E, ToggleGroup group){
-        bindingData.dataBindings.get(E).DoSearchProperty().bind(group.getSelectedToggle().selectedProperty());
+    public void BindCheckbox(Bindings E, CheckBox checkBox, ArrayList<CheckBox> listCheckbox){
+        for (int i = 0; i<bindingData.arrayDataBindings.get(E).getValue().length;i++) {
+            bindingData.arrayDataBindings.get(E).getValue()[i].valueProperty().bind(listCheckbox.get(i).textProperty());
+            bindingData.arrayDataBindings.get(E).getValue()[i].boolProperty().bind(listCheckbox.get(i).selectedProperty());
+        }
     }
+
+    public void BindSpinner(Bindings E, CheckBox checkBox, ArrayList<Spinner> listSpinner){
+
+    }
+
+    public void BindRadiobutton(Bindings E, CheckBox checkBox, ArrayList<RadioButton> listRadioButton){
+
+    }
+
+
 
 
     /**

@@ -2,8 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e3f371c2-5a62-4881-8767-e007751523f2" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/plantenApp/java/model/ValueWithBoolean.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/plantenApp/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/plantenApp/Controller.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/plantenApp/java/model/BindingData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/plantenApp/java/model/BindingData.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/plantenApp/java/utils/ArrayBindings.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/plantenApp/java/utils/ArrayBindings.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/plantenApp/java/utils/Bindings.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/plantenApp/java/utils/Bindings.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/plantenApp/view/Zoekscherm.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/plantenApp/view/Zoekscherm.fxml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -15,8 +19,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
         <option value="Enum" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -95,7 +99,7 @@
       <option name="presentableId" value="Default" />
       <updated>1591166945762</updated>
       <workItem from="1591166952631" duration="18926000" />
-      <workItem from="1591190359174" duration="1326000" />
+      <workItem from="1591190359174" duration="5557000" />
     </task>
     <servers />
   </component>
