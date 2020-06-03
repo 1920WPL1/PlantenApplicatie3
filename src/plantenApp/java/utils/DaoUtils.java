@@ -7,7 +7,7 @@ public class DaoUtils {
         StringBuilder sb = new StringBuilder();
         sb.append("(");
         for (Integer i : list){
-            sb.append(i+",");
+            sb.append(i).append(",");
         }
         sb.deleteCharAt(sb.length() -1);
         sb.append(")");

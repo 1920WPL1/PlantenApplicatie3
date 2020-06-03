@@ -170,6 +170,10 @@ public class InfoTables {
         return stratergieen;
     }
 
+    public ArrayList<String> getBeheerdaden() {
+        return beheerdaden;
+    }
+
     public ArrayList<Integer> getNectarwaardes() {
         return nectarwaardes;
     }

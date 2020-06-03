@@ -34,7 +34,7 @@
                                              <children>
                                                 <HBox>
                                                    <children>
-                                                      <Label prefHeight="30.0" text="Type: ">
+                                                      <CheckBox mnemonicParsing="false" prefHeight="30.0" text="Type:">
                                                          <font>
                                                             <Font name="System Bold" size="14.0" />
                                                          </font>
@@ -45,7 +45,7 @@
                                                 <Label minWidth="20.0" />
                                                 <HBox>
                                                    <children>
-                                                      <Label prefHeight="30.0" text="Familie: ">
+                                                      <CheckBox mnemonicParsing="false" prefHeight="30.0" text="Familie:">
                                                          <font>
                                                             <Font name="System Bold" size="14.0" />
                                                          </font>
@@ -68,26 +68,26 @@
                                        <children>
                                           <VBox>
                                              <children>
-                                                <Label prefHeight="30.0" text="Bladkleur: ">
+                                                <CheckBox mnemonicParsing="false" prefHeight="30.0" text="Bladkleur:">
                                                    <font>
                                                       <Font name="System Bold" size="14.0" />
                                                    </font>
-                                                </Label>
-                                                <Label prefHeight="30.0" text="Bladhoogte: ">
+                                                </CheckBox>
+                                                <CheckBox mnemonicParsing="false" prefHeight="30.0" text="Bladhoogte:">
                                                    <font>
                                                       <Font name="System Bold" size="14.0" />
                                                    </font>
-                                                </Label>
-                                                <Label prefHeight="30.0" text="Bloeikleur">
+                                                </CheckBox>
+                                                <CheckBox mnemonicParsing="false" prefHeight="30.0" text="Bloeikleur:">
                                                    <font>
                                                       <Font name="System Bold" size="14.0" />
                                                    </font>
-                                                </Label>
-                                                <Label prefHeight="30.0" text="Bloeihoogte: ">
+                                                </CheckBox>
+                                                <CheckBox mnemonicParsing="false" prefHeight="30.0" text="Bloeihoogte:">
                                                    <font>
                                                       <Font name="System Bold" size="14.0" />
                                                    </font>
-                                                </Label>
+                                                </CheckBox>
                                              </children>
                                           </VBox>
                                           <VBox>
@@ -135,26 +135,26 @@
                                        <children>
                                           <VBox>
                                              <children>
-                                                <Label prefHeight="30.0" text="Bezonning: ">
+                                                <CheckBox mnemonicParsing="false" prefHeight="30.0" text="Bezonning:">
                                                    <font>
                                                       <Font name="System Bold" size="14.0" />
                                                    </font>
-                                                </Label>
-                                                <Label prefHeight="30.0" text="Vochtbehoefte: ">
+                                                </CheckBox>
+                                                <CheckBox mnemonicParsing="false" prefHeight="30.0" text="Vochtbehoefte:">
                                                    <font>
                                                       <Font name="System Bold" size="14.0" />
                                                    </font>
-                                                </Label>
-                                                <Label prefHeight="30.0" text="Grondsoort: ">
+                                                </CheckBox>
+                                                <CheckBox mnemonicParsing="false" prefHeight="30.0" text="Grondsoort:">
                                                    <font>
                                                       <Font name="System Bold" size="14.0" />
                                                    </font>
-                                                </Label>
-                                                <Label prefHeight="30.0" text="Bladgrootte: ">
+                                                </CheckBox>
+                                                <CheckBox mnemonicParsing="false" prefHeight="30.0" text="Bladgrootte:">
                                                    <font>
                                                       <Font name="System Bold" size="14.0" />
                                                    </font>
-                                                </Label>
+                                                </CheckBox>
                                              </children>
                                           </VBox>
                                           <VBox>
@@ -196,7 +196,7 @@
                                        <children>
                                           <VBox>
                                              <children>
-                                                <Label prefHeight="30.0" text="Habitat: ">
+                                                <CheckBox mnemonicParsing="false" prefHeight="30.0" text="Habitat:">
                                                    <font>
                                                       <Font name="System Bold" size="14.0" />
                                                    </font>

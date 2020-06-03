@@ -2,12 +2,15 @@ package plantenApp.java.dao;
 
 import plantenApp.java.model.CommMulti_Eigenschap;
 import plantenApp.java.model.Commensalisme;
+import plantenApp.java.utils.DaoUtils;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.EnumMap;
+import java.util.List;
 
 /**@author Siebe*/
 public class CommensalismeDAO implements Queries {
@@ -82,6 +85,62 @@ public class CommensalismeDAO implements Queries {
 
         //Output
         return commMulti;
+    }
+
+    //endregion
+
+    //region FILTER
+
+    public ArrayList<Integer> FilterOn(List<Integer> plantIds, EnumMap) throws SQLException {
+        //Dao
+
+        //Items
+        String sPlantIds = DaoUtils.sqlFormatedList(plantIds);
+        ArrayList<Integer> ids = new ArrayList<>();
+
+        //SQLcommand
+        stmtSelectIdsByComm.setString(1, sPlantIds);
+
+        stmtSelectIdsByComm.setString(2, strategie);
+        stmtSelectIdsByComm.setInt(3, DoSearch);
+
+        stmtSelectIdsByComm.setString(4, ontwikkelingssnelheid);
+        stmtSelectIdsByComm.setInt(5, DoSearch);
+
+        ResultSet rs = stmtSelectIdsByComm.executeQuery();
+        while (rs.next()){
+            ids.add(rs.getInt(0));
+        }
+
+        //Multi
+        ids = FilterOnMulti("Sociabiliteit",ids);
+
+        //Output
+        return ids;
+    }
+
+    private ArrayList<Integer> FilterOnMulti(String eigenschap,List<Integer> plantIds, EnumMap) throws SQLException {
+        //Dao
+
+        //Items
+        String sPlantIds = DaoUtils.sqlFormatedList(plantIds);
+        ArrayList<Integer> ids = new ArrayList<>();
+
+        //SQLcommand
+        stmtSelectIdsByCommMulti.setString(1, sPlantIds);
+
+        stmtSelectIdsByCommMulti.setString(2, eigenschap);
+
+        stmtSelectIdsByCommMulti.setInt(3, waarde);
+        stmtSelectIdsByCommMulti.setInt(4, DoSearch);
+
+        ResultSet rs = stmtSelectIdsByCommMulti.executeQuery();
+        while (rs.next()){
+            ids.add(rs.getInt(0));
+        }
+
+        //Output
+        return ids;
     }
 
     //endregion

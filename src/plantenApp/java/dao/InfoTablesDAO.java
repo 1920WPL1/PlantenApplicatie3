@@ -70,7 +70,7 @@ public class InfoTablesDAO implements Queries {
      * @return -> lijst van blobs met alle info van de colomn
      */
     private ArrayList<Blob> getInfoTableBlob(String Query, String colomnName) throws SQLException {
-        //TODO:Afhankelijk van hoe jullie de blobs willen doen moet je dit veranderen, wil je het als image opslaan of als blob
+
         //Dao
 
         //Items
