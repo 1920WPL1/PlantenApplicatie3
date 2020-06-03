@@ -18,10 +18,8 @@ public class InfoTables {
     private ArrayList<String> bloeiBladRatios;
     private ArrayList<String> spruitfenologieen;
     private ArrayList<String> bloeiwijzes;
-    private ArrayList<Blob> bloeiwijzesFotos;
     private ArrayList<String> habitusMogelijkheden;
     private ArrayList<Blob> habitusFotos;
-    private ArrayList<String> levensvormen;
 
     //Abiotische factoren
     private ArrayList<String> bezonningsMogelijkheden;
@@ -45,16 +43,30 @@ public class InfoTables {
     private ArrayList<Integer> pollenwaardes;
 
     public InfoTables(
-            ArrayList<String> types
-            , ArrayList<String> families, ArrayList<String> kleuren, ArrayList<String> bladgroottes, ArrayList<String> bladvormen,
-             ArrayList<String> bloeiBladRatios, ArrayList<String> spruitfenologieen, ArrayList<String> bloeiwijze
-            //,ArrayList<Blob> bloeiwijzesFotos
-            ,ArrayList<String> habitusMogelijkheden, ArrayList<Blob> habitusFotos
-            //, ArrayList<String> levensvormen
-            , ArrayList<String> bezonningsMogelijkheden, ArrayList<String> grondsoorten, ArrayList<String> vochtbehoeftes, ArrayList<String>
-               voedingsbehoeftes, ArrayList<String> antagonistischeOmgevingsReacties, ArrayList<String> habitats, ArrayList<String>
-                onstwikkelingssnelheden, ArrayList<String> concurentiekrachten, ArrayList<Integer> sociabiliteiten, ArrayList<String>
-                 stratergieen,ArrayList<String> beheerdaden, ArrayList<Integer> nectarwaardes, ArrayList<Integer> pollenwaardes) {
+            ArrayList<String> types,
+            ArrayList<String> families,
+            ArrayList<String> kleuren,
+            ArrayList<String> bladgroottes,
+            ArrayList<String> bladvormen,
+            ArrayList<String> bloeiBladRatios,
+            ArrayList<String> spruitfenologieen,
+            ArrayList<String> bloeiwijzes,
+            ArrayList<String> habitusMogelijkheden,
+            ArrayList<Blob> habitusFotos,
+            ArrayList<String> bezonningsMogelijkheden,
+            ArrayList<String> grondsoorten,
+            ArrayList<String> vochtbehoeftes,
+            ArrayList<String> voedingsbehoeftes,
+            ArrayList<String> antagonistischeOmgevingsReacties,
+            ArrayList<String> habitats,
+            ArrayList<String> onstwikkelingssnelheden,
+            ArrayList<String> concurentiekrachten,
+            ArrayList<Integer> sociabiliteiten,
+            ArrayList<String> stratergieen,
+            ArrayList<String> beheerdaden,
+            ArrayList<Integer> nectarwaardes,
+            ArrayList<Integer> pollenwaardes)
+    {
 
 
         this.types = types;
@@ -65,10 +77,8 @@ public class InfoTables {
         this.bloeiBladRatios = bloeiBladRatios;
         this.spruitfenologieen = spruitfenologieen;
         this.bloeiwijzes = bloeiwijzes;
-        //this.bloeiwijzesFotos = bloeiwijzesFotos;
         this.habitusMogelijkheden = habitusMogelijkheden;
         this.habitusFotos = habitusFotos;
-        //this.levensvormen = levensvormen;
         this.bezonningsMogelijkheden = bezonningsMogelijkheden;
         this.grondsoorten = grondsoorten;
         this.vochtbehoeftes = vochtbehoeftes;
@@ -116,20 +126,12 @@ public class InfoTables {
         return bloeiwijzes;
     }
 
-    public ArrayList<Blob> getBloeiwijzesFotos() {
-        return bloeiwijzesFotos;
-    }
-
     public ArrayList<String> getHabitusMogelijkheden() {
         return habitusMogelijkheden;
     }
 
     public ArrayList<Blob> getHabitusFotos() {
         return habitusFotos;
-    }
-
-    public ArrayList<String> getLevensvormen() {
-        return levensvormen;
     }
 
     public ArrayList<String> getBezonningsMogelijkheden() {
@@ -170,6 +172,10 @@ public class InfoTables {
 
     public ArrayList<String> getStratergieen() {
         return stratergieen;
+    }
+
+    public ArrayList<String> getBeheerdaden() {
+        return beheerdaden;
     }
 
     public ArrayList<Integer> getNectarwaardes() {

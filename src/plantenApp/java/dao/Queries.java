@@ -3,6 +3,7 @@ package plantenApp.java.dao;
 public interface Queries {
     //region GETBYID
     String GETPLANTBYID = "SELECT * FROM plant WHERE plant_id = ?";
+    String GETPLANTSBYIDS = "SELECT * FROM plant WHERE plant_id IN ?";
 
     String GETFENOTYPEBYPLANTID = "SELECT * FROM fenotype WHERE plant_id = ?";
     String GETFENOTYPEMULTIBYPLANTID = "SELECT * FROM fenotype_multi WHERE plant_id = ?";
@@ -20,7 +21,7 @@ public interface Queries {
     String GETFOTOBYPLANTID = "SELECT * FROM foto WHERE plant_id = ?";
     //endregion
 
-    //region GETIDBYKENMERKEN
+    //region GETIDSBYKENMERKEN
     String GETIDSBYPLANT =
             "SELECT plant_id FROM plant WHERE " +
                     "type = ? OR  1=? " +
@@ -215,14 +216,8 @@ public interface Queries {
     String NTBLADGROOTTE =
             "SELECT waarde FROM maxbladgrootte";
 
-    String NTLEVENSVORM =
-            "SELECT waarde FROM levensvorm";
-
     String NTFOTOHABITUS =
             "SELECT afbeelding FROM habitus";
-
-    String NTFOTOBlOEIWIJZE =
-            "SELECT afbeelding FROM bloeiwijze";
     //endregion
 }
 
