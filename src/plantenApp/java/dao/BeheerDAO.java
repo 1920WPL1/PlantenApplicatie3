@@ -2,24 +2,27 @@ package plantenApp.java.dao;
 
 import plantenApp.java.model.Beheer;
 import plantenApp.java.model.Beheerdaad_Eigenschap;
+import plantenApp.java.utils.DaoUtils;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.EnumMap;
+import java.util.List;
 
 /**@author Siebe*/
 public class BeheerDAO implements Queries {
     private Connection dbConnection;
     private PreparedStatement stmtSelectBeheerByID;
-    private PreparedStatement stmtSelectByBeheer;
+    private PreparedStatement stmtSelectIdsByBeheer;
 
     public BeheerDAO(Connection dbConnection) throws SQLException {
         this.dbConnection = dbConnection;
 
         stmtSelectBeheerByID = dbConnection.prepareStatement(GETBEHEERBYPLANTID);
-        stmtSelectByBeheer = dbConnection.prepareStatement(GETIDSBYBEHEER);
+        stmtSelectIdsByBeheer = dbConnection.prepareStatement(GETIDSBYBEHEER);
     }
 
     //region GET
@@ -73,6 +76,38 @@ public class BeheerDAO implements Queries {
 
         //Output
         return abioMulti;
+    }
+
+    //endregion
+
+    //region FILTER
+
+    public ArrayList<Integer> FilterOn(List<Integer> plantIds, EnumMap) throws SQLException {
+        //Dao
+
+        //Items
+        String sPlantIds = DaoUtils.sqlFormatedList(plantIds);
+        ArrayList<Integer> ids = new ArrayList<>();
+
+        //SQLcommand
+        stmtSelectIdsByBeheer.setString(1, sPlantIds);
+
+        stmtSelectIdsByBeheer.setString(2, beheerdaad);
+        stmtSelectIdsByBeheer.setInt(3, DoSearch);
+
+        stmtSelectIdsByBeheer.setString(4, maand);
+        stmtSelectIdsByBeheer.setInt(5, DoSearch);
+
+        stmtSelectIdsByBeheer.setString(6, frequentie_jaar);
+        stmtSelectIdsByBeheer.setInt(7, DoSearch);
+
+        ResultSet rs = stmtSelectIdsByBeheer.executeQuery();
+        while (rs.next()){
+            ids.add(rs.getInt(0));
+        }
+
+        //Output
+        return ids;
     }
 
     //endregion

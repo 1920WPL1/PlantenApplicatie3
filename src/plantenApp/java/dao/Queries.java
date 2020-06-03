@@ -24,6 +24,8 @@ public interface Queries {
     //region GETIDSBYKENMERKEN
     String GETIDSBYPLANT =
             "SELECT plant_id FROM plant WHERE " +
+                    "plant_id IN ? " +
+                    "AND " +
                     "type = ? OR  1=? " +
                     "AND " +
                     "familie = ? OR 1=?" +

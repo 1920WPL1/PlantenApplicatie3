@@ -2,12 +2,16 @@ package plantenApp.java.dao;
 
 import plantenApp.java.model.Plant;
 import plantenApp.java.utils.DaoUtils;
+import plantenApp.java.utils.Utils;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.EnumMap;
+import java.util.List;
+import java.util.Map;
 
 /**
  * @author Siebe
@@ -16,8 +20,8 @@ public class PlantDAO implements Queries {
 
     private Connection dbConnection;
     private PreparedStatement stmtSelectById;
-    private PreparedStatement stmtSelectIdsByPlant;
     private PreparedStatement stmtSelectByIds;
+    private PreparedStatement stmtSelectIdsByPlant;
 
     public PlantDAO(Connection dbConnection) throws SQLException {
         this.dbConnection = dbConnection;
@@ -133,6 +137,38 @@ public class PlantDAO implements Queries {
 
         //Output
         return plant;
+    }
+
+    //endregion
+
+    //region FILTER
+
+    public ArrayList<Integer> FilterOn(List<Integer> plantIds, EnumMap) throws SQLException {
+        //Dao
+
+        //Items
+        String sPlantIds = DaoUtils.sqlFormatedList(plantIds);
+        ArrayList<Integer> ids = new ArrayList<>();
+
+        //SQLcommand
+        stmtSelectIdsByPlant.setString(1, sPlantIds);
+
+        stmtSelectIdsByPlant.setString(2, type);
+        stmtSelectIdsByPlant.setInt(3, DoSearch);
+
+        stmtSelectIdsByPlant.setString(4, familie);
+        stmtSelectIdsByPlant.setInt(5, DoSearch);
+
+        stmtSelectIdsByPlant.setString(6, fgsv);
+        stmtSelectIdsByPlant.setInt(7, DoSearch);
+
+        ResultSet rs = stmtSelectIdsByPlant.executeQuery();
+        while (rs.next()){
+            ids.add(rs.getInt(0));
+        }
+
+        //Output
+        return ids;
     }
 
     //endregion
