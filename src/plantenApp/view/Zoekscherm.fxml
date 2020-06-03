@@ -633,8 +633,8 @@
                                                                   <Font name="System Bold" size="14.0" />
                                                                </font>
                                                             </Label>
-                                                            <ComboBox prefHeight="30.0" prefWidth="200.0" />
-                                                            <ComboBox prefHeight="30.0" prefWidth="200.0" />
+                                                            <ComboBox fx:id="cboBehandeling" prefHeight="30.0" prefWidth="200.0" />
+                                                            <ComboBox fx:id="cboMaand" prefHeight="30.0" prefWidth="200.0" />
                                                             <Spinner fx:id="nudPerXJaar" prefHeight="30.0" prefWidth="80.0" />
                                                          </children>
                                                       </VBox>

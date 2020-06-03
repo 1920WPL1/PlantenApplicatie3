@@ -203,6 +203,13 @@ public class Controller {
     public CheckBox chkVochtBehoefte;
     public CheckBox chkGrondsoort;
     public CheckBox chkBladgrootte;
+    public ComboBox cboBehandeling;
+    public ComboBox cboMaand;
+    public CheckBox chkBloeikleurPerMaand;
+    public CheckBox chkMaxBloeihoogtePerMaand;
+    public CheckBox chkMinBloeihoogtePerMaand;
+    public CheckBox chkBladkleurPerMaand;
+    public CheckBox chkMaxBladhoogtePerMaand;
 
 
     private InfoTables infoTables;
@@ -236,6 +243,20 @@ public class Controller {
         listGrondSoort.add(chkGrondsoort_K);
 
         BindCheckbox(ArrayBindings.GRONDSOORT, chkGrondsoort, listGrondSoort);
+        Bind(Bindings.HABITAT, chkHabitat, cboHabitat);
+        Bind(Bindings.BLADKLEUR, chkBladKleur, cboBladkleur);
+        Bind(Bindings.BLOEIKLEUR, chkBloeiKleur, cboBloeikleur);
+        Bind(Bindings.REACTIEANTAGONISTISCHEOMGEVING, chkReactieAntagonistischeOmg, cboReactieAnta);
+        Bind(Bindings.ONTWIKKELINGSSNELHEID, chkOntwikkelingssnelheid, cboOntwikkel);
+        Bind(Bindings.LEVENSDUUR, chkLevensduur_concurrentiekracht, cboLevensduur);
+        Bind(Bindings.NECTARWAARDE, chkNectarwaarde, sldNectarwaarde);
+        Bind(Bindings.POLLENWAARDE, chkPollenwaarde, sldPollenwaarde);
+        Bind(Bindings.RATIOBLOEIBLAD, chkRatio_bloei_blad, cboRatioBloeiBlad);
+        Bind(Bindings.BEHANDELING, chkBehandeling, cboBehandeling);
+        Bind(Bindings.MAAND, chkMaand, cboMaand);
+
+
+        
     }
 
     /**
