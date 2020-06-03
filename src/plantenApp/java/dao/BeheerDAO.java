@@ -17,32 +17,47 @@ public class BeheerDAO implements Queries {
 
     public BeheerDAO(Connection dbConnection) throws SQLException {
         this.dbConnection = dbConnection;
+
         stmtSelectBeheerByID = dbConnection.prepareStatement(GETBEHEERBYPLANTID);
         stmtSelectByBeheer = dbConnection.prepareStatement(GETIDSBYBEHEER);
     }
 
-    /**@author Siebe
+    //region GET
+
+    /**
+     * @author Siebe
      * @param id -> plant_id
      * @return -> beheer van de specifieke plant
      */
     public Beheer getById(int id) throws SQLException {
+        //Dao
+
+        //Items
         Beheer beheer = null;
 
+        //SqlCommand
         beheer = new Beheer(
                 id,
                 getBeheerdaden(id)
         );
+
+        //Output
         return beheer;
     }
 
-    /**@author Siebe
+    /**
+     * @author Siebe
      * word alleen gebruikt in getById
      * @param id -> plant_id
      * @return -> alle beheerdaden van de specifieke plant
      */
     private ArrayList<Beheerdaad_Eigenschap> getBeheerdaden(int id) throws SQLException {
-        ArrayList<Beheerdaad_Eigenschap> abioMulti = new ArrayList<>();;
+        //Dao
 
+        //Items
+        ArrayList<Beheerdaad_Eigenschap> abioMulti = new ArrayList<>();
+
+        //SqlCommand
         stmtSelectBeheerByID.setInt(1, id);
         ResultSet rs = stmtSelectBeheerByID.executeQuery();
         while (rs.next()) {
@@ -55,37 +70,10 @@ public class BeheerDAO implements Queries {
             );
             abioMulti.add(beheerdaad);
         }
+
+        //Output
         return abioMulti;
     }
 
-    /**@author Siebe
-     * @param sPlant_ids -> de te filteren ids
-     * @param beheer -> naam van de behandeling om op te filteren
-     * @param maand -> maand van de behandeling om op te filteren
-     * @param frequentie -> frequentie om op te filteren
-     * @return -> de gefilterde ids
-     */
-    public ArrayList<Integer> KenmerkenFilter(String sPlant_ids, String beheer, String maand, int frequentie) throws SQLException {
-        ArrayList<Integer> ids = new ArrayList<Integer>();
-
-        stmtSelectByBeheer.setString(1, sPlant_ids);
-
-        int iTrue = (beheer.isBlank()) ? 1 : 0;
-        stmtSelectByBeheer.setString(2, beheer);
-        stmtSelectByBeheer.setInt(3, iTrue);
-
-        iTrue = (maand.isBlank()) ? 1 : 0;
-        stmtSelectByBeheer.setString(4, maand);
-        stmtSelectByBeheer.setInt(5, iTrue);
-
-        iTrue = (frequentie == 0) ? 1 : 0;
-        stmtSelectByBeheer.setInt(6, frequentie);
-        stmtSelectByBeheer.setInt(7, iTrue);
-
-        ResultSet rs = stmtSelectByBeheer.executeQuery();
-        while (rs.next()) {
-            ids.add(rs.getInt("plant_id"));
-        }
-        return ids;
-    }
+    //endregion
 }

@@ -1,4 +1,7 @@
 package plantenApp.java.utils;
 
-public class utils {
+import java.util.List;
+
+public class Utils {
+
 }

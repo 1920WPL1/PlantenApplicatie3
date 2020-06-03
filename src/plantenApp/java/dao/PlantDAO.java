@@ -1,6 +1,7 @@
 package plantenApp.java.dao;
 
 import plantenApp.java.model.Plant;
+import plantenApp.java.utils.DaoUtils;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -8,26 +9,70 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-/**@author Siebe*/
+/**
+ * @author Siebe
+ */
 public class PlantDAO implements Queries {
 
     private Connection dbConnection;
     private PreparedStatement stmtSelectById;
-    private PreparedStatement stmtSelectByPlant;
+    private PreparedStatement stmtSelectIdsByPlant;
+    private PreparedStatement stmtSelectByIds;
 
     public PlantDAO(Connection dbConnection) throws SQLException {
         this.dbConnection = dbConnection;
+
         stmtSelectById = dbConnection.prepareStatement(GETPLANTBYID);
-        stmtSelectByPlant = dbConnection.prepareStatement(GETIDSBYPLANT);
+        stmtSelectByIds = dbConnection.prepareStatement(GETPLANTSBYIDS);
+        stmtSelectIdsByPlant = dbConnection.prepareStatement(GETIDSBYPLANT);
     }
 
-    /**@author Siebe
+    //region GET
+
+    /**
+     * @param plantIds -> plant_ids
+     * @return -> alleen de basis gegevens van een plant
+     * @author Siebe
+     */
+    public ArrayList<Plant> GetPlantList(ArrayList<Integer> plantIds) throws SQLException {
+        //Dao
+
+        //Items
+        String sPlantIds = DaoUtils.sqlFormatedList(plantIds);
+        ArrayList<Plant> plants = new ArrayList<>();
+
+        //SqlCommand
+        stmtSelectByIds.setString(1, sPlantIds);
+        ResultSet rs = stmtSelectByIds.executeQuery();
+        while (rs.next()) {
+            plants.add(new Plant(
+                    rs.getInt("plant_id"),
+                    rs.getString("type"),
+                    rs.getString("familie"),
+                    rs.getString("geslacht"),
+                    rs.getString("soort"),
+                    rs.getString("variatie"),
+                    rs.getInt("plantdichtheid_min"),
+                    rs.getInt("plantdichtheid_max")
+            ));
+        }
+
+        //Output
+        return plants;
+    }
+
+    /**
      * @param id -> plant_id
-     * @return -> alle basis factoren van de specifieke plant
+     * @return -> alleen de basis gegevens van een plant
+     * @author Siebe
      */
     public Plant getPlantById(int id) throws SQLException {
+        //Dao
+
+        //Items
         Plant plant = null;
 
+        //SqlCommand
         stmtSelectById.setInt(1, id);
         ResultSet rs = stmtSelectById.executeQuery();
         if (rs.next()) {
@@ -42,34 +87,53 @@ public class PlantDAO implements Queries {
                     rs.getInt("plantdichtheid_max")
             );
         }
+
+        //Output
         return plant;
     }
 
-    /**@author Siebe
-     * @param type -> waarde type van de plant
-     * @param familie -> familie van de plant
-     * @param fgsv -> familie, geslacht, soort, variant
-     * @return -> de gefilterde ids
+    /**
+     * @param id -> plant_id
+     * @return -> alles van een Plant
+     * @author Siebe
      */
-    public ArrayList<Integer> KenmerkenFilter (String type, String familie, String fgsv) throws SQLException {
-        ArrayList<Integer> ids = new ArrayList<>();;
+    public Plant getFullPlantById(int id) throws SQLException {
+        //Dao
+        AbiotischeFactorenDAO abiotischeFactorenDAO = new AbiotischeFactorenDAO(dbConnection);
+        BeheerDAO beheerDAO = new BeheerDAO(dbConnection);
+        CommensalismeDAO commensalismeDAO = new CommensalismeDAO(dbConnection);
+        FenotypeDAO fenotypeDAO = new FenotypeDAO(dbConnection);
+        ExtraDAO extraDAO = new ExtraDAO(dbConnection);
+        FotoDAO fotoDAO = new FotoDAO(dbConnection);
 
-        int iTrue = (type.isBlank())? 1:0;
-        stmtSelectByPlant.setString(1,type);
-        stmtSelectByPlant.setInt(2,iTrue);
+        //Items
+        Plant plant = null;
 
-        iTrue = (familie.isBlank())? 1:0;
-        stmtSelectByPlant.setString(3,type);
-        stmtSelectByPlant.setInt(4,iTrue);
-
-        iTrue = (fgsv.isBlank())? 1:0;
-        stmtSelectByPlant.setString(5,type);
-        stmtSelectByPlant.setInt(6,iTrue);
-
-        ResultSet rs = stmtSelectByPlant.executeQuery();
-        while (rs.next()){
-            ids.add(rs.getInt("plant_id"));
+        //SqlCommand
+        stmtSelectById.setInt(1, id);
+        ResultSet rs = stmtSelectById.executeQuery();
+        if (rs.next()) {
+            plant = new Plant(
+                    rs.getInt("plant_id"),
+                    rs.getString("type"),
+                    rs.getString("familie"),
+                    rs.getString("geslacht"),
+                    rs.getString("soort"),
+                    rs.getString("variatie"),
+                    rs.getInt("plantdichtheid_min"),
+                    rs.getInt("plantdichtheid_max"),
+                    fotoDAO.getFotoById(id),
+                    beheerDAO.getById(id),
+                    abiotischeFactorenDAO.getById(id),
+                    commensalismeDAO.getById(id),
+                    fenotypeDAO.getById(id),
+                    extraDAO.getExtraById(id)
+            );
         }
-        return ids;
+
+        //Output
+        return plant;
     }
+
+    //endregion
 }

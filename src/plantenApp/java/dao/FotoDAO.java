@@ -16,30 +16,46 @@ public class FotoDAO implements Queries {
 
     public FotoDAO(Connection dbConnection) throws SQLException {
         this.dbConnection = dbConnection;
+
         stmtSelectFotoByID = dbConnection.prepareStatement(GETFOTOBYPLANTID);
     }
 
-    /**@author Siebe
+    //region GET
+
+    /**
+     * @author Siebe
      * @param id -> plant_id
      * @return -> verzameling van de fotos van de specifieke plant
      */
     public Foto getFotoById(int id) throws SQLException {
+        //TODO:Afhankelijk van hoe jullie de blobs willen doen moet je dit veranderen, wil je het als image opslaan of als blob
+        //Dao
+
+        //Items
         Foto foto = null;
 
+        //SqlCommand
         foto = new Foto(
                 id,
                 getFotos(id)
         );
+
+        //Output
         return foto;
     }
 
-    /**@author Siebe
+    /**
+     * @author Siebe
      * @param id -> plant_id
      * @return -> fotos van de specifieke plant
      */
     private ArrayList<Foto_Eigenschap> getFotos(int id) throws SQLException {
+        //Dao
+
+        //Items
         ArrayList<Foto_Eigenschap> fotos = null;
 
+        //SqlCommand
         stmtSelectFotoByID.setInt(1, id);
         ResultSet rs = stmtSelectFotoByID.executeQuery();
         while (rs.next()) {
@@ -51,6 +67,10 @@ public class FotoDAO implements Queries {
             );
             fotos.add(foto);
         }
+
+        //Output
         return fotos;
     }
+
+    //endregion
 }

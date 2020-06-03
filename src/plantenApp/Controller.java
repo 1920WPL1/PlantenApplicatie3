@@ -185,7 +185,14 @@ public class Controller {
     public RadioButton rdbLevensvorm_7;
     public RadioButton rdbLevensvorm_8;
     public RadioButton rdbLevensvorm_9;
-    public ComboBox cboOntwikkelingssnelheid;
+    public ComboBox cboType;
+    public ComboBox cboFamilie;
+    public ComboBox cboBladgrootte;
+    public ComboBox cboHabitat;
+    public ComboBox cboBladvorm;
+    public RadioButton rdbBloeiwijze_Schotel;
+
+
     private InfoTables infoTables;
     private Connection dbConnection;
 
@@ -195,6 +202,7 @@ public class Controller {
         InfoTablesDAO infotablesDAO = new InfoTablesDAO(dbConnection);
        infoTables = infotablesDAO.getInfoTables();
 
+       FillComboboxes(infoTables);
 
     }
     /**
@@ -204,7 +212,7 @@ public class Controller {
      */
 
     public void FillComboboxes(InfoTables infotables){
-        /*
+
         //type
         cboType.getItems().addAll(infotables.getTypes());
         //familie
@@ -251,15 +259,6 @@ public class Controller {
         cboLevensduur.getItems().addAll(infotables.getConcurentiekrachten());
         //bladvorm
         cboBladvorm.getItems().addAll(infotables.getBladvormen());
-        //ratio bloei/blad
-        cboRatio.getItems().addAll(infotables.getBloeiBladRatios());
-        //spruitfenologie
-        cboSpruitFenologie.getItems().addAll(infotables.getSpruitfenologieen());
-        //behandeling
-        cboBehandeling.getItems().addAll(infotables.getBeheerdaden());
-        //maand
-        cboMaand.getItems().addAll("januari", "februari", "maart", "april", "mei", "juni", "juli", "augustus", "september", "oktober", "november", "december");
-    */
     }
 
 

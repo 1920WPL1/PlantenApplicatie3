@@ -1,6 +1,8 @@
 package plantenApp.java.model;
 
-/**@author Siebe*/
+/**
+ * @author Siebe
+ */
 public class Plant {
     private int id;
     private String type;
@@ -11,14 +13,13 @@ public class Plant {
     private int minPlantdichtheid;
     private int maxPlantdichtheid;
 
-    /**@author Bradley**/
-    /*externe klasses eigenschappen*/
-    private AbiotischeFactoren abiotischeFactoren;
-    private Beheer beheer;
-    private Commensalisme commensalisme;
-    private Extra extra;
-    private Fenotype fenotype;
     private Foto foto;
+    private Beheer beheer;
+    private AbiotischeFactoren abiotischeFactoren;
+    private Commensalisme commensalisme;
+    private Fenotype fenotype;
+    private Extra extra;
+
 
     public Plant(int id, String type, String familie, String geslacht, String soort, String variatie, int minPlantdichtheid, int maxPlantdichtheid) {
         this.id = id;
@@ -29,6 +30,23 @@ public class Plant {
         this.variatie = variatie;
         this.minPlantdichtheid = minPlantdichtheid;
         this.maxPlantdichtheid = maxPlantdichtheid;
+    }
+
+    public Plant(int id, String type, String familie, String geslacht, String soort, String variatie, int minPlantdichtheid, int maxPlantdichtheid, Foto foto, Beheer beheer, AbiotischeFactoren abiotischeFactoren, Commensalisme commensalisme, Fenotype fenotype, Extra extra) {
+        this.id = id;
+        this.type = type;
+        this.familie = familie;
+        this.geslacht = geslacht;
+        this.soort = soort;
+        this.variatie = variatie;
+        this.minPlantdichtheid = minPlantdichtheid;
+        this.maxPlantdichtheid = maxPlantdichtheid;
+        this.foto = foto;
+        this.beheer = beheer;
+        this.abiotischeFactoren = abiotischeFactoren;
+        this.commensalisme = commensalisme;
+        this.fenotype = fenotype;
+        this.extra = extra;
     }
 
     public int getId() {
@@ -63,51 +81,27 @@ public class Plant {
         return maxPlantdichtheid;
     }
 
-    public AbiotischeFactoren getAbiotischeFactoren() {
-        return abiotischeFactoren;
+    public Foto getFoto() {
+        return foto;
     }
 
     public Beheer getBeheer() {
         return beheer;
     }
 
-    public Commensalisme getCommensalisme() {
-        return commensalisme;
+    public AbiotischeFactoren getAbiotischeFactoren() {
+        return abiotischeFactoren;
     }
 
-    public Extra getExtra() {
-        return extra;
+    public Commensalisme getCommensalisme() {
+        return commensalisme;
     }
 
     public Fenotype getFenotype() {
         return fenotype;
     }
 
-    public Foto getFoto() {
-        return foto;
-    }
-
-    public void setAbiotischeFactoren(AbiotischeFactoren abiotischeFactoren) {
-        this.abiotischeFactoren = abiotischeFactoren;
-    }
-
-    public void setBeheer(Beheer beheer) {
-        this.beheer = beheer;
-    }
-
-    public void setCommensalisme(Commensalisme commensalisme) {
-        this.commensalisme = commensalisme;
-    }
-
-    public void setExtra(Extra extra) {
-        this.extra = extra;
-    }
-
-    public void setFenotype(Fenotype fenotype) {
-        this.fenotype = fenotype;
-    }
-
-    public void setFoto(Foto foto) {
-        this.foto = foto;
+    public Extra getExtra() {
+        return extra;
     }
 }

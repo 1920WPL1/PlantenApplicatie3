@@ -29,15 +29,11 @@ public class SearchHandler {
 
     public List<Plant> Search(String type, String familie, String fgsv) throws SQLException {
         List<Plant> planten = new ArrayList<Plant>();
-        List<Integer> listPlantDAO
-                = plantDAO.KenmerkenFilter(type, familie, fgsv);
+
 
         List<Integer> listFenotypeDAO;
 
 
-        for (int id: listPlantDAO) {
-
-        }
 
 
 

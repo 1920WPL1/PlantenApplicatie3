@@ -5,7 +5,9 @@ import plantenApp.java.model.InfoTables;
 import java.sql.*;
 import java.util.ArrayList;
 
-/**@author Siebe*/
+/**
+ * @author Siebe
+ */
 public class InfoTablesDAO implements Queries {
     private Connection dbConnection;
 
@@ -13,56 +15,83 @@ public class InfoTablesDAO implements Queries {
         this.dbConnection = dbConnection;
     }
 
+    //region GET
+
     /**
-     * @param Query
-     * @return
+     * @author Siebe
+     * @param Query      -> de uit te voeren query
+     * @param colomnName -> de naam van de kolom
+     * @return -> lijst van strings met alle info van de colomn
      */
-    public ArrayList<String> getInfoTableString(String Query, String eigenschapnaam) throws SQLException{
-        ArrayList<String> strings = new ArrayList<>();;
+    private ArrayList<String> getInfoTableString(String Query, String colomnName) throws SQLException {
+        //Dao
 
-            Statement stmt = dbConnection.createStatement();
-            ResultSet rs = stmt.executeQuery(Query);
-            while (rs.next()) {
-                strings.add(rs.getString(eigenschapnaam));
+        //Items
+        ArrayList<String> strings = new ArrayList<>();
 
+        //SqlCommand
+        Statement stmt = dbConnection.createStatement();
+        ResultSet rs = stmt.executeQuery(Query);
+        while (rs.next()) {
+            strings.add(rs.getString(colomnName));
+        }
 
-            }
-       // System.out.println(strings.toString());
+        //Output
         return strings;
     }
 
     /**
-     * @param Query
-     * @return
+     * @author Siebe
+     * @param Query      -> de uit te voeren query
+     * @param colomnName -> de naam van de kolom
+     * @return -> lijst van ints met alle info van de colomn
      */
-    public ArrayList<Integer> getInfoTableInt(String Query, String eigenschapnaam) throws SQLException {
-        ArrayList<Integer> ints = new ArrayList<>();;
+    private ArrayList<Integer> getInfoTableInt(String Query, String colomnName) throws SQLException {
+        //Dao
 
+        //Items
+        ArrayList<Integer> ints = new ArrayList<>();
+
+        //SqlCommand
         Statement stmt = dbConnection.createStatement();
         ResultSet rs = stmt.executeQuery(Query);
         while (rs.next()) {
-            ints.add(rs.getInt(eigenschapnaam));
+            ints.add(rs.getInt(colomnName));
         }
+
+        //Output
         return ints;
     }
 
     /**
-     * @param Query
-     * @return
+     * @author Siebe
+     * @param Query      -> de uit te voeren query
+     * @param colomnName -> de naam van de kolom
+     * @return -> lijst van blobs met alle info van de colomn
      */
-    public ArrayList<Blob> getInfoTableBlob(String Query,String eigenschapnaam) throws SQLException {
+    private ArrayList<Blob> getInfoTableBlob(String Query, String colomnName) throws SQLException {
+        //TODO:Afhankelijk van hoe jullie de blobs willen doen moet je dit veranderen, wil je het als image opslaan of als blob
+        //Dao
+
+        //Items
         ArrayList<Blob> blobs = new ArrayList<>();
 
+        //SqlCommand
         Statement stmt = dbConnection.createStatement();
         ResultSet rs = stmt.executeQuery(Query);
         while (rs.next()) {
-            blobs.add(rs.getBlob(eigenschapnaam));
+            blobs.add(rs.getBlob(colomnName));
         }
+
+        //Output
         return blobs;
     }
 
-    // functie om de String Query in te vullen bij 'getInfoTable'
-  public InfoTables getInfoTables() throws SQLException{
+    /**
+     * @author Siebe
+     * @return -> InfoTables model met alle info van de naakte tabellen
+     */
+    public InfoTables getInfoTables() throws SQLException {
         InfoTables infoTables = new InfoTables(
                 getInfoTableString(NTTYPE, "type_naam"),
                 getInfoTableString(NTFAMILIE, "familie_naam"),
@@ -72,10 +101,8 @@ public class InfoTablesDAO implements Queries {
                 getInfoTableString(NTRATIOBLOEIBLAD, "waarde"),
                 getInfoTableString(NTSPRUITFENOLOGIE, "waarde"),
                 getInfoTableString(NTBLOEIWIJZE, "waarde"),
-                //getInfoTableBlob(GETFOTOBlOEIWIJZE, "afbeelding"),
                 getInfoTableString(NTHABITUS, "waarde"),
                 getInfoTableBlob(NTFOTOHABITUS, "afbeelding"),
-                //getInfoTableString(GETLEVENSVORM, "waarde"),
                 getInfoTableString(NTBEZONNING, "waarde"),
                 getInfoTableString(NTGRONDSOORT, "waarde"),
                 getInfoTableString(NTVOCHTBEHOEFTE, "waarde"),
@@ -86,10 +113,12 @@ public class InfoTablesDAO implements Queries {
                 getInfoTableString(NTLEVENSDUURCONCURRENTIEKRACHT, "waarde"),
                 getInfoTableInt(NTSOCIABILITEIT, "waarde"),
                 getInfoTableString(NTSTRATEGIE, "waarde"),
-                getInfoTableString(NTBEHEERDAAD,"waarde"),
+                getInfoTableString(NTBEHEERDAAD, "waarde"),
                 getInfoTableInt(NTNECTARWAARDE, "waarde"),
                 getInfoTableInt(NTPOLLENWAARDE, "waarde")
         );
         return infoTables;
     }
+
+    //endregion
 }
