@@ -206,9 +206,11 @@ public class Controller {
        FillComboboxes(infoTables);
         bindingData = new BindingData();
 
-        Bind(Bindings.VOEDINGSBEHOEFTE, chkVoedingsbehoefte, sldVoedingsbehoefte);
+        cboSpruitfenologie.getSelectionModel().selectFirst();
+        //Bind(Bindings.VOEDINGSBEHOEFTE, chkVoedingsbehoefte, sldVoedingsbehoefte);
+        Bind(Bindings.SPRUITFENOLOGIE, chkSpruitfenologie, cboSpruitfenologie);
 
-
+        Bind(Bindings.BLADVORM, chkBladvorm, cboBladvorm);
 
 
     }
@@ -222,7 +224,7 @@ public class Controller {
         slider.disableProperty().bind(checkBox.selectedProperty().not());
         bindingData.dataBindings.get(E).DoSearchProperty().bind(checkBox.selectedProperty());
 
-       // bindingData.dataBindings.get(E).getValue().valueProperty().bind(slider.valueProperty().asString());
+//       bindingData.dataBindings.get(E).getValue().valueProperty().bind(slider.valueProperty().asString());
     }
 
     /**
@@ -234,8 +236,7 @@ public class Controller {
     public void Bind(Bindings E, CheckBox checkBox, ComboBox comboBox){
         comboBox.disableProperty().bind(checkBox.selectedProperty().not());
         bindingData.dataBindings.get(E).DoSearchProperty().bind(checkBox.selectedProperty());
-
-        // bindingData.dataBindings.get(E).getValue().valueProperty().bind(slider.valueProperty().asString());
+        bindingData.dataBindings.get(E).getValue().valueProperty().bind(comboBox.valueProperty().asString());
     }
 
     /**
@@ -247,8 +248,7 @@ public class Controller {
     public void Bind(Bindings E, CheckBox checkBox, Spinner spinner){
         spinner.disableProperty().bind(checkBox.selectedProperty().not());
         bindingData.dataBindings.get(E).DoSearchProperty().bind(checkBox.selectedProperty());
-
-        // bindingData.dataBindings.get(E).getValue().valueProperty().bind(slider.valueProperty().asString());
+        bindingData.dataBindings.get(E).getValue().valueProperty().bind(spinner.valueProperty().asString());
     }
 
     /**
@@ -338,6 +338,10 @@ public class Controller {
         }
     }
 
+    public void Click_test(MouseEvent mouseEvent) {
+        System.out.println(bindingData.dataBindings.get(Bindings.BLADVORM).getValue().get());
+        System.out.println(bindingData.dataBindings.get(Bindings.BLADVORM).getDoSearch());
+    }
 }
 
 

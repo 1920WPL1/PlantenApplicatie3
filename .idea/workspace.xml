@@ -2,14 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e3f371c2-5a62-4881-8767-e007751523f2" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/plantenApp/java/model/BindingData.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/plantenApp/java/model/Value.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/plantenApp/java/utils/ArrayBindings.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/plantenApp/java/utils/Bindings.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/plantenApp/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/plantenApp/Controller.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/plantenApp/java/model/IntProperty.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/plantenApp/java/model/PropertyClass.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/plantenApp/java/model/PropertiesMaps.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/plantenApp/java/model/BindingData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/plantenApp/java/model/BindingData.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/plantenApp/java/model/PropertyClass.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/plantenApp/java/model/PropertyClass.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/plantenApp/java/utils/utils.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/plantenApp/view/Zoekscherm.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/plantenApp/view/Zoekscherm.fxml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -95,7 +92,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1591166945762</updated>
-      <workItem from="1591166952631" duration="17391000" />
+      <workItem from="1591166952631" duration="18926000" />
     </task>
     <servers />
   </component>
