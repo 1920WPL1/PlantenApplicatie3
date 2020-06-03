@@ -51,7 +51,7 @@ public class BindingData {
         arrayDataBindings.put(ArrayBindings.BLADKLEURPERMAAND, new PropertyClass<ValueWithBoolean[]>(new ValueWithBoolean[12]));
         arrayDataBindings.put(ArrayBindings.BLOEIKLEURPERMAAND, new PropertyClass<ValueWithBoolean[]>(new ValueWithBoolean[12]));
         arrayDataBindings.put(ArrayBindings.SOCIABILITEIT,new PropertyClass<ValueWithBoolean[]>(new ValueWithBoolean[5]));
-        arrayDataBindings.put(ArrayBindings.GRONDSOORT,new PropertyClass<ValueWithBoolean[]>(new ValueWithBoolean[6]));
+        arrayDataBindings.put(ArrayBindings.GRONDSOORT,new PropertyClass<ValueWithBoolean[]>(new ValueWithBoolean[3]));
         arrayDataBindings.put(ArrayBindings.MAXBLADHOOGTEPERMAAND,new PropertyClass<ValueWithBoolean[]>(new ValueWithBoolean[12]));
         arrayDataBindings.put(ArrayBindings.MINBLOEIHOOGTEPERMAAND,new PropertyClass<ValueWithBoolean[]>(new ValueWithBoolean[12]));
         arrayDataBindings.put(ArrayBindings.MAXBLOEIHOOGTEPERMAAND,new PropertyClass<ValueWithBoolean[]>(new ValueWithBoolean[12]));

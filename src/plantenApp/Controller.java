@@ -235,10 +235,7 @@ public class Controller {
         listGrondSoort.add(chkGrondsoort_L);
         listGrondSoort.add(chkGrondsoort_K);
 
-
-
-
-
+        BindCheckbox(ArrayBindings.GRONDSOORT, chkGrondsoort, listGrondSoort);
     }
 
     /**
@@ -276,19 +273,25 @@ public class Controller {
         bindingData.dataBindings.get(E).getValue().valueProperty().bind(spinner.valueProperty().asString());
     }
 
-    public void BindCheckbox(Bindings E, CheckBox checkBox, ArrayList<CheckBox> listCheckbox){
+    public void BindCheckbox(ArrayBindings E, CheckBox checkBox, ArrayList<CheckBox> listCheckbox){
         for (int i = 0; i<bindingData.arrayDataBindings.get(E).getValue().length;i++) {
             bindingData.arrayDataBindings.get(E).getValue()[i].valueProperty().bind(listCheckbox.get(i).textProperty());
             bindingData.arrayDataBindings.get(E).getValue()[i].boolProperty().bind(listCheckbox.get(i).selectedProperty());
         }
     }
 
-    public void BindSpinner(Bindings E, CheckBox checkBox, ArrayList<Spinner> listSpinner){
+    public void BindSpinner(ArrayBindings E, CheckBox checkBox, ArrayList<Spinner> listSpinner){
+        for (int i = 0; i<bindingData.arrayDataBindings.get(E).getValue().length;i++) {
+            bindingData.arrayDataBindings.get(E).getValue()[i].valueProperty().bind(listSpinner.get(i).valueProperty().asString());
 
+        }
     }
 
-    public void BindRadiobutton(Bindings E, CheckBox checkBox, ArrayList<RadioButton> listRadioButton){
-
+    public void BindRadiobutton(ArrayBindings E, CheckBox checkBox, ArrayList<RadioButton> listRadioButton){
+        for (int i = 0; i<bindingData.arrayDataBindings.get(E).getValue().length;i++) {
+            bindingData.arrayDataBindings.get(E).getValue()[i].valueProperty().bind(listRadioButton.get(i).textProperty());
+            bindingData.arrayDataBindings.get(E).getValue()[i].boolProperty().bind(listRadioButton.get(i).selectedProperty());
+        }
     }
 
 
