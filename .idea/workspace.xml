@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="4ef1f0f6-f72f-4245-b893-8f2b1fc592e7" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/src/plantenApp/java/dao/AbiotischeFactorenDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/plantenApp/java/dao/AbiotischeFactorenDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/plantenApp/java/dao/CommensalismeDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/plantenApp/java/dao/CommensalismeDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/plantenApp/java/dao/FenotypeDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/plantenApp/java/dao/FenotypeDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/plantenApp/java/dao/InfoTablesDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/plantenApp/java/dao/InfoTablesDAO.java" afterDir="false" />
+    <list default="true" id="e3f371c2-5a62-4881-8767-e007751523f2" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PlantenApplicatie.iml" beforeDir="false" afterPath="$PROJECT_DIR$/PlantenApplicatie.iml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -42,15 +40,27 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../mssql-jdbc-7.4.1.jre11.jar!/" />
-    <property name="project.structure.last.edited" value="Facets" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../Jar/sqljdbc_7.4/enu/mssql-jdbc-7.4.1.jre11.jar!/" />
+    <property name="project.structure.last.edited" value="Libraries" />
     <property name="project.structure.proportion" value="0.15" />
-    <property name="project.structure.side.proportion" value="0.27705112" />
+    <property name="project.structure.side.proportion" value="0.30297872" />
   </component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
       <recent name="plantenApp.java.model" />
     </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
   </component>
   <component name="RunManager">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">

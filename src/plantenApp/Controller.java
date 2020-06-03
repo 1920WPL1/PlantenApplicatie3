@@ -205,11 +205,7 @@ public class Controller {
     public CheckBox chkBladgrootte;
     public ComboBox cboBehandeling;
     public ComboBox cboMaand;
-    public CheckBox chkBloeikleurPerMaand;
-    public CheckBox chkMaxBloeihoogtePerMaand;
-    public CheckBox chkMinBloeihoogtePerMaand;
-    public CheckBox chkBladkleurPerMaand;
-    public CheckBox chkMaxBladhoogtePerMaand;
+
 
 
     private InfoTables infoTables;
@@ -242,7 +238,7 @@ public class Controller {
         listGrondSoort.add(chkGrondsoort_L);
         listGrondSoort.add(chkGrondsoort_K);
 
-        BindCheckbox(ArrayBindings.GRONDSOORT, chkGrondsoort, listGrondSoort);
+       // BindCheckbox(ArrayBindings.GRONDSOORT, chkGrondsoort, listGrondSoort);
         Bind(Bindings.HABITAT, chkHabitat, cboHabitat);
         Bind(Bindings.BLADKLEUR, chkBladKleur, cboBladkleur);
         Bind(Bindings.BLOEIKLEUR, chkBloeiKleur, cboBloeikleur);

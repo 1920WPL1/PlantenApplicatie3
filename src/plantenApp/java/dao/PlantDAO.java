@@ -4,7 +4,7 @@ import plantenApp.java.model.BindingData;
 import plantenApp.java.model.Plant;
 import plantenApp.java.utils.Bindings;
 import plantenApp.java.utils.DaoUtils;
-import plantenApp.java.utils.Utils;
+
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
