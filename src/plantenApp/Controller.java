@@ -1,15 +1,13 @@
 package plantenApp;
 import plantenApp.java.dao.Database;
 import plantenApp.java.dao.InfoTablesDAO;
+import plantenApp.java.model.BindingData;
 import plantenApp.java.model.InfoTables;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.scene.control.*;
-import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
-import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
-import javafx.stage.Stage;
+import plantenApp.java.utils.Bindings;
+
 
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -192,9 +190,12 @@ public class Controller {
     public ComboBox cboBladvorm;
     public RadioButton rdbBloeiwijze_Schotel;
 
+    public ToggleGroup tglBijVriendelijk;
+
 
     private InfoTables infoTables;
     private Connection dbConnection;
+    BindingData bindingData;
 
     public void initialize() throws SQLException {
         dbConnection = Database.getInstance().getConnection();
@@ -203,8 +204,63 @@ public class Controller {
        infoTables = infotablesDAO.getInfoTables();
 
        FillComboboxes(infoTables);
+        bindingData = new BindingData();
+
+        Bind(Bindings.VOEDINGSBEHOEFTE, chkVoedingsbehoefte, sldVoedingsbehoefte);
+
+
+
 
     }
+
+    /**
+     * @Author bradley
+     * @param E binding Enumeration
+     * @param checkBox welke checkbox gebind moet worden
+     */
+    public void Bind(Bindings E, CheckBox checkBox, Slider slider){
+        slider.disableProperty().bind(checkBox.selectedProperty().not());
+        bindingData.dataBindings.get(E).DoSearchProperty().bind(checkBox.selectedProperty());
+
+       // bindingData.dataBindings.get(E).getValue().valueProperty().bind(slider.valueProperty().asString());
+    }
+
+    /**
+     * @author bradley
+     * @param E
+     * @param checkBox
+     * @param comboBox
+     */
+    public void Bind(Bindings E, CheckBox checkBox, ComboBox comboBox){
+        comboBox.disableProperty().bind(checkBox.selectedProperty().not());
+        bindingData.dataBindings.get(E).DoSearchProperty().bind(checkBox.selectedProperty());
+
+        // bindingData.dataBindings.get(E).getValue().valueProperty().bind(slider.valueProperty().asString());
+    }
+
+    /**
+     * @author bradley
+     * @param E
+     * @param checkBox
+     * @param spinner
+     */
+    public void Bind(Bindings E, CheckBox checkBox, Spinner spinner){
+        spinner.disableProperty().bind(checkBox.selectedProperty().not());
+        bindingData.dataBindings.get(E).DoSearchProperty().bind(checkBox.selectedProperty());
+
+        // bindingData.dataBindings.get(E).getValue().valueProperty().bind(slider.valueProperty().asString());
+    }
+
+    /**
+     * @Author bradley
+     * @param E binding Enumeration
+     * @param group welke radiobutton van uit een group gebind moet worden
+     */
+    public void Bind(Bindings E, ToggleGroup group){
+        bindingData.dataBindings.get(E).DoSearchProperty().bind(group.getSelectedToggle().selectedProperty());
+    }
+
+
     /**
      @param infotables -> lijst van alle lijsten van gegevens uit de naakte tabellen
      @author bradley, angelo

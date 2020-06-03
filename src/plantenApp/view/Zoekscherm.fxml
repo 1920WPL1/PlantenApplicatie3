@@ -9,6 +9,7 @@
 <?import javafx.scene.control.Spinner?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.TitledPane?>
+<?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -371,7 +372,7 @@
                                                             </Label>
                                                             <HBox>
                                                                <children>
-                                                                  <Slider fx:id="sldVoedingsbehoefte" prefHeight="30.0" prefWidth="174.0" />
+                                                                  <Slider fx:id="sldVoedingsbehoefte" disable="true" prefHeight="30.0" prefWidth="174.0" />
                                                                   <Label alignment="CENTER" prefHeight="30.0" prefWidth="30.0" text="0">
                                                                      <font>
                                                                         <Font size="14.0" />
@@ -512,13 +513,16 @@
                                                                      <font>
                                                                         <Font size="14.0" />
                                                                      </font>
+                                                                     <toggleGroup>
+                                                                        <ToggleGroup fx:id="tglBijVriendelijk" />
+                                                                     </toggleGroup>
                                                                   </RadioButton>
-                                                                  <RadioButton fx:id="rdbBijvriendelijk_Nee" mnemonicParsing="false" prefHeight="30.0" prefWidth="60.0" text="Nee">
+                                                                  <RadioButton fx:id="rdbBijvriendelijk_Nee" mnemonicParsing="false" prefHeight="30.0" prefWidth="60.0" text="Nee" toggleGroup="$tglBijVriendelijk">
                                                                      <font>
                                                                         <Font size="14.0" />
                                                                      </font>
                                                                   </RadioButton>
-                                                                  <RadioButton fx:id="rdbBijvriendelijk_Onbekend" mnemonicParsing="false" prefHeight="30.0" text="Onbekend">
+                                                                  <RadioButton fx:id="rdbBijvriendelijk_Onbekend" mnemonicParsing="false" prefHeight="30.0" text="Onbekend" toggleGroup="$tglBijVriendelijk">
                                                                      <font>
                                                                         <Font size="14.0" />
                                                                      </font>
