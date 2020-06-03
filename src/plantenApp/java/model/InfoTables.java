@@ -35,6 +35,9 @@ public class InfoTables {
     private ArrayList<Integer> sociabiliteiten;
     private ArrayList<String> stratergieen;
 
+    //Beheer
+    private ArrayList<String> beheerdaden;
+
     //Extra
     private ArrayList<Integer> nectarwaardes;
     private ArrayList<Integer> pollenwaardes;
@@ -86,6 +89,7 @@ public class InfoTables {
         this.concurentiekrachten = concurentiekrachten;
         this.sociabiliteiten = sociabiliteiten;
         this.stratergieen = stratergieen;
+        this.beheerdaden = beheerdaden;
         this.nectarwaardes = nectarwaardes;
         this.pollenwaardes = pollenwaardes;
     }

@@ -2,6 +2,8 @@ package plantenApp.java.dao;
 
 import plantenApp.java.model.Beheer;
 import plantenApp.java.model.Beheerdaad_Eigenschap;
+import plantenApp.java.model.BindingData;
+import plantenApp.java.utils.Bindings;
 import plantenApp.java.utils.DaoUtils;
 
 import java.sql.Connection;
@@ -82,7 +84,7 @@ public class BeheerDAO implements Queries {
 
     //region FILTER
 
-    public ArrayList<Integer> FilterOn(List<Integer> plantIds, EnumMap) throws SQLException {
+    public ArrayList<Integer> FilterOn(List<Integer> plantIds, BindingData bindingData) throws SQLException {
         //Dao
 
         //Items
@@ -92,14 +94,14 @@ public class BeheerDAO implements Queries {
         //SQLcommand
         stmtSelectIdsByBeheer.setString(1, sPlantIds);
 
-        stmtSelectIdsByBeheer.setString(2, beheerdaad);
-        stmtSelectIdsByBeheer.setInt(3, DoSearch);
+        stmtSelectIdsByBeheer.setString(2, bindingData.dataBindings.get(Bindings.BEHANDELING).getValue().get());
+        stmtSelectIdsByBeheer.setInt(3, (bindingData.dataBindings.get(Bindings.BEHANDELING).getDoSearch()) ? 0 : 1);
 
-        stmtSelectIdsByBeheer.setString(4, maand);
-        stmtSelectIdsByBeheer.setInt(5, DoSearch);
+        stmtSelectIdsByBeheer.setString(4, bindingData.dataBindings.get(Bindings.MAAND).getValue().get());
+        stmtSelectIdsByBeheer.setInt(5, (bindingData.dataBindings.get(Bindings.MAAND).getDoSearch()) ? 0 : 1);
 
-        stmtSelectIdsByBeheer.setString(6, frequentie_jaar);
-        stmtSelectIdsByBeheer.setInt(7, DoSearch);
+        stmtSelectIdsByBeheer.setString(6, bindingData.dataBindings.get(Bindings.PERXJAAR).getValue().get());
+        stmtSelectIdsByBeheer.setInt(7, (bindingData.dataBindings.get(Bindings.PERXJAAR).getDoSearch()) ? 0 : 1);
 
         ResultSet rs = stmtSelectIdsByBeheer.executeQuery();
         while (rs.next()){

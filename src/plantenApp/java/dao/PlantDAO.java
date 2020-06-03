@@ -1,6 +1,8 @@
 package plantenApp.java.dao;
 
+import plantenApp.java.model.BindingData;
 import plantenApp.java.model.Plant;
+import plantenApp.java.utils.Bindings;
 import plantenApp.java.utils.DaoUtils;
 import plantenApp.java.utils.Utils;
 
@@ -143,7 +145,7 @@ public class PlantDAO implements Queries {
 
     //region FILTER
 
-    public ArrayList<Integer> FilterOn(List<Integer> plantIds, EnumMap) throws SQLException {
+    public ArrayList<Integer> FilterOn(List<Integer> plantIds, BindingData bindingData) throws SQLException {
         //Dao
 
         //Items
@@ -153,17 +155,17 @@ public class PlantDAO implements Queries {
         //SQLcommand
         stmtSelectIdsByPlant.setString(1, sPlantIds);
 
-        stmtSelectIdsByPlant.setString(2, type);
-        stmtSelectIdsByPlant.setInt(3, DoSearch);
+        stmtSelectIdsByPlant.setString(2, bindingData.dataBindings.get(Bindings.TYPE).getValue().get());
+        stmtSelectIdsByPlant.setInt(3, (bindingData.dataBindings.get(Bindings.TYPE).getDoSearch()) ? 0 : 1);
 
-        stmtSelectIdsByPlant.setString(4, familie);
-        stmtSelectIdsByPlant.setInt(5, DoSearch);
+        stmtSelectIdsByPlant.setString(4, bindingData.dataBindings.get(Bindings.FAMILIE).getValue().get());
+        stmtSelectIdsByPlant.setInt(5, (bindingData.dataBindings.get(Bindings.FAMILIE).getDoSearch()) ? 0 : 1);
 
-        stmtSelectIdsByPlant.setString(6, fgsv);
-        stmtSelectIdsByPlant.setInt(7, DoSearch);
+        stmtSelectIdsByPlant.setString(6, bindingData.dataBindings.get(Bindings.SEARCH).getValue().get());
+        stmtSelectIdsByPlant.setInt(7, (bindingData.dataBindings.get(Bindings.SEARCH).getDoSearch()) ? 0 : 1);
 
         ResultSet rs = stmtSelectIdsByPlant.executeQuery();
-        while (rs.next()){
+        while (rs.next()) {
             ids.add(rs.getInt(0));
         }
 

@@ -13,7 +13,7 @@ import java.util.EnumMap;
  */
 public class BindingData {
     public EnumMap<Bindings, PropertyClass<Value>> dataBindings;
-    public EnumMap<ArrayBindings, PropertyClass<ArrayList<Value>>> arrayDataBindings;
+    public EnumMap<ArrayBindings, PropertyClass<ArrayList<ValueWithBoolean>>> arrayDataBindings;
 
     public BindingData() {
         dataBindings = new EnumMap<Bindings, PropertyClass<Value>>(Bindings.class);
@@ -50,14 +50,14 @@ public class BindingData {
         dataBindings.put(Bindings.FAMILIE, new PropertyClass<Value>(new Value()));
         dataBindings.put(Bindings.SEARCH, new PropertyClass<Value>(new Value()));
 
-        arrayDataBindings = new EnumMap<ArrayBindings, PropertyClass<ArrayList<Value>>>(ArrayBindings.class);
-        arrayDataBindings.put(ArrayBindings.BLADKLEURPERMAAND, new PropertyClass<ArrayList<Value>>(new ArrayList<Value>()));
-        arrayDataBindings.put(ArrayBindings.BLOEIKLEURPERMAAND, new PropertyClass<ArrayList<Value>>(new ArrayList<Value>()));
-        arrayDataBindings.put(ArrayBindings.SOCIABILITEIT,new PropertyClass<ArrayList<Value>>(new ArrayList<Value>()));
-        arrayDataBindings.put(ArrayBindings.GRONDSOORT,new PropertyClass<ArrayList<Value>>(new ArrayList<Value>()));
-        arrayDataBindings.put(ArrayBindings.MAXBLADHOOGTEPERMAAND,new PropertyClass<ArrayList<Value>>(new ArrayList<Value>()));
-        arrayDataBindings.put(ArrayBindings.MINBLOEIHOOGTEPERMAAND,new PropertyClass<ArrayList<Value>>(new ArrayList<Value>()));
-        arrayDataBindings.put(ArrayBindings.MAXBLOEIHOOGTEPERMAAND,new PropertyClass<ArrayList<Value>>(new ArrayList<Value>()));
+        arrayDataBindings = new EnumMap<ArrayBindings, PropertyClass<ArrayList<ValueWithBoolean>>>(ArrayBindings.class);
+        arrayDataBindings.put(ArrayBindings.BLADKLEURPERMAAND, new PropertyClass<ArrayList<ValueWithBoolean>>(new ArrayList<ValueWithBoolean>()));
+        arrayDataBindings.put(ArrayBindings.BLOEIKLEURPERMAAND, new PropertyClass<ArrayList<ValueWithBoolean>>(new ArrayList<ValueWithBoolean>()));
+        arrayDataBindings.put(ArrayBindings.SOCIABILITEIT,new PropertyClass<ArrayList<ValueWithBoolean>>(new ArrayList<ValueWithBoolean>()));
+        arrayDataBindings.put(ArrayBindings.GRONDSOORT,new PropertyClass<ArrayList<ValueWithBoolean>>(new ArrayList<ValueWithBoolean>()));
+        arrayDataBindings.put(ArrayBindings.MAXBLADHOOGTEPERMAAND,new PropertyClass<ArrayList<ValueWithBoolean>>(new ArrayList<ValueWithBoolean>()));
+        arrayDataBindings.put(ArrayBindings.MINBLOEIHOOGTEPERMAAND,new PropertyClass<ArrayList<ValueWithBoolean>>(new ArrayList<ValueWithBoolean>()));
+        arrayDataBindings.put(ArrayBindings.MAXBLOEIHOOGTEPERMAAND,new PropertyClass<ArrayList<ValueWithBoolean>>(new ArrayList<ValueWithBoolean>()));
     }
 
 }

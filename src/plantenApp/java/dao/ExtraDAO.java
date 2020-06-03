@@ -1,6 +1,8 @@
 package plantenApp.java.dao;
 
+import plantenApp.java.model.BindingData;
 import plantenApp.java.model.Extra;
+import plantenApp.java.utils.Bindings;
 import plantenApp.java.utils.DaoUtils;
 
 import java.sql.Connection;
@@ -64,7 +66,7 @@ public class ExtraDAO implements Queries {
 
     //region FILTER
 
-    public ArrayList<Integer> FilterOn(List<Integer> plantIds, EnumMap) throws SQLException {
+    public ArrayList<Integer> FilterOn(List<Integer> plantIds, BindingData bindingData) throws SQLException {
         //Dao
 
         //Items
@@ -75,26 +77,26 @@ public class ExtraDAO implements Queries {
         stmtSelectIdsByExtra.setString(1, sPlantIds);
 
 
-        stmtSelectIdsByExtra.setString(2, nectarwaarde);
-        stmtSelectIdsByExtra.setString(3, DoSearch);
+        stmtSelectIdsByExtra.setString(2, bindingData.dataBindings.get(Bindings.NECTARWAARDE).getValue().get());
+        stmtSelectIdsByExtra.setInt(3, (bindingData.dataBindings.get(Bindings.NECTARWAARDE).getDoSearch()) ? 0 : 1);
 
-        stmtSelectIdsByExtra.setString(4, pollenwaarde);
-        stmtSelectIdsByExtra.setString(5, DoSearch);
+        stmtSelectIdsByExtra.setString(4, bindingData.dataBindings.get(Bindings.POLLENWAARDE).getValue().get());
+        stmtSelectIdsByExtra.setInt(5, (bindingData.dataBindings.get(Bindings.POLLENWAARDE).getDoSearch()) ? 0 : 1);
 
-        stmtSelectIdsByExtra.setString(6, bijvriendelijk);
-        stmtSelectIdsByExtra.setString(7, DoSearch);
+        stmtSelectIdsByExtra.setString(6, bindingData.dataBindings.get(Bindings.BIJVRIENDELIJK).getValue().get());
+        stmtSelectIdsByExtra.setInt(7, (bindingData.dataBindings.get(Bindings.BIJVRIENDELIJK).getDoSearch()) ? 0 : 1);
 
-        stmtSelectIdsByExtra.setString(8, eetbaar);
-        stmtSelectIdsByExtra.setString(9, DoSearch);
+        stmtSelectIdsByExtra.setString(8, bindingData.dataBindings.get(Bindings.EETBAAR).getValue().get());
+        stmtSelectIdsByExtra.setInt(9, (bindingData.dataBindings.get(Bindings.EETBAAR).getDoSearch()) ? 0 : 1);
 
-        stmtSelectIdsByExtra.setString(10, kruidgebruik);
-        stmtSelectIdsByExtra.setString(11, DoSearch);
+        stmtSelectIdsByExtra.setString(10, bindingData.dataBindings.get(Bindings.KRUIDGEBRUIK).getValue().get());
+        stmtSelectIdsByExtra.setInt(11, (bindingData.dataBindings.get(Bindings.KRUIDGEBRUIK).getDoSearch()) ? 0 : 1);
 
-        stmtSelectIdsByExtra.setString(12, geurend);
-        stmtSelectIdsByExtra.setString(13, DoSearch);
+        stmtSelectIdsByExtra.setString(12, bindingData.dataBindings.get(Bindings.GEUREND).getValue().get());
+        stmtSelectIdsByExtra.setInt(13, (bindingData.dataBindings.get(Bindings.GEUREND).getDoSearch()) ? 0 : 1);
 
-        stmtSelectIdsByExtra.setString(14, vorstgevoelig);
-        stmtSelectIdsByExtra.setString(15, DoSearch);
+        stmtSelectIdsByExtra.setString(14, bindingData.dataBindings.get(Bindings.VORSTGEVOELIG).getValue().get());
+        stmtSelectIdsByExtra.setInt(15, (bindingData.dataBindings.get(Bindings.VORSTGEVOELIG).getDoSearch()) ? 0 : 1);
 
         ResultSet rs = stmtSelectIdsByExtra.executeQuery();
         while (rs.next()){
