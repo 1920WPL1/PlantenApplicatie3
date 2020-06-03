@@ -633,8 +633,8 @@
                                                                   <Font name="System Bold" size="14.0" />
                                                                </font>
                                                             </Label>
-                                                            <ComboBox prefHeight="30.0" prefWidth="200.0" />
-                                                            <ComboBox prefHeight="30.0" prefWidth="200.0" />
+                                                            <ComboBox fx:id="cboBehandeling" prefHeight="30.0" prefWidth="200.0" />
+                                                            <ComboBox fx:id="cboMaand" prefHeight="30.0" prefWidth="200.0" />
                                                             <Spinner fx:id="nudPerXJaar" prefHeight="30.0" prefWidth="80.0" />
                                                          </children>
                                                       </VBox>
@@ -720,7 +720,7 @@
                                                                         </HBox>
                                                                         <HBox>
                                                                            <children>
-                                                                              <CheckBox fx:id="chkMaxBladhoogte" mnemonicParsing="false" prefHeight="30.0" prefWidth="150.0" text="Max bladhoogte">
+                                                                              <CheckBox fx:id="chkMaxBladhoogtePerMaand" mnemonicParsing="false" prefHeight="30.0" prefWidth="150.0" text="Max bladhoogte">
                                                                                  <font>
                                                                                     <Font size="14.0" />
                                                                                  </font>
@@ -741,7 +741,7 @@
                                                                         </HBox>
                                                                         <HBox>
                                                                            <children>
-                                                                              <CheckBox fx:id="chkBladkleur" mnemonicParsing="false" prefHeight="30.0" prefWidth="150.0" text="Bladkleur">
+                                                                              <CheckBox fx:id="chkBladkleurPerMaand" mnemonicParsing="false" prefHeight="30.0" prefWidth="150.0" text="Bladkleur">
                                                                                  <font>
                                                                                     <Font size="14.0" />
                                                                                  </font>
@@ -762,7 +762,7 @@
                                                                         </HBox>
                                                                         <HBox>
                                                                            <children>
-                                                                              <CheckBox fx:id="chkMinBloeihoogte" mnemonicParsing="false" prefHeight="30.0" prefWidth="150.0" text="Min bloeihoogte">
+                                                                              <CheckBox fx:id="chkMinBloeihoogtePerMaand" mnemonicParsing="false" prefHeight="30.0" prefWidth="150.0" text="Min bloeihoogte">
                                                                                  <font>
                                                                                     <Font size="14.0" />
                                                                                  </font>
@@ -783,7 +783,7 @@
                                                                         </HBox>
                                                                         <HBox>
                                                                            <children>
-                                                                              <CheckBox fx:id="chkMaxBloeihoogte" mnemonicParsing="false" prefHeight="30.0" prefWidth="150.0" text="Max bloeihoogte">
+                                                                              <CheckBox fx:id="chkMaxBloeihoogtePerMaand" mnemonicParsing="false" prefHeight="30.0" prefWidth="150.0" text="Max bloeihoogte">
                                                                                  <font>
                                                                                     <Font size="14.0" />
                                                                                  </font>
@@ -804,7 +804,7 @@
                                                                         </HBox>
                                                                         <HBox>
                                                                            <children>
-                                                                              <CheckBox fx:id="chkBloeikleur" mnemonicParsing="false" prefHeight="30.0" prefWidth="150.0" text="Bloeikleur">
+                                                                              <CheckBox fx:id="chkBloeikleurPerMaand" mnemonicParsing="false" prefHeight="30.0" prefWidth="150.0" text="Bloeikleur">
                                                                                  <font>
                                                                                     <Font size="14.0" />
                                                                                  </font>

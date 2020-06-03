@@ -108,7 +108,6 @@ public class Controller {
     public RadioButton rdbVorstgevoelig_Nee;
     public RadioButton rdbVorstgevoelig_Onbekend;
     public Spinner nudPerXJaar;
-    public CheckBox chkMaxBladhoogte;
     public Spinner nudMaxBladhoogte_Jan;
     public Spinner nudMaxBladhoogte_Feb;
     public Spinner nudMaxBladhoogte_Maa;
@@ -121,8 +120,6 @@ public class Controller {
     public Spinner nudMaxBladhoogte_Okt;
     public Spinner nudMaxBladhoogte_Nov;
     public Spinner nudMaxBladhoogte_Dec;
-    public CheckBox chkBladkleur;
-    public CheckBox chkMinBloeihoogte;
     public Spinner nudMinBloeihoogte_Jan;
     public Spinner nudMinBloeihoogte_Feb;
     public Spinner nudMinBloeihoogte_Maa;
@@ -135,7 +132,6 @@ public class Controller {
     public Spinner nudMinBloeihoogte_Okt;
     public Spinner nudMinBloeihoogte_Nov;
     public Spinner nudMinBloeihoogte_Dec;
-    public CheckBox chkMaxBloeihoogte;
     public Spinner nudMaxBloeihoogte_Jan;
     public Spinner nudMaxBloeihoogte_Feb;
     public Spinner nudMaxBloeihoogte_Maa;
@@ -148,7 +144,6 @@ public class Controller {
     public Spinner nudMaxBloeihoogte_Okt;
     public Spinner nudMaxBloeihoogte_Nov;
     public Spinner nudMaxBloeihoogte_Dec;
-    public CheckBox chkBloeikleur;
     public CheckBox chkHabitus;
     public RadioButton rdbHabitus_1;
     public RadioButton rdbHabitus_2;
@@ -202,6 +197,13 @@ public class Controller {
     public CheckBox chkVochtBehoefte;
     public CheckBox chkGrondsoort;
     public CheckBox chkBladgrootte;
+    public ComboBox cboBehandeling;
+    public ComboBox cboMaand;
+    public CheckBox chkBloeikleurPerMaand;
+    public CheckBox chkMaxBloeihoogtePerMaand;
+    public CheckBox chkMinBloeihoogtePerMaand;
+    public CheckBox chkBladkleurPerMaand;
+    public CheckBox chkMaxBladhoogtePerMaand;
 
 
     private InfoTables infoTables;
@@ -225,6 +227,19 @@ public class Controller {
         Bind(Bindings.BLADHOOGTE, chkBladHoogte, nudMaxBladhoogte);
         Bind(Bindings.FAMILIE, chkFamilie, cboFamilie);
         Bind(Bindings.TYPE, chkType, cboType);
+
+        Bind(Bindings.HABITAT, chkHabitat, cboHabitat);
+        Bind(Bindings.BLADKLEUR, chkBladKleur, cboBladkleur);
+        Bind(Bindings.BLOEIKLEUR, chkBloeiKleur, cboBloeikleur);
+        Bind(Bindings.REACTIEANTAGONISTISCHEOMGEVING, chkReactieAntagonistischeOmg, cboReactieAnta);
+        Bind(Bindings.ONTWIKKELINGSSNELHEID, chkOntwikkelingssnelheid, cboOntwikkel);
+        Bind(Bindings.LEVENSDUUR, chkLevensduur_concurrentiekracht, cboLevensduur);
+        Bind(Bindings.NECTARWAARDE, chkNectarwaarde, sldNectarwaarde);
+        Bind(Bindings.POLLENWAARDE, chkPollenwaarde, sldPollenwaarde);
+        Bind(Bindings.RATIOBLOEIBLAD, chkRatio_bloei_blad, cboRatioBloeiBlad);
+        Bind(Bindings.BEHANDELING, chkBehandeling, cboBehandeling);
+        Bind(Bindings.MAAND, chkMaand, cboMaand);
+
 
         
     }
