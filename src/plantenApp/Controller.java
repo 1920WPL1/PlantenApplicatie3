@@ -191,6 +191,17 @@ public class Controller {
     public RadioButton rdbBloeiwijze_Schotel;
 
     public ToggleGroup tglBijVriendelijk;
+    public CheckBox chkHabitat;
+    public CheckBox chkType;
+    public CheckBox chkFamilie;
+    public CheckBox chkBladKleur;
+    public CheckBox chkBladHoogte;
+    public CheckBox chkBloeiKleur;
+    public CheckBox chkBloeiHoogte;
+    public CheckBox chkBezonning;
+    public CheckBox chkVochtBehoefte;
+    public CheckBox chkGrondsoort;
+    public CheckBox chkBladgrootte;
 
 
     private InfoTables infoTables;
@@ -206,13 +217,16 @@ public class Controller {
        FillComboboxes(infoTables);
         bindingData = new BindingData();
 
-        cboSpruitfenologie.getSelectionModel().selectFirst();
-        //Bind(Bindings.VOEDINGSBEHOEFTE, chkVoedingsbehoefte, sldVoedingsbehoefte);
-        Bind(Bindings.SPRUITFENOLOGIE, chkSpruitfenologie, cboSpruitfenologie);
 
         Bind(Bindings.BLADVORM, chkBladvorm, cboBladvorm);
+        Bind(Bindings.SPRUITFENOLOGIE, chkSpruitfenologie, cboSpruitfenologie);
+        Bind(Bindings.VOEDINGSBEHOEFTE, chkVoedingsbehoefte, sldVoedingsbehoefte);
+        Bind(Bindings.BLADGROOTTE, chkBladgrootte, cboBladgrootte);
+        Bind(Bindings.BLADHOOGTE, chkBladHoogte, nudMaxBladhoogte);
+        Bind(Bindings.FAMILIE, chkFamilie, cboFamilie);
+        Bind(Bindings.TYPE, chkType, cboType);
 
-
+        
     }
 
     /**
