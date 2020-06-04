@@ -104,7 +104,7 @@ public class CommensalismeDAO implements Queries {
 
         //Strategie
         PropertyClass<ValueWithBoolean[]> strategie = bindingData.arrayDataBindings.get(ArrayBindings.STRATEGIE);
-        stmtSelectIdsByComm.setString(plantIds.size() + 1, Utils.GetCheckedValue(strategie.getValue()));
+        stmtSelectIdsByComm.setString(plantIds.size() + 1, DaoUtils.GetCheckedValue(strategie.getValue()));
         stmtSelectIdsByComm.setInt(plantIds.size() + 2, (strategie.getDoSearch()) ? 0 : 1);
 
         //ontwikkelingssnelheid
@@ -118,17 +118,10 @@ public class CommensalismeDAO implements Queries {
         }
 
         //Multi
-        /*
-        PropertyClass<ValueWithBoolean[]> sociabiliteitData = bindingData.arrayDataBindings.get(ArrayBindings.SOCIABILITEIT);
-        if (sociabiliteitData.getDoSearch()) {
-            for (int i = 0; i < sociabiliteitData.getValue().length; i++) {
-                if (sociabiliteitData.getValue()[i].getBool()) {
-                    ids = FilterOnMulti("sociabiliteit", sociabiliteitData.getValue()[i].get(), ids);
-                }
-
-            }
+        PropertyClass<ValueWithBoolean[]> sociabiliteit = bindingData.arrayDataBindings.get(ArrayBindings.SOCIABILITEIT);
+        if (sociabiliteit.getDoSearch()) {
+            ids = FilterOnMulti("sociabiliteit", DaoUtils.GetCheckedValue(sociabiliteit.getValue()), ids);
         }
-        */
 
         //Output
         return ids;
@@ -138,16 +131,15 @@ public class CommensalismeDAO implements Queries {
         //Dao
 
         //Items
-        String sPlantIds = DaoUtils.sqlFormatedList(plantIds);
         ArrayList<Integer> ids = new ArrayList<>();
 
+        //makes the prepared statement en fills in de IN (?)
+        PreparedStatement stmtSelectIdsByCommMulti = DaoUtils.ReadyStatement(dbConnection, GETIDSBYCOMMMULTI, plantIds);
+
         //SQLcommand
-        stmtSelectIdsByCommMulti.setString(1, sPlantIds);
+        stmtSelectIdsByCommMulti.setString(plantIds.size() + 1, eigenschap);
 
-        stmtSelectIdsByCommMulti.setString(2, eigenschap);
-
-        stmtSelectIdsByCommMulti.setString(3, value);
-        //.setInt(4, DoSearch);
+        stmtSelectIdsByCommMulti.setString(plantIds.size() + 2, value);
 
         ResultSet rs = stmtSelectIdsByCommMulti.executeQuery();
         while (rs.next()) {

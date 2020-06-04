@@ -102,22 +102,72 @@ public interface Queries {
                     "AND okt = ? " +
                     "AND nov = ? " +
                     "AND dec = ? ";
-    String GETIDSBYSINGLEFENOMULTI =
+    String GETIDSBYFENOMULTISINGLE =
             "SELECT plant_id FROM commensalisme_multi " +
                     "WHERE plant_id IN (?) " +
                     "AND eigenschap = ? " +
-                    "AND (jan BETWEEN ? AND ?) " +
-                    "AND (feb BETWEEN ? AND ?) " +
-                    "AND (maa BETWEEN ? AND ?) " +
-                    "AND (apr BETWEEN ? AND ?) " +
-                    "AND (mei BETWEEN ? AND ?) " +
-                    "AND (jun BETWEEN ? AND ?) " +
-                    "AND (jul BETWEEN ? AND ?) " +
-                    "AND (aug BETWEEN ? AND ?) " +
-                    "AND (sep BETWEEN ? AND ?) " +
-                    "AND (okt BETWEEN ? AND ?) " +
-                    "AND (nov BETWEEN ? AND ?) " +
-                    "AND (dec BETWEEN ? AND ?) ";
+                    "AND " +
+                    "(jan = ? " +
+                    "OR feb = ? " +
+                    "OR maa = ? " +
+                    "OR apr = ? " +
+                    "OR mei = ? " +
+                    "OR jun = ? " +
+                    "OR jul = ? " +
+                    "OR aug = ? " +
+                    "OR sep = ? " +
+                    "OR okt = ? " +
+                    "OR nov = ? " +
+                    "OR dec = ?) ";
+    String GETIDSBYFENOMULTIHOOGTEMIN =
+            "SELECT plant_id FROM commensalisme_multi " +
+                    "WHERE plant_id IN (?) " +
+                    "AND eigenschap = ? " +
+                    "AND (jan > ?) " +
+                    "AND (feb > ?) " +
+                    "AND (maa > ?) " +
+                    "AND (apr > ?) " +
+                    "AND (mei > ?) " +
+                    "AND (jun > ?) " +
+                    "AND (jul > ?) " +
+                    "AND (aug > ?) " +
+                    "AND (sep > ?) " +
+                    "AND (okt > ?) " +
+                    "AND (nov > ?) " +
+                    "AND (dec > ?) ";
+    String GETIDSBYFENOMULTIHOOGTEMAX =
+            "SELECT plant_id FROM commensalisme_multi " +
+                    "WHERE plant_id IN (?) " +
+                    "AND eigenschap = ? " +
+                    "AND (jan < ?) " +
+                    "AND (feb < ?) " +
+                    "AND (maa < ?) " +
+                    "AND (apr < ?) " +
+                    "AND (mei < ?) " +
+                    "AND (jun < ?) " +
+                    "AND (jul < ?) " +
+                    "AND (aug < ?) " +
+                    "AND (sep < ?) " +
+                    "AND (okt < ?) " +
+                    "AND (nov < ?) " +
+                    "AND (dec < ?) ";
+    String GETIDSBYFENOMULTIHOOGTESINGLE =
+            "SELECT plant_id FROM commensalisme_multi " +
+                    "WHERE plant_id IN (?) " +
+                    "AND eigenschap = ? " +
+                    "AND " +
+                    "((jan BETWEEN ? AND ?) " +
+                    "OR (feb BETWEEN ? AND ?) " +
+                    "OR (maa BETWEEN ? AND ?) " +
+                    "OR (apr BETWEEN ? AND ?) " +
+                    "OR (mei BETWEEN ? AND ?) " +
+                    "OR (jun BETWEEN ? AND ?) " +
+                    "OR (jul BETWEEN ? AND ?) " +
+                    "OR (aug BETWEEN ? AND ?) " +
+                    "OR (sep BETWEEN ? AND ?) " +
+                    "OR (okt BETWEEN ? AND ?) " +
+                    "OR (nov BETWEEN ? AND ?) " +
+                    "OR (dec BETWEEN ? AND ?)) ";
     String GETIDSBYBEHEER =
             "SELECT plant_id FROM beheer " +
                     "WHERE plant_id IN (?) " +
