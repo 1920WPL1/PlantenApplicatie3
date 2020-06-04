@@ -86,6 +86,7 @@ public class ExtraDAO implements Queries {
         stmtSelectIdsByExtra.setString(plantIds.size() + 3, DaoUtils.GetCheckedValue(pollenwaarde.getValue()));
         stmtSelectIdsByExtra.setInt(plantIds.size() + 4, (pollenwaarde.getDoSearch()) ? 0 : 1);
 
+        /*
         //bijvriendelijk
         PropertyClass<Value> bijvriendelijk = bindingData.arrayDataBindings.get(ArrayBindings.BIJVRIENDELIJK);
         stmtSelectIdsByExtra.setString(plantIds.size() + 5, DaoUtils.GetCheckedValue(bijvriendelijk.getValue()));
@@ -116,9 +117,15 @@ public class ExtraDAO implements Queries {
             ids.add(rs.getInt("plant_id"));
         }
 
+
+
         //Output
         return ids;
+
+
     }
 
     //endregion
+
+
 }
