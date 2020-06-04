@@ -144,15 +144,15 @@ public interface Queries {
                     "AND " +
                     "(dec BETWEEN ? AND ?) ";
     String GETIDSBYBEHEER =
-            "SELECT plant_id FROM Beheer " +
+            "SELECT plant_id FROM beheer " +
                     "WHERE " +
-                    "plant_id IN ? " +
+                    "plant_id IN ? ";// +
+                   /* "AND " +
+                    "(beheerdaad = ? OR 1 = ?) "+
                     "AND " +
-                    "beheerdaad = ? OR 1=? "+
+                    "(maand = ? OR 1 = ?) " +
                     "AND " +
-                    "maand = ? OR 1=?" +
-                    "AND " +
-                    "frequentie_jaar = ? OR 1=?";
+                    "(frequentie_jaar = ? OR 1 = ?) ";*/
 //endregion
 
     //region NAAKTETABELLEN

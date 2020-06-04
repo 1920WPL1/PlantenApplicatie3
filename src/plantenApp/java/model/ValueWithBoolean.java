@@ -1,13 +1,14 @@
 package plantenApp.java.model;
 
 import javafx.beans.property.BooleanProperty;
+import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.property.StringProperty;
 
 /**
  * @author Bradley
  */
 public class ValueWithBoolean extends Value {
-    BooleanProperty booleanProperty;
+    BooleanProperty booleanProperty = new SimpleBooleanProperty();
 
     public BooleanProperty boolProperty(){
         return booleanProperty;

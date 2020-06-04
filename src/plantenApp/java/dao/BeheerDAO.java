@@ -84,25 +84,30 @@ public class BeheerDAO implements Queries {
 
     //region FILTER
 
-    public ArrayList<Integer> FilterOn(List<Integer> plantIds, BindingData bindingData) throws SQLException {
+    public ArrayList<Integer> FilterOn(ArrayList<Integer> plantIds, BindingData bindingData) throws SQLException {
         //Dao
 
+        System.out.println(plantIds.toString());
         //Items
         String sPlantIds = DaoUtils.sqlFormatedList(plantIds);
+        System.out.println(sPlantIds);
         ArrayList<Integer> ids = new ArrayList<>();
 
         //SQLcommand
-        stmtSelectIdsByBeheer.setString(1, sPlantIds);
 
-        stmtSelectIdsByBeheer.setString(2, bindingData.dataBindings.get(Bindings.BEHANDELING).getValue().get());
+
+
+
+        /*stmtSelectIdsByBeheer.setString(2, bindingData.dataBindings.get(Bindings.BEHANDELING).getValue().get());
         stmtSelectIdsByBeheer.setInt(3, (bindingData.dataBindings.get(Bindings.BEHANDELING).getDoSearch()) ? 0 : 1);
 
         stmtSelectIdsByBeheer.setString(4, bindingData.dataBindings.get(Bindings.MAAND).getValue().get());
         stmtSelectIdsByBeheer.setInt(5, (bindingData.dataBindings.get(Bindings.MAAND).getDoSearch()) ? 0 : 1);
 
-        stmtSelectIdsByBeheer.setString(6, bindingData.dataBindings.get(Bindings.PERXJAAR).getValue().get());
-        stmtSelectIdsByBeheer.setInt(7, (bindingData.dataBindings.get(Bindings.PERXJAAR).getDoSearch()) ? 0 : 1);
+        stmtSelectIdsByBeheer.setInt(6, Integer.parseInt(bindingData.dataBindings.get(Bindings.PERXJAAR).getValue().get()));
+        stmtSelectIdsByBeheer.setInt(7, (bindingData.dataBindings.get(Bindings.PERXJAAR).getDoSearch()) ? 0 : 1);*/
 
+        System.out.println(stmtSelectIdsByBeheer);
         ResultSet rs = stmtSelectIdsByBeheer.executeQuery();
         while (rs.next()){
             ids.add(rs.getInt("plant_id"));

@@ -13,6 +13,7 @@ public class Main extends Application {
         Parent root = FXMLLoader.load(getClass().getResource("view/Zoekscherm.fxml"));
         primaryStage.setTitle("Planten applicatie");
         primaryStage.setScene(new Scene(root, 1278, 858));
+        primaryStage.setMaximized(true);
         primaryStage.show();
     }
 

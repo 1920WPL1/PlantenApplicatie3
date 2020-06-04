@@ -213,6 +213,8 @@ public class Controller {
     BindingData bindingData;
 
     public void initialize() throws SQLException {
+
+
         dbConnection = Database.getInstance().getConnection();
         /*infotabel object aanmaken*/
         InfoTablesDAO infotablesDAO = new InfoTablesDAO(dbConnection);
@@ -230,15 +232,12 @@ public class Controller {
         Bind(Bindings.FAMILIE, chkFamilie, cboFamilie);
         Bind(Bindings.TYPE, chkType, cboType);
 
-        bindingData.arrayDataBindings.get(ArrayBindings.GRONDSOORT).DoSearchProperty().bind(chkGrondsoort.selectedProperty());
-        cboBladkleurSep.disableProperty().bind(chkBladKleur.selectedProperty());
-
         ArrayList<CheckBox> listGrondSoort = new ArrayList<CheckBox>();
         listGrondSoort.add(chkGrondsoort_Z);
         listGrondSoort.add(chkGrondsoort_L);
         listGrondSoort.add(chkGrondsoort_K);
 
-       // BindCheckbox(ArrayBindings.GRONDSOORT, chkGrondsoort, listGrondSoort);
+
         Bind(Bindings.HABITAT, chkHabitat, cboHabitat);
         Bind(Bindings.BLADKLEUR, chkBladKleur, cboBladkleur);
         Bind(Bindings.BLOEIKLEUR, chkBloeiKleur, cboBloeikleur);
@@ -250,8 +249,20 @@ public class Controller {
         Bind(Bindings.RATIOBLOEIBLAD, chkRatio_bloei_blad, cboRatioBloeiBlad);
         Bind(Bindings.BEHANDELING, chkBehandeling, cboBehandeling);
         Bind(Bindings.MAAND, chkMaand, cboMaand);
+        Bind(Bindings.PERXJAAR, chkPerXJaar, nudPerXJaar);
 
+        ArrayList<RadioButton> rdbLevensvormen = new ArrayList<RadioButton>();
+        rdbLevensvormen.add(rdbLevensvorm_1);
+        rdbLevensvormen.add(rdbLevensvorm_2);
+        rdbLevensvormen.add(rdbLevensvorm_3);
+        rdbLevensvormen.add(rdbLevensvorm_4);
+        rdbLevensvormen.add(rdbLevensvorm_5);
+        rdbLevensvormen.add(rdbLevensvorm_6);
+        rdbLevensvormen.add(rdbLevensvorm_7);
+        rdbLevensvormen.add(rdbLevensvorm_8);
+        rdbLevensvormen.add(rdbLevensvorm_9);
 
+       // BindRadiobutton(ArrayBindings.LEVENSVORM, chkLevensvormVolgensRaunkhiaer, rdbLevensvormen);
         
     }
 
@@ -370,6 +381,46 @@ public class Controller {
         cboBladvorm.getItems().addAll(infotables.getBladvormen());
     }
 
+
+    public void InitSpinners(){
+        setSpinner(nudPerXJaar, 10);
+        setSpinner(nudMinBladhoogte, 1000);
+        setSpinner(nudBloeiHoogte, 1000);
+        setSpinner(nudMinBladhoogte, 1000);
+        setSpinner(nudMaxBladhoogte, 1000);
+
+        setSpinner(nudMinBloeihoogte_Jan, 1000);
+        setSpinner(nudMinBloeihoogte_Feb, 1000);
+        setSpinner(nudMinBloeihoogte_Maa, 1000);
+        setSpinner(nudMinBloeihoogte_Apr, 1000);
+        setSpinner(nudMinBloeihoogte_Mei, 1000);
+        setSpinner(nudMinBloeihoogte_Jun, 1000);
+        setSpinner(nudMinBloeihoogte_Jul, 1000);
+        setSpinner(nudMinBloeihoogte_Aug, 1000);
+        setSpinner(nudMinBloeihoogte_Sept, 1000);
+        setSpinner(nudMinBloeihoogte_Okt, 1000);
+        setSpinner(nudMinBloeihoogte_Nov, 1000);
+        setSpinner(nudMinBloeihoogte_Dec, 1000);
+
+        setSpinner(nudMaxBloeihoogte_Jan, 1000);
+        setSpinner(nudMaxBloeihoogte_Feb, 1000);
+        setSpinner(nudMaxBloeihoogte_Maa, 1000);
+        setSpinner(nudMaxBloeihoogte_Apr, 1000);
+        setSpinner(nudMaxBloeihoogte_Mei, 1000);
+        setSpinner(nudMaxBloeihoogte_Jun, 1000);
+        setSpinner(nudMaxBloeihoogte_Jul, 1000);
+        setSpinner(nudMaxBloeihoogte_Aug, 1000);
+        setSpinner(nudMaxBloeihoogte_Sept, 1000);
+        setSpinner(nudMaxBloeihoogte_Okt, 1000);
+        setSpinner(nudMaxBloeihoogte_Nov, 1000);
+        setSpinner(nudMaxBloeihoogte_Dec, 1000);
+
+
+    }
+
+    public void setSpinner(Spinner spinner, int MaxValue){
+        spinner.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(0, MaxValue));
+    }
 
 
 
