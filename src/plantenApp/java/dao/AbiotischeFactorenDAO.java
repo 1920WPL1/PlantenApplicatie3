@@ -104,38 +104,44 @@ public class AbiotischeFactorenDAO implements Queries {
         //SQLcommand
         stmtSelectIdsByAbio.setString(1, sPlantIds);
 
-        stmtSelectIdsByAbio.setString(2, bindingData.dataBindings.get(Bindings.BEZONNING).getValue().get());
-        //TODO: fix dit
-        //stmtSelectIdsByAbio.setInt(3, (bindingData.dataBindings.get(Bindings.STRATEGIE).getDoSearch()) ? 0 : 1);
+        //Bezonning
+        PropertyClass<Value> bezonning = bindingData.dataBindings.get(Bindings.BEZONNING);
+        stmtSelectIdsByAbio.setString(2, bezonning.getValue().get());
+        stmtSelectIdsByAbio.setString(3, bezonning.getValue().get());
 
-        ValueWithBoolean[] grondsoortData = bindingData.arrayDataBindings.get(ArrayBindings.GRONDSOORT).getValue();
+        //Grondsoort
+        PropertyClass<ValueWithBoolean[]> grondsoort = bindingData.arrayDataBindings.get(ArrayBindings.GRONDSOORT);
         StringBuilder grondsoortValue = new StringBuilder();
-        for (int i=0;i<grondsoortData.length;i++)
-        {
-            if (grondsoortData[i].getBool()) {
-                grondsoortValue.append(grondsoortData[i].get());
+        for (int i = 0; i < grondsoort.getValue().length; i++) {
+            if (grondsoort.getValue()[i].getBool()) {
+                grondsoortValue.append(grondsoort.getValue()[i].get());
             }
         }
-
-
         stmtSelectIdsByAbio.setString(4, grondsoortValue.toString());
-        stmtSelectIdsByAbio.setInt(5, (bindingData.arrayDataBindings.get(ArrayBindings.GRONDSOORT).getDoSearch()) ? 0 : 1);
+        stmtSelectIdsByAbio.setInt(5, (grondsoort.getDoSearch()) ? 0 : 1);
 
-        stmtSelectIdsByAbio.setString(6, bindingData.dataBindings.get(Bindings.VOCHTBEHOEFTE).getValue().get());
-        stmtSelectIdsByAbio.setInt(7, (bindingData.dataBindings.get(Bindings.VOCHTBEHOEFTE).getDoSearch()) ? 0 : 1);
+        //Vochtbehoefte
+        PropertyClass<Value> vochtbehoefte = bindingData.dataBindings.get(Bindings.VOCHTBEHOEFTE);
+        stmtSelectIdsByAbio.setString(6, vochtbehoefte.getValue().get());
+        stmtSelectIdsByAbio.setInt(7, (vochtbehoefte.getDoSearch()) ? 0 : 1);
 
-        stmtSelectIdsByAbio.setString(8, bindingData.dataBindings.get(Bindings.VOEDINGSBEHOEFTE).getValue().get());
-        stmtSelectIdsByAbio.setInt(9, (bindingData.dataBindings.get(Bindings.VOEDINGSBEHOEFTE).getDoSearch()) ? 0 : 1);
+        //voedingsbehoefte
+        PropertyClass<Value> voedingsbehoefte = bindingData.dataBindings.get(Bindings.VOEDINGSBEHOEFTE);
+        stmtSelectIdsByAbio.setString(8, voedingsbehoefte.getValue().get());
+        stmtSelectIdsByAbio.setInt(9, (voedingsbehoefte.getDoSearch()) ? 0 : 1);
 
-        stmtSelectIdsByAbio.setString(10, bindingData.dataBindings.get(Bindings.REACTIEANTAGONISTISCHEOMGEVING).getValue().get());
-        stmtSelectIdsByAbio.setInt(11, (bindingData.dataBindings.get(Bindings.REACTIEANTAGONISTISCHEOMGEVING).getDoSearch()) ? 0 : 1);
+        //reactieantaomgeving
+        PropertyClass<Value> reactieantaomgeving = bindingData.dataBindings.get(Bindings.REACTIEANTAGONISTISCHEOMGEVING);
+        stmtSelectIdsByAbio.setString(10, reactieantaomgeving.getValue().get());
+        stmtSelectIdsByAbio.setInt(11, (reactieantaomgeving.getDoSearch()) ? 0 : 1);
 
         ResultSet rs = stmtSelectIdsByAbio.executeQuery();
         while (rs.next()) {
-            ids.add(rs.getInt(0));
+            ids.add(rs.getInt("plant_id"));
         }
 
-        if (bindingData.dataBindings.get(Bindings.HABITAT).getDoSearch()){
+        //habitat
+        if (bindingData.dataBindings.get(Bindings.HABITAT).getDoSearch()) {
             ids = FilterOnMulti("Habitat", bindingData.dataBindings.get(Bindings.HABITAT).getValue().get(), ids);
         }
 
@@ -159,7 +165,7 @@ public class AbiotischeFactorenDAO implements Queries {
 
         ResultSet rs = stmtSelectIdsByAbioMulti.executeQuery();
         while (rs.next()) {
-            ids.add(rs.getInt(0));
+            ids.add(rs.getInt("plant_id"));
         }
 
         //Output

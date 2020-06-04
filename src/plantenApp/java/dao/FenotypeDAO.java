@@ -4,6 +4,7 @@ import plantenApp.java.model.*;
 import plantenApp.java.utils.ArrayBindings;
 import plantenApp.java.utils.Bindings;
 import plantenApp.java.utils.DaoUtils;
+import plantenApp.java.utils.Utils;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -20,15 +21,19 @@ public class FenotypeDAO implements Queries {
     private Connection dbConnection;
     private PreparedStatement stmtSelectFenoByID;
     private PreparedStatement stmtSelectFenoMultiByID;
+
     private PreparedStatement stmtSelectIdsByFeno;
     private PreparedStatement stmtSelectIdsByFenoMulti;
+    private PreparedStatement stmtSelectIdsBySingleFenoMulti;
 
     public FenotypeDAO(Connection dbConnection) throws SQLException {
         this.dbConnection = dbConnection;
         stmtSelectFenoByID = dbConnection.prepareStatement(GETFENOTYPEBYPLANTID);
         stmtSelectFenoMultiByID = dbConnection.prepareStatement(GETFENOTYPEMULTIBYPLANTID);
+
         stmtSelectIdsByFeno = dbConnection.prepareStatement(GETIDSBYFENO);
         stmtSelectIdsByFenoMulti = dbConnection.prepareStatement(GETIDSBYFENOMULTI);
+        stmtSelectIdsBySingleFenoMulti = dbConnection.prepareStatement(GETIDSBYSINGLEFENOMULTI);
     }
 
     //region GET
@@ -116,55 +121,110 @@ public class FenotypeDAO implements Queries {
         String sPlantIds = DaoUtils.sqlFormatedList(plantIds);
         ArrayList<Integer> ids = new ArrayList<>();
 
-        //SQLcommand
+        //region SQLcommand
         stmtSelectIdsByFeno.setString(1, sPlantIds);
 
+        //bladvorm
+        PropertyClass<Value> bladvorm = bindingData.dataBindings.get(Bindings.BLADVORM);
+        stmtSelectIdsByFeno.setString(2, bladvorm.getValue().get());
+        stmtSelectIdsByFeno.setInt(3, (bladvorm.getDoSearch()) ? 0 : 1);
 
-        stmtSelectIdsByFeno.setString(2, bindingData.dataBindings.get(Bindings.BLADVORM).getValue().get());
-        stmtSelectIdsByFeno.setInt(3, (bindingData.dataBindings.get(Bindings.BLADVORM).getDoSearch()) ? 0 : 1);
+        //levensvorm
+        PropertyClass<ValueWithBoolean[]> levensvorm = bindingData.arrayDataBindings.get(ArrayBindings.LEVENSVORM);
+        stmtSelectIdsByFeno.setString(4, Utils.GetCheckedValue(levensvorm.getValue()));
+        stmtSelectIdsByFeno.setInt(5, (levensvorm.getDoSearch()) ? 0 : 1);
 
-        //TODO: fix to array
-        //stmtSelectIdsByFeno.setString(4, bindingData.dataBindings.get(Bindings.LEVENSVORM).getValue().get());
-        //stmtSelectIdsByFeno.setInt(5, (bindingData.dataBindings.get(Bindings.LEVENSVORM).getDoSearch()) ? 0 : 1);
+        //habitus
+        PropertyClass<ValueWithBoolean[]> habitus = bindingData.arrayDataBindings.get(ArrayBindings.HABITUS);
+        stmtSelectIdsByFeno.setString(6, Utils.GetCheckedValue(habitus.getValue()));
+        stmtSelectIdsByFeno.setInt(7, (habitus.getDoSearch()) ? 0 : 1);
 
-        //stmtSelectIdsByFeno.setString(6, bindingData.dataBindings.get(Bindings.HABITUS).getValue().get());
-        //stmtSelectIdsByFeno.setInt(7, (bindingData.dataBindings.get(Bindings.HABITUS).getDoSearch()) ? 0 : 1);
+        //bloeiwijze
+        PropertyClass<ValueWithBoolean[]> bloeiwijze = bindingData.arrayDataBindings.get(ArrayBindings.BLOEIWIJZE);
+        stmtSelectIdsByFeno.setString(8, Utils.GetCheckedValue(habitus.getValue()));
+        stmtSelectIdsByFeno.setInt(9, (bloeiwijze.getDoSearch()) ? 0 : 1);
 
-        //stmtSelectIdsByFeno.setString(8, bindingData.dataBindings.get(Bindings.BLOEIWIJZE).getValue().get());
-        //stmtSelectIdsByFeno.setInt(9, (bindingData.dataBindings.get(Bindings.BLOEIWIJZE).getDoSearch()) ? 0 : 1);
+        //bladgrootte
+        PropertyClass<Value> bladgrootte = bindingData.dataBindings.get(Bindings.BLADGROOTTE);
+        stmtSelectIdsByFeno.setString(10, bladgrootte.getValue().get());
+        stmtSelectIdsByFeno.setInt(11, (bladgrootte.getDoSearch()) ? 0 : 1);
 
-        stmtSelectIdsByFeno.setString(10, bindingData.dataBindings.get(Bindings.BLADGROOTTE).getValue().get());
-        stmtSelectIdsByFeno.setInt(11, (bindingData.dataBindings.get(Bindings.BLADGROOTTE).getDoSearch()) ? 0 : 1);
+        //ratiobloeiblad
+        PropertyClass<Value> ratiobloeiblad = bindingData.dataBindings.get(Bindings.RATIOBLOEIBLAD);
+        stmtSelectIdsByFeno.setString(12, ratiobloeiblad.getValue().get());
+        stmtSelectIdsByFeno.setInt(13, (ratiobloeiblad.getDoSearch()) ? 0 : 1);
 
-        stmtSelectIdsByFeno.setString(12, bindingData.dataBindings.get(Bindings.RATIOBLOEIBLAD).getValue().get());
-        stmtSelectIdsByFeno.setInt(13, (bindingData.dataBindings.get(Bindings.RATIOBLOEIBLAD).getDoSearch()) ? 0 : 1);
-
-        stmtSelectIdsByFeno.setString(14, bindingData.dataBindings.get(Bindings.SPRUITFENOLOGIE).getValue().get());
-        stmtSelectIdsByFeno.setInt(15, (bindingData.dataBindings.get(Bindings.SPRUITFENOLOGIE).getDoSearch()) ? 0 : 1);
+        //spruitfenologie
+        PropertyClass<Value> spruitfenologie = bindingData.dataBindings.get(Bindings.SPRUITFENOLOGIE);
+        stmtSelectIdsByFeno.setString(14, spruitfenologie.getValue().get());
+        stmtSelectIdsByFeno.setInt(15, (spruitfenologie.getDoSearch()) ? 0 : 1);
 
         ResultSet rs = stmtSelectIdsByFeno.executeQuery();
         while (rs.next()) {
-            ids.add(rs.getInt(0));
+            ids.add(rs.getInt("plant_id"));
         }
 
-        //MultiFilter
-        //TODO:Aanpassen aan de hand van de keuze van min-max hoogtes
-        PropertyClass<ValueWithBoolean[]> bloeihoogteData = bindingData.arrayDataBindings.get(ArrayBindings.MAXBLOEIHOOGTEPERMAAND);
-        if (bloeihoogteData.getDoSearch()) {
-            ids = FilterOnMulti("BloeiHoogte", bloeihoogteData.getValue(), ids);
+        //endregion
+
+        //region Multi_Eigenschappen
+
+        //Hoogtes
+        PropertyClass<ValueWithBoolean[]> multiHoogte;
+        PropertyClass<ValueWithBoolean[]> singleHoogte;
+
+        //region Bloeihoogte
+
+        multiHoogte = bindingData.arrayDataBindings.get(ArrayBindings.MAXBLOEIHOOGTEPERMAAND);
+        singleHoogte = bindingData.arrayDataBindings.get(ArrayBindings.MAXBLOEIHOOGTE);
+        if (multiHoogte.getDoSearch()) {
+            ids = FilterOnMulti("BloeiHoogte", multiHoogte.getValue(), ids);
+        } else if (singleHoogte.getDoSearch()) {
+            ids = FilterBetweenValues("Bloeihoogte", singleHoogte.getValue(), ids);
         }
-        PropertyClass<ValueWithBoolean[]> bloeikleurData = bindingData.arrayDataBindings.get(ArrayBindings.MAXBLOEIHOOGTEPERMAAND);
-        if (bloeikleurData.getDoSearch()) {
-            ids = FilterOnMulti("BloeiKleur", bloeikleurData.getValue(), ids);
+
+        //endregion
+
+        //region Bladhoogte
+
+        multiHoogte = bindingData.arrayDataBindings.get(ArrayBindings.MAXBLADHOOGTEPERMAAND);
+        singleHoogte = bindingData.arrayDataBindings.get(ArrayBindings.MAXBLADHOOGTE);
+        if (multiHoogte.getDoSearch()) {
+            ids = FilterOnMulti("Bladhoogte", multiHoogte.getValue(), ids);
+        } else if (singleHoogte.getDoSearch()) {
+            ids = FilterBetweenValues("Bladhoogte", singleHoogte.getValue(), ids);
         }
-        PropertyClass<ValueWithBoolean[]> bladkleurData = bindingData.arrayDataBindings.get(ArrayBindings.MAXBLOEIHOOGTEPERMAAND);
-        if (bladkleurData.getDoSearch()) {
-            ids = FilterOnMulti("BladKleur", bladkleurData.getValue(), ids);
+
+        //endregion
+
+        //Kleuren
+        PropertyClass<ValueWithBoolean[]> multiKleur;
+        PropertyClass<Value> singleKleur;
+
+        //region bloeikleur
+
+        multiKleur = bindingData.arrayDataBindings.get(ArrayBindings.BLOEIKLEURPERMAAND);
+        singleKleur = bindingData.dataBindings.get(Bindings.BLOEIKLEUR);
+        if (multiKleur.getDoSearch()) {
+            ids = FilterOnMulti("Bloeikleur", multiKleur.getValue(), ids);
+        } else if (singleKleur.getDoSearch()) {
+            ids = FilterOnSingleMulti("Bloeikleur", singleKleur.getValue(), ids);
         }
-        PropertyClass<ValueWithBoolean[]> bladhoogteData = bindingData.arrayDataBindings.get(ArrayBindings.MAXBLOEIHOOGTEPERMAAND);
-        if (bladhoogteData.getDoSearch()) {
-            ids = FilterOnMulti("Bladhoogte", bladhoogteData.getValue(), ids);
+
+        //endregion
+
+        //region bladkleur
+
+        multiKleur = bindingData.arrayDataBindings.get(ArrayBindings.BLADKLEURPERMAAND);
+        singleKleur = bindingData.dataBindings.get(Bindings.BLADKLEUR);
+        if (multiKleur.getDoSearch()) {
+            ids = FilterOnMulti("Bladkleur", multiKleur.getValue(), ids);
+        } else if (singleKleur.getDoSearch()) {
+            ids = FilterOnSingleMulti("Bladkleur", singleKleur.getValue(), ids);
         }
+
+        //endregion
+
+        //endregion
 
         //Output
         return ids;
@@ -197,7 +257,75 @@ public class FenotypeDAO implements Queries {
 
         ResultSet rs = stmtSelectIdsByFenoMulti.executeQuery();
         while (rs.next()) {
-            ids.add(rs.getInt(0));
+            ids.add(rs.getInt("plant_id"));
+        }
+
+        //Output
+        return ids;
+    }
+
+    private ArrayList<Integer> FilterBetweenValues(String eigenschap, ValueWithBoolean[] data, List<Integer> plantIds) throws SQLException {
+        //Dao
+
+        //Items
+        String sPlantIds = DaoUtils.sqlFormatedList(plantIds);
+        ArrayList<Integer> ids = new ArrayList<>();
+
+        //SQLcommand
+        stmtSelectIdsBySingleFenoMulti.setString(1, sPlantIds);
+
+        stmtSelectIdsBySingleFenoMulti.setString(2, eigenschap);
+
+        stmtSelectIdsBySingleFenoMulti.setInt(3, Integer.parseInt(data[0].get()));
+        stmtSelectIdsBySingleFenoMulti.setInt(4, Integer.parseInt(data[1].get()));
+        stmtSelectIdsBySingleFenoMulti.setInt(5, Integer.parseInt(data[0].get()));
+        stmtSelectIdsBySingleFenoMulti.setInt(6, Integer.parseInt(data[1].get()));
+        stmtSelectIdsBySingleFenoMulti.setInt(7, Integer.parseInt(data[0].get()));
+        stmtSelectIdsBySingleFenoMulti.setInt(8, Integer.parseInt(data[1].get()));
+        stmtSelectIdsBySingleFenoMulti.setInt(9, Integer.parseInt(data[0].get()));
+        stmtSelectIdsBySingleFenoMulti.setInt(10, Integer.parseInt(data[1].get()));
+        stmtSelectIdsBySingleFenoMulti.setInt(11, Integer.parseInt(data[0].get()));
+        stmtSelectIdsBySingleFenoMulti.setInt(12, Integer.parseInt(data[1].get()));
+        stmtSelectIdsBySingleFenoMulti.setInt(13, Integer.parseInt(data[0].get()));
+        stmtSelectIdsBySingleFenoMulti.setInt(14, Integer.parseInt(data[1].get()));
+
+        ResultSet rs = stmtSelectIdsBySingleFenoMulti.executeQuery();
+        while (rs.next()) {
+            ids.add(rs.getInt("plant_id"));
+        }
+
+        //Output
+        return ids;
+    }
+
+    private ArrayList<Integer> FilterOnSingleMulti(String eigenschap, Value data, List<Integer> plantIds) throws SQLException {
+        //Dao
+
+        //Items
+        String sPlantIds = DaoUtils.sqlFormatedList(plantIds);
+        ArrayList<Integer> ids = new ArrayList<>();
+
+        //SQLcommand
+        stmtSelectIdsBySingleFenoMulti.setString(1, sPlantIds);
+
+        stmtSelectIdsBySingleFenoMulti.setString(2, eigenschap);
+
+        stmtSelectIdsBySingleFenoMulti.setInt(3, Integer.parseInt(data.get()));
+        stmtSelectIdsBySingleFenoMulti.setInt(4, Integer.parseInt(data.get()));
+        stmtSelectIdsBySingleFenoMulti.setInt(5, Integer.parseInt(data.get()));
+        stmtSelectIdsBySingleFenoMulti.setInt(6, Integer.parseInt(data.get()));
+        stmtSelectIdsBySingleFenoMulti.setInt(7, Integer.parseInt(data.get()));
+        stmtSelectIdsBySingleFenoMulti.setInt(8, Integer.parseInt(data.get()));
+        stmtSelectIdsBySingleFenoMulti.setInt(9, Integer.parseInt(data.get()));
+        stmtSelectIdsBySingleFenoMulti.setInt(10, Integer.parseInt(data.get()));
+        stmtSelectIdsBySingleFenoMulti.setInt(11, Integer.parseInt(data.get()));
+        stmtSelectIdsBySingleFenoMulti.setInt(12, Integer.parseInt(data.get()));
+        stmtSelectIdsBySingleFenoMulti.setInt(13, Integer.parseInt(data.get()));
+        stmtSelectIdsBySingleFenoMulti.setInt(14, Integer.parseInt(data.get()));
+
+        ResultSet rs = stmtSelectIdsBySingleFenoMulti.executeQuery();
+        while (rs.next()) {
+            ids.add(rs.getInt("plant_id"));
         }
 
         //Output

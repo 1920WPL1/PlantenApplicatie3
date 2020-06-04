@@ -15,42 +15,42 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class Controller {
-    public ComboBox cboBladkleur;
-    public ComboBox cboBloeikleur;
-    public ComboBox cboReactieAnta;
-    public ComboBox cboOntwikkel;
-    public ComboBox cboLevensduur;
-    public ComboBox cboRatioBloeiBlad;
-    public ComboBox cboSpruitfenologie;
-    public ComboBox cboBladkleurJan;
-    public ComboBox cboBladkleurFeb;
-    public ComboBox cboBladkleurMaa;
-    public ComboBox cboBladkleurApr;
-    public ComboBox cboBladkleurMei;
-    public ComboBox cboBladkleurJun;
-    public ComboBox cboBladkleurJul;
-    public ComboBox cboBladkleurAug;
-    public ComboBox cboBladkleurSep;
-    public ComboBox cboBladkleurOkt;
-    public ComboBox cboBladkleurNov;
-    public ComboBox cboBladkleurDec;
-    public ComboBox cboBloeikleurJan;
-    public ComboBox cboBloeikleurFeb;
-    public ComboBox cboBloeikleurMaa;
-    public ComboBox cboBloeikleurApr;
-    public ComboBox cboBloeikleurMei;
-    public ComboBox cboBloeikleurJun;
-    public ComboBox cboBloeikleurJul;
-    public ComboBox cboBloeikleurAug;
-    public ComboBox cboBloeikleurSep;
-    public ComboBox cboBloeikleurOkt;
-    public ComboBox cboBloeikleurNov;
-    public ComboBox cboBloeikleurDec;
+    public ComboBox<String> cboBladkleur;
+    public ComboBox<String> cboBloeikleur;
+    public ComboBox<String> cboReactieAnta;
+    public ComboBox<String> cboOntwikkel;
+    public ComboBox<String> cboLevensduur;
+    public ComboBox<String> cboRatioBloeiBlad;
+    public ComboBox<String> cboSpruitfenologie;
+    public ComboBox<String> cboBladkleurJan;
+    public ComboBox<String> cboBladkleurFeb;
+    public ComboBox<String> cboBladkleurMaa;
+    public ComboBox<String> cboBladkleurApr;
+    public ComboBox<String> cboBladkleurMei;
+    public ComboBox<String> cboBladkleurJun;
+    public ComboBox<String> cboBladkleurJul;
+    public ComboBox<String> cboBladkleurAug;
+    public ComboBox<String> cboBladkleurSep;
+    public ComboBox<String> cboBladkleurOkt;
+    public ComboBox<String> cboBladkleurNov;
+    public ComboBox<String> cboBladkleurDec;
+    public ComboBox<String> cboBloeikleurJan;
+    public ComboBox<String> cboBloeikleurFeb;
+    public ComboBox<String> cboBloeikleurMaa;
+    public ComboBox<String> cboBloeikleurApr;
+    public ComboBox<String> cboBloeikleurMei;
+    public ComboBox<String> cboBloeikleurJun;
+    public ComboBox<String> cboBloeikleurJul;
+    public ComboBox<String> cboBloeikleurAug;
+    public ComboBox<String> cboBloeikleurSep;
+    public ComboBox<String> cboBloeikleurOkt;
+    public ComboBox<String> cboBloeikleurNov;
+    public ComboBox<String> cboBloeikleurDec;
     public TextField txtSearch;
-    public Spinner nudMinBladhoogte;
-    public Spinner nudMaxBladhoogte;
-    public Spinner nudMinBloeihoogte;
-    public Spinner nudBloeiHoogte;
+    public Spinner<Integer> nudMinBladhoogte;
+    public Spinner<Integer> nudMaxBladhoogte;
+    public Spinner<Integer> nudMinBloeihoogte;
+    public Spinner<Integer> nudBloeiHoogte;
     public Slider sldBezonning;
     public Slider sldVochtbehoefte;
     public CheckBox chkGrondsoort_Z;
@@ -110,47 +110,47 @@ public class Controller {
     public RadioButton rdbVorstgevoelig_Ja;
     public RadioButton rdbVorstgevoelig_Nee;
     public RadioButton rdbVorstgevoelig_Onbekend;
-    public Spinner nudPerXJaar;
+    public Spinner<Integer> nudPerXJaar;
     public CheckBox chkMaxBladhoogtePerMaand;
-    public Spinner nudMaxBladhoogte_Jan;
-    public Spinner nudMaxBladhoogte_Feb;
-    public Spinner nudMaxBladhoogte_Maa;
-    public Spinner nudMaxBladhoogte_Apr;
-    public Spinner nudMaxBladhoogte_Mei;
-    public Spinner nudMaxBladhoogte_Jun;
-    public Spinner nudMaxBladhoogte_Jul;
-    public Spinner nudMaxBladhoogte_Aug;
-    public Spinner nudMaxBladhoogte_Sept;
-    public Spinner nudMaxBladhoogte_Okt;
-    public Spinner nudMaxBladhoogte_Nov;
-    public Spinner nudMaxBladhoogte_Dec;
+    public Spinner<Integer> nudMaxBladhoogte_Jan;
+    public Spinner<Integer> nudMaxBladhoogte_Feb;
+    public Spinner<Integer> nudMaxBladhoogte_Maa;
+    public Spinner<Integer> nudMaxBladhoogte_Apr;
+    public Spinner<Integer> nudMaxBladhoogte_Mei;
+    public Spinner<Integer> nudMaxBladhoogte_Jun;
+    public Spinner<Integer> nudMaxBladhoogte_Jul;
+    public Spinner<Integer> nudMaxBladhoogte_Aug;
+    public Spinner<Integer> nudMaxBladhoogte_Sept;
+    public Spinner<Integer> nudMaxBladhoogte_Okt;
+    public Spinner<Integer> nudMaxBladhoogte_Nov;
+    public Spinner<Integer> nudMaxBladhoogte_Dec;
     public CheckBox chkBladkleurPerMaand;
     public CheckBox chkMinBloeihoogtePerMaand;
-    public Spinner nudMinBloeihoogte_Jan;
-    public Spinner nudMinBloeihoogte_Feb;
-    public Spinner nudMinBloeihoogte_Maa;
-    public Spinner nudMinBloeihoogte_Apr;
-    public Spinner nudMinBloeihoogte_Mei;
-    public Spinner nudMinBloeihoogte_Jun;
-    public Spinner nudMinBloeihoogte_Jul;
-    public Spinner nudMinBloeihoogte_Aug;
-    public Spinner nudMinBloeihoogte_Sept;
-    public Spinner nudMinBloeihoogte_Okt;
-    public Spinner nudMinBloeihoogte_Nov;
-    public Spinner nudMinBloeihoogte_Dec;
+    public Spinner<Integer> nudMinBloeihoogte_Jan;
+    public Spinner<Integer> nudMinBloeihoogte_Feb;
+    public Spinner<Integer> nudMinBloeihoogte_Maa;
+    public Spinner<Integer> nudMinBloeihoogte_Apr;
+    public Spinner<Integer> nudMinBloeihoogte_Mei;
+    public Spinner<Integer> nudMinBloeihoogte_Jun;
+    public Spinner<Integer> nudMinBloeihoogte_Jul;
+    public Spinner<Integer> nudMinBloeihoogte_Aug;
+    public Spinner<Integer> nudMinBloeihoogte_Sept;
+    public Spinner<Integer> nudMinBloeihoogte_Okt;
+    public Spinner<Integer> nudMinBloeihoogte_Nov;
+    public Spinner<Integer> nudMinBloeihoogte_Dec;
     public CheckBox chkMaxBloeihoogtePerMaand;
-    public Spinner nudMaxBloeihoogte_Jan;
-    public Spinner nudMaxBloeihoogte_Feb;
-    public Spinner nudMaxBloeihoogte_Maa;
-    public Spinner nudMaxBloeihoogte_Apr;
-    public Spinner nudMaxBloeihoogte_Mei;
-    public Spinner nudMaxBloeihoogte_Jun;
-    public Spinner nudMaxBloeihoogte_Jul;
-    public Spinner nudMaxBloeihoogte_Aug;
-    public Spinner nudMaxBloeihoogte_Sept;
-    public Spinner nudMaxBloeihoogte_Okt;
-    public Spinner nudMaxBloeihoogte_Nov;
-    public Spinner nudMaxBloeihoogte_Dec;
+    public Spinner<Integer> nudMaxBloeihoogte_Jan;
+    public Spinner<Integer> nudMaxBloeihoogte_Feb;
+    public Spinner<Integer> nudMaxBloeihoogte_Maa;
+    public Spinner<Integer> nudMaxBloeihoogte_Apr;
+    public Spinner<Integer> nudMaxBloeihoogte_Mei;
+    public Spinner<Integer> nudMaxBloeihoogte_Jun;
+    public Spinner<Integer> nudMaxBloeihoogte_Jul;
+    public Spinner<Integer> nudMaxBloeihoogte_Aug;
+    public Spinner<Integer> nudMaxBloeihoogte_Sept;
+    public Spinner<Integer> nudMaxBloeihoogte_Okt;
+    public Spinner<Integer> nudMaxBloeihoogte_Nov;
+    public Spinner<Integer> nudMaxBloeihoogte_Dec;
     public CheckBox chkBloeikleurPerMaand;
     public CheckBox chkHabitus;
     public RadioButton rdbHabitus_1;
@@ -186,11 +186,11 @@ public class Controller {
     public RadioButton rdbLevensvorm_7;
     public RadioButton rdbLevensvorm_8;
     public RadioButton rdbLevensvorm_9;
-    public ComboBox cboType;
-    public ComboBox cboFamilie;
-    public ComboBox cboBladgrootte;
-    public ComboBox cboHabitat;
-    public ComboBox cboBladvorm;
+    public ComboBox<String> cboType;
+    public ComboBox<String> cboFamilie;
+    public ComboBox<String> cboBladgrootte;
+    public ComboBox<String> cboHabitat;
+    public ComboBox<String> cboBladvorm;
     public RadioButton rdbBloeiwijze_Schotel;
     public CheckBox chkHabitat;
     public CheckBox chkType;
@@ -203,9 +203,8 @@ public class Controller {
     public CheckBox chkVochtBehoefte;
     public CheckBox chkGrondsoort;
     public CheckBox chkBladgrootte;
-    public ComboBox cboBehandeling;
-    public ComboBox cboMaand;
-
+    public ComboBox<String> cboBehandeling;
+    public ComboBox<String> cboMaand;
 
 
     private InfoTables infoTables;
@@ -272,7 +271,7 @@ public class Controller {
      * @param checkBox
      * @param comboBox
      */
-    public void Bind(Bindings E, CheckBox checkBox, ComboBox comboBox){
+    public void Bind(Bindings E, CheckBox checkBox, ComboBox<String> comboBox){
         comboBox.disableProperty().bind(checkBox.selectedProperty().not());
         bindingData.dataBindings.get(E).DoSearchProperty().bind(checkBox.selectedProperty());
         bindingData.dataBindings.get(E).getValue().valueProperty().bind(comboBox.valueProperty().asString());
@@ -284,7 +283,7 @@ public class Controller {
      * @param checkBox
      * @param spinner
      */
-    public void Bind(Bindings E, CheckBox checkBox, Spinner spinner){
+    public void Bind(Bindings E, CheckBox checkBox, Spinner<Integer> spinner){
         spinner.disableProperty().bind(checkBox.selectedProperty().not());
         bindingData.dataBindings.get(E).DoSearchProperty().bind(checkBox.selectedProperty());
         bindingData.dataBindings.get(E).getValue().valueProperty().bind(spinner.valueProperty().asString());
@@ -297,7 +296,7 @@ public class Controller {
         }
     }
 
-    public void BindSpinner(ArrayBindings E, CheckBox checkBox, ArrayList<Spinner> listSpinner){
+    public void BindSpinner(ArrayBindings E, CheckBox checkBox, ArrayList<Spinner<Integer>> listSpinner){
         for (int i = 0; i<bindingData.arrayDataBindings.get(E).getValue().length;i++) {
             bindingData.arrayDataBindings.get(E).getValue()[i].valueProperty().bind(listSpinner.get(i).valueProperty().asString());
 

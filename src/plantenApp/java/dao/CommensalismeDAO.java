@@ -4,6 +4,7 @@ import plantenApp.java.model.*;
 import plantenApp.java.utils.ArrayBindings;
 import plantenApp.java.utils.Bindings;
 import plantenApp.java.utils.DaoUtils;
+import plantenApp.java.utils.Utils;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -104,16 +105,16 @@ public class CommensalismeDAO implements Queries {
         //SQLcommand
         stmtSelectIdsByComm.setString(1, sPlantIds);
 
-        //TODO: convert to array
-        //stmtSelectIdsByComm.setString(2, bindingData.dataBindings.get(Bindings.STRATEGIE).getValue().get());
-        //stmtSelectIdsByComm.setInt(3, (bindingData.dataBindings.get(Bindings.STRATEGIE).getDoSearch()) ? 0 : 1);
+        PropertyClass<ValueWithBoolean[]> strategie = bindingData.arrayDataBindings.get(ArrayBindings.STRATEGIE);
+        stmtSelectIdsByComm.setString(2, Utils.GetCheckedValue(strategie.getValue()));
+        stmtSelectIdsByComm.setInt(3, (strategie.getDoSearch()) ? 0 : 1);
 
         stmtSelectIdsByComm.setString(4, bindingData.dataBindings.get(Bindings.ONTWIKKELINGSSNELHEID).getValue().get());
         stmtSelectIdsByComm.setInt(5, (bindingData.dataBindings.get(Bindings.ONTWIKKELINGSSNELHEID).getDoSearch()) ? 0 : 1);
 
         ResultSet rs = stmtSelectIdsByComm.executeQuery();
         while (rs.next()) {
-            ids.add(rs.getInt(0));
+            ids.add(rs.getInt("plant_id"));
         }
 
         //Multi
@@ -148,7 +149,7 @@ public class CommensalismeDAO implements Queries {
 
         ResultSet rs = stmtSelectIdsByCommMulti.executeQuery();
         while (rs.next()) {
-            ids.add(rs.getInt(0));
+            ids.add(rs.getInt("plant_id"));
         }
 
         //Output

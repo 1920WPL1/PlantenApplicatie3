@@ -1,7 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="e3f371c2-5a62-4881-8767-e007751523f2" name="Default Changelist" comment="" />
+    <list default="true" id="e3f371c2-5a62-4881-8767-e007751523f2" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/plantenApp/java/utils/Utils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/mssql_jdbc_7_4_1_jre11.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/mssql_jdbc_7_4_1_jre11.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/mssql_jdbc_7_4_1_jre111.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PlantenApplicatie.iml" beforeDir="false" afterPath="$PROJECT_DIR$/PlantenApplicatie.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/plantenApp/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/plantenApp/Controller.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/plantenApp/java/dao/AbiotischeFactorenDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/plantenApp/java/dao/AbiotischeFactorenDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/plantenApp/java/dao/BeheerDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/plantenApp/java/dao/BeheerDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/plantenApp/java/dao/CommensalismeDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/plantenApp/java/dao/CommensalismeDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/plantenApp/java/dao/ExtraDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/plantenApp/java/dao/ExtraDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/plantenApp/java/dao/FenotypeDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/plantenApp/java/dao/FenotypeDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/plantenApp/java/dao/InfoTablesDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/plantenApp/java/dao/InfoTablesDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/plantenApp/java/dao/PlantDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/plantenApp/java/dao/PlantDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/plantenApp/java/dao/Queries.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/plantenApp/java/dao/Queries.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/plantenApp/java/model/BindingData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/plantenApp/java/model/BindingData.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/plantenApp/java/utils/ArrayBindings.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/plantenApp/java/utils/ArrayBindings.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -37,8 +54,8 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../Jar/sqljdbc_7.4/enu/mssql-jdbc-7.4.1.jre11.jar!/" />
-    <property name="project.structure.last.edited" value="Libraries" />
+    <property name="last_opened_file_path" value="C:/Progs/Java/Libraries/mssql-jdbc-7.4.1.jre11.jar!/" />
+    <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.30297872" />
   </component>
@@ -46,18 +63,6 @@
     <key name="CreateClassDialog.RecentsKey">
       <recent name="plantenApp.java.model" />
     </key>
-  </component>
-  <component name="RunDashboard">
-    <option name="ruleStates">
-      <list>
-        <RuleState>
-          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
-        </RuleState>
-        <RuleState>
-          <option name="name" value="StatusDashboardGroupingRule" />
-        </RuleState>
-      </list>
-    </option>
   </component>
   <component name="RunManager">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
@@ -91,6 +96,7 @@
       <updated>1591166945762</updated>
       <workItem from="1591166952631" duration="18926000" />
       <workItem from="1591190359174" duration="5557000" />
+      <workItem from="1591253208506" duration="7215000" />
     </task>
     <servers />
   </component>
@@ -118,18 +124,18 @@
       <screen x="0" y="0" width="1858" height="1080" />
     </state>
     <state x="734" y="224" key="#com.intellij.ide.util.MemberChooser/0.0.1858.1080@0.0.1858.1080" timestamp="1591171678894" />
-    <state x="725" y="425" width="407" height="237" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes" timestamp="1591190219917">
+    <state x="725" y="425" width="407" height="237" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes" timestamp="1591255791343">
       <screen x="0" y="0" width="1858" height="1080" />
     </state>
-    <state x="725" y="425" width="407" height="237" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes/0.0.1858.1080@0.0.1858.1080" timestamp="1591190219917" />
+    <state x="725" y="425" width="407" height="237" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes/0.0.1858.1080@0.0.1858.1080" timestamp="1591255791343" />
     <state x="509" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1591111487134">
       <screen x="0" y="0" width="1858" height="1080" />
     </state>
     <state x="509" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1858.1080@0.0.1858.1080" timestamp="1591111487134" />
-    <state x="708" y="281" key="FileChooserDialogImpl" timestamp="1591168671222">
+    <state x="708" y="281" key="FileChooserDialogImpl" timestamp="1591253516311">
       <screen x="0" y="0" width="1858" height="1080" />
     </state>
-    <state x="708" y="281" key="FileChooserDialogImpl/0.0.1858.1080@0.0.1858.1080" timestamp="1591168671222" />
+    <state x="708" y="281" key="FileChooserDialogImpl/0.0.1858.1080@0.0.1858.1080" timestamp="1591253516311" />
     <state width="1815" height="295" key="GridCell.Tab.0.bottom" timestamp="1591198008911">
       <screen x="0" y="0" width="1858" height="1080" />
     </state>
@@ -146,17 +152,25 @@
       <screen x="0" y="0" width="1858" height="1080" />
     </state>
     <state width="1815" height="295" key="GridCell.Tab.0.right/0.0.1858.1080@0.0.1858.1080" timestamp="1591198008911" />
-    <state x="497" y="88" width="1040" height="878" key="SettingsEditor" timestamp="1591107881019">
+    <state x="497" y="88" width="1040" height="878" key="SettingsEditor" timestamp="1591253535637">
       <screen x="0" y="0" width="1858" height="1080" />
     </state>
-    <state x="497" y="88" width="1040" height="878" key="SettingsEditor/0.0.1858.1080@0.0.1858.1080" timestamp="1591107881019" />
+    <state x="497" y="88" width="1040" height="878" key="SettingsEditor/0.0.1858.1080@0.0.1858.1080" timestamp="1591253535637" />
+    <state width="498" height="446" key="SwitcherDM" timestamp="1591253860604">
+      <screen x="0" y="0" width="1858" height="1080" />
+    </state>
+    <state width="498" height="446" key="SwitcherDM/0.0.1858.1080@0.0.1858.1080" timestamp="1591253860604" />
+    <state x="659" y="306" key="extract.method.dialog" timestamp="1591254102992">
+      <screen x="0" y="0" width="1858" height="1080" />
+    </state>
+    <state x="659" y="306" key="extract.method.dialog/0.0.1858.1080@0.0.1858.1080" timestamp="1591254102992" />
     <state x="311" y="235" key="new project wizard" timestamp="1591092578101">
       <screen x="0" y="0" width="1858" height="1080" />
     </state>
     <state x="311" y="235" key="new project wizard/0.0.1858.1080@0.0.1858.1080" timestamp="1591092578101" />
-    <state x="635" y="168" key="refactoring.ChangeSignatureDialog" timestamp="1591197916952">
+    <state x="635" y="168" key="refactoring.ChangeSignatureDialog" timestamp="1591257365265">
       <screen x="0" y="0" width="1858" height="1080" />
     </state>
-    <state x="635" y="168" key="refactoring.ChangeSignatureDialog/0.0.1858.1080@0.0.1858.1080" timestamp="1591197916952" />
+    <state x="635" y="168" key="refactoring.ChangeSignatureDialog/0.0.1858.1080@0.0.1858.1080" timestamp="1591257365265" />
   </component>
 </project>

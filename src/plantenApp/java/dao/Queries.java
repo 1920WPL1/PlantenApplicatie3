@@ -24,8 +24,6 @@ public interface Queries {
     //region GETIDSBYKENMERKEN
     String GETIDSBYPLANT =
             "SELECT plant_id FROM plant WHERE " +
-                    "plant_id IN ? " +
-                    "AND " +
                     "(type = ? OR  1=?) " +
                     "AND " +
                     "(familie = ? OR 1=?) " +
@@ -114,29 +112,37 @@ public interface Queries {
                     "AND " +
                     "eigenschap "+
                     "AND " +
-                    "jan = ?" +
+                    "jan = ? AND feb = ? AND maa = ? AND apr = ? AND mei = ? AND jun = ? AND jul = ? AND aug = ? AND sep = ? AND okt = ? AND nov = ? AND dec = ?";
+    String GETIDSBYSINGLEFENOMULTI =
+            "SELECT plant_id FROM commensalisme_multi " +
+                    "WHERE " +
+                    "plant_id IN ? " +
                     "AND " +
-                    "feb = ?" +
+                    "eigenschap "+
                     "AND " +
-                    "maa = ?" +
+                    "(jan BETWEEN ? AND ?) " +
                     "AND " +
-                    "apr = ?" +
+                    "(feb BETWEEN ? AND ?) " +
                     "AND " +
-                    "mei = ?" +
+                    "(maa BETWEEN ? AND ?) " +
                     "AND " +
-                    "jun = ?" +
+                    "(apr BETWEEN ? AND ?) " +
                     "AND " +
-                    "jul = ?" +
+                    "(mei BETWEEN ? AND ?) " +
                     "AND " +
-                    "aug = ?" +
+                    "(jun BETWEEN ? AND ?) " +
                     "AND " +
-                    "sep = ?" +
+                    "(jul BETWEEN ? AND ?) " +
                     "AND " +
-                    "okt = ?" +
+                    "(aug BETWEEN ? AND ?) " +
                     "AND " +
-                    "nov = ?" +
+                    "(sep BETWEEN ? AND ?) " +
                     "AND " +
-                    "dec = ?";
+                    "(okt BETWEEN ? AND ?) " +
+                    "AND " +
+                    "(nov BETWEEN ? AND ?) " +
+                    "AND " +
+                    "(dec BETWEEN ? AND ?) ";
     String GETIDSBYBEHEER =
             "SELECT plant_id FROM Beheer " +
                     "WHERE " +

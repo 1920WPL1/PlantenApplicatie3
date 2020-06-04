@@ -145,28 +145,25 @@ public class PlantDAO implements Queries {
 
     //region FILTER
 
-    public ArrayList<Integer> FilterOn(List<Integer> plantIds, BindingData bindingData) throws SQLException {
+    public ArrayList<Integer> FilterOn(BindingData bindingData) throws SQLException {
         //Dao
 
         //Items
-        String sPlantIds = DaoUtils.sqlFormatedList(plantIds);
         ArrayList<Integer> ids = new ArrayList<>();
 
         //SQLcommand
-        stmtSelectIdsByPlant.setString(1, sPlantIds);
+        stmtSelectIdsByPlant.setString(1, bindingData.dataBindings.get(Bindings.TYPE).getValue().get());
+        stmtSelectIdsByPlant.setInt(2, (bindingData.dataBindings.get(Bindings.TYPE).getDoSearch()) ? 0 : 1);
 
-        stmtSelectIdsByPlant.setString(2, bindingData.dataBindings.get(Bindings.TYPE).getValue().get());
-        stmtSelectIdsByPlant.setInt(3, (bindingData.dataBindings.get(Bindings.TYPE).getDoSearch()) ? 0 : 1);
+        stmtSelectIdsByPlant.setString(3, bindingData.dataBindings.get(Bindings.FAMILIE).getValue().get());
+        stmtSelectIdsByPlant.setInt(4, (bindingData.dataBindings.get(Bindings.FAMILIE).getDoSearch()) ? 0 : 1);
 
-        stmtSelectIdsByPlant.setString(4, bindingData.dataBindings.get(Bindings.FAMILIE).getValue().get());
-        stmtSelectIdsByPlant.setInt(5, (bindingData.dataBindings.get(Bindings.FAMILIE).getDoSearch()) ? 0 : 1);
-
-        stmtSelectIdsByPlant.setString(6, bindingData.dataBindings.get(Bindings.SEARCH).getValue().get());
-        stmtSelectIdsByPlant.setInt(7, (bindingData.dataBindings.get(Bindings.SEARCH).getDoSearch()) ? 0 : 1);
+        stmtSelectIdsByPlant.setString(5, bindingData.dataBindings.get(Bindings.SEARCH).getValue().get());
+        stmtSelectIdsByPlant.setInt(6, (bindingData.dataBindings.get(Bindings.SEARCH).getDoSearch()) ? 0 : 1);
 
         ResultSet rs = stmtSelectIdsByPlant.executeQuery();
         while (rs.next()) {
-            ids.add(rs.getInt(0));
+            ids.add(rs.getInt("plant_id"));
         }
 
         //Output

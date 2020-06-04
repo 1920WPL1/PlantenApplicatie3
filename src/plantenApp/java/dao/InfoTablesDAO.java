@@ -9,7 +9,6 @@ import java.util.ArrayList;
  * @author Siebe
  */
 public class InfoTablesDAO implements Queries {
-    //TODO: Zet arraylisto m naar collections
     private Connection dbConnection;
 
     public InfoTablesDAO(Connection dbConnection) throws SQLException {

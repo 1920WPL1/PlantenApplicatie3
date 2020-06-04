@@ -8,12 +8,12 @@ import java.util.EnumMap;
 
 
 /**
- * @author  bradley
+ * @author bradley
  * maakt alle verschillende bindings aan
  */
 public class BindingData {
     public EnumMap<Bindings, PropertyClass<Value>> dataBindings;
-    public EnumMap<ArrayBindings, PropertyClass<ValueWithBoolean[]> >arrayDataBindings;
+    public EnumMap<ArrayBindings, PropertyClass<ValueWithBoolean[]>> arrayDataBindings;
 
     public BindingData() {
         dataBindings = new EnumMap<Bindings, PropertyClass<Value>>(Bindings.class);
@@ -50,15 +50,18 @@ public class BindingData {
         arrayDataBindings = new EnumMap<ArrayBindings, PropertyClass<ValueWithBoolean[]>>(ArrayBindings.class);
         arrayDataBindings.put(ArrayBindings.BLADKLEURPERMAAND, new PropertyClass<ValueWithBoolean[]>(new ValueWithBoolean[12]));
         arrayDataBindings.put(ArrayBindings.BLOEIKLEURPERMAAND, new PropertyClass<ValueWithBoolean[]>(new ValueWithBoolean[12]));
-        arrayDataBindings.put(ArrayBindings.SOCIABILITEIT,new PropertyClass<ValueWithBoolean[]>(new ValueWithBoolean[5]));
-        arrayDataBindings.put(ArrayBindings.GRONDSOORT,new PropertyClass<ValueWithBoolean[]>(new ValueWithBoolean[3]));
-        arrayDataBindings.put(ArrayBindings.MAXBLADHOOGTEPERMAAND,new PropertyClass<ValueWithBoolean[]>(new ValueWithBoolean[12]));
-        arrayDataBindings.put(ArrayBindings.MINBLOEIHOOGTEPERMAAND,new PropertyClass<ValueWithBoolean[]>(new ValueWithBoolean[12]));
-        arrayDataBindings.put(ArrayBindings.MAXBLOEIHOOGTEPERMAAND,new PropertyClass<ValueWithBoolean[]>(new ValueWithBoolean[12]));
-        arrayDataBindings.put(ArrayBindings.STRATEGIE,new PropertyClass<ValueWithBoolean[]>(new ValueWithBoolean[8]));
-        arrayDataBindings.put(ArrayBindings.HABITUS,new PropertyClass<ValueWithBoolean[]>(new ValueWithBoolean[15]));
-        arrayDataBindings.put(ArrayBindings.BLOEIWIJZE,new PropertyClass<ValueWithBoolean[]>(new ValueWithBoolean[8]));
-        arrayDataBindings.put(ArrayBindings.LEVENSVORM,new PropertyClass<ValueWithBoolean[]>(new ValueWithBoolean[9]));
+        arrayDataBindings.put(ArrayBindings.SOCIABILITEIT, new PropertyClass<ValueWithBoolean[]>(new ValueWithBoolean[5]));
+        arrayDataBindings.put(ArrayBindings.GRONDSOORT, new PropertyClass<ValueWithBoolean[]>(new ValueWithBoolean[3]));
+        arrayDataBindings.put(ArrayBindings.MAXBLADHOOGTEPERMAAND, new PropertyClass<ValueWithBoolean[]>(new ValueWithBoolean[12]));
+        arrayDataBindings.put(ArrayBindings.MINBLOEIHOOGTEPERMAAND, new PropertyClass<ValueWithBoolean[]>(new ValueWithBoolean[12]));
+        arrayDataBindings.put(ArrayBindings.MAXBLOEIHOOGTEPERMAAND, new PropertyClass<ValueWithBoolean[]>(new ValueWithBoolean[12]));
+        arrayDataBindings.put(ArrayBindings.STRATEGIE, new PropertyClass<ValueWithBoolean[]>(new ValueWithBoolean[8]));
+        arrayDataBindings.put(ArrayBindings.HABITUS, new PropertyClass<ValueWithBoolean[]>(new ValueWithBoolean[15]));
+        arrayDataBindings.put(ArrayBindings.BLOEIWIJZE, new PropertyClass<ValueWithBoolean[]>(new ValueWithBoolean[8]));
+        arrayDataBindings.put(ArrayBindings.LEVENSVORM, new PropertyClass<ValueWithBoolean[]>(new ValueWithBoolean[9]));
+        arrayDataBindings.put(ArrayBindings.MAXBLADHOOGTE, new PropertyClass<ValueWithBoolean[]>(new ValueWithBoolean[2]));
+        arrayDataBindings.put(ArrayBindings.MINGBLOEIHOOGTE, new PropertyClass<ValueWithBoolean[]>(new ValueWithBoolean[2]));
+        arrayDataBindings.put(ArrayBindings.MAXBLOEIHOOGTE, new PropertyClass<ValueWithBoolean[]>(new ValueWithBoolean[2]));
     }
 
 }
