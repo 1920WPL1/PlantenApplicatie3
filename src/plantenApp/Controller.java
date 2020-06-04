@@ -258,6 +258,99 @@ public class Controller {
 
         BindRadiobutton(ArrayBindings.LEVENSVORM, chkLevensvormVolgensRaunkhiaer, rdbLevensvormen);
 
+        ArrayList<RadioButton> rdbStrategieën = new ArrayList<RadioButton>();
+        rdbStrategieën.add(rdbStrategie_C);
+        rdbStrategieën.add(rdbStrategie_R);
+        rdbStrategieën.add(rdbStrategie_S);
+        rdbStrategieën.add(rdbStrategie_CR);
+        rdbStrategieën.add(rdbStrategie_CS);
+        rdbStrategieën.add(rdbStrategie_RS);
+        rdbStrategieën.add(rdbStrategie_CRS);
+        rdbStrategieën.add(rdbStrategie_Onbekend);
+        BindRadiobutton(ArrayBindings.STRATEGIE, chkStrategie, rdbStrategieën);
+
+        ArrayList<RadioButton> rdbBijvriendelijken = new ArrayList<RadioButton>();
+        rdbBijvriendelijken.add(rdbBijvriendelijk_Ja);
+        rdbBijvriendelijken.add(rdbBijvriendelijk_Nee);
+        rdbBijvriendelijken.add(rdbBijvriendelijk_Onbekend);
+        BindRadiobutton(ArrayBindings.BIJVRIENDELIJK, chkBijvriendelijk, rdbBijvriendelijken);
+
+        ArrayList<RadioButton> rdbVlindervriendelijken = new ArrayList<RadioButton>();
+        rdbVlindervriendelijken.add(rdbVlindervriendelijk_Ja);
+        rdbVlindervriendelijken.add(rdbVlindervriendelijk_Nee);
+        rdbVlindervriendelijken.add(rdbVlindervriendelijk_Onbekend);
+        BindRadiobutton(ArrayBindings.VLINDERVRIENDELIJK, chkVlindervriendelijk, rdbVlindervriendelijken);
+
+        ArrayList<RadioButton> rdbGeurenden = new ArrayList<RadioButton>();
+        rdbGeurenden.add(rdbGeurend_Ja);
+        rdbGeurenden.add(rdbGeurend_Nee);
+        rdbGeurenden.add(rdbGeurend_Onbekend);
+        BindRadiobutton(ArrayBindings.GEUREND, chkGeurend, rdbGeurenden);
+
+        ArrayList<RadioButton> rdbEetbaren = new ArrayList<RadioButton>();
+        rdbEetbaren.add(rdbEetbaar_Ja);
+        rdbEetbaren.add(rdbEetbaar_Nee);
+        rdbEetbaren.add(rdbEetbaar_Onbekend);
+        BindRadiobutton(ArrayBindings.EETBAAR, chkEetbaar, rdbEetbaren);
+
+        ArrayList<RadioButton> rdkKruidgebruiken = new ArrayList<RadioButton>();
+        rdkKruidgebruiken.add(rdbKruidgebruik_Ja);
+        rdkKruidgebruiken.add(rdbKruidgebruik_Nee);
+        rdkKruidgebruiken.add(rdbKruidgebruik_Onbekend);
+        BindRadiobutton(ArrayBindings.KRUIDGEBRUIK, chkKruidgebruik, rdkKruidgebruiken);
+
+        ArrayList<RadioButton> rdbVorstgevoeligen = new ArrayList<RadioButton>();
+        rdbVorstgevoeligen.add(rdbVorstgevoelig_Ja);
+        rdbVorstgevoeligen.add(rdbVorstgevoelig_Nee);
+        rdbVorstgevoeligen.add(rdbVorstgevoelig_Onbekend);
+        BindRadiobutton(ArrayBindings.VORSTGEVOELIG, chkVorstgevoelig, rdbVorstgevoeligen);
+
+        ArrayList<RadioButton> rdbHabitusen = new ArrayList<RadioButton>();
+        rdbHabitusen.add(rdbHabitus_1);
+        rdbHabitusen.add(rdbHabitus_2);
+        rdbHabitusen.add(rdbHabitus_3);
+        rdbHabitusen.add(rdbHabitus_4);
+        rdbHabitusen.add(rdbHabitus_5);
+        rdbHabitusen.add(rdbHabitus_6);
+        rdbHabitusen.add(rdbHabitus_7);
+        rdbHabitusen.add(rdbHabitus_8);
+        rdbHabitusen.add(rdbHabitus_9);
+        rdbHabitusen.add(rdbHabitus_10);
+        rdbHabitusen.add(rdbHabitus_11);
+        rdbHabitusen.add(rdbHabitus_12);
+        rdbHabitusen.add(rdbHabitus_13);
+        rdbHabitusen.add(rdbHabitus_14);
+        rdbHabitusen.add(rdbHabitus_15);
+        BindRadiobutton(ArrayBindings.HABITUS, chkHabitus, rdbHabitusen);
+
+        ArrayList<RadioButton> rdbBloeiwijzes = new ArrayList<RadioButton>();
+        rdbBloeiwijzes.add(rdbBloeiwijze_Etage);
+        rdbBloeiwijzes.add(rdbBloeiwijze_Aar);
+        rdbBloeiwijzes.add(rdbBloeiwijze_BolofKnop);
+        rdbBloeiwijzes.add(rdbBloeiwijze_BredePluim);
+        rdbBloeiwijzes.add(rdbBloeiwijze_Margrietachtig);
+        rdbBloeiwijzes.add(rdbBloeiwijze_Scherm);
+        rdbBloeiwijzes.add(rdbBloeiwijze_Schotel);
+        rdbBloeiwijzes.add(rdbBloeiwijze_SmallePluim);
+        BindRadiobutton(ArrayBindings.BLOEIWIJZE, chkBloeiwijze, rdbBloeiwijzes);
+
+        ArrayList<CheckBox> chkSociabiliteiten = new ArrayList<CheckBox>();
+        chkSociabiliteiten.add(chkSociabiliteit_1);
+        chkSociabiliteiten.add(chkSociabiliteit_2);
+        chkSociabiliteiten.add(chkSociabiliteit_3);
+        chkSociabiliteiten.add(chkSociabiliteit_4);
+        chkSociabiliteiten.add(chkSociabiliteit_5);
+        BindCheckbox(ArrayBindings.SOCIABILITEIT, chkSociabiliteit, chkSociabiliteiten);
+
+        ArrayList<CheckBox> chkGrondsoorten = new ArrayList<CheckBox>();
+        chkGrondsoorten.add(chkGrondsoort_K);
+        chkGrondsoorten.add(chkGrondsoort_Z);
+        chkGrondsoorten.add(chkGrondsoort_L);
+        BindCheckbox(ArrayBindings.GRONDSOORT, chkGrondsoort, chkGrondsoorten);
+
+
+
+
 
 
         InitSpinners();
