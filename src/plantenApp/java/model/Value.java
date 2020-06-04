@@ -6,7 +6,7 @@ import javafx.beans.property.StringProperty;
 
 
 public class Value {
-    StringProperty value = new SimpleStringProperty();
+    StringProperty value = new SimpleStringProperty("test");
 
     public StringProperty valueProperty(){
         return value;

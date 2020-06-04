@@ -231,13 +231,6 @@ public class Controller {
         Bind(Bindings.BLADHOOGTE, chkBladHoogte, nudMaxBladhoogte);
         Bind(Bindings.FAMILIE, chkFamilie, cboFamilie);
         Bind(Bindings.TYPE, chkType, cboType);
-
-        ArrayList<CheckBox> listGrondSoort = new ArrayList<CheckBox>();
-        listGrondSoort.add(chkGrondsoort_Z);
-        listGrondSoort.add(chkGrondsoort_L);
-        listGrondSoort.add(chkGrondsoort_K);
-
-
         Bind(Bindings.HABITAT, chkHabitat, cboHabitat);
         Bind(Bindings.BLADKLEUR, chkBladKleur, cboBladkleur);
         Bind(Bindings.BLOEIKLEUR, chkBloeiKleur, cboBloeikleur);
@@ -251,6 +244,7 @@ public class Controller {
         Bind(Bindings.MAAND, chkMaand, cboMaand);
         Bind(Bindings.PERXJAAR, chkPerXJaar, nudPerXJaar);
 
+
         ArrayList<RadioButton> rdbLevensvormen = new ArrayList<RadioButton>();
         rdbLevensvormen.add(rdbLevensvorm_1);
         rdbLevensvormen.add(rdbLevensvorm_2);
@@ -262,8 +256,11 @@ public class Controller {
         rdbLevensvormen.add(rdbLevensvorm_8);
         rdbLevensvormen.add(rdbLevensvorm_9);
 
-       // BindRadiobutton(ArrayBindings.LEVENSVORM, chkLevensvormVolgensRaunkhiaer, rdbLevensvormen);
-        
+        BindRadiobutton(ArrayBindings.LEVENSVORM, chkLevensvormVolgensRaunkhiaer, rdbLevensvormen);
+
+
+
+        InitSpinners();
     }
 
     /**
@@ -301,24 +298,49 @@ public class Controller {
         bindingData.dataBindings.get(E).getValue().valueProperty().bind(spinner.valueProperty().asString());
     }
 
-    public void BindCheckbox(ArrayBindings E, CheckBox checkBox, ArrayList<CheckBox> listCheckbox){
-        for (int i = 0; i<bindingData.arrayDataBindings.get(E).getValue().length;i++) {
-            bindingData.arrayDataBindings.get(E).getValue()[i].valueProperty().bind(listCheckbox.get(i).textProperty());
-            bindingData.arrayDataBindings.get(E).getValue()[i].boolProperty().bind(listCheckbox.get(i).selectedProperty());
-        }
-    }
-
     public void BindSpinner(ArrayBindings E, CheckBox checkBox, ArrayList<Spinner<Integer>> listSpinner){
+        bindingData.arrayDataBindings.get(E).DoSearchProperty().bind(checkBox.selectedProperty().not());
+
         for (int i = 0; i<bindingData.arrayDataBindings.get(E).getValue().length;i++) {
+
+            listSpinner.get(i).disableProperty().bind(checkBox.selectedProperty().not());
             bindingData.arrayDataBindings.get(E).getValue()[i].valueProperty().bind(listSpinner.get(i).valueProperty().asString());
 
         }
     }
 
     public void BindRadiobutton(ArrayBindings E, CheckBox checkBox, ArrayList<RadioButton> listRadioButton){
+
+        bindingData.arrayDataBindings.get(E).DoSearchProperty().bind(checkBox.selectedProperty().not());
+
         for (int i = 0; i<bindingData.arrayDataBindings.get(E).getValue().length;i++) {
+
+
+            listRadioButton.get(i).disableProperty().bind(checkBox.selectedProperty().not());
             bindingData.arrayDataBindings.get(E).getValue()[i].valueProperty().bind(listRadioButton.get(i).textProperty());
             bindingData.arrayDataBindings.get(E).getValue()[i].boolProperty().bind(listRadioButton.get(i).selectedProperty());
+
+        }
+    }
+
+    public void BindCheckbox(ArrayBindings E, CheckBox checkBox, ArrayList<CheckBox> listCheckbox){
+        bindingData.arrayDataBindings.get(E).DoSearchProperty().bind(checkBox.selectedProperty().not());
+
+        for (int i = 0; i<bindingData.arrayDataBindings.get(E).getValue().length;i++) {
+
+            listCheckbox.get(i).disableProperty().bind(checkBox.selectedProperty().not());
+            bindingData.arrayDataBindings.get(E).getValue()[i].valueProperty().bind(listCheckbox.get(i).textProperty());
+            bindingData.arrayDataBindings.get(E).getValue()[i].boolProperty().bind(listCheckbox.get(i).selectedProperty());
+        }
+    }
+
+    public void BindCombobox(ArrayBindings E, CheckBox checkBox, ArrayList<ComboBox> listComboBOx){
+        bindingData.arrayDataBindings.get(E).DoSearchProperty().bind(checkBox.selectedProperty().not());
+
+        for (int i = 0; i<bindingData.arrayDataBindings.get(E).getValue().length;i++) {
+
+            listComboBOx.get(i).disableProperty().bind(checkBox.selectedProperty().not());
+            bindingData.arrayDataBindings.get(E).getValue()[i].valueProperty().bind(listComboBOx.get(i).valueProperty());
         }
     }
 
@@ -379,11 +401,13 @@ public class Controller {
         cboLevensduur.getItems().addAll(infotables.getConcurentiekrachten());
         //bladvorm
         cboBladvorm.getItems().addAll(infotables.getBladvormen());
+        cboMaand.getItems().addAll("januari", "februari");
+        cboBehandeling.getItems().addAll("test", "test2","test3");
     }
-
 
     public void InitSpinners(){
         setSpinner(nudPerXJaar, 10);
+
         setSpinner(nudMinBladhoogte, 1000);
         setSpinner(nudBloeiHoogte, 1000);
         setSpinner(nudMinBladhoogte, 1000);
@@ -414,36 +438,10 @@ public class Controller {
         setSpinner(nudMaxBloeihoogte_Okt, 1000);
         setSpinner(nudMaxBloeihoogte_Nov, 1000);
         setSpinner(nudMaxBloeihoogte_Dec, 1000);
-
-
     }
 
     public void setSpinner(Spinner spinner, int MaxValue){
         spinner.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(0, MaxValue));
-    }
-
-
-
-
-    /**
-     * @author Bradley Velghe
-     * @param box
-     * @param slider
-     * @return true > slider is beweegbaar || false > slider is niet beweegbaar
-     */
-   public boolean Togledisable(CheckBox box, Slider slider){
-        if(box.isSelected()){
-            slider.setDisable(false);
-            return true;
-        } else {
-            slider.setDisable(true);
-            return false;
-        }
-    }
-
-    public void Click_test(MouseEvent mouseEvent) {
-        System.out.println(bindingData.dataBindings.get(Bindings.BLADVORM).getValue().get());
-        System.out.println(bindingData.dataBindings.get(Bindings.BLADVORM).getDoSearch());
     }
 
     public void Click_Search(MouseEvent mouseEvent) throws SQLException {

@@ -3,15 +3,14 @@
   <component name="ChangeListManager">
     <list default="true" id="e3f371c2-5a62-4881-8767-e007751523f2" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/plantenApp/java/dao/AbiotischeFactorenDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/plantenApp/java/dao/AbiotischeFactorenDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/plantenApp/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/plantenApp/Controller.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/plantenApp/java/dao/BeheerDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/plantenApp/java/dao/BeheerDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/plantenApp/java/dao/CommensalismeDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/plantenApp/java/dao/CommensalismeDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/plantenApp/java/dao/ExtraDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/plantenApp/java/dao/ExtraDAO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/plantenApp/java/dao/FenotypeDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/plantenApp/java/dao/FenotypeDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/plantenApp/java/dao/PlantDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/plantenApp/java/dao/PlantDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/plantenApp/java/dao/Queries.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/plantenApp/java/dao/Queries.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/plantenApp/java/model/BindingData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/plantenApp/java/model/BindingData.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/plantenApp/java/model/SearchHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/plantenApp/java/model/SearchHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/plantenApp/java/model/Value.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/plantenApp/java/model/Value.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/plantenApp/java/model/ValueWithBoolean.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/plantenApp/java/model/ValueWithBoolean.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/plantenApp/java/utils/DaoUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/plantenApp/java/utils/DaoUtils.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/plantenApp/java/utils/Utils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/plantenApp/java/utils/Utils.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -106,6 +105,7 @@
       <workItem from="1591190359174" duration="5557000" />
       <workItem from="1591253208506" duration="7215000" />
       <workItem from="1591260960861" duration="5907000" />
+      <workItem from="1591270321734" duration="4036000" />
     </task>
     <servers />
   </component>

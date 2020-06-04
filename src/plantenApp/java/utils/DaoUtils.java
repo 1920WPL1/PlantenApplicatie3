@@ -32,17 +32,21 @@ public class DaoUtils {
 
     public static PreparedStatement ReadyStatement(Connection dbConnection, String query, ArrayList<Integer> plantIds) throws SQLException {
         StringBuilder list = new StringBuilder();
-        for (int i = 0; i < plantIds.size(); i++) {
+        System.out.println(plantIds.size());
+       for (int i = 0; i < plantIds.size(); i++) {
             if (i == plantIds.size() - 1) {
                 list.append("?");
             } else {
                 list.append("?,");
             }
         }
-        query = query.replaceFirst("(?)", "(" + list + ")");
+
+
+        query = query.replace("(?)", "(" + list + ")");
+        System.out.println(query);
         PreparedStatement stmt = dbConnection.prepareStatement(query);
         for (int i = 0; i < plantIds.size(); i++) {
-            stmt.setInt(i + 1, plantIds.get(i));
+            stmt.setInt(i+1 , plantIds.get(i));
         }
         return stmt;
     }

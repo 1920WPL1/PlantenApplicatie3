@@ -84,7 +84,6 @@ public class BeheerDAO implements Queries {
 
     public ArrayList<Integer> FilterOn(ArrayList<Integer> plantIds, BindingData bindingData) throws SQLException {
         //Dao
-
         System.out.println(plantIds.toString());
         //Items
         ArrayList<Integer> ids = new ArrayList<>();
@@ -94,7 +93,7 @@ public class BeheerDAO implements Queries {
 
         //Behandeling
         PropertyClass<Value> behandeling = bindingData.dataBindings.get(Bindings.BEHANDELING);
-        stmtSelectIdsByBeheer.setString(plantIds.size() + 1, behandeling.getValue().get());
+        stmtSelectIdsByBeheer.setString(plantIds.size()+1 , behandeling.getValue().get());
         stmtSelectIdsByBeheer.setInt(plantIds.size() + 2, (behandeling.getDoSearch()) ? 0 : 1);
 
         //maand

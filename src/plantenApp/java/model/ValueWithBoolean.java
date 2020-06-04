@@ -21,4 +21,6 @@ public class ValueWithBoolean extends Value {
     public void setBool(Boolean bool){
         booleanProperty.set(bool);
     }
+
+
 }

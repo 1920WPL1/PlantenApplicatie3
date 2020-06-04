@@ -30,10 +30,10 @@ public class SearchHandler {
         ArrayList<Integer> ids = new ArrayList<Integer>();
 
         ids = plantDAO.FilterOn(bindingData);
-       // ids = fenotypeDAO.FilterOn(ids, bindingData);
-        //ids = commensalismeDAO.FilterOn(ids, bindingData);
-       // ids = abiotischeFactorenDAO.FilterOn(ids, bindingData);
-        //ids = extraDAO.FilterOn(ids, bindingData);
+        ids = fenotypeDAO.FilterOn(ids, bindingData);
+        ids = commensalismeDAO.FilterOn(ids, bindingData);
+        ids = abiotischeFactorenDAO.FilterOn(ids, bindingData);
+        ids = extraDAO.FilterOn(ids, bindingData);
         ids = beheerDAO.FilterOn(ids, bindingData);
 
         return ids;

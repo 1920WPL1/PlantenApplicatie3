@@ -166,7 +166,7 @@ public class FenotypeDAO implements Queries {
 
         //endregion
 
-        //region Multi_Eigenschappen
+        /*//region Multi_Eigenschappen
 
         //Hoogtes
         PropertyClass<ValueWithBoolean[]> multiHoogte;
@@ -212,7 +212,7 @@ public class FenotypeDAO implements Queries {
             ids = FilterOnSingleMulti("Bladkleur", singleKleur.getValue(), ids);
         }
 
-        //endregion
+        //endregion*/
 
         //Output
         return ids;
