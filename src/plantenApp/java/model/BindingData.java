@@ -18,19 +18,13 @@ public class BindingData {
     public BindingData() {
         dataBindings = new EnumMap<Bindings, PropertyClass<Value>>(Bindings.class);
         dataBindings.put(Bindings.BEHANDELING, new PropertyClass<Value>(new Value()));
-        dataBindings.put(Bindings.BIJVRIENDELIJK, new PropertyClass<Value>(new Value()));
         dataBindings.put(Bindings.BLADVORM, new PropertyClass<Value>(new Value()));
-        dataBindings.put(Bindings.EETBAAR, new PropertyClass<Value>(new Value()));
-        dataBindings.put(Bindings.GEUREND, new PropertyClass<Value>(new Value()));
-        dataBindings.put(Bindings.KRUIDGEBRUIK, new PropertyClass<Value>(new Value()));
         dataBindings.put(Bindings.LEVENSDUUR, new PropertyClass<Value>(new Value()));
         dataBindings.put(Bindings.MAAND, new PropertyClass<Value>(new Value()));
         dataBindings.put(Bindings.ONTWIKKELINGSSNELHEID, new PropertyClass<Value>(new Value()));
         dataBindings.put(Bindings.RATIOBLOEIBLAD, new PropertyClass<Value>(new Value()));
         dataBindings.put(Bindings.REACTIEANTAGONISTISCHEOMGEVING, new PropertyClass<Value>(new Value()));
         dataBindings.put(Bindings.SPRUITFENOLOGIE, new PropertyClass<Value>(new Value()));
-        dataBindings.put(Bindings.VLINDERVRIENDELIJK, new PropertyClass<Value>(new Value()));
-        dataBindings.put(Bindings.VORSTGEVOELIG, new PropertyClass<Value>(new Value()));
         dataBindings.put(Bindings.VOEDINGSBEHOEFTE, new PropertyClass<Value>(new Value()));
         dataBindings.put(Bindings.NECTARWAARDE, new PropertyClass<Value>(new Value()));
         dataBindings.put(Bindings.POLLENWAARDE, new PropertyClass<Value>(new Value()));
@@ -42,7 +36,6 @@ public class BindingData {
         dataBindings.put(Bindings.VOCHTBEHOEFTE, new PropertyClass<Value>(new Value()));
         dataBindings.put(Bindings.BLADGROOTTE, new PropertyClass<Value>(new Value()));
         dataBindings.put(Bindings.HABITAT, new PropertyClass<Value>(new Value()));
-
         dataBindings.put(Bindings.TYPE, new PropertyClass<Value>(new Value()));
         dataBindings.put(Bindings.FAMILIE, new PropertyClass<Value>(new Value()));
         dataBindings.put(Bindings.SEARCH, new PropertyClass<Value>(new Value()));
@@ -132,6 +125,43 @@ public class BindingData {
             arrayDataBindings.get(ArrayBindings.MAXBLOEIHOOGTE).getValue()[i] = new ValueWithBoolean();
 
         }
+        arrayDataBindings.put(ArrayBindings.VLINDERVRIENDELIJK, new PropertyClass<ValueWithBoolean[]>(new ValueWithBoolean[3]));
+        for (int i = 0; i < arrayDataBindings.get(ArrayBindings.VLINDERVRIENDELIJK).getValue().length; i++){
+
+            arrayDataBindings.get(ArrayBindings.VLINDERVRIENDELIJK).getValue()[i] = new ValueWithBoolean();
+
+        }
+        arrayDataBindings.put(ArrayBindings.BIJVRIENDELIJK, new PropertyClass<ValueWithBoolean[]>(new ValueWithBoolean[3]));
+        for (int i = 0; i < arrayDataBindings.get(ArrayBindings.BIJVRIENDELIJK).getValue().length; i++){
+
+            arrayDataBindings.get(ArrayBindings.BIJVRIENDELIJK).getValue()[i] = new ValueWithBoolean();
+
+        }
+        arrayDataBindings.put(ArrayBindings.GEUREND, new PropertyClass<ValueWithBoolean[]>(new ValueWithBoolean[3]));
+        for (int i = 0; i < arrayDataBindings.get(ArrayBindings.GEUREND).getValue().length; i++){
+
+            arrayDataBindings.get(ArrayBindings.GEUREND).getValue()[i] = new ValueWithBoolean();
+
+        }
+        arrayDataBindings.put(ArrayBindings.EETBAAR, new PropertyClass<ValueWithBoolean[]>(new ValueWithBoolean[3]));
+        for (int i = 0; i < arrayDataBindings.get(ArrayBindings.EETBAAR).getValue().length; i++){
+
+            arrayDataBindings.get(ArrayBindings.EETBAAR).getValue()[i] = new ValueWithBoolean();
+
+        }
+        arrayDataBindings.put(ArrayBindings.KRUIDGEBRUIK, new PropertyClass<ValueWithBoolean[]>(new ValueWithBoolean[3]));
+        for (int i = 0; i < arrayDataBindings.get(ArrayBindings.KRUIDGEBRUIK).getValue().length; i++){
+
+            arrayDataBindings.get(ArrayBindings.KRUIDGEBRUIK).getValue()[i] = new ValueWithBoolean();
+
+        }
+        arrayDataBindings.put(ArrayBindings.VORSTGEVOELIG, new PropertyClass<ValueWithBoolean[]>(new ValueWithBoolean[3]));
+        for (int i = 0; i < arrayDataBindings.get(ArrayBindings.VORSTGEVOELIG).getValue().length; i++){
+
+            arrayDataBindings.get(ArrayBindings.VORSTGEVOELIG).getValue()[i] = new ValueWithBoolean();
+
+        }
+
 
 
     }
