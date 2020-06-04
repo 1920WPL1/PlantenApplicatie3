@@ -105,7 +105,7 @@ public class BeheerDAO implements Queries {
 
         ResultSet rs = stmtSelectIdsByBeheer.executeQuery();
         while (rs.next()){
-            ids.add(rs.getInt(0));
+            ids.add(rs.getInt(1));
         }
 
         //Output

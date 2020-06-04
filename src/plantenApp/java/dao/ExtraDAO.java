@@ -100,7 +100,7 @@ public class ExtraDAO implements Queries {
 
         ResultSet rs = stmtSelectIdsByExtra.executeQuery();
         while (rs.next()){
-            ids.add(rs.getInt(0));
+            ids.add(rs.getInt(1));
         }
 
         //Output

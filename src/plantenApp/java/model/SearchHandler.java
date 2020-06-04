@@ -1,6 +1,7 @@
 package plantenApp.java.model;
 
 import plantenApp.java.dao.*;
+import plantenApp.java.utils.Bindings;
 
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -9,8 +10,6 @@ import java.util.List;
 
 /**@author Bradley**/
 public class SearchHandler {
-
-
     AbiotischeFactorenDAO abiotischeFactorenDAO;
     BeheerDAO beheerDAO;
     CommensalismeDAO commensalismeDAO;
@@ -27,17 +26,18 @@ public class SearchHandler {
         this.plantDAO = new PlantDAO(dbConnection);
     }
 
-    public List<Plant> Search(String type, String familie, String fgsv) throws SQLException {
-        List<Plant> planten = new ArrayList<Plant>();
+    public ArrayList<Integer> Search(BindingData bindingData, Connection dbConnection) throws SQLException {
+        ArrayList<Integer> ids = new ArrayList<Integer>();
 
+        ids = plantDAO.FilterOn(bindingData);
+        ids = fenotypeDAO.FilterOn(ids, bindingData);
+       /* ids = commensalismeDAO.FilterOn(ids, bindingData);
+        ids = abiotischeFactorenDAO.FilterOn(ids, bindingData);
+        ids = extraDAO.FilterOn(ids, bindingData);
+        ids = beheerDAO.FilterOn(ids, bindingData);*/
 
-        List<Integer> listFenotypeDAO;
-
-
-
-
-
-
-        return planten;
+        return ids;
     }
+
+
 }

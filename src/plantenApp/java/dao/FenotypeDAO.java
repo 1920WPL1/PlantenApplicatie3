@@ -144,7 +144,7 @@ public class FenotypeDAO implements Queries {
 
         ResultSet rs = stmtSelectIdsByFeno.executeQuery();
         while (rs.next()) {
-            ids.add(rs.getInt(0));
+            ids.add(rs.getInt(1));
         }
 
         //MultiFilter
@@ -197,7 +197,7 @@ public class FenotypeDAO implements Queries {
 
         ResultSet rs = stmtSelectIdsByFenoMulti.executeQuery();
         while (rs.next()) {
-            ids.add(rs.getInt(0));
+            ids.add(rs.getInt(1));
         }
 
         //Output

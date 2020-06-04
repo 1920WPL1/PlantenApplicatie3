@@ -6,6 +6,7 @@ import plantenApp.java.model.InfoTables;
 import javafx.scene.control.*;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
+import plantenApp.java.model.SearchHandler;
 import plantenApp.java.utils.ArrayBindings;
 import plantenApp.java.utils.Bindings;
 
@@ -15,37 +16,37 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class Controller {
-    public ComboBox cboBladkleur;
-    public ComboBox cboBloeikleur;
-    public ComboBox cboReactieAnta;
-    public ComboBox cboOntwikkel;
-    public ComboBox cboLevensduur;
-    public ComboBox cboRatioBloeiBlad;
-    public ComboBox cboSpruitfenologie;
-    public ComboBox cboBladkleurJan;
-    public ComboBox cboBladkleurFeb;
-    public ComboBox cboBladkleurMaa;
-    public ComboBox cboBladkleurApr;
-    public ComboBox cboBladkleurMei;
-    public ComboBox cboBladkleurJun;
-    public ComboBox cboBladkleurJul;
-    public ComboBox cboBladkleurAug;
-    public ComboBox cboBladkleurSep;
-    public ComboBox cboBladkleurOkt;
-    public ComboBox cboBladkleurNov;
-    public ComboBox cboBladkleurDec;
-    public ComboBox cboBloeikleurJan;
-    public ComboBox cboBloeikleurFeb;
-    public ComboBox cboBloeikleurMaa;
-    public ComboBox cboBloeikleurApr;
-    public ComboBox cboBloeikleurMei;
-    public ComboBox cboBloeikleurJun;
-    public ComboBox cboBloeikleurJul;
-    public ComboBox cboBloeikleurAug;
-    public ComboBox cboBloeikleurSep;
-    public ComboBox cboBloeikleurOkt;
-    public ComboBox cboBloeikleurNov;
-    public ComboBox cboBloeikleurDec;
+    public ComboBox<String> cboBladkleur;
+    public ComboBox<String> cboBloeikleur;
+    public ComboBox<String> cboReactieAnta;
+    public ComboBox<String> cboOntwikkel;
+    public ComboBox<String> cboLevensduur;
+    public ComboBox<String> cboRatioBloeiBlad;
+    public ComboBox<String> cboSpruitfenologie;
+    public ComboBox<String> cboBladkleurJan;
+    public ComboBox<String> cboBladkleurFeb;
+    public ComboBox<String> cboBladkleurMaa;
+    public ComboBox<String> cboBladkleurApr;
+    public ComboBox<String> cboBladkleurMei;
+    public ComboBox<String> cboBladkleurJun;
+    public ComboBox<String> cboBladkleurJul;
+    public ComboBox<String> cboBladkleurAug;
+    public ComboBox<String> cboBladkleurSep;
+    public ComboBox<String> cboBladkleurOkt;
+    public ComboBox<String> cboBladkleurNov;
+    public ComboBox<String> cboBladkleurDec;
+    public ComboBox<String> cboBloeikleurJan;
+    public ComboBox<String> cboBloeikleurFeb;
+    public ComboBox<String> cboBloeikleurMaa;
+    public ComboBox<String> cboBloeikleurApr;
+    public ComboBox<String> cboBloeikleurMei;
+    public ComboBox<String> cboBloeikleurJun;
+    public ComboBox<String> cboBloeikleurJul;
+    public ComboBox<String> cboBloeikleurAug;
+    public ComboBox<String> cboBloeikleurSep;
+    public ComboBox<String> cboBloeikleurOkt;
+    public ComboBox<String> cboBloeikleurNov;
+    public ComboBox<String> cboBloeikleurDec;
     public TextField txtSearch;
     public Spinner nudMinBladhoogte;
     public Spinner nudMaxBladhoogte;
@@ -186,11 +187,11 @@ public class Controller {
     public RadioButton rdbLevensvorm_7;
     public RadioButton rdbLevensvorm_8;
     public RadioButton rdbLevensvorm_9;
-    public ComboBox cboType;
-    public ComboBox cboFamilie;
-    public ComboBox cboBladgrootte;
-    public ComboBox cboHabitat;
-    public ComboBox cboBladvorm;
+    public ComboBox<String> cboType;
+    public ComboBox<String> cboFamilie;
+    public ComboBox<String> cboBladgrootte;
+    public ComboBox<String> cboHabitat;
+    public ComboBox<String> cboBladvorm;
     public RadioButton rdbBloeiwijze_Schotel;
     public CheckBox chkHabitat;
     public CheckBox chkType;
@@ -203,8 +204,8 @@ public class Controller {
     public CheckBox chkVochtBehoefte;
     public CheckBox chkGrondsoort;
     public CheckBox chkBladgrootte;
-    public ComboBox cboBehandeling;
-    public ComboBox cboMaand;
+    public ComboBox<String> cboBehandeling;
+    public ComboBox<String> cboMaand;
 
 
 
@@ -268,11 +269,11 @@ public class Controller {
 
     /**
      * @author bradley
-     * @param E
-     * @param checkBox
-     * @param comboBox
+     * @param E enum Bindings
+     * @param checkBox te binden checkbox
+     * @param comboBox te binden combobox
      */
-    public void Bind(Bindings E, CheckBox checkBox, ComboBox comboBox){
+    public void Bind(Bindings E, CheckBox checkBox, ComboBox<String> comboBox){
         comboBox.disableProperty().bind(checkBox.selectedProperty().not());
         bindingData.dataBindings.get(E).DoSearchProperty().bind(checkBox.selectedProperty());
         bindingData.dataBindings.get(E).getValue().valueProperty().bind(comboBox.valueProperty().asString());
@@ -280,9 +281,9 @@ public class Controller {
 
     /**
      * @author bradley
-     * @param E
-     * @param checkBox
-     * @param spinner
+     * @param E enum Bindings
+     * @param checkBox te binden checkbox
+     * @param spinner te binden spinner
      */
     public void Bind(Bindings E, CheckBox checkBox, Spinner spinner){
         spinner.disableProperty().bind(checkBox.selectedProperty().not());
@@ -372,8 +373,7 @@ public class Controller {
 
 
 
-    public void Clicked_Search(MouseEvent mouseEvent) {
-    }
+
 
     /**
      * @author Bradley Velghe
@@ -394,6 +394,12 @@ public class Controller {
     public void Click_test(MouseEvent mouseEvent) {
         System.out.println(bindingData.dataBindings.get(Bindings.BLADVORM).getValue().get());
         System.out.println(bindingData.dataBindings.get(Bindings.BLADVORM).getDoSearch());
+    }
+
+    public void Click_Search(MouseEvent mouseEvent) throws SQLException {
+        SearchHandler handler = new SearchHandler(dbConnection);
+        ArrayList<Integer> ids = handler.Search(bindingData, dbConnection);
+        System.out.println(ids.toString());
     }
 }
 

@@ -113,7 +113,7 @@ public class CommensalismeDAO implements Queries {
 
         ResultSet rs = stmtSelectIdsByComm.executeQuery();
         while (rs.next()) {
-            ids.add(rs.getInt(0));
+            ids.add(rs.getInt(1));
         }
 
         //Multi
@@ -148,7 +148,7 @@ public class CommensalismeDAO implements Queries {
 
         ResultSet rs = stmtSelectIdsByCommMulti.executeQuery();
         while (rs.next()) {
-            ids.add(rs.getInt(0));
+            ids.add(rs.getInt(1));
         }
 
         //Output

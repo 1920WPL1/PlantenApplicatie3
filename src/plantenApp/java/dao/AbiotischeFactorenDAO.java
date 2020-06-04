@@ -132,7 +132,7 @@ public class AbiotischeFactorenDAO implements Queries {
 
         ResultSet rs = stmtSelectIdsByAbio.executeQuery();
         while (rs.next()) {
-            ids.add(rs.getInt(0));
+            ids.add(rs.getInt(1));
         }
 
         if (bindingData.dataBindings.get(Bindings.HABITAT).getDoSearch()){
@@ -159,7 +159,7 @@ public class AbiotischeFactorenDAO implements Queries {
 
         ResultSet rs = stmtSelectIdsByAbioMulti.executeQuery();
         while (rs.next()) {
-            ids.add(rs.getInt(0));
+            ids.add(rs.getInt(1));
         }
 
         //Output
