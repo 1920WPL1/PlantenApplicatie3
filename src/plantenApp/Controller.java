@@ -1,4 +1,7 @@
 package plantenApp;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.layout.VBox;
 import plantenApp.java.dao.Database;
 import plantenApp.java.dao.InfoTablesDAO;
 import plantenApp.java.model.BindingData;
@@ -11,6 +14,7 @@ import plantenApp.java.utils.ArrayBindings;
 import plantenApp.java.utils.Bindings;
 
 
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -206,6 +210,9 @@ public class Controller {
     public CheckBox chkBladgrootte;
     public ComboBox<String> cboBehandeling;
     public ComboBox<String> cboMaand;
+    public VBox VboxOutput;
+    public TitledPane pnlSearch;
+    public TitledPane pnlAdvSearch;
 
 
     private InfoTables infoTables;
@@ -213,7 +220,7 @@ public class Controller {
     BindingData bindingData;
 
     public void initialize() throws SQLException {
-
+        pnlAdvSearch.setExpanded(false);
 
         dbConnection = Database.getInstance().getConnection();
         /*infotabel object aanmaken*/
