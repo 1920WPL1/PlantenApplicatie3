@@ -2,6 +2,8 @@ package plantenApp.java.dao;
 
 import plantenApp.java.model.BindingData;
 import plantenApp.java.model.Extra;
+import plantenApp.java.model.PropertyClass;
+import plantenApp.java.model.Value;
 import plantenApp.java.utils.Bindings;
 import plantenApp.java.utils.DaoUtils;
 
@@ -19,21 +21,19 @@ import java.util.List;
 public class ExtraDAO implements Queries {
     private Connection dbConnection;
     private PreparedStatement stmtSelectExtraByID;
-    private PreparedStatement stmtSelectIdsByExtra;
 
     public ExtraDAO(Connection dbConnection) throws SQLException {
         this.dbConnection = dbConnection;
 
         stmtSelectExtraByID = dbConnection.prepareStatement(GETEXTRABYPLANTID);
-        stmtSelectIdsByExtra = dbConnection.prepareStatement(GETIDSBYEXTRA);
     }
 
     //region GET
 
     /**
-     * @author Siebe
      * @param id -> plant_id
      * @return -> alle extra kenmerken van de specifieke plant
+     * @author Siebe
      */
     public Extra getExtraById(int id) throws SQLException {
         //Dao
@@ -66,40 +66,52 @@ public class ExtraDAO implements Queries {
 
     //region FILTER
 
-    public ArrayList<Integer> FilterOn(List<Integer> plantIds, BindingData bindingData) throws SQLException {
+    public ArrayList<Integer> FilterOn(ArrayList<Integer> plantIds, BindingData bindingData) throws SQLException {
         //Dao
 
         //Items
-        String sPlantIds = DaoUtils.sqlFormatedList(plantIds);
         ArrayList<Integer> ids = new ArrayList<>();
 
         //SQLcommand
-        stmtSelectIdsByExtra.setString(1, sPlantIds);
+        PreparedStatement stmtSelectIdsByExtra = DaoUtils.ReadyStatement(dbConnection, GETIDSBYEXTRA, plantIds);
 
+        //nectarwaarde
+        PropertyClass<Value> nectarwaarde = bindingData.dataBindings.get(Bindings.NECTARWAARDE);
+        stmtSelectIdsByExtra.setString(plantIds.size() + 1, nectarwaarde.getValue().get());
+        stmtSelectIdsByExtra.setInt(plantIds.size() + 2, (nectarwaarde.getDoSearch()) ? 0 : 1);
 
-        stmtSelectIdsByExtra.setString(2, bindingData.dataBindings.get(Bindings.NECTARWAARDE).getValue().get());
-        stmtSelectIdsByExtra.setInt(3, (bindingData.dataBindings.get(Bindings.NECTARWAARDE).getDoSearch()) ? 0 : 1);
+        //nectarwaarde
+        PropertyClass<Value> pollenwaarde = bindingData.dataBindings.get(Bindings.POLLENWAARDE);
+        stmtSelectIdsByExtra.setString(plantIds.size() + 3, pollenwaarde.getValue().get());
+        stmtSelectIdsByExtra.setInt(plantIds.size() + 4, (pollenwaarde.getDoSearch()) ? 0 : 1);
 
-        stmtSelectIdsByExtra.setString(4, bindingData.dataBindings.get(Bindings.POLLENWAARDE).getValue().get());
-        stmtSelectIdsByExtra.setInt(5, (bindingData.dataBindings.get(Bindings.POLLENWAARDE).getDoSearch()) ? 0 : 1);
+        //bijvriendelijk
+        PropertyClass<Value> bijvriendelijk = bindingData.dataBindings.get(Bindings.BIJVRIENDELIJK);
+        stmtSelectIdsByExtra.setString(plantIds.size() + 5, bijvriendelijk.getValue().get());
+        stmtSelectIdsByExtra.setInt(plantIds.size() + 6, (bijvriendelijk.getDoSearch()) ? 0 : 1);
 
-        stmtSelectIdsByExtra.setString(6, bindingData.dataBindings.get(Bindings.BIJVRIENDELIJK).getValue().get());
-        stmtSelectIdsByExtra.setInt(7, (bindingData.dataBindings.get(Bindings.BIJVRIENDELIJK).getDoSearch()) ? 0 : 1);
+        //Eetbaar
+        PropertyClass<Value> eetbaar = bindingData.dataBindings.get(Bindings.EETBAAR);
+        stmtSelectIdsByExtra.setString(plantIds.size() + 7, eetbaar.getValue().get());
+        stmtSelectIdsByExtra.setInt(plantIds.size() + 8, (eetbaar.getDoSearch()) ? 0 : 1);
 
-        stmtSelectIdsByExtra.setString(8, bindingData.dataBindings.get(Bindings.EETBAAR).getValue().get());
-        stmtSelectIdsByExtra.setInt(9, (bindingData.dataBindings.get(Bindings.EETBAAR).getDoSearch()) ? 0 : 1);
+        //kruidgebruik
+        PropertyClass<Value> kruidgebruik = bindingData.dataBindings.get(Bindings.KRUIDGEBRUIK);
+        stmtSelectIdsByExtra.setString(plantIds.size() + 9, kruidgebruik.getValue().get());
+        stmtSelectIdsByExtra.setInt(plantIds.size() + 10, (kruidgebruik.getDoSearch()) ? 0 : 1);
 
-        stmtSelectIdsByExtra.setString(10, bindingData.dataBindings.get(Bindings.KRUIDGEBRUIK).getValue().get());
-        stmtSelectIdsByExtra.setInt(11, (bindingData.dataBindings.get(Bindings.KRUIDGEBRUIK).getDoSearch()) ? 0 : 1);
+        //geurend
+        PropertyClass<Value> geurend = bindingData.dataBindings.get(Bindings.GEUREND);
+        stmtSelectIdsByExtra.setString(plantIds.size() + 11, geurend.getValue().get());
+        stmtSelectIdsByExtra.setInt(plantIds.size() + 12, (geurend.getDoSearch()) ? 0 : 1);
 
-        stmtSelectIdsByExtra.setString(12, bindingData.dataBindings.get(Bindings.GEUREND).getValue().get());
-        stmtSelectIdsByExtra.setInt(13, (bindingData.dataBindings.get(Bindings.GEUREND).getDoSearch()) ? 0 : 1);
-
-        stmtSelectIdsByExtra.setString(14, bindingData.dataBindings.get(Bindings.VORSTGEVOELIG).getValue().get());
-        stmtSelectIdsByExtra.setInt(15, (bindingData.dataBindings.get(Bindings.VORSTGEVOELIG).getDoSearch()) ? 0 : 1);
+        //vorstgevoelig
+        PropertyClass<Value> vorstgevoelig = bindingData.dataBindings.get(Bindings.VORSTGEVOELIG);
+        stmtSelectIdsByExtra.setString(plantIds.size() + 13, vorstgevoelig.getValue().get());
+        stmtSelectIdsByExtra.setInt(plantIds.size() + 14, (vorstgevoelig.getDoSearch()) ? 0 : 1);
 
         ResultSet rs = stmtSelectIdsByExtra.executeQuery();
-        while (rs.next()){
+        while (rs.next()) {
             ids.add(rs.getInt("plant_id"));
         }
 

@@ -22,7 +22,6 @@ public class FenotypeDAO implements Queries {
     private PreparedStatement stmtSelectFenoByID;
     private PreparedStatement stmtSelectFenoMultiByID;
 
-    private PreparedStatement stmtSelectIdsByFeno;
     private PreparedStatement stmtSelectIdsByFenoMulti;
     private PreparedStatement stmtSelectIdsBySingleFenoMulti;
 
@@ -31,7 +30,6 @@ public class FenotypeDAO implements Queries {
         stmtSelectFenoByID = dbConnection.prepareStatement(GETFENOTYPEBYPLANTID);
         stmtSelectFenoMultiByID = dbConnection.prepareStatement(GETFENOTYPEMULTIBYPLANTID);
 
-        stmtSelectIdsByFeno = dbConnection.prepareStatement(GETIDSBYFENO);
         stmtSelectIdsByFenoMulti = dbConnection.prepareStatement(GETIDSBYFENOMULTI);
         stmtSelectIdsBySingleFenoMulti = dbConnection.prepareStatement(GETIDSBYSINGLEFENOMULTI);
     }
@@ -114,50 +112,52 @@ public class FenotypeDAO implements Queries {
 
     //region FILTER
 
-    public ArrayList<Integer> FilterOn(List<Integer> plantIds, BindingData bindingData) throws SQLException {
+    public ArrayList<Integer> FilterOn(ArrayList<Integer> plantIds, BindingData bindingData) throws SQLException {
         //Dao
 
         //Items
-        String sPlantIds = DaoUtils.sqlFormatedList(plantIds);
         ArrayList<Integer> ids = new ArrayList<>();
 
-        //region SQLcommand
-        stmtSelectIdsByFeno.setString(1, sPlantIds);
+        //SQLcommand
+        PreparedStatement stmtSelectIdsByFeno = dbConnection.prepareStatement(DaoUtils.SetParameterCount(GETIDSBYFENO, plantIds.size()));
+        for (int i = 0; i < plantIds.size(); i++) {
+            stmtSelectIdsByFeno.setInt(i + 1, plantIds.get(i));
+        }
 
         //bladvorm
         PropertyClass<Value> bladvorm = bindingData.dataBindings.get(Bindings.BLADVORM);
-        stmtSelectIdsByFeno.setString(2, bladvorm.getValue().get());
-        stmtSelectIdsByFeno.setInt(3, (bladvorm.getDoSearch()) ? 0 : 1);
+        stmtSelectIdsByFeno.setString(plantIds.size() + 1, bladvorm.getValue().get());
+        stmtSelectIdsByFeno.setInt(plantIds.size() + 2, (bladvorm.getDoSearch()) ? 0 : 1);
 
         //levensvorm
         PropertyClass<ValueWithBoolean[]> levensvorm = bindingData.arrayDataBindings.get(ArrayBindings.LEVENSVORM);
-        stmtSelectIdsByFeno.setString(4, Utils.GetCheckedValue(levensvorm.getValue()));
-        stmtSelectIdsByFeno.setInt(5, (levensvorm.getDoSearch()) ? 0 : 1);
+        stmtSelectIdsByFeno.setString(plantIds.size() + 3, Utils.GetCheckedValue(levensvorm.getValue()));
+        stmtSelectIdsByFeno.setInt(plantIds.size() + 4, (levensvorm.getDoSearch()) ? 0 : 1);
 
         //habitus
         PropertyClass<ValueWithBoolean[]> habitus = bindingData.arrayDataBindings.get(ArrayBindings.HABITUS);
-        stmtSelectIdsByFeno.setString(6, Utils.GetCheckedValue(habitus.getValue()));
-        stmtSelectIdsByFeno.setInt(7, (habitus.getDoSearch()) ? 0 : 1);
+        stmtSelectIdsByFeno.setString(plantIds.size() + 5, Utils.GetCheckedValue(habitus.getValue()));
+        stmtSelectIdsByFeno.setInt(plantIds.size() + 6, (habitus.getDoSearch()) ? 0 : 1);
 
         //bloeiwijze
         PropertyClass<ValueWithBoolean[]> bloeiwijze = bindingData.arrayDataBindings.get(ArrayBindings.BLOEIWIJZE);
-        stmtSelectIdsByFeno.setString(8, Utils.GetCheckedValue(habitus.getValue()));
-        stmtSelectIdsByFeno.setInt(9, (bloeiwijze.getDoSearch()) ? 0 : 1);
+        stmtSelectIdsByFeno.setString(plantIds.size() + 7, Utils.GetCheckedValue(habitus.getValue()));
+        stmtSelectIdsByFeno.setInt(plantIds.size() + 8, (bloeiwijze.getDoSearch()) ? 0 : 1);
 
         //bladgrootte
         PropertyClass<Value> bladgrootte = bindingData.dataBindings.get(Bindings.BLADGROOTTE);
-        stmtSelectIdsByFeno.setString(10, bladgrootte.getValue().get());
-        stmtSelectIdsByFeno.setInt(11, (bladgrootte.getDoSearch()) ? 0 : 1);
+        stmtSelectIdsByFeno.setInt(plantIds.size() + 9, Integer.parseInt(bladgrootte.getValue().get()));
+        stmtSelectIdsByFeno.setInt(plantIds.size() + 10, (bladgrootte.getDoSearch()) ? 0 : 1);
 
         //ratiobloeiblad
         PropertyClass<Value> ratiobloeiblad = bindingData.dataBindings.get(Bindings.RATIOBLOEIBLAD);
-        stmtSelectIdsByFeno.setString(12, ratiobloeiblad.getValue().get());
-        stmtSelectIdsByFeno.setInt(13, (ratiobloeiblad.getDoSearch()) ? 0 : 1);
+        stmtSelectIdsByFeno.setString(plantIds.size() + 11, ratiobloeiblad.getValue().get());
+        stmtSelectIdsByFeno.setInt(plantIds.size() + 12, (ratiobloeiblad.getDoSearch()) ? 0 : 1);
 
         //spruitfenologie
         PropertyClass<Value> spruitfenologie = bindingData.dataBindings.get(Bindings.SPRUITFENOLOGIE);
-        stmtSelectIdsByFeno.setString(14, spruitfenologie.getValue().get());
-        stmtSelectIdsByFeno.setInt(15, (spruitfenologie.getDoSearch()) ? 0 : 1);
+        stmtSelectIdsByFeno.setString(plantIds.size() + 13, spruitfenologie.getValue().get());
+        stmtSelectIdsByFeno.setInt(plantIds.size() + 14, (spruitfenologie.getDoSearch()) ? 0 : 1);
 
         ResultSet rs = stmtSelectIdsByFeno.executeQuery();
         while (rs.next()) {
@@ -172,8 +172,7 @@ public class FenotypeDAO implements Queries {
         PropertyClass<ValueWithBoolean[]> multiHoogte;
         PropertyClass<ValueWithBoolean[]> singleHoogte;
 
-        //region Bloeihoogte
-
+        //Bloeihoogte
         multiHoogte = bindingData.arrayDataBindings.get(ArrayBindings.MAXBLOEIHOOGTEPERMAAND);
         singleHoogte = bindingData.arrayDataBindings.get(ArrayBindings.MAXBLOEIHOOGTE);
         if (multiHoogte.getDoSearch()) {
@@ -182,10 +181,7 @@ public class FenotypeDAO implements Queries {
             ids = FilterBetweenValues("Bloeihoogte", singleHoogte.getValue(), ids);
         }
 
-        //endregion
-
-        //region Bladhoogte
-
+        //Bladhoogte
         multiHoogte = bindingData.arrayDataBindings.get(ArrayBindings.MAXBLADHOOGTEPERMAAND);
         singleHoogte = bindingData.arrayDataBindings.get(ArrayBindings.MAXBLADHOOGTE);
         if (multiHoogte.getDoSearch()) {
@@ -194,14 +190,11 @@ public class FenotypeDAO implements Queries {
             ids = FilterBetweenValues("Bladhoogte", singleHoogte.getValue(), ids);
         }
 
-        //endregion
-
         //Kleuren
         PropertyClass<ValueWithBoolean[]> multiKleur;
         PropertyClass<Value> singleKleur;
 
-        //region bloeikleur
-
+        //bloeikleur
         multiKleur = bindingData.arrayDataBindings.get(ArrayBindings.BLOEIKLEURPERMAAND);
         singleKleur = bindingData.dataBindings.get(Bindings.BLOEIKLEUR);
         if (multiKleur.getDoSearch()) {
@@ -210,10 +203,7 @@ public class FenotypeDAO implements Queries {
             ids = FilterOnSingleMulti("Bloeikleur", singleKleur.getValue(), ids);
         }
 
-        //endregion
-
-        //region bladkleur
-
+        //bladkleur
         multiKleur = bindingData.arrayDataBindings.get(ArrayBindings.BLADKLEURPERMAAND);
         singleKleur = bindingData.dataBindings.get(Bindings.BLADKLEUR);
         if (multiKleur.getDoSearch()) {
@@ -224,13 +214,11 @@ public class FenotypeDAO implements Queries {
 
         //endregion
 
-        //endregion
-
         //Output
         return ids;
     }
 
-    private ArrayList<Integer> FilterOnMulti(String eigenschap, ValueWithBoolean[] data, List<Integer> plantIds) throws SQLException {
+    private ArrayList<Integer> FilterOnMulti(String eigenschap, ValueWithBoolean[] data, ArrayList<Integer> plantIds) throws SQLException {
         //Dao
 
         //Items
@@ -264,7 +252,7 @@ public class FenotypeDAO implements Queries {
         return ids;
     }
 
-    private ArrayList<Integer> FilterBetweenValues(String eigenschap, ValueWithBoolean[] data, List<Integer> plantIds) throws SQLException {
+    private ArrayList<Integer> FilterBetweenValues(String eigenschap, ValueWithBoolean[] data, ArrayList<Integer> plantIds) throws SQLException {
         //Dao
 
         //Items
@@ -298,7 +286,7 @@ public class FenotypeDAO implements Queries {
         return ids;
     }
 
-    private ArrayList<Integer> FilterOnSingleMulti(String eigenschap, Value data, List<Integer> plantIds) throws SQLException {
+    private ArrayList<Integer> FilterOnSingleMulti(String eigenschap, Value data, ArrayList<Integer> plantIds) throws SQLException {
         //Dao
 
         //Items
