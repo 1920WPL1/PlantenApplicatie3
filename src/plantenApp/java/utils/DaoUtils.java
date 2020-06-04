@@ -1,5 +1,7 @@
 package plantenApp.java.utils;
 
+import plantenApp.java.model.ValueWithBoolean;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
@@ -16,18 +18,6 @@ public class DaoUtils {
         sb.deleteCharAt(sb.length() - 1);
         sb.append(")");
         return sb.toString();
-    }
-
-    public static String SetParameterCount(String querry, Integer count) {
-        StringBuilder list = new StringBuilder();
-        for (int i = 0; i < count; i++) {
-            if (i == count - 1) {
-                list.append("?");
-            } else {
-                list.append("?,");
-            }
-        }
-        return querry.replaceFirst("(?)", "(" + list + ")");
     }
 
     public static PreparedStatement ReadyStatement(Connection dbConnection, String query, ArrayList<Integer> plantIds) throws SQLException {
@@ -49,5 +39,14 @@ public class DaoUtils {
             stmt.setInt(i+1 , plantIds.get(i));
         }
         return stmt;
+    }
+    public static String GetCheckedValue(ValueWithBoolean[] array){
+        for (int i = 0; i < array.length; i++) {
+            if (array[i].getBool()){
+                return array[i].get();
+            }
+        }
+        System.out.println("Radiobuttons zonder default value");
+        return null;
     }
 }

@@ -104,7 +104,7 @@ public class AbiotischeFactorenDAO implements Queries {
         //Bezonning
         PropertyClass<Value> bezonning = bindingData.dataBindings.get(Bindings.BEZONNING);
         stmtSelectIdsByAbio.setString(plantIds.size() + 1, bezonning.getValue().get());
-        stmtSelectIdsByAbio.setInt(plantIds.size() + 2, (bezonning.getDoSearch())? 0 : 1);
+        stmtSelectIdsByAbio.setInt(plantIds.size() + 2, (bezonning.getDoSearch()) ? 0 : 1);
 
         //Grondsoort
         PropertyClass<ValueWithBoolean[]> grondsoort = bindingData.arrayDataBindings.get(ArrayBindings.GRONDSOORT);
@@ -138,12 +138,10 @@ public class AbiotischeFactorenDAO implements Queries {
         }
 
         //habitat
-        /*
-        if (bindingData.dataBindings.get(Bindings.HABITAT).getDoSearch()) {
-            ids = FilterOnMulti("Habitat", bindingData.dataBindings.get(Bindings.HABITAT).getValue().get(), ids);
+        PropertyClass<Value> habitat = bindingData.dataBindings.get(Bindings.HABITAT);
+        if (habitat.getDoSearch()) {
+            ids = FilterOnMulti("Habitat", habitat.getValue().get(), ids);
         }
-
-         */
 
         //Output
         return ids;
@@ -153,15 +151,15 @@ public class AbiotischeFactorenDAO implements Queries {
         //Dao
 
         //Items
-        String sPlantIds = DaoUtils.sqlFormatedList(plantIds);
         ArrayList<Integer> ids = new ArrayList<>();
 
+        //makes the prepared statement en fills in de IN (?)
+        PreparedStatement stmtSelectIdsByAbioMulti = DaoUtils.ReadyStatement(dbConnection, GETIDSBYABIOMULTI, plantIds);
+
         //SQLcommand
-        stmtSelectIdsByAbioMulti.setString(1, sPlantIds);
+        stmtSelectIdsByAbioMulti.setString(plantIds.size() + 1, eigenschap);
 
-        stmtSelectIdsByAbioMulti.setString(2, eigenschap);
-
-        stmtSelectIdsByAbioMulti.setString(3, value);
+        stmtSelectIdsByAbioMulti.setString(plantIds.size() + 2, value);
 
         ResultSet rs = stmtSelectIdsByAbioMulti.executeQuery();
         while (rs.next()) {
