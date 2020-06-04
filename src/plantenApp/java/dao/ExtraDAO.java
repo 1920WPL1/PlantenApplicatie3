@@ -1,9 +1,6 @@
 package plantenApp.java.dao;
 
-import plantenApp.java.model.BindingData;
-import plantenApp.java.model.Extra;
-import plantenApp.java.model.PropertyClass;
-import plantenApp.java.model.Value;
+import plantenApp.java.model.*;
 import plantenApp.java.utils.ArrayBindings;
 import plantenApp.java.utils.Bindings;
 import plantenApp.java.utils.DaoUtils;
@@ -76,39 +73,41 @@ public class ExtraDAO implements Queries {
         //SQLcommand
         PreparedStatement stmtSelectIdsByExtra = DaoUtils.ReadyStatement(dbConnection, GETIDSBYEXTRA, plantIds);
 
+
         //nectarwaarde
         PropertyClass<Value> nectarwaarde = bindingData.dataBindings.get(Bindings.NECTARWAARDE);
-        stmtSelectIdsByExtra.setString(plantIds.size() + 1, DaoUtils.GetCheckedValue(nectarwaarde.getValue()));
+        stmtSelectIdsByExtra.setString(plantIds.size() + 1, nectarwaarde.getValue().get());
         stmtSelectIdsByExtra.setInt(plantIds.size() + 2, (nectarwaarde.getDoSearch()) ? 0 : 1);
 
         //nectarwaarde
         PropertyClass<Value> pollenwaarde = bindingData.dataBindings.get(Bindings.POLLENWAARDE);
-        stmtSelectIdsByExtra.setString(plantIds.size() + 3, DaoUtils.GetCheckedValue(pollenwaarde.getValue()));
+        stmtSelectIdsByExtra.setString(plantIds.size() + 3, pollenwaarde.getValue().get());
         stmtSelectIdsByExtra.setInt(plantIds.size() + 4, (pollenwaarde.getDoSearch()) ? 0 : 1);
 
-        /*
+
+
         //bijvriendelijk
-        PropertyClass<Value> bijvriendelijk = bindingData.arrayDataBindings.get(ArrayBindings.BIJVRIENDELIJK);
+        PropertyClass<ValueWithBoolean[]> bijvriendelijk = bindingData.arrayDataBindings.get(ArrayBindings.BIJVRIENDELIJK);
         stmtSelectIdsByExtra.setString(plantIds.size() + 5, DaoUtils.GetCheckedValue(bijvriendelijk.getValue()));
         stmtSelectIdsByExtra.setInt(plantIds.size() + 6, (bijvriendelijk.getDoSearch()) ? 0 : 1);
 
         //Eetbaar
-        PropertyClass<Value> eetbaar = bindingData.arrayDataBindings.get(ArrayBindings.EETBAAR);
+        PropertyClass<ValueWithBoolean[]> eetbaar = bindingData.arrayDataBindings.get(ArrayBindings.EETBAAR);
         stmtSelectIdsByExtra.setString(plantIds.size() + 7, DaoUtils.GetCheckedValue(eetbaar.getValue()));
         stmtSelectIdsByExtra.setInt(plantIds.size() + 8, (eetbaar.getDoSearch()) ? 0 : 1);
 
         //kruidgebruik
-        PropertyClass<Value> kruidgebruik = bindingData.arrayDataBindings.get(ArrayBindings.KRUIDGEBRUIK);
+        PropertyClass<ValueWithBoolean[]> kruidgebruik = bindingData.arrayDataBindings.get(ArrayBindings.KRUIDGEBRUIK);
         stmtSelectIdsByExtra.setString(plantIds.size() + 9, DaoUtils.GetCheckedValue(kruidgebruik.getValue()));
         stmtSelectIdsByExtra.setInt(plantIds.size() + 10, (kruidgebruik.getDoSearch()) ? 0 : 1);
 
         //geurend
-        PropertyClass<Value> geurend = bindingData.arrayDataBindings.get(ArrayBindings.GEUREND);
+        PropertyClass<ValueWithBoolean[]> geurend = bindingData.arrayDataBindings.get(ArrayBindings.GEUREND);
         stmtSelectIdsByExtra.setString(plantIds.size() + 11, DaoUtils.GetCheckedValue(geurend.getValue()));
         stmtSelectIdsByExtra.setInt(plantIds.size() + 12, (geurend.getDoSearch()) ? 0 : 1);
 
         //vorstgevoelig
-        PropertyClass<Value> vorstgevoelig = bindingData.arrayDataBindings.get(ArrayBindings.VORSTGEVOELIG);
+        PropertyClass<ValueWithBoolean[]> vorstgevoelig = bindingData.arrayDataBindings.get(ArrayBindings.VORSTGEVOELIG);
         stmtSelectIdsByExtra.setString(plantIds.size() + 13, DaoUtils.GetCheckedValue(vorstgevoelig.getValue()));
         stmtSelectIdsByExtra.setInt(plantIds.size() + 14, (vorstgevoelig.getDoSearch()) ? 0 : 1);
 
