@@ -5,11 +5,7 @@
       <change beforePath="$PROJECT_DIR$/.idea/libraries/mssql_jdbc_7_4_1_jre11.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/mssql_jdbc_7_4_1_jre11.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/PlantenApplicatie.iml" beforeDir="false" afterPath="$PROJECT_DIR$/PlantenApplicatie.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/plantenApp/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/plantenApp/Controller.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/plantenApp/java/dao/ExtraDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/plantenApp/java/dao/ExtraDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/plantenApp/java/model/BindingData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/plantenApp/java/model/BindingData.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/plantenApp/java/utils/ArrayBindings.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/plantenApp/java/utils/ArrayBindings.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/plantenApp/java/utils/Bindings.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/plantenApp/java/utils/Bindings.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -49,8 +45,8 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="extract.method.default.visibility" value="private" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../mssql-jdbc-7.4.1.jre11.jar!/" />
-    <property name="project.structure.last.edited" value="Problems" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../Jar/sqljdbc_7.4/enu/mssql-jdbc-7.4.1.jre11.jar!/" />
+    <property name="project.structure.last.edited" value="Libraries" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.30297872" />
   </component>
