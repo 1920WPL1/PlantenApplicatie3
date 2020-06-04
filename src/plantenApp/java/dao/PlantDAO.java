@@ -2,6 +2,8 @@ package plantenApp.java.dao;
 
 import plantenApp.java.model.BindingData;
 import plantenApp.java.model.Plant;
+import plantenApp.java.model.PropertyClass;
+import plantenApp.java.model.Value;
 import plantenApp.java.utils.Bindings;
 import plantenApp.java.utils.DaoUtils;
 
@@ -151,15 +153,20 @@ public class PlantDAO implements Queries {
         //Items
         ArrayList<Integer> ids = new ArrayList<>();
 
-        //SQLcommand
-        stmtSelectIdsByPlant.setString(1, bindingData.dataBindings.get(Bindings.TYPE).getValue().get());
-        stmtSelectIdsByPlant.setInt(2, (bindingData.dataBindings.get(Bindings.TYPE).getDoSearch()) ? 0 : 1);
+        //type
+        PropertyClass<Value> type = bindingData.dataBindings.get(Bindings.TYPE);
+        stmtSelectIdsByPlant.setString(1, type.getValue().get());
+        stmtSelectIdsByPlant.setInt(2, (type.getDoSearch()) ? 0 : 1);
 
-        stmtSelectIdsByPlant.setString(3, bindingData.dataBindings.get(Bindings.FAMILIE).getValue().get());
-        stmtSelectIdsByPlant.setInt(4, (bindingData.dataBindings.get(Bindings.FAMILIE).getDoSearch()) ? 0 : 1);
+        //familie
+        PropertyClass<Value> familie = bindingData.dataBindings.get(Bindings.FAMILIE);
+        stmtSelectIdsByPlant.setString(3, familie.getValue().get());
+        stmtSelectIdsByPlant.setInt(4, (familie.getDoSearch()) ? 0 : 1);
 
-        stmtSelectIdsByPlant.setString(5, bindingData.dataBindings.get(Bindings.SEARCH).getValue().get());
-        stmtSelectIdsByPlant.setInt(6, (bindingData.dataBindings.get(Bindings.SEARCH).getDoSearch()) ? 0 : 1);
+        //fgsv
+        PropertyClass<Value> fgsv = bindingData.dataBindings.get(Bindings.SEARCH);
+        stmtSelectIdsByPlant.setString(5, fgsv.getValue().get());
+        stmtSelectIdsByPlant.setInt(6, (fgsv.getDoSearch()) ? 0 : 1);
 
         ResultSet rs = stmtSelectIdsByPlant.executeQuery();
         while (rs.next()) {

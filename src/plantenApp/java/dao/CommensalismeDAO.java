@@ -21,7 +21,6 @@ public class CommensalismeDAO implements Queries {
     private Connection dbConnection;
     private PreparedStatement stmtSelectCommeByID;
     private PreparedStatement stmtSelectCommeMultiByID;
-    private PreparedStatement stmtSelectIdsByComm;
     private PreparedStatement stmtSelectIdsByCommMulti;
 
     public CommensalismeDAO(Connection dbConnection) throws SQLException {
@@ -29,7 +28,6 @@ public class CommensalismeDAO implements Queries {
 
         stmtSelectCommeByID = dbConnection.prepareStatement(GETCOMMENSALISMEBYPLANTID);
         stmtSelectCommeMultiByID = dbConnection.prepareStatement(GETCOMMENSALISMEMULTIBYPLANTID);
-        stmtSelectIdsByComm = dbConnection.prepareStatement(GETIDSBYCOMM);
         stmtSelectIdsByCommMulti = dbConnection.prepareStatement(GETIDSBYCOMMMULTI);
     }
 
@@ -95,22 +93,24 @@ public class CommensalismeDAO implements Queries {
 
     //region FILTER
 
-    public ArrayList<Integer> FilterOn(List<Integer> plantIds, BindingData bindingData) throws SQLException {
+    public ArrayList<Integer> FilterOn(ArrayList<Integer> plantIds, BindingData bindingData) throws SQLException {
         //Dao
 
         //Items
-        String sPlantIds = DaoUtils.sqlFormatedList(plantIds);
         ArrayList<Integer> ids = new ArrayList<>();
 
         //SQLcommand
-        stmtSelectIdsByComm.setString(1, sPlantIds);
+        PreparedStatement stmtSelectIdsByComm = DaoUtils.ReadyStatement(dbConnection, GETIDSBYCOMM, plantIds);
 
+        //Strategie
         PropertyClass<ValueWithBoolean[]> strategie = bindingData.arrayDataBindings.get(ArrayBindings.STRATEGIE);
-        stmtSelectIdsByComm.setString(2, Utils.GetCheckedValue(strategie.getValue()));
-        stmtSelectIdsByComm.setInt(3, (strategie.getDoSearch()) ? 0 : 1);
+        stmtSelectIdsByComm.setString(plantIds.size() + 1, Utils.GetCheckedValue(strategie.getValue()));
+        stmtSelectIdsByComm.setInt(plantIds.size() + 2, (strategie.getDoSearch()) ? 0 : 1);
 
-        stmtSelectIdsByComm.setString(4, bindingData.dataBindings.get(Bindings.ONTWIKKELINGSSNELHEID).getValue().get());
-        stmtSelectIdsByComm.setInt(5, (bindingData.dataBindings.get(Bindings.ONTWIKKELINGSSNELHEID).getDoSearch()) ? 0 : 1);
+        //ontwikkelingssnelheid
+        PropertyClass<Value> ontwikkelingssnelheid = bindingData.dataBindings.get(Bindings.ONTWIKKELINGSSNELHEID);
+        stmtSelectIdsByComm.setString(plantIds.size() + 3, ontwikkelingssnelheid.getValue().get());
+        stmtSelectIdsByComm.setInt(plantIds.size() + 4, (ontwikkelingssnelheid.getDoSearch()) ? 0 : 1);
 
         ResultSet rs = stmtSelectIdsByComm.executeQuery();
         while (rs.next()) {
@@ -118,21 +118,23 @@ public class CommensalismeDAO implements Queries {
         }
 
         //Multi
+        /*
         PropertyClass<ValueWithBoolean[]> sociabiliteitData = bindingData.arrayDataBindings.get(ArrayBindings.SOCIABILITEIT);
         if (sociabiliteitData.getDoSearch()) {
             for (int i = 0; i < sociabiliteitData.getValue().length; i++) {
                 if (sociabiliteitData.getValue()[i].getBool()) {
-                    ids = FilterOnMulti("sociabiliteit",sociabiliteitData.getValue()[i].get(),ids);
+                    ids = FilterOnMulti("sociabiliteit", sociabiliteitData.getValue()[i].get(), ids);
                 }
 
             }
         }
+        */
 
         //Output
         return ids;
     }
 
-    private ArrayList<Integer> FilterOnMulti(String eigenschap, String value, List<Integer> plantIds) throws SQLException {
+    private ArrayList<Integer> FilterOnMulti(String eigenschap, String value, ArrayList<Integer> plantIds) throws SQLException {
         //Dao
 
         //Items

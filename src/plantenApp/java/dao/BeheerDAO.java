@@ -1,8 +1,6 @@
 package plantenApp.java.dao;
 
-import plantenApp.java.model.Beheer;
-import plantenApp.java.model.Beheerdaad_Eigenschap;
-import plantenApp.java.model.BindingData;
+import plantenApp.java.model.*;
 import plantenApp.java.utils.Bindings;
 import plantenApp.java.utils.DaoUtils;
 
@@ -14,25 +12,25 @@ import java.util.ArrayList;
 import java.util.EnumMap;
 import java.util.List;
 
-/**@author Siebe*/
+/**
+ * @author Siebe
+ */
 public class BeheerDAO implements Queries {
     private Connection dbConnection;
     private PreparedStatement stmtSelectBeheerByID;
-    private PreparedStatement stmtSelectIdsByBeheer;
 
     public BeheerDAO(Connection dbConnection) throws SQLException {
         this.dbConnection = dbConnection;
 
         stmtSelectBeheerByID = dbConnection.prepareStatement(GETBEHEERBYPLANTID);
-        stmtSelectIdsByBeheer = dbConnection.prepareStatement(GETIDSBYBEHEER);
     }
 
     //region GET
 
     /**
-     * @author Siebe
      * @param id -> plant_id
      * @return -> beheer van de specifieke plant
+     * @author Siebe
      */
     public Beheer getById(int id) throws SQLException {
         //Dao
@@ -51,10 +49,10 @@ public class BeheerDAO implements Queries {
     }
 
     /**
-     * @author Siebe
-     * word alleen gebruikt in getById
      * @param id -> plant_id
      * @return -> alle beheerdaden van de specifieke plant
+     * @author Siebe
+     * word alleen gebruikt in getById
      */
     private ArrayList<Beheerdaad_Eigenschap> getBeheerdaden(int id) throws SQLException {
         //Dao
@@ -89,27 +87,29 @@ public class BeheerDAO implements Queries {
 
         System.out.println(plantIds.toString());
         //Items
-        String sPlantIds = DaoUtils.sqlFormatedList(plantIds);
-        System.out.println(sPlantIds);
         ArrayList<Integer> ids = new ArrayList<>();
 
         //SQLcommand
+        PreparedStatement stmtSelectIdsByBeheer = DaoUtils.ReadyStatement(dbConnection,GETIDSBYBEHEER,plantIds);
 
+        //Behandeling
+        PropertyClass<Value> behandeling = bindingData.dataBindings.get(Bindings.BEHANDELING);
+        stmtSelectIdsByBeheer.setString(plantIds.size() + 1, behandeling.getValue().get());
+        stmtSelectIdsByBeheer.setInt(plantIds.size() + 2, (behandeling.getDoSearch()) ? 0 : 1);
 
+        //maand
+        PropertyClass<Value> maand = bindingData.dataBindings.get(Bindings.MAAND);
+        stmtSelectIdsByBeheer.setString(plantIds.size() + 3, maand.getValue().get());
+        stmtSelectIdsByBeheer.setInt(plantIds.size() + 4, (maand.getDoSearch()) ? 0 : 1);
 
-
-        /*stmtSelectIdsByBeheer.setString(2, bindingData.dataBindings.get(Bindings.BEHANDELING).getValue().get());
-        stmtSelectIdsByBeheer.setInt(3, (bindingData.dataBindings.get(Bindings.BEHANDELING).getDoSearch()) ? 0 : 1);
-
-        stmtSelectIdsByBeheer.setString(4, bindingData.dataBindings.get(Bindings.MAAND).getValue().get());
-        stmtSelectIdsByBeheer.setInt(5, (bindingData.dataBindings.get(Bindings.MAAND).getDoSearch()) ? 0 : 1);
-
-        stmtSelectIdsByBeheer.setInt(6, Integer.parseInt(bindingData.dataBindings.get(Bindings.PERXJAAR).getValue().get()));
-        stmtSelectIdsByBeheer.setInt(7, (bindingData.dataBindings.get(Bindings.PERXJAAR).getDoSearch()) ? 0 : 1);*/
+        //perxjaar
+        PropertyClass<Value> perXjaar = bindingData.dataBindings.get(Bindings.PERXJAAR);
+        stmtSelectIdsByBeheer.setInt(plantIds.size() + 5, Integer.parseInt(perXjaar.getValue().get()));
+        stmtSelectIdsByBeheer.setInt(plantIds.size() + 6, (perXjaar.getDoSearch()) ? 0 : 1);
 
         System.out.println(stmtSelectIdsByBeheer);
         ResultSet rs = stmtSelectIdsByBeheer.executeQuery();
-        while (rs.next()){
+        while (rs.next()) {
             ids.add(rs.getInt("plant_id"));
         }
 

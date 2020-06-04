@@ -17,7 +17,6 @@ public class AbiotischeFactorenDAO implements Queries {
     private Connection dbConnection;
     private PreparedStatement stmtSelectAbioByID;
     private PreparedStatement stmtSelectAbioMultiByID;
-    private PreparedStatement stmtSelectIdsByAbio;
     private PreparedStatement stmtSelectIdsByAbioMulti;
 
     public AbiotischeFactorenDAO(Connection dbConnection) throws SQLException {
@@ -25,7 +24,6 @@ public class AbiotischeFactorenDAO implements Queries {
 
         stmtSelectAbioByID = dbConnection.prepareStatement(GETABIOTISCHBYPLANTID);
         stmtSelectAbioMultiByID = dbConnection.prepareStatement(GETABIOTISCHBMULTIYPLANTID);
-        stmtSelectIdsByAbio = dbConnection.prepareStatement(GETIDSBYABIO);
         stmtSelectIdsByAbioMulti = dbConnection.prepareStatement(GETIDSBYABIOMULTI);
     }
 
@@ -94,20 +92,19 @@ public class AbiotischeFactorenDAO implements Queries {
 
     //region FILTER
 
-    public ArrayList<Integer> FilterOn(List<Integer> plantIds, BindingData bindingData) throws SQLException {
+    public ArrayList<Integer> FilterOn(ArrayList<Integer> plantIds, BindingData bindingData) throws SQLException {
         //Dao
 
         //Items
-        String sPlantIds = DaoUtils.sqlFormatedList(plantIds);
         ArrayList<Integer> ids = new ArrayList<>();
 
-        //SQLcommand
-        stmtSelectIdsByAbio.setString(1, sPlantIds);
+        //makes the prepared statement en fills in de IN (?)
+        PreparedStatement stmtSelectIdsByAbio = DaoUtils.ReadyStatement(dbConnection, GETIDSBYABIO, plantIds);
 
         //Bezonning
         PropertyClass<Value> bezonning = bindingData.dataBindings.get(Bindings.BEZONNING);
-        stmtSelectIdsByAbio.setString(2, bezonning.getValue().get());
-        stmtSelectIdsByAbio.setString(3, bezonning.getValue().get());
+        stmtSelectIdsByAbio.setString(plantIds.size() + 1, bezonning.getValue().get());
+        stmtSelectIdsByAbio.setInt(plantIds.size() + 2, (bezonning.getDoSearch())? 0 : 1);
 
         //Grondsoort
         PropertyClass<ValueWithBoolean[]> grondsoort = bindingData.arrayDataBindings.get(ArrayBindings.GRONDSOORT);
@@ -117,23 +114,23 @@ public class AbiotischeFactorenDAO implements Queries {
                 grondsoortValue.append(grondsoort.getValue()[i].get());
             }
         }
-        stmtSelectIdsByAbio.setString(4, grondsoortValue.toString());
-        stmtSelectIdsByAbio.setInt(5, (grondsoort.getDoSearch()) ? 0 : 1);
+        stmtSelectIdsByAbio.setString(plantIds.size() + 3, grondsoortValue.toString());
+        stmtSelectIdsByAbio.setInt(plantIds.size() + 4, (grondsoort.getDoSearch()) ? 0 : 1);
 
         //Vochtbehoefte
         PropertyClass<Value> vochtbehoefte = bindingData.dataBindings.get(Bindings.VOCHTBEHOEFTE);
-        stmtSelectIdsByAbio.setString(6, vochtbehoefte.getValue().get());
-        stmtSelectIdsByAbio.setInt(7, (vochtbehoefte.getDoSearch()) ? 0 : 1);
+        stmtSelectIdsByAbio.setString(plantIds.size() + 5, vochtbehoefte.getValue().get());
+        stmtSelectIdsByAbio.setInt(plantIds.size() + 6, (vochtbehoefte.getDoSearch()) ? 0 : 1);
 
         //voedingsbehoefte
         PropertyClass<Value> voedingsbehoefte = bindingData.dataBindings.get(Bindings.VOEDINGSBEHOEFTE);
-        stmtSelectIdsByAbio.setString(8, voedingsbehoefte.getValue().get());
-        stmtSelectIdsByAbio.setInt(9, (voedingsbehoefte.getDoSearch()) ? 0 : 1);
+        stmtSelectIdsByAbio.setString(plantIds.size() + 7, voedingsbehoefte.getValue().get());
+        stmtSelectIdsByAbio.setInt(plantIds.size() + 8, (voedingsbehoefte.getDoSearch()) ? 0 : 1);
 
         //reactieantaomgeving
         PropertyClass<Value> reactieantaomgeving = bindingData.dataBindings.get(Bindings.REACTIEANTAGONISTISCHEOMGEVING);
-        stmtSelectIdsByAbio.setString(10, reactieantaomgeving.getValue().get());
-        stmtSelectIdsByAbio.setInt(11, (reactieantaomgeving.getDoSearch()) ? 0 : 1);
+        stmtSelectIdsByAbio.setString(plantIds.size() + 9, reactieantaomgeving.getValue().get());
+        stmtSelectIdsByAbio.setInt(plantIds.size() + 10, (reactieantaomgeving.getDoSearch()) ? 0 : 1);
 
         ResultSet rs = stmtSelectIdsByAbio.executeQuery();
         while (rs.next()) {
@@ -141,15 +138,18 @@ public class AbiotischeFactorenDAO implements Queries {
         }
 
         //habitat
+        /*
         if (bindingData.dataBindings.get(Bindings.HABITAT).getDoSearch()) {
             ids = FilterOnMulti("Habitat", bindingData.dataBindings.get(Bindings.HABITAT).getValue().get(), ids);
         }
+
+         */
 
         //Output
         return ids;
     }
 
-    private ArrayList<Integer> FilterOnMulti(String eigenschap, String value, List<Integer> plantIds) throws SQLException {
+    private ArrayList<Integer> FilterOnMulti(String eigenschap, String value, ArrayList<Integer> plantIds) throws SQLException {
         //Dao
 
         //Items
