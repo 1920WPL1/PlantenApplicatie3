@@ -6,6 +6,7 @@ import plantenApp.java.model.InfoTables;
 import javafx.scene.control.*;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
+import plantenApp.java.model.SearchHandler;
 import plantenApp.java.utils.ArrayBindings;
 import plantenApp.java.utils.Bindings;
 
@@ -267,9 +268,9 @@ public class Controller {
 
     /**
      * @author bradley
-     * @param E
-     * @param checkBox
-     * @param comboBox
+     * @param E enum Bindings
+     * @param checkBox te binden checkbox
+     * @param comboBox te binden combobox
      */
     public void Bind(Bindings E, CheckBox checkBox, ComboBox<String> comboBox){
         comboBox.disableProperty().bind(checkBox.selectedProperty().not());
@@ -279,9 +280,9 @@ public class Controller {
 
     /**
      * @author bradley
-     * @param E
-     * @param checkBox
-     * @param spinner
+     * @param E enum Bindings
+     * @param checkBox te binden checkbox
+     * @param spinner te binden spinner
      */
     public void Bind(Bindings E, CheckBox checkBox, Spinner<Integer> spinner){
         spinner.disableProperty().bind(checkBox.selectedProperty().not());
@@ -371,8 +372,7 @@ public class Controller {
 
 
 
-    public void Clicked_Search(MouseEvent mouseEvent) {
-    }
+
 
     /**
      * @author Bradley Velghe
@@ -393,6 +393,12 @@ public class Controller {
     public void Click_test(MouseEvent mouseEvent) {
         System.out.println(bindingData.dataBindings.get(Bindings.BLADVORM).getValue().get());
         System.out.println(bindingData.dataBindings.get(Bindings.BLADVORM).getDoSearch());
+    }
+
+    public void Click_Search(MouseEvent mouseEvent) throws SQLException {
+        SearchHandler handler = new SearchHandler(dbConnection);
+        ArrayList<Integer> ids = handler.Search(bindingData, dbConnection);
+        System.out.println(ids.toString());
     }
 }
 

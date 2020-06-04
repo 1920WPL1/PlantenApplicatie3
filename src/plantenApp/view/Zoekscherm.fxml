@@ -206,8 +206,8 @@
                                           </VBox>
                                        </children>
                                     </HBox>
-                                    <Label minWidth="20.0" prefHeight="120.0" prefWidth="468.0" />
-                                    <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="150.0" text="Zoek">
+                                    <Label minWidth="20.0" prefHeight="120.0" prefWidth="371.0" />
+                                    <Button mnemonicParsing="false" onMouseClicked="#Click_Search" prefHeight="50.0" prefWidth="150.0" text="Zoek">
                                        <font>
                                           <Font size="24.0" />
                                        </font>
