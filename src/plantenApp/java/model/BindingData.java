@@ -53,9 +53,8 @@ public class BindingData {
         searchRequestArrayData.put(ERequestArrayData.HABITUS, new SearchRequest<RequestValueWBool[]>(new RequestValueWBool[15]));
         searchRequestArrayData.put(ERequestArrayData.BLOEIWIJZE, new SearchRequest<RequestValueWBool[]>(new RequestValueWBool[8]));
         searchRequestArrayData.put(ERequestArrayData.LEVENSVORM, new SearchRequest<RequestValueWBool[]>(new RequestValueWBool[9]));
-        searchRequestArrayData.put(ERequestArrayData.MAXBLADHOOGTE, new SearchRequest<RequestValueWBool[]>(new RequestValueWBool[2]));
-        searchRequestArrayData.put(ERequestArrayData.MINGBLOEIHOOGTE, new SearchRequest<RequestValueWBool[]>(new RequestValueWBool[2]));
-        searchRequestArrayData.put(ERequestArrayData.MAXBLOEIHOOGTE, new SearchRequest<RequestValueWBool[]>(new RequestValueWBool[2]));
+        searchRequestArrayData.put(ERequestArrayData.BLADHOOGTE, new SearchRequest<RequestValueWBool[]>(new RequestValueWBool[2]));
+        searchRequestArrayData.put(ERequestArrayData.BLOEIHOOGTE, new SearchRequest<RequestValueWBool[]>(new RequestValueWBool[2]));
         searchRequestArrayData.put(ERequestArrayData.VLINDERVRIENDELIJK, new SearchRequest<RequestValueWBool[]>(new RequestValueWBool[3]));
         searchRequestArrayData.put(ERequestArrayData.BIJVRIENDELIJK, new SearchRequest<RequestValueWBool[]>(new RequestValueWBool[3]));
         searchRequestArrayData.put(ERequestArrayData.GEUREND, new SearchRequest<RequestValueWBool[]>(new RequestValueWBool[3]));

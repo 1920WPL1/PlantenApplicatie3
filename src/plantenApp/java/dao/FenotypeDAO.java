@@ -171,6 +171,7 @@ public class FenotypeDAO implements Queries {
         SearchRequest<RequestValueWBool[]> singleHoogte;
 
         //Bloeihoogte
+        /*
         multiHoogte = bindingData.searchRequestArrayData.get(ERequestArrayData.MINBLOEIHOOGTEPERMAAND);
         singleHoogte = bindingData.searchRequestArrayData.get(ERequestArrayData.MINGBLOEIHOOGTE);
         if (multiHoogte.getDoSearch()) {
@@ -197,7 +198,7 @@ public class FenotypeDAO implements Queries {
         }
         else if (singleHoogte.getDoSearch()){
             ids = FilterOnMinHoogteSingle("bladhoogte",singleHoogte.getValue(),plantIds);
-        }*/
+        }
 
         multiHoogte = bindingData.searchRequestArrayData.get(ERequestArrayData.MAXBLADHOOGTEPERMAAND);
         singleHoogte = bindingData.searchRequestArrayData.get(ERequestArrayData.MAXBLADHOOGTE);
@@ -205,8 +206,7 @@ public class FenotypeDAO implements Queries {
             ids = FilterOnMaxHoogte("bladhoogte", multiHoogte.Value(), plantIds);
         } else if (singleHoogte.getDoSearch()) {
             ids = FilterOnMaxHoogteSingle("bladhoogte", singleHoogte.Value(), plantIds);
-        }
-
+        }*/
         //endregion
 
         //region Kleuren

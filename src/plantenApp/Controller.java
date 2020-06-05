@@ -52,7 +52,7 @@ public class Controller {
     public Spinner<Integer> nudMinBladhoogte;
     public Spinner<Integer> nudMaxBladhoogte;
     public Spinner<Integer> nudMinBloeihoogte;
-    public Spinner<Integer> nudBloeiHoogte;
+    public Spinner<Integer> nudMaxBloeihoogte;
     public Slider sldBezonning;
     public Slider sldVochtbehoefte;
     public CheckBox chkGrondsoort_Z;
@@ -261,6 +261,8 @@ public class Controller {
         Bind(ERequestData.BEHANDELING, chkBehandeling, cboBehandeling);
         Bind(ERequestData.MAAND, chkMaand, cboMaand);
         Bind(ERequestData.PERXJAAR, chkPerXJaar, nudPerXJaar);
+        Bind(ERequestData.BEZONNING, chkBezonning, sldBezonning);
+        Bind(ERequestData.VOCHTBEHOEFTE, chkVochtBehoefte, sldVochtbehoefte);
 
 
         ArrayList<RadioButton> rdbLevensvormen = new ArrayList<RadioButton>();
@@ -365,6 +367,93 @@ public class Controller {
         chkGrondsoorten.add(chkGrondsoort_Z);
         chkGrondsoorten.add(chkGrondsoort_L);
         BindCheckbox(ERequestArrayData.GRONDSOORT, chkGrondsoort, chkGrondsoorten);
+
+        ArrayList<Spinner<Integer>> nudBladhoogtes = new ArrayList<Spinner<Integer>>();
+        nudBladhoogtes.add(nudMinBladhoogte);
+        nudBladhoogtes.add(nudMaxBladhoogte);
+        BindSpinner(ERequestArrayData.BLADHOOGTE, chkBladHoogte, nudBladhoogtes);
+
+        ArrayList<Spinner<Integer>> nudBloeihoogtes = new ArrayList<Spinner<Integer>>();
+        nudBloeihoogtes.add(nudMinBloeihoogte);
+        nudBloeihoogtes.add(nudMaxBloeihoogte);
+        BindSpinner(ERequestArrayData.BLOEIHOOGTE, chkBloeiHoogte, nudBloeihoogtes);
+
+        ArrayList<Spinner<Integer>> nudMaxBladhoogteMaand = new ArrayList<Spinner<Integer>>();
+        nudMaxBladhoogteMaand.add(nudMaxBladhoogte_Jan);
+        nudMaxBladhoogteMaand.add(nudMaxBladhoogte_Feb);
+        nudMaxBladhoogteMaand.add(nudMaxBladhoogte_Maa);
+        nudMaxBladhoogteMaand.add(nudMaxBladhoogte_Apr);
+        nudMaxBladhoogteMaand.add(nudMaxBladhoogte_Mei);
+        nudMaxBladhoogteMaand.add(nudMaxBladhoogte_Jun);
+        nudMaxBladhoogteMaand.add(nudMaxBladhoogte_Jul);
+        nudMaxBladhoogteMaand.add(nudMaxBladhoogte_Aug);
+        nudMaxBladhoogteMaand.add(nudMaxBladhoogte_Sept);
+        nudMaxBladhoogteMaand.add(nudMaxBladhoogte_Okt);
+        nudMaxBladhoogteMaand.add(nudMaxBladhoogte_Nov);
+        nudMaxBladhoogteMaand.add(nudMaxBladhoogte_Dec);
+        BindSpinner(ERequestArrayData.MAXBLADHOOGTEPERMAAND, chkMaxBladhoogtePerMaand, nudMaxBladhoogteMaand);
+
+        ArrayList<Spinner<Integer>> nudMaxBloeihoogteMaand = new ArrayList<Spinner<Integer>>();
+        nudMaxBloeihoogteMaand.add(nudMaxBloeihoogte_Jan);
+        nudMaxBloeihoogteMaand.add(nudMaxBloeihoogte_Feb);
+        nudMaxBloeihoogteMaand.add(nudMaxBloeihoogte_Maa);
+        nudMaxBloeihoogteMaand.add(nudMaxBloeihoogte_Apr);
+        nudMaxBloeihoogteMaand.add(nudMaxBloeihoogte_Mei);
+        nudMaxBloeihoogteMaand.add(nudMaxBloeihoogte_Jun);
+        nudMaxBloeihoogteMaand.add(nudMaxBloeihoogte_Jul);
+        nudMaxBloeihoogteMaand.add(nudMaxBloeihoogte_Aug);
+        nudMaxBloeihoogteMaand.add(nudMaxBloeihoogte_Sept);
+        nudMaxBloeihoogteMaand.add(nudMaxBloeihoogte_Okt);
+        nudMaxBloeihoogteMaand.add(nudMaxBloeihoogte_Nov);
+        nudMaxBloeihoogteMaand.add(nudMaxBloeihoogte_Dec);
+        BindSpinner(ERequestArrayData.MAXBLOEIHOOGTEPERMAAND, chkMaxBloeihoogtePerMaand, nudMaxBloeihoogteMaand);
+
+        ArrayList<Spinner<Integer>> nudMinBloeihoogteMaand = new ArrayList<Spinner<Integer>>();
+        nudMinBloeihoogteMaand.add(nudMinBloeihoogte_Jan);
+        nudMinBloeihoogteMaand.add(nudMinBloeihoogte_Feb);
+        nudMinBloeihoogteMaand.add(nudMinBloeihoogte_Maa);
+        nudMinBloeihoogteMaand.add(nudMinBloeihoogte_Apr);
+        nudMinBloeihoogteMaand.add(nudMinBloeihoogte_Mei);
+        nudMinBloeihoogteMaand.add(nudMinBloeihoogte_Jun);
+        nudMinBloeihoogteMaand.add(nudMinBloeihoogte_Jul);
+        nudMinBloeihoogteMaand.add(nudMinBloeihoogte_Aug);
+        nudMinBloeihoogteMaand.add(nudMinBloeihoogte_Sept);
+        nudMinBloeihoogteMaand.add(nudMinBloeihoogte_Okt);
+        nudMinBloeihoogteMaand.add(nudMinBloeihoogte_Nov);
+        nudMinBloeihoogteMaand.add(nudMinBloeihoogte_Dec);
+        BindSpinner(ERequestArrayData.MINBLOEIHOOGTEPERMAAND, chkMinBloeihoogtePerMaand, nudMinBloeihoogteMaand);
+
+        ArrayList<ComboBox> cboBladkleurMaand = new ArrayList<ComboBox>();
+        cboBladkleurMaand.add(cboBladkleurJan);
+        cboBladkleurMaand.add(cboBladkleurFeb);
+        cboBladkleurMaand.add(cboBladkleurMaa);
+        cboBladkleurMaand.add(cboBladkleurApr);
+        cboBladkleurMaand.add(cboBladkleurMei);
+        cboBladkleurMaand.add(cboBladkleurJun);
+        cboBladkleurMaand.add(cboBladkleurJul);
+        cboBladkleurMaand.add(cboBladkleurAug);
+        cboBladkleurMaand.add(cboBladkleurSep);
+        cboBladkleurMaand.add(cboBladkleurOkt);
+        cboBladkleurMaand.add(cboBladkleurNov);
+        cboBladkleurMaand.add(cboBladkleurDec);
+        BindCombobox(ERequestArrayData.BLADKLEURPERMAAND, chkBladkleurPerMaand, cboBladkleurMaand);
+
+        ArrayList<ComboBox> cboBloeikleurMaand = new ArrayList<ComboBox>();
+        cboBloeikleurMaand.add(cboBloeikleurJan);
+        cboBloeikleurMaand.add(cboBloeikleurFeb);
+        cboBloeikleurMaand.add(cboBloeikleurMaa);
+        cboBloeikleurMaand.add(cboBloeikleurApr);
+        cboBloeikleurMaand.add(cboBloeikleurMei);
+        cboBloeikleurMaand.add(cboBloeikleurJun);
+        cboBloeikleurMaand.add(cboBloeikleurJul);
+        cboBloeikleurMaand.add(cboBloeikleurAug);
+        cboBloeikleurMaand.add(cboBloeikleurSep);
+        cboBloeikleurMaand.add(cboBloeikleurOkt);
+        cboBloeikleurMaand.add(cboBloeikleurNov);
+        cboBloeikleurMaand.add(cboBloeikleurDec);
+        BindCombobox(ERequestArrayData.BLOEIKLEURPERMAAND, chkBloeikleurPerMaand, cboBloeikleurMaand);
+
+
     }
 
     /**
@@ -511,7 +600,7 @@ public class Controller {
         setSpinner(nudPerXJaar, 10);
 
         setSpinner(nudMinBladhoogte, 1000);
-        setSpinner(nudBloeiHoogte, 1000);
+        setSpinner(nudMaxBloeihoogte, 1000);
         setSpinner(nudMinBladhoogte, 1000);
         setSpinner(nudMaxBladhoogte, 1000);
 
