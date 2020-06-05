@@ -535,7 +535,7 @@ public class Controller {
         nudMinBloeihoogteMaand.add(nudMinBloeihoogte_Dec);
         BindSpinner(ERequestArrayData.MINBLOEIHOOGTEPERMAAND, chkMinBloeihoogtePerMaand, nudMinBloeihoogteMaand);
 
-        ArrayList<ComboBox> cboBladkleurMaand = new ArrayList<ComboBox>();
+        ArrayList<ComboBox<String>> cboBladkleurMaand = new ArrayList<ComboBox<String>>();
         cboBladkleurMaand.add(cboBladkleurJan);
         cboBladkleurMaand.add(cboBladkleurFeb);
         cboBladkleurMaand.add(cboBladkleurMaa);
@@ -550,7 +550,7 @@ public class Controller {
         cboBladkleurMaand.add(cboBladkleurDec);
         BindCombobox(ERequestArrayData.BLADKLEURPERMAAND, chkBladkleurPerMaand, cboBladkleurMaand);
 
-        ArrayList<ComboBox> cboBloeikleurMaand = new ArrayList<ComboBox>();
+        ArrayList<ComboBox<String>> cboBloeikleurMaand = new ArrayList<ComboBox<String>>();
         cboBloeikleurMaand.add(cboBloeikleurJan);
         cboBloeikleurMaand.add(cboBloeikleurFeb);
         cboBloeikleurMaand.add(cboBloeikleurMaa);
@@ -615,7 +615,7 @@ public class Controller {
 
     public void BindRadiobutton(ERequestArrayData E, CheckBox checkBox, ArrayList<RadioButton> listRadioButton) {
 
-        bindingData.searchRequestArrayData.get(E).DoSearchProperty().bind(checkBox.selectedProperty().not());
+        bindingData.searchRequestArrayData.get(E).DoSearchProperty().bind(checkBox.selectedProperty());
 
         for (int i = 0; i < bindingData.searchRequestArrayData.get(E).Value().length; i++) {
 
@@ -628,7 +628,7 @@ public class Controller {
     }
 
     public void BindCheckbox(ERequestArrayData E, CheckBox checkBox, ArrayList<CheckBox> listCheckbox) {
-        bindingData.searchRequestArrayData.get(E).DoSearchProperty().bind(checkBox.selectedProperty().not());
+        bindingData.searchRequestArrayData.get(E).DoSearchProperty().bind(checkBox.selectedProperty());
 
         for (int i = 0; i < bindingData.searchRequestArrayData.get(E).Value().length; i++) {
 
@@ -639,7 +639,7 @@ public class Controller {
     }
 
     public void BindCombobox(ERequestArrayData E, CheckBox checkBox, ArrayList<ComboBox<String>> listComboBOx){
-        bindingData.searchRequestArrayData.get(E).DoSearchProperty().bind(checkBox.selectedProperty().not());
+        bindingData.searchRequestArrayData.get(E).DoSearchProperty().bind(checkBox.selectedProperty());
 
         for (int i = 0; i < bindingData.searchRequestArrayData.get(E).Value().length; i++) {
 

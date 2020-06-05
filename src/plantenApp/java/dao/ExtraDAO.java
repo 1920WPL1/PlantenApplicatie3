@@ -80,18 +80,20 @@ public class ExtraDAO implements Queries {
 
         //nectarwaarde
         SearchRequest<RequestValue> nectarwaarde = bindingData.searchRequestData.get(ERequestData.NECTARWAARDE);
-        stmtSelectIdsByExtra.setString(plantIds.size() + 1, nectarwaarde.Value().getValue());
+        stmtSelectIdsByExtra.setInt(plantIds.size() + 1, (int) Double.parseDouble(nectarwaarde.Value().getValue()));
         stmtSelectIdsByExtra.setInt(plantIds.size() + 2, (nectarwaarde.getDoSearch()) ? 0 : 1);
 
         //nectarwaarde
         SearchRequest<RequestValue> pollenwaarde = bindingData.searchRequestData.get(ERequestData.POLLENWAARDE);
-        stmtSelectIdsByExtra.setString(plantIds.size() + 3, pollenwaarde.Value().getValue());
+        stmtSelectIdsByExtra.setInt(plantIds.size() + 3, (int) Double.parseDouble(pollenwaarde.Value().getValue()));
         stmtSelectIdsByExtra.setInt(plantIds.size() + 4, (pollenwaarde.getDoSearch()) ? 0 : 1);
 
 
 
         //bijvriendelijk
         SearchRequest<RequestValueWBool[]> bijvriendelijk = bindingData.searchRequestArrayData.get(ERequestArrayData.BIJVRIENDELIJK);
+        System.out.println(DaoUtils.GetCheckedValue(bijvriendelijk.Value()));
+        System.out.println(bijvriendelijk.getDoSearch());
         stmtSelectIdsByExtra.setString(plantIds.size() + 5, DaoUtils.GetCheckedValue(bijvriendelijk.Value()));
         stmtSelectIdsByExtra.setInt(plantIds.size() + 6, (bijvriendelijk.getDoSearch()) ? 0 : 1);
 

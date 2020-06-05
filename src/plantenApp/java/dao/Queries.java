@@ -169,7 +169,7 @@ public interface Queries {
                     "OR (nov BETWEEN ? AND ?) " +
                     "OR (dec BETWEEN ? AND ?)) ";
     String GETIDSBYBEHEER =
-            "SELECT plant_id FROM beheer " +
+            "SELECT plant_id FROM beheer_multi " +
                     "WHERE plant_id IN (?) " +
                     "AND (beheerdaad = ? OR 1=?) " +
                     "AND (maand = ? OR 1=?) " +

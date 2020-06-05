@@ -145,6 +145,7 @@ public class FenotypeDAO implements Queries {
 
         //bladgrootte
         SearchRequest<RequestValue> bladgrootte = bindingData.searchRequestData.get(ERequestData.BLADGROOTTE);
+        System.out.println("hier kijken "+Integer.parseInt(bladgrootte.Value().getValue()));
         stmtSelectIdsByFeno.setInt(plantIds.size() + 9, Integer.parseInt(bladgrootte.Value().getValue()));
         stmtSelectIdsByFeno.setInt(plantIds.size() + 10, (bladgrootte.getDoSearch()) ? 0 : 1);
 

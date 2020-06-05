@@ -499,12 +499,12 @@
                                                             </HBox>
                                                             <HBox>
                                                                <children>
-                                                                  <RadioButton fx:id="rdbBijvriendelijk_Ja" mnemonicParsing="false" prefHeight="30.0" prefWidth="50.0" text="Ja">
+                                                                  <RadioButton fx:id="rdbBijvriendelijk_Ja" mnemonicParsing="false" prefHeight="30.0" prefWidth="50.0" text="ja">
                                                                      <font>
                                                                         <Font size="14.0" />
                                                                      </font>
                                                                   </RadioButton>
-                                                                  <RadioButton fx:id="rdbBijvriendelijk_Nee" mnemonicParsing="false" prefHeight="30.0" prefWidth="60.0" text="Nee">
+                                                                  <RadioButton fx:id="rdbBijvriendelijk_Nee" mnemonicParsing="false" prefHeight="30.0" prefWidth="60.0" text="nee">
                                                                      <font>
                                                                         <Font size="14.0" />
                                                                      </font>
