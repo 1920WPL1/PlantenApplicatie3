@@ -1,8 +1,8 @@
 package plantenApp.java.dao;
 
 import plantenApp.java.model.*;
-import plantenApp.java.utils.ArrayBindings;
-import plantenApp.java.utils.Bindings;
+import plantenApp.java.utils.ERequestArrayData;
+import plantenApp.java.utils.ERequestData;
 import plantenApp.java.utils.DaoUtils;
 
 import java.sql.Connection;
@@ -10,8 +10,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.EnumMap;
-import java.util.List;
 
 /**
  * @author Siebe
@@ -75,40 +73,40 @@ public class ExtraDAO implements Queries {
 
 
         //nectarwaarde
-        PropertyClass<Value> nectarwaarde = bindingData.dataBindings.get(Bindings.NECTARWAARDE);
-        stmtSelectIdsByExtra.setString(plantIds.size() + 1, nectarwaarde.getValue().get());
+        SearchRequest<RequestValue> nectarwaarde = bindingData.searchRequestData.get(ERequestData.NECTARWAARDE);
+        stmtSelectIdsByExtra.setString(plantIds.size() + 1, nectarwaarde.Value().getValue());
         stmtSelectIdsByExtra.setInt(plantIds.size() + 2, (nectarwaarde.getDoSearch()) ? 0 : 1);
 
         //nectarwaarde
-        PropertyClass<Value> pollenwaarde = bindingData.dataBindings.get(Bindings.POLLENWAARDE);
-        stmtSelectIdsByExtra.setString(plantIds.size() + 3, pollenwaarde.getValue().get());
+        SearchRequest<RequestValue> pollenwaarde = bindingData.searchRequestData.get(ERequestData.POLLENWAARDE);
+        stmtSelectIdsByExtra.setString(plantIds.size() + 3, pollenwaarde.Value().getValue());
         stmtSelectIdsByExtra.setInt(plantIds.size() + 4, (pollenwaarde.getDoSearch()) ? 0 : 1);
 
 
 
         //bijvriendelijk
-        PropertyClass<ValueWithBoolean[]> bijvriendelijk = bindingData.arrayDataBindings.get(ArrayBindings.BIJVRIENDELIJK);
-        stmtSelectIdsByExtra.setString(plantIds.size() + 5, DaoUtils.GetCheckedValue(bijvriendelijk.getValue()));
+        SearchRequest<RequestValueWBool[]> bijvriendelijk = bindingData.searchRequestArrayData.get(ERequestArrayData.BIJVRIENDELIJK);
+        stmtSelectIdsByExtra.setString(plantIds.size() + 5, DaoUtils.GetCheckedValue(bijvriendelijk.Value()));
         stmtSelectIdsByExtra.setInt(plantIds.size() + 6, (bijvriendelijk.getDoSearch()) ? 0 : 1);
 
         //Eetbaar
-        PropertyClass<ValueWithBoolean[]> eetbaar = bindingData.arrayDataBindings.get(ArrayBindings.EETBAAR);
-        stmtSelectIdsByExtra.setString(plantIds.size() + 7, DaoUtils.GetCheckedValue(eetbaar.getValue()));
+        SearchRequest<RequestValueWBool[]> eetbaar = bindingData.searchRequestArrayData.get(ERequestArrayData.EETBAAR);
+        stmtSelectIdsByExtra.setString(plantIds.size() + 7, DaoUtils.GetCheckedValue(eetbaar.Value()));
         stmtSelectIdsByExtra.setInt(plantIds.size() + 8, (eetbaar.getDoSearch()) ? 0 : 1);
 
         //kruidgebruik
-        PropertyClass<ValueWithBoolean[]> kruidgebruik = bindingData.arrayDataBindings.get(ArrayBindings.KRUIDGEBRUIK);
-        stmtSelectIdsByExtra.setString(plantIds.size() + 9, DaoUtils.GetCheckedValue(kruidgebruik.getValue()));
+        SearchRequest<RequestValueWBool[]> kruidgebruik = bindingData.searchRequestArrayData.get(ERequestArrayData.KRUIDGEBRUIK);
+        stmtSelectIdsByExtra.setString(plantIds.size() + 9, DaoUtils.GetCheckedValue(kruidgebruik.Value()));
         stmtSelectIdsByExtra.setInt(plantIds.size() + 10, (kruidgebruik.getDoSearch()) ? 0 : 1);
 
         //geurend
-        PropertyClass<ValueWithBoolean[]> geurend = bindingData.arrayDataBindings.get(ArrayBindings.GEUREND);
-        stmtSelectIdsByExtra.setString(plantIds.size() + 11, DaoUtils.GetCheckedValue(geurend.getValue()));
+        SearchRequest<RequestValueWBool[]> geurend = bindingData.searchRequestArrayData.get(ERequestArrayData.GEUREND);
+        stmtSelectIdsByExtra.setString(plantIds.size() + 11, DaoUtils.GetCheckedValue(geurend.Value()));
         stmtSelectIdsByExtra.setInt(plantIds.size() + 12, (geurend.getDoSearch()) ? 0 : 1);
 
         //vorstgevoelig
-        PropertyClass<ValueWithBoolean[]> vorstgevoelig = bindingData.arrayDataBindings.get(ArrayBindings.VORSTGEVOELIG);
-        stmtSelectIdsByExtra.setString(plantIds.size() + 13, DaoUtils.GetCheckedValue(vorstgevoelig.getValue()));
+        SearchRequest<RequestValueWBool[]> vorstgevoelig = bindingData.searchRequestArrayData.get(ERequestArrayData.VORSTGEVOELIG);
+        stmtSelectIdsByExtra.setString(plantIds.size() + 13, DaoUtils.GetCheckedValue(vorstgevoelig.Value()));
         stmtSelectIdsByExtra.setInt(plantIds.size() + 14, (vorstgevoelig.getDoSearch()) ? 0 : 1);
 
         ResultSet rs = stmtSelectIdsByExtra.executeQuery();

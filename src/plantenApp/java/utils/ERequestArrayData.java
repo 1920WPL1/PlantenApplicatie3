@@ -3,7 +3,7 @@ package plantenApp.java.utils;
 /**
  * @author bradley
  */
-public enum ArrayBindings {
+public enum ERequestArrayData {
     BLADKLEURPERMAAND,
     BLOEIKLEURPERMAAND,
     MAXBLADHOOGTEPERMAAND,

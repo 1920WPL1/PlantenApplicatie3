@@ -1,7 +1,7 @@
 package plantenApp.java.dao;
 
 import plantenApp.java.model.*;
-import plantenApp.java.utils.Bindings;
+import plantenApp.java.utils.ERequestData;
 import plantenApp.java.utils.DaoUtils;
 
 import java.sql.Connection;
@@ -9,8 +9,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.EnumMap;
-import java.util.List;
 
 /**
  * @author Siebe
@@ -92,18 +90,18 @@ public class BeheerDAO implements Queries {
         PreparedStatement stmtSelectIdsByBeheer = DaoUtils.ReadyStatement(dbConnection,GETIDSBYBEHEER,plantIds);
 
         //Behandeling
-        PropertyClass<Value> behandeling = bindingData.dataBindings.get(Bindings.BEHANDELING);
-        stmtSelectIdsByBeheer.setString(plantIds.size()+1 , behandeling.getValue().get());
+        SearchRequest<RequestValue> behandeling = bindingData.searchRequestData.get(ERequestData.BEHANDELING);
+        stmtSelectIdsByBeheer.setString(plantIds.size()+1 , behandeling.Value().getValue());
         stmtSelectIdsByBeheer.setInt(plantIds.size() + 2, (behandeling.getDoSearch()) ? 0 : 1);
 
         //maand
-        PropertyClass<Value> maand = bindingData.dataBindings.get(Bindings.MAAND);
-        stmtSelectIdsByBeheer.setString(plantIds.size() + 3, maand.getValue().get());
+        SearchRequest<RequestValue> maand = bindingData.searchRequestData.get(ERequestData.MAAND);
+        stmtSelectIdsByBeheer.setString(plantIds.size() + 3, maand.Value().getValue());
         stmtSelectIdsByBeheer.setInt(plantIds.size() + 4, (maand.getDoSearch()) ? 0 : 1);
 
         //perxjaar
-        PropertyClass<Value> perXjaar = bindingData.dataBindings.get(Bindings.PERXJAAR);
-        stmtSelectIdsByBeheer.setInt(plantIds.size() + 5, Integer.parseInt(perXjaar.getValue().get()));
+        SearchRequest<RequestValue> perXjaar = bindingData.searchRequestData.get(ERequestData.PERXJAAR);
+        stmtSelectIdsByBeheer.setInt(plantIds.size() + 5, Integer.parseInt(perXjaar.Value().getValue()));
         stmtSelectIdsByBeheer.setInt(plantIds.size() + 6, (perXjaar.getDoSearch()) ? 0 : 1);
 
         System.out.println(stmtSelectIdsByBeheer);

@@ -1,18 +1,15 @@
 package plantenApp.java.dao;
 
 import plantenApp.java.model.*;
-import plantenApp.java.utils.ArrayBindings;
-import plantenApp.java.utils.Bindings;
+import plantenApp.java.utils.ERequestArrayData;
+import plantenApp.java.utils.ERequestData;
 import plantenApp.java.utils.DaoUtils;
-import plantenApp.java.utils.Utils;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.EnumMap;
-import java.util.List;
 
 /**
  * @author Siebe
@@ -103,13 +100,13 @@ public class CommensalismeDAO implements Queries {
         PreparedStatement stmtSelectIdsByComm = DaoUtils.ReadyStatement(dbConnection, GETIDSBYCOMM, plantIds);
 
         //Strategie
-        PropertyClass<ValueWithBoolean[]> strategie = bindingData.arrayDataBindings.get(ArrayBindings.STRATEGIE);
-        stmtSelectIdsByComm.setString(plantIds.size() + 1, DaoUtils.GetCheckedValue(strategie.getValue()));
+        SearchRequest<RequestValueWBool[]> strategie = bindingData.searchRequestArrayData.get(ERequestArrayData.STRATEGIE);
+        stmtSelectIdsByComm.setString(plantIds.size() + 1, DaoUtils.GetCheckedValue(strategie.Value()));
         stmtSelectIdsByComm.setInt(plantIds.size() + 2, (strategie.getDoSearch()) ? 0 : 1);
 
         //ontwikkelingssnelheid
-        PropertyClass<Value> ontwikkelingssnelheid = bindingData.dataBindings.get(Bindings.ONTWIKKELINGSSNELHEID);
-        stmtSelectIdsByComm.setString(plantIds.size() + 3, ontwikkelingssnelheid.getValue().get());
+        SearchRequest<RequestValue> ontwikkelingssnelheid = bindingData.searchRequestData.get(ERequestData.ONTWIKKELINGSSNELHEID);
+        stmtSelectIdsByComm.setString(plantIds.size() + 3, ontwikkelingssnelheid.Value().getValue());
         stmtSelectIdsByComm.setInt(plantIds.size() + 4, (ontwikkelingssnelheid.getDoSearch()) ? 0 : 1);
 
         ResultSet rs = stmtSelectIdsByComm.executeQuery();
@@ -118,9 +115,9 @@ public class CommensalismeDAO implements Queries {
         }
 
         //Multi
-        PropertyClass<ValueWithBoolean[]> sociabiliteit = bindingData.arrayDataBindings.get(ArrayBindings.SOCIABILITEIT);
+        SearchRequest<RequestValueWBool[]> sociabiliteit = bindingData.searchRequestArrayData.get(ERequestArrayData.SOCIABILITEIT);
         if (sociabiliteit.getDoSearch()) {
-            ids = FilterOnMulti("sociabiliteit", DaoUtils.GetCheckedValue(sociabiliteit.getValue()), ids);
+            ids = FilterOnMulti("sociabiliteit", DaoUtils.GetCheckedValue(sociabiliteit.Value()), ids);
         }
 
         //Output
