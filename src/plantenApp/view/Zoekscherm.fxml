@@ -124,7 +124,7 @@
                                                             <Font name="System Bold" size="14.0" />
                                                          </font>
                                                       </Label>
-                                                      <Spinner fx:id="nudBloeiHoogte" prefHeight="30.0" prefWidth="65.0" />
+                                                      <Spinner fx:id="nudMaxBloeihoogte" prefHeight="30.0" prefWidth="65.0" />
                                                    </children>
                                                 </HBox>
                                              </children>
@@ -499,12 +499,12 @@
                                                             </HBox>
                                                             <HBox>
                                                                <children>
-                                                                  <RadioButton fx:id="rdbBijvriendelijk_Ja" mnemonicParsing="false" prefHeight="30.0" prefWidth="50.0" text="Ja">
+                                                                  <RadioButton fx:id="rdbBijvriendelijk_Ja" mnemonicParsing="false" prefHeight="30.0" prefWidth="50.0" text="ja">
                                                                      <font>
                                                                         <Font size="14.0" />
                                                                      </font>
                                                                   </RadioButton>
-                                                                  <RadioButton fx:id="rdbBijvriendelijk_Nee" mnemonicParsing="false" prefHeight="30.0" prefWidth="60.0" text="Nee">
+                                                                  <RadioButton fx:id="rdbBijvriendelijk_Nee" mnemonicParsing="false" prefHeight="30.0" prefWidth="60.0" text="nee">
                                                                      <font>
                                                                         <Font size="14.0" />
                                                                      </font>
