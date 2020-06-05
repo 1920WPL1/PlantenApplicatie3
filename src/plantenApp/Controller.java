@@ -1,16 +1,17 @@
 package plantenApp;
+
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
+import javafx.scene.control.*;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
 import plantenApp.java.dao.Database;
 import plantenApp.java.dao.InfoTablesDAO;
 import plantenApp.java.model.BindingData;
 import plantenApp.java.model.InfoTables;
-import javafx.scene.control.*;
-import javafx.scene.control.TextField;
-import javafx.scene.input.MouseEvent;
 import plantenApp.java.model.SearchHandler;
 import plantenApp.java.utils.ERequestArrayData;
 import plantenApp.java.utils.ERequestData;
-
 
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -210,6 +211,9 @@ public class Controller {
     public VBox VboxOutput;
     public TitledPane pnlSearch;
     public TitledPane pnlAdvSearch;
+    public Label lblVoedingsBehoefte;
+    public Label lblBezonning;
+    public Label lblVocht;
 
 
     private InfoTables infoTables;
@@ -222,16 +226,124 @@ public class Controller {
         dbConnection = Database.getInstance().getConnection();
         /*infotabel object aanmaken*/
         InfoTablesDAO infotablesDAO = new InfoTablesDAO(dbConnection);
-       infoTables = infotablesDAO.getInfoTables();
+        infoTables = infotablesDAO.getInfoTables();
 
-       FillComboboxes(infoTables);
-
+        FillComboboxes(infoTables);
 
 
         InitSpinners();
 
-
         InitBindings();
+        
+        sldVoedingsbehoefte.valueProperty().addListener(new ChangeListener<Number>() {
+            @Override
+            public void changed(ObservableValue<? extends Number> observableValue, Number number, Number t1) {
+                switch ((int) sldVoedingsbehoefte.getValue()) {
+                    case 1:
+                        lblVoedingsBehoefte.setText("arm");
+                        break;
+                    case 2:
+                        lblVoedingsBehoefte.setText("indifferent");
+                        break;
+                    case 3:
+                        lblVoedingsBehoefte.setText("matig");
+                        break;
+                    case 4:
+                        lblVoedingsBehoefte.setText("rijk");
+                        break;
+                }
+            }
+        });
+        sldBezonning.valueProperty().addListener(new ChangeListener<Number>() {
+            @Override
+            public void changed(ObservableValue<? extends Number> observableValue, Number number, Number t1) {
+                switch ((int) sldBezonning.getValue()) {
+                    case 1:
+                        lblBezonning.setText("S");
+                        break;
+                    case 2:
+                        lblBezonning.setText("HS-S");
+                        break;
+                    case 3:
+                        lblBezonning.setText("HS");
+                        break;
+                    case 4:
+                        lblBezonning.setText("Z-HS");
+                        break;
+                    case 5:
+                        lblBezonning.setText("Z");
+                        break;
+                }
+            }
+        });
+        sldVochtbehoefte.valueProperty().addListener(new ChangeListener<Number>() {
+            @Override
+            public void changed(ObservableValue<? extends Number> observableValue, Number number, Number t1) {
+                switch ((int)sldVochtbehoefte.getValue()){
+                    case 1:
+                        lblVocht.setText("droog");
+                        break;
+                    case 2:
+                        lblVocht.setText("droog/fris");
+                        break;
+
+                    case 3:
+                        lblVocht.setText("fris");
+                        break;
+                    case 4:
+                        lblVocht.setText("fris/vochtig");
+                        break;
+                    case 5:
+                        lblVocht.setText("vochtig");
+                        break;
+                    case 6:
+                        lblVocht.setText("vochtig/nat");
+                        break;
+                    case 7:
+                        lblVocht.setText("nat");
+                        break;
+                }
+            }
+        });
+
+        InitSliders();
+
+    }
+
+
+    public void InitSliders() {
+        SetSlider(sldNectarwaarde, 0, 5, true);
+        SetSlider(sldPollenwaarde, 0, 5, true);
+
+        //schaduw, halfschaduw-shacuw, half schaduw, halfschaduw-zon, zon
+        SetSlider(sldBezonning, 1, 5, false);
+
+        //droog, droog of fris, fris, fris of vochtig, vochtig, vochtig-nat, nat
+        SetSlider(sldVochtbehoefte, 1, 7, false);
+
+
+        //arm, indifferent, matig, rijk
+        SetSlider(sldVoedingsbehoefte, 1, 4, false);
+
+    }
+
+    /**
+     * @param slider     in te stellen slider
+     * @param min        minimumwaarde van slider
+     * @param max        maximumwaarde van slider
+     * @param ticklabels moeten labels getoont worden met geselecteerde waarde
+     * @author bradley
+     * spinner instellen enkel major ticks in integers
+     */
+    private void SetSlider(Slider slider, int min, int max, boolean ticklabels) {
+        slider.setMin(min);
+        slider.setMax(max);
+        slider.setMajorTickUnit(1);
+        slider.setMinorTickCount(0);
+        slider.setShowTickMarks(true);
+        slider.setShowTickLabels(ticklabels);
+        slider.setSnapToTicks(true);
+        slider.setValue(1);
     }
 
     /**
@@ -368,56 +480,55 @@ public class Controller {
     }
 
     /**
-     * @Author bradley
-     * @param E binding Enumeration
+     * @param E        binding Enumeration
      * @param checkBox welke checkbox gebind moet worden
+     * @Author bradley
      */
-    public void Bind(ERequestData E, CheckBox checkBox, Slider slider){
+    public void Bind(ERequestData E, CheckBox checkBox, Slider slider) {
         slider.disableProperty().bind(checkBox.selectedProperty().not());
         bindingData.searchRequestData.get(E).DoSearchProperty().bind(checkBox.selectedProperty());
         bindingData.searchRequestData.get(E).Value().valueProperty().bind(slider.valueProperty().asString());
     }
 
     /**
-     * @author bradley
-     * @param E enum Bindings
+     * @param E        enum Bindings
      * @param checkBox te binden checkbox
      * @param comboBox te binden combobox
+     * @author bradley
      */
-    public void Bind(ERequestData E, CheckBox checkBox, ComboBox<String> comboBox){
+    public void Bind(ERequestData E, CheckBox checkBox, ComboBox<String> comboBox) {
         comboBox.disableProperty().bind(checkBox.selectedProperty().not());
         bindingData.searchRequestData.get(E).DoSearchProperty().bind(checkBox.selectedProperty());
         bindingData.searchRequestData.get(E).Value().valueProperty().bind(comboBox.valueProperty().asString());
     }
 
     /**
-     * @author bradley
-     * @param E enum Bindings
+     * @param E        enum Bindings
      * @param checkBox te binden checkbox
-     * @param spinner te binden spinner
+     * @param spinner  te binden spinner
+     * @author bradley
      */
-    public void Bind(ERequestData E, CheckBox checkBox, Spinner<Integer> spinner){
+    public void Bind(ERequestData E, CheckBox checkBox, Spinner<Integer> spinner) {
         spinner.disableProperty().bind(checkBox.selectedProperty().not());
         bindingData.searchRequestData.get(E).DoSearchProperty().bind(checkBox.selectedProperty());
         bindingData.searchRequestData.get(E).Value().valueProperty().bind(spinner.valueProperty().asString());
     }
 
-    public void BindSpinner(ERequestArrayData E, CheckBox checkBox, ArrayList<Spinner<Integer>> listSpinner){
+    public void BindSpinner(ERequestArrayData E, CheckBox checkBox, ArrayList<Spinner<Integer>> listSpinner) {
         bindingData.searchRequestArrayData.get(E).DoSearchProperty().bind(checkBox.selectedProperty().not());
 
-        for (int i = 0; i<bindingData.searchRequestArrayData.get(E).Value().length; i++) {
-
+        for (int i = 0; i < bindingData.searchRequestArrayData.get(E).Value().length; i++) {
             listSpinner.get(i).disableProperty().bind(checkBox.selectedProperty().not());
             bindingData.searchRequestArrayData.get(E).Value()[i].valueProperty().bind(listSpinner.get(i).valueProperty().asString());
 
         }
     }
 
-    public void BindRadiobutton(ERequestArrayData E, CheckBox checkBox, ArrayList<RadioButton> listRadioButton){
+    public void BindRadiobutton(ERequestArrayData E, CheckBox checkBox, ArrayList<RadioButton> listRadioButton) {
 
         bindingData.searchRequestArrayData.get(E).DoSearchProperty().bind(checkBox.selectedProperty().not());
 
-        for (int i = 0; i<bindingData.searchRequestArrayData.get(E).Value().length; i++) {
+        for (int i = 0; i < bindingData.searchRequestArrayData.get(E).Value().length; i++) {
 
 
             listRadioButton.get(i).disableProperty().bind(checkBox.selectedProperty().not());
@@ -427,10 +538,10 @@ public class Controller {
         }
     }
 
-    public void BindCheckbox(ERequestArrayData E, CheckBox checkBox, ArrayList<CheckBox> listCheckbox){
+    public void BindCheckbox(ERequestArrayData E, CheckBox checkBox, ArrayList<CheckBox> listCheckbox) {
         bindingData.searchRequestArrayData.get(E).DoSearchProperty().bind(checkBox.selectedProperty().not());
 
-        for (int i = 0; i<bindingData.searchRequestArrayData.get(E).Value().length; i++) {
+        for (int i = 0; i < bindingData.searchRequestArrayData.get(E).Value().length; i++) {
 
             listCheckbox.get(i).disableProperty().bind(checkBox.selectedProperty().not());
             bindingData.searchRequestArrayData.get(E).Value()[i].valueProperty().bind(listCheckbox.get(i).textProperty());
@@ -438,10 +549,10 @@ public class Controller {
         }
     }
 
-    public void BindCombobox(ERequestArrayData E, CheckBox checkBox, ArrayList<ComboBox> listComboBOx){
+    public void BindCombobox(ERequestArrayData E, CheckBox checkBox, ArrayList<ComboBox> listComboBOx) {
         bindingData.searchRequestArrayData.get(E).DoSearchProperty().bind(checkBox.selectedProperty().not());
 
-        for (int i = 0; i<bindingData.searchRequestArrayData.get(E).Value().length; i++) {
+        for (int i = 0; i < bindingData.searchRequestArrayData.get(E).Value().length; i++) {
 
             listComboBOx.get(i).disableProperty().bind(checkBox.selectedProperty().not());
             bindingData.searchRequestArrayData.get(E).Value()[i].valueProperty().bind(listComboBOx.get(i).valueProperty());
@@ -449,12 +560,12 @@ public class Controller {
     }
 
     /**
-     @param infotables -> lijst van alle lijsten van gegevens uit de naakte tabellen
-     @author bradley, angelo
-     Functie om comboboxes te vullen met alle gegevens uit de database
+     * @param infotables -> lijst van alle lijsten van gegevens uit de naakte tabellen
+     * @author bradley, angelo
+     * Functie om comboboxes te vullen met alle gegevens uit de database
      */
 
-    public void FillComboboxes(InfoTables infotables){
+    public void FillComboboxes(InfoTables infotables) {
 
         //type
         cboType.getItems().addAll(infotables.getTypes());
@@ -503,11 +614,11 @@ public class Controller {
         //bladvorm
         cboBladvorm.getItems().addAll(infotables.getBladvormen());
         cboMaand.getItems().addAll("januari", "februari");
-        cboBehandeling.getItems().addAll("test", "test2","test3");
+        cboBehandeling.getItems().addAll("test", "test2", "test3");
     }
 
 
-    public void InitSpinners(){
+    public void InitSpinners() {
         setSpinner(nudPerXJaar, 10);
 
         setSpinner(nudMinBladhoogte, 1000);
@@ -542,7 +653,7 @@ public class Controller {
         setSpinner(nudMaxBloeihoogte_Dec, 1000);
     }
 
-    public void setSpinner(Spinner spinner, int MaxValue){
+    public void setSpinner(Spinner spinner, int MaxValue) {
         spinner.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(0, MaxValue));
     }
 

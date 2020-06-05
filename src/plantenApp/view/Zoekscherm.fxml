@@ -16,16 +16,14 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<?import javafx.scene.control.ScrollPane?>
-<?import javafx.scene.control.ScrollBar?>
 <AnchorPane maxHeight="-Infinity" minHeight="-Infinity" prefHeight="1080.0" prefWidth="1800" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="plantenApp.Controller">
    <children>
 
-      <VBox prefHeight="2228.0"  AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <VBox prefHeight="2228.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <TitledPane fx:id="pnlSearch"  text="Zoek">
+            <TitledPane fx:id="pnlSearch" text="Zoek">
               <content>
-                <AnchorPane >
+                <AnchorPane>
                      <children>
                         <VBox layoutX="14.0" layoutY="14.0">
                            <children>
@@ -165,7 +163,7 @@
                                                 <HBox>
                                                    <children>
                                                       <Slider fx:id="sldBezonning" max="5.0" prefHeight="30.0" prefWidth="80.0" />
-                                                      <Label alignment="CENTER" prefHeight="30.0" text="None">
+                                                      <Label fx:id="lblBezonning" alignment="CENTER" prefHeight="30.0" text="None">
                                                          <font>
                                                             <Font size="14.0" />
                                                          </font>
@@ -175,7 +173,7 @@
                                                 <HBox>
                                                    <children>
                                                       <Slider fx:id="sldVochtbehoefte" max="7.0" prefHeight="30.0" prefWidth="80.0" />
-                                                      <Label alignment="CENTER" prefHeight="30.0" text="None">
+                                                      <Label fx:id="lblVocht" alignment="CENTER" prefHeight="30.0" text="None">
                                                          <font>
                                                             <Font size="14.0" />
                                                          </font>
@@ -210,7 +208,7 @@
                                        </children>
                                     </HBox>
                                     <Label minWidth="20.0" prefHeight="120.0" prefWidth="398.0" />
-                                    <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="150.0" text="Zoek">
+                                    <Button mnemonicParsing="false" onMouseClicked="#Click_Search" prefHeight="50.0" prefWidth="150.0" text="Zoek">
                                        <font>
                                           <Font size="24.0" />
                                        </font>
@@ -375,7 +373,7 @@
                                                             <HBox>
                                                                <children>
                                                                   <Slider fx:id="sldVoedingsbehoefte" prefHeight="30.0" prefWidth="174.0" />
-                                                                  <Label alignment="CENTER" prefHeight="30.0" prefWidth="30.0" text="0">
+                                                                  <Label fx:id="lblVoedingsBehoefte" alignment="CENTER" prefHeight="30.0" prefWidth="67.0">
                                                                      <font>
                                                                         <Font size="14.0" />
                                                                      </font>
@@ -491,22 +489,12 @@
                                                             </Label>
                                                             <HBox>
                                                                <children>
-                                                                  <Slider fx:id="sldNectarwaarde" prefHeight="30.0" prefWidth="174.0" />
-                                                                  <Label alignment="CENTER" prefHeight="30.0" prefWidth="30.0" text="0">
-                                                                     <font>
-                                                                        <Font size="14.0" />
-                                                                     </font>
-                                                                  </Label>
+                                                                  <Slider fx:id="sldNectarwaarde" prefHeight="30.0" prefWidth="204.0" />
                                                                </children>
                                                             </HBox>
                                                             <HBox>
                                                                <children>
-                                                                  <Slider fx:id="sldPollenwaarde" prefHeight="30.0" prefWidth="174.0" />
-                                                                  <Label alignment="CENTER" prefHeight="30.0" prefWidth="30.0" text="0">
-                                                                     <font>
-                                                                        <Font size="14.0" />
-                                                                     </font>
-                                                                  </Label>
+                                                                  <Slider fx:id="sldPollenwaarde" prefHeight="30.0" prefWidth="203.0" />
                                                                </children>
                                                             </HBox>
                                                             <HBox>
@@ -1186,7 +1174,7 @@
             </TitledPane>
             <TitledPane animated="false" collapsible="false" text="Overzicht zoekopdracht">
               <content>
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="1080.0" >
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="1080.0">
                      <children>
                         <VBox fx:id="VboxOutput" layoutX="14.0" layoutY="14.0" />
                         <Button layoutX="1739.0" layoutY="14.0" mnemonicParsing="false" text="Export">
