@@ -108,11 +108,10 @@ public class FenotypeDAO implements Queries {
     //region FILTER
 
     /**
-     *
-     * @param plantIds
-     * @param bindingData
-     * @return
-     * @throws SQLException
+     * @author Siebe
+     * @param plantIds -> The ids that need to be filtered
+     * @param bindingData -> dataClass that consist of all the data of the bindings
+     * @return The filtered ids
      */
     public ArrayList<Integer> FilterOn(ArrayList<Integer> plantIds, BindingData bindingData) throws SQLException {
         //Dao
@@ -167,44 +166,41 @@ public class FenotypeDAO implements Queries {
         //endregion
 
         //region Hoogtes
-        SearchRequest<RequestValueWBool[]> multiHoogte;
+        SearchRequest<RequestValueWBool[]> multiHoogteMin;
+        SearchRequest<RequestValueWBool[]> multiHoogteMax;
         SearchRequest<RequestValueWBool[]> singleHoogte;
 
         //Bloeihoogte
-        multiHoogte = bindingData.searchRequestArrayData.get(ERequestArrayData.MINBLOEIHOOGTEPERMAAND);
-        singleHoogte = bindingData.searchRequestArrayData.get(ERequestArrayData.MINGBLOEIHOOGTE);
-        if (multiHoogte.getDoSearch()) {
-            ids = FilterOnMinHoogte("bloeihoogte", multiHoogte.Value(), plantIds);
-        } else if (singleHoogte.getDoSearch()) {
-            ids = FilterOnMinHoogteSingle("bloeihoogte", singleHoogte.Value(), plantIds);
+        multiHoogteMin = bindingData.searchRequestArrayData.get(ERequestArrayData.MINBLOEIHOOGTEPERMAAND);
+        multiHoogteMax = bindingData.searchRequestArrayData.get(ERequestArrayData.MAXBLOEIHOOGTEPERMAAND);
+        singleHoogte = bindingData.searchRequestArrayData.get(ERequestArrayData.BLOEIHOOGTE);
+
+        if (multiHoogteMin.getDoSearch()) {
+            ids = FilterOnMinHoogte("bloeihoogte", multiHoogteMin.Value(), plantIds);
+        }
+        if (multiHoogteMax.getDoSearch()) {
+            ids = FilterOnMaxHoogte("bloeihoogte", multiHoogteMax.Value(), plantIds);
+        }
+        if (singleHoogte.getDoSearch()) {
+            ids = FilterOnHoogteSingle("bloeihoogte", singleHoogte.Value(), plantIds);
         }
 
-        multiHoogte = bindingData.searchRequestArrayData.get(ERequestArrayData.MAXBLOEIHOOGTEPERMAAND);
-        singleHoogte = bindingData.searchRequestArrayData.get(ERequestArrayData.MAXBLOEIHOOGTE);
-        if (multiHoogte.getDoSearch()) {
-            ids = FilterOnMaxHoogte("bloeihoogte", multiHoogte.Value(), plantIds);
-        } else if (singleHoogte.getDoSearch()) {
-            ids = FilterOnMaxHoogteSingle("bloeihoogte", singleHoogte.Value(), plantIds);
-        }
+
 
         //Bladhoogte
         //TODO: voeg min bladhoogte toe in de searcher
-        /*
-        multiHoogte = bindingData.arrayDataBindings.get(ArrayBindings.MINBLADHOOGTEPERMAAND);
-        singleHoogte = bindingData.arrayDataBindings.get(ArrayBindings.MINBLADHOOGTE);
-        if (multiHoogte.getDoSearch()){
-            ids = FilterOnMinHoogte("bladhoogte",multiHoogte.getValue(),plantIds);
-        }
-        else if (singleHoogte.getDoSearch()){
-            ids = FilterOnMinHoogteSingle("bladhoogte",singleHoogte.getValue(),plantIds);
-        }*/
+        //multiHoogteMin = bindingData.searchRequestArrayData.get(ERequestArrayData.MINBLADHOOGTEPERMAAND);
+        multiHoogteMax = bindingData.searchRequestArrayData.get(ERequestArrayData.MAXBLADHOOGTEPERMAAND);
+        singleHoogte = bindingData.searchRequestArrayData.get(ERequestArrayData.BLADHOOGTE);
 
-        multiHoogte = bindingData.searchRequestArrayData.get(ERequestArrayData.MAXBLADHOOGTEPERMAAND);
-        singleHoogte = bindingData.searchRequestArrayData.get(ERequestArrayData.MAXBLADHOOGTE);
-        if (multiHoogte.getDoSearch()) {
-            ids = FilterOnMaxHoogte("bladhoogte", multiHoogte.Value(), plantIds);
-        } else if (singleHoogte.getDoSearch()) {
-            ids = FilterOnMaxHoogteSingle("bladhoogte", singleHoogte.Value(), plantIds);
+        //if (multiHoogteMin.getDoSearch()) {
+        //    ids = FilterOnMinHoogte("bladhoogte", multiHoogteMin.Value(), plantIds);
+        //}
+        if (multiHoogteMax.getDoSearch()) {
+            ids = FilterOnMaxHoogte("bladhoogte", multiHoogteMax.Value(), plantIds);
+        }
+        if (singleHoogte.getDoSearch()) {
+            ids = FilterOnHoogteSingle("bladhoogte", singleHoogte.Value(), plantIds);
         }
 
         //endregion
@@ -238,14 +234,13 @@ public class FenotypeDAO implements Queries {
     }
 
     /**
-     *
-     * @param eigenschap
-     * @param data
-     * @param plantIds
-     * @return
-     * @throws SQLException
+     * @author Siebe
+     * @param eigenschap -> name of the property to filter on
+     * @param value -> value that the property should have /month
+     * @param plantIds -> The ids that need to be filtered
+     * @return The filtered ids
      */
-    private ArrayList<Integer> FilterOnMinHoogte(String eigenschap, RequestValueWBool[] data, ArrayList<Integer> plantIds) throws SQLException {
+    private ArrayList<Integer> FilterOnMinHoogte(String eigenschap, RequestValueWBool[] value, ArrayList<Integer> plantIds) throws SQLException {
         //Dao
 
         //Items
@@ -256,18 +251,18 @@ public class FenotypeDAO implements Queries {
 
         stmtSelectIdsByFenoMultiHoogteMin.setString(plantIds.size() + 1, eigenschap);
 
-        stmtSelectIdsByFenoMultiHoogteMin.setString(plantIds.size() + 2, data[0].getValue());
-        stmtSelectIdsByFenoMultiHoogteMin.setString(plantIds.size() + 3, data[1].getValue());
-        stmtSelectIdsByFenoMultiHoogteMin.setString(plantIds.size() + 4, data[2].getValue());
-        stmtSelectIdsByFenoMultiHoogteMin.setString(plantIds.size() + 5, data[3].getValue());
-        stmtSelectIdsByFenoMultiHoogteMin.setString(plantIds.size() + 6, data[4].getValue());
-        stmtSelectIdsByFenoMultiHoogteMin.setString(plantIds.size() + 7, data[5].getValue());
-        stmtSelectIdsByFenoMultiHoogteMin.setString(plantIds.size() + 8, data[6].getValue());
-        stmtSelectIdsByFenoMultiHoogteMin.setString(plantIds.size() + 9, data[7].getValue());
-        stmtSelectIdsByFenoMultiHoogteMin.setString(plantIds.size() + 10, data[8].getValue());
-        stmtSelectIdsByFenoMultiHoogteMin.setString(plantIds.size() + 11, data[9].getValue());
-        stmtSelectIdsByFenoMultiHoogteMin.setString(plantIds.size() + 12, data[10].getValue());
-        stmtSelectIdsByFenoMultiHoogteMin.setString(plantIds.size() + 13, data[11].getValue());
+        stmtSelectIdsByFenoMultiHoogteMin.setString(plantIds.size() + 2, value[0].getValue());
+        stmtSelectIdsByFenoMultiHoogteMin.setString(plantIds.size() + 3, value[1].getValue());
+        stmtSelectIdsByFenoMultiHoogteMin.setString(plantIds.size() + 4, value[2].getValue());
+        stmtSelectIdsByFenoMultiHoogteMin.setString(plantIds.size() + 5, value[3].getValue());
+        stmtSelectIdsByFenoMultiHoogteMin.setString(plantIds.size() + 6, value[4].getValue());
+        stmtSelectIdsByFenoMultiHoogteMin.setString(plantIds.size() + 7, value[5].getValue());
+        stmtSelectIdsByFenoMultiHoogteMin.setString(plantIds.size() + 8, value[6].getValue());
+        stmtSelectIdsByFenoMultiHoogteMin.setString(plantIds.size() + 9, value[7].getValue());
+        stmtSelectIdsByFenoMultiHoogteMin.setString(plantIds.size() + 10, value[8].getValue());
+        stmtSelectIdsByFenoMultiHoogteMin.setString(plantIds.size() + 11, value[9].getValue());
+        stmtSelectIdsByFenoMultiHoogteMin.setString(plantIds.size() + 12, value[10].getValue());
+        stmtSelectIdsByFenoMultiHoogteMin.setString(plantIds.size() + 13, value[11].getValue());
 
         ResultSet rs = stmtSelectIdsByFenoMultiHoogteMin.executeQuery();
         while (rs.next()) {
@@ -279,14 +274,13 @@ public class FenotypeDAO implements Queries {
     }
 
     /**
-     *
-     * @param eigenschap
-     * @param data
-     * @param plantIds
-     * @return
-     * @throws SQLException
+     * @author Siebe
+     * @param eigenschap  -> name of the property to filter on
+     * @param value -> value that the property should have /month
+     * @param plantIds -> The ids that need to be filtered
+     * @return The filtered ids
      */
-    private ArrayList<Integer> FilterOnMaxHoogte(String eigenschap, RequestValueWBool[] data, ArrayList<Integer> plantIds) throws SQLException {
+    private ArrayList<Integer> FilterOnMaxHoogte(String eigenschap, RequestValueWBool[] value, ArrayList<Integer> plantIds) throws SQLException {
         //Dao
 
         //Items
@@ -297,18 +291,18 @@ public class FenotypeDAO implements Queries {
 
         stmtSelectIdsByFenoMultiHoogteMax.setString(plantIds.size() + 1, eigenschap);
 
-        stmtSelectIdsByFenoMultiHoogteMax.setString(plantIds.size() + 2, data[0].getValue());
-        stmtSelectIdsByFenoMultiHoogteMax.setString(plantIds.size() + 3, data[1].getValue());
-        stmtSelectIdsByFenoMultiHoogteMax.setString(plantIds.size() + 4, data[2].getValue());
-        stmtSelectIdsByFenoMultiHoogteMax.setString(plantIds.size() + 5, data[3].getValue());
-        stmtSelectIdsByFenoMultiHoogteMax.setString(plantIds.size() + 6, data[4].getValue());
-        stmtSelectIdsByFenoMultiHoogteMax.setString(plantIds.size() + 7, data[5].getValue());
-        stmtSelectIdsByFenoMultiHoogteMax.setString(plantIds.size() + 8, data[6].getValue());
-        stmtSelectIdsByFenoMultiHoogteMax.setString(plantIds.size() + 9, data[7].getValue());
-        stmtSelectIdsByFenoMultiHoogteMax.setString(plantIds.size() + 10, data[8].getValue());
-        stmtSelectIdsByFenoMultiHoogteMax.setString(plantIds.size() + 11, data[9].getValue());
-        stmtSelectIdsByFenoMultiHoogteMax.setString(plantIds.size() + 12, data[10].getValue());
-        stmtSelectIdsByFenoMultiHoogteMax.setString(plantIds.size() + 13, data[11].getValue());
+        stmtSelectIdsByFenoMultiHoogteMax.setString(plantIds.size() + 2, value[0].getValue());
+        stmtSelectIdsByFenoMultiHoogteMax.setString(plantIds.size() + 3, value[1].getValue());
+        stmtSelectIdsByFenoMultiHoogteMax.setString(plantIds.size() + 4, value[2].getValue());
+        stmtSelectIdsByFenoMultiHoogteMax.setString(plantIds.size() + 5, value[3].getValue());
+        stmtSelectIdsByFenoMultiHoogteMax.setString(plantIds.size() + 6, value[4].getValue());
+        stmtSelectIdsByFenoMultiHoogteMax.setString(plantIds.size() + 7, value[5].getValue());
+        stmtSelectIdsByFenoMultiHoogteMax.setString(plantIds.size() + 8, value[6].getValue());
+        stmtSelectIdsByFenoMultiHoogteMax.setString(plantIds.size() + 9, value[7].getValue());
+        stmtSelectIdsByFenoMultiHoogteMax.setString(plantIds.size() + 10, value[8].getValue());
+        stmtSelectIdsByFenoMultiHoogteMax.setString(plantIds.size() + 11, value[9].getValue());
+        stmtSelectIdsByFenoMultiHoogteMax.setString(plantIds.size() + 12, value[10].getValue());
+        stmtSelectIdsByFenoMultiHoogteMax.setString(plantIds.size() + 13, value[11].getValue());
 
         ResultSet rs = stmtSelectIdsByFenoMultiHoogteMax.executeQuery();
         while (rs.next()) {
@@ -320,14 +314,13 @@ public class FenotypeDAO implements Queries {
     }
 
     /**
-     *
-     * @param eigenschap
-     * @param data
-     * @param plantIds
-     * @return
-     * @throws SQLException
+     * @author Siebe
+     * @param eigenschap -> name of the property to filter on
+     * @param value -> value that the property should have in general
+     * @param plantIds -> The ids that need to be filtered
+     * @return The filtered ids
      */
-    private ArrayList<Integer> FilterOnMaxHoogteSingle(String eigenschap, RequestValueWBool[] data, ArrayList<Integer> plantIds) throws SQLException {
+    private ArrayList<Integer> FilterOnHoogteSingle(String eigenschap, RequestValueWBool[] value, ArrayList<Integer> plantIds) throws SQLException {
         //Dao
 
         //Items
@@ -338,30 +331,30 @@ public class FenotypeDAO implements Queries {
 
         stmtSelectIdsByFenoMultiHoogteSingle.setString(plantIds.size() + 1, eigenschap);
 
-        stmtSelectIdsByFenoMultiHoogteSingle.setString(plantIds.size() + 2, data[0].getValue());
-        stmtSelectIdsByFenoMultiHoogteSingle.setString(plantIds.size() + 3, data[1].getValue());
-        stmtSelectIdsByFenoMultiHoogteSingle.setString(plantIds.size() + 4, data[0].getValue());
-        stmtSelectIdsByFenoMultiHoogteSingle.setString(plantIds.size() + 5, data[1].getValue());
-        stmtSelectIdsByFenoMultiHoogteSingle.setString(plantIds.size() + 6, data[0].getValue());
-        stmtSelectIdsByFenoMultiHoogteSingle.setString(plantIds.size() + 7, data[1].getValue());
-        stmtSelectIdsByFenoMultiHoogteSingle.setString(plantIds.size() + 8, data[0].getValue());
-        stmtSelectIdsByFenoMultiHoogteSingle.setString(plantIds.size() + 9, data[1].getValue());
-        stmtSelectIdsByFenoMultiHoogteSingle.setString(plantIds.size() + 10, data[0].getValue());
-        stmtSelectIdsByFenoMultiHoogteSingle.setString(plantIds.size() + 11, data[1].getValue());
-        stmtSelectIdsByFenoMultiHoogteSingle.setString(plantIds.size() + 12, data[0].getValue());
-        stmtSelectIdsByFenoMultiHoogteSingle.setString(plantIds.size() + 13, data[1].getValue());
-        stmtSelectIdsByFenoMultiHoogteSingle.setString(plantIds.size() + 14, data[0].getValue());
-        stmtSelectIdsByFenoMultiHoogteSingle.setString(plantIds.size() + 15, data[1].getValue());
-        stmtSelectIdsByFenoMultiHoogteSingle.setString(plantIds.size() + 16, data[0].getValue());
-        stmtSelectIdsByFenoMultiHoogteSingle.setString(plantIds.size() + 17, data[1].getValue());
-        stmtSelectIdsByFenoMultiHoogteSingle.setString(plantIds.size() + 18, data[0].getValue());
-        stmtSelectIdsByFenoMultiHoogteSingle.setString(plantIds.size() + 19, data[1].getValue());
-        stmtSelectIdsByFenoMultiHoogteSingle.setString(plantIds.size() + 20, data[0].getValue());
-        stmtSelectIdsByFenoMultiHoogteSingle.setString(plantIds.size() + 21, data[1].getValue());
-        stmtSelectIdsByFenoMultiHoogteSingle.setString(plantIds.size() + 22, data[0].getValue());
-        stmtSelectIdsByFenoMultiHoogteSingle.setString(plantIds.size() + 23, data[1].getValue());
-        stmtSelectIdsByFenoMultiHoogteSingle.setString(plantIds.size() + 24, data[0].getValue());
-        stmtSelectIdsByFenoMultiHoogteSingle.setString(plantIds.size() + 25, data[1].getValue());
+        stmtSelectIdsByFenoMultiHoogteSingle.setString(plantIds.size() + 2, value[0].getValue());
+        stmtSelectIdsByFenoMultiHoogteSingle.setString(plantIds.size() + 3, value[1].getValue());
+        stmtSelectIdsByFenoMultiHoogteSingle.setString(plantIds.size() + 4, value[0].getValue());
+        stmtSelectIdsByFenoMultiHoogteSingle.setString(plantIds.size() + 5, value[1].getValue());
+        stmtSelectIdsByFenoMultiHoogteSingle.setString(plantIds.size() + 6, value[0].getValue());
+        stmtSelectIdsByFenoMultiHoogteSingle.setString(plantIds.size() + 7, value[1].getValue());
+        stmtSelectIdsByFenoMultiHoogteSingle.setString(plantIds.size() + 8, value[0].getValue());
+        stmtSelectIdsByFenoMultiHoogteSingle.setString(plantIds.size() + 9, value[1].getValue());
+        stmtSelectIdsByFenoMultiHoogteSingle.setString(plantIds.size() + 10, value[0].getValue());
+        stmtSelectIdsByFenoMultiHoogteSingle.setString(plantIds.size() + 11, value[1].getValue());
+        stmtSelectIdsByFenoMultiHoogteSingle.setString(plantIds.size() + 12, value[0].getValue());
+        stmtSelectIdsByFenoMultiHoogteSingle.setString(plantIds.size() + 13, value[1].getValue());
+        stmtSelectIdsByFenoMultiHoogteSingle.setString(plantIds.size() + 14, value[0].getValue());
+        stmtSelectIdsByFenoMultiHoogteSingle.setString(plantIds.size() + 15, value[1].getValue());
+        stmtSelectIdsByFenoMultiHoogteSingle.setString(plantIds.size() + 16, value[0].getValue());
+        stmtSelectIdsByFenoMultiHoogteSingle.setString(plantIds.size() + 17, value[1].getValue());
+        stmtSelectIdsByFenoMultiHoogteSingle.setString(plantIds.size() + 18, value[0].getValue());
+        stmtSelectIdsByFenoMultiHoogteSingle.setString(plantIds.size() + 19, value[1].getValue());
+        stmtSelectIdsByFenoMultiHoogteSingle.setString(plantIds.size() + 20, value[0].getValue());
+        stmtSelectIdsByFenoMultiHoogteSingle.setString(plantIds.size() + 21, value[1].getValue());
+        stmtSelectIdsByFenoMultiHoogteSingle.setString(plantIds.size() + 22, value[0].getValue());
+        stmtSelectIdsByFenoMultiHoogteSingle.setString(plantIds.size() + 23, value[1].getValue());
+        stmtSelectIdsByFenoMultiHoogteSingle.setString(plantIds.size() + 24, value[0].getValue());
+        stmtSelectIdsByFenoMultiHoogteSingle.setString(plantIds.size() + 25, value[1].getValue());
 
         ResultSet rs = stmtSelectIdsByFenoMultiHoogteSingle.executeQuery();
         while (rs.next()) {
@@ -373,55 +366,13 @@ public class FenotypeDAO implements Queries {
     }
 
     /**
-     *
-     * @param eigenschap
-     * @param data
-     * @param plantIds
-     * @return
-     * @throws SQLException
+     * @author Siebe
+     * @param eigenschap -> name of the property to filter on
+     * @param value -> value that the property should have /month
+     * @param plantIds -> The ids that need to be filtered
+     * @return The filtered ids
      */
-    private ArrayList<Integer> FilterOnMinHoogteSingle(String eigenschap, RequestValueWBool[] data, ArrayList<Integer> plantIds) throws SQLException {
-        //Dao
-
-        //Items
-        ArrayList<Integer> ids = new ArrayList<>();
-
-        //SQLcommand
-        PreparedStatement stmtSelectIdsByFenoMultiHoogteMin = DaoUtils.ReadyStatement(dbConnection, GETIDSBYFENOMULTIHOOGTEMIN, plantIds);
-
-        stmtSelectIdsByFenoMultiHoogteMin.setString(plantIds.size() + 1, eigenschap);
-
-        stmtSelectIdsByFenoMultiHoogteMin.setString(plantIds.size() + 2, data[0].getValue());
-        stmtSelectIdsByFenoMultiHoogteMin.setString(plantIds.size() + 3, data[0].getValue());
-        stmtSelectIdsByFenoMultiHoogteMin.setString(plantIds.size() + 4, data[0].getValue());
-        stmtSelectIdsByFenoMultiHoogteMin.setString(plantIds.size() + 5, data[0].getValue());
-        stmtSelectIdsByFenoMultiHoogteMin.setString(plantIds.size() + 6, data[0].getValue());
-        stmtSelectIdsByFenoMultiHoogteMin.setString(plantIds.size() + 7, data[0].getValue());
-        stmtSelectIdsByFenoMultiHoogteMin.setString(plantIds.size() + 8, data[0].getValue());
-        stmtSelectIdsByFenoMultiHoogteMin.setString(plantIds.size() + 9, data[0].getValue());
-        stmtSelectIdsByFenoMultiHoogteMin.setString(plantIds.size() + 10, data[0].getValue());
-        stmtSelectIdsByFenoMultiHoogteMin.setString(plantIds.size() + 11, data[0].getValue());
-        stmtSelectIdsByFenoMultiHoogteMin.setString(plantIds.size() + 12, data[0].getValue());
-        stmtSelectIdsByFenoMultiHoogteMin.setString(plantIds.size() + 13, data[0].getValue());
-
-        ResultSet rs = stmtSelectIdsByFenoMultiHoogteMin.executeQuery();
-        while (rs.next()) {
-            ids.add(rs.getInt("plant_id"));
-        }
-
-        //Output
-        return ids;
-    }
-
-    /**
-     *
-     * @param eigenschap
-     * @param data
-     * @param plantIds
-     * @return
-     * @throws SQLException
-     */
-    private ArrayList<Integer> FilterOnKleur(String eigenschap, RequestValueWBool[] data, ArrayList<Integer> plantIds) throws SQLException {
+    private ArrayList<Integer> FilterOnKleur(String eigenschap, RequestValueWBool[] value, ArrayList<Integer> plantIds) throws SQLException {
         //Dao
 
         //Items
@@ -432,18 +383,18 @@ public class FenotypeDAO implements Queries {
 
         stmtSelectIdsByFenoMultiKleur.setString(plantIds.size() + 1, eigenschap);
 
-        stmtSelectIdsByFenoMultiKleur.setString(plantIds.size() + 2, data[0].getValue());
-        stmtSelectIdsByFenoMultiKleur.setString(plantIds.size() + 3, data[1].getValue());
-        stmtSelectIdsByFenoMultiKleur.setString(plantIds.size() + 4, data[2].getValue());
-        stmtSelectIdsByFenoMultiKleur.setString(plantIds.size() + 5, data[3].getValue());
-        stmtSelectIdsByFenoMultiKleur.setString(plantIds.size() + 6, data[4].getValue());
-        stmtSelectIdsByFenoMultiKleur.setString(plantIds.size() + 7, data[5].getValue());
-        stmtSelectIdsByFenoMultiKleur.setString(plantIds.size() + 8, data[6].getValue());
-        stmtSelectIdsByFenoMultiKleur.setString(plantIds.size() + 9, data[7].getValue());
-        stmtSelectIdsByFenoMultiKleur.setString(plantIds.size() + 10, data[8].getValue());
-        stmtSelectIdsByFenoMultiKleur.setString(plantIds.size() + 11, data[9].getValue());
-        stmtSelectIdsByFenoMultiKleur.setString(plantIds.size() + 12, data[10].getValue());
-        stmtSelectIdsByFenoMultiKleur.setString(plantIds.size() + 13, data[11].getValue());
+        stmtSelectIdsByFenoMultiKleur.setString(plantIds.size() + 2, value[0].getValue());
+        stmtSelectIdsByFenoMultiKleur.setString(plantIds.size() + 3, value[1].getValue());
+        stmtSelectIdsByFenoMultiKleur.setString(plantIds.size() + 4, value[2].getValue());
+        stmtSelectIdsByFenoMultiKleur.setString(plantIds.size() + 5, value[3].getValue());
+        stmtSelectIdsByFenoMultiKleur.setString(plantIds.size() + 6, value[4].getValue());
+        stmtSelectIdsByFenoMultiKleur.setString(plantIds.size() + 7, value[5].getValue());
+        stmtSelectIdsByFenoMultiKleur.setString(plantIds.size() + 8, value[6].getValue());
+        stmtSelectIdsByFenoMultiKleur.setString(plantIds.size() + 9, value[7].getValue());
+        stmtSelectIdsByFenoMultiKleur.setString(plantIds.size() + 10, value[8].getValue());
+        stmtSelectIdsByFenoMultiKleur.setString(plantIds.size() + 11, value[9].getValue());
+        stmtSelectIdsByFenoMultiKleur.setString(plantIds.size() + 12, value[10].getValue());
+        stmtSelectIdsByFenoMultiKleur.setString(plantIds.size() + 13, value[11].getValue());
 
         ResultSet rs = stmtSelectIdsByFenoMultiKleur.executeQuery();
         while (rs.next()) {
@@ -455,14 +406,13 @@ public class FenotypeDAO implements Queries {
     }
 
     /**
-     * @
-     * @param eigenschap
-     * @param data
-     * @param plantIds
-     * @return
-     * @throws SQLException
+     * @author Siebe
+     * @param eigenschap -> name of the property to filter on
+     * @param value -> value that the property should have in general
+     * @param plantIds -> The ids that need to be filtered
+     * @return The filtered ids
      */
-    private ArrayList<Integer> FilterOnKleurSingle(String eigenschap, RequestValue data, ArrayList<Integer> plantIds) throws SQLException {
+    private ArrayList<Integer> FilterOnKleurSingle(String eigenschap, RequestValue value, ArrayList<Integer> plantIds) throws SQLException {
         //Dao
 
         //Items
@@ -473,18 +423,18 @@ public class FenotypeDAO implements Queries {
 
         stmtSelectIdsByFenoMultiKleurSingle.setString(plantIds.size() + 1, eigenschap);
 
-        stmtSelectIdsByFenoMultiKleurSingle.setString(plantIds.size() + 2, data.getValue());
-        stmtSelectIdsByFenoMultiKleurSingle.setString(plantIds.size() + 3, data.getValue());
-        stmtSelectIdsByFenoMultiKleurSingle.setString(plantIds.size() + 4, data.getValue());
-        stmtSelectIdsByFenoMultiKleurSingle.setString(plantIds.size() + 5, data.getValue());
-        stmtSelectIdsByFenoMultiKleurSingle.setString(plantIds.size() + 6, data.getValue());
-        stmtSelectIdsByFenoMultiKleurSingle.setString(plantIds.size() + 7, data.getValue());
-        stmtSelectIdsByFenoMultiKleurSingle.setString(plantIds.size() + 8, data.getValue());
-        stmtSelectIdsByFenoMultiKleurSingle.setString(plantIds.size() + 9, data.getValue());
-        stmtSelectIdsByFenoMultiKleurSingle.setString(plantIds.size() + 10, data.getValue());
-        stmtSelectIdsByFenoMultiKleurSingle.setString(plantIds.size() + 11, data.getValue());
-        stmtSelectIdsByFenoMultiKleurSingle.setString(plantIds.size() + 12, data.getValue());
-        stmtSelectIdsByFenoMultiKleurSingle.setString(plantIds.size() + 13, data.getValue());
+        stmtSelectIdsByFenoMultiKleurSingle.setString(plantIds.size() + 2, value.getValue());
+        stmtSelectIdsByFenoMultiKleurSingle.setString(plantIds.size() + 3, value.getValue());
+        stmtSelectIdsByFenoMultiKleurSingle.setString(plantIds.size() + 4, value.getValue());
+        stmtSelectIdsByFenoMultiKleurSingle.setString(plantIds.size() + 5, value.getValue());
+        stmtSelectIdsByFenoMultiKleurSingle.setString(plantIds.size() + 6, value.getValue());
+        stmtSelectIdsByFenoMultiKleurSingle.setString(plantIds.size() + 7, value.getValue());
+        stmtSelectIdsByFenoMultiKleurSingle.setString(plantIds.size() + 8, value.getValue());
+        stmtSelectIdsByFenoMultiKleurSingle.setString(plantIds.size() + 9, value.getValue());
+        stmtSelectIdsByFenoMultiKleurSingle.setString(plantIds.size() + 10, value.getValue());
+        stmtSelectIdsByFenoMultiKleurSingle.setString(plantIds.size() + 11, value.getValue());
+        stmtSelectIdsByFenoMultiKleurSingle.setString(plantIds.size() + 12, value.getValue());
+        stmtSelectIdsByFenoMultiKleurSingle.setString(plantIds.size() + 13, value.getValue());
 
         ResultSet rs = stmtSelectIdsByFenoMultiKleurSingle.executeQuery();
         while (rs.next()) {

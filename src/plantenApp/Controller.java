@@ -549,7 +549,7 @@ public class Controller {
         }
     }
 
-    public void BindCombobox(ERequestArrayData E, CheckBox checkBox, ArrayList<ComboBox> listComboBOx) {
+    public void BindCombobox(ERequestArrayData E, CheckBox checkBox, ArrayList<ComboBox<String>> listComboBOx){
         bindingData.searchRequestArrayData.get(E).DoSearchProperty().bind(checkBox.selectedProperty().not());
 
         for (int i = 0; i < bindingData.searchRequestArrayData.get(E).Value().length; i++) {
@@ -617,8 +617,7 @@ public class Controller {
         cboBehandeling.getItems().addAll("test", "test2", "test3");
     }
 
-
-    public void InitSpinners() {
+    public void InitSpinners(){
         setSpinner(nudPerXJaar, 10);
 
         setSpinner(nudMinBladhoogte, 1000);
@@ -653,7 +652,7 @@ public class Controller {
         setSpinner(nudMaxBloeihoogte_Dec, 1000);
     }
 
-    public void setSpinner(Spinner spinner, int MaxValue) {
+    public void setSpinner(Spinner<Integer> spinner, int MaxValue){
         spinner.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(0, MaxValue));
     }
 

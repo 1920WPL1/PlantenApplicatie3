@@ -90,6 +90,12 @@ public class AbiotischeFactorenDAO implements Queries {
 
     //region FILTER
 
+    /**
+     * @author Siebe
+     * @param plantIds -> The ids that need to be filtered
+     * @param bindingData -> dataClass that consist of all the data of the bindings
+     * @return The filtered ids
+     */
     public ArrayList<Integer> FilterOn(ArrayList<Integer> plantIds, BindingData bindingData) throws SQLException {
         //Dao
 
@@ -145,6 +151,13 @@ public class AbiotischeFactorenDAO implements Queries {
         return ids;
     }
 
+    /**
+     * @author Siebe
+     * @param eigenschap -> name of the property to filter on
+     * @param value -> value that the property should have
+     * @param plantIds -> The ids that need to be filtered
+     * @return The filtered ids
+     */
     private ArrayList<Integer> FilterOnMulti(String eigenschap, String value, ArrayList<Integer> plantIds) throws SQLException {
         //Dao
 
