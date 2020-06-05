@@ -494,11 +494,21 @@
                                                             <HBox>
                                                                <children>
                                                                   <Slider fx:id="sldNectarwaarde" prefHeight="30.0" prefWidth="204.0" />
+                                                                  <Label fx:id="lblNectarwaarde" alignment="CENTER" prefHeight="30.0" text="None">
+                                                                     <font>
+                                                                        <Font size="14.0" />
+                                                                     </font>
+                                                                  </Label>
                                                                </children>
                                                             </HBox>
                                                             <HBox>
                                                                <children>
                                                                   <Slider fx:id="sldPollenwaarde" prefHeight="30.0" prefWidth="203.0" />
+                                                                  <Label fx:id="lblPollenwaarde" alignment="CENTER" prefHeight="30.0" text="None">
+                                                                     <font>
+                                                                        <Font size="14.0" />
+                                                                     </font>
+                                                                  </Label>
                                                                </children>
                                                             </HBox>
                                                             <HBox>

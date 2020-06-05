@@ -138,11 +138,6 @@ public class AbiotischeFactorenDAO implements Queries {
         stmtSelectIdsByAbio.setString(plantIds.size() + 9, reactieantaomgeving.Value().getValue());
         stmtSelectIdsByAbio.setInt(plantIds.size() + 10, (reactieantaomgeving.getDoSearch()) ? 0 : 1);
 
-        System.out.println("ik kijk hier nu naartoe:" +grondsoort.getDoSearch());
-        System.out.println("ik kijk hier nu naartoe2:" +vochtbehoefte.getDoSearch());
-        System.out.println("ik kijk hier nu naartoe3:" +voedingsbehoefte.getDoSearch());
-        System.out.println("ik kijk hier nu naartoe4:" +reactieantaomgeving.getDoSearch());
-
         ResultSet rs = stmtSelectIdsByAbio.executeQuery();
         while (rs.next()) {
             ids.add(rs.getInt("plant_id"));

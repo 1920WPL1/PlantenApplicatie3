@@ -161,6 +161,7 @@ public class PlantDAO implements Queries {
 
         //fgsv
         SearchRequest<RequestValue> fgsv = bindingData.searchRequestData.get(ERequestData.SEARCH);
+        fgsv.setDoSearch(!fgsv.Value().getValue().isEmpty());
         stmtSelectIdsByPlant.setString(5, fgsv.Value().getValue());
         stmtSelectIdsByPlant.setInt(6, (fgsv.getDoSearch()) ? 0 : 1);
 

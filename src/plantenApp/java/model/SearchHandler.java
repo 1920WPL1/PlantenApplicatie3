@@ -6,7 +6,9 @@ import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-/**@author Bradley**/
+/**
+ * @author Bradley
+ **/
 public class SearchHandler {
     AbiotischeFactorenDAO abiotischeFactorenDAO;
     BeheerDAO beheerDAO;
@@ -28,11 +30,21 @@ public class SearchHandler {
         ArrayList<Integer> ids = new ArrayList<Integer>();
 
         ids = plantDAO.FilterOn(bindingData);
-        ids = fenotypeDAO.FilterOn(ids, bindingData);
-        //ids = commensalismeDAO.FilterOn(ids, bindingData);
-        ids = abiotischeFactorenDAO.FilterOn(ids, bindingData);
-        ids = extraDAO.FilterOn(ids, bindingData);
-        ids = beheerDAO.FilterOn(ids, bindingData);
+        if (ids.size() != 0) {
+            ids = fenotypeDAO.FilterOn(ids, bindingData);
+        }
+        if (ids.size() != 0) {
+            ids = commensalismeDAO.FilterOn(ids, bindingData);
+        }
+        if (ids.size() != 0) {
+            ids = abiotischeFactorenDAO.FilterOn(ids, bindingData);
+        }
+        if (ids.size() != 0) {
+            ids = extraDAO.FilterOn(ids, bindingData);
+        }
+        if (ids.size() != 0) {
+            ids = beheerDAO.FilterOn(ids, bindingData);
+        }
 
         return ids;
     }

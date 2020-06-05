@@ -92,8 +92,6 @@ public class ExtraDAO implements Queries {
 
         //bijvriendelijk
         SearchRequest<RequestValueWBool[]> bijvriendelijk = bindingData.searchRequestArrayData.get(ERequestArrayData.BIJVRIENDELIJK);
-        System.out.println(DaoUtils.GetCheckedValue(bijvriendelijk.Value()));
-        System.out.println(bijvriendelijk.getDoSearch());
         stmtSelectIdsByExtra.setString(plantIds.size() + 5, DaoUtils.GetCheckedValue(bijvriendelijk.Value()));
         stmtSelectIdsByExtra.setInt(plantIds.size() + 6, (bijvriendelijk.getDoSearch()) ? 0 : 1);
 

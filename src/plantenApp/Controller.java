@@ -214,6 +214,8 @@ public class Controller {
     public Label lblVoedingsBehoefte;
     public Label lblBezonning;
     public Label lblVocht;
+    public Label lblPollenwaarde;
+    public Label lblNectarwaarde;
 
 
     private InfoTables infoTables;
@@ -234,7 +236,19 @@ public class Controller {
         InitSpinners();
 
         InitBindings();
-        
+
+        sldNectarwaarde.valueProperty().addListener(new ChangeListener<Number>() {
+            @Override
+            public void changed(ObservableValue<? extends Number> observableValue, Number number, Number t1) {
+                lblNectarwaarde.setText(String.valueOf((int)sldNectarwaarde.getValue()));
+            }
+        });
+        sldPollenwaarde.valueProperty().addListener(new ChangeListener<Number>() {
+            @Override
+            public void changed(ObservableValue<? extends Number> observableValue, Number number, Number t1) {
+                lblPollenwaarde.setText(String.valueOf((int)sldPollenwaarde.getValue()));
+            }
+        });
         sldVoedingsbehoefte.valueProperty().addListener(new ChangeListener<Number>() {
             @Override
             public void changed(ObservableValue<? extends Number> observableValue, Number number, Number t1) {
@@ -312,8 +326,8 @@ public class Controller {
 
 
     public void InitSliders() {
-        SetSlider(sldNectarwaarde, 0, 5, true);
-        SetSlider(sldPollenwaarde, 0, 5, true);
+        SetSlider(sldNectarwaarde, 0, 5, false);
+        SetSlider(sldPollenwaarde, 0, 5, false);
 
         //schaduw, halfschaduw-shacuw, half schaduw, halfschaduw-zon, zon
         SetSlider(sldBezonning, 1, 5, false);
@@ -353,6 +367,7 @@ public class Controller {
     private void InitBindings() {
         bindingData = new BindingData();
 
+        bindingData.searchRequestData.get(ERequestData.SEARCH).Value().valueProperty().bind(txtSearch.textProperty());
 
         Bind(ERequestData.BLADVORM, chkBladvorm, cboBladvorm);
         Bind(ERequestData.SPRUITFENOLOGIE, chkSpruitfenologie, cboSpruitfenologie);
