@@ -604,7 +604,7 @@ public class Controller {
     }
 
     public void BindSpinner(ERequestArrayData E, CheckBox checkBox, ArrayList<Spinner<Integer>> listSpinner) {
-        bindingData.searchRequestArrayData.get(E).DoSearchProperty().bind(checkBox.selectedProperty().not());
+        bindingData.searchRequestArrayData.get(E).DoSearchProperty().bind(checkBox.selectedProperty());
 
         for (int i = 0; i < bindingData.searchRequestArrayData.get(E).Value().length; i++) {
             listSpinner.get(i).disableProperty().bind(checkBox.selectedProperty().not());
@@ -658,58 +658,99 @@ public class Controller {
 
         //type
         cboType.getItems().addAll(infotables.getTypes());
+        cboType.getSelectionModel().selectFirst();
         //familie
         cboFamilie.getItems().addAll(infotables.getFamilies());
+        cboFamilie.getSelectionModel().selectFirst();
         //bladkleur
         cboBladkleur.getItems().addAll(infotables.getKleuren());
+        cboBladkleur.getSelectionModel().selectFirst();
         //bloeikleur
         cboBloeikleur.getItems().addAll(infotables.getKleuren());
+        cboBloeikleur.getSelectionModel().selectFirst();
         //bladgrootte
         cboBladgrootte.getItems().addAll(infotables.getBladgroottes());
+        cboBladgrootte.getSelectionModel().selectFirst();
         //habitat
         cboHabitat.getItems().addAll(infotables.getHabitats());
+        cboHabitat.getSelectionModel().selectFirst();
         //bladkleuren (per maand)
         cboBladkleurJan.getItems().addAll(infotables.getKleuren());
+        cboBladkleurJan.getSelectionModel().selectFirst();
         cboBladkleurFeb.getItems().addAll(infotables.getKleuren());
+        cboBladkleurFeb.getSelectionModel().selectFirst();
         cboBladkleurMaa.getItems().addAll(infotables.getKleuren());
+        cboBladkleurMaa.getSelectionModel().selectFirst();
         cboBladkleurApr.getItems().addAll(infotables.getKleuren());
+        cboBladkleurApr.getSelectionModel().selectFirst();
         cboBladkleurMei.getItems().addAll(infotables.getKleuren());
+        cboBladkleurMei.getSelectionModel().selectFirst();
         cboBladkleurJun.getItems().addAll(infotables.getKleuren());
+        cboBladkleurJun.getSelectionModel().selectFirst();
         cboBladkleurJul.getItems().addAll(infotables.getKleuren());
+        cboBladkleurJul.getSelectionModel().selectFirst();
         cboBladkleurAug.getItems().addAll(infotables.getKleuren());
+        cboBladkleurAug.getSelectionModel().selectFirst();
         cboBladkleurSep.getItems().addAll(infotables.getKleuren());
+        cboBladkleurSep.getSelectionModel().selectFirst();
         cboBladkleurOkt.getItems().addAll(infotables.getKleuren());
+        cboBladkleurOkt.getSelectionModel().selectFirst();
         cboBladkleurNov.getItems().addAll(infotables.getKleuren());
+        cboBladkleurNov.getSelectionModel().selectFirst();
         cboBladkleurDec.getItems().addAll(infotables.getKleuren());
+        cboBladkleurDec.getSelectionModel().selectFirst();
         //bloeikleuren (per maand)
         cboBloeikleurJan.getItems().addAll(infotables.getKleuren());
+        cboBloeikleurJan.getSelectionModel().selectFirst();
         cboBloeikleurFeb.getItems().addAll(infotables.getKleuren());
+        cboBloeikleurFeb.getSelectionModel().selectFirst();
         cboBloeikleurMaa.getItems().addAll(infotables.getKleuren());
+        cboBloeikleurMaa.getSelectionModel().selectFirst();
         cboBloeikleurApr.getItems().addAll(infotables.getKleuren());
+        cboBloeikleurApr.getSelectionModel().selectFirst();
         cboBloeikleurMei.getItems().addAll(infotables.getKleuren());
+        cboBloeikleurMei.getSelectionModel().selectFirst();
         cboBloeikleurJun.getItems().addAll(infotables.getKleuren());
+        cboBloeikleurJun.getSelectionModel().selectFirst();
         cboBloeikleurJul.getItems().addAll(infotables.getKleuren());
+        cboBloeikleurJul.getSelectionModel().selectFirst();
         cboBloeikleurAug.getItems().addAll(infotables.getKleuren());
+        cboBloeikleurAug.getSelectionModel().selectFirst();
         cboBloeikleurSep.getItems().addAll(infotables.getKleuren());
+        cboBloeikleurSep.getSelectionModel().selectFirst();
         cboBloeikleurOkt.getItems().addAll(infotables.getKleuren());
+        cboBloeikleurOkt.getSelectionModel().selectFirst();
         cboBloeikleurNov.getItems().addAll(infotables.getKleuren());
+        cboBloeikleurNov.getSelectionModel().selectFirst();
         cboBloeikleurDec.getItems().addAll(infotables.getKleuren());
+        cboBloeikleurDec.getSelectionModel().selectFirst();
         //reactie antagonistische omgeving
         cboReactieAnta.getItems().addAll(infotables.getAntagonistischeOmgevingsReacties());
+        cboReactieAnta.getSelectionModel().selectFirst();
         //ontwikkelingssnelheid
         cboOntwikkel.getItems().addAll(infotables.getOnstwikkelingssnelheden());
+        cboOntwikkel.getSelectionModel().selectFirst();
         //levensduur/concurrentiekracht
         cboLevensduur.getItems().addAll(infotables.getConcurentiekrachten());
+        cboLevensduur.getSelectionModel().selectFirst();
         //bladvorm
         cboBladvorm.getItems().addAll(infotables.getBladvormen());
-        cboMaand.getItems().addAll("januari", "februari");
+        cboBladvorm.getSelectionModel().selectFirst();
+        cboMaand.getItems().addAll("januari", "februari", "maart", "april", "mei", "juni", "juli", "augustus", "september", "oktober", "november", "december");
+        cboMaand.getSelectionModel().selectFirst();
         cboBehandeling.getItems().addAll("test", "test2", "test3");
+        cboBehandeling.getSelectionModel().selectFirst();
+
+        cboRatioBloeiBlad.getItems().addAll(infotables.getBloeiBladRatios());
+        cboRatioBloeiBlad.getSelectionModel().selectFirst();
+        cboSpruitfenologie.getItems().addAll(infotables.getSpruitfenologieen());
+        cboSpruitfenologie.getSelectionModel().selectFirst();
     }
 
     public void InitSpinners(){
         setSpinner(nudPerXJaar, 10);
 
-        setSpinner(nudMinBladhoogte, 1000);
+        setSpinner(nudMinBloeihoogte, 1000);
         setSpinner(nudMaxBloeihoogte, 1000);
         setSpinner(nudMinBladhoogte, 1000);
         setSpinner(nudMaxBladhoogte, 1000);
@@ -739,6 +780,19 @@ public class Controller {
         setSpinner(nudMaxBloeihoogte_Okt, 1000);
         setSpinner(nudMaxBloeihoogte_Nov, 1000);
         setSpinner(nudMaxBloeihoogte_Dec, 1000);
+
+        setSpinner(nudMaxBladhoogte_Jan, 1000);
+        setSpinner(nudMaxBladhoogte_Feb, 1000);
+        setSpinner(nudMaxBladhoogte_Maa, 1000);
+        setSpinner(nudMaxBladhoogte_Apr, 1000);
+        setSpinner(nudMaxBladhoogte_Mei, 1000);
+        setSpinner(nudMaxBladhoogte_Jun, 1000);
+        setSpinner(nudMaxBladhoogte_Jul, 1000);
+        setSpinner(nudMaxBladhoogte_Aug, 1000);
+        setSpinner(nudMaxBladhoogte_Sept, 1000);
+        setSpinner(nudMaxBladhoogte_Okt, 1000);
+        setSpinner(nudMaxBladhoogte_Nov, 1000);
+        setSpinner(nudMaxBladhoogte_Dec, 1000);
     }
 
     public void setSpinner(Spinner<Integer> spinner, int MaxValue){

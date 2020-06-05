@@ -9,6 +9,7 @@
 <?import javafx.scene.control.Spinner?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.TitledPane?>
+<?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -182,7 +183,7 @@
                                                 </HBox>
                                                 <HBox>
                                                    <children>
-                                                      <CheckBox fx:id="chkGrondsoort_Z" mnemonicParsing="false" prefHeight="30.0" prefWidth="40.0" text="Z" />
+                                                      <CheckBox fx:id="chkGrondsoort_Z" mnemonicParsing="false" prefHeight="30.0" prefWidth="40.0" selected="true" text="Z" />
                                                       <CheckBox fx:id="chkGrondsoort_L" mnemonicParsing="false" prefHeight="30.0" prefWidth="40.0" text="L" />
                                                       <CheckBox fx:id="chkGrondsoort_K" mnemonicParsing="false" prefHeight="30.0" prefWidth="40.0" text="K" />
                                                    </children>
@@ -390,7 +391,7 @@
                                                             <ComboBox fx:id="cboLevensduur" prefHeight="30.0" prefWidth="240.0" />
                                                             <HBox>
                                                                <children>
-                                                                  <CheckBox fx:id="chkSociabiliteit_1" mnemonicParsing="false" prefHeight="30.0" prefWidth="50.0" text="I">
+                                                                  <CheckBox fx:id="chkSociabiliteit_1" mnemonicParsing="false" prefHeight="30.0" prefWidth="50.0" selected="true" text="I">
                                                                      <font>
                                                                         <Font size="14.0" />
                                                                      </font>
@@ -421,13 +422,16 @@
                                                                <children>
                                                                   <HBox>
                                                                      <children>
-                                                                        <RadioButton fx:id="rdbStrategie_Onbekend" mnemonicParsing="false" prefHeight="30.0" prefWidth="90.0" text="Onbekend">
+                                                                        <RadioButton fx:id="rdbStrategie_Onbekend" mnemonicParsing="false" prefHeight="30.0" prefWidth="90.0" selected="true" text="Onbekend">
                                                                            <font>
                                                                               <Font size="14.0" />
                                                                            </font>
+                                                                           <toggleGroup>
+                                                                              <ToggleGroup fx:id="tglStrategie" />
+                                                                           </toggleGroup>
                                                                         </RadioButton>
                                                                         <Label prefHeight="30.0" prefWidth="30.0" />
-                                                                        <RadioButton fx:id="rdbStrategie_C" mnemonicParsing="false" prefHeight="30.0" prefWidth="30.0" text="C">
+                                                                        <RadioButton fx:id="rdbStrategie_C" mnemonicParsing="false" prefHeight="30.0" prefWidth="30.0" text="C" toggleGroup="$tglStrategie">
                                                                            <font>
                                                                               <Font size="14.0" />
                                                                            </font>
@@ -440,17 +444,17 @@
                                                                      <children>
                                                                         <Label prefHeight="30.0" prefWidth="30.0" />
                                                                         <Label prefHeight="30.0" prefWidth="65.0" />
-                                                                        <RadioButton fx:id="rdbStrategie_CR" mnemonicParsing="false" prefHeight="30.0" prefWidth="25.0">
+                                                                        <RadioButton fx:id="rdbStrategie_CR" mnemonicParsing="false" prefHeight="30.0" prefWidth="25.0" toggleGroup="$tglStrategie">
                                                                            <font>
                                                                               <Font size="14.0" />
                                                                            </font>
                                                                         </RadioButton>
-                                                                        <RadioButton fx:id="rdbStrategie_CRS" mnemonicParsing="false" prefHeight="30.0" prefWidth="25.0">
+                                                                        <RadioButton fx:id="rdbStrategie_CRS" mnemonicParsing="false" prefHeight="30.0" prefWidth="25.0" toggleGroup="$tglStrategie">
                                                                            <font>
                                                                               <Font size="14.0" />
                                                                            </font>
                                                                         </RadioButton>
-                                                                        <RadioButton fx:id="rdbStrategie_CS" mnemonicParsing="false" prefHeight="30.0" prefWidth="30.0">
+                                                                        <RadioButton fx:id="rdbStrategie_CS" mnemonicParsing="false" prefHeight="30.0" prefWidth="30.0" toggleGroup="$tglStrategie">
                                                                            <font>
                                                                               <Font size="14.0" />
                                                                            </font>
@@ -461,19 +465,19 @@
                                                                   <HBox>
                                                                      <children>
                                                                         <Label prefHeight="30.0" prefWidth="63.0" />
-                                                                        <RadioButton fx:id="rdbStrategie_R" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" prefHeight="30.0" prefWidth="30.0" text="R">
+                                                                        <RadioButton fx:id="rdbStrategie_R" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" prefHeight="30.0" prefWidth="30.0" text="R" toggleGroup="$tglStrategie">
                                                                            <font>
                                                                               <Font size="14.0" />
                                                                            </font>
                                                                         </RadioButton>
                                                                         <Label prefHeight="30.0" prefWidth="23.0" />
-                                                                        <RadioButton fx:id="rdbStrategie_RS" mnemonicParsing="false" prefHeight="30.0" prefWidth="30.0">
+                                                                        <RadioButton fx:id="rdbStrategie_RS" mnemonicParsing="false" prefHeight="30.0" prefWidth="30.0" toggleGroup="$tglStrategie">
                                                                            <font>
                                                                               <Font size="14.0" />
                                                                            </font>
                                                                         </RadioButton>
                                                                         <Label prefHeight="30.0" prefWidth="11.0" />
-                                                                        <RadioButton fx:id="rdbStrategie_S" mnemonicParsing="false" prefHeight="30.0" prefWidth="30.0" text="S">
+                                                                        <RadioButton fx:id="rdbStrategie_S" mnemonicParsing="false" prefHeight="30.0" prefWidth="30.0" text="S" toggleGroup="$tglStrategie">
                                                                            <font>
                                                                               <Font size="14.0" />
                                                                            </font>
@@ -503,32 +507,16 @@
                                                                      <font>
                                                                         <Font size="14.0" />
                                                                      </font>
+                                                                     <toggleGroup>
+                                                                        <ToggleGroup fx:id="tglBijvriendelijk" />
+                                                                     </toggleGroup>
                                                                   </RadioButton>
-                                                                  <RadioButton fx:id="rdbBijvriendelijk_Nee" mnemonicParsing="false" prefHeight="30.0" prefWidth="60.0" text="nee">
+                                                                  <RadioButton fx:id="rdbBijvriendelijk_Nee" mnemonicParsing="false" prefHeight="30.0" prefWidth="60.0" text="nee" toggleGroup="$tglBijvriendelijk">
                                                                      <font>
                                                                         <Font size="14.0" />
                                                                      </font>
                                                                   </RadioButton>
-                                                                  <RadioButton fx:id="rdbBijvriendelijk_Onbekend" mnemonicParsing="false" prefHeight="30.0" text="Onbekend">
-                                                                     <font>
-                                                                        <Font size="14.0" />
-                                                                     </font>
-                                                                  </RadioButton>
-                                                               </children>
-                                                            </HBox>
-                                                            <HBox>
-                                                               <children>
-                                                                  <RadioButton fx:id="rdbVlindervriendelijk_Ja" mnemonicParsing="false" prefHeight="30.0" prefWidth="50.0" text="Ja">
-                                                                     <font>
-                                                                        <Font size="14.0" />
-                                                                     </font>
-                                                                  </RadioButton>
-                                                                  <RadioButton fx:id="rdbVlindervriendelijk_Nee" mnemonicParsing="false" prefHeight="30.0" prefWidth="60.0" text="Nee">
-                                                                     <font>
-                                                                        <Font size="14.0" />
-                                                                     </font>
-                                                                  </RadioButton>
-                                                                  <RadioButton fx:id="rdbVlindervriendelijk_Onbekend" mnemonicParsing="false" prefHeight="30.0" text="Onbekend">
+                                                                  <RadioButton fx:id="rdbBijvriendelijk_Onbekend" mnemonicParsing="false" prefHeight="30.0" selected="true" text="onbekend" toggleGroup="$tglBijvriendelijk">
                                                                      <font>
                                                                         <Font size="14.0" />
                                                                      </font>
@@ -537,36 +525,20 @@
                                                             </HBox>
                                                             <HBox>
                                                                <children>
-                                                                  <RadioButton fx:id="rdbEetbaar_Ja" mnemonicParsing="false" prefHeight="30.0" prefWidth="50.0" text="Ja">
+                                                                  <RadioButton fx:id="rdbVlindervriendelijk_Ja" mnemonicParsing="false" prefHeight="30.0" prefWidth="50.0" text="ja">
+                                                                     <font>
+                                                                        <Font size="14.0" />
+                                                                     </font>
+                                                                     <toggleGroup>
+                                                                        <ToggleGroup fx:id="tglVlindervriendelijk" />
+                                                                     </toggleGroup>
+                                                                  </RadioButton>
+                                                                  <RadioButton fx:id="rdbVlindervriendelijk_Nee" mnemonicParsing="false" prefHeight="30.0" prefWidth="60.0" text="nee" toggleGroup="$tglVlindervriendelijk">
                                                                      <font>
                                                                         <Font size="14.0" />
                                                                      </font>
                                                                   </RadioButton>
-                                                                  <RadioButton fx:id="rdbEetbaar_Nee" mnemonicParsing="false" prefHeight="30.0" prefWidth="60.0" text="Nee">
-                                                                     <font>
-                                                                        <Font size="14.0" />
-                                                                     </font>
-                                                                  </RadioButton>
-                                                                  <RadioButton fx:id="rdbEetbaar_Onbekend" mnemonicParsing="false" prefHeight="30.0" text="Onbekend">
-                                                                     <font>
-                                                                        <Font size="14.0" />
-                                                                     </font>
-                                                                  </RadioButton>
-                                                               </children>
-                                                            </HBox>
-                                                            <HBox>
-                                                               <children>
-                                                                  <RadioButton fx:id="rdbKruidgebruik_Ja" mnemonicParsing="false" prefHeight="30.0" prefWidth="50.0" text="Ja">
-                                                                     <font>
-                                                                        <Font size="14.0" />
-                                                                     </font>
-                                                                  </RadioButton>
-                                                                  <RadioButton fx:id="rdbKruidgebruik_Nee" mnemonicParsing="false" prefHeight="30.0" prefWidth="60.0" text="Nee">
-                                                                     <font>
-                                                                        <Font size="14.0" />
-                                                                     </font>
-                                                                  </RadioButton>
-                                                                  <RadioButton fx:id="rdbKruidgebruik_Onbekend" mnemonicParsing="false" prefHeight="30.0" text="Onbekend">
+                                                                  <RadioButton fx:id="rdbVlindervriendelijk_Onbekend" mnemonicParsing="false" prefHeight="30.0" selected="true" text="onbekend" toggleGroup="$tglVlindervriendelijk">
                                                                      <font>
                                                                         <Font size="14.0" />
                                                                      </font>
@@ -575,17 +547,20 @@
                                                             </HBox>
                                                             <HBox>
                                                                <children>
-                                                                  <RadioButton fx:id="rdbGeurend_Ja" mnemonicParsing="false" prefHeight="30.0" prefWidth="50.0" text="Ja">
+                                                                  <RadioButton fx:id="rdbEetbaar_Ja" mnemonicParsing="false" prefHeight="30.0" prefWidth="50.0" text="ja">
+                                                                     <font>
+                                                                        <Font size="14.0" />
+                                                                     </font>
+                                                                     <toggleGroup>
+                                                                        <ToggleGroup fx:id="tglEetbaar" />
+                                                                     </toggleGroup>
+                                                                  </RadioButton>
+                                                                  <RadioButton fx:id="rdbEetbaar_Nee" mnemonicParsing="false" prefHeight="30.0" prefWidth="60.0" text="nee" toggleGroup="$tglEetbaar">
                                                                      <font>
                                                                         <Font size="14.0" />
                                                                      </font>
                                                                   </RadioButton>
-                                                                  <RadioButton fx:id="rdbGeurend_Nee" mnemonicParsing="false" prefHeight="30.0" prefWidth="60.0" text="Nee">
-                                                                     <font>
-                                                                        <Font size="14.0" />
-                                                                     </font>
-                                                                  </RadioButton>
-                                                                  <RadioButton fx:id="rdbGeurend_Onbekend" mnemonicParsing="false" prefHeight="30.0" text="Onbekend">
+                                                                  <RadioButton fx:id="rdbEetbaar_Onbekend" mnemonicParsing="false" prefHeight="30.0" selected="true" text="onbekend" toggleGroup="$tglEetbaar">
                                                                      <font>
                                                                         <Font size="14.0" />
                                                                      </font>
@@ -594,17 +569,64 @@
                                                             </HBox>
                                                             <HBox>
                                                                <children>
-                                                                  <RadioButton fx:id="rdbVorstgevoelig_Ja" mnemonicParsing="false" prefHeight="30.0" prefWidth="50.0" text="Ja">
+                                                                  <RadioButton fx:id="rdbKruidgebruik_Ja" mnemonicParsing="false" prefHeight="30.0" prefWidth="50.0" text="ja">
+                                                                     <font>
+                                                                        <Font size="14.0" />
+                                                                     </font>
+                                                                     <toggleGroup>
+                                                                        <ToggleGroup fx:id="tglKruidgebruik" />
+                                                                     </toggleGroup>
+                                                                  </RadioButton>
+                                                                  <RadioButton fx:id="rdbKruidgebruik_Nee" mnemonicParsing="false" prefHeight="30.0" prefWidth="60.0" text="nee" toggleGroup="$tglKruidgebruik">
                                                                      <font>
                                                                         <Font size="14.0" />
                                                                      </font>
                                                                   </RadioButton>
-                                                                  <RadioButton fx:id="rdbVorstgevoelig_Nee" mnemonicParsing="false" prefHeight="30.0" prefWidth="60.0" text="Nee">
+                                                                  <RadioButton fx:id="rdbKruidgebruik_Onbekend" mnemonicParsing="false" prefHeight="30.0" selected="true" text="onbekend" toggleGroup="$tglKruidgebruik">
                                                                      <font>
                                                                         <Font size="14.0" />
                                                                      </font>
                                                                   </RadioButton>
-                                                                  <RadioButton fx:id="rdbVorstgevoelig_Onbekend" mnemonicParsing="false" prefHeight="30.0" text="Onbekend">
+                                                               </children>
+                                                            </HBox>
+                                                            <HBox>
+                                                               <children>
+                                                                  <RadioButton fx:id="rdbGeurend_Ja" mnemonicParsing="false" prefHeight="30.0" prefWidth="50.0" text="ja">
+                                                                     <font>
+                                                                        <Font size="14.0" />
+                                                                     </font>
+                                                                     <toggleGroup>
+                                                                        <ToggleGroup fx:id="tglGeurend" />
+                                                                     </toggleGroup>
+                                                                  </RadioButton>
+                                                                  <RadioButton fx:id="rdbGeurend_Nee" mnemonicParsing="false" prefHeight="30.0" prefWidth="60.0" text="nee" toggleGroup="$tglGeurend">
+                                                                     <font>
+                                                                        <Font size="14.0" />
+                                                                     </font>
+                                                                  </RadioButton>
+                                                                  <RadioButton fx:id="rdbGeurend_Onbekend" mnemonicParsing="false" prefHeight="30.0" selected="true" text="onbekend" toggleGroup="$tglGeurend">
+                                                                     <font>
+                                                                        <Font size="14.0" />
+                                                                     </font>
+                                                                  </RadioButton>
+                                                               </children>
+                                                            </HBox>
+                                                            <HBox>
+                                                               <children>
+                                                                  <RadioButton fx:id="rdbVorstgevoelig_Ja" mnemonicParsing="false" prefHeight="30.0" prefWidth="50.0" text="ja">
+                                                                     <font>
+                                                                        <Font size="14.0" />
+                                                                     </font>
+                                                                     <toggleGroup>
+                                                                        <ToggleGroup fx:id="Vorstgevoelig" />
+                                                                     </toggleGroup>
+                                                                  </RadioButton>
+                                                                  <RadioButton fx:id="rdbVorstgevoelig_Nee" mnemonicParsing="false" prefHeight="30.0" prefWidth="60.0" text="nee" toggleGroup="$Vorstgevoelig">
+                                                                     <font>
+                                                                        <Font size="14.0" />
+                                                                     </font>
+                                                                  </RadioButton>
+                                                                  <RadioButton fx:id="rdbVorstgevoelig_Onbekend" mnemonicParsing="false" prefHeight="30.0" selected="true" text="onbekend" toggleGroup="$Vorstgevoelig">
                                                                      <font>
                                                                         <Font size="14.0" />
                                                                      </font>
@@ -834,7 +856,10 @@
                                                                         <Label minWidth="20.0" />
                                                                         <VBox>
                                                                            <children>
-                                                                              <RadioButton fx:id="rdbHabitus_1" mnemonicParsing="false" prefHeight="30.0" prefWidth="80.0" text="Habitus" />
+                                                                              <RadioButton fx:id="rdbHabitus_1" mnemonicParsing="false" prefHeight="30.0" prefWidth="80.0" selected="true" text="Habitus">
+                                                                                 <toggleGroup>
+                                                                                    <ToggleGroup fx:id="tglHabitus" />
+                                                                                 </toggleGroup></RadioButton>
                                                                               <ImageView fitHeight="80.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true">
                                                                                  <image>
                                                                                     <Image url="@img/Habitus_01.png" />
@@ -844,7 +869,7 @@
                                                                         </VBox>
                                                                         <VBox>
                                                                            <children>
-                                                                              <RadioButton fx:id="rdbHabitus_2" mnemonicParsing="false" prefHeight="30.0" prefWidth="80.0" text="Habitus" />
+                                                                              <RadioButton fx:id="rdbHabitus_2" mnemonicParsing="false" prefHeight="30.0" prefWidth="80.0" text="Habitus" toggleGroup="$tglHabitus" />
                                                                               <ImageView fitHeight="80.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true">
                                                                                  <image>
                                                                                     <Image url="@img/Habitus_02.png" />
@@ -854,7 +879,7 @@
                                                                         </VBox>
                                                                         <VBox>
                                                                            <children>
-                                                                              <RadioButton fx:id="rdbHabitus_3" mnemonicParsing="false" prefHeight="30.0" prefWidth="80.0" text="Habitus" />
+                                                                              <RadioButton fx:id="rdbHabitus_3" mnemonicParsing="false" prefHeight="30.0" prefWidth="80.0" text="Habitus" toggleGroup="$tglHabitus" />
                                                                               <ImageView fitHeight="80.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true">
                                                                                  <image>
                                                                                     <Image url="@img/Habitus_03.png" />
@@ -864,7 +889,7 @@
                                                                         </VBox>
                                                                         <VBox>
                                                                            <children>
-                                                                              <RadioButton fx:id="rdbHabitus_4" mnemonicParsing="false" prefHeight="30.0" prefWidth="80.0" text="Habitus" />
+                                                                              <RadioButton fx:id="rdbHabitus_4" mnemonicParsing="false" prefHeight="30.0" prefWidth="80.0" text="Habitus" toggleGroup="$tglHabitus" />
                                                                               <ImageView fitHeight="80.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true">
                                                                                  <image>
                                                                                     <Image url="@img/Habitus_04.png" />
@@ -874,7 +899,7 @@
                                                                         </VBox>
                                                                         <VBox>
                                                                            <children>
-                                                                              <RadioButton fx:id="rdbHabitus_5" mnemonicParsing="false" prefHeight="30.0" prefWidth="80.0" text="Habitus" />
+                                                                              <RadioButton fx:id="rdbHabitus_5" mnemonicParsing="false" prefHeight="30.0" prefWidth="80.0" text="Habitus" toggleGroup="$tglHabitus" />
                                                                               <ImageView fitHeight="80.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true">
                                                                                  <image>
                                                                                     <Image url="@img/Habitus_05.png" />
@@ -884,7 +909,7 @@
                                                                         </VBox>
                                                                         <VBox>
                                                                            <children>
-                                                                              <RadioButton fx:id="rdbHabitus_6" mnemonicParsing="false" prefHeight="30.0" prefWidth="80.0" text="Habitus" />
+                                                                              <RadioButton fx:id="rdbHabitus_6" mnemonicParsing="false" prefHeight="30.0" prefWidth="80.0" text="Habitus" toggleGroup="$tglHabitus" />
                                                                               <ImageView fitHeight="80.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true">
                                                                                  <image>
                                                                                     <Image url="@img/Habitus_06.png" />
@@ -894,7 +919,7 @@
                                                                         </VBox>
                                                                         <VBox>
                                                                            <children>
-                                                                              <RadioButton fx:id="rdbHabitus_7" mnemonicParsing="false" prefHeight="30.0" prefWidth="80.0" text="Habitus" />
+                                                                              <RadioButton fx:id="rdbHabitus_7" mnemonicParsing="false" prefHeight="30.0" prefWidth="80.0" text="Habitus" toggleGroup="$tglHabitus" />
                                                                               <ImageView fitHeight="80.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true">
                                                                                  <image>
                                                                                     <Image url="@img/Habitus_07.png" />
@@ -904,7 +929,7 @@
                                                                         </VBox>
                                                                         <VBox>
                                                                            <children>
-                                                                              <RadioButton fx:id="rdbHabitus_8" mnemonicParsing="false" prefHeight="30.0" prefWidth="80.0" text="Habitus" />
+                                                                              <RadioButton fx:id="rdbHabitus_8" mnemonicParsing="false" prefHeight="30.0" prefWidth="80.0" text="Habitus" toggleGroup="$tglHabitus" />
                                                                               <ImageView fitHeight="80.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true">
                                                                                  <image>
                                                                                     <Image url="@img/Habitus_08.png" />
@@ -914,7 +939,7 @@
                                                                         </VBox>
                                                                         <VBox>
                                                                            <children>
-                                                                              <RadioButton fx:id="rdbHabitus_9" mnemonicParsing="false" prefHeight="30.0" prefWidth="80.0" text="Habitus" />
+                                                                              <RadioButton fx:id="rdbHabitus_9" mnemonicParsing="false" prefHeight="30.0" prefWidth="80.0" text="Habitus" toggleGroup="$tglHabitus" />
                                                                               <ImageView fitHeight="80.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true">
                                                                                  <image>
                                                                                     <Image url="@img/Habitus_09.png" />
@@ -924,7 +949,7 @@
                                                                         </VBox>
                                                                         <VBox>
                                                                            <children>
-                                                                              <RadioButton fx:id="rdbHabitus_10" mnemonicParsing="false" prefHeight="30.0" prefWidth="80.0" text="Habitus" />
+                                                                              <RadioButton fx:id="rdbHabitus_10" mnemonicParsing="false" prefHeight="30.0" prefWidth="80.0" text="Habitus" toggleGroup="$tglHabitus" />
                                                                               <ImageView fitHeight="80.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true">
                                                                                  <image>
                                                                                     <Image url="@img/Habitus_10.png" />
@@ -934,7 +959,7 @@
                                                                         </VBox>
                                                                         <VBox>
                                                                            <children>
-                                                                              <RadioButton fx:id="rdbHabitus_11" mnemonicParsing="false" prefHeight="30.0" prefWidth="80.0" text="Habitus" />
+                                                                              <RadioButton fx:id="rdbHabitus_11" mnemonicParsing="false" prefHeight="30.0" prefWidth="80.0" text="Habitus" toggleGroup="$tglHabitus" />
                                                                               <ImageView fitHeight="80.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true">
                                                                                  <image>
                                                                                     <Image url="@img/Habitus_11.png" />
@@ -944,7 +969,7 @@
                                                                         </VBox>
                                                                         <VBox>
                                                                            <children>
-                                                                              <RadioButton fx:id="rdbHabitus_12" mnemonicParsing="false" prefHeight="30.0" prefWidth="80.0" text="Habitus" />
+                                                                              <RadioButton fx:id="rdbHabitus_12" mnemonicParsing="false" prefHeight="30.0" prefWidth="80.0" text="Habitus" toggleGroup="$tglHabitus" />
                                                                               <ImageView fitHeight="80.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true">
                                                                                  <image>
                                                                                     <Image url="@img/Habitus_12.png" />
@@ -954,7 +979,7 @@
                                                                         </VBox>
                                                                         <VBox>
                                                                            <children>
-                                                                              <RadioButton fx:id="rdbHabitus_13" mnemonicParsing="false" prefHeight="30.0" prefWidth="80.0" text="Habitus" />
+                                                                              <RadioButton fx:id="rdbHabitus_13" mnemonicParsing="false" prefHeight="30.0" prefWidth="80.0" text="Habitus" toggleGroup="$tglHabitus" />
                                                                               <ImageView fitHeight="80.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true">
                                                                                  <image>
                                                                                     <Image url="@img/Habitus_13.png" />
@@ -964,7 +989,7 @@
                                                                         </VBox>
                                                                         <VBox>
                                                                            <children>
-                                                                              <RadioButton fx:id="rdbHabitus_14" mnemonicParsing="false" prefHeight="30.0" prefWidth="80.0" text="Habitus" />
+                                                                              <RadioButton fx:id="rdbHabitus_14" mnemonicParsing="false" prefHeight="30.0" prefWidth="80.0" text="Habitus" toggleGroup="$tglHabitus" />
                                                                               <ImageView fitHeight="80.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true">
                                                                                  <image>
                                                                                     <Image url="@img/Habitus_14.png" />
@@ -974,7 +999,7 @@
                                                                         </VBox>
                                                                         <VBox>
                                                                            <children>
-                                                                              <RadioButton fx:id="rdbHabitus_15" mnemonicParsing="false" prefHeight="30.0" prefWidth="80.0" text="Habitus" />
+                                                                              <RadioButton fx:id="rdbHabitus_15" mnemonicParsing="false" prefHeight="30.0" prefWidth="80.0" text="Habitus" toggleGroup="$tglHabitus" />
                                                                               <ImageView fitHeight="80.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true">
                                                                                  <image>
                                                                                     <Image url="@img/Habitus_15.png" />
@@ -1002,7 +1027,10 @@
                                                                         <Label minWidth="20.0" />
                                                                         <VBox>
                                                                            <children>
-                                                                              <RadioButton fx:id="rdbBloeiwijze_Aar" mnemonicParsing="false" prefHeight="30.0" prefWidth="80.0" text="Aar" />
+                                                                              <RadioButton fx:id="rdbBloeiwijze_Aar" mnemonicParsing="false" prefHeight="30.0" prefWidth="80.0" selected="true" text="Aar">
+                                                                                 <toggleGroup>
+                                                                                    <ToggleGroup fx:id="tglBloeiwijze" />
+                                                                                 </toggleGroup></RadioButton>
                                                                               <ImageView fitHeight="80.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true">
                                                                                  <image>
                                                                                     <Image url="@img/aar.jpg" />
@@ -1012,7 +1040,7 @@
                                                                         </VBox>
                                                                         <VBox>
                                                                            <children>
-                                                                              <RadioButton fx:id="rdbBloeiwijze_BredePluim" mnemonicParsing="false" prefHeight="30.0" prefWidth="80.0" text="Brede pluim" />
+                                                                              <RadioButton fx:id="rdbBloeiwijze_BredePluim" mnemonicParsing="false" prefHeight="30.0" prefWidth="80.0" text="Brede pluim" toggleGroup="$tglBloeiwijze" />
                                                                               <ImageView fitHeight="80.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true">
                                                                                  <image>
                                                                                     <Image url="@img/bredepluim.jpg" />
@@ -1022,7 +1050,7 @@
                                                                         </VBox>
                                                                         <VBox>
                                                                            <children>
-                                                                              <RadioButton fx:id="rdbBloeiwijze_Etage" mnemonicParsing="false" prefHeight="30.0" prefWidth="80.0" text="Etage" />
+                                                                              <RadioButton fx:id="rdbBloeiwijze_Etage" mnemonicParsing="false" prefHeight="30.0" prefWidth="80.0" text="Etage" toggleGroup="$tglBloeiwijze" />
                                                                               <ImageView fitHeight="80.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true">
                                                                                  <image>
                                                                                     <Image url="@img/etage.jpg" />
@@ -1032,7 +1060,7 @@
                                                                         </VBox>
                                                                         <VBox>
                                                                            <children>
-                                                                              <RadioButton fx:id="rdbBloeiwijze_BolofKnop" mnemonicParsing="false" prefHeight="30.0" prefWidth="80.0" text="Bol of knop" />
+                                                                              <RadioButton fx:id="rdbBloeiwijze_BolofKnop" mnemonicParsing="false" prefHeight="30.0" prefWidth="80.0" text="Bol of knop" toggleGroup="$tglBloeiwijze" />
                                                                               <ImageView fitHeight="80.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true">
                                                                                  <image>
                                                                                     <Image url="@img/knop.jpg" />
@@ -1042,7 +1070,7 @@
                                                                         </VBox>
                                                                         <VBox>
                                                                            <children>
-                                                                              <RadioButton fx:id="rdbBloeiwijze_Margrietachtig" mnemonicParsing="false" prefHeight="30.0" prefWidth="80.0" text="Margrietachtig" />
+                                                                              <RadioButton fx:id="rdbBloeiwijze_Margrietachtig" mnemonicParsing="false" prefHeight="30.0" prefWidth="80.0" text="Margrietachtig" toggleGroup="$tglBloeiwijze" />
                                                                               <ImageView fitHeight="80.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true">
                                                                                  <image>
                                                                                     <Image url="@img/margrietachtig.jpg" />
@@ -1052,7 +1080,7 @@
                                                                         </VBox>
                                                                         <VBox>
                                                                            <children>
-                                                                              <RadioButton fx:id="rdbBloeiwijze_Schotel" mnemonicParsing="false" prefHeight="30.0" prefWidth="80.0" text="Schotel" />
+                                                                              <RadioButton fx:id="rdbBloeiwijze_Schotel" mnemonicParsing="false" prefHeight="30.0" prefWidth="80.0" text="Schotel" toggleGroup="$tglBloeiwijze" />
                                                                               <ImageView fitHeight="80.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true">
                                                                                  <image>
                                                                                     <Image url="@img/platscherm-schotel.jpg" />
@@ -1062,7 +1090,7 @@
                                                                         </VBox>
                                                                         <VBox>
                                                                            <children>
-                                                                              <RadioButton fx:id="rdbBloeiwijze_Scherm" mnemonicParsing="false" prefHeight="30.0" prefWidth="80.0" text="Scherm" />
+                                                                              <RadioButton fx:id="rdbBloeiwijze_Scherm" mnemonicParsing="false" prefHeight="30.0" prefWidth="80.0" text="Scherm" toggleGroup="$tglBloeiwijze" />
                                                                               <ImageView fitHeight="80.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true">
                                                                                  <image>
                                                                                     <Image url="@img/scherm.jpg" />
@@ -1072,7 +1100,7 @@
                                                                         </VBox>
                                                                         <VBox>
                                                                            <children>
-                                                                              <RadioButton fx:id="rdbBloeiwijze_SmallePluim" mnemonicParsing="false" prefHeight="30.0" prefWidth="80.0" text="Smalle pluim" />
+                                                                              <RadioButton fx:id="rdbBloeiwijze_SmallePluim" mnemonicParsing="false" prefHeight="30.0" prefWidth="80.0" text="Smalle pluim" toggleGroup="$tglBloeiwijze" />
                                                                               <ImageView fitHeight="80.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true">
                                                                                  <image>
                                                                                     <Image url="@img/smallepluim.jpg" />
@@ -1105,7 +1133,7 @@
                                                                         </ImageView>
                                                                         <VBox>
                                                                            <children>
-                                                                              <RadioButton fx:id="rdbLevensvorm_1" mnemonicParsing="false" prefHeight="25.0" text="1. Hydrofyt">
+                                                                              <RadioButton fx:id="rdbLevensvorm_1" mnemonicParsing="false" prefHeight="25.0" selected="true" text="1. Hydrofyt">
                                                                                  <font>
                                                                                     <Font size="14.0" />
                                                                                  </font>

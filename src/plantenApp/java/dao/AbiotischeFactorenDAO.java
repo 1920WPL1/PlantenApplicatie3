@@ -115,10 +115,12 @@ public class AbiotischeFactorenDAO implements Queries {
         StringBuilder grondsoortValue = new StringBuilder();
         for (int i = 0; i < grondsoort.Value().length; i++) {
             if (grondsoort.Value()[i].getIsSelected()) {
+
                 grondsoortValue.append(grondsoort.Value()[i].getValue());
             }
         }
         stmtSelectIdsByAbio.setString(plantIds.size() + 3, grondsoortValue.toString());
+
         stmtSelectIdsByAbio.setInt(plantIds.size() + 4, (grondsoort.getDoSearch()) ? 0 : 1);
 
         //Vochtbehoefte
@@ -135,6 +137,11 @@ public class AbiotischeFactorenDAO implements Queries {
         SearchRequest<RequestValue> reactieantaomgeving = bindingData.searchRequestData.get(ERequestData.REACTIEANTAGONISTISCHEOMGEVING);
         stmtSelectIdsByAbio.setString(plantIds.size() + 9, reactieantaomgeving.Value().getValue());
         stmtSelectIdsByAbio.setInt(plantIds.size() + 10, (reactieantaomgeving.getDoSearch()) ? 0 : 1);
+
+        System.out.println("ik kijk hier nu naartoe:" +grondsoort.getDoSearch());
+        System.out.println("ik kijk hier nu naartoe2:" +vochtbehoefte.getDoSearch());
+        System.out.println("ik kijk hier nu naartoe3:" +voedingsbehoefte.getDoSearch());
+        System.out.println("ik kijk hier nu naartoe4:" +reactieantaomgeving.getDoSearch());
 
         ResultSet rs = stmtSelectIdsByAbio.executeQuery();
         while (rs.next()) {
