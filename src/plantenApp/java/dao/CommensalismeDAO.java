@@ -32,7 +32,7 @@ public class CommensalismeDAO implements Queries {
 
     /**
      * @param id -> plant_id
-     * @return alle abiotische factoren van de specifieke plant
+     * @return alle Commensalisme van de specifieke plant
      * @author Siebe
      */
     public Commensalisme getById(int id) throws SQLException {
@@ -60,7 +60,7 @@ public class CommensalismeDAO implements Queries {
 
     /**
      * @param id -> plant_id
-     * @return -> alle commensalisme_multi van de specifieke plant
+     * @return alle commensalisme_multi van de specifieke plant
      * @author Siebe
      * word alleen gebruikt in getById
      */
@@ -90,6 +90,12 @@ public class CommensalismeDAO implements Queries {
 
     //region FILTER
 
+    /**
+     * @author Siebe
+     * @param plantIds -> The ids that need to be filtered
+     * @param bindingData -> dataClass that consist of all the data of the bindings
+     * @return The filtered ids
+     */
     public ArrayList<Integer> FilterOn(ArrayList<Integer> plantIds, BindingData bindingData) throws SQLException {
         //Dao
 
@@ -124,6 +130,13 @@ public class CommensalismeDAO implements Queries {
         return ids;
     }
 
+    /**
+     * @author Siebe
+     * @param eigenschap -> name of the property to filter on
+     * @param value -> value that the property should have
+     * @param plantIds -> The ids that need to be filtered
+     * @return The filtered ids
+     */
     private ArrayList<Integer> FilterOnMulti(String eigenschap, String value, ArrayList<Integer> plantIds) throws SQLException {
         //Dao
 

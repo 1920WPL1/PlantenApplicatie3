@@ -62,6 +62,12 @@ public class ExtraDAO implements Queries {
 
     //region FILTER
 
+    /**
+     * @author Siebe
+     * @param plantIds -> The ids that need to be filtered
+     * @param bindingData -> dataClass that consist of all the data of the bindings
+     * @return The filtered ids
+     */
     public ArrayList<Integer> FilterOn(ArrayList<Integer> plantIds, BindingData bindingData) throws SQLException {
         //Dao
 

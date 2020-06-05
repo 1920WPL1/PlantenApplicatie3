@@ -77,7 +77,7 @@ public interface Queries {
                     "AND eigenschap = ? " +
                     "AND waarde = ? ";
     String GETIDSBYFENO =
-            "SELECT plant_id FROM commensalisme " +
+            "SELECT plant_id FROM fenotype " +
                     "WHERE plant_id IN (?) " +
                     "AND (bladvorm = ? OR 1=?) " +
                     "AND (levensvorm = ? OR 1=?) " +
@@ -87,7 +87,7 @@ public interface Queries {
                     "AND (ratio_bloei_blad = ? OR 1=?) " +
                     "AND (spruitfenologie = ? OR 1=?) ";
     String GETIDSBYFENOMULTI =
-            "SELECT plant_id FROM commensalisme_multi " +
+            "SELECT plant_id FROM fenotype_multi " +
                     "WHERE plant_id IN (?) " +
                     "AND eigenschap = ? " +
                     "AND jan = ? " +
@@ -103,7 +103,7 @@ public interface Queries {
                     "AND nov = ? " +
                     "AND dec = ? ";
     String GETIDSBYFENOMULTISINGLE =
-            "SELECT plant_id FROM commensalisme_multi " +
+            "SELECT plant_id FROM fenotype_multi " +
                     "WHERE plant_id IN (?) " +
                     "AND eigenschap = ? " +
                     "AND " +
@@ -120,7 +120,7 @@ public interface Queries {
                     "OR nov = ? " +
                     "OR dec = ?) ";
     String GETIDSBYFENOMULTIHOOGTEMIN =
-            "SELECT plant_id FROM commensalisme_multi " +
+            "SELECT plant_id FROM fenotype_multi " +
                     "WHERE plant_id IN (?) " +
                     "AND eigenschap = ? " +
                     "AND (jan > ?) " +
@@ -136,7 +136,7 @@ public interface Queries {
                     "AND (nov > ?) " +
                     "AND (dec > ?) ";
     String GETIDSBYFENOMULTIHOOGTEMAX =
-            "SELECT plant_id FROM commensalisme_multi " +
+            "SELECT plant_id FROM fenotype_multi " +
                     "WHERE plant_id IN (?) " +
                     "AND eigenschap = ? " +
                     "AND (jan < ?) " +
@@ -152,7 +152,7 @@ public interface Queries {
                     "AND (nov < ?) " +
                     "AND (dec < ?) ";
     String GETIDSBYFENOMULTIHOOGTESINGLE =
-            "SELECT plant_id FROM commensalisme_multi " +
+            "SELECT plant_id FROM fenotype_multi " +
                     "WHERE plant_id IN (?) " +
                     "AND eigenschap = ? " +
                     "AND " +
