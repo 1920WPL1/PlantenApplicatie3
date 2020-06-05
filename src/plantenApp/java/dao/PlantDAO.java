@@ -21,14 +21,12 @@ public class PlantDAO implements Queries {
 
     private Connection dbConnection;
     private PreparedStatement stmtSelectById;
-    private PreparedStatement stmtSelectByIds;
     private PreparedStatement stmtSelectIdsByPlant;
 
     public PlantDAO(Connection dbConnection) throws SQLException {
         this.dbConnection = dbConnection;
 
         stmtSelectById = dbConnection.prepareStatement(GETPLANTBYID);
-        stmtSelectByIds = dbConnection.prepareStatement(GETPLANTSBYIDS);
         stmtSelectIdsByPlant = dbConnection.prepareStatement(GETIDSBYPLANT);
     }
 
@@ -43,11 +41,12 @@ public class PlantDAO implements Queries {
         //Dao
 
         //Items
-        String sPlantIds = DaoUtils.sqlFormatedList(plantIds);
         ArrayList<Plant> plants = new ArrayList<>();
 
+        //SQLcommand
+        PreparedStatement stmtSelectByIds = DaoUtils.ReadyStatement(dbConnection, GETPLANTSBYIDS, plantIds);
+
         //SqlCommand
-        stmtSelectByIds.setString(1, sPlantIds);
         ResultSet rs = stmtSelectByIds.executeQuery();
         while (rs.next()) {
             plants.add(new Plant(

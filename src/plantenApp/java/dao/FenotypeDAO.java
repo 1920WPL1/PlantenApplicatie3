@@ -107,6 +107,13 @@ public class FenotypeDAO implements Queries {
 
     //region FILTER
 
+    /**
+     *
+     * @param plantIds
+     * @param bindingData
+     * @return
+     * @throws SQLException
+     */
     public ArrayList<Integer> FilterOn(ArrayList<Integer> plantIds, BindingData bindingData) throws SQLException {
         //Dao
 
@@ -230,6 +237,14 @@ public class FenotypeDAO implements Queries {
         return ids;
     }
 
+    /**
+     *
+     * @param eigenschap
+     * @param data
+     * @param plantIds
+     * @return
+     * @throws SQLException
+     */
     private ArrayList<Integer> FilterOnMinHoogte(String eigenschap, RequestValueWBool[] data, ArrayList<Integer> plantIds) throws SQLException {
         //Dao
 
@@ -263,6 +278,14 @@ public class FenotypeDAO implements Queries {
         return ids;
     }
 
+    /**
+     *
+     * @param eigenschap
+     * @param data
+     * @param plantIds
+     * @return
+     * @throws SQLException
+     */
     private ArrayList<Integer> FilterOnMaxHoogte(String eigenschap, RequestValueWBool[] data, ArrayList<Integer> plantIds) throws SQLException {
         //Dao
 
@@ -296,6 +319,14 @@ public class FenotypeDAO implements Queries {
         return ids;
     }
 
+    /**
+     *
+     * @param eigenschap
+     * @param data
+     * @param plantIds
+     * @return
+     * @throws SQLException
+     */
     private ArrayList<Integer> FilterOnMaxHoogteSingle(String eigenschap, RequestValueWBool[] data, ArrayList<Integer> plantIds) throws SQLException {
         //Dao
 
@@ -341,6 +372,14 @@ public class FenotypeDAO implements Queries {
         return ids;
     }
 
+    /**
+     *
+     * @param eigenschap
+     * @param data
+     * @param plantIds
+     * @return
+     * @throws SQLException
+     */
     private ArrayList<Integer> FilterOnMinHoogteSingle(String eigenschap, RequestValueWBool[] data, ArrayList<Integer> plantIds) throws SQLException {
         //Dao
 
@@ -374,6 +413,14 @@ public class FenotypeDAO implements Queries {
         return ids;
     }
 
+    /**
+     *
+     * @param eigenschap
+     * @param data
+     * @param plantIds
+     * @return
+     * @throws SQLException
+     */
     private ArrayList<Integer> FilterOnKleur(String eigenschap, RequestValueWBool[] data, ArrayList<Integer> plantIds) throws SQLException {
         //Dao
 
@@ -407,6 +454,14 @@ public class FenotypeDAO implements Queries {
         return ids;
     }
 
+    /**
+     * @
+     * @param eigenschap
+     * @param data
+     * @param plantIds
+     * @return
+     * @throws SQLException
+     */
     private ArrayList<Integer> FilterOnKleurSingle(String eigenschap, RequestValue data, ArrayList<Integer> plantIds) throws SQLException {
         //Dao
 
