@@ -364,7 +364,7 @@ public class Controller {
         chkGrondsoorten.add(chkGrondsoort_K);
         chkGrondsoorten.add(chkGrondsoort_Z);
         chkGrondsoorten.add(chkGrondsoort_L);
-        BindCheckbox(ArrayBindings.GRONDSOORT, chkGrondsoort, chkGrondsoorten);
+        BindCheckbox(ERequestArrayData.GRONDSOORT, chkGrondsoort, chkGrondsoorten);
     }
 
     /**
