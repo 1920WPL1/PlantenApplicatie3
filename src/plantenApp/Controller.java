@@ -2,17 +2,21 @@ package plantenApp;
 
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
 import plantenApp.java.dao.Database;
 import plantenApp.java.dao.InfoTablesDAO;
+import plantenApp.java.dao.PlantDAO;
 import plantenApp.java.model.BindingData;
 import plantenApp.java.model.InfoTables;
+import plantenApp.java.model.Plant;
 import plantenApp.java.model.SearchHandler;
 import plantenApp.java.utils.ERequestArrayData;
 import plantenApp.java.utils.ERequestData;
 
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -223,6 +227,8 @@ public class Controller {
     BindingData bindingData;
 
     public void initialize() throws SQLException {
+
+
         pnlAdvSearch.setExpanded(false);
 
         dbConnection = Database.getInstance().getConnection();
@@ -231,7 +237,6 @@ public class Controller {
         infoTables = infotablesDAO.getInfoTables();
 
         FillComboboxes(infoTables);
-
 
         InitSpinners();
 
@@ -298,20 +303,20 @@ public class Controller {
                         lblVocht.setText("droog");
                         break;
                     case 2:
-                        lblVocht.setText("droog/fris");
+                        lblVocht.setText("droog of fris");
                         break;
 
                     case 3:
                         lblVocht.setText("fris");
                         break;
                     case 4:
-                        lblVocht.setText("fris/vochtig");
+                        lblVocht.setText("fris of vochtig");
                         break;
                     case 5:
                         lblVocht.setText("vochtig");
                         break;
                     case 6:
-                        lblVocht.setText("vochtig/nat");
+                        lblVocht.setText("vochtig of nat");
                         break;
                     case 7:
                         lblVocht.setText("nat");
@@ -490,9 +495,10 @@ public class Controller {
         BindCheckbox(ERequestArrayData.SOCIABILITEIT, chkSociabiliteit, chkSociabiliteiten);
 
         ArrayList<CheckBox> chkGrondsoorten = new ArrayList<CheckBox>();
-        chkGrondsoorten.add(chkGrondsoort_K);
+
         chkGrondsoorten.add(chkGrondsoort_Z);
         chkGrondsoorten.add(chkGrondsoort_L);
+        chkGrondsoorten.add(chkGrondsoort_K);
         BindCheckbox(ERequestArrayData.GRONDSOORT, chkGrondsoort, chkGrondsoorten);
 
         ArrayList<Spinner<Integer>> nudBladhoogtes = new ArrayList<Spinner<Integer>>();
@@ -843,9 +849,14 @@ public class Controller {
     }
 
     public void Click_Search(MouseEvent mouseEvent) throws SQLException {
+
+
         SearchHandler handler = new SearchHandler(dbConnection);
-        ArrayList<Integer> ids = handler.Search(bindingData, dbConnection);
-        System.out.println(ids.toString());
+
+
+       customController customController = new customController(handler.Search(bindingData, dbConnection));
+       VboxOutput.getChildren().clear();
+        VboxOutput.getChildren().add(customController);
     }
 }
 

@@ -163,6 +163,7 @@
                                              <children>
                                                 <HBox>
                                                    <children>
+                                                      
                                                       <Slider fx:id="sldBezonning" max="5.0" prefHeight="30.0" prefWidth="80.0" />
                                                       <Label fx:id="lblBezonning" alignment="CENTER" prefHeight="30.0" text="None">
                                                          <font>
@@ -1215,6 +1216,7 @@
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="1080.0">
                      <children>
                         <VBox fx:id="VboxOutput" layoutX="14.0" layoutY="14.0" />
+
                         <Button layoutX="1739.0" layoutY="14.0" mnemonicParsing="false" text="Export">
                            <font>
                               <Font size="24.0" />

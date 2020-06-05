@@ -4,11 +4,32 @@
     <list default="true" id="e3f371c2-5a62-4881-8767-e007751523f2" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/plantenApp/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/plantenApp/Controller.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/plantenApp/customController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/plantenApp/customController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/plantenApp/java/dao/AbiotischeFactorenDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/plantenApp/java/dao/AbiotischeFactorenDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/plantenApp/java/dao/Queries.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/plantenApp/java/dao/Queries.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/plantenApp/java/model/SearchHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/plantenApp/java/model/SearchHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/plantenApp/view/CustomSearchControl.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/plantenApp/view/CustomSearchControl.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/plantenApp/view/Zoekscherm.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/plantenApp/view/Zoekscherm.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/plantenApp/view/Zoekscherm.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/plantenApp/view/Zoekscherm.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="DatabaseView">
+    <option name="SHOW_INTERMEDIATE" value="true" />
+    <option name="GROUP_DATA_SOURCES" value="true" />
+    <option name="GROUP_SCHEMA" value="true" />
+    <option name="GROUP_CONTENTS" value="false" />
+    <option name="SORT_POSITIONED" value="false" />
+    <option name="SHOW_EMPTY_GROUPS" value="false" />
+    <option name="AUTO_SCROLL_FROM_SOURCE" value="false" />
+    <option name="HIDDEN_KINDS">
+      <set />
+    </option>
+    <expand />
+    <select />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -181,7 +202,7 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/plantenApp/Controller.java</url>
-          <line>673</line>
+          <line>679</line>
           <option name="timeStamp" value="11" />
         </line-breakpoint>
       </breakpoints>

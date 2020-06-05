@@ -16,6 +16,8 @@ public class SearchHandler {
     ExtraDAO extraDAO;
     FenotypeDAO fenotypeDAO;
     PlantDAO plantDAO;
+    ArrayList<Integer> ids;
+    ArrayList<Plant> planten;
 
     public SearchHandler(Connection dbConnection) throws SQLException {
         this.abiotischeFactorenDAO = new AbiotischeFactorenDAO(dbConnection);
@@ -24,10 +26,13 @@ public class SearchHandler {
         this.extraDAO = new ExtraDAO(dbConnection);
         this.fenotypeDAO = new FenotypeDAO(dbConnection);
         this.plantDAO = new PlantDAO(dbConnection);
+
+        ids = new ArrayList<Integer>();
+        planten = new ArrayList<Plant>();
     }
 
-    public ArrayList<Integer> Search(BindingData bindingData, Connection dbConnection) throws SQLException {
-        ArrayList<Integer> ids = new ArrayList<Integer>();
+    public ArrayList<Plant> Search(BindingData bindingData, Connection dbConnection) throws SQLException {
+
 
         ids = plantDAO.FilterOn(bindingData);
         if (ids.size() != 0) {
@@ -46,7 +51,12 @@ public class SearchHandler {
             ids = beheerDAO.FilterOn(ids, bindingData);
         }
 
-        return ids;
+        for (int id:ids
+             ) {
+            planten.add(plantDAO.getPlantById(id));
+        }
+
+        return planten;
     }
 
 

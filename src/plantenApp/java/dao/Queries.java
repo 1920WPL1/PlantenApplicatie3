@@ -60,7 +60,7 @@ public interface Queries {
                     "AND (reactie_antagonistische_omg = ? OR 1=?) ";
 
     String GETIDSBYABIOMULTI =
-            "SELECT plant_id FROM abiotische_factoren " +
+            "SELECT plant_id FROM abiotisch_multi " +
                     "WHERE plant_id IN (?) " +
                     "AND eigenschap = ? " +
                     "AND waarde = ? ";

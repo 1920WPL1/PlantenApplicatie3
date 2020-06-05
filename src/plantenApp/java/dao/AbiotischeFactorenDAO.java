@@ -115,7 +115,7 @@ public class AbiotischeFactorenDAO implements Queries {
         StringBuilder grondsoortValue = new StringBuilder();
         for (int i = 0; i < grondsoort.Value().length; i++) {
             if (grondsoort.Value()[i].getIsSelected()) {
-
+                System.out.println(grondsoort.Value()[i].getValue());
                 grondsoortValue.append(grondsoort.Value()[i].getValue());
             }
         }
@@ -146,7 +146,7 @@ public class AbiotischeFactorenDAO implements Queries {
         //habitat
         SearchRequest<RequestValue> habitat = bindingData.searchRequestData.get(ERequestData.HABITAT);
         if (habitat.getDoSearch()) {
-            ids = FilterOnMulti("Habitat", habitat.Value().getValue(), ids);
+            ids = FilterOnMulti("habitat", habitat.Value().getValue(), ids);
         }
 
         //Output

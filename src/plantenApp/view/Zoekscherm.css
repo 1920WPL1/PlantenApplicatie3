@@ -25,6 +25,10 @@
     -fx-font-size: 25px;
 }
 
+.Zoekscherm{
+    -fx-skin: "plantenApp.view.CustomSearchControl"
+}
+
 
 #btnZoek{
     -fx-background-color: #81bd3d;
