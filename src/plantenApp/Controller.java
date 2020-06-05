@@ -672,15 +672,19 @@ public class Controller {
     public void FillComboboxes(InfoTables infotables) {
 
         //type
+
         cboType.getItems().addAll(infotables.getTypes());
+
         cboType.getSelectionModel().selectFirst();
         //familie
         cboFamilie.getItems().addAll(infotables.getFamilies());
         cboFamilie.getSelectionModel().selectFirst();
         //bladkleur
+
         cboBladkleur.getItems().addAll(infotables.getKleuren());
         cboBladkleur.getSelectionModel().selectFirst();
         //bloeikleur
+
         cboBloeikleur.getItems().addAll(infotables.getKleuren());
         cboBloeikleur.getSelectionModel().selectFirst();
         //bladgrootte
@@ -690,53 +694,77 @@ public class Controller {
         cboHabitat.getItems().addAll(infotables.getHabitats());
         cboHabitat.getSelectionModel().selectFirst();
         //bladkleuren (per maand)
+        cboBladkleurJan.getItems().add("nvt");
         cboBladkleurJan.getItems().addAll(infotables.getKleuren());
         cboBladkleurJan.getSelectionModel().selectFirst();
+        cboBladkleurFeb.getItems().add("nvt");
         cboBladkleurFeb.getItems().addAll(infotables.getKleuren());
         cboBladkleurFeb.getSelectionModel().selectFirst();
+        cboBladkleurMaa.getItems().add("nvt");
         cboBladkleurMaa.getItems().addAll(infotables.getKleuren());
         cboBladkleurMaa.getSelectionModel().selectFirst();
+        cboBladkleurApr.getItems().add("nvt");
         cboBladkleurApr.getItems().addAll(infotables.getKleuren());
         cboBladkleurApr.getSelectionModel().selectFirst();
+        cboBladkleurMei.getItems().add("nvt");
         cboBladkleurMei.getItems().addAll(infotables.getKleuren());
         cboBladkleurMei.getSelectionModel().selectFirst();
+        cboBladkleurJun.getItems().add("nvt");
         cboBladkleurJun.getItems().addAll(infotables.getKleuren());
         cboBladkleurJun.getSelectionModel().selectFirst();
+        cboBladkleurJul.getItems().add("nvt");
         cboBladkleurJul.getItems().addAll(infotables.getKleuren());
         cboBladkleurJul.getSelectionModel().selectFirst();
+        cboBladkleurAug.getItems().add("nvt");
         cboBladkleurAug.getItems().addAll(infotables.getKleuren());
         cboBladkleurAug.getSelectionModel().selectFirst();
+        cboBladkleurSep.getItems().add("nvt");
         cboBladkleurSep.getItems().addAll(infotables.getKleuren());
         cboBladkleurSep.getSelectionModel().selectFirst();
+        cboBladkleurOkt.getItems().add("nvt");
         cboBladkleurOkt.getItems().addAll(infotables.getKleuren());
         cboBladkleurOkt.getSelectionModel().selectFirst();
+        cboBladkleurNov.getItems().add("nvt");
         cboBladkleurNov.getItems().addAll(infotables.getKleuren());
         cboBladkleurNov.getSelectionModel().selectFirst();
+        cboBladkleurDec.getItems().add("nvt");
         cboBladkleurDec.getItems().addAll(infotables.getKleuren());
         cboBladkleurDec.getSelectionModel().selectFirst();
         //bloeikleuren (per maand)
+        cboBloeikleurJan.getItems().add("nvt");
         cboBloeikleurJan.getItems().addAll(infotables.getKleuren());
         cboBloeikleurJan.getSelectionModel().selectFirst();
+        cboBloeikleurFeb.getItems().add("nvt");
         cboBloeikleurFeb.getItems().addAll(infotables.getKleuren());
         cboBloeikleurFeb.getSelectionModel().selectFirst();
+        cboBloeikleurMaa.getItems().add("nvt");
         cboBloeikleurMaa.getItems().addAll(infotables.getKleuren());
         cboBloeikleurMaa.getSelectionModel().selectFirst();
+        cboBloeikleurApr.getItems().add("nvt");
         cboBloeikleurApr.getItems().addAll(infotables.getKleuren());
         cboBloeikleurApr.getSelectionModel().selectFirst();
+        cboBloeikleurMei.getItems().add("nvt");
         cboBloeikleurMei.getItems().addAll(infotables.getKleuren());
         cboBloeikleurMei.getSelectionModel().selectFirst();
+        cboBloeikleurJun.getItems().add("nvt");
         cboBloeikleurJun.getItems().addAll(infotables.getKleuren());
         cboBloeikleurJun.getSelectionModel().selectFirst();
+        cboBloeikleurJul.getItems().add("nvt");
         cboBloeikleurJul.getItems().addAll(infotables.getKleuren());
         cboBloeikleurJul.getSelectionModel().selectFirst();
+        cboBloeikleurAug.getItems().add("nvt");
         cboBloeikleurAug.getItems().addAll(infotables.getKleuren());
         cboBloeikleurAug.getSelectionModel().selectFirst();
+        cboBloeikleurSep.getItems().add("nvt");
         cboBloeikleurSep.getItems().addAll(infotables.getKleuren());
         cboBloeikleurSep.getSelectionModel().selectFirst();
+        cboBloeikleurOkt.getItems().add("nvt");
         cboBloeikleurOkt.getItems().addAll(infotables.getKleuren());
         cboBloeikleurOkt.getSelectionModel().selectFirst();
+        cboBloeikleurNov.getItems().add("nvt");
         cboBloeikleurNov.getItems().addAll(infotables.getKleuren());
         cboBloeikleurNov.getSelectionModel().selectFirst();
+        cboBloeikleurDec.getItems().add("nvt");
         cboBloeikleurDec.getItems().addAll(infotables.getKleuren());
         cboBloeikleurDec.getSelectionModel().selectFirst();
         //reactie antagonistische omgeving
