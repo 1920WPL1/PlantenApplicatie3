@@ -177,13 +177,13 @@ public class FenotypeDAO implements Queries {
         singleHoogte = bindingData.searchRequestArrayData.get(ERequestArrayData.BLOEIHOOGTE);
 
         if (multiHoogteMin.getDoSearch()) {
-            ids = FilterOnMinHoogte("bloeihoogte", multiHoogteMin.Value(), plantIds);
+            ids = FilterOnMinHoogte("bloeihoogte", multiHoogteMin.Value(), ids);
         }
         if (multiHoogteMax.getDoSearch()) {
-            ids = FilterOnMaxHoogte("bloeihoogte", multiHoogteMax.Value(), plantIds);
+            ids = FilterOnMaxHoogte("bloeihoogte", multiHoogteMax.Value(), ids);
         }
         if (singleHoogte.getDoSearch()) {
-            ids = FilterOnHoogteSingle("bloeihoogte", singleHoogte.Value(), plantIds);
+            ids = FilterOnHoogteSingle("bloeihoogte", singleHoogte.Value(), ids);
         }
 
 
@@ -198,10 +198,10 @@ public class FenotypeDAO implements Queries {
         //    ids = FilterOnMinHoogte("bladhoogte", multiHoogteMin.Value(), plantIds);
         //}
         if (multiHoogteMax.getDoSearch()) {
-            ids = FilterOnMaxHoogte("bladhoogte", multiHoogteMax.Value(), plantIds);
+            ids = FilterOnMaxHoogte("bladhoogte", multiHoogteMax.Value(), ids);
         }
         if (singleHoogte.getDoSearch()) {
-            ids = FilterOnHoogteSingle("bladhoogte", singleHoogte.Value(), plantIds);
+            ids = FilterOnHoogteSingle("bladhoogte", singleHoogte.Value(), ids);
         }
 
         //endregion

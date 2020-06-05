@@ -356,7 +356,7 @@ public class Controller {
 
         Bind(ERequestData.BLADVORM, chkBladvorm, cboBladvorm);
         Bind(ERequestData.SPRUITFENOLOGIE, chkSpruitfenologie, cboSpruitfenologie);
-        Bind(ERequestData.VOEDINGSBEHOEFTE, chkVoedingsbehoefte, sldVoedingsbehoefte);
+        Bind(ERequestData.VOEDINGSBEHOEFTE, chkVoedingsbehoefte, sldVoedingsbehoefte,lblVoedingsBehoefte);
         Bind(ERequestData.BLADGROOTTE, chkBladgrootte, cboBladgrootte);
         Bind(ERequestData.BLADHOOGTE, chkBladHoogte, nudMaxBladhoogte);
         Bind(ERequestData.FAMILIE, chkFamilie, cboFamilie);
@@ -367,14 +367,14 @@ public class Controller {
         Bind(ERequestData.REACTIEANTAGONISTISCHEOMGEVING, chkReactieAntagonistischeOmg, cboReactieAnta);
         Bind(ERequestData.ONTWIKKELINGSSNELHEID, chkOntwikkelingssnelheid, cboOntwikkel);
         Bind(ERequestData.LEVENSDUUR, chkLevensduur_concurrentiekracht, cboLevensduur);
-        Bind(ERequestData.NECTARWAARDE, chkNectarwaarde, sldNectarwaarde);
-        Bind(ERequestData.POLLENWAARDE, chkPollenwaarde, sldPollenwaarde);
+        Bind(ERequestData.NECTARWAARDE, chkNectarwaarde, sldNectarwaarde,lblNectarwaarde);
+        Bind(ERequestData.POLLENWAARDE, chkPollenwaarde, sldPollenwaarde,lblPollenwaarde);
         Bind(ERequestData.RATIOBLOEIBLAD, chkRatio_bloei_blad, cboRatioBloeiBlad);
         Bind(ERequestData.BEHANDELING, chkBehandeling, cboBehandeling);
         Bind(ERequestData.MAAND, chkMaand, cboMaand);
         Bind(ERequestData.PERXJAAR, chkPerXJaar, nudPerXJaar);
-        Bind(ERequestData.BEZONNING, chkBezonning, sldBezonning);
-        Bind(ERequestData.VOCHTBEHOEFTE, chkVochtBehoefte, sldVochtbehoefte);
+        Bind(ERequestData.BEZONNING, chkBezonning, sldBezonning,lblBezonning);
+        Bind(ERequestData.VOCHTBEHOEFTE, chkVochtBehoefte, sldVochtbehoefte,lblVocht);
 
 
         ArrayList<RadioButton> rdbLevensvormen = new ArrayList<RadioButton>();
@@ -573,10 +573,10 @@ public class Controller {
      * @param checkBox welke checkbox gebind moet worden
      * @Author bradley
      */
-    public void Bind(ERequestData E, CheckBox checkBox, Slider slider) {
+    public void Bind(ERequestData E, CheckBox checkBox, Slider slider,Label label) {
         slider.disableProperty().bind(checkBox.selectedProperty().not());
         bindingData.searchRequestData.get(E).DoSearchProperty().bind(checkBox.selectedProperty());
-        bindingData.searchRequestData.get(E).Value().valueProperty().bind(slider.valueProperty().asString());
+        bindingData.searchRequestData.get(E).Value().valueProperty().bind(label.textProperty());
     }
 
     /**
