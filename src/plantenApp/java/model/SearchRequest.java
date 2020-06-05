@@ -9,13 +9,13 @@ import java.util.function.Supplier;
  * @author bradley
  * @param <T> value-type
  */
-public class PropertyClass<T> {
+public class SearchRequest<T> {
     BooleanProperty DoSearch = new SimpleBooleanProperty();
 
 
    T value ;
 
-    public PropertyClass(T value) {
+    public SearchRequest(T value) {
         this.value = value;
     }
 
@@ -31,7 +31,7 @@ public class PropertyClass<T> {
         this.DoSearch.set(booleanProperty);
     }
 
-    public T getValue() {
+    public T Value() {
         return value;
     }
 

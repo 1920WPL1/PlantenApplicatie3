@@ -1,14 +1,12 @@
 package plantenApp.java.dao;
 
 import plantenApp.java.model.*;
-import plantenApp.java.utils.ArrayBindings;
-import plantenApp.java.utils.Bindings;
+import plantenApp.java.utils.ERequestArrayData;
+import plantenApp.java.utils.ERequestData;
 import plantenApp.java.utils.DaoUtils;
 
 import java.sql.*;
 import java.util.ArrayList;
-import java.util.EnumMap;
-import java.util.List;
 
 /**
  * @author Siebe
@@ -102,34 +100,34 @@ public class AbiotischeFactorenDAO implements Queries {
         PreparedStatement stmtSelectIdsByAbio = DaoUtils.ReadyStatement(dbConnection, GETIDSBYABIO, plantIds);
 
         //Bezonning
-        PropertyClass<Value> bezonning = bindingData.dataBindings.get(Bindings.BEZONNING);
-        stmtSelectIdsByAbio.setString(plantIds.size() + 1, bezonning.getValue().get());
+        SearchRequest<RequestValue> bezonning = bindingData.searchRequestData.get(ERequestData.BEZONNING);
+        stmtSelectIdsByAbio.setString(plantIds.size() + 1, bezonning.Value().getValue());
         stmtSelectIdsByAbio.setInt(plantIds.size() + 2, (bezonning.getDoSearch()) ? 0 : 1);
 
         //Grondsoort
-        PropertyClass<ValueWithBoolean[]> grondsoort = bindingData.arrayDataBindings.get(ArrayBindings.GRONDSOORT);
+        SearchRequest<RequestValueWBool[]> grondsoort = bindingData.searchRequestArrayData.get(ERequestArrayData.GRONDSOORT);
         StringBuilder grondsoortValue = new StringBuilder();
-        for (int i = 0; i < grondsoort.getValue().length; i++) {
-            if (grondsoort.getValue()[i].getBool()) {
-                grondsoortValue.append(grondsoort.getValue()[i].get());
+        for (int i = 0; i < grondsoort.Value().length; i++) {
+            if (grondsoort.Value()[i].getIsSelected()) {
+                grondsoortValue.append(grondsoort.Value()[i].getValue());
             }
         }
         stmtSelectIdsByAbio.setString(plantIds.size() + 3, grondsoortValue.toString());
         stmtSelectIdsByAbio.setInt(plantIds.size() + 4, (grondsoort.getDoSearch()) ? 0 : 1);
 
         //Vochtbehoefte
-        PropertyClass<Value> vochtbehoefte = bindingData.dataBindings.get(Bindings.VOCHTBEHOEFTE);
-        stmtSelectIdsByAbio.setString(plantIds.size() + 5, vochtbehoefte.getValue().get());
+        SearchRequest<RequestValue> vochtbehoefte = bindingData.searchRequestData.get(ERequestData.VOCHTBEHOEFTE);
+        stmtSelectIdsByAbio.setString(plantIds.size() + 5, vochtbehoefte.Value().getValue());
         stmtSelectIdsByAbio.setInt(plantIds.size() + 6, (vochtbehoefte.getDoSearch()) ? 0 : 1);
 
         //voedingsbehoefte
-        PropertyClass<Value> voedingsbehoefte = bindingData.dataBindings.get(Bindings.VOEDINGSBEHOEFTE);
-        stmtSelectIdsByAbio.setString(plantIds.size() + 7, voedingsbehoefte.getValue().get());
+        SearchRequest<RequestValue> voedingsbehoefte = bindingData.searchRequestData.get(ERequestData.VOEDINGSBEHOEFTE);
+        stmtSelectIdsByAbio.setString(plantIds.size() + 7, voedingsbehoefte.Value().getValue());
         stmtSelectIdsByAbio.setInt(plantIds.size() + 8, (voedingsbehoefte.getDoSearch()) ? 0 : 1);
 
         //reactieantaomgeving
-        PropertyClass<Value> reactieantaomgeving = bindingData.dataBindings.get(Bindings.REACTIEANTAGONISTISCHEOMGEVING);
-        stmtSelectIdsByAbio.setString(plantIds.size() + 9, reactieantaomgeving.getValue().get());
+        SearchRequest<RequestValue> reactieantaomgeving = bindingData.searchRequestData.get(ERequestData.REACTIEANTAGONISTISCHEOMGEVING);
+        stmtSelectIdsByAbio.setString(plantIds.size() + 9, reactieantaomgeving.Value().getValue());
         stmtSelectIdsByAbio.setInt(plantIds.size() + 10, (reactieantaomgeving.getDoSearch()) ? 0 : 1);
 
         ResultSet rs = stmtSelectIdsByAbio.executeQuery();
@@ -138,9 +136,9 @@ public class AbiotischeFactorenDAO implements Queries {
         }
 
         //habitat
-        PropertyClass<Value> habitat = bindingData.dataBindings.get(Bindings.HABITAT);
+        SearchRequest<RequestValue> habitat = bindingData.searchRequestData.get(ERequestData.HABITAT);
         if (habitat.getDoSearch()) {
-            ids = FilterOnMulti("Habitat", habitat.getValue().get(), ids);
+            ids = FilterOnMulti("Habitat", habitat.Value().getValue(), ids);
         }
 
         //Output

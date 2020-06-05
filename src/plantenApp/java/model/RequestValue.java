@@ -5,18 +5,18 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
 
-public class Value {
-    StringProperty value = new SimpleStringProperty("test");
+public class RequestValue {
+    private StringProperty value = new SimpleStringProperty("");
 
     public StringProperty valueProperty(){
         return value;
     }
 
-    public String get(){
+    public String getValue(){
         return value.get();
     }
 
-    public void set(String text){
+    public void setValue(String text){
         value.set(text);
     }
 }

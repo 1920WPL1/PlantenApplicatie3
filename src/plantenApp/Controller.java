@@ -1,6 +1,4 @@
 package plantenApp;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
 import javafx.scene.layout.VBox;
 import plantenApp.java.dao.Database;
 import plantenApp.java.dao.InfoTablesDAO;
@@ -10,11 +8,10 @@ import javafx.scene.control.*;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import plantenApp.java.model.SearchHandler;
-import plantenApp.java.utils.ArrayBindings;
-import plantenApp.java.utils.Bindings;
+import plantenApp.java.utils.ERequestArrayData;
+import plantenApp.java.utils.ERequestData;
 
 
-import java.io.IOException;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -231,25 +228,25 @@ public class Controller {
         bindingData = new BindingData();
 
 
-        Bind(Bindings.BLADVORM, chkBladvorm, cboBladvorm);
-        Bind(Bindings.SPRUITFENOLOGIE, chkSpruitfenologie, cboSpruitfenologie);
-        Bind(Bindings.VOEDINGSBEHOEFTE, chkVoedingsbehoefte, sldVoedingsbehoefte);
-        Bind(Bindings.BLADGROOTTE, chkBladgrootte, cboBladgrootte);
-        Bind(Bindings.BLADHOOGTE, chkBladHoogte, nudMaxBladhoogte);
-        Bind(Bindings.FAMILIE, chkFamilie, cboFamilie);
-        Bind(Bindings.TYPE, chkType, cboType);
-        Bind(Bindings.HABITAT, chkHabitat, cboHabitat);
-        Bind(Bindings.BLADKLEUR, chkBladKleur, cboBladkleur);
-        Bind(Bindings.BLOEIKLEUR, chkBloeiKleur, cboBloeikleur);
-        Bind(Bindings.REACTIEANTAGONISTISCHEOMGEVING, chkReactieAntagonistischeOmg, cboReactieAnta);
-        Bind(Bindings.ONTWIKKELINGSSNELHEID, chkOntwikkelingssnelheid, cboOntwikkel);
-        Bind(Bindings.LEVENSDUUR, chkLevensduur_concurrentiekracht, cboLevensduur);
-        Bind(Bindings.NECTARWAARDE, chkNectarwaarde, sldNectarwaarde);
-        Bind(Bindings.POLLENWAARDE, chkPollenwaarde, sldPollenwaarde);
-        Bind(Bindings.RATIOBLOEIBLAD, chkRatio_bloei_blad, cboRatioBloeiBlad);
-        Bind(Bindings.BEHANDELING, chkBehandeling, cboBehandeling);
-        Bind(Bindings.MAAND, chkMaand, cboMaand);
-        Bind(Bindings.PERXJAAR, chkPerXJaar, nudPerXJaar);
+        Bind(ERequestData.BLADVORM, chkBladvorm, cboBladvorm);
+        Bind(ERequestData.SPRUITFENOLOGIE, chkSpruitfenologie, cboSpruitfenologie);
+        Bind(ERequestData.VOEDINGSBEHOEFTE, chkVoedingsbehoefte, sldVoedingsbehoefte);
+        Bind(ERequestData.BLADGROOTTE, chkBladgrootte, cboBladgrootte);
+        Bind(ERequestData.BLADHOOGTE, chkBladHoogte, nudMaxBladhoogte);
+        Bind(ERequestData.FAMILIE, chkFamilie, cboFamilie);
+        Bind(ERequestData.TYPE, chkType, cboType);
+        Bind(ERequestData.HABITAT, chkHabitat, cboHabitat);
+        Bind(ERequestData.BLADKLEUR, chkBladKleur, cboBladkleur);
+        Bind(ERequestData.BLOEIKLEUR, chkBloeiKleur, cboBloeikleur);
+        Bind(ERequestData.REACTIEANTAGONISTISCHEOMGEVING, chkReactieAntagonistischeOmg, cboReactieAnta);
+        Bind(ERequestData.ONTWIKKELINGSSNELHEID, chkOntwikkelingssnelheid, cboOntwikkel);
+        Bind(ERequestData.LEVENSDUUR, chkLevensduur_concurrentiekracht, cboLevensduur);
+        Bind(ERequestData.NECTARWAARDE, chkNectarwaarde, sldNectarwaarde);
+        Bind(ERequestData.POLLENWAARDE, chkPollenwaarde, sldPollenwaarde);
+        Bind(ERequestData.RATIOBLOEIBLAD, chkRatio_bloei_blad, cboRatioBloeiBlad);
+        Bind(ERequestData.BEHANDELING, chkBehandeling, cboBehandeling);
+        Bind(ERequestData.MAAND, chkMaand, cboMaand);
+        Bind(ERequestData.PERXJAAR, chkPerXJaar, nudPerXJaar);
 
 
         ArrayList<RadioButton> rdbLevensvormen = new ArrayList<RadioButton>();
@@ -263,7 +260,7 @@ public class Controller {
         rdbLevensvormen.add(rdbLevensvorm_8);
         rdbLevensvormen.add(rdbLevensvorm_9);
 
-        BindRadiobutton(ArrayBindings.LEVENSVORM, chkLevensvormVolgensRaunkhiaer, rdbLevensvormen);
+        BindRadiobutton(ERequestArrayData.LEVENSVORM, chkLevensvormVolgensRaunkhiaer, rdbLevensvormen);
 
         ArrayList<RadioButton> rdbStrategieën = new ArrayList<RadioButton>();
         rdbStrategieën.add(rdbStrategie_C);
@@ -274,43 +271,43 @@ public class Controller {
         rdbStrategieën.add(rdbStrategie_RS);
         rdbStrategieën.add(rdbStrategie_CRS);
         rdbStrategieën.add(rdbStrategie_Onbekend);
-        BindRadiobutton(ArrayBindings.STRATEGIE, chkStrategie, rdbStrategieën);
+        BindRadiobutton(ERequestArrayData.STRATEGIE, chkStrategie, rdbStrategieën);
 
         ArrayList<RadioButton> rdbBijvriendelijken = new ArrayList<RadioButton>();
         rdbBijvriendelijken.add(rdbBijvriendelijk_Ja);
         rdbBijvriendelijken.add(rdbBijvriendelijk_Nee);
         rdbBijvriendelijken.add(rdbBijvriendelijk_Onbekend);
-        BindRadiobutton(ArrayBindings.BIJVRIENDELIJK, chkBijvriendelijk, rdbBijvriendelijken);
+        BindRadiobutton(ERequestArrayData.BIJVRIENDELIJK, chkBijvriendelijk, rdbBijvriendelijken);
 
         ArrayList<RadioButton> rdbVlindervriendelijken = new ArrayList<RadioButton>();
         rdbVlindervriendelijken.add(rdbVlindervriendelijk_Ja);
         rdbVlindervriendelijken.add(rdbVlindervriendelijk_Nee);
         rdbVlindervriendelijken.add(rdbVlindervriendelijk_Onbekend);
-        BindRadiobutton(ArrayBindings.VLINDERVRIENDELIJK, chkVlindervriendelijk, rdbVlindervriendelijken);
+        BindRadiobutton(ERequestArrayData.VLINDERVRIENDELIJK, chkVlindervriendelijk, rdbVlindervriendelijken);
 
         ArrayList<RadioButton> rdbGeurenden = new ArrayList<RadioButton>();
         rdbGeurenden.add(rdbGeurend_Ja);
         rdbGeurenden.add(rdbGeurend_Nee);
         rdbGeurenden.add(rdbGeurend_Onbekend);
-        BindRadiobutton(ArrayBindings.GEUREND, chkGeurend, rdbGeurenden);
+        BindRadiobutton(ERequestArrayData.GEUREND, chkGeurend, rdbGeurenden);
 
         ArrayList<RadioButton> rdbEetbaren = new ArrayList<RadioButton>();
         rdbEetbaren.add(rdbEetbaar_Ja);
         rdbEetbaren.add(rdbEetbaar_Nee);
         rdbEetbaren.add(rdbEetbaar_Onbekend);
-        BindRadiobutton(ArrayBindings.EETBAAR, chkEetbaar, rdbEetbaren);
+        BindRadiobutton(ERequestArrayData.EETBAAR, chkEetbaar, rdbEetbaren);
 
         ArrayList<RadioButton> rdkKruidgebruiken = new ArrayList<RadioButton>();
         rdkKruidgebruiken.add(rdbKruidgebruik_Ja);
         rdkKruidgebruiken.add(rdbKruidgebruik_Nee);
         rdkKruidgebruiken.add(rdbKruidgebruik_Onbekend);
-        BindRadiobutton(ArrayBindings.KRUIDGEBRUIK, chkKruidgebruik, rdkKruidgebruiken);
+        BindRadiobutton(ERequestArrayData.KRUIDGEBRUIK, chkKruidgebruik, rdkKruidgebruiken);
 
         ArrayList<RadioButton> rdbVorstgevoeligen = new ArrayList<RadioButton>();
         rdbVorstgevoeligen.add(rdbVorstgevoelig_Ja);
         rdbVorstgevoeligen.add(rdbVorstgevoelig_Nee);
         rdbVorstgevoeligen.add(rdbVorstgevoelig_Onbekend);
-        BindRadiobutton(ArrayBindings.VORSTGEVOELIG, chkVorstgevoelig, rdbVorstgevoeligen);
+        BindRadiobutton(ERequestArrayData.VORSTGEVOELIG, chkVorstgevoelig, rdbVorstgevoeligen);
 
         ArrayList<RadioButton> rdbHabitusen = new ArrayList<RadioButton>();
         rdbHabitusen.add(rdbHabitus_1);
@@ -328,7 +325,7 @@ public class Controller {
         rdbHabitusen.add(rdbHabitus_13);
         rdbHabitusen.add(rdbHabitus_14);
         rdbHabitusen.add(rdbHabitus_15);
-        BindRadiobutton(ArrayBindings.HABITUS, chkHabitus, rdbHabitusen);
+        BindRadiobutton(ERequestArrayData.HABITUS, chkHabitus, rdbHabitusen);
 
         ArrayList<RadioButton> rdbBloeiwijzes = new ArrayList<RadioButton>();
         rdbBloeiwijzes.add(rdbBloeiwijze_Etage);
@@ -339,7 +336,7 @@ public class Controller {
         rdbBloeiwijzes.add(rdbBloeiwijze_Scherm);
         rdbBloeiwijzes.add(rdbBloeiwijze_Schotel);
         rdbBloeiwijzes.add(rdbBloeiwijze_SmallePluim);
-        BindRadiobutton(ArrayBindings.BLOEIWIJZE, chkBloeiwijze, rdbBloeiwijzes);
+        BindRadiobutton(ERequestArrayData.BLOEIWIJZE, chkBloeiwijze, rdbBloeiwijzes);
 
         ArrayList<CheckBox> chkSociabiliteiten = new ArrayList<CheckBox>();
         chkSociabiliteiten.add(chkSociabiliteit_1);
@@ -347,13 +344,13 @@ public class Controller {
         chkSociabiliteiten.add(chkSociabiliteit_3);
         chkSociabiliteiten.add(chkSociabiliteit_4);
         chkSociabiliteiten.add(chkSociabiliteit_5);
-        BindCheckbox(ArrayBindings.SOCIABILITEIT, chkSociabiliteit, chkSociabiliteiten);
+        BindCheckbox(ERequestArrayData.SOCIABILITEIT, chkSociabiliteit, chkSociabiliteiten);
 
         ArrayList<CheckBox> chkGrondsoorten = new ArrayList<CheckBox>();
         chkGrondsoorten.add(chkGrondsoort_K);
         chkGrondsoorten.add(chkGrondsoort_Z);
         chkGrondsoorten.add(chkGrondsoort_L);
-        BindCheckbox(ArrayBindings.GRONDSOORT, chkGrondsoort, chkGrondsoorten);
+        BindCheckbox(ERequestArrayData.GRONDSOORT, chkGrondsoort, chkGrondsoorten);
 
 
 
@@ -368,10 +365,10 @@ public class Controller {
      * @param E binding Enumeration
      * @param checkBox welke checkbox gebind moet worden
      */
-    public void Bind(Bindings E, CheckBox checkBox, Slider slider){
+    public void Bind(ERequestData E, CheckBox checkBox, Slider slider){
         slider.disableProperty().bind(checkBox.selectedProperty().not());
-        bindingData.dataBindings.get(E).DoSearchProperty().bind(checkBox.selectedProperty());
-        bindingData.dataBindings.get(E).getValue().valueProperty().bind(slider.valueProperty().asString());
+        bindingData.searchRequestData.get(E).DoSearchProperty().bind(checkBox.selectedProperty());
+        bindingData.searchRequestData.get(E).Value().valueProperty().bind(slider.valueProperty().asString());
     }
 
     /**
@@ -380,10 +377,10 @@ public class Controller {
      * @param checkBox te binden checkbox
      * @param comboBox te binden combobox
      */
-    public void Bind(Bindings E, CheckBox checkBox, ComboBox<String> comboBox){
+    public void Bind(ERequestData E, CheckBox checkBox, ComboBox<String> comboBox){
         comboBox.disableProperty().bind(checkBox.selectedProperty().not());
-        bindingData.dataBindings.get(E).DoSearchProperty().bind(checkBox.selectedProperty());
-        bindingData.dataBindings.get(E).getValue().valueProperty().bind(comboBox.valueProperty().asString());
+        bindingData.searchRequestData.get(E).DoSearchProperty().bind(checkBox.selectedProperty());
+        bindingData.searchRequestData.get(E).Value().valueProperty().bind(comboBox.valueProperty().asString());
     }
 
     /**
@@ -392,55 +389,55 @@ public class Controller {
      * @param checkBox te binden checkbox
      * @param spinner te binden spinner
      */
-    public void Bind(Bindings E, CheckBox checkBox, Spinner<Integer> spinner){
+    public void Bind(ERequestData E, CheckBox checkBox, Spinner<Integer> spinner){
         spinner.disableProperty().bind(checkBox.selectedProperty().not());
-        bindingData.dataBindings.get(E).DoSearchProperty().bind(checkBox.selectedProperty());
-        bindingData.dataBindings.get(E).getValue().valueProperty().bind(spinner.valueProperty().asString());
+        bindingData.searchRequestData.get(E).DoSearchProperty().bind(checkBox.selectedProperty());
+        bindingData.searchRequestData.get(E).Value().valueProperty().bind(spinner.valueProperty().asString());
     }
 
-    public void BindSpinner(ArrayBindings E, CheckBox checkBox, ArrayList<Spinner<Integer>> listSpinner){
-        bindingData.arrayDataBindings.get(E).DoSearchProperty().bind(checkBox.selectedProperty().not());
+    public void BindSpinner(ERequestArrayData E, CheckBox checkBox, ArrayList<Spinner<Integer>> listSpinner){
+        bindingData.searchRequestArrayData.get(E).DoSearchProperty().bind(checkBox.selectedProperty().not());
 
-        for (int i = 0; i<bindingData.arrayDataBindings.get(E).getValue().length;i++) {
+        for (int i = 0; i<bindingData.searchRequestArrayData.get(E).Value().length; i++) {
 
             listSpinner.get(i).disableProperty().bind(checkBox.selectedProperty().not());
-            bindingData.arrayDataBindings.get(E).getValue()[i].valueProperty().bind(listSpinner.get(i).valueProperty().asString());
+            bindingData.searchRequestArrayData.get(E).Value()[i].valueProperty().bind(listSpinner.get(i).valueProperty().asString());
 
         }
     }
 
-    public void BindRadiobutton(ArrayBindings E, CheckBox checkBox, ArrayList<RadioButton> listRadioButton){
+    public void BindRadiobutton(ERequestArrayData E, CheckBox checkBox, ArrayList<RadioButton> listRadioButton){
 
-        bindingData.arrayDataBindings.get(E).DoSearchProperty().bind(checkBox.selectedProperty().not());
+        bindingData.searchRequestArrayData.get(E).DoSearchProperty().bind(checkBox.selectedProperty().not());
 
-        for (int i = 0; i<bindingData.arrayDataBindings.get(E).getValue().length;i++) {
+        for (int i = 0; i<bindingData.searchRequestArrayData.get(E).Value().length; i++) {
 
 
             listRadioButton.get(i).disableProperty().bind(checkBox.selectedProperty().not());
-            bindingData.arrayDataBindings.get(E).getValue()[i].valueProperty().bind(listRadioButton.get(i).textProperty());
-            bindingData.arrayDataBindings.get(E).getValue()[i].boolProperty().bind(listRadioButton.get(i).selectedProperty());
+            bindingData.searchRequestArrayData.get(E).Value()[i].valueProperty().bind(listRadioButton.get(i).textProperty());
+            bindingData.searchRequestArrayData.get(E).Value()[i].isSelectedProperty().bind(listRadioButton.get(i).selectedProperty());
 
         }
     }
 
-    public void BindCheckbox(ArrayBindings E, CheckBox checkBox, ArrayList<CheckBox> listCheckbox){
-        bindingData.arrayDataBindings.get(E).DoSearchProperty().bind(checkBox.selectedProperty().not());
+    public void BindCheckbox(ERequestArrayData E, CheckBox checkBox, ArrayList<CheckBox> listCheckbox){
+        bindingData.searchRequestArrayData.get(E).DoSearchProperty().bind(checkBox.selectedProperty().not());
 
-        for (int i = 0; i<bindingData.arrayDataBindings.get(E).getValue().length;i++) {
+        for (int i = 0; i<bindingData.searchRequestArrayData.get(E).Value().length; i++) {
 
             listCheckbox.get(i).disableProperty().bind(checkBox.selectedProperty().not());
-            bindingData.arrayDataBindings.get(E).getValue()[i].valueProperty().bind(listCheckbox.get(i).textProperty());
-            bindingData.arrayDataBindings.get(E).getValue()[i].boolProperty().bind(listCheckbox.get(i).selectedProperty());
+            bindingData.searchRequestArrayData.get(E).Value()[i].valueProperty().bind(listCheckbox.get(i).textProperty());
+            bindingData.searchRequestArrayData.get(E).Value()[i].isSelectedProperty().bind(listCheckbox.get(i).selectedProperty());
         }
     }
 
-    public void BindCombobox(ArrayBindings E, CheckBox checkBox, ArrayList<ComboBox> listComboBOx){
-        bindingData.arrayDataBindings.get(E).DoSearchProperty().bind(checkBox.selectedProperty().not());
+    public void BindCombobox(ERequestArrayData E, CheckBox checkBox, ArrayList<ComboBox> listComboBOx){
+        bindingData.searchRequestArrayData.get(E).DoSearchProperty().bind(checkBox.selectedProperty().not());
 
-        for (int i = 0; i<bindingData.arrayDataBindings.get(E).getValue().length;i++) {
+        for (int i = 0; i<bindingData.searchRequestArrayData.get(E).Value().length; i++) {
 
             listComboBOx.get(i).disableProperty().bind(checkBox.selectedProperty().not());
-            bindingData.arrayDataBindings.get(E).getValue()[i].valueProperty().bind(listComboBOx.get(i).valueProperty());
+            bindingData.searchRequestArrayData.get(E).Value()[i].valueProperty().bind(listComboBOx.get(i).valueProperty());
         }
     }
 

@@ -2,9 +2,9 @@ package plantenApp.java.dao;
 
 import plantenApp.java.model.BindingData;
 import plantenApp.java.model.Plant;
-import plantenApp.java.model.PropertyClass;
-import plantenApp.java.model.Value;
-import plantenApp.java.utils.Bindings;
+import plantenApp.java.model.SearchRequest;
+import plantenApp.java.model.RequestValue;
+import plantenApp.java.utils.ERequestData;
 import plantenApp.java.utils.DaoUtils;
 
 
@@ -13,9 +13,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.EnumMap;
-import java.util.List;
-import java.util.Map;
 
 /**
  * @author Siebe
@@ -154,18 +151,18 @@ public class PlantDAO implements Queries {
         ArrayList<Integer> ids = new ArrayList<>();
 
         //type
-        PropertyClass<Value> type = bindingData.dataBindings.get(Bindings.TYPE);
-        stmtSelectIdsByPlant.setString(1, type.getValue().get());
+        SearchRequest<RequestValue> type = bindingData.searchRequestData.get(ERequestData.TYPE);
+        stmtSelectIdsByPlant.setString(1, type.Value().getValue());
         stmtSelectIdsByPlant.setInt(2, (type.getDoSearch()) ? 0 : 1);
 
         //familie
-        PropertyClass<Value> familie = bindingData.dataBindings.get(Bindings.FAMILIE);
-        stmtSelectIdsByPlant.setString(3, familie.getValue().get());
+        SearchRequest<RequestValue> familie = bindingData.searchRequestData.get(ERequestData.FAMILIE);
+        stmtSelectIdsByPlant.setString(3, familie.Value().getValue());
         stmtSelectIdsByPlant.setInt(4, (familie.getDoSearch()) ? 0 : 1);
 
         //fgsv
-        PropertyClass<Value> fgsv = bindingData.dataBindings.get(Bindings.SEARCH);
-        stmtSelectIdsByPlant.setString(5, fgsv.getValue().get());
+        SearchRequest<RequestValue> fgsv = bindingData.searchRequestData.get(ERequestData.SEARCH);
+        stmtSelectIdsByPlant.setString(5, fgsv.Value().getValue());
         stmtSelectIdsByPlant.setInt(6, (fgsv.getDoSearch()) ? 0 : 1);
 
         ResultSet rs = stmtSelectIdsByPlant.executeQuery();

@@ -1,12 +1,10 @@
 package plantenApp.java.model;
 
 import plantenApp.java.dao.*;
-import plantenApp.java.utils.Bindings;
 
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.List;
 
 /**@author Bradley**/
 public class SearchHandler {

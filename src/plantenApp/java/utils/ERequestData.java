@@ -4,7 +4,7 @@ package plantenApp.java.utils;
 /**
  * @author bradley
  */
-public enum Bindings {
+public enum ERequestData {
     REACTIEANTAGONISTISCHEOMGEVING,
     ONTWIKKELINGSSNELHEID,
     LEVENSDUUR,

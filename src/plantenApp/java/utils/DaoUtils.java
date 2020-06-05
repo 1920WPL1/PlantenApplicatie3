@@ -1,6 +1,6 @@
 package plantenApp.java.utils;
 
-import plantenApp.java.model.ValueWithBoolean;
+import plantenApp.java.model.RequestValueWBool;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -40,10 +40,10 @@ public class DaoUtils {
         }
         return stmt;
     }
-    public static String GetCheckedValue(ValueWithBoolean[] array){
+    public static String GetCheckedValue(RequestValueWBool[] array){
         for (int i = 0; i < array.length; i++) {
-            if (array[i].getBool()){
-                return array[i].get();
+            if (array[i].getIsSelected()){
+                return array[i].getValue();
             }
         }
         System.out.println("Radiobuttons zonder default value");
