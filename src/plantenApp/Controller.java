@@ -228,6 +228,20 @@ public class Controller {
        infoTables = infotablesDAO.getInfoTables();
 
        FillComboboxes(infoTables);
+
+
+
+        InitSpinners();
+
+
+        InitBindings();
+    }
+
+    /**
+     * @author bradley
+     * Aanmaken van connectie bindings tussen verschillende controls
+     */
+    private void InitBindings() {
         bindingData = new BindingData();
 
 
@@ -354,13 +368,6 @@ public class Controller {
         chkGrondsoorten.add(chkGrondsoort_Z);
         chkGrondsoorten.add(chkGrondsoort_L);
         BindCheckbox(ArrayBindings.GRONDSOORT, chkGrondsoort, chkGrondsoorten);
-
-
-
-
-
-
-        InitSpinners();
     }
 
     /**
@@ -444,9 +451,6 @@ public class Controller {
         }
     }
 
-
-
-
     /**
      @param infotables -> lijst van alle lijsten van gegevens uit de naakte tabellen
      @author bradley, angelo
@@ -504,6 +508,7 @@ public class Controller {
         cboMaand.getItems().addAll("januari", "februari");
         cboBehandeling.getItems().addAll("test", "test2","test3");
     }
+
 
     public void InitSpinners(){
         setSpinner(nudPerXJaar, 10);
