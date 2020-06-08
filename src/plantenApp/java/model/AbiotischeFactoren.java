@@ -55,4 +55,12 @@ public class AbiotischeFactoren {
     public ArrayList<AbioMulti_Eigenschap> getMultiEigenschappen() {
         return multiEigenschappen;
     }
+
+    public ArrayList<String> getHabitats() {
+        ArrayList<String> habitats = new ArrayList<>();
+        for (int i = 0; i < multiEigenschappen.size(); i++) {
+            habitats.add(multiEigenschappen.get(i).getValue());
+        }
+        return habitats;
+    }
 }
