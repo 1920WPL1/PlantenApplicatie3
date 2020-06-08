@@ -5,13 +5,11 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/plantenApp/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/plantenApp/Controller.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/plantenApp/customController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/plantenApp/customController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/plantenApp/java/dao/AbiotischeFactorenDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/plantenApp/java/dao/AbiotischeFactorenDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/plantenApp/java/dao/Queries.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/plantenApp/java/dao/Queries.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/plantenApp/java/model/SearchHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/plantenApp/java/model/SearchHandler.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/plantenApp/view/CustomSearchControl.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/plantenApp/view/CustomSearchControl.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/plantenApp/view/Zoekscherm.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/plantenApp/view/Zoekscherm.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/plantenApp/view/Zoekscherm.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/plantenApp/view/Zoekscherm.fxml" afterDir="false" />
     </list>
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -63,7 +61,7 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="extract.method.default.visibility" value="private" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../Jar/sqljdbc_7.4/enu/mssql-jdbc-7.4.1.jre11.jar!/" />
+    <property name="last_opened_file_path" value="$USER_HOME$/Downloads/CustomControl" />
     <property name="project.structure.last.edited" value="Libraries" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.30297872" />
@@ -121,6 +119,8 @@
       <workItem from="1591260960861" duration="5907000" />
       <workItem from="1591270321734" duration="4036000" />
       <workItem from="1591278588953" duration="2563000" />
+      <workItem from="1591371849831" duration="4509000" />
+      <workItem from="1591597700912" duration="9973000" />
     </task>
     <servers />
   </component>
@@ -196,16 +196,5 @@
       <screen x="0" y="0" width="1858" height="1080" />
     </state>
     <state x="635" y="168" key="refactoring.ChangeSignatureDialog/0.0.1858.1080@0.0.1858.1080" timestamp="1591257365265" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/plantenApp/Controller.java</url>
-          <line>679</line>
-          <option name="timeStamp" value="11" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>

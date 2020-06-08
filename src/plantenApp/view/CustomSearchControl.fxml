@@ -11,8 +11,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox  xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1"  fx:controller="plantenApp.customController" fx:id="VBOX">
-   <TitledPane fx:id="customControl">
+<TitledPane  xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1"  fx:controller="plantenApp.customController" fx:id="VBOX">
    <content>
       <AnchorPane>
          <children>
@@ -272,5 +271,5 @@
    <font>
       <Font size="14.0" />
    </font>
-   </TitledPane>
-</VBox>
+</TitledPane>
+
