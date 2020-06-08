@@ -268,7 +268,6 @@ public class Controller {
     public Label lblBijvriendelijk;
     public Label lblVlinderVriendelijk;
     public Label lblEetbaar;
-    public Label lblValue;
     public Label lblGeurend;
     public Label lblVorstGevoelig;
     public Label lblBladGrootte;
@@ -276,18 +275,6 @@ public class Controller {
     public Label lblRatio;
     public Label lblSpruitFenologie;
     public Label lblLevensVorm;
-    public Label lblBloeihoogteJan;
-    public Label lblBloeihoogteFeb;
-    public Label lblBloeihoogteMaa;
-    public Label lblBloeihoogteApr;
-    public Label lblBloeihoogteMei;
-    public Label lblBloeihoogteJun;
-    public Label lblBloeihoogteJul;
-    public Label lblBloeihoogteAug;
-    public Label lblBloeihoogteSep;
-    public Label lblBloeihoogteOkt;
-    public Label lblBloeihoogteNov;
-    public Label lblBloeihoogteDec;
     public Label lblBloeikleurJan;
     public Label lblBloeikleurFeb;
     public Label lblBloeikleurMaa;
@@ -301,6 +288,57 @@ public class Controller {
     public Label lblBloeikleurNov;
     public Label lblBloeikleurDec;
     public BorderPane pnlUitvoer;
+    public Label lblMinBloeihoogteJan;
+    public Label lblMinBloeihoogteFeb;
+    public Label lblMinBloeihoogteMaa;
+    public Label lblMinBloeihoogteApr;
+    public Label lblMinBloeihoogteMei;
+    public Label lblMinBloeihoogteJun;
+    public Label lblMinBloeihoogteJul;
+    public Label lblMinBloeihoogteAug;
+    public Label lblMinBloeihoogteSep;
+    public Label lblMinBloeihoogteOkt;
+    public Label lblMinBloeihoogteNov;
+    public Label lblMinBloeihoogteDec;
+    public Label lblMaxBloeihoogteJan;
+    public Label lblMaxBloeihoogteFeb;
+    public Label lblMaxBloeihoogteMaa;
+    public Label lblMaxBloeihoogteApr;
+    public Label lblMaxBloeihoogteMei;
+    public Label lblMaxBloeihoogteJun;
+    public Label lblMaxBloeihoogteJul;
+    public Label lblMaxBloeihoogteAug;
+    public Label lblMaxBloeihoogteSep;
+    public Label lblMaxBloeihoogteOkt;
+    public Label lblMaxBloeihoogteNov;
+    public Label lblMaxBloeihoogteDec;
+    public Label lblMaxBladgrootteJan;
+    public Label lblMaxBladgrootteFeb;
+    public Label lblMaxBladgrootteMaa;
+    public Label lblMaxBladgrootteApr;
+    public Label lblMaxBladgrootteMei;
+    public Label lblMaxBladgrootteJun;
+    public Label lblMaxBladgrootteJul;
+    public Label lblMaxBladgrootteAug;
+    public Label lblMaxBladgrootteSep;
+    public Label lblMaxBladgrootteOkt;
+    public Label lblMaxBladgrootteNov;
+    public Label lblMaxBladgrootteDec;
+    public Label lblBladkleurJan;
+    public Label lblBladkleurFeb;
+    public Label lblBladkleurMaa;
+    public Label lblBladkleurApr;
+    public Label lblBladkleurMei;
+    public Label lblBladkleurJun;
+    public Label lblBladkleurJul;
+    public Label lblBladkleurAug;
+    public Label lblBladkleurSep;
+    public Label lblBladkleurOkt;
+    public Label lblBladkleurNov;
+    public Label lblBladkleurDec;
+    public Label lblHabitus;
+    public Label lblBloeiwijze;
+    public Label lblKruidgebruik;
 
     private InfoTables infoTables;
     private Connection dbConnection;
@@ -356,38 +394,121 @@ public class Controller {
                 }
 
                 try {
+                    //standaard
                     lblType.setText(newValue.getType());
-                    lblSoort.setText(newValue.getSoort());
                     lblFamilie.setText(newValue.getFamilie());
                     lblGeslacht.setText(newValue.getGeslacht());
+                    lblSoort.setText(newValue.getSoort());
                     lblVariant.setText(newValue.getVariatie());
                     lblDichtheidX.setText(String.valueOf(newValue.getMinPlantdichtheid()));
                     lblDichtheidY.setText(String.valueOf(newValue.getMaxPlantdichtheid()));
+
+                    //commensalisme
                     lblOntwikkelingsSnelheid.setText(newValue.getCommensalisme().getOntwikkelingssnelheid());
+                    if (chkSociabiliteit_1.isSelected()){chkSocPlantI.setSelected(true);}
+                    if (chkSociabiliteit_2.isSelected()){chkSocPlantII.setSelected(true);}
+                    if (chkSociabiliteit_3.isSelected()){chkSocPlantIII.setSelected(true);}
+                    if (chkSociabiliteit_4.isSelected()){chkSocPlantIV.setSelected(true);}
+                    if (chkSociabiliteit_5.isSelected()){chkSocPlantV.setSelected(true);}
                     lblStrategie.setText(newValue.getCommensalisme().getStrategie());
+                    //TODO levensduur/concurrentiekracht
+
+                    //abiotische factoren
                     lblBezonning2.setText(newValue.getAbiotischeFactoren().getBezonning());
                     lblVochtBehoefte.setText(newValue.getAbiotischeFactoren().getVochtbehoefte());
                     lblVoedingsBehoefte2.setText(newValue.getAbiotischeFactoren().getVoedingsbehoefte());
                     lblReactie.setText(newValue.getAbiotischeFactoren().getReactieAntagonistischeOmgeving());
                     lblGrondSoort.setText(newValue.getAbiotischeFactoren().getGrondsoort());
+                    //TODO habitat
+
+                    //extra
                     lblNectarwaarde2.setText(String.valueOf(newValue.getExtra().getNectarwaarde()));
-                    lblPollenwaarde.setText(String.valueOf(newValue.getExtra().getPollenwaarde()));
+                    lblPollenwaarde2.setText(String.valueOf(newValue.getExtra().getPollenwaarde()));
                     lblBijvriendelijk.setText(newValue.getExtra().getBijvriendelijk());
                     lblVlinderVriendelijk.setText(newValue.getExtra().getVlindervriendelijk());
                     lblEetbaar.setText(newValue.getExtra().getEetbaar());
-                    //TODO kruidgebruik
+                    lblKruidgebruik.setText(newValue.getExtra().getKruidgebruik());
                     lblGeurend.setText((newValue.getExtra().getGeurend()));
                     lblVorstGevoelig.setText(newValue.getExtra().getVorstgevoelig());
 
+                    //fenotype
                     lblBladGrootte.setText(String.valueOf(newValue.getFenotype().getBladgrootte()));
                     lblBladVorm.setText(newValue.getFenotype().getBladvorm());
                     lblRatio.setText(newValue.getFenotype().getRatio_bloei_blad());
                     lblSpruitFenologie.setText(newValue.getFenotype().getSpruitfenologie());
+                    lblLevensVorm.setText(newValue.getFenotype().getLevensvorm());
+                    lblHabitus.setText(newValue.getFenotype().getHabitus());
+                    lblBloeiwijze.setText(newValue.getFenotype().getBloeiwijze());
+
+                    //maandelijkse gegevens
+                    lblMaxBladgrootteJan.setText("");
+                    lblMaxBladgrootteFeb.setText("");
+                    lblMaxBladgrootteMaa.setText("");
+                    lblMaxBladgrootteApr.setText("");
+                    lblMaxBladgrootteMei.setText("");
+                    lblMaxBladgrootteJun.setText("");
+                    lblMaxBladgrootteJul.setText("");
+                    lblMaxBladgrootteAug.setText("");
+                    lblMaxBladgrootteSep.setText("");
+                    lblMaxBladgrootteOkt.setText("");
+                    lblMaxBladgrootteNov.setText("");
+                    lblMaxBladgrootteDec.setText("");
+
+                    lblBladkleurJan.setText("");
+                    lblBladkleurFeb.setText("");
+                    lblBladkleurMaa.setText("");
+                    lblBladkleurApr.setText("");
+                    lblBladkleurMei.setText("");
+                    lblBladkleurJun.setText("");
+                    lblBladkleurJul.setText("");
+                    lblBladkleurAug.setText("");
+                    lblBladkleurSep.setText("");
+                    lblBladkleurOkt.setText("");
+                    lblBladkleurNov.setText("");
+                    lblBladkleurDec.setText("");
+
+                    lblMinBloeihoogteJan.setText("");
+                    lblMinBloeihoogteFeb.setText("");
+                    lblMinBloeihoogteMaa.setText("");
+                    lblMinBloeihoogteApr.setText("");
+                    lblMinBloeihoogteMei.setText("");
+                    lblMinBloeihoogteJun.setText("");
+                    lblMinBloeihoogteJul.setText("");
+                    lblMinBloeihoogteAug.setText("");
+                    lblMinBloeihoogteSep.setText("");
+                    lblMinBloeihoogteOkt.setText("");
+                    lblMinBloeihoogteNov.setText("");
+                    lblMinBloeihoogteDec.setText("");
+
+                    lblMaxBloeihoogteJan.setText("");
+                    lblMaxBloeihoogteFeb.setText("");
+                    lblMaxBloeihoogteMaa.setText("");
+                    lblMaxBloeihoogteApr.setText("");
+                    lblMaxBloeihoogteMei.setText("");
+                    lblMaxBloeihoogteJun.setText("");
+                    lblMaxBloeihoogteJul.setText("");
+                    lblMaxBloeihoogteAug.setText("");
+                    lblMaxBloeihoogteSep.setText("");
+                    lblMaxBloeihoogteOkt.setText("");
+                    lblMaxBloeihoogteNov.setText("");
+                    lblMaxBloeihoogteDec.setText("");
+
+                    lblBloeikleurJan.setText("");
+                    lblBloeikleurFeb.setText("");
+                    lblBloeikleurMaa.setText("");
+                    lblBloeikleurApr.setText("");
+                    lblBloeikleurMei.setText("");
+                    lblBloeikleurJun.setText("");
+                    lblBloeikleurJul.setText("");
+                    lblBloeikleurAug.setText("");
+                    lblBloeikleurSep.setText("");
+                    lblBloeikleurOkt.setText("");
+                    lblBloeikleurNov.setText("");
+                    lblBloeikleurDec.setText("");
+
                 } catch (NullPointerException ex){
                     ex.printStackTrace();
                 }
-
-
             }
         };
 
