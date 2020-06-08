@@ -28,7 +28,7 @@
    <content>
       <BorderPane maxWidth="1.7976931348623157E308">
          <top>
-            <TitledPane text="Search" BorderPane.alignment="CENTER">
+            <TitledPane expanded="false" text="Search" BorderPane.alignment="CENTER">
                <content>
                   <VBox>
                      <children>
@@ -1272,7 +1272,7 @@
             </TitledPane>
          </top>
          <center>
-            <BorderPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" fx:id="pnlUitvoer" visible="false">
+            <BorderPane fx:id="pnlUitvoer" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                <center>
                   <VBox BorderPane.alignment="CENTER">
                      <children>
@@ -1624,11 +1624,11 @@
                                                 <Font size="14.0" />
                                              </font>
                                           </Label>
-                                          <CheckBox fx:id="chkSocPlantI" mnemonicParsing="false" prefHeight="30.0" prefWidth="35.0" text="I " />
-                                          <CheckBox fx:id="chkSocPlantII" mnemonicParsing="false" prefHeight="30.0" prefWidth="35.0" text="II " />
-                                          <CheckBox fx:id="chkSocPlantIII" mnemonicParsing="false" prefHeight="30.0" prefWidth="35.0" text="III " />
-                                          <CheckBox fx:id="chkSocPlantIV" mnemonicParsing="false" prefHeight="30.0" prefWidth="35.0" text="IV " />
-                                          <CheckBox fx:id="chkSocPlantV" mnemonicParsing="false" prefHeight="30.0" prefWidth="35.0" text="V " />
+                                          <CheckBox fx:id="chkSocPlantI" disable="true" mnemonicParsing="false" prefHeight="30.0" prefWidth="35.0" text="I " />
+                                          <CheckBox fx:id="chkSocPlantII" disable="true" mnemonicParsing="false" prefHeight="30.0" prefWidth="35.0" text="II " />
+                                          <CheckBox fx:id="chkSocPlantIII" disable="true" mnemonicParsing="false" prefHeight="30.0" prefWidth="35.0" text="III " />
+                                          <CheckBox fx:id="chkSocPlantIV" disable="true" mnemonicParsing="false" prefHeight="30.0" prefWidth="35.0" text="IV " />
+                                          <CheckBox fx:id="chkSocPlantV" disable="true" mnemonicParsing="false" prefHeight="30.0" prefWidth="35.0" text="V " />
                                        </children>
                                     </HBox>
                                     <HBox>
@@ -1652,18 +1652,9 @@
                                                 <Font size="14.0" />
                                              </font>
                                           </Label>
-                                          <Label prefHeight="30.0" text="Value" textFill="#838383">
-                                             <font>
-                                                <Font size="14.0" />
-                                             </font>
-                                          </Label>
-                                          <Label prefHeight="30.0" text="Value" textFill="#838383">
-                                             <font>
-                                                <Font size="14.0" />
-                                             </font>
-                                          </Label>
                                        </children>
                                     </VBox>
+                                    <ListView fx:id="lsvLevensduur" maxWidth="200.0" prefHeight="50.0" prefWidth="166.0" />
                                  </children>
                               </VBox>
                               <VBox spacing="5.0">
@@ -1750,18 +1741,9 @@
                                                 <Font size="14.0" />
                                              </font>
                                           </Label>
-                                          <Label prefHeight="30.0" text="Value" textFill="#838383">
-                                             <font>
-                                                <Font size="14.0" />
-                                             </font>
-                                          </Label>
-                                          <Label prefHeight="30.0" text="Value" textFill="#838383">
-                                             <font>
-                                                <Font size="14.0" />
-                                             </font>
-                                          </Label>
                                        </children>
                                     </VBox>
+                                    <ListView fx:id="lsvHabitat" maxWidth="200.0" prefHeight="50.0" prefWidth="203.0" />
                                  </children>
                               </VBox>
                               <VBox spacing="5.0">
@@ -1848,7 +1830,7 @@
                                                 <Font size="14.0" />
                                              </font>
                                           </Label>
-                                          <Label fx:id="lblValue" prefHeight="30.0" text="Value" textFill="#838383">
+                                          <Label fx:id="lblKruidgebruik" prefHeight="30.0" text="Value" textFill="#838383">
                                              <font>
                                                 <Font size="14.0" />
                                              </font>
@@ -1969,12 +1951,7 @@
                                                 <Font size="14.0" />
                                              </font>
                                           </Label>
-                                          <Label prefHeight="30.0" text="Value" textFill="#838383">
-                                             <font>
-                                                <Font size="14.0" />
-                                             </font>
-                                          </Label>
-                                          <Label prefHeight="30.0" text="Value" textFill="#838383">
+                                          <Label fx:id="lblHabitus" prefHeight="30.0" text="Value" textFill="#838383">
                                              <font>
                                                 <Font size="14.0" />
                                              </font>
@@ -1988,12 +1965,7 @@
                                                 <Font size="14.0" />
                                              </font>
                                           </Label>
-                                          <Label prefHeight="30.0" text="Value" textFill="#838383">
-                                             <font>
-                                                <Font size="14.0" />
-                                             </font>
-                                          </Label>
-                                          <Label prefHeight="30.0" text="Value" textFill="#838383">
+                                          <Label fx:id="lblBloeiwijze" prefHeight="30.0" text="Value" textFill="#838383">
                                              <font>
                                                 <Font size="14.0" />
                                              </font>
@@ -2084,62 +2056,126 @@
                                              <children>
                                                 <VBox>
                                                    <children>
-                                                      <Label fx:id="lblBloeihoogteJan" alignment="CENTER" maxWidth="1.7976931348623157E308" prefHeight="30.0" text="0" textFill="#838383">
+                                                      <Label fx:id="lblMinBloeihoogteJan" alignment="CENTER" maxWidth="1.7976931348623157E308" prefHeight="30.0" text="0" textFill="#838383">
                                                          <font>
                                                             <Font size="14.0" />
                                                          </font>
                                                       </Label>
-                                                      <Label fx:id="lblBloeihoogteFeb" alignment="CENTER" maxWidth="1.7976931348623157E308" prefHeight="30.0" text="0" textFill="#838383">
+                                                      <Label fx:id="lblMinBloeihoogteFeb" alignment="CENTER" maxWidth="1.7976931348623157E308" prefHeight="30.0" text="0" textFill="#838383">
                                                          <font>
                                                             <Font size="14.0" />
                                                          </font>
                                                       </Label>
-                                                      <Label fx:id="lblBloeihoogteMaa" alignment="CENTER" maxWidth="1.7976931348623157E308" prefHeight="30.0" text="0" textFill="#838383">
+                                                      <Label fx:id="lblMinBloeihoogteMaa" alignment="CENTER" maxWidth="1.7976931348623157E308" prefHeight="30.0" text="0" textFill="#838383">
                                                          <font>
                                                             <Font size="14.0" />
                                                          </font>
                                                       </Label>
-                                                      <Label fx:id="lblBloeihoogteApr" alignment="CENTER" maxWidth="1.7976931348623157E308" prefHeight="30.0" text="0" textFill="#838383">
+                                                      <Label fx:id="lblMinBloeihoogteApr" alignment="CENTER" maxWidth="1.7976931348623157E308" prefHeight="30.0" text="0" textFill="#838383">
                                                          <font>
                                                             <Font size="14.0" />
                                                          </font>
                                                       </Label>
-                                                      <Label fx:id="lblBloeihoogteMei" alignment="CENTER" maxWidth="1.7976931348623157E308" prefHeight="30.0" text="0" textFill="#838383">
+                                                      <Label fx:id="lblMinBloeihoogteMei" alignment="CENTER" maxWidth="1.7976931348623157E308" prefHeight="30.0" text="0" textFill="#838383">
                                                          <font>
                                                             <Font size="14.0" />
                                                          </font>
                                                       </Label>
-                                                      <Label fx:id="lblBloeihoogteJun" alignment="CENTER" maxWidth="1.7976931348623157E308" prefHeight="30.0" text="0" textFill="#838383">
+                                                      <Label fx:id="lblMinBloeihoogteJun" alignment="CENTER" maxWidth="1.7976931348623157E308" prefHeight="30.0" text="0" textFill="#838383">
                                                          <font>
                                                             <Font size="14.0" />
                                                          </font>
                                                       </Label>
-                                                      <Label fx:id="lblBloeihoogteJul" alignment="CENTER" maxWidth="1.7976931348623157E308" prefHeight="30.0" text="0" textFill="#838383">
+                                                      <Label fx:id="lblMinBloeihoogteJul" alignment="CENTER" maxWidth="1.7976931348623157E308" prefHeight="30.0" text="0" textFill="#838383">
                                                          <font>
                                                             <Font size="14.0" />
                                                          </font>
                                                       </Label>
-                                                      <Label fx:id="lblBloeihoogteAug" alignment="CENTER" maxWidth="1.7976931348623157E308" prefHeight="30.0" text="0" textFill="#838383">
+                                                      <Label fx:id="lblMinBloeihoogteAug" alignment="CENTER" maxWidth="1.7976931348623157E308" prefHeight="30.0" text="0" textFill="#838383">
                                                          <font>
                                                             <Font size="14.0" />
                                                          </font>
                                                       </Label>
-                                                      <Label fx:id="lblBloeihoogteSep" alignment="CENTER" maxWidth="1.7976931348623157E308" prefHeight="30.0" text="0" textFill="#838383">
+                                                      <Label fx:id="lblMinBloeihoogteSep" alignment="CENTER" maxWidth="1.7976931348623157E308" prefHeight="30.0" text="0" textFill="#838383">
                                                          <font>
                                                             <Font size="14.0" />
                                                          </font>
                                                       </Label>
-                                                      <Label fx:id="lblBloeihoogteOkt" alignment="CENTER" maxWidth="1.7976931348623157E308" prefHeight="30.0" text="0" textFill="#838383">
+                                                      <Label fx:id="lblMinBloeihoogteOkt" alignment="CENTER" maxWidth="1.7976931348623157E308" prefHeight="30.0" text="0" textFill="#838383">
                                                          <font>
                                                             <Font size="14.0" />
                                                          </font>
                                                       </Label>
-                                                      <Label fx:id="lblBloeihoogteNov" alignment="CENTER" maxWidth="1.7976931348623157E308" prefHeight="30.0" text="0" textFill="#838383">
+                                                      <Label fx:id="lblMinBloeihoogteNov" alignment="CENTER" maxWidth="1.7976931348623157E308" prefHeight="30.0" text="0" textFill="#838383">
                                                          <font>
                                                             <Font size="14.0" />
                                                          </font>
                                                       </Label>
-                                                      <Label fx:id="lblBloeihoogteDec" alignment="CENTER" maxWidth="1.7976931348623157E308" prefHeight="30.0" text="0" textFill="#838383">
+                                                      <Label fx:id="lblMinBloeihoogteDec" alignment="CENTER" maxWidth="1.7976931348623157E308" prefHeight="30.0" text="0" textFill="#838383">
+                                                         <font>
+                                                            <Font size="14.0" />
+                                                         </font>
+                                                      </Label>
+                                                   </children>
+                                                </VBox>
+                                                <VBox layoutX="10.0" layoutY="10.0">
+                                                   <children>
+                                                      <Label fx:id="lblMaxBloeihoogteJan" alignment="CENTER" maxWidth="1.7976931348623157E308" prefHeight="30.0" text="0" textFill="#838383">
+                                                         <font>
+                                                            <Font size="14.0" />
+                                                         </font>
+                                                      </Label>
+                                                      <Label fx:id="lblMaxBloeihoogteFeb" alignment="CENTER" maxWidth="1.7976931348623157E308" prefHeight="30.0" text="0" textFill="#838383">
+                                                         <font>
+                                                            <Font size="14.0" />
+                                                         </font>
+                                                      </Label>
+                                                      <Label fx:id="lblMaxBloeihoogteMaa" alignment="CENTER" maxWidth="1.7976931348623157E308" prefHeight="30.0" text="0" textFill="#838383">
+                                                         <font>
+                                                            <Font size="14.0" />
+                                                         </font>
+                                                      </Label>
+                                                      <Label fx:id="lblMaxBloeihoogteApr" alignment="CENTER" maxWidth="1.7976931348623157E308" prefHeight="30.0" text="0" textFill="#838383">
+                                                         <font>
+                                                            <Font size="14.0" />
+                                                         </font>
+                                                      </Label>
+                                                      <Label fx:id="lblMaxBloeihoogteMei" alignment="CENTER" maxWidth="1.7976931348623157E308" prefHeight="30.0" text="0" textFill="#838383">
+                                                         <font>
+                                                            <Font size="14.0" />
+                                                         </font>
+                                                      </Label>
+                                                      <Label fx:id="lblMaxBloeihoogteJun" alignment="CENTER" maxWidth="1.7976931348623157E308" prefHeight="30.0" text="0" textFill="#838383">
+                                                         <font>
+                                                            <Font size="14.0" />
+                                                         </font>
+                                                      </Label>
+                                                      <Label fx:id="lblMaxBloeihoogteJul" alignment="CENTER" maxWidth="1.7976931348623157E308" prefHeight="30.0" text="0" textFill="#838383">
+                                                         <font>
+                                                            <Font size="14.0" />
+                                                         </font>
+                                                      </Label>
+                                                      <Label fx:id="lblMaxBloeihoogteAug" alignment="CENTER" maxWidth="1.7976931348623157E308" prefHeight="30.0" text="0" textFill="#838383">
+                                                         <font>
+                                                            <Font size="14.0" />
+                                                         </font>
+                                                      </Label>
+                                                      <Label fx:id="lblMaxBloeihoogteSep" alignment="CENTER" maxWidth="1.7976931348623157E308" prefHeight="30.0" text="0" textFill="#838383">
+                                                         <font>
+                                                            <Font size="14.0" />
+                                                         </font>
+                                                      </Label>
+                                                      <Label fx:id="lblMaxBloeihoogteOkt" alignment="CENTER" maxWidth="1.7976931348623157E308" prefHeight="30.0" text="0" textFill="#838383">
+                                                         <font>
+                                                            <Font size="14.0" />
+                                                         </font>
+                                                      </Label>
+                                                      <Label fx:id="lblMaxBloeihoogteNov" alignment="CENTER" maxWidth="1.7976931348623157E308" prefHeight="30.0" text="0" textFill="#838383">
+                                                         <font>
+                                                            <Font size="14.0" />
+                                                         </font>
+                                                      </Label>
+                                                      <Label fx:id="lblMaxBloeihoogteDec" alignment="CENTER" maxWidth="1.7976931348623157E308" prefHeight="30.0" text="0" textFill="#838383">
                                                          <font>
                                                             <Font size="14.0" />
                                                          </font>
@@ -2225,62 +2261,62 @@
                                              <children>
                                                 <VBox>
                                                    <children>
-                                                      <Label alignment="CENTER" maxWidth="1.7976931348623157E308" prefHeight="30.0" text="0" textFill="#838383">
+                                                      <Label fx:id="lblMaxBladgrootteJan" alignment="CENTER" maxWidth="1.7976931348623157E308" prefHeight="30.0" text="0" textFill="#838383">
                                                          <font>
                                                             <Font size="14.0" />
                                                          </font>
                                                       </Label>
-                                                      <Label alignment="CENTER" maxWidth="1.7976931348623157E308" prefHeight="30.0" text="0" textFill="#838383">
+                                                      <Label fx:id="lblMaxBladgrootteFeb" alignment="CENTER" maxWidth="1.7976931348623157E308" prefHeight="30.0" text="0" textFill="#838383">
                                                          <font>
                                                             <Font size="14.0" />
                                                          </font>
                                                       </Label>
-                                                      <Label alignment="CENTER" maxWidth="1.7976931348623157E308" prefHeight="30.0" text="0" textFill="#838383">
+                                                      <Label fx:id="lblMaxBladgrootteMaa" alignment="CENTER" maxWidth="1.7976931348623157E308" prefHeight="30.0" text="0" textFill="#838383">
                                                          <font>
                                                             <Font size="14.0" />
                                                          </font>
                                                       </Label>
-                                                      <Label alignment="CENTER" maxWidth="1.7976931348623157E308" prefHeight="30.0" text="0" textFill="#838383">
+                                                      <Label fx:id="lblMaxBladgrootteApr" alignment="CENTER" maxWidth="1.7976931348623157E308" prefHeight="30.0" text="0" textFill="#838383">
                                                          <font>
                                                             <Font size="14.0" />
                                                          </font>
                                                       </Label>
-                                                      <Label alignment="CENTER" maxWidth="1.7976931348623157E308" prefHeight="30.0" text="0" textFill="#838383">
+                                                      <Label fx:id="lblMaxBladgrootteMei" alignment="CENTER" maxWidth="1.7976931348623157E308" prefHeight="30.0" text="0" textFill="#838383">
                                                          <font>
                                                             <Font size="14.0" />
                                                          </font>
                                                       </Label>
-                                                      <Label alignment="CENTER" maxWidth="1.7976931348623157E308" prefHeight="30.0" text="0" textFill="#838383">
+                                                      <Label fx:id="lblMaxBladgrootteJun" alignment="CENTER" maxWidth="1.7976931348623157E308" prefHeight="30.0" text="0" textFill="#838383">
                                                          <font>
                                                             <Font size="14.0" />
                                                          </font>
                                                       </Label>
-                                                      <Label alignment="CENTER" maxWidth="1.7976931348623157E308" prefHeight="30.0" text="0" textFill="#838383">
+                                                      <Label fx:id="lblMaxBladgrootteJul" alignment="CENTER" maxWidth="1.7976931348623157E308" prefHeight="30.0" text="0" textFill="#838383">
                                                          <font>
                                                             <Font size="14.0" />
                                                          </font>
                                                       </Label>
-                                                      <Label alignment="CENTER" maxWidth="1.7976931348623157E308" prefHeight="30.0" text="0" textFill="#838383">
+                                                      <Label fx:id="lblMaxBladgrootteAug" alignment="CENTER" maxWidth="1.7976931348623157E308" prefHeight="30.0" text="0" textFill="#838383">
                                                          <font>
                                                             <Font size="14.0" />
                                                          </font>
                                                       </Label>
-                                                      <Label alignment="CENTER" maxWidth="1.7976931348623157E308" prefHeight="30.0" text="0" textFill="#838383">
+                                                      <Label fx:id="lblMaxBladgrootteSep" alignment="CENTER" maxWidth="1.7976931348623157E308" prefHeight="30.0" text="0" textFill="#838383">
                                                          <font>
                                                             <Font size="14.0" />
                                                          </font>
                                                       </Label>
-                                                      <Label alignment="CENTER" maxWidth="1.7976931348623157E308" prefHeight="30.0" text="0" textFill="#838383">
+                                                      <Label fx:id="lblMaxBladgrootteOkt" alignment="CENTER" maxWidth="1.7976931348623157E308" prefHeight="30.0" text="0" textFill="#838383">
                                                          <font>
                                                             <Font size="14.0" />
                                                          </font>
                                                       </Label>
-                                                      <Label alignment="CENTER" maxWidth="1.7976931348623157E308" prefHeight="30.0" text="0" textFill="#838383">
+                                                      <Label fx:id="lblMaxBladgrootteNov" alignment="CENTER" maxWidth="1.7976931348623157E308" prefHeight="30.0" text="0" textFill="#838383">
                                                          <font>
                                                             <Font size="14.0" />
                                                          </font>
                                                       </Label>
-                                                      <Label alignment="CENTER" maxWidth="1.7976931348623157E308" prefHeight="30.0" text="0" textFill="#838383">
+                                                      <Label fx:id="lblMaxBladgrootteDec" alignment="CENTER" maxWidth="1.7976931348623157E308" prefHeight="30.0" text="0" textFill="#838383">
                                                          <font>
                                                             <Font size="14.0" />
                                                          </font>
@@ -2289,62 +2325,62 @@
                                                 </VBox>
                                                 <VBox>
                                                    <children>
-                                                      <Label alignment="CENTER" maxWidth="1.7976931348623157E308" prefHeight="30.0" text="Kleur" textFill="#838383">
+                                                      <Label fx:id="lblBladkleurJan" alignment="CENTER" maxWidth="1.7976931348623157E308" prefHeight="30.0" text="Kleur" textFill="#838383">
                                                          <font>
                                                             <Font size="14.0" />
                                                          </font>
                                                       </Label>
-                                                      <Label alignment="CENTER" maxWidth="1.7976931348623157E308" prefHeight="30.0" text="Kleur" textFill="#838383">
+                                                      <Label fx:id="lblBladkleurFeb" alignment="CENTER" maxWidth="1.7976931348623157E308" prefHeight="30.0" text="Kleur" textFill="#838383">
                                                          <font>
                                                             <Font size="14.0" />
                                                          </font>
                                                       </Label>
-                                                      <Label alignment="CENTER" maxWidth="1.7976931348623157E308" prefHeight="30.0" text="Kleur" textFill="#838383">
+                                                      <Label fx:id="lblBladkleurMaa" alignment="CENTER" maxWidth="1.7976931348623157E308" prefHeight="30.0" text="Kleur" textFill="#838383">
                                                          <font>
                                                             <Font size="14.0" />
                                                          </font>
                                                       </Label>
-                                                      <Label alignment="CENTER" maxWidth="1.7976931348623157E308" prefHeight="30.0" text="Kleur" textFill="#838383">
+                                                      <Label fx:id="lblBladkleurApr" alignment="CENTER" maxWidth="1.7976931348623157E308" prefHeight="30.0" text="Kleur" textFill="#838383">
                                                          <font>
                                                             <Font size="14.0" />
                                                          </font>
                                                       </Label>
-                                                      <Label alignment="CENTER" maxWidth="1.7976931348623157E308" prefHeight="30.0" text="Kleur" textFill="#838383">
+                                                      <Label fx:id="lblBladkleurMei" alignment="CENTER" maxWidth="1.7976931348623157E308" prefHeight="30.0" text="Kleur" textFill="#838383">
                                                          <font>
                                                             <Font size="14.0" />
                                                          </font>
                                                       </Label>
-                                                      <Label alignment="CENTER" maxWidth="1.7976931348623157E308" prefHeight="30.0" text="Kleur" textFill="#838383">
+                                                      <Label fx:id="lblBladkleurJun" alignment="CENTER" maxWidth="1.7976931348623157E308" prefHeight="30.0" text="Kleur" textFill="#838383">
                                                          <font>
                                                             <Font size="14.0" />
                                                          </font>
                                                       </Label>
-                                                      <Label alignment="CENTER" maxWidth="1.7976931348623157E308" prefHeight="30.0" text="Kleur" textFill="#838383">
+                                                      <Label fx:id="lblBladkleurJul" alignment="CENTER" maxWidth="1.7976931348623157E308" prefHeight="30.0" text="Kleur" textFill="#838383">
                                                          <font>
                                                             <Font size="14.0" />
                                                          </font>
                                                       </Label>
-                                                      <Label alignment="CENTER" maxWidth="1.7976931348623157E308" prefHeight="30.0" text="Kleur" textFill="#838383">
+                                                      <Label fx:id="lblBladkleurAug" alignment="CENTER" maxWidth="1.7976931348623157E308" prefHeight="30.0" text="Kleur" textFill="#838383">
                                                          <font>
                                                             <Font size="14.0" />
                                                          </font>
                                                       </Label>
-                                                      <Label alignment="CENTER" maxWidth="1.7976931348623157E308" prefHeight="30.0" text="Kleur" textFill="#838383">
+                                                      <Label fx:id="lblBladkleurSep" alignment="CENTER" maxWidth="1.7976931348623157E308" prefHeight="30.0" text="Kleur" textFill="#838383">
                                                          <font>
                                                             <Font size="14.0" />
                                                          </font>
                                                       </Label>
-                                                      <Label alignment="CENTER" maxWidth="1.7976931348623157E308" prefHeight="30.0" text="Kleur" textFill="#838383">
+                                                      <Label fx:id="lblBladkleurOkt" alignment="CENTER" maxWidth="1.7976931348623157E308" prefHeight="30.0" text="Kleur" textFill="#838383">
                                                          <font>
                                                             <Font size="14.0" />
                                                          </font>
                                                       </Label>
-                                                      <Label alignment="CENTER" maxWidth="1.7976931348623157E308" prefHeight="30.0" text="Kleur" textFill="#838383">
+                                                      <Label fx:id="lblBladkleurNov" alignment="CENTER" maxWidth="1.7976931348623157E308" prefHeight="30.0" text="Kleur" textFill="#838383">
                                                          <font>
                                                             <Font size="14.0" />
                                                          </font>
                                                       </Label>
-                                                      <Label alignment="CENTER" maxWidth="1.7976931348623157E308" prefHeight="30.0" text="Kleur" textFill="#838383">
+                                                      <Label fx:id="lblBladkleurDec" alignment="CENTER" maxWidth="1.7976931348623157E308" prefHeight="30.0" text="Kleur" textFill="#838383">
                                                          <font>
                                                             <Font size="14.0" />
                                                          </font>

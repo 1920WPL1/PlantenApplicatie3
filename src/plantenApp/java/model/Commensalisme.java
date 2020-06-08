@@ -2,7 +2,9 @@ package plantenApp.java.model;
 
 import java.util.ArrayList;
 
-/**@author Siebe*/
+/**
+ * @author Siebe
+ */
 public class Commensalisme {
     private int id;
     private int plant_id;
@@ -36,5 +38,13 @@ public class Commensalisme {
 
     public ArrayList<CommMulti_Eigenschap> getMultiEigenschappen() {
         return multiEigenschappen;
+    }
+
+    public ArrayList<Integer> getSociabiliteit() {
+        ArrayList<Integer> sociabiliteit = new ArrayList<>();
+        for (int i = 0; i < multiEigenschappen.size(); i++) {
+            sociabiliteit.add(Integer.parseInt(multiEigenschappen.get(i).getValue()));
+        }
+        return sociabiliteit;
     }
 }

@@ -34,6 +34,10 @@ public class FenoMulti_Eigenschap {
         this.dec = dec;
     }
 
+    public FenoMulti_Eigenschap() {
+
+    }
+
     public int getId() {
         return id;
     }

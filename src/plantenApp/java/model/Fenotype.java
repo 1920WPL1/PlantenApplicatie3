@@ -2,7 +2,9 @@ package plantenApp.java.model;
 
 import java.util.ArrayList;
 
-/**@author Siebe*/
+/**
+ * @author Siebe
+ */
 public class Fenotype {
     private int id;
     private int plant_id;
@@ -67,5 +69,50 @@ public class Fenotype {
 
     public ArrayList<FenoMulti_Eigenschap> getMultiEigenschappen() {
         return multiEigenschappen;
+    }
+
+    public FenoMulti_Eigenschap getBladhoogte() {
+        for (int i = 0; i < multiEigenschappen.size(); i++) {
+            if (multiEigenschappen.get(i).getNaam() == "bladhoogte") {
+                return multiEigenschappen.get(i);
+            }
+        }
+        return new FenoMulti_Eigenschap();
+    }
+
+    public FenoMulti_Eigenschap getMinBloeihoogte() {
+        for (int i = 0; i < multiEigenschappen.size(); i++) {
+            if (multiEigenschappen.get(i).getNaam() == "minbloeihoogte") {
+                return multiEigenschappen.get(i);
+            }
+        }
+        return new FenoMulti_Eigenschap();
+    }
+
+    public FenoMulti_Eigenschap getMaxBloeihoogte() {
+        for (int i = 0; i < multiEigenschappen.size(); i++) {
+            if (multiEigenschappen.get(i).getNaam() == "maxbloeihoogte") {
+                return multiEigenschappen.get(i);
+            }
+        }
+        return new FenoMulti_Eigenschap();
+    }
+
+    public FenoMulti_Eigenschap getBladkleur() {
+        for (int i = 0; i < multiEigenschappen.size(); i++) {
+            if (multiEigenschappen.get(i).getNaam() == "bladkleur") {
+                return multiEigenschappen.get(i);
+            }
+        }
+        return new FenoMulti_Eigenschap();
+    }
+
+    public FenoMulti_Eigenschap getBloeikleur() {
+        for (int i = 0; i < multiEigenschappen.size(); i++) {
+            if (multiEigenschappen.get(i).getNaam() == "bloeikleur") {
+                return multiEigenschappen.get(i);
+            }
+        }
+        return new FenoMulti_Eigenschap();
     }
 }
