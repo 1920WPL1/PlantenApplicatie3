@@ -220,6 +220,20 @@ public class Controller {
     public Label lblVocht;
     public Label lblPollenwaarde;
     public Label lblNectarwaarde;
+    public ToggleGroup tglBloeiwijze;
+    public CheckBox chkMinBladhoogtePerMaand;
+    public Spinner<Integer> nudMinBladhoogte_Jan;
+    public Spinner<Integer> nudMinBladhoogte_Feb;
+    public Spinner<Integer> nudMinBladhoogte_Maa;
+    public Spinner<Integer> nudMinBladhoogte_Apr;
+    public Spinner<Integer> nudMinBladhoogte_Mei;
+    public Spinner<Integer> nudMinBladhoogte_Jun;
+    public Spinner<Integer> nudMinBladhoogte_Jul;
+    public Spinner<Integer> nudMinBladhoogte_Aug;
+    public Spinner<Integer> nudMinBladhoogte_Sept;
+    public Spinner<Integer> nudMinBladhoogte_Okt;
+    public Spinner<Integer> nudMinBladhoogte_Nov;
+    public Spinner<Integer> nudMinBladhoogte_Dec;
 
 
     private InfoTables infoTables;
@@ -410,6 +424,7 @@ public class Controller {
 
         BindRadiobutton(ERequestArrayData.LEVENSVORM, chkLevensvormVolgensRaunkhiaer, rdbLevensvormen);
 
+        /*
         ArrayList<RadioButton> rdbStrategieën = new ArrayList<RadioButton>();
         rdbStrategieën.add(rdbStrategie_C);
         rdbStrategieën.add(rdbStrategie_R);
@@ -420,6 +435,8 @@ public class Controller {
         rdbStrategieën.add(rdbStrategie_CRS);
         rdbStrategieën.add(rdbStrategie_Onbekend);
         BindRadiobutton(ERequestArrayData.STRATEGIE, chkStrategie, rdbStrategieën);
+
+         */
 
         ArrayList<RadioButton> rdbBijvriendelijken = new ArrayList<RadioButton>();
         rdbBijvriendelijken.add(rdbBijvriendelijk_Ja);
