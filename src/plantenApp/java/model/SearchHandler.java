@@ -19,6 +19,7 @@ public class SearchHandler {
     ArrayList<Integer> ids;
     ArrayList<Plant> planten;
 
+
     public SearchHandler(Connection dbConnection) throws SQLException {
         this.abiotischeFactorenDAO = new AbiotischeFactorenDAO(dbConnection);
         this.beheerDAO = beheerDAO = new BeheerDAO(dbConnection);
@@ -57,6 +58,10 @@ public class SearchHandler {
         }
 
         return planten;
+    }
+
+    public Plant SelectFullPlant(Plant plant) throws SQLException {
+       return plantDAO.getFullPlantById(plant.getId());
     }
 
 

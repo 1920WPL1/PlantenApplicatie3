@@ -2,7 +2,10 @@ package plantenApp;
 
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
+import javafx.collections.ObservableList;
+import javafx.collections.transformation.SortedList;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
@@ -20,6 +23,7 @@ import java.io.IOException;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Set;
 
 public class Controller {
     public ComboBox<String> cboBladkleur;
@@ -235,26 +239,49 @@ public class Controller {
     public Spinner<Integer> nudMinBladhoogte_Nov;
     public Spinner<Integer> nudMinBladhoogte_Dec;
 
-
     private InfoTables infoTables;
     private Connection dbConnection;
     BindingData bindingData;
 
     public void initialize() throws SQLException {
+        handler = new SearchHandler(dbConnection);
 
+        lsvOverzicht.setCellFactory(param -> new ListCell<Plant>() {
+            @Override
+            protected void updateItem(Plant item, boolean empty) {
+                super.updateItem(item, empty);
+
+                if (empty || item == null ) {
+                    setText(null);
+                } else {
+                    setText(item.getType() + " " + item.getFamilie() + " " + item.getGeslacht() + " " + item.getSoort() + " " + item.getVariatie());
+                }
+            }
+        });
+        lsvOverzicht.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Plant>() {
+
+            @Override
+            public void changed(ObservableValue<? extends Plant> observable, Plant oldValue, Plant plant) {
+                // Your action here
+                try {
+                    plant = handler.SelectFullPlant(plant);
+
+                    lblType.setText(plant.getType());
+
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
 
         pnlAdvSearch.setExpanded(false);
-
         dbConnection = Database.getInstance().getConnection();
         /*infotabel object aanmaken*/
         InfoTablesDAO infotablesDAO = new InfoTablesDAO(dbConnection);
         infoTables = infotablesDAO.getInfoTables();
-
         FillComboboxes(infoTables);
 
         InitSpinners();
-
-        InitBindings();
 
         sldNectarwaarde.valueProperty().addListener(new ChangeListener<Number>() {
             @Override
@@ -340,7 +367,7 @@ public class Controller {
         });
 
         InitSliders();
-
+        InitBindings();
     }
 
 
@@ -353,7 +380,6 @@ public class Controller {
 
         //droog, droog of fris, fris, fris of vochtig, vochtig, vochtig-nat, nat
         SetSlider(sldVochtbehoefte, 1, 7, false);
-
 
         //arm, indifferent, matig, rijk
         SetSlider(sldVoedingsbehoefte, 1, 4, false);
@@ -866,14 +892,13 @@ public class Controller {
     }
 
     public void Click_Search(MouseEvent mouseEvent) throws SQLException {
+        lsvOverzicht.getItems().clear();
+
+        ArrayList<Plant> planten = handler.Search(bindingData, dbConnection );
+
+        lsvOverzicht.getItems().addAll(planten);
 
 
-        SearchHandler handler = new SearchHandler(dbConnection);
-
-
-       customController customController = new customController(handler.Search(bindingData, dbConnection));
-       VboxOutput.getChildren().clear();
-        VboxOutput.getChildren().add(customController);
     }
 }
 
