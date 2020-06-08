@@ -53,7 +53,7 @@ public class FotoDAO implements Queries {
         //Dao
 
         //Items
-        ArrayList<Foto_Eigenschap> fotos = null;
+        ArrayList<Foto_Eigenschap> fotos = new ArrayList<>();
 
         //SqlCommand
         stmtSelectFotoByID.setInt(1, id);

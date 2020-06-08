@@ -47,8 +47,8 @@ public class ExtraDAO implements Queries {
                     rs.getInt("nectarwaarde"),
                     rs.getInt("pollenwaarde"),
                     rs.getString("bijvriendelijk"),
-                    rs.getString("eetbaar_kruidgebruik"),
-                    rs.getString("eetbaar_kruidgebruik"),
+                    rs.getString("eetbaar"),
+                    rs.getString("kruidgebruik"),
                     rs.getString("geurend"),
                     rs.getString("vorstgevoelig")
             );

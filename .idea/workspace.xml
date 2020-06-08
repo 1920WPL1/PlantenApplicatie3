@@ -4,9 +4,14 @@
     <list default="true" id="e3f371c2-5a62-4881-8767-e007751523f2" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/plantenApp/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/plantenApp/Controller.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/plantenApp/customController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/plantenApp/customController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/plantenApp/customController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/plantenApp/java/dao/CommensalismeDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/plantenApp/java/dao/CommensalismeDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/plantenApp/java/dao/ExtraDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/plantenApp/java/dao/ExtraDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/plantenApp/java/dao/FotoDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/plantenApp/java/dao/FotoDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/plantenApp/java/dao/PlantDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/plantenApp/java/dao/PlantDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/plantenApp/java/dao/Queries.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/plantenApp/java/dao/Queries.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/plantenApp/java/model/SearchHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/plantenApp/java/model/SearchHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/plantenApp/view/CustomSearchControl.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/plantenApp/view/CustomSearchControl.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/plantenApp/view/CustomSearchControl.fxml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/plantenApp/view/Zoekscherm.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/plantenApp/view/Zoekscherm.fxml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -61,7 +66,7 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="extract.method.default.visibility" value="private" />
-    <property name="last_opened_file_path" value="$USER_HOME$/Downloads/CustomControl" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.last.edited" value="Libraries" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.30297872" />
@@ -121,6 +126,7 @@
       <workItem from="1591278588953" duration="2563000" />
       <workItem from="1591371849831" duration="4509000" />
       <workItem from="1591597700912" duration="9973000" />
+      <workItem from="1591608980122" duration="4256000" />
     </task>
     <servers />
   </component>

@@ -126,12 +126,15 @@ public class PlantDAO implements Queries {
                     rs.getString("variatie"),
                     rs.getInt("plantdichtheid_min"),
                     rs.getInt("plantdichtheid_max"),
+
+
                     fotoDAO.getFotoById(id),
                     beheerDAO.getById(id),
                     abiotischeFactorenDAO.getById(id),
                     commensalismeDAO.getById(id),
                     fenotypeDAO.getById(id),
                     extraDAO.getExtraById(id)
+
             );
         }
 

@@ -18,12 +18,12 @@ public interface Queries {
             "SELECT * FROM abiotisch_multi WHERE plant_id = ?";
 
     String GETCOMMENSALISMEBYPLANTID =
-            "SELECT * FROM commensialisme WHERE plant_id = ?";
+            "SELECT * FROM commensalisme WHERE plant_id = ?";
     String GETCOMMENSALISMEMULTIBYPLANTID =
-            "SELECT * FROM commensialisme_multi WHERE plant_id = ?";
+            "SELECT * FROM commensalisme_multi WHERE plant_id = ?";
 
     String GETBEHEERBYPLANTID =
-            "SELECT * FROM beheer WHERE plant_id = ?";
+            "SELECT * FROM beheer_multi WHERE plant_id = ?";
 
     String GETEXTRABYPLANTID =
             "SELECT * FROM extra WHERE plant_id = ?";

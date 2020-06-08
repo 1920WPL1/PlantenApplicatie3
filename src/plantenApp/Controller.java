@@ -7,6 +7,7 @@ import javafx.collections.transformation.SortedList;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.control.*;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
 import plantenApp.java.dao.Database;
@@ -238,14 +239,94 @@ public class Controller {
     public Spinner<Integer> nudMinBladhoogte_Okt;
     public Spinner<Integer> nudMinBladhoogte_Nov;
     public Spinner<Integer> nudMinBladhoogte_Dec;
+    public ImageView imgHabitus;
+    public ImageView imgBlad;
+    public ImageView imgBloei;
+    public Label lblType;
+    public Label lblFamilie;
+    public Label lblGeslacht;
+    public Label lblSoort;
+    public Label lblVariant;
+    public ListView lsvOverzicht;
+    public Label lblDichtheidX;
+    public Label lblDichtheidY;
+    public Label lblOntwikkelingsSnelheid;
+    public CheckBox chkSocPlantI;
+    public CheckBox chkSocPlantII;
+    public CheckBox chkSocPlantIII;
+    public CheckBox chkSocPlantIV;
+    public CheckBox chkSocPlantV;
+    public Label lblStrategie;
+    public Label lblBezonning2;
+    public Label lblVochtBehoefte;
+    public Label lblVoedingsBehoefte2;
+    public Label lblReactie;
+    public Label lblGrondSoort;
+    public Label lblNectarwaarde2;
+    public Label lblPollenwaarde2;
+    public Label lblBijvriendelijk;
+    public Label lblVlinderVriendelijk;
+    public Label lblEetbaar;
+    public Label lblValue;
+    public Label lblGeurend;
+    public Label lblVorstGevoelig;
+    public Label lblBladGrootte;
+    public Label lblBladVorm;
+    public Label lblRatio;
+    public Label lblSpruitFenologie;
+    public Label lblLevensVorm;
+    public Label lblBloeihoogteJan;
+    public Label lblBloeihoogteFeb;
+    public Label lblBloeihoogteMaa;
+    public Label lblBloeihoogteApr;
+    public Label lblBloeihoogteMei;
+    public Label lblBloeihoogteJun;
+    public Label lblBloeihoogteJul;
+    public Label lblBloeihoogteAug;
+    public Label lblBloeihoogteSep;
+    public Label lblBloeihoogteOkt;
+    public Label lblBloeihoogteNov;
+    public Label lblBloeihoogteDec;
+    public Label lblBloeikleurJan;
+    public Label lblBloeikleurFeb;
+    public Label lblBloeikleurMaa;
+    public Label lblBloeikleurApr;
+    public Label lblBloeikleurMei;
+    public Label lblBloeikleurJun;
+    public Label lblBloeikleurJul;
+    public Label lblBloeikleurAug;
+    public Label lblBloeikleurSep;
+    public Label lblBloeikleurOkt;
+    public Label lblBloeikleurNov;
+    public Label lblBloeikleurDec;
 
     private InfoTables infoTables;
     private Connection dbConnection;
     BindingData bindingData;
+    SearchHandler handler;
 
     public void initialize() throws SQLException {
+
+
+        pnlAdvSearch.setExpanded(false);
+        dbConnection = Database.getInstance().getConnection();
+        /*infotabel object aanmaken*/
+        InfoTablesDAO infotablesDAO = new InfoTablesDAO(dbConnection);
+        infoTables = infotablesDAO.getInfoTables();
+
         handler = new SearchHandler(dbConnection);
 
+        InitListView();
+        FillComboboxes(infoTables);
+        InitSpinners();
+        InitSliders();
+        InitBindings();
+    }
+
+    /**
+     * @author bradley
+     */
+    public void InitListView(){
         lsvOverzicht.setCellFactory(param -> new ListCell<Plant>() {
             @Override
             protected void updateItem(Plant item, boolean empty) {
@@ -261,28 +342,31 @@ public class Controller {
         lsvOverzicht.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Plant>() {
 
             @Override
-            public void changed(ObservableValue<? extends Plant> observable, Plant oldValue, Plant plant) {
+            public void changed(ObservableValue<? extends Plant> observable, Plant oldValue, Plant newValue) {
                 // Your action here
+
                 try {
-                    plant = handler.SelectFullPlant(plant);
-
-                    lblType.setText(plant.getType());
-
+                    newValue = handler.SelectFullPlant(newValue);
                 } catch (SQLException e) {
                     e.printStackTrace();
                 }
+                lblType.setText(newValue.getType());
+                lblSoort.setText(newValue.getSoort());
+                lblFamilie.setText(newValue.getFamilie());
+                lblGeslacht.setText(newValue.getGeslacht());
+                lblVariant.setText(newValue.getVariatie());
+                lblDichtheidX.setText(String.valueOf(newValue.getMinPlantdichtheid()));
+                lblDichtheidY.setText(String.valueOf(newValue.getMaxPlantdichtheid()));
+
+
             }
         });
+    }
 
-        pnlAdvSearch.setExpanded(false);
-        dbConnection = Database.getInstance().getConnection();
-        /*infotabel object aanmaken*/
-        InfoTablesDAO infotablesDAO = new InfoTablesDAO(dbConnection);
-        infoTables = infotablesDAO.getInfoTables();
-        FillComboboxes(infoTables);
-
-        InitSpinners();
-
+    /**
+     * @author bradley
+     */
+    public void InitSliders() {
         sldNectarwaarde.valueProperty().addListener(new ChangeListener<Number>() {
             @Override
             public void changed(ObservableValue<? extends Number> observableValue, Number number, Number t1) {
@@ -366,12 +450,6 @@ public class Controller {
             }
         });
 
-        InitSliders();
-        InitBindings();
-    }
-
-
-    public void InitSliders() {
         SetSlider(sldNectarwaarde, 0, 5, false);
         SetSlider(sldPollenwaarde, 0, 5, false);
 
@@ -450,7 +528,7 @@ public class Controller {
 
         BindRadiobutton(ERequestArrayData.LEVENSVORM, chkLevensvormVolgensRaunkhiaer, rdbLevensvormen);
 
-        /*
+
         ArrayList<RadioButton> rdbStrategieën = new ArrayList<RadioButton>();
         rdbStrategieën.add(rdbStrategie_C);
         rdbStrategieën.add(rdbStrategie_R);
@@ -462,7 +540,7 @@ public class Controller {
         rdbStrategieën.add(rdbStrategie_Onbekend);
         BindRadiobutton(ERequestArrayData.STRATEGIE, chkStrategie, rdbStrategieën);
 
-         */
+
 
         ArrayList<RadioButton> rdbBijvriendelijken = new ArrayList<RadioButton>();
         rdbBijvriendelijken.add(rdbBijvriendelijk_Ja);
