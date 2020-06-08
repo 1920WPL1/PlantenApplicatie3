@@ -28,7 +28,7 @@
    <content>
       <BorderPane maxWidth="1.7976931348623157E308">
          <top>
-            <TitledPane expanded="false" text="Search" BorderPane.alignment="CENTER">
+            <TitledPane text="Search" BorderPane.alignment="CENTER">
                <content>
                   <VBox>
                      <children>
@@ -1272,7 +1272,7 @@
             </TitledPane>
          </top>
          <center>
-            <BorderPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+            <BorderPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" fx:id="pnlUitvoer" visible="false">
                <center>
                   <VBox BorderPane.alignment="CENTER">
                      <children>

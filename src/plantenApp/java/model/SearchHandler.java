@@ -61,7 +61,14 @@ public class SearchHandler {
     }
 
     public Plant SelectFullPlant(Plant plant) throws SQLException {
-       return plantDAO.getFullPlantById(plant.getId());
+        try {
+            return plantDAO.getFullPlantById(plant.getId());
+        } catch (NullPointerException ex)
+        {
+            ex.printStackTrace();
+            return null;
+
+        }
     }
 
 

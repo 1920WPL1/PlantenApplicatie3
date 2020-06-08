@@ -9,6 +9,7 @@ import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
 import plantenApp.java.dao.Database;
 import plantenApp.java.dao.InfoTablesDAO;
@@ -299,11 +300,13 @@ public class Controller {
     public Label lblBloeikleurOkt;
     public Label lblBloeikleurNov;
     public Label lblBloeikleurDec;
+    public BorderPane pnlUitvoer;
 
     private InfoTables infoTables;
     private Connection dbConnection;
     BindingData bindingData;
     SearchHandler handler;
+    ChangeListener<Plant> lsvChanged;
 
     public void initialize() throws SQLException {
 
@@ -339,28 +342,56 @@ public class Controller {
                 }
             }
         });
-        lsvOverzicht.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Plant>() {
 
+         lsvChanged = new ChangeListener<Plant>() {
             @Override
-            public void changed(ObservableValue<? extends Plant> observable, Plant oldValue, Plant newValue) {
+            public void changed(ObservableValue<? extends Plant> observable, Plant oldValue, Plant newValue) throws NullPointerException{
                 // Your action here
 
                 try {
                     newValue = handler.SelectFullPlant(newValue);
-                } catch (SQLException e) {
+                } catch (Exception e) {
                     e.printStackTrace();
+
                 }
-                lblType.setText(newValue.getType());
-                lblSoort.setText(newValue.getSoort());
-                lblFamilie.setText(newValue.getFamilie());
-                lblGeslacht.setText(newValue.getGeslacht());
-                lblVariant.setText(newValue.getVariatie());
-                lblDichtheidX.setText(String.valueOf(newValue.getMinPlantdichtheid()));
-                lblDichtheidY.setText(String.valueOf(newValue.getMaxPlantdichtheid()));
+
+                try {
+                    lblType.setText(newValue.getType());
+                    lblSoort.setText(newValue.getSoort());
+                    lblFamilie.setText(newValue.getFamilie());
+                    lblGeslacht.setText(newValue.getGeslacht());
+                    lblVariant.setText(newValue.getVariatie());
+                    lblDichtheidX.setText(String.valueOf(newValue.getMinPlantdichtheid()));
+                    lblDichtheidY.setText(String.valueOf(newValue.getMaxPlantdichtheid()));
+                    lblOntwikkelingsSnelheid.setText(newValue.getCommensalisme().getOntwikkelingssnelheid());
+                    lblStrategie.setText(newValue.getCommensalisme().getStrategie());
+                    lblBezonning2.setText(newValue.getAbiotischeFactoren().getBezonning());
+                    lblVochtBehoefte.setText(newValue.getAbiotischeFactoren().getVochtbehoefte());
+                    lblVoedingsBehoefte2.setText(newValue.getAbiotischeFactoren().getVoedingsbehoefte());
+                    lblReactie.setText(newValue.getAbiotischeFactoren().getReactieAntagonistischeOmgeving());
+                    lblGrondSoort.setText(newValue.getAbiotischeFactoren().getGrondsoort());
+                    lblNectarwaarde2.setText(String.valueOf(newValue.getExtra().getNectarwaarde()));
+                    lblPollenwaarde.setText(String.valueOf(newValue.getExtra().getPollenwaarde()));
+                    lblBijvriendelijk.setText(newValue.getExtra().getBijvriendelijk());
+                    lblVlinderVriendelijk.setText(newValue.getExtra().getVlindervriendelijk());
+                    lblEetbaar.setText(newValue.getExtra().getEetbaar());
+                    //TODO kruidgebruik
+                    lblGeurend.setText((newValue.getExtra().getGeurend()));
+                    lblVorstGevoelig.setText(newValue.getExtra().getVorstgevoelig());
+
+                    lblBladGrootte.setText(String.valueOf(newValue.getFenotype().getBladgrootte()));
+                    lblBladVorm.setText(newValue.getFenotype().getBladvorm());
+                    lblRatio.setText(newValue.getFenotype().getRatio_bloei_blad());
+                    lblSpruitFenologie.setText(newValue.getFenotype().getSpruitfenologie());
+                } catch (NullPointerException ex){
+                    ex.printStackTrace();
+                }
 
 
             }
-        });
+        };
+
+        lsvOverzicht.getSelectionModel().selectedItemProperty().addListener(lsvChanged);
     }
 
     /**
@@ -529,7 +560,7 @@ public class Controller {
         BindRadiobutton(ERequestArrayData.LEVENSVORM, chkLevensvormVolgensRaunkhiaer, rdbLevensvormen);
 
 
-        ArrayList<RadioButton> rdbStrategieën = new ArrayList<RadioButton>();
+        /*ArrayList<RadioButton> rdbStrategieën = new ArrayList<RadioButton>();
         rdbStrategieën.add(rdbStrategie_C);
         rdbStrategieën.add(rdbStrategie_R);
         rdbStrategieën.add(rdbStrategie_S);
@@ -538,7 +569,7 @@ public class Controller {
         rdbStrategieën.add(rdbStrategie_RS);
         rdbStrategieën.add(rdbStrategie_CRS);
         rdbStrategieën.add(rdbStrategie_Onbekend);
-        BindRadiobutton(ERequestArrayData.STRATEGIE, chkStrategie, rdbStrategieën);
+        BindRadiobutton(ERequestArrayData.STRATEGIE, chkStrategie, rdbStrategieën);*/
 
 
 
@@ -970,12 +1001,27 @@ public class Controller {
     }
 
     public void Click_Search(MouseEvent mouseEvent) throws SQLException {
-        lsvOverzicht.getItems().clear();
+
+        if(!pnlUitvoer.isVisible()){
+            pnlUitvoer.setVisible(true);
+        }
+
+        if(pnlAdvSearch.isExpanded()) {
+            pnlAdvSearch.setExpanded(false);
+        }
+
 
         ArrayList<Plant> planten = handler.Search(bindingData, dbConnection );
 
+         lsvOverzicht.getSelectionModel().selectedItemProperty().removeListener(lsvChanged);
+         lsvOverzicht.getSelectionModel().clearSelection();
+        System.out.println(lsvOverzicht.getItems());
+         lsvOverzicht.getItems().clear();
+         lsvOverzicht.refresh();
+        System.out.println(lsvOverzicht.getItems());
+         lsvOverzicht.getSelectionModel().selectedItemProperty().addListener(lsvChanged);
         lsvOverzicht.getItems().addAll(planten);
-
+        lsvOverzicht.getSelectionModel().selectFirst();
 
     }
 }
