@@ -16,6 +16,10 @@ import plantenApp.java.model.BindingData;
 import plantenApp.java.model.InfoTables;
 import plantenApp.java.model.Plant;
 import plantenApp.java.model.SearchHandler;
+import plantenApp.java.model.data.GUIdata;
+import plantenApp.java.model.data.enums.EComCheckbox;
+import plantenApp.java.model.data.enums.EComboBox;
+import plantenApp.java.model.data.enums.ESliderLabel;
 import plantenApp.java.utils.ERequestArrayData;
 import plantenApp.java.utils.ERequestData;
 
@@ -242,8 +246,45 @@ public class Controller {
     private InfoTables infoTables;
     private Connection dbConnection;
     BindingData bindingData;
+    GUIdata guiData;
 
     public void initialize() throws SQLException {
+        guiData = new GUIdata();
+        //guiData.comboBoxDEM.get(EComboBox.SEARCH).Bind(chk);
+        guiData.comboBoxDEM.get(EComboBox.TYPE).Bind(chkType,cboType);
+        guiData.comboBoxDEM.get(EComboBox.BEHANDELING).Bind(chkBehandeling,cboBehandeling);
+        guiData.comboBoxDEM.get(EComboBox.BLADGROOTTE).Bind(chkBladgrootte,cboBladgrootte);
+        guiData.comboBoxDEM.get(EComboBox.BLADKLEUR).Bind(chkBladKleur,cboBladkleur);
+        guiData.comboBoxDEM.get(EComboBox.BLADVORM).Bind(chkBladvorm,cboBladvorm);
+        guiData.comboBoxDEM.get(EComboBox.BLOEIKLEUR).Bind(chkBloeiKleur,cboBloeikleur);
+        guiData.comboBoxDEM.get(EComboBox.BLADKLEUR).Bind(chkBladKleur,cboBladkleur);
+        guiData.comboBoxDEM.get(EComboBox.FAMILIE).Bind(chkFamilie,cboFamilie);
+        guiData.comboBoxDEM.get(EComboBox.HABITAT).Bind(chkHabitat,cboHabitat);
+        guiData.comboBoxDEM.get(EComboBox.LEVENSDUUR).Bind(chkLevensduur_concurrentiekracht,cboLevensduur);
+        guiData.comboBoxDEM.get(EComboBox.MAAND).Bind(chkMaand,cboMaand);
+        guiData.comboBoxDEM.get(EComboBox.ONTWIKKELINGSSNELHEID).Bind(chkOntwikkelingssnelheid,cboOntwikkel);
+        guiData.comboBoxDEM.get(EComboBox.RATIOBLOEIBLAD).Bind(chkRatio_bloei_blad,cboRatioBloeiBlad);
+        guiData.comboBoxDEM.get(EComboBox.REACTIEANTAGONISTISCHEOMGEVING).Bind(chkReactieAntagonistischeOmg,cboReactieAnta);
+        guiData.comboBoxDEM.get(EComboBox.SPRUITFENOLOGIE).Bind(chkSpruitfenologie,cboSpruitfenologie);
+
+        guiData.sliderLabelDEM.get(ESliderLabel.BEZONNING).Bind(chkBezonning,sldBezonning,lblBezonning);
+        sldBezonning.valueChangingProperty().addListener((observableValue, aBoolean, t1) -> {guiData.sliderLabelDEM.get(ESliderLabel.BEZONNING).Update();});
+        guiData.sliderLabelDEM.get(ESliderLabel.VOEDINGSBEHOEFTE).Bind(chkVoedingsbehoefte,sldVoedingsbehoefte,lblVoedingsBehoefte);
+        guiData.sliderLabelDEM.get(ESliderLabel.VOCHTBEHOEFTE).Bind(chkVochtBehoefte,sldVochtbehoefte,lblVocht);
+        guiData.sliderLabelDEM.get(ESliderLabel.POLLENWAARDE).Bind(chkPollenwaarde,sldPollenwaarde,lblPollenwaarde);
+        guiData.sliderLabelDEM.get(ESliderLabel.NECTARWAARDE).Bind(chkNectarwaarde,sldNectarwaarde,lblNectarwaarde);
+
+        guiData.combinedCheckboxDEM.get(EComCheckbox.GRONDSOORT).Bind(chkGrondsoort, new CheckBox[]{chkGrondsoort_Z, chkGrondsoort_L, chkGrondsoort_K});
+
+
+
+
+
+
+
+        InitSliders();
+
+        /*
         handler = new SearchHandler(dbConnection);
 
         lsvOverzicht.setCellFactory(param -> new ListCell<Plant>() {
@@ -274,9 +315,12 @@ public class Controller {
             }
         });
 
+
+
         pnlAdvSearch.setExpanded(false);
         dbConnection = Database.getInstance().getConnection();
         /*infotabel object aanmaken*/
+        /*
         InfoTablesDAO infotablesDAO = new InfoTablesDAO(dbConnection);
         infoTables = infotablesDAO.getInfoTables();
         FillComboboxes(infoTables);
@@ -368,6 +412,7 @@ public class Controller {
 
         InitSliders();
         InitBindings();
+        */
     }
 
 
@@ -416,7 +461,7 @@ public class Controller {
 
         Bind(ERequestData.BLADVORM, chkBladvorm, cboBladvorm);
         Bind(ERequestData.SPRUITFENOLOGIE, chkSpruitfenologie, cboSpruitfenologie);
-        Bind(ERequestData.VOEDINGSBEHOEFTE, chkVoedingsbehoefte, sldVoedingsbehoefte,lblVoedingsBehoefte);
+        Bind(ERequestData.VOEDINGSBEHOEFTE, chkVoedingsbehoefte, sldVoedingsbehoefte, lblVoedingsBehoefte);
         Bind(ERequestData.BLADGROOTTE, chkBladgrootte, cboBladgrootte);
         Bind(ERequestData.BLADHOOGTE, chkBladHoogte, nudMaxBladhoogte);
         Bind(ERequestData.FAMILIE, chkFamilie, cboFamilie);
@@ -427,14 +472,14 @@ public class Controller {
         Bind(ERequestData.REACTIEANTAGONISTISCHEOMGEVING, chkReactieAntagonistischeOmg, cboReactieAnta);
         Bind(ERequestData.ONTWIKKELINGSSNELHEID, chkOntwikkelingssnelheid, cboOntwikkel);
         Bind(ERequestData.LEVENSDUUR, chkLevensduur_concurrentiekracht, cboLevensduur);
-        Bind(ERequestData.NECTARWAARDE, chkNectarwaarde, sldNectarwaarde,lblNectarwaarde);
-        Bind(ERequestData.POLLENWAARDE, chkPollenwaarde, sldPollenwaarde,lblPollenwaarde);
+        Bind(ERequestData.NECTARWAARDE, chkNectarwaarde, sldNectarwaarde, lblNectarwaarde);
+        Bind(ERequestData.POLLENWAARDE, chkPollenwaarde, sldPollenwaarde, lblPollenwaarde);
         Bind(ERequestData.RATIOBLOEIBLAD, chkRatio_bloei_blad, cboRatioBloeiBlad);
         Bind(ERequestData.BEHANDELING, chkBehandeling, cboBehandeling);
         Bind(ERequestData.MAAND, chkMaand, cboMaand);
         Bind(ERequestData.PERXJAAR, chkPerXJaar, nudPerXJaar);
-        Bind(ERequestData.BEZONNING, chkBezonning, sldBezonning,lblBezonning);
-        Bind(ERequestData.VOCHTBEHOEFTE, chkVochtBehoefte, sldVochtbehoefte,lblVocht);
+        Bind(ERequestData.BEZONNING, chkBezonning, sldBezonning, lblBezonning);
+        Bind(ERequestData.VOCHTBEHOEFTE, chkVochtBehoefte, sldVochtbehoefte, lblVocht);
 
 
         ArrayList<RadioButton> rdbLevensvormen = new ArrayList<RadioButton>();
@@ -637,7 +682,7 @@ public class Controller {
      * @param checkBox welke checkbox gebind moet worden
      * @Author bradley
      */
-    public void Bind(ERequestData E, CheckBox checkBox, Slider slider,Label label) {
+    public void Bind(ERequestData E, CheckBox checkBox, Slider slider, Label label) {
         slider.disableProperty().bind(checkBox.selectedProperty().not());
         bindingData.searchRequestData.get(E).DoSearchProperty().bind(checkBox.selectedProperty());
         bindingData.searchRequestData.get(E).Value().valueProperty().bind(label.textProperty());
@@ -702,7 +747,7 @@ public class Controller {
         }
     }
 
-    public void BindCombobox(ERequestArrayData E, CheckBox checkBox, ArrayList<ComboBox<String>> listComboBOx){
+    public void BindCombobox(ERequestArrayData E, CheckBox checkBox, ArrayList<ComboBox<String>> listComboBOx) {
         bindingData.searchRequestArrayData.get(E).DoSearchProperty().bind(checkBox.selectedProperty());
 
         for (int i = 0; i < bindingData.searchRequestArrayData.get(E).Value().length; i++) {
@@ -839,7 +884,7 @@ public class Controller {
         cboSpruitfenologie.getSelectionModel().selectFirst();
     }
 
-    public void InitSpinners(){
+    public void InitSpinners() {
         setSpinner(nudPerXJaar, 10);
 
         setSpinner(nudMinBloeihoogte, 1000);
@@ -887,16 +932,19 @@ public class Controller {
         setSpinner(nudMaxBladhoogte_Dec, 1000);
     }
 
-    public void setSpinner(Spinner<Integer> spinner, int MaxValue){
+    public void setSpinner(Spinner<Integer> spinner, int MaxValue) {
         spinner.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(0, MaxValue));
     }
 
     public void Click_Search(MouseEvent mouseEvent) throws SQLException {
+        /*
         lsvOverzicht.getItems().clear();
 
         ArrayList<Plant> planten = handler.Search(bindingData, dbConnection );
 
         lsvOverzicht.getItems().addAll(planten);
+
+         */
 
 
     }

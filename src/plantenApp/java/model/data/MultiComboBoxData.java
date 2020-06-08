@@ -13,9 +13,9 @@ public class MultiComboBoxData extends SearchBase{
     private StringProperty[] values;
 
     public void Bind(CheckBox cbDoSearch, ArrayList<ComboBox<String>>  comboBoxes) {
-        values = new StringProperty[comboBoxes.size()-1];
-
         doSearchProperty().bind(cbDoSearch.selectedProperty());
+
+        values = new StringProperty[comboBoxes.size()];
         for (int i = 0;i<comboBoxes.size();i++)
         {
             values[i] = new SimpleStringProperty("");

@@ -10,17 +10,17 @@ public class MultiCheckboxData extends SearchBase {
     protected BooleanProperty[] values;
 
     public void Bind(CheckBox cbDoSearch, CheckBox[] checkboxes) {
-        values = new BooleanProperty[checkboxes.length];
-
         doSearchProperty().bind(cbDoSearch.selectedProperty());
-        for (int i = 0;i<checkboxes.length;i++)
-        {
+
+        values = new BooleanProperty[checkboxes.length];
+        for (int i = 0; i < checkboxes.length; i++) {
             values[i] = new SimpleBooleanProperty(false);
 
             checkboxes[i].disableProperty().bind(cbDoSearch.selectedProperty().not());
             valueProperty(i).bind(checkboxes[i].selectedProperty());
         }
     }
+
 
     public BooleanProperty valueProperty(int i) {
         return values[i];
@@ -30,7 +30,7 @@ public class MultiCheckboxData extends SearchBase {
         return values[i].get();
     }
 
-    public void setValue(int i,boolean value) {
+    public void setValue(int i, boolean value) {
         values[i].set(value);
     }
 }
