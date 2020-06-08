@@ -15,6 +15,10 @@ import plantenApp.java.model.BindingData;
 import plantenApp.java.model.InfoTables;
 import plantenApp.java.model.Plant;
 import plantenApp.java.model.SearchHandler;
+import plantenApp.java.model.data.GUIdata;
+import plantenApp.java.model.data.enums.EComCheckbox;
+import plantenApp.java.model.data.enums.EComboBox;
+import plantenApp.java.model.data.enums.ESliderLabel;
 import plantenApp.java.utils.ERequestArrayData;
 import plantenApp.java.utils.ERequestData;
 

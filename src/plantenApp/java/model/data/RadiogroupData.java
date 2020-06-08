@@ -11,8 +11,7 @@ public class RadiogroupData extends SearchBase {
     protected BooleanProperty[] values;
     private String[] correspondingValues;
 
-    public RadiogroupData(String[] correspondingValues) {
-        this.correspondingValues = correspondingValues;
+    public RadiogroupData() {
     }
 
     public void setCorrespondingValues(String[] correspondingValues) {
@@ -20,11 +19,10 @@ public class RadiogroupData extends SearchBase {
     }
 
     public void Bind(CheckBox cbDoSearch, ArrayList<RadioButton> radioButtons) {
-        values = new BooleanProperty[radioButtons.size()-1];
-
         doSearchProperty().bind(cbDoSearch.selectedProperty());
-        for (int i = 0;i<radioButtons.size();i++)
-        {
+
+        values = new BooleanProperty[radioButtons.size()];
+        for (int i = 0; i < radioButtons.size(); i++) {
             values[i] = new SimpleBooleanProperty(false);
 
             radioButtons.get(i).disableProperty().bind(cbDoSearch.selectedProperty().not());
@@ -34,8 +32,8 @@ public class RadiogroupData extends SearchBase {
 
     public String getActualValue() {
         String result = "";
-        for (int i = 0;i<values.length;i++){
-            if (values[i].get()){
+        for (int i = 0; i < values.length; i++) {
+            if (values[i].get()) {
                 result = correspondingValues[i];
             }
         }
@@ -45,10 +43,12 @@ public class RadiogroupData extends SearchBase {
     public BooleanProperty valueProperty(int i) {
         return values[i];
     }
-    public boolean getValue(int i){
+
+    public boolean getValue(int i) {
         return values[i].get();
     }
-    public void setValue(int i,boolean value) {
+
+    public void setValue(int i, boolean value) {
         values[i].set(value);
     }
 }

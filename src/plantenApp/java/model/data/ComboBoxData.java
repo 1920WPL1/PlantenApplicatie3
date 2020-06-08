@@ -16,14 +16,15 @@ public class ComboBoxData extends SearchBase{
         valueProperty().bind(comboBox.valueProperty());
     }
 
-    public String getValue() {
-        return value.get();
-    }
+
+
 
     public StringProperty valueProperty() {
         return value;
     }
-
+    public String getValue() {
+        return value.get();
+    }
     public void setValue(String value) {
         this.value.set(value);
     }

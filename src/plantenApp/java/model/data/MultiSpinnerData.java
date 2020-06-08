@@ -11,9 +11,9 @@ public class MultiSpinnerData extends SearchBase{
     private IntegerProperty[] values;
 
     public void Bind(CheckBox cbDoSearch, ArrayList<Spinner<Integer>> spinners) {
-        values = new IntegerProperty[spinners.size()-1];
-
         doSearchProperty().bind(cbDoSearch.selectedProperty());
+
+        values = new IntegerProperty[spinners.size()];
         for (int i = 0;i<spinners.size();i++)
         {
             values[i] = new SimpleIntegerProperty(0);

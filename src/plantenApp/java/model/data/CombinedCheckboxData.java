@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Map;
 
 public class CombinedCheckboxData extends MultiCheckboxData {
-    private String[] correspondingValues = new String[values.length];
+    private String[] correspondingValues;
 
     public void setCorrespondingValues(String[] correspondingValues) {
         this.correspondingValues = correspondingValues;

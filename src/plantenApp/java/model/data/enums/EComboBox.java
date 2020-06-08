@@ -1,5 +1,19 @@
 package plantenApp.java.model.data.enums;
 
 public enum EComboBox {
-    TYPE
+    SEARCH,
+    TYPE,
+    FAMILIE,
+    BLADKLEUR,
+    BLOEIKLEUR,
+    BLADGROOTTE,
+    HABITAT,
+    REACTIEANTAGONISTISCHEOMGEVING,
+    ONTWIKKELINGSSNELHEID,
+    LEVENSDUUR,
+    BLADVORM,
+    RATIOBLOEIBLAD,
+    SPRUITFENOLOGIE,
+    BEHANDELING,
+    MAAND,
 }

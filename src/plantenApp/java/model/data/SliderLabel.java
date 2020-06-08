@@ -11,28 +11,26 @@ import javafx.scene.control.Label;
 import javafx.scene.control.Slider;
 import plantenApp.java.utils.ERequestData;
 
+import java.util.HashMap;
 import java.util.Map;
 
 public class SliderLabel extends SearchBase {
     private IntegerProperty value = new SimpleIntegerProperty(0);
     private StringProperty actualValue = new SimpleStringProperty("");
-    private Map<Integer,String> correspondingValues;
+    private HashMap<Integer,String> correspondingValues;
 
-    public void setCorrespondingValues(Map<Integer,String> correspondingValues) {
+    public void setCorrespondingValues(HashMap<Integer,String> correspondingValues) {
         this.correspondingValues = correspondingValues;
     }
 
     public void Bind(CheckBox cbDoSearch, Slider slider, Label label) {
-        value.addListener(new ChangeListener<Number>() {
-            @Override
-            public void changed(ObservableValue<? extends Number> observableValue, Number number, Number t1) {
-                setActualValue(correspondingValues.get(getValue()));
-            }
-        });
         slider.disableProperty().bind(cbDoSearch.selectedProperty().not());
         doSearchProperty().bind(cbDoSearch.selectedProperty());
         value.bind(slider.valueProperty());
         label.textProperty().bind(actualValue);
+    }
+    public void Update(){
+        setActualValue(correspondingValues.get(getValue()));
     }
 
     public IntegerProperty valueProperty() {
