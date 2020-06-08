@@ -2,10 +2,8 @@ package plantenApp;
 
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.collections.transformation.SortedList;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -13,7 +11,6 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
 import plantenApp.java.dao.Database;
 import plantenApp.java.dao.InfoTablesDAO;
-import plantenApp.java.dao.PlantDAO;
 import plantenApp.java.model.BindingData;
 import plantenApp.java.model.InfoTables;
 import plantenApp.java.model.Plant;
@@ -21,11 +18,9 @@ import plantenApp.java.model.SearchHandler;
 import plantenApp.java.utils.ERequestArrayData;
 import plantenApp.java.utils.ERequestData;
 
-import java.io.IOException;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.Set;
 
 public class Controller {
     public ComboBox<String> cboBladkleur;
@@ -307,10 +302,10 @@ public class Controller {
     BindingData bindingData;
     SearchHandler handler;
     ChangeListener<Plant> lsvChanged;
+    ObservableList<Plant> plants;
+    ArrayList<Plant> planten;
 
     public void initialize() throws SQLException {
-
-
         pnlAdvSearch.setExpanded(false);
         dbConnection = Database.getInstance().getConnection();
         /*infotabel object aanmaken*/
@@ -324,18 +319,34 @@ public class Controller {
         InitSpinners();
         InitSliders();
         InitBindings();
+        planten = new ArrayList<Plant>();
+        plants = FXCollections.observableList(planten);
+        lsvOverzicht.setItems(plants);
+
+        /*TODO
+        cboType.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observableValue, String s, String t1) {
+                try {
+                    InfoTablesDAO dao = new InfoTablesDAO(dbConnection);
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+                cboFamilie.getItems().addAll(infotablesDAO.selectFamilyByType(bindingData.searchRequestData.get(ERequestData.TYPE).Value().))
+            }
+        });*/
     }
 
     /**
      * @author bradley
      */
-    public void InitListView(){
+    public void InitListView() {
         lsvOverzicht.setCellFactory(param -> new ListCell<Plant>() {
             @Override
             protected void updateItem(Plant item, boolean empty) {
                 super.updateItem(item, empty);
 
-                if (empty || item == null ) {
+                if (empty || item == null) {
                     setText(null);
                 } else {
                     setText(item.getType() + " " + item.getFamilie() + " " + item.getGeslacht() + " " + item.getSoort() + " " + item.getVariatie());
@@ -343,9 +354,9 @@ public class Controller {
             }
         });
 
-         lsvChanged = new ChangeListener<Plant>() {
+        lsvChanged = new ChangeListener<Plant>() {
             @Override
-            public void changed(ObservableValue<? extends Plant> observable, Plant oldValue, Plant newValue) throws NullPointerException{
+            public void changed(ObservableValue<? extends Plant> observable, Plant oldValue, Plant newValue) throws NullPointerException {
                 // Your action here
 
                 try {
@@ -356,6 +367,7 @@ public class Controller {
                 }
 
                 try {
+
                     lblType.setText(newValue.getType());
                     lblSoort.setText(newValue.getSoort());
                     lblFamilie.setText(newValue.getFamilie());
@@ -383,14 +395,13 @@ public class Controller {
                     lblBladVorm.setText(newValue.getFenotype().getBladvorm());
                     lblRatio.setText(newValue.getFenotype().getRatio_bloei_blad());
                     lblSpruitFenologie.setText(newValue.getFenotype().getSpruitfenologie());
-                } catch (NullPointerException ex){
+                } catch (NullPointerException ex) {
                     ex.printStackTrace();
                 }
 
 
             }
         };
-
         lsvOverzicht.getSelectionModel().selectedItemProperty().addListener(lsvChanged);
     }
 
@@ -401,13 +412,13 @@ public class Controller {
         sldNectarwaarde.valueProperty().addListener(new ChangeListener<Number>() {
             @Override
             public void changed(ObservableValue<? extends Number> observableValue, Number number, Number t1) {
-                lblNectarwaarde.setText(String.valueOf((int)sldNectarwaarde.getValue()));
+                lblNectarwaarde.setText(String.valueOf((int) sldNectarwaarde.getValue()));
             }
         });
         sldPollenwaarde.valueProperty().addListener(new ChangeListener<Number>() {
             @Override
             public void changed(ObservableValue<? extends Number> observableValue, Number number, Number t1) {
-                lblPollenwaarde.setText(String.valueOf((int)sldPollenwaarde.getValue()));
+                lblPollenwaarde.setText(String.valueOf((int) sldPollenwaarde.getValue()));
             }
         });
         sldVoedingsbehoefte.valueProperty().addListener(new ChangeListener<Number>() {
@@ -454,7 +465,7 @@ public class Controller {
         sldVochtbehoefte.valueProperty().addListener(new ChangeListener<Number>() {
             @Override
             public void changed(ObservableValue<? extends Number> observableValue, Number number, Number t1) {
-                switch ((int)sldVochtbehoefte.getValue()){
+                switch ((int) sldVochtbehoefte.getValue()) {
                     case 1:
                         lblVocht.setText("droog");
                         break;
@@ -495,13 +506,15 @@ public class Controller {
 
     }
 
+
     /**
      * @param slider     in te stellen slider
      * @param min        minimumwaarde van slider
      * @param max        maximumwaarde van slider
      * @param ticklabels moeten labels getoont worden met geselecteerde waarde
+     *                   <p>
+     *                   spinner instellen enkel major ticks in integers
      * @author bradley
-     * spinner instellen enkel major ticks in integers
      */
     private void SetSlider(Slider slider, int min, int max, boolean ticklabels) {
         slider.setMin(min);
@@ -525,7 +538,7 @@ public class Controller {
 
         Bind(ERequestData.BLADVORM, chkBladvorm, cboBladvorm);
         Bind(ERequestData.SPRUITFENOLOGIE, chkSpruitfenologie, cboSpruitfenologie);
-        Bind(ERequestData.VOEDINGSBEHOEFTE, chkVoedingsbehoefte, sldVoedingsbehoefte,lblVoedingsBehoefte);
+        Bind(ERequestData.VOEDINGSBEHOEFTE, chkVoedingsbehoefte, sldVoedingsbehoefte, lblVoedingsBehoefte);
         Bind(ERequestData.BLADGROOTTE, chkBladgrootte, cboBladgrootte);
         Bind(ERequestData.BLADHOOGTE, chkBladHoogte, nudMaxBladhoogte);
         Bind(ERequestData.FAMILIE, chkFamilie, cboFamilie);
@@ -536,14 +549,14 @@ public class Controller {
         Bind(ERequestData.REACTIEANTAGONISTISCHEOMGEVING, chkReactieAntagonistischeOmg, cboReactieAnta);
         Bind(ERequestData.ONTWIKKELINGSSNELHEID, chkOntwikkelingssnelheid, cboOntwikkel);
         Bind(ERequestData.LEVENSDUUR, chkLevensduur_concurrentiekracht, cboLevensduur);
-        Bind(ERequestData.NECTARWAARDE, chkNectarwaarde, sldNectarwaarde,lblNectarwaarde);
-        Bind(ERequestData.POLLENWAARDE, chkPollenwaarde, sldPollenwaarde,lblPollenwaarde);
+        Bind(ERequestData.NECTARWAARDE, chkNectarwaarde, sldNectarwaarde, lblNectarwaarde);
+        Bind(ERequestData.POLLENWAARDE, chkPollenwaarde, sldPollenwaarde, lblPollenwaarde);
         Bind(ERequestData.RATIOBLOEIBLAD, chkRatio_bloei_blad, cboRatioBloeiBlad);
         Bind(ERequestData.BEHANDELING, chkBehandeling, cboBehandeling);
         Bind(ERequestData.MAAND, chkMaand, cboMaand);
         Bind(ERequestData.PERXJAAR, chkPerXJaar, nudPerXJaar);
-        Bind(ERequestData.BEZONNING, chkBezonning, sldBezonning,lblBezonning);
-        Bind(ERequestData.VOCHTBEHOEFTE, chkVochtBehoefte, sldVochtbehoefte,lblVocht);
+        Bind(ERequestData.BEZONNING, chkBezonning, sldBezonning, lblBezonning);
+        Bind(ERequestData.VOCHTBEHOEFTE, chkVochtBehoefte, sldVochtbehoefte, lblVocht);
 
 
         ArrayList<RadioButton> rdbLevensvormen = new ArrayList<RadioButton>();
@@ -570,7 +583,6 @@ public class Controller {
         rdbStrategieën.add(rdbStrategie_CRS);
         rdbStrategieën.add(rdbStrategie_Onbekend);
         BindRadiobutton(ERequestArrayData.STRATEGIE, chkStrategie, rdbStrategieën);*/
-
 
 
         ArrayList<RadioButton> rdbBijvriendelijken = new ArrayList<RadioButton>();
@@ -744,9 +756,10 @@ public class Controller {
     /**
      * @param E        binding Enumeration
      * @param checkBox welke checkbox gebind moet worden
+     * @author bradley
      * @Author bradley
      */
-    public void Bind(ERequestData E, CheckBox checkBox, Slider slider,Label label) {
+    public void Bind(ERequestData E, CheckBox checkBox, Slider slider, Label label) {
         slider.disableProperty().bind(checkBox.selectedProperty().not());
         bindingData.searchRequestData.get(E).DoSearchProperty().bind(checkBox.selectedProperty());
         bindingData.searchRequestData.get(E).Value().valueProperty().bind(label.textProperty());
@@ -776,6 +789,9 @@ public class Controller {
         bindingData.searchRequestData.get(E).Value().valueProperty().bind(spinner.valueProperty().asString());
     }
 
+    /**
+     * @author bradley
+     **/
     public void BindSpinner(ERequestArrayData E, CheckBox checkBox, ArrayList<Spinner<Integer>> listSpinner) {
         bindingData.searchRequestArrayData.get(E).DoSearchProperty().bind(checkBox.selectedProperty());
 
@@ -786,6 +802,9 @@ public class Controller {
         }
     }
 
+    /**
+     * @author bradley
+     **/
     public void BindRadiobutton(ERequestArrayData E, CheckBox checkBox, ArrayList<RadioButton> listRadioButton) {
 
         bindingData.searchRequestArrayData.get(E).DoSearchProperty().bind(checkBox.selectedProperty());
@@ -800,6 +819,9 @@ public class Controller {
         }
     }
 
+    /**
+     * @author Bradley
+     */
     public void BindCheckbox(ERequestArrayData E, CheckBox checkBox, ArrayList<CheckBox> listCheckbox) {
         bindingData.searchRequestArrayData.get(E).DoSearchProperty().bind(checkBox.selectedProperty());
 
@@ -811,7 +833,13 @@ public class Controller {
         }
     }
 
-    public void BindCombobox(ERequestArrayData E, CheckBox checkBox, ArrayList<ComboBox<String>> listComboBOx){
+    /**
+     * @param E            Enum die aangesproken wordt
+     * @param checkBox     checkbox die je wil binden
+     * @param listComboBOx lijst van alle comboboxes die je wil binden
+     * @author bradley
+     */
+    public void BindCombobox(ERequestArrayData E, CheckBox checkBox, ArrayList<ComboBox<String>> listComboBOx) {
         bindingData.searchRequestArrayData.get(E).DoSearchProperty().bind(checkBox.selectedProperty());
 
         for (int i = 0; i < bindingData.searchRequestArrayData.get(E).Value().length; i++) {
@@ -826,7 +854,6 @@ public class Controller {
      * @author bradley, angelo
      * Functie om comboboxes te vullen met alle gegevens uit de database
      */
-
     public void FillComboboxes(InfoTables infotables) {
 
         //type
@@ -948,7 +975,10 @@ public class Controller {
         cboSpruitfenologie.getSelectionModel().selectFirst();
     }
 
-    public void InitSpinners(){
+    /**
+     * @author angelo
+     **/
+    public void InitSpinners() {
         setSpinner(nudPerXJaar, 10);
 
         setSpinner(nudMinBloeihoogte, 1000);
@@ -996,34 +1026,45 @@ public class Controller {
         setSpinner(nudMaxBladhoogte_Dec, 1000);
     }
 
-    public void setSpinner(Spinner<Integer> spinner, int MaxValue){
+    /**
+     * @author bradley
+     **/
+    public void setSpinner(Spinner<Integer> spinner, int MaxValue) {
         spinner.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(0, MaxValue));
     }
 
+    /**
+     * @author bradley
+     **/
     public void Click_Search(MouseEvent mouseEvent) throws SQLException {
 
-        if(!pnlUitvoer.isVisible()){
+
+        if (!pnlUitvoer.isVisible()) {
             pnlUitvoer.setVisible(true);
         }
 
-        if(pnlAdvSearch.isExpanded()) {
+        if (pnlAdvSearch.isExpanded()) {
             pnlAdvSearch.setExpanded(false);
         }
 
 
-        ArrayList<Plant> planten = handler.Search(bindingData, dbConnection );
-
-         lsvOverzicht.getSelectionModel().selectedItemProperty().removeListener(lsvChanged);
-         lsvOverzicht.getSelectionModel().clearSelection();
-        System.out.println(lsvOverzicht.getItems());
-         lsvOverzicht.getItems().clear();
-         lsvOverzicht.refresh();
-        System.out.println(lsvOverzicht.getItems());
-         lsvOverzicht.getSelectionModel().selectedItemProperty().addListener(lsvChanged);
+        planten = null;
+        planten = handler.Search(bindingData, dbConnection);
+        lsvOverzicht.getSelectionModel().selectedItemProperty().removeListener(lsvChanged);
+        lsvOverzicht.getItems().clear();
         lsvOverzicht.getItems().addAll(planten);
-        lsvOverzicht.getSelectionModel().selectFirst();
 
+        //forceListRefreshOn(lsvOverzicht);
+        lsvOverzicht.getSelectionModel().selectedItemProperty().addListener(lsvChanged);
+        lsvOverzicht.getSelectionModel().selectFirst();
+    }
+
+    private <T> void forceListRefreshOn(ListView<T> lsv) {
+        ObservableList<T> items = lsv.<T>getItems();
+        lsv.<T>setItems(null);
+        lsv.<T>setItems(items);
     }
 }
+
 
 

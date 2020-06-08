@@ -88,6 +88,31 @@ public class InfoTablesDAO implements Queries {
     }
 
     /**
+     * @author bradley
+     * @param id type id voor alle families
+     * @return lijst van families van meegegeven type
+
+     */
+    public ArrayList<String> selectFamilyByType( int id) throws SQLException {
+        //Dao
+        PreparedStatement stmtSelectFamilyByType = dbConnection.prepareStatement(NTFAMILIEBYTYPE);
+
+
+        //Items
+        ArrayList<String> strings = new ArrayList<>();
+
+        //SqlCommand
+       stmtSelectFamilyByType.setInt(1, id);
+        ResultSet rs = stmtSelectFamilyByType.executeQuery();
+        while (rs.next()) {
+            strings.add(rs.getString("familie_naam"));
+        }
+
+        //Output
+        return strings;
+    }
+
+    /**
      * @author Siebe
      * @return -> InfoTables model met alle info van de naakte tabellen
      */

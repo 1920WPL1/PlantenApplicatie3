@@ -4,10 +4,8 @@
     <list default="true" id="e3f371c2-5a62-4881-8767-e007751523f2" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/plantenApp/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/plantenApp/Controller.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/plantenApp/java/dao/ExtraDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/plantenApp/java/dao/ExtraDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/plantenApp/java/model/Extra.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/plantenApp/java/model/Extra.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/plantenApp/java/model/SearchHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/plantenApp/java/model/SearchHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/plantenApp/view/Zoekscherm.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/plantenApp/view/Zoekscherm.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/plantenApp/java/dao/InfoTablesDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/plantenApp/java/dao/InfoTablesDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/plantenApp/java/dao/Queries.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/plantenApp/java/dao/Queries.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -121,7 +119,7 @@
       <workItem from="1591278588953" duration="2563000" />
       <workItem from="1591371849831" duration="4509000" />
       <workItem from="1591597700912" duration="9973000" />
-      <workItem from="1591608980122" duration="7750000" />
+      <workItem from="1591608980122" duration="17126000" />
     </task>
     <servers />
   </component>
@@ -197,5 +195,16 @@
       <screen x="0" y="0" width="1858" height="1080" />
     </state>
     <state x="635" y="168" key="refactoring.ChangeSignatureDialog/0.0.1858.1080@0.0.1858.1080" timestamp="1591257365265" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/plantenApp/Controller.java</url>
+          <line>981</line>
+          <option name="timeStamp" value="8" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
