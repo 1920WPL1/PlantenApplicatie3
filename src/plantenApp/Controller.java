@@ -339,6 +339,8 @@ public class Controller {
     public Label lblHabitus;
     public Label lblBloeiwijze;
     public Label lblKruidgebruik;
+    public ListView lsvLevensduur;
+    public ListView lsvHabitat;
 
     private InfoTables infoTables;
     private Connection dbConnection;
@@ -405,13 +407,13 @@ public class Controller {
 
                     //commensalisme
                     lblOntwikkelingsSnelheid.setText(newValue.getCommensalisme().getOntwikkelingssnelheid());
-                    if (chkSociabiliteit_1.isSelected()){chkSocPlantI.setSelected(true);}
-                    if (chkSociabiliteit_2.isSelected()){chkSocPlantII.setSelected(true);}
-                    if (chkSociabiliteit_3.isSelected()){chkSocPlantIII.setSelected(true);}
-                    if (chkSociabiliteit_4.isSelected()){chkSocPlantIV.setSelected(true);}
-                    if (chkSociabiliteit_5.isSelected()){chkSocPlantV.setSelected(true);}
+                    if (newValue.getCommensalisme().getSociabiliteit().get(0) == 1){chkSocPlantI.setSelected(true);}
+                    if (newValue.getCommensalisme().getSociabiliteit().get(0) == 2){chkSocPlantII.setSelected(true);}
+                    if (newValue.getCommensalisme().getSociabiliteit().get(0) == 3){chkSocPlantIII.setSelected(true);}
+                    if (newValue.getCommensalisme().getSociabiliteit().get(0) == 4){chkSocPlantIV.setSelected(true);}
+                    if (newValue.getCommensalisme().getSociabiliteit().get(0) == 5){chkSocPlantV.setSelected(true);}
                     lblStrategie.setText(newValue.getCommensalisme().getStrategie());
-                    //TODO levensduur/concurrentiekracht
+                    //TODO lsvLevensduur.setItems();
 
                     //abiotische factoren
                     lblBezonning2.setText(newValue.getAbiotischeFactoren().getBezonning());
@@ -419,7 +421,7 @@ public class Controller {
                     lblVoedingsBehoefte2.setText(newValue.getAbiotischeFactoren().getVoedingsbehoefte());
                     lblReactie.setText(newValue.getAbiotischeFactoren().getReactieAntagonistischeOmgeving());
                     lblGrondSoort.setText(newValue.getAbiotischeFactoren().getGrondsoort());
-                    //TODO habitat
+                    //TODO lsvHabitat.setItems();
 
                     //extra
                     lblNectarwaarde2.setText(String.valueOf(newValue.getExtra().getNectarwaarde()));
@@ -441,70 +443,70 @@ public class Controller {
                     lblBloeiwijze.setText(newValue.getFenotype().getBloeiwijze());
 
                     //maandelijkse gegevens
-                    lblMaxBladgrootteJan.setText("");
-                    lblMaxBladgrootteFeb.setText("");
-                    lblMaxBladgrootteMaa.setText("");
-                    lblMaxBladgrootteApr.setText("");
-                    lblMaxBladgrootteMei.setText("");
-                    lblMaxBladgrootteJun.setText("");
-                    lblMaxBladgrootteJul.setText("");
-                    lblMaxBladgrootteAug.setText("");
-                    lblMaxBladgrootteSep.setText("");
-                    lblMaxBladgrootteOkt.setText("");
-                    lblMaxBladgrootteNov.setText("");
-                    lblMaxBladgrootteDec.setText("");
+                    lblMaxBladgrootteJan.setText(String.valueOf(newValue.getFenotype().getBladhoogte().getJan()));
+                    lblMaxBladgrootteFeb.setText(String.valueOf(newValue.getFenotype().getBladhoogte().getFeb()));
+                    lblMaxBladgrootteMaa.setText(String.valueOf(newValue.getFenotype().getBladhoogte().getMaa()));
+                    lblMaxBladgrootteApr.setText(String.valueOf(newValue.getFenotype().getBladhoogte().getApr()));
+                    lblMaxBladgrootteMei.setText(String.valueOf(newValue.getFenotype().getBladhoogte().getMei()));
+                    lblMaxBladgrootteJun.setText(String.valueOf(newValue.getFenotype().getBladhoogte().getJun()));
+                    lblMaxBladgrootteJul.setText(String.valueOf(newValue.getFenotype().getBladhoogte().getJul()));
+                    lblMaxBladgrootteAug.setText(String.valueOf(newValue.getFenotype().getBladhoogte().getAug()));
+                    lblMaxBladgrootteSep.setText(String.valueOf(newValue.getFenotype().getBladhoogte().getSep()));
+                    lblMaxBladgrootteOkt.setText(String.valueOf(newValue.getFenotype().getBladhoogte().getOkt()));
+                    lblMaxBladgrootteNov.setText(String.valueOf(newValue.getFenotype().getBladhoogte().getNov()));
+                    lblMaxBladgrootteDec.setText(String.valueOf(newValue.getFenotype().getBladhoogte().getDec()));
 
-                    lblBladkleurJan.setText("");
-                    lblBladkleurFeb.setText("");
-                    lblBladkleurMaa.setText("");
-                    lblBladkleurApr.setText("");
-                    lblBladkleurMei.setText("");
-                    lblBladkleurJun.setText("");
-                    lblBladkleurJul.setText("");
-                    lblBladkleurAug.setText("");
-                    lblBladkleurSep.setText("");
-                    lblBladkleurOkt.setText("");
-                    lblBladkleurNov.setText("");
-                    lblBladkleurDec.setText("");
+                    lblBladkleurJan.setText(newValue.getFenotype().getBladkleur().getJan());
+                    lblBladkleurFeb.setText(newValue.getFenotype().getBladkleur().getFeb());
+                    lblBladkleurMaa.setText(newValue.getFenotype().getBladkleur().getMaa());
+                    lblBladkleurApr.setText(newValue.getFenotype().getBladkleur().getApr());
+                    lblBladkleurMei.setText(newValue.getFenotype().getBladkleur().getMei());
+                    lblBladkleurJun.setText(newValue.getFenotype().getBladkleur().getJun());
+                    lblBladkleurJul.setText(newValue.getFenotype().getBladkleur().getJul());
+                    lblBladkleurAug.setText(newValue.getFenotype().getBladkleur().getAug());
+                    lblBladkleurSep.setText(newValue.getFenotype().getBladkleur().getSep());
+                    lblBladkleurOkt.setText(newValue.getFenotype().getBladkleur().getOkt());
+                    lblBladkleurNov.setText(newValue.getFenotype().getBladkleur().getNov());
+                    lblBladkleurDec.setText(newValue.getFenotype().getBladkleur().getDec());
 
-                    lblMinBloeihoogteJan.setText("");
-                    lblMinBloeihoogteFeb.setText("");
-                    lblMinBloeihoogteMaa.setText("");
-                    lblMinBloeihoogteApr.setText("");
-                    lblMinBloeihoogteMei.setText("");
-                    lblMinBloeihoogteJun.setText("");
-                    lblMinBloeihoogteJul.setText("");
-                    lblMinBloeihoogteAug.setText("");
-                    lblMinBloeihoogteSep.setText("");
-                    lblMinBloeihoogteOkt.setText("");
-                    lblMinBloeihoogteNov.setText("");
-                    lblMinBloeihoogteDec.setText("");
+                    lblMinBloeihoogteJan.setText(String.valueOf(newValue.getFenotype().getMinBloeihoogte().getJan()));
+                    lblMinBloeihoogteFeb.setText(String.valueOf(newValue.getFenotype().getMinBloeihoogte().getFeb()));
+                    lblMinBloeihoogteMaa.setText(String.valueOf(newValue.getFenotype().getMinBloeihoogte().getMaa()));
+                    lblMinBloeihoogteApr.setText(String.valueOf(newValue.getFenotype().getMinBloeihoogte().getApr()));
+                    lblMinBloeihoogteMei.setText(String.valueOf(newValue.getFenotype().getMinBloeihoogte().getMei()));
+                    lblMinBloeihoogteJun.setText(String.valueOf(newValue.getFenotype().getMinBloeihoogte().getJun()));
+                    lblMinBloeihoogteJul.setText(String.valueOf(newValue.getFenotype().getMinBloeihoogte().getJul()));
+                    lblMinBloeihoogteAug.setText(String.valueOf(newValue.getFenotype().getMinBloeihoogte().getAug()));
+                    lblMinBloeihoogteSep.setText(String.valueOf(newValue.getFenotype().getMinBloeihoogte().getSep()));
+                    lblMinBloeihoogteOkt.setText(String.valueOf(newValue.getFenotype().getMinBloeihoogte().getOkt()));
+                    lblMinBloeihoogteNov.setText(String.valueOf(newValue.getFenotype().getMinBloeihoogte().getNov()));
+                    lblMinBloeihoogteDec.setText(String.valueOf(newValue.getFenotype().getMinBloeihoogte().getDec()));
 
-                    lblMaxBloeihoogteJan.setText("");
-                    lblMaxBloeihoogteFeb.setText("");
-                    lblMaxBloeihoogteMaa.setText("");
-                    lblMaxBloeihoogteApr.setText("");
-                    lblMaxBloeihoogteMei.setText("");
-                    lblMaxBloeihoogteJun.setText("");
-                    lblMaxBloeihoogteJul.setText("");
-                    lblMaxBloeihoogteAug.setText("");
-                    lblMaxBloeihoogteSep.setText("");
-                    lblMaxBloeihoogteOkt.setText("");
-                    lblMaxBloeihoogteNov.setText("");
-                    lblMaxBloeihoogteDec.setText("");
+                    lblMaxBloeihoogteJan.setText(String.valueOf(newValue.getFenotype().getMaxBloeihoogte().getJan()));
+                    lblMaxBloeihoogteFeb.setText(String.valueOf(newValue.getFenotype().getMaxBloeihoogte().getFeb()));
+                    lblMaxBloeihoogteMaa.setText(String.valueOf(newValue.getFenotype().getMaxBloeihoogte().getMaa()));
+                    lblMaxBloeihoogteApr.setText(String.valueOf(newValue.getFenotype().getMaxBloeihoogte().getApr()));
+                    lblMaxBloeihoogteMei.setText(String.valueOf(newValue.getFenotype().getMaxBloeihoogte().getMei()));
+                    lblMaxBloeihoogteJun.setText(String.valueOf(newValue.getFenotype().getMaxBloeihoogte().getJun()));
+                    lblMaxBloeihoogteJul.setText(String.valueOf(newValue.getFenotype().getMaxBloeihoogte().getJul()));
+                    lblMaxBloeihoogteAug.setText(String.valueOf(newValue.getFenotype().getMaxBloeihoogte().getAug()));
+                    lblMaxBloeihoogteSep.setText(String.valueOf(newValue.getFenotype().getMaxBloeihoogte().getSep()));
+                    lblMaxBloeihoogteOkt.setText(String.valueOf(newValue.getFenotype().getMaxBloeihoogte().getOkt()));
+                    lblMaxBloeihoogteNov.setText(String.valueOf(newValue.getFenotype().getMaxBloeihoogte().getNov()));
+                    lblMaxBloeihoogteDec.setText(String.valueOf(newValue.getFenotype().getMaxBloeihoogte().getDec()));
 
-                    lblBloeikleurJan.setText("");
-                    lblBloeikleurFeb.setText("");
-                    lblBloeikleurMaa.setText("");
-                    lblBloeikleurApr.setText("");
-                    lblBloeikleurMei.setText("");
-                    lblBloeikleurJun.setText("");
-                    lblBloeikleurJul.setText("");
-                    lblBloeikleurAug.setText("");
-                    lblBloeikleurSep.setText("");
-                    lblBloeikleurOkt.setText("");
-                    lblBloeikleurNov.setText("");
-                    lblBloeikleurDec.setText("");
+                    lblBloeikleurJan.setText(newValue.getFenotype().getBloeikleur().getJan());
+                    lblBloeikleurFeb.setText(newValue.getFenotype().getBloeikleur().getFeb());
+                    lblBloeikleurMaa.setText(newValue.getFenotype().getBloeikleur().getMaa());
+                    lblBloeikleurApr.setText(newValue.getFenotype().getBloeikleur().getApr());
+                    lblBloeikleurMei.setText(newValue.getFenotype().getBloeikleur().getMei());
+                    lblBloeikleurJun.setText(newValue.getFenotype().getBloeikleur().getJun());
+                    lblBloeikleurJul.setText(newValue.getFenotype().getBloeikleur().getJul());
+                    lblBloeikleurAug.setText(newValue.getFenotype().getBloeikleur().getAug());
+                    lblBloeikleurSep.setText(newValue.getFenotype().getBloeikleur().getSep());
+                    lblBloeikleurOkt.setText(newValue.getFenotype().getBloeikleur().getOkt());
+                    lblBloeikleurNov.setText(newValue.getFenotype().getBloeikleur().getNov());
+                    lblBloeikleurDec.setText(newValue.getFenotype().getBloeikleur().getDec());
 
                 } catch (NullPointerException ex){
                     ex.printStackTrace();

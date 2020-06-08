@@ -1624,11 +1624,11 @@
                                                 <Font size="14.0" />
                                              </font>
                                           </Label>
-                                          <CheckBox fx:id="chkSocPlantI" mnemonicParsing="false" prefHeight="30.0" prefWidth="35.0" text="I " />
-                                          <CheckBox fx:id="chkSocPlantII" mnemonicParsing="false" prefHeight="30.0" prefWidth="35.0" text="II " />
-                                          <CheckBox fx:id="chkSocPlantIII" mnemonicParsing="false" prefHeight="30.0" prefWidth="35.0" text="III " />
-                                          <CheckBox fx:id="chkSocPlantIV" mnemonicParsing="false" prefHeight="30.0" prefWidth="35.0" text="IV " />
-                                          <CheckBox fx:id="chkSocPlantV" mnemonicParsing="false" prefHeight="30.0" prefWidth="35.0" text="V " />
+                                          <CheckBox fx:id="chkSocPlantI" disable="true" mnemonicParsing="false" prefHeight="30.0" prefWidth="35.0" text="I " />
+                                          <CheckBox fx:id="chkSocPlantII" disable="true" mnemonicParsing="false" prefHeight="30.0" prefWidth="35.0" text="II " />
+                                          <CheckBox fx:id="chkSocPlantIII" disable="true" mnemonicParsing="false" prefHeight="30.0" prefWidth="35.0" text="III " />
+                                          <CheckBox fx:id="chkSocPlantIV" disable="true" mnemonicParsing="false" prefHeight="30.0" prefWidth="35.0" text="IV " />
+                                          <CheckBox fx:id="chkSocPlantV" disable="true" mnemonicParsing="false" prefHeight="30.0" prefWidth="35.0" text="V " />
                                        </children>
                                     </HBox>
                                     <HBox>
@@ -1652,18 +1652,9 @@
                                                 <Font size="14.0" />
                                              </font>
                                           </Label>
-                                          <Label prefHeight="30.0" text="Value" textFill="#838383">
-                                             <font>
-                                                <Font size="14.0" />
-                                             </font>
-                                          </Label>
-                                          <Label prefHeight="30.0" text="Value" textFill="#838383">
-                                             <font>
-                                                <Font size="14.0" />
-                                             </font>
-                                          </Label>
                                        </children>
                                     </VBox>
+                                    <ListView fx:id="lsvLevensduur" maxWidth="200.0" prefHeight="50.0" prefWidth="166.0" />
                                  </children>
                               </VBox>
                               <VBox spacing="5.0">
@@ -1750,18 +1741,9 @@
                                                 <Font size="14.0" />
                                              </font>
                                           </Label>
-                                          <Label prefHeight="30.0" text="Value" textFill="#838383">
-                                             <font>
-                                                <Font size="14.0" />
-                                             </font>
-                                          </Label>
-                                          <Label prefHeight="30.0" text="Value" textFill="#838383">
-                                             <font>
-                                                <Font size="14.0" />
-                                             </font>
-                                          </Label>
                                        </children>
                                     </VBox>
+                                    <ListView fx:id="lsvHabitat" maxWidth="200.0" prefHeight="50.0" prefWidth="203.0" />
                                  </children>
                               </VBox>
                               <VBox spacing="5.0">
