@@ -4,9 +4,7 @@
     <list default="true" id="e3f371c2-5a62-4881-8767-e007751523f2" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/libraries/mssql_jdbc_7_4_1_jre11.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/mssql_jdbc_7_4_1_jre11.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/plantenApp/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/plantenApp/Controller.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/plantenApp/java/dao/InfoTablesDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/plantenApp/java/dao/InfoTablesDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/plantenApp/java/dao/Queries.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/plantenApp/java/dao/Queries.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PlantenApplicatie.iml" beforeDir="false" afterPath="$PROJECT_DIR$/PlantenApplicatie.iml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -59,8 +57,8 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="extract.method.default.visibility" value="private" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../mssql-jdbc-7.4.1.jre11.jar!/" />
-    <property name="project.structure.last.edited" value="Libraries" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../Jar/sqljdbc_7.4/enu/mssql-jdbc-7.4.1.jre11.jar!/" />
+    <property name="project.structure.last.edited" value="Global Libraries" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.30297872" />
   </component>
@@ -119,7 +117,7 @@
       <workItem from="1591278588953" duration="2563000" />
       <workItem from="1591371849831" duration="4509000" />
       <workItem from="1591597700912" duration="9973000" />
-      <workItem from="1591608980122" duration="17126000" />
+      <workItem from="1591608980122" duration="17968000" />
     </task>
     <servers />
   </component>
@@ -201,7 +199,7 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/plantenApp/Controller.java</url>
-          <line>981</line>
+          <line>1107</line>
           <option name="timeStamp" value="8" />
         </line-breakpoint>
       </breakpoints>
