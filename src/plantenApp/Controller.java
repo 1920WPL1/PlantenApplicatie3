@@ -460,9 +460,9 @@ public class Controller {
         habitusrdb.add(rdbHabitus_15);
 
         for(int i = 0; i<infoTables.getHabitusFotos().size(); i++){
-            System.out.println(infoTables.getHabitusFotos().get(i).getWaarde());
+
             habitusrdb.get(i).textProperty().setValue(infoTables.getHabitusFotos().get(i).getWaarde());
-            System.out.println(infoTables.getHabitusFotos().get(i).getFoto());
+
             habitus.get(i).setImage(infoTables.getHabitusFotos().get(i).getFoto());
         }
 
@@ -762,15 +762,9 @@ public class Controller {
         cboSpruitfenologie.getSelectionModel().selectFirst();
     }
     public void Click_Search(MouseEvent mouseEvent) throws SQLException {
-        lsvOverzicht.getSelectionModel().selectedItemProperty().removeListener(lsvChanged);
 
-        //System.out.println("voor listview clear: " + lsvOverzicht.getItems());
-        lsvOverzicht.getItems().removeAll(lsvOverzicht.getItems());
-        //System.out.println("na listview clear: " + lsvOverzicht.getItems());
-        forceListRefreshOn(lsvOverzicht);
+        lsvOverzicht.getItems().clear();
 
-        //System.out.println("na refresh listview " + lsvOverzicht.getItems());
-       lsvOverzicht.getSelectionModel().selectedItemProperty().addListener(lsvChanged);
         if (!pnlUitvoer.isVisible()) {
             pnlUitvoer.setVisible(true);
         }
@@ -784,17 +778,9 @@ public class Controller {
 
        lsvOverzicht.getItems().addAll(planten);
 
-        //System.out.println("na toevoegen: " + lsvOverzicht.getItems());
-
-
         lsvOverzicht.getSelectionModel().selectFirst();
     }
 
-    private <T> void forceListRefreshOn(ListView<T> lsv) {
-        ObservableList<T> items = lsv.<T>getItems();
-        lsv.<T>setItems(null);
-        lsv.<T>setItems(items);
-    }
 }
 
 

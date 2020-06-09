@@ -29,12 +29,13 @@ public class SearchHandler {
         this.fenotypeDAO = new FenotypeDAO(dbConnection);
         this.plantDAO = new PlantDAO(dbConnection);
 
-        ids = new ArrayList<Integer>();
-        planten = new ArrayList<Plant>();
+
+
     }
 
     public ArrayList<Plant> Search(GUIdata guiData, Connection dbConnection) throws SQLException {
-
+        planten = new ArrayList<Plant>();
+        ids = new ArrayList<Integer>();
 
         ids = plantDAO.FilterOn(guiData);
         if (ids.size() != 0) {
