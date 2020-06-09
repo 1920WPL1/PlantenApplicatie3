@@ -4,6 +4,11 @@ import plantenApp.java.model.BindingData;
 import plantenApp.java.model.Plant;
 import plantenApp.java.model.SearchRequest;
 import plantenApp.java.model.RequestValue;
+import plantenApp.java.model.data.ComboBoxData;
+import plantenApp.java.model.data.GUIdata;
+import plantenApp.java.model.data.TextfieldData;
+import plantenApp.java.model.data.enums.EComboBox;
+import plantenApp.java.model.data.enums.ETextfield;
 import plantenApp.java.utils.ERequestData;
 import plantenApp.java.utils.DaoUtils;
 
@@ -143,27 +148,29 @@ public class PlantDAO implements Queries {
 
     //region FILTER
 
-    public ArrayList<Integer> FilterOn(BindingData bindingData) throws SQLException {
+    public ArrayList<Integer> FilterOn(BindingData bindingData, GUIdata guiData) throws SQLException {
         //Dao
 
         //Items
         ArrayList<Integer> ids = new ArrayList<>();
 
         //type
-        SearchRequest<RequestValue> type = bindingData.searchRequestData.get(ERequestData.TYPE);
-        stmtSelectIdsByPlant.setString(1, type.Value().getValue());
-        stmtSelectIdsByPlant.setInt(2, (type.getDoSearch()) ? 0 : 1);
+        ComboBoxData type = guiData.comboBoxDEM.get(EComboBox.TYPE);
+        //SearchRequest<RequestValue> type = bindingData.searchRequestData.get(ERequestData.TYPE);
+        stmtSelectIdsByPlant.setString(1, type.getValue());
+        stmtSelectIdsByPlant.setInt(2, (type.isDoSearch()) ? 0 : 1);
 
         //familie
-        SearchRequest<RequestValue> familie = bindingData.searchRequestData.get(ERequestData.FAMILIE);
-        stmtSelectIdsByPlant.setString(3, familie.Value().getValue());
-        stmtSelectIdsByPlant.setInt(4, (familie.getDoSearch()) ? 0 : 1);
+        ComboBoxData familie = guiData.comboBoxDEM.get(EComboBox.TYPE);
+        //SearchRequest<RequestValue> familie = bindingData.searchRequestData.get(ERequestData.FAMILIE);
+        stmtSelectIdsByPlant.setString(3, familie.getValue());
+        stmtSelectIdsByPlant.setInt(4, (familie.isDoSearch()) ? 0 : 1);
 
         //fgsv
-        SearchRequest<RequestValue> fgsv = bindingData.searchRequestData.get(ERequestData.SEARCH);
-        fgsv.setDoSearch(!fgsv.Value().getValue().isEmpty());
-        stmtSelectIdsByPlant.setString(5, fgsv.Value().getValue());
-        stmtSelectIdsByPlant.setInt(6, (fgsv.getDoSearch()) ? 0 : 1);
+        TextfieldData fgsv = guiData.textFieldDEM.get(ETextfield.SEARCH);
+        //SearchRequest<RequestValue> fgsv = bindingData.searchRequestData.get(ERequestData.SEARCH);
+        stmtSelectIdsByPlant.setString(5, fgsv.getValue());
+        stmtSelectIdsByPlant.setInt(6, (fgsv.isDoSearch()) ? 0 : 1);
 
         ResultSet rs = stmtSelectIdsByPlant.executeQuery();
         while (rs.next()) {

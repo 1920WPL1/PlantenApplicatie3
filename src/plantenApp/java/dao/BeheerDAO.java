@@ -1,6 +1,11 @@
 package plantenApp.java.dao;
 
 import plantenApp.java.model.*;
+import plantenApp.java.model.data.ComboBoxData;
+import plantenApp.java.model.data.GUIdata;
+import plantenApp.java.model.data.SpinnerData;
+import plantenApp.java.model.data.enums.EComboBox;
+import plantenApp.java.model.data.enums.ESpinner;
 import plantenApp.java.utils.ERequestData;
 import plantenApp.java.utils.DaoUtils;
 
@@ -86,7 +91,7 @@ public class BeheerDAO implements Queries {
      * @param bindingData -> dataClass that consist of all the data of the bindings
      * @return The filtered ids
      */
-    public ArrayList<Integer> FilterOn(ArrayList<Integer> plantIds, BindingData bindingData) throws SQLException {
+    public ArrayList<Integer> FilterOn(ArrayList<Integer> plantIds, BindingData bindingData, GUIdata guiData) throws SQLException {
         //Dao
 
         //Items
@@ -96,19 +101,22 @@ public class BeheerDAO implements Queries {
         PreparedStatement stmtSelectIdsByBeheer = DaoUtils.ReadyStatement(dbConnection,GETIDSBYBEHEER,plantIds);
 
         //Behandeling
-        SearchRequest<RequestValue> behandeling = bindingData.searchRequestData.get(ERequestData.BEHANDELING);
-        stmtSelectIdsByBeheer.setString(plantIds.size()+1 , behandeling.Value().getValue());
-        stmtSelectIdsByBeheer.setInt(plantIds.size() + 2, (behandeling.getDoSearch()) ? 0 : 1);
+        ComboBoxData behandeling = guiData.comboBoxDEM.get(EComboBox.BEHANDELING);
+        //SearchRequest<RequestValue> behandeling = bindingData.searchRequestData.get(ERequestData.BEHANDELING);
+        stmtSelectIdsByBeheer.setString(plantIds.size()+1 , behandeling.getValue());
+        stmtSelectIdsByBeheer.setInt(plantIds.size() + 2, (behandeling.isDoSearch()) ? 0 : 1);
 
         //maand
-        SearchRequest<RequestValue> maand = bindingData.searchRequestData.get(ERequestData.MAAND);
-        stmtSelectIdsByBeheer.setString(plantIds.size() + 3, maand.Value().getValue());
-        stmtSelectIdsByBeheer.setInt(plantIds.size() + 4, (maand.getDoSearch()) ? 0 : 1);
+        ComboBoxData maand = guiData.comboBoxDEM.get(EComboBox.MAAND);
+        //SearchRequest<RequestValue> maand = bindingData.searchRequestData.get(ERequestData.MAAND);
+        stmtSelectIdsByBeheer.setString(plantIds.size() + 3, maand.getValue());
+        stmtSelectIdsByBeheer.setInt(plantIds.size() + 4, (maand.isDoSearch()) ? 0 : 1);
 
         //perxjaar
-        SearchRequest<RequestValue> perXjaar = bindingData.searchRequestData.get(ERequestData.PERXJAAR);
-        stmtSelectIdsByBeheer.setInt(plantIds.size() + 5, Integer.parseInt(perXjaar.Value().getValue()));
-        stmtSelectIdsByBeheer.setInt(plantIds.size() + 6, (perXjaar.getDoSearch()) ? 0 : 1);
+        SpinnerData perXjaar = guiData.spinnerDEM.get(ESpinner.PERXJAAR);
+        //SearchRequest<RequestValue> perXjaar = bindingData.searchRequestData.get(ERequestData.PERXJAAR);
+        stmtSelectIdsByBeheer.setInt(plantIds.size() + 5, perXjaar.getValue());
+        stmtSelectIdsByBeheer.setInt(plantIds.size() + 6, (perXjaar.isDoSearch()) ? 0 : 1);
 
         ResultSet rs = stmtSelectIdsByBeheer.executeQuery();
         while (rs.next()) {

@@ -1,25 +1,32 @@
 package plantenApp.java.model.data;
 
-import javafx.beans.property.BooleanProperty;
-import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.TextField;
 
-public class ComboBoxData extends SearchBase {
+public class TextfieldData extends SearchBase {
     private StringProperty value = new SimpleStringProperty("");
 
-    public void Bind(CheckBox cbDoSearch, ComboBox<String> comboBox) {
+    public void Bind(TextField textField) {
         try {
-            doSearchProperty().bind(cbDoSearch.selectedProperty());
-            comboBox.disableProperty().bind(cbDoSearch.selectedProperty().not());
-            valueProperty().bind(comboBox.valueProperty());
+            valueProperty().bind(textField.textProperty());
         } catch (NullPointerException nex) {
             StringBuilder sb = new StringBuilder();
-            sb.append("Checkbox: ").append(cbDoSearch).append(" combobox: ").append(comboBox).append('\n').append(nex.getMessage());
+            sb.append(" textfield: ").append(textField).append('\n').append(nex.getMessage());
             System.out.println(sb.toString());
         }
+    }
+
+    @Override
+    public boolean isDoSearch() {
+        if (getValue().isEmpty()) {
+            setDoSearch(false);
+        } else {
+            setDoSearch(true);
+        }
+        return super.isDoSearch();
     }
 
     //StringValue

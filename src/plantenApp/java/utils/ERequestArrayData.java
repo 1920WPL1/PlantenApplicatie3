@@ -3,6 +3,7 @@ package plantenApp.java.utils;
 /**
  * @author bradley
  */
+@Deprecated
 public enum ERequestArrayData {
     BLADKLEURPERMAAND,
     BLOEIKLEURPERMAAND,

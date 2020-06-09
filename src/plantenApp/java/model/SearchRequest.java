@@ -9,6 +9,7 @@ import java.util.function.Supplier;
  * @author bradley
  * @param <T> value-type
  */
+@Deprecated
 public class SearchRequest<T> {
     BooleanProperty DoSearch = new SimpleBooleanProperty();
 

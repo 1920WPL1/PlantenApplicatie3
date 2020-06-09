@@ -5,6 +5,7 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
 
+@Deprecated
 public class RequestValue {
     private StringProperty value = new SimpleStringProperty("");
 

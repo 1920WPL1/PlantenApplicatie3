@@ -44,6 +44,7 @@ public interface Queries {
                     "WHERE plant_id IN (?) " +
                     "AND (nectarwaarde = ? OR 1=?) " +
                     "AND (pollenwaarde = ? OR 1=?) " +
+                    "AND (vlindervriendelijk = ? OR 1=?) " +
                     "AND (bijvriendelijk = ? OR 1=?) " +
                     "AND (eetbaar = ? OR 1=?) " +
                     "AND (kruidgebruik = ? OR 1=?) " +

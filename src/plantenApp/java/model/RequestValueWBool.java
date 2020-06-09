@@ -6,6 +6,7 @@ import javafx.beans.property.SimpleBooleanProperty;
 /**
  * @author Bradley
  */
+@Deprecated
 public class RequestValueWBool extends RequestValue {
     private BooleanProperty isSelected = new SimpleBooleanProperty(false);
 

@@ -1,6 +1,7 @@
 package plantenApp.java.model;
 
 import plantenApp.java.dao.*;
+import plantenApp.java.model.data.GUIdata;
 
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -32,28 +33,28 @@ public class SearchHandler {
         planten = new ArrayList<Plant>();
     }
 
-    public ArrayList<Plant> Search(BindingData bindingData, Connection dbConnection) throws SQLException {
+    public ArrayList<Plant> Search(BindingData bindingData, GUIdata guiData, Connection dbConnection) throws SQLException {
 
 
-        ids = plantDAO.FilterOn(bindingData);
+        ids = plantDAO.FilterOn(bindingData, guiData);
         if (ids.size() != 0) {
-            ids = fenotypeDAO.FilterOn(ids, bindingData);
+            ids = fenotypeDAO.FilterOn(ids, bindingData, guiData);
         }
         if (ids.size() != 0) {
-            ids = commensalismeDAO.FilterOn(ids, bindingData);
+            ids = commensalismeDAO.FilterOn(ids, bindingData, guiData);
         }
         if (ids.size() != 0) {
-            ids = abiotischeFactorenDAO.FilterOn(ids, bindingData);
+            ids = abiotischeFactorenDAO.FilterOn(ids, bindingData, guiData);
         }
         if (ids.size() != 0) {
-            ids = extraDAO.FilterOn(ids, bindingData);
+            ids = extraDAO.FilterOn(ids, bindingData, guiData);
         }
         if (ids.size() != 0) {
-            ids = beheerDAO.FilterOn(ids, bindingData);
+            ids = beheerDAO.FilterOn(ids, bindingData, guiData);
         }
 
-        for (int id:ids
-             ) {
+        for (int id : ids
+        ) {
             planten.add(plantDAO.getPlantById(id));
         }
 
@@ -61,7 +62,7 @@ public class SearchHandler {
     }
 
     public Plant SelectFullPlant(Plant plant) throws SQLException {
-       return plantDAO.getFullPlantById(plant.getId());
+        return plantDAO.getFullPlantById(plant.getId());
     }
 
 

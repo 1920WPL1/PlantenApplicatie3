@@ -11,6 +11,7 @@ import java.util.Map;
  * @author bradley
  * maakt alle verschillende bindings aan
  */
+@Deprecated
 public class BindingData {
     public EnumMap<ERequestData, SearchRequest<RequestValue>> searchRequestData;
     public EnumMap<ERequestArrayData, SearchRequest<RequestValueWBool[]>> searchRequestArrayData;

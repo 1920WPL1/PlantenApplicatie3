@@ -4,6 +4,7 @@ package plantenApp.java.utils;
 /**
  * @author bradley
  */
+@Deprecated
 public enum ERequestData {
     REACTIEANTAGONISTISCHEOMGEVING,
     ONTWIKKELINGSSNELHEID,

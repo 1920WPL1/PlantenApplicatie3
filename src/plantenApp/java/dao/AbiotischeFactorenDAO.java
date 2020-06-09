@@ -1,6 +1,13 @@
 package plantenApp.java.dao;
 
 import plantenApp.java.model.*;
+import plantenApp.java.model.data.CombinedCheckboxData;
+import plantenApp.java.model.data.ComboBoxData;
+import plantenApp.java.model.data.GUIdata;
+import plantenApp.java.model.data.SliderLabelData;
+import plantenApp.java.model.data.enums.EComCheckbox;
+import plantenApp.java.model.data.enums.EComboBox;
+import plantenApp.java.model.data.enums.ESliderLabel;
 import plantenApp.java.utils.ERequestArrayData;
 import plantenApp.java.utils.ERequestData;
 import plantenApp.java.utils.DaoUtils;
@@ -96,7 +103,7 @@ public class AbiotischeFactorenDAO implements Queries {
      * @param bindingData -> dataClass that consist of all the data of the bindings
      * @return The filtered ids
      */
-    public ArrayList<Integer> FilterOn(ArrayList<Integer> plantIds, BindingData bindingData) throws SQLException {
+    public ArrayList<Integer> FilterOn(ArrayList<Integer> plantIds, BindingData bindingData, GUIdata guiData) throws SQLException {
         //Dao
 
         //Items
@@ -106,11 +113,15 @@ public class AbiotischeFactorenDAO implements Queries {
         PreparedStatement stmtSelectIdsByAbio = DaoUtils.ReadyStatement(dbConnection, GETIDSBYABIO, plantIds);
 
         //Bezonning
-        SearchRequest<RequestValue> bezonning = bindingData.searchRequestData.get(ERequestData.BEZONNING);
-        stmtSelectIdsByAbio.setString(plantIds.size() + 1, bezonning.Value().getValue());
-        stmtSelectIdsByAbio.setInt(plantIds.size() + 2, (bezonning.getDoSearch()) ? 0 : 1);
+        SliderLabelData bezonning = guiData.sliderLabelDEM.get(ESliderLabel.BEZONNING);
+        //SearchRequest<RequestValue> bezonning = bindingData.searchRequestData.get(ERequestData.BEZONNING);
+
+        stmtSelectIdsByAbio.setString(plantIds.size() + 1, bezonning.getActualValue());
+        stmtSelectIdsByAbio.setInt(plantIds.size() + 2, (bezonning.isDoSearch()) ? 0 : 1);
 
         //Grondsoort
+        CombinedCheckboxData grondsoort = guiData.combinedCheckboxDEM.get(EComCheckbox.GRONDSOORT);
+        /*
         SearchRequest<RequestValueWBool[]> grondsoort = bindingData.searchRequestArrayData.get(ERequestArrayData.GRONDSOORT);
         StringBuilder grondsoortValue = new StringBuilder();
         for (int i = 0; i < grondsoort.Value().length; i++) {
@@ -119,24 +130,28 @@ public class AbiotischeFactorenDAO implements Queries {
                 grondsoortValue.append(grondsoort.Value()[i].getValue());
             }
         }
-        stmtSelectIdsByAbio.setString(plantIds.size() + 3, grondsoortValue.toString());
+        */
 
-        stmtSelectIdsByAbio.setInt(plantIds.size() + 4, (grondsoort.getDoSearch()) ? 0 : 1);
+        stmtSelectIdsByAbio.setString(plantIds.size() + 3, grondsoort.getActualValue());
+        stmtSelectIdsByAbio.setInt(plantIds.size() + 4, (grondsoort.isDoSearch()) ? 0 : 1);
 
         //Vochtbehoefte
-        SearchRequest<RequestValue> vochtbehoefte = bindingData.searchRequestData.get(ERequestData.VOCHTBEHOEFTE);
-        stmtSelectIdsByAbio.setString(plantIds.size() + 5, vochtbehoefte.Value().getValue());
-        stmtSelectIdsByAbio.setInt(plantIds.size() + 6, (vochtbehoefte.getDoSearch()) ? 0 : 1);
+        SliderLabelData vochtbehoefte = guiData.sliderLabelDEM.get(ESliderLabel.VOCHTBEHOEFTE);
+        //SearchRequest<RequestValue> vochtbehoefte = bindingData.searchRequestData.get(ERequestData.VOCHTBEHOEFTE);
+        stmtSelectIdsByAbio.setString(plantIds.size() + 5, vochtbehoefte.getActualValue());
+        stmtSelectIdsByAbio.setInt(plantIds.size() + 6, (vochtbehoefte.isDoSearch()) ? 0 : 1);
 
         //voedingsbehoefte
-        SearchRequest<RequestValue> voedingsbehoefte = bindingData.searchRequestData.get(ERequestData.VOEDINGSBEHOEFTE);
-        stmtSelectIdsByAbio.setString(plantIds.size() + 7, voedingsbehoefte.Value().getValue());
-        stmtSelectIdsByAbio.setInt(plantIds.size() + 8, (voedingsbehoefte.getDoSearch()) ? 0 : 1);
+        SliderLabelData voedingsbehoefte = guiData.sliderLabelDEM.get(ESliderLabel.VOEDINGSBEHOEFTE);
+        //SearchRequest<RequestValue> voedingsbehoefte = bindingData.searchRequestData.get(ERequestData.VOEDINGSBEHOEFTE);
+        stmtSelectIdsByAbio.setString(plantIds.size() + 7, voedingsbehoefte.getActualValue());
+        stmtSelectIdsByAbio.setInt(plantIds.size() + 8, (voedingsbehoefte.isDoSearch()) ? 0 : 1);
 
         //reactieantaomgeving
-        SearchRequest<RequestValue> reactieantaomgeving = bindingData.searchRequestData.get(ERequestData.REACTIEANTAGONISTISCHEOMGEVING);
-        stmtSelectIdsByAbio.setString(plantIds.size() + 9, reactieantaomgeving.Value().getValue());
-        stmtSelectIdsByAbio.setInt(plantIds.size() + 10, (reactieantaomgeving.getDoSearch()) ? 0 : 1);
+        ComboBoxData reactieantaomgeving = guiData.comboBoxDEM.get(EComboBox.REACTIEANTAGONISTISCHEOMGEVING);
+        //SearchRequest<RequestValue> reactieantaomgeving = bindingData.searchRequestData.get(ERequestData.REACTIEANTAGONISTISCHEOMGEVING);
+        stmtSelectIdsByAbio.setString(plantIds.size() + 9, reactieantaomgeving.getValue());
+        stmtSelectIdsByAbio.setInt(plantIds.size() + 10, (reactieantaomgeving.isDoSearch()) ? 0 : 1);
 
         ResultSet rs = stmtSelectIdsByAbio.executeQuery();
         while (rs.next()) {
@@ -144,9 +159,10 @@ public class AbiotischeFactorenDAO implements Queries {
         }
 
         //habitat
-        SearchRequest<RequestValue> habitat = bindingData.searchRequestData.get(ERequestData.HABITAT);
-        if (habitat.getDoSearch()) {
-            ids = FilterOnMulti("habitat", habitat.Value().getValue(), ids);
+        ComboBoxData habitat = guiData.comboBoxDEM.get(EComboBox.HABITAT);
+        //SearchRequest<RequestValue> habitat = bindingData.searchRequestData.get(ERequestData.HABITAT);
+        if (habitat.isDoSearch()) {
+            ids = FilterOnMulti("habitat", habitat.getValue(), ids);
         }
 
         //Output

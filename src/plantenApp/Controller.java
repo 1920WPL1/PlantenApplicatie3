@@ -17,9 +17,7 @@ import plantenApp.java.model.InfoTables;
 import plantenApp.java.model.Plant;
 import plantenApp.java.model.SearchHandler;
 import plantenApp.java.model.data.GUIdata;
-import plantenApp.java.model.data.enums.EComCheckbox;
-import plantenApp.java.model.data.enums.EComboBox;
-import plantenApp.java.model.data.enums.ESliderLabel;
+import plantenApp.java.model.data.enums.*;
 import plantenApp.java.utils.ERequestArrayData;
 import plantenApp.java.utils.ERequestData;
 
@@ -250,39 +248,58 @@ public class Controller {
 
     public void initialize() throws SQLException {
         guiData = new GUIdata();
-        //guiData.comboBoxDEM.get(EComboBox.SEARCH).Bind(chk);
-        guiData.comboBoxDEM.get(EComboBox.TYPE).Bind(chkType,cboType);
-        guiData.comboBoxDEM.get(EComboBox.BEHANDELING).Bind(chkBehandeling,cboBehandeling);
-        guiData.comboBoxDEM.get(EComboBox.BLADGROOTTE).Bind(chkBladgrootte,cboBladgrootte);
-        guiData.comboBoxDEM.get(EComboBox.BLADKLEUR).Bind(chkBladKleur,cboBladkleur);
-        guiData.comboBoxDEM.get(EComboBox.BLADVORM).Bind(chkBladvorm,cboBladvorm);
-        guiData.comboBoxDEM.get(EComboBox.BLOEIKLEUR).Bind(chkBloeiKleur,cboBloeikleur);
-        guiData.comboBoxDEM.get(EComboBox.BLADKLEUR).Bind(chkBladKleur,cboBladkleur);
-        guiData.comboBoxDEM.get(EComboBox.FAMILIE).Bind(chkFamilie,cboFamilie);
-        guiData.comboBoxDEM.get(EComboBox.HABITAT).Bind(chkHabitat,cboHabitat);
-        guiData.comboBoxDEM.get(EComboBox.LEVENSDUUR).Bind(chkLevensduur_concurrentiekracht,cboLevensduur);
-        guiData.comboBoxDEM.get(EComboBox.MAAND).Bind(chkMaand,cboMaand);
-        guiData.comboBoxDEM.get(EComboBox.ONTWIKKELINGSSNELHEID).Bind(chkOntwikkelingssnelheid,cboOntwikkel);
-        guiData.comboBoxDEM.get(EComboBox.RATIOBLOEIBLAD).Bind(chkRatio_bloei_blad,cboRatioBloeiBlad);
-        guiData.comboBoxDEM.get(EComboBox.REACTIEANTAGONISTISCHEOMGEVING).Bind(chkReactieAntagonistischeOmg,cboReactieAnta);
-        guiData.comboBoxDEM.get(EComboBox.SPRUITFENOLOGIE).Bind(chkSpruitfenologie,cboSpruitfenologie);
+        guiData.textFieldDEM.get(ETextfield.SEARCH).Bind(txtSearch);
+        guiData.comboBoxDEM.get(EComboBox.TYPE).Bind(chkType, cboType);
+        guiData.comboBoxDEM.get(EComboBox.BEHANDELING).Bind(chkBehandeling, cboBehandeling);
+        guiData.comboBoxDEM.get(EComboBox.BLADGROOTTE).Bind(chkBladgrootte, cboBladgrootte);
+        guiData.comboBoxDEM.get(EComboBox.BLADKLEUR).Bind(chkBladKleur, cboBladkleur);
+        guiData.comboBoxDEM.get(EComboBox.BLADVORM).Bind(chkBladvorm, cboBladvorm);
+        guiData.comboBoxDEM.get(EComboBox.BLOEIKLEUR).Bind(chkBloeiKleur, cboBloeikleur);
+        guiData.comboBoxDEM.get(EComboBox.BLADKLEUR).Bind(chkBladKleur, cboBladkleur);
+        guiData.comboBoxDEM.get(EComboBox.FAMILIE).Bind(chkFamilie, cboFamilie);
+        guiData.comboBoxDEM.get(EComboBox.HABITAT).Bind(chkHabitat, cboHabitat);
+        guiData.comboBoxDEM.get(EComboBox.LEVENSDUUR).Bind(chkLevensduur_concurrentiekracht, cboLevensduur);
+        guiData.comboBoxDEM.get(EComboBox.MAAND).Bind(chkMaand, cboMaand);
+        guiData.comboBoxDEM.get(EComboBox.ONTWIKKELINGSSNELHEID).Bind(chkOntwikkelingssnelheid, cboOntwikkel);
+        guiData.comboBoxDEM.get(EComboBox.RATIOBLOEIBLAD).Bind(chkRatio_bloei_blad, cboRatioBloeiBlad);
+        guiData.comboBoxDEM.get(EComboBox.REACTIEANTAGONISTISCHEOMGEVING).Bind(chkReactieAntagonistischeOmg, cboReactieAnta);
+        guiData.comboBoxDEM.get(EComboBox.SPRUITFENOLOGIE).Bind(chkSpruitfenologie, cboSpruitfenologie);
 
-        guiData.sliderLabelDEM.get(ESliderLabel.BEZONNING).Bind(chkBezonning,sldBezonning,lblBezonning);
-        sldBezonning.valueChangingProperty().addListener((observableValue, aBoolean, t1) -> {guiData.sliderLabelDEM.get(ESliderLabel.BEZONNING).Update();});
-        guiData.sliderLabelDEM.get(ESliderLabel.VOEDINGSBEHOEFTE).Bind(chkVoedingsbehoefte,sldVoedingsbehoefte,lblVoedingsBehoefte);
-        guiData.sliderLabelDEM.get(ESliderLabel.VOCHTBEHOEFTE).Bind(chkVochtBehoefte,sldVochtbehoefte,lblVocht);
-        guiData.sliderLabelDEM.get(ESliderLabel.POLLENWAARDE).Bind(chkPollenwaarde,sldPollenwaarde,lblPollenwaarde);
-        guiData.sliderLabelDEM.get(ESliderLabel.NECTARWAARDE).Bind(chkNectarwaarde,sldNectarwaarde,lblNectarwaarde);
+        guiData.spinnerDEM.get(ESpinner.PERXJAAR).Bind(chkPerXJaar, nudPerXJaar);
+
+        guiData.sliderLabelDEM.get(ESliderLabel.BEZONNING).Bind(chkBezonning, sldBezonning, lblBezonning);
+        guiData.sliderLabelDEM.get(ESliderLabel.VOEDINGSBEHOEFTE).Bind(chkVoedingsbehoefte, sldVoedingsbehoefte, lblVoedingsBehoefte);
+        guiData.sliderLabelDEM.get(ESliderLabel.VOCHTBEHOEFTE).Bind(chkVochtBehoefte, sldVochtbehoefte, lblVocht);
+        guiData.sliderLabelDEM.get(ESliderLabel.POLLENWAARDE).Bind(chkPollenwaarde, sldPollenwaarde, lblPollenwaarde);
+        guiData.sliderLabelDEM.get(ESliderLabel.NECTARWAARDE).Bind(chkNectarwaarde, sldNectarwaarde, lblNectarwaarde);
 
         guiData.combinedCheckboxDEM.get(EComCheckbox.GRONDSOORT).Bind(chkGrondsoort, new CheckBox[]{chkGrondsoort_Z, chkGrondsoort_L, chkGrondsoort_K});
 
+        guiData.multiCheckboxDEM.get(EMultiCheckbox.SOCIABILITEIT).Bind(chkSociabiliteit, new CheckBox[]{chkSociabiliteit_1, chkSociabiliteit_2, chkSociabiliteit_3, chkSociabiliteit_4, chkSociabiliteit_5});
+
+        guiData.multiComboBoxDEM.get(EMultiComboBox.BLADKLEURPERMAAND).Bind(chkBladkleurPerMaand, new ComboBox[]{cboBladkleurJan, cboBladkleurFeb, cboBladkleurMaa, cboBladkleurApr, cboBladkleurMei, cboBladkleurJun, cboBladkleurJul, cboBladkleurAug, cboBladkleurSep, cboBladkleurOkt, cboBladkleurNov, cboBladkleurDec});
+        guiData.multiComboBoxDEM.get(EMultiComboBox.BLOEIKLEURPERMAAND).Bind(chkBloeikleurPerMaand, new ComboBox[]{cboBloeikleurJan, cboBloeikleurFeb, cboBloeikleurMaa, cboBloeikleurApr, cboBloeikleurMei, cboBloeikleurJun, cboBloeikleurJul, cboBloeikleurAug, cboBloeikleurSep, cboBloeikleurOkt, cboBloeikleurNov, cboBloeikleurDec});
+
+        guiData.multiSpinnerDEM.get(EMultiSpinner.BLOEIHOOGTE).Bind(chkBloeiHoogte, new Spinner[]{nudMinBloeihoogte, nudMaxBloeihoogte});
+        guiData.multiSpinnerDEM.get(EMultiSpinner.BLADHOOGTE).Bind(chkBladHoogte, new Spinner[]{nudMinBladhoogte, nudMaxBladhoogte});
+        guiData.multiSpinnerDEM.get(EMultiSpinner.MINBLOEIHOOGTEPERMAAND).Bind(chkMinBloeihoogtePerMaand, new Spinner[]{nudMinBloeihoogte_Jan, nudMinBloeihoogte_Feb, nudMinBloeihoogte_Maa, nudMinBloeihoogte_Apr, nudMinBloeihoogte_Mei, nudMinBloeihoogte_Jun, nudMinBloeihoogte_Jul, nudMinBloeihoogte_Aug, nudMinBloeihoogte_Sept, nudMinBloeihoogte_Okt, nudMinBloeihoogte_Nov, nudMinBloeihoogte_Dec});
+        guiData.multiSpinnerDEM.get(EMultiSpinner.MAXBLOEIHOOGTEPERMAAND).Bind(chkMaxBloeihoogtePerMaand, new Spinner[]{nudMaxBloeihoogte_Jan, nudMaxBloeihoogte_Feb, nudMaxBloeihoogte_Maa, nudMaxBloeihoogte_Apr, nudMaxBloeihoogte_Mei, nudMaxBloeihoogte_Jun, nudMaxBloeihoogte_Jul, nudMaxBloeihoogte_Aug, nudMaxBloeihoogte_Sept, nudMaxBloeihoogte_Okt, nudMaxBloeihoogte_Nov, nudMaxBloeihoogte_Dec});
+        guiData.multiSpinnerDEM.get(EMultiSpinner.MINBLADHOOGTEPERMAAND).Bind(chkMinBladhoogtePerMaand, new Spinner[]{nudMinBladhoogte_Jan, nudMinBladhoogte_Feb, nudMinBladhoogte_Maa, nudMinBladhoogte_Apr, nudMinBladhoogte_Mei, nudMinBladhoogte_Jun, nudMinBladhoogte_Jul, nudMinBladhoogte_Aug, nudMinBladhoogte_Sept, nudMinBladhoogte_Okt, nudMinBladhoogte_Nov, nudMinBladhoogte_Dec});
+        guiData.multiSpinnerDEM.get(EMultiSpinner.MAXBLADHOOGTEPERMAAND).Bind(chkMaxBladhoogtePerMaand, new Spinner[]{nudMaxBladhoogte_Jan, nudMaxBladhoogte_Feb, nudMaxBladhoogte_Maa, nudMaxBladhoogte_Apr, nudMaxBladhoogte_Mei, nudMaxBladhoogte_Jun, nudMaxBladhoogte_Jul, nudMaxBladhoogte_Aug, nudMaxBladhoogte_Sept, nudMaxBladhoogte_Okt, nudMaxBladhoogte_Nov, nudMaxBladhoogte_Dec});
+
+        guiData.radiogroupDEM.get(ERadiogroup.BIJVRIENDELIJK).Bind(chkBijvriendelijk, new RadioButton[]{rdbBijvriendelijk_Ja, rdbBijvriendelijk_Nee, rdbBijvriendelijk_Onbekend});
+        guiData.radiogroupDEM.get(ERadiogroup.VLINDERVRIENDELIJK).Bind(chkVlindervriendelijk, new RadioButton[]{rdbVlindervriendelijk_Ja, rdbVlindervriendelijk_Nee, rdbVlindervriendelijk_Onbekend});
+        guiData.radiogroupDEM.get(ERadiogroup.VORSTGEVOELIG).Bind(chkVorstgevoelig, new RadioButton[]{rdbVorstgevoelig_Ja, rdbVorstgevoelig_Nee, rdbVorstgevoelig_Onbekend});
+        guiData.radiogroupDEM.get(ERadiogroup.BLOEIWIJZE).Bind(chkBloeiwijze, new RadioButton[]{rdbBloeiwijze_Aar, rdbBloeiwijze_BredePluim, rdbBloeiwijze_Etage, rdbBloeiwijze_BolofKnop, rdbBloeiwijze_Margrietachtig, rdbBloeiwijze_Schotel, rdbBloeiwijze_Scherm, rdbBloeiwijze_SmallePluim});
+        guiData.radiogroupDEM.get(ERadiogroup.EETBAAR).Bind(chkEetbaar, new RadioButton[]{rdbEetbaar_Ja, rdbEetbaar_Nee, rdbEetbaar_Onbekend});
+        guiData.radiogroupDEM.get(ERadiogroup.HABITUS).Bind(chkHabitus, new RadioButton[]{rdbHabitus_1, rdbHabitus_2, rdbHabitus_3, rdbHabitus_4, rdbHabitus_5, rdbHabitus_6, rdbHabitus_7, rdbHabitus_8, rdbHabitus_9, rdbHabitus_10, rdbHabitus_11, rdbHabitus_12, rdbHabitus_13, rdbHabitus_14, rdbHabitus_15});
+        guiData.radiogroupDEM.get(ERadiogroup.GEUREND).Bind(chkGeurend, new RadioButton[]{rdbGeurend_Ja, rdbGeurend_Nee, rdbGeurend_Onbekend});
+        guiData.radiogroupDEM.get(ERadiogroup.KRUIDGEBRUIK).Bind(chkKruidgebruik, new RadioButton[]{rdbKruidgebruik_Ja, rdbKruidgebruik_Nee, rdbKruidgebruik_Onbekend});
+        guiData.radiogroupDEM.get(ERadiogroup.STRATEGIE).Bind(chkStrategie, new RadioButton[]{rdbStrategie_C, rdbStrategie_S, rdbStrategie_R, rdbStrategie_CS, rdbStrategie_CR, rdbStrategie_RS, rdbStrategie_CRS});
+        guiData.radiogroupDEM.get(ERadiogroup.LEVENSVORM).Bind(chkLevensvormVolgensRaunkhiaer, new RadioButton[]{rdbLevensvorm_1, rdbLevensvorm_2, rdbLevensvorm_3, rdbLevensvorm_4, rdbLevensvorm_5, rdbLevensvorm_6, rdbLevensvorm_7, rdbLevensvorm_8, rdbLevensvorm_9});
 
 
-
-
-
-
-        InitSliders();
+        //InitSliders();
 
         /*
         handler = new SearchHandler(dbConnection);
@@ -415,7 +432,7 @@ public class Controller {
         */
     }
 
-
+/*
     public void InitSliders() {
         SetSlider(sldNectarwaarde, 0, 5, false);
         SetSlider(sldPollenwaarde, 0, 5, false);
@@ -439,6 +456,7 @@ public class Controller {
      * @author bradley
      * spinner instellen enkel major ticks in integers
      */
+/*
     private void SetSlider(Slider slider, int min, int max, boolean ticklabels) {
         slider.setMin(min);
         slider.setMax(max);
@@ -450,10 +468,14 @@ public class Controller {
         slider.setValue(1);
     }
 
+ */
+
+/*
     /**
      * @author bradley
      * Aanmaken van connectie bindings tussen verschillende controls
      */
+/*
     private void InitBindings() {
         bindingData = new BindingData();
 
@@ -508,6 +530,7 @@ public class Controller {
         BindRadiobutton(ERequestArrayData.STRATEGIE, chkStrategie, rdbStrategieën);
 
          */
+/*
 
         ArrayList<RadioButton> rdbBijvriendelijken = new ArrayList<RadioButton>();
         rdbBijvriendelijken.add(rdbBijvriendelijk_Ja);
@@ -676,12 +699,14 @@ public class Controller {
 
 
     }
-
+*/
+/*
     /**
      * @param E        binding Enumeration
      * @param checkBox welke checkbox gebind moet worden
      * @Author bradley
      */
+/*
     public void Bind(ERequestData E, CheckBox checkBox, Slider slider, Label label) {
         slider.disableProperty().bind(checkBox.selectedProperty().not());
         bindingData.searchRequestData.get(E).DoSearchProperty().bind(checkBox.selectedProperty());
@@ -694,6 +719,7 @@ public class Controller {
      * @param comboBox te binden combobox
      * @author bradley
      */
+/*
     public void Bind(ERequestData E, CheckBox checkBox, ComboBox<String> comboBox) {
         comboBox.disableProperty().bind(checkBox.selectedProperty().not());
         bindingData.searchRequestData.get(E).DoSearchProperty().bind(checkBox.selectedProperty());
@@ -706,6 +732,7 @@ public class Controller {
      * @param spinner  te binden spinner
      * @author bradley
      */
+/*
     public void Bind(ERequestData E, CheckBox checkBox, Spinner<Integer> spinner) {
         spinner.disableProperty().bind(checkBox.selectedProperty().not());
         bindingData.searchRequestData.get(E).DoSearchProperty().bind(checkBox.selectedProperty());
@@ -756,7 +783,7 @@ public class Controller {
             bindingData.searchRequestArrayData.get(E).Value()[i].valueProperty().bind(listComboBOx.get(i).valueProperty());
         }
     }
-
+*/
     /**
      * @param infotables -> lijst van alle lijsten van gegevens uit de naakte tabellen
      * @author bradley, angelo
@@ -884,6 +911,9 @@ public class Controller {
         cboSpruitfenologie.getSelectionModel().selectFirst();
     }
 
+    /*
+
+
     public void InitSpinners() {
         setSpinner(nudPerXJaar, 10);
 
@@ -935,7 +965,7 @@ public class Controller {
     public void setSpinner(Spinner<Integer> spinner, int MaxValue) {
         spinner.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(0, MaxValue));
     }
-
+     */
     public void Click_Search(MouseEvent mouseEvent) throws SQLException {
         /*
         lsvOverzicht.getItems().clear();
