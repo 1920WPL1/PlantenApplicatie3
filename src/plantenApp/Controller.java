@@ -363,8 +363,6 @@ public class Controller {
     GUIdata guiData;
     SearchHandler handler;
     ChangeListener<Plant> lsvChanged;
-    ObservableList<Plant> plants;
-    ArrayList<Plant> planten;
 
     public void initialize() throws SQLException {
         dbConnection = Database.getInstance().getConnection();
@@ -686,16 +684,12 @@ public class Controller {
     }
 
     public void Click_Search(MouseEvent mouseEvent) throws SQLException {
+        ArrayList<Plant> planten= handler.Search(guiData, dbConnection);
+
         lsvOverzicht.getSelectionModel().selectedItemProperty().removeListener(lsvChanged);
         lsvOverzicht.getItems().clear();
         lsvOverzicht.getSelectionModel().selectedItemProperty().addListener(lsvChanged);
-
-
-        planten = new ArrayList<Plant>();
-        planten = handler.Search(guiData, dbConnection);
-
         lsvOverzicht.getItems().addAll(planten);
-
         lsvOverzicht.getSelectionModel().selectFirst();
 
 
