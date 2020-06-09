@@ -350,6 +350,7 @@ public class Controller {
     public ImageView imgPollenvormers;
     public ImageView imgParasolVormig;
 //endregion
+
     private InfoTables infoTables;
     private Connection dbConnection;
     GUIdata guiData;
@@ -381,28 +382,30 @@ public class Controller {
         habitus.add(imgSucculenten);
         habitus.add(imgPollenvormers);
         habitus.add(imgParasolVormig);
-
-
-            habitus.get(i).setImage(infoTables.getHabitusFotos().get(i).getFoto());
-        }
-        for (int i = 0; i < infoTables.getHabitusFotos().size(); i++) {
-        habitusrdb.add(rdbHabitus_15);
-        habitusrdb.add(rdbHabitus_14);
-        habitusrdb.add(rdbHabitus_13);
-        habitusrdb.add(rdbHabitus_12);
-        habitusrdb.add(rdbHabitus_10);
-        habitusrdb.add(rdbHabitus_11);
-        habitusrdb.add(rdbHabitus_8);
-        habitusrdb.add(rdbHabitus_9);
-        habitusrdb.add(rdbHabitus_7);
-        habitusrdb.add(rdbHabitus_6);
-        habitusrdb.add(rdbHabitus_5);
-        habitusrdb.add(rdbHabitus_4);
+        ArrayList<RadioButton> habitusrdb = new ArrayList<>();
+        habitusrdb.add(rdbHabitus_1);
         habitusrdb.add(rdbHabitus_2);
         habitusrdb.add(rdbHabitus_3);
-        habitusrdb.add(rdbHabitus_1);
-        ArrayList<RadioButton> habitusrdb = new ArrayList<>();
+        habitusrdb.add(rdbHabitus_4);
+        habitusrdb.add(rdbHabitus_5);
+        habitusrdb.add(rdbHabitus_6);
+        habitusrdb.add(rdbHabitus_7);
+        habitusrdb.add(rdbHabitus_8);
+        habitusrdb.add(rdbHabitus_9);
+        habitusrdb.add(rdbHabitus_10);
+        habitusrdb.add(rdbHabitus_11);
+        habitusrdb.add(rdbHabitus_12);
+        habitusrdb.add(rdbHabitus_13);
+        habitusrdb.add(rdbHabitus_14);
+        habitusrdb.add(rdbHabitus_15);
+        for (int i = 0; i < infoTables.getHabitusFotos().size(); i++) {
+            habitusrdb.get(i).setText(infoTables.getHabitusFotos().get(i).getWaarde());
+            habitus.get(i).setImage(infoTables.getHabitusFotos().get(i).getFoto());
+        }
+
+
         guiData = new GUIdata(dbConnection);
+        //region bindings
         guiData.textFieldDEM.get(ETextfield.SEARCH).Bind(txtSearch);
         guiData.comboBoxDEM.get(EComboBox.TYPE).Bind(chkType, cboType);
         guiData.comboBoxDEM.get(EComboBox.FAMILIE).Bind(chkFamilie, cboFamilie);
@@ -418,7 +421,7 @@ public class Controller {
             }
         });
         guiData.comboBoxDEM.get(EComboBox.TYPE).doSearchProperty().addListener((observableValue, aBoolean, t1) -> {
-            if (guiData.comboBoxDEM.get(EComboBox.TYPE).isDoSearch()){
+            if (guiData.comboBoxDEM.get(EComboBox.TYPE).isDoSearch()) {
                 try {
                     ArrayList<String> list = infotablesDAO.selectFamiliesByType(guiData.comboBoxDEM.get(EComboBox.TYPE).getValue());
                     guiData.comboBoxDEM.get(EComboBox.FAMILIE).setPossibleValues(list);
@@ -426,8 +429,7 @@ public class Controller {
                 } catch (SQLException e) {
                     e.printStackTrace();
                 }
-            }
-            else{
+            } else {
                 guiData.comboBoxDEM.get(EComboBox.FAMILIE).setPossibleValues(infoTables.getFamilies());
                 guiData.comboBoxDEM.get(EComboBox.FAMILIE).updateComboBoxWithPossibleValues(cboFamilie);
             }
@@ -481,13 +483,7 @@ public class Controller {
         guiData.radiogroupDEM.get(ERadiogroup.LEVENSVORM).Bind(chkLevensvormVolgensRaunkhiaer, new RadioButton[]{rdbLevensvorm_1, rdbLevensvorm_2, rdbLevensvorm_3, rdbLevensvorm_4, rdbLevensvorm_5, rdbLevensvorm_6, rdbLevensvorm_7, rdbLevensvorm_8, rdbLevensvorm_9});
         //endregion
 
-
         InitListView();
-        //FillComboboxes(infoTables);
-
-
-
-
     }
 
     /**
@@ -534,7 +530,7 @@ public class Controller {
                     //TODO fix this
                     lblOntwikkelingsSnelheid.setText(newValue.getCommensalisme().getOntwikkelingssnelheid());
                     System.out.println(newValue.getCommensalisme().getSociabiliteit().toString());
-                    for(int i = 0;i<newValue.getCommensalisme().getSociabiliteit().size();i++) {
+                    for (int i = 0; i < newValue.getCommensalisme().getSociabiliteit().size(); i++) {
                         if (newValue.getCommensalisme().getSociabiliteit().get(i) == 1) {
                             chkSocPlantI.setSelected(true);
                         } else {
@@ -660,10 +656,9 @@ public class Controller {
                     lblBloeikleurDec.setText(newValue.getFenotype().getBloeikleur().getDec());
 
 
+                    for (int i = 0; i < infoTables.getHabitusFotos().size(); i++) {
 
-                    for(int i = 0; i<infoTables.getHabitusFotos().size(); i++){
-
-                        if(infoTables.getHabitusFotos().get(i).getWaarde().equals(newValue.getFenotype().getHabitus())){
+                        if (infoTables.getHabitusFotos().get(i).getWaarde().equals(newValue.getFenotype().getHabitus())) {
 
 
                             Image image;
@@ -697,9 +692,9 @@ public class Controller {
         lsvOverzicht.getSelectionModel().selectFirst();
 
 
-        if (!pnlUitvoer.isVisible()){
+        if (!pnlUitvoer.isVisible()) {
             pnlUitvoer.setVisible(true);
-        } else if(planten.size() == 0) {
+        } else if (planten.size() == 0) {
             pnlUitvoer.setVisible(false);
         }
 
