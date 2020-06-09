@@ -22,6 +22,9 @@ public class Plant {
     private Fenotype fenotype;
     private Extra extra;
 
+    public Plant() {
+
+    }
 
     public Plant(int id, String type, String familie, String geslacht, String soort, String variatie, int minPlantdichtheid, int maxPlantdichtheid) {
         this.id = id;

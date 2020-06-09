@@ -53,7 +53,7 @@ public class CommensalismeDAO implements Queries {
         ResultSet rs = stmtSelectCommeByID.executeQuery();
         if (rs.next()) {
             comm = new Commensalisme(
-                    rs.getInt("commensialisme_id"),
+                    rs.getInt("commensalisme_id"),
                     rs.getInt("plant_id"),
                     rs.getString("strategie"),
                     rs.getString("ontwikkelingssnelheid"),
@@ -82,7 +82,7 @@ public class CommensalismeDAO implements Queries {
         ResultSet rs = stmtSelectCommeMultiByID.executeQuery();
         while (rs.next()) {
             CommMulti_Eigenschap commEigenschap = new CommMulti_Eigenschap(
-                    rs.getInt("commensialisme_id"),
+                    rs.getInt("commensalisme_id"),
                     rs.getString("eigenschap"),
                     rs.getString("waarde")
             );

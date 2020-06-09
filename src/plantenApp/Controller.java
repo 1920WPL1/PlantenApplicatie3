@@ -2,16 +2,15 @@ package plantenApp;
 
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.collections.transformation.SortedList;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
 import javafx.scene.control.*;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
 import plantenApp.java.dao.Database;
 import plantenApp.java.dao.InfoTablesDAO;
-import plantenApp.java.dao.PlantDAO;
 import plantenApp.java.model.BindingData;
 import plantenApp.java.model.InfoTables;
 import plantenApp.java.model.Plant;
@@ -21,11 +20,9 @@ import plantenApp.java.model.data.enums.*;
 import plantenApp.java.utils.ERequestArrayData;
 import plantenApp.java.utils.ERequestData;
 
-import java.io.IOException;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.Set;
 
 public class Controller {
     public ComboBox<String> cboBladkleur;
@@ -240,13 +237,137 @@ public class Controller {
     public Spinner<Integer> nudMinBladhoogte_Okt;
     public Spinner<Integer> nudMinBladhoogte_Nov;
     public Spinner<Integer> nudMinBladhoogte_Dec;
+    public ImageView imgHabitus;
+    public ImageView imgBlad;
+    public ImageView imgBloei;
+    public Label lblType;
+    public Label lblFamilie;
+    public Label lblGeslacht;
+    public Label lblSoort;
+    public Label lblVariant;
+    public ListView lsvOverzicht;
+    public Label lblDichtheidX;
+    public Label lblDichtheidY;
+    public Label lblOntwikkelingsSnelheid;
+    public CheckBox chkSocPlantI;
+    public CheckBox chkSocPlantII;
+    public CheckBox chkSocPlantIII;
+    public CheckBox chkSocPlantIV;
+    public CheckBox chkSocPlantV;
+    public Label lblStrategie;
+    public Label lblBezonning2;
+    public Label lblVochtBehoefte;
+    public Label lblVoedingsBehoefte2;
+    public Label lblReactie;
+    public Label lblGrondSoort;
+    public Label lblNectarwaarde2;
+    public Label lblPollenwaarde2;
+    public Label lblBijvriendelijk;
+    public Label lblVlinderVriendelijk;
+    public Label lblEetbaar;
+    public Label lblGeurend;
+    public Label lblVorstGevoelig;
+    public Label lblBladGrootte;
+    public Label lblBladVorm;
+    public Label lblRatio;
+    public Label lblSpruitFenologie;
+    public Label lblLevensVorm;
+    public Label lblBloeikleurJan;
+    public Label lblBloeikleurFeb;
+    public Label lblBloeikleurMaa;
+    public Label lblBloeikleurApr;
+    public Label lblBloeikleurMei;
+    public Label lblBloeikleurJun;
+    public Label lblBloeikleurJul;
+    public Label lblBloeikleurAug;
+    public Label lblBloeikleurSep;
+    public Label lblBloeikleurOkt;
+    public Label lblBloeikleurNov;
+    public Label lblBloeikleurDec;
+    public BorderPane pnlUitvoer;
+    public Label lblMinBloeihoogteJan;
+    public Label lblMinBloeihoogteFeb;
+    public Label lblMinBloeihoogteMaa;
+    public Label lblMinBloeihoogteApr;
+    public Label lblMinBloeihoogteMei;
+    public Label lblMinBloeihoogteJun;
+    public Label lblMinBloeihoogteJul;
+    public Label lblMinBloeihoogteAug;
+    public Label lblMinBloeihoogteSep;
+    public Label lblMinBloeihoogteOkt;
+    public Label lblMinBloeihoogteNov;
+    public Label lblMinBloeihoogteDec;
+    public Label lblMaxBloeihoogteJan;
+    public Label lblMaxBloeihoogteFeb;
+    public Label lblMaxBloeihoogteMaa;
+    public Label lblMaxBloeihoogteApr;
+    public Label lblMaxBloeihoogteMei;
+    public Label lblMaxBloeihoogteJun;
+    public Label lblMaxBloeihoogteJul;
+    public Label lblMaxBloeihoogteAug;
+    public Label lblMaxBloeihoogteSep;
+    public Label lblMaxBloeihoogteOkt;
+    public Label lblMaxBloeihoogteNov;
+    public Label lblMaxBloeihoogteDec;
+    public Label lblMaxBladgrootteJan;
+    public Label lblMaxBladgrootteFeb;
+    public Label lblMaxBladgrootteMaa;
+    public Label lblMaxBladgrootteApr;
+    public Label lblMaxBladgrootteMei;
+    public Label lblMaxBladgrootteJun;
+    public Label lblMaxBladgrootteJul;
+    public Label lblMaxBladgrootteAug;
+    public Label lblMaxBladgrootteSep;
+    public Label lblMaxBladgrootteOkt;
+    public Label lblMaxBladgrootteNov;
+    public Label lblMaxBladgrootteDec;
+    public Label lblBladkleurJan;
+    public Label lblBladkleurFeb;
+    public Label lblBladkleurMaa;
+    public Label lblBladkleurApr;
+    public Label lblBladkleurMei;
+    public Label lblBladkleurJun;
+    public Label lblBladkleurJul;
+    public Label lblBladkleurAug;
+    public Label lblBladkleurSep;
+    public Label lblBladkleurOkt;
+    public Label lblBladkleurNov;
+    public Label lblBladkleurDec;
+    public Label lblHabitus;
+    public Label lblBloeiwijze;
+    public Label lblKruidgebruik;
+    public ListView lsvLevensduur;
+    public ListView lsvHabitat;
+    public ImageView imgTufted;
+    public ImageView imgUprightArching;
+    public ImageView imgArching;
+    public ImageView imgUprightDivergent;
+    public ImageView imgUprightErect;
+    public ImageView imgMounded;
+    public ImageView ImgKruipend;
+    public ImageView imgWaaiervorming;
+    public ImageView imgKussenVormend;
+    public ImageView imgZuilvormig;
+    public ImageView imgUitbuigend;
+    public ImageView imgHabitus2;
+    public ImageView imgSucculenten;
+    public ImageView imgPollenvormers;
+    public ImageView imgParasolVormig;
 
     private InfoTables infoTables;
     private Connection dbConnection;
     BindingData bindingData;
-    GUIdata guiData;
+    SearchHandler handler;
+    ChangeListener<Plant> lsvChanged;
+    ObservableList<Plant> plants;
+    ArrayList<Plant> planten;
 
     public void initialize() throws SQLException {
+        pnlAdvSearch.setExpanded(false);
+        dbConnection = Database.getInstance().getConnection();
+        /*infotabel object aanmaken*/
+        InfoTablesDAO infotablesDAO = new InfoTablesDAO(dbConnection);
+        infoTables = infotablesDAO.getInfoTables();
         guiData = new GUIdata();
         guiData.textFieldDEM.get(ETextfield.SEARCH).Bind(txtSearch);
         guiData.comboBoxDEM.get(EComboBox.TYPE).Bind(chkType, cboType);
@@ -265,6 +386,7 @@ public class Controller {
         guiData.comboBoxDEM.get(EComboBox.REACTIEANTAGONISTISCHEOMGEVING).Bind(chkReactieAntagonistischeOmg, cboReactieAnta);
         guiData.comboBoxDEM.get(EComboBox.SPRUITFENOLOGIE).Bind(chkSpruitfenologie, cboSpruitfenologie);
 
+        handler = new SearchHandler(dbConnection);
         guiData.spinnerDEM.get(ESpinner.PERXJAAR).Bind(chkPerXJaar, nudPerXJaar);
 
         guiData.sliderLabelDEM.get(ESliderLabel.BEZONNING).Bind(chkBezonning, sldBezonning, lblBezonning);
@@ -274,11 +396,45 @@ public class Controller {
         guiData.sliderLabelDEM.get(ESliderLabel.NECTARWAARDE).Bind(chkNectarwaarde, sldNectarwaarde, lblNectarwaarde);
 
         guiData.combinedCheckboxDEM.get(EComCheckbox.GRONDSOORT).Bind(chkGrondsoort, new CheckBox[]{chkGrondsoort_Z, chkGrondsoort_L, chkGrondsoort_K});
+        InitListView();
+        FillComboboxes(infoTables);
 
         guiData.multiCheckboxDEM.get(EMultiCheckbox.SOCIABILITEIT).Bind(chkSociabiliteit, new CheckBox[]{chkSociabiliteit_1, chkSociabiliteit_2, chkSociabiliteit_3, chkSociabiliteit_4, chkSociabiliteit_5});
+        ArrayList<ImageView> habitus = new ArrayList<>();
+        habitus.add(imgTufted);
+        habitus.add(imgUprightArching);
+        habitus.add(imgArching);
+        habitus.add(imgUprightDivergent);
+        habitus.add(imgUprightErect);
+        habitus.add(imgMounded);
+        habitus.add(ImgKruipend);
+        habitus.add(imgWaaiervorming);
+        habitus.add(imgKussenVormend);
+        habitus.add(imgZuilvormig);
+        habitus.add(imgUitbuigend);
+        habitus.add(imgHabitus2); //TODO naam aanpassen
+        habitus.add(imgSucculenten);
+        habitus.add(imgPollenvormers);
+        habitus.add(imgParasolVormig);
 
         guiData.multiComboBoxDEM.get(EMultiComboBox.BLADKLEURPERMAAND).Bind(chkBladkleurPerMaand, new ComboBox[]{cboBladkleurJan, cboBladkleurFeb, cboBladkleurMaa, cboBladkleurApr, cboBladkleurMei, cboBladkleurJun, cboBladkleurJul, cboBladkleurAug, cboBladkleurSep, cboBladkleurOkt, cboBladkleurNov, cboBladkleurDec});
         guiData.multiComboBoxDEM.get(EMultiComboBox.BLOEIKLEURPERMAAND).Bind(chkBloeikleurPerMaand, new ComboBox[]{cboBloeikleurJan, cboBloeikleurFeb, cboBloeikleurMaa, cboBloeikleurApr, cboBloeikleurMei, cboBloeikleurJun, cboBloeikleurJul, cboBloeikleurAug, cboBloeikleurSep, cboBloeikleurOkt, cboBloeikleurNov, cboBloeikleurDec});
+        ArrayList<RadioButton> habitusrdb = new ArrayList<>();
+        habitusrdb.add(rdbHabitus_1);
+        habitusrdb.add(rdbHabitus_2);
+        habitusrdb.add(rdbHabitus_3);
+        habitusrdb.add(rdbHabitus_4);
+        habitusrdb.add(rdbHabitus_5);
+        habitusrdb.add(rdbHabitus_6);
+        habitusrdb.add(rdbHabitus_7);
+        habitusrdb.add(rdbHabitus_8);
+        habitusrdb.add(rdbHabitus_9);
+        habitusrdb.add(rdbHabitus_10);
+        habitusrdb.add(rdbHabitus_11);
+        habitusrdb.add(rdbHabitus_12);
+        habitusrdb.add(rdbHabitus_13);
+        habitusrdb.add(rdbHabitus_14);
+        habitusrdb.add(rdbHabitus_15);
 
         guiData.multiSpinnerDEM.get(EMultiSpinner.BLOEIHOOGTE).Bind(chkBloeiHoogte, new Spinner[]{nudMinBloeihoogte, nudMaxBloeihoogte});
         guiData.multiSpinnerDEM.get(EMultiSpinner.BLADHOOGTE).Bind(chkBladHoogte, new Spinner[]{nudMinBladhoogte, nudMaxBladhoogte});
@@ -286,6 +442,12 @@ public class Controller {
         guiData.multiSpinnerDEM.get(EMultiSpinner.MAXBLOEIHOOGTEPERMAAND).Bind(chkMaxBloeihoogtePerMaand, new Spinner[]{nudMaxBloeihoogte_Jan, nudMaxBloeihoogte_Feb, nudMaxBloeihoogte_Maa, nudMaxBloeihoogte_Apr, nudMaxBloeihoogte_Mei, nudMaxBloeihoogte_Jun, nudMaxBloeihoogte_Jul, nudMaxBloeihoogte_Aug, nudMaxBloeihoogte_Sept, nudMaxBloeihoogte_Okt, nudMaxBloeihoogte_Nov, nudMaxBloeihoogte_Dec});
         guiData.multiSpinnerDEM.get(EMultiSpinner.MINBLADHOOGTEPERMAAND).Bind(chkMinBladhoogtePerMaand, new Spinner[]{nudMinBladhoogte_Jan, nudMinBladhoogte_Feb, nudMinBladhoogte_Maa, nudMinBladhoogte_Apr, nudMinBladhoogte_Mei, nudMinBladhoogte_Jun, nudMinBladhoogte_Jul, nudMinBladhoogte_Aug, nudMinBladhoogte_Sept, nudMinBladhoogte_Okt, nudMinBladhoogte_Nov, nudMinBladhoogte_Dec});
         guiData.multiSpinnerDEM.get(EMultiSpinner.MAXBLADHOOGTEPERMAAND).Bind(chkMaxBladhoogtePerMaand, new Spinner[]{nudMaxBladhoogte_Jan, nudMaxBladhoogte_Feb, nudMaxBladhoogte_Maa, nudMaxBladhoogte_Apr, nudMaxBladhoogte_Mei, nudMaxBladhoogte_Jun, nudMaxBladhoogte_Jul, nudMaxBladhoogte_Aug, nudMaxBladhoogte_Sept, nudMaxBladhoogte_Okt, nudMaxBladhoogte_Nov, nudMaxBladhoogte_Dec});
+        for(int i = 0; i<infoTables.getHabitusFotos().size(); i++){
+            System.out.println(infoTables.getHabitusFotos().get(i).getWaarde());
+            habitusrdb.get(i).textProperty().setValue(infoTables.getHabitusFotos().get(i).getWaarde());
+            System.out.println(infoTables.getHabitusFotos().get(i).getFoto());
+            habitus.get(i).setImage(infoTables.getHabitusFotos().get(i).getFoto());
+        }
 
         guiData.radiogroupDEM.get(ERadiogroup.BIJVRIENDELIJK).Bind(chkBijvriendelijk, new RadioButton[]{rdbBijvriendelijk_Ja, rdbBijvriendelijk_Nee, rdbBijvriendelijk_Onbekend});
         guiData.radiogroupDEM.get(ERadiogroup.VLINDERVRIENDELIJK).Bind(chkVlindervriendelijk, new RadioButton[]{rdbVlindervriendelijk_Ja, rdbVlindervriendelijk_Nee, rdbVlindervriendelijk_Onbekend});
@@ -297,63 +459,190 @@ public class Controller {
         guiData.radiogroupDEM.get(ERadiogroup.KRUIDGEBRUIK).Bind(chkKruidgebruik, new RadioButton[]{rdbKruidgebruik_Ja, rdbKruidgebruik_Nee, rdbKruidgebruik_Onbekend});
         guiData.radiogroupDEM.get(ERadiogroup.STRATEGIE).Bind(chkStrategie, new RadioButton[]{rdbStrategie_C, rdbStrategie_S, rdbStrategie_R, rdbStrategie_CS, rdbStrategie_CR, rdbStrategie_RS, rdbStrategie_CRS});
         guiData.radiogroupDEM.get(ERadiogroup.LEVENSVORM).Bind(chkLevensvormVolgensRaunkhiaer, new RadioButton[]{rdbLevensvorm_1, rdbLevensvorm_2, rdbLevensvorm_3, rdbLevensvorm_4, rdbLevensvorm_5, rdbLevensvorm_6, rdbLevensvorm_7, rdbLevensvorm_8, rdbLevensvorm_9});
-
+        /*TODO
+        cboType.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observableValue, String s, String t1) {
+                try {
+                    InfoTablesDAO dao = new InfoTablesDAO(dbConnection);
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+                cboFamilie.getItems().addAll(infotablesDAO.selectFamilyByType(bindingData.searchRequestData.get(ERequestData.TYPE).Value().))
+            }
+        });*/
+    }
 
         //InitSliders();
-
-        /*
-        handler = new SearchHandler(dbConnection);
-
-        lsvOverzicht.setCellFactory(param -> new ListCell<Plant>() {
+    /**
+     * @author bradley
+     */
+    public void InitListView() {
+       lsvOverzicht.setCellFactory(param -> new ListCell<Plant>() {
             @Override
             protected void updateItem(Plant item, boolean empty) {
                 super.updateItem(item, empty);
 
-                if (empty || item == null ) {
+                if (empty || item == null) {
                     setText(null);
+                    setGraphic(null);
                 } else {
                     setText(item.getType() + " " + item.getFamilie() + " " + item.getGeslacht() + " " + item.getSoort() + " " + item.getVariatie());
                 }
             }
         });
-        lsvOverzicht.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Plant>() {
 
+        lsvChanged = new ChangeListener<Plant>() {
             @Override
-            public void changed(ObservableValue<? extends Plant> observable, Plant oldValue, Plant plant) {
+            public void changed(ObservableValue<? extends Plant> observable, Plant oldValue, Plant newValue) throws NullPointerException {
                 // Your action here
+
                 try {
-                    plant = handler.SelectFullPlant(plant);
-
-                    lblType.setText(plant.getType());
-
-                } catch (SQLException e) {
+                    newValue = handler.SelectFullPlant(newValue);
+                } catch (Exception e) {
                     e.printStackTrace();
+
+                }
+
+                try {
+                    //standaard
+                    lblType.setText(newValue.getType());
+                    lblFamilie.setText(newValue.getFamilie());
+                    lblGeslacht.setText(newValue.getGeslacht());
+                    lblSoort.setText(newValue.getSoort());
+                    lblVariant.setText(newValue.getVariatie());
+                    lblDichtheidX.setText(String.valueOf(newValue.getMinPlantdichtheid()));
+                    lblDichtheidY.setText(String.valueOf(newValue.getMaxPlantdichtheid()));
+
+                    //commensalisme
+                    lblOntwikkelingsSnelheid.setText(newValue.getCommensalisme().getOntwikkelingssnelheid());
+                   /*if (newValue.getCommensalisme().getSociabiliteit().get(0) == 1){chkSocPlantI.setSelected(true);}
+                    if (newValue.getCommensalisme().getSociabiliteit().get(0) == 2){chkSocPlantII.setSelected(true);}
+                    if (newValue.getCommensalisme().getSociabiliteit().get(0) == 3){chkSocPlantIII.setSelected(true);}
+                    if (newValue.getCommensalisme().getSociabiliteit().get(0) == 4){chkSocPlantIV.setSelected(true);}
+                    if (newValue.getCommensalisme().getSociabiliteit().get(0) == 5){chkSocPlantV.setSelected(true);}*/
+                    lblStrategie.setText(newValue.getCommensalisme().getStrategie());
+                    //TODO lsvLevensduur.setItems();
+
+                    //abiotische factoren
+                    lblBezonning2.setText(newValue.getAbiotischeFactoren().getBezonning());
+                    lblVochtBehoefte.setText(newValue.getAbiotischeFactoren().getVochtbehoefte());
+                    lblVoedingsBehoefte2.setText(newValue.getAbiotischeFactoren().getVoedingsbehoefte());
+                    lblReactie.setText(newValue.getAbiotischeFactoren().getReactieAntagonistischeOmgeving());
+                    lblGrondSoort.setText(newValue.getAbiotischeFactoren().getGrondsoort());
+                    //TODO lsvHabitat.setItems();
+
+                    //extra
+                    lblNectarwaarde2.setText(String.valueOf(newValue.getExtra().getNectarwaarde()));
+                    lblPollenwaarde2.setText(String.valueOf(newValue.getExtra().getPollenwaarde()));
+                    lblBijvriendelijk.setText(newValue.getExtra().getBijvriendelijk());
+                    lblVlinderVriendelijk.setText(newValue.getExtra().getVlindervriendelijk());
+                    lblEetbaar.setText(newValue.getExtra().getEetbaar());
+                    lblKruidgebruik.setText(newValue.getExtra().getKruidgebruik());
+                    lblGeurend.setText((newValue.getExtra().getGeurend()));
+                    lblVorstGevoelig.setText(newValue.getExtra().getVorstgevoelig());
+
+                    //fenotype
+                    lblBladGrootte.setText(String.valueOf(newValue.getFenotype().getBladgrootte()));
+                    lblBladVorm.setText(newValue.getFenotype().getBladvorm());
+                    lblRatio.setText(newValue.getFenotype().getRatio_bloei_blad());
+                    lblSpruitFenologie.setText(newValue.getFenotype().getSpruitfenologie());
+                    lblLevensVorm.setText(newValue.getFenotype().getLevensvorm());
+                    lblHabitus.setText(newValue.getFenotype().getHabitus());
+                    lblBloeiwijze.setText(newValue.getFenotype().getBloeiwijze());
+
+                    //maandelijkse gegevens
+                    lblMaxBladgrootteJan.setText(String.valueOf(newValue.getFenotype().getBladhoogte().getJan()));
+                    lblMaxBladgrootteFeb.setText(String.valueOf(newValue.getFenotype().getBladhoogte().getFeb()));
+                    lblMaxBladgrootteMaa.setText(String.valueOf(newValue.getFenotype().getBladhoogte().getMaa()));
+                    lblMaxBladgrootteApr.setText(String.valueOf(newValue.getFenotype().getBladhoogte().getApr()));
+                    lblMaxBladgrootteMei.setText(String.valueOf(newValue.getFenotype().getBladhoogte().getMei()));
+                    lblMaxBladgrootteJun.setText(String.valueOf(newValue.getFenotype().getBladhoogte().getJun()));
+                    lblMaxBladgrootteJul.setText(String.valueOf(newValue.getFenotype().getBladhoogte().getJul()));
+                    lblMaxBladgrootteAug.setText(String.valueOf(newValue.getFenotype().getBladhoogte().getAug()));
+                    lblMaxBladgrootteSep.setText(String.valueOf(newValue.getFenotype().getBladhoogte().getSep()));
+                    lblMaxBladgrootteOkt.setText(String.valueOf(newValue.getFenotype().getBladhoogte().getOkt()));
+                    lblMaxBladgrootteNov.setText(String.valueOf(newValue.getFenotype().getBladhoogte().getNov()));
+                    lblMaxBladgrootteDec.setText(String.valueOf(newValue.getFenotype().getBladhoogte().getDec()));
+
+                    lblBladkleurJan.setText(newValue.getFenotype().getBladkleur().getJan());
+                    lblBladkleurFeb.setText(newValue.getFenotype().getBladkleur().getFeb());
+                    lblBladkleurMaa.setText(newValue.getFenotype().getBladkleur().getMaa());
+                    lblBladkleurApr.setText(newValue.getFenotype().getBladkleur().getApr());
+                    lblBladkleurMei.setText(newValue.getFenotype().getBladkleur().getMei());
+                    lblBladkleurJun.setText(newValue.getFenotype().getBladkleur().getJun());
+                    lblBladkleurJul.setText(newValue.getFenotype().getBladkleur().getJul());
+                    lblBladkleurAug.setText(newValue.getFenotype().getBladkleur().getAug());
+                    lblBladkleurSep.setText(newValue.getFenotype().getBladkleur().getSep());
+                    lblBladkleurOkt.setText(newValue.getFenotype().getBladkleur().getOkt());
+                    lblBladkleurNov.setText(newValue.getFenotype().getBladkleur().getNov());
+                    lblBladkleurDec.setText(newValue.getFenotype().getBladkleur().getDec());
+
+                    lblMinBloeihoogteJan.setText(String.valueOf(newValue.getFenotype().getMinBloeihoogte().getJan()));
+                    lblMinBloeihoogteFeb.setText(String.valueOf(newValue.getFenotype().getMinBloeihoogte().getFeb()));
+                    lblMinBloeihoogteMaa.setText(String.valueOf(newValue.getFenotype().getMinBloeihoogte().getMaa()));
+                    lblMinBloeihoogteApr.setText(String.valueOf(newValue.getFenotype().getMinBloeihoogte().getApr()));
+                    lblMinBloeihoogteMei.setText(String.valueOf(newValue.getFenotype().getMinBloeihoogte().getMei()));
+                    lblMinBloeihoogteJun.setText(String.valueOf(newValue.getFenotype().getMinBloeihoogte().getJun()));
+                    lblMinBloeihoogteJul.setText(String.valueOf(newValue.getFenotype().getMinBloeihoogte().getJul()));
+                    lblMinBloeihoogteAug.setText(String.valueOf(newValue.getFenotype().getMinBloeihoogte().getAug()));
+                    lblMinBloeihoogteSep.setText(String.valueOf(newValue.getFenotype().getMinBloeihoogte().getSep()));
+                    lblMinBloeihoogteOkt.setText(String.valueOf(newValue.getFenotype().getMinBloeihoogte().getOkt()));
+                    lblMinBloeihoogteNov.setText(String.valueOf(newValue.getFenotype().getMinBloeihoogte().getNov()));
+                    lblMinBloeihoogteDec.setText(String.valueOf(newValue.getFenotype().getMinBloeihoogte().getDec()));
+
+                    lblMaxBloeihoogteJan.setText(String.valueOf(newValue.getFenotype().getMaxBloeihoogte().getJan()));
+                    lblMaxBloeihoogteFeb.setText(String.valueOf(newValue.getFenotype().getMaxBloeihoogte().getFeb()));
+                    lblMaxBloeihoogteMaa.setText(String.valueOf(newValue.getFenotype().getMaxBloeihoogte().getMaa()));
+                    lblMaxBloeihoogteApr.setText(String.valueOf(newValue.getFenotype().getMaxBloeihoogte().getApr()));
+                    lblMaxBloeihoogteMei.setText(String.valueOf(newValue.getFenotype().getMaxBloeihoogte().getMei()));
+                    lblMaxBloeihoogteJun.setText(String.valueOf(newValue.getFenotype().getMaxBloeihoogte().getJun()));
+                    lblMaxBloeihoogteJul.setText(String.valueOf(newValue.getFenotype().getMaxBloeihoogte().getJul()));
+                    lblMaxBloeihoogteAug.setText(String.valueOf(newValue.getFenotype().getMaxBloeihoogte().getAug()));
+                    lblMaxBloeihoogteSep.setText(String.valueOf(newValue.getFenotype().getMaxBloeihoogte().getSep()));
+                    lblMaxBloeihoogteOkt.setText(String.valueOf(newValue.getFenotype().getMaxBloeihoogte().getOkt()));
+                    lblMaxBloeihoogteNov.setText(String.valueOf(newValue.getFenotype().getMaxBloeihoogte().getNov()));
+                    lblMaxBloeihoogteDec.setText(String.valueOf(newValue.getFenotype().getMaxBloeihoogte().getDec()));
+
+                    lblBloeikleurJan.setText(newValue.getFenotype().getBloeikleur().getJan());
+                    lblBloeikleurFeb.setText(newValue.getFenotype().getBloeikleur().getFeb());
+                    lblBloeikleurMaa.setText(newValue.getFenotype().getBloeikleur().getMaa());
+                    lblBloeikleurApr.setText(newValue.getFenotype().getBloeikleur().getApr());
+                    lblBloeikleurMei.setText(newValue.getFenotype().getBloeikleur().getMei());
+                    lblBloeikleurJun.setText(newValue.getFenotype().getBloeikleur().getJun());
+                    lblBloeikleurJul.setText(newValue.getFenotype().getBloeikleur().getJul());
+                    lblBloeikleurAug.setText(newValue.getFenotype().getBloeikleur().getAug());
+                    lblBloeikleurSep.setText(newValue.getFenotype().getBloeikleur().getSep());
+                    lblBloeikleurOkt.setText(newValue.getFenotype().getBloeikleur().getOkt());
+                    lblBloeikleurNov.setText(newValue.getFenotype().getBloeikleur().getNov());
+                    lblBloeikleurDec.setText(newValue.getFenotype().getBloeikleur().getDec());
+
+
+
+
+
+                } catch (NullPointerException ex){
+                    ex.printStackTrace();
                 }
             }
-        });
+        };
+        lsvOverzicht.getSelectionModel().selectedItemProperty().addListener(lsvChanged);
+    }
 
-
-
-        pnlAdvSearch.setExpanded(false);
-        dbConnection = Database.getInstance().getConnection();
-        /*infotabel object aanmaken*/
-        /*
-        InfoTablesDAO infotablesDAO = new InfoTablesDAO(dbConnection);
-        infoTables = infotablesDAO.getInfoTables();
-        FillComboboxes(infoTables);
-
-        InitSpinners();
-
+    /**
+     * @author bradley
+     */
+    public void InitSliders() {
         sldNectarwaarde.valueProperty().addListener(new ChangeListener<Number>() {
             @Override
             public void changed(ObservableValue<? extends Number> observableValue, Number number, Number t1) {
-                lblNectarwaarde.setText(String.valueOf((int)sldNectarwaarde.getValue()));
+                lblNectarwaarde.setText(String.valueOf((int) sldNectarwaarde.getValue()));
             }
         });
         sldPollenwaarde.valueProperty().addListener(new ChangeListener<Number>() {
             @Override
             public void changed(ObservableValue<? extends Number> observableValue, Number number, Number t1) {
-                lblPollenwaarde.setText(String.valueOf((int)sldPollenwaarde.getValue()));
+                lblPollenwaarde.setText(String.valueOf((int) sldPollenwaarde.getValue()));
             }
         });
         sldVoedingsbehoefte.valueProperty().addListener(new ChangeListener<Number>() {
@@ -400,7 +689,7 @@ public class Controller {
         sldVochtbehoefte.valueProperty().addListener(new ChangeListener<Number>() {
             @Override
             public void changed(ObservableValue<? extends Number> observableValue, Number number, Number t1) {
-                switch ((int)sldVochtbehoefte.getValue()){
+                switch ((int) sldVochtbehoefte.getValue()) {
                     case 1:
                         lblVocht.setText("droog");
                         break;
@@ -427,10 +716,6 @@ public class Controller {
             }
         });
 
-        InitSliders();
-        InitBindings();
-        */
-    }
 
 /*
     public void InitSliders() {
@@ -446,15 +731,23 @@ public class Controller {
         //arm, indifferent, matig, rijk
         SetSlider(sldVoedingsbehoefte, 1, 4, false);
 
+
+
+
+
+
+        
     }
+
 
     /**
      * @param slider     in te stellen slider
      * @param min        minimumwaarde van slider
      * @param max        maximumwaarde van slider
      * @param ticklabels moeten labels getoont worden met geselecteerde waarde
+     *                   <p>
+     *                   spinner instellen enkel major ticks in integers
      * @author bradley
-     * spinner instellen enkel major ticks in integers
      */
 /*
     private void SetSlider(Slider slider, int min, int max, boolean ticklabels) {
@@ -517,8 +810,8 @@ public class Controller {
 
         BindRadiobutton(ERequestArrayData.LEVENSVORM, chkLevensvormVolgensRaunkhiaer, rdbLevensvormen);
 
-        /*
-        ArrayList<RadioButton> rdbStrategieën = new ArrayList<RadioButton>();
+
+        /*ArrayList<RadioButton> rdbStrategieën = new ArrayList<RadioButton>();
         rdbStrategieën.add(rdbStrategie_C);
         rdbStrategieën.add(rdbStrategie_R);
         rdbStrategieën.add(rdbStrategie_S);
@@ -527,9 +820,8 @@ public class Controller {
         rdbStrategieën.add(rdbStrategie_RS);
         rdbStrategieën.add(rdbStrategie_CRS);
         rdbStrategieën.add(rdbStrategie_Onbekend);
-        BindRadiobutton(ERequestArrayData.STRATEGIE, chkStrategie, rdbStrategieën);
+        BindRadiobutton(ERequestArrayData.STRATEGIE, chkStrategie, rdbStrategieën);*/
 
-         */
 /*
 
         ArrayList<RadioButton> rdbBijvriendelijken = new ArrayList<RadioButton>();
@@ -704,6 +996,7 @@ public class Controller {
     /**
      * @param E        binding Enumeration
      * @param checkBox welke checkbox gebind moet worden
+     * @author bradley
      * @Author bradley
      */
 /*
@@ -739,6 +1032,9 @@ public class Controller {
         bindingData.searchRequestData.get(E).Value().valueProperty().bind(spinner.valueProperty().asString());
     }
 
+    /**
+     * @author bradley
+     **/
     public void BindSpinner(ERequestArrayData E, CheckBox checkBox, ArrayList<Spinner<Integer>> listSpinner) {
         bindingData.searchRequestArrayData.get(E).DoSearchProperty().bind(checkBox.selectedProperty());
 
@@ -749,6 +1045,9 @@ public class Controller {
         }
     }
 
+    /**
+     * @author bradley
+     **/
     public void BindRadiobutton(ERequestArrayData E, CheckBox checkBox, ArrayList<RadioButton> listRadioButton) {
 
         bindingData.searchRequestArrayData.get(E).DoSearchProperty().bind(checkBox.selectedProperty());
@@ -763,6 +1062,9 @@ public class Controller {
         }
     }
 
+    /**
+     * @author Bradley
+     */
     public void BindCheckbox(ERequestArrayData E, CheckBox checkBox, ArrayList<CheckBox> listCheckbox) {
         bindingData.searchRequestArrayData.get(E).DoSearchProperty().bind(checkBox.selectedProperty());
 
@@ -774,6 +1076,12 @@ public class Controller {
         }
     }
 
+    /**
+     * @param E            Enum die aangesproken wordt
+     * @param checkBox     checkbox die je wil binden
+     * @param listComboBOx lijst van alle comboboxes die je wil binden
+     * @author bradley
+     */
     public void BindCombobox(ERequestArrayData E, CheckBox checkBox, ArrayList<ComboBox<String>> listComboBOx) {
         bindingData.searchRequestArrayData.get(E).DoSearchProperty().bind(checkBox.selectedProperty());
 
@@ -789,7 +1097,6 @@ public class Controller {
      * @author bradley, angelo
      * Functie om comboboxes te vullen met alle gegevens uit de database
      */
-
     public void FillComboboxes(InfoTables infotables) {
 
         //type
@@ -962,22 +1269,51 @@ public class Controller {
         setSpinner(nudMaxBladhoogte_Dec, 1000);
     }
 
+    /**
+     * @author bradley
+     **/
     public void setSpinner(Spinner<Integer> spinner, int MaxValue) {
         spinner.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(0, MaxValue));
     }
-     */
+
+    /**
+     * @author bradley
+     **/
     public void Click_Search(MouseEvent mouseEvent) throws SQLException {
-        /*
-        lsvOverzicht.getItems().clear();
+        lsvOverzicht.getSelectionModel().selectedItemProperty().removeListener(lsvChanged);
 
-        ArrayList<Plant> planten = handler.Search(bindingData, dbConnection );
+        System.out.println("voor listview clear: " + lsvOverzicht.getItems());
+        lsvOverzicht.getItems().removeAll(lsvOverzicht.getItems());
+        System.out.println("na listview clear: " + lsvOverzicht.getItems());
+        forceListRefreshOn(lsvOverzicht);
 
-        lsvOverzicht.getItems().addAll(planten);
+        System.out.println("na refresh listview " + lsvOverzicht.getItems());
+       lsvOverzicht.getSelectionModel().selectedItemProperty().addListener(lsvChanged);
+        if (!pnlUitvoer.isVisible()) {
+            pnlUitvoer.setVisible(true);
+        }
 
-         */
+        if (pnlAdvSearch.isExpanded()) {
+            pnlAdvSearch.setExpanded(false);
+        }
+
+        planten = new ArrayList<Plant>();
+        planten = handler.Search(bindingData, dbConnection);
+
+       lsvOverzicht.getItems().addAll(planten);
+
+        System.out.println("na toevoegen: " + lsvOverzicht.getItems());
 
 
+        lsvOverzicht.getSelectionModel().selectFirst();
+    }
+
+    private <T> void forceListRefreshOn(ListView<T> lsv) {
+        ObservableList<T> items = lsv.<T>getItems();
+        lsv.<T>setItems(null);
+        lsv.<T>setItems(items);
     }
 }
+
 
 

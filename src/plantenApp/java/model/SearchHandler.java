@@ -22,7 +22,7 @@ public class SearchHandler {
 
 
     public SearchHandler(Connection dbConnection) throws SQLException {
-        this.abiotischeFactorenDAO = new AbiotischeFactorenDAO(dbConnection);
+       this.abiotischeFactorenDAO = new AbiotischeFactorenDAO(dbConnection);
         this.beheerDAO = beheerDAO = new BeheerDAO(dbConnection);
         this.commensalismeDAO = new CommensalismeDAO(dbConnection);
         this.extraDAO = new ExtraDAO(dbConnection);

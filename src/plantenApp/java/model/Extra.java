@@ -7,12 +7,15 @@ public class Extra {
     private int nectarwaarde;
     private int pollenwaarde;
     private String bijvriendelijk;
+    private String Vlindervriendelijk;
     private String eetbaar;
     private String kruidgebruik;
     private String geurend;
     private String vorstgevoelig;
 
-    public Extra(int id, int plant_id, int nectarwaarde, int pollenwaarde, String bijvriendelijk, String eetbaar, String kruidgebruik, String geurend, String vorstgevoelig) {
+
+
+    public Extra(int id, int plant_id, int nectarwaarde, int pollenwaarde, String bijvriendelijk, String eetbaar, String kruidgebruik, String geurend, String vorstgevoelig, String vlindervriendelijk) {
         this.id = id;
         this.plant_id = plant_id;
         this.nectarwaarde = nectarwaarde;
@@ -22,6 +25,7 @@ public class Extra {
         this.kruidgebruik = kruidgebruik;
         this.geurend = geurend;
         this.vorstgevoelig = vorstgevoelig;
+        this.Vlindervriendelijk = vlindervriendelijk;
     }
 
     public int getId() {
@@ -58,5 +62,9 @@ public class Extra {
 
     public String getVorstgevoelig() {
         return vorstgevoelig;
+    }
+
+    public String getVlindervriendelijk() {
+        return Vlindervriendelijk;
     }
 }

@@ -1,7 +1,10 @@
 package plantenApp.java.dao;
 
+import javafx.scene.image.Image;
 import plantenApp.java.model.InfoTables;
+import plantenApp.java.model.NTFotos;
 
+import java.io.InputStream;
 import java.sql.*;
 import java.util.ArrayList;
 
@@ -63,28 +66,60 @@ public class InfoTablesDAO implements Queries {
         return ints;
     }
 
+
     /**
      * @author Siebe
-     * @param Query      -> de uit te voeren query
-     * @param colomnName -> de naam van de kolom
+
+     * @param Query      -> de uit te voeren query* @param colomnName -> de naam van de kolom
      * @return -> lijst van blobs met alle info van de colomn
      */
-    private ArrayList<Blob> getInfoTableBlob(String Query, String colomnName) throws SQLException {
+    private ArrayList<NTFotos> getInfoTableBlob(String Query) throws SQLException {
 
         //Dao
 
         //Items
-        ArrayList<Blob> blobs = new ArrayList<>();
+        ArrayList<NTFotos> img = new ArrayList<>();
 
         //SqlCommand
         Statement stmt = dbConnection.createStatement();
         ResultSet rs = stmt.executeQuery(Query);
         while (rs.next()) {
-            blobs.add(rs.getBlob(colomnName));
+
+                InputStream input = rs.getBinaryStream(2);
+                Image image = new Image(input);
+                img.add(new NTFotos(rs.getString(1), image));
+
+
+
         }
 
         //Output
-        return blobs;
+        return img;
+    }
+
+    /**
+     * @author bradley
+     * @param id type id voor alle families
+     * @return lijst van families van meegegeven type
+
+     */
+    public ArrayList<String> selectFamilyByType( int id) throws SQLException {
+        //Dao
+        PreparedStatement stmtSelectFamilyByType = dbConnection.prepareStatement(NTFAMILIEBYTYPE);
+
+
+        //Items
+        ArrayList<String> strings = new ArrayList<>();
+
+        //SqlCommand
+       stmtSelectFamilyByType.setInt(1, id);
+        ResultSet rs = stmtSelectFamilyByType.executeQuery();
+        while (rs.next()) {
+            strings.add(rs.getString("familie_naam"));
+        }
+
+        //Output
+        return strings;
     }
 
     /**
@@ -93,7 +128,7 @@ public class InfoTablesDAO implements Queries {
      */
     public InfoTables getInfoTables() throws SQLException {
         InfoTables infoTables = new InfoTables(
-                getInfoTableString(NTTYPE, "type_naam"),
+                getInfoTableString(NTTYPE, "planttype_naam"),
                 getInfoTableString(NTFAMILIE, "familie_naam"),
                 getInfoTableString(NTKLEUREN, "kleur"),
                 getInfoTableString(NTBLADGROOTTE, "waarde"),
@@ -102,7 +137,7 @@ public class InfoTablesDAO implements Queries {
                 getInfoTableString(NTSPRUITFENOLOGIE, "waarde"),
                 getInfoTableString(NTBLOEIWIJZE, "waarde"),
                 getInfoTableString(NTHABITUS, "waarde"),
-                getInfoTableBlob(NTFOTOHABITUS, "afbeelding"),
+                getInfoTableBlob(NTFOTOHABITUS),
                 getInfoTableString(NTBEZONNING, "waarde"),
                 getInfoTableString(NTGRONDSOORT, "waarde"),
                 getInfoTableString(NTVOCHTBEHOEFTE, "waarde"),

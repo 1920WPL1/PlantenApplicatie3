@@ -18,12 +18,12 @@ public interface Queries {
             "SELECT * FROM abiotisch_multi WHERE plant_id = ?";
 
     String GETCOMMENSALISMEBYPLANTID =
-            "SELECT * FROM commensialisme WHERE plant_id = ?";
+            "SELECT * FROM commensalisme WHERE plant_id = ?";
     String GETCOMMENSALISMEMULTIBYPLANTID =
-            "SELECT * FROM commensialisme_multi WHERE plant_id = ?";
+            "SELECT * FROM commensalisme_multi WHERE plant_id = ?";
 
     String GETBEHEERBYPLANTID =
-            "SELECT * FROM beheer WHERE plant_id = ?";
+            "SELECT * FROM beheer_multi WHERE plant_id = ?";
 
     String GETEXTRABYPLANTID =
             "SELECT * FROM extra WHERE plant_id = ?";
@@ -35,7 +35,7 @@ public interface Queries {
     //region GETIDSBYKENMERKEN
     String GETIDSBYPLANT =
             "SELECT plant_id FROM plant " +
-                    "WHERE (type = ? OR  1=?) " +
+                    "WHERE (planttype = ? OR  1=?) " +
                     "AND (familie = ? OR 1=?) " +
                     "AND (fgsv LIKE ? OR 1=?) ";
 
@@ -180,10 +180,13 @@ public interface Queries {
     //region NAAKTETABELLEN
 
     String NTTYPE =
-            "SELECT type_naam FROM type";
+            "SELECT planttype_naam FROM planttype";
 
     String NTFAMILIE =
             "SELECT familie_naam FROM familie";
+
+    String NTFAMILIEBYTYPE =
+            "SELECT familie_naam FROM familie where type_id = ?";
 
     String NTLEVENSDUURCONCURRENTIEKRACHT =
             "SELECT waarde FROM levensduur_concurrentiekracht";
@@ -246,7 +249,7 @@ public interface Queries {
             "SELECT waarde FROM maxbladgrootte";
 
     String NTFOTOHABITUS =
-            "SELECT afbeelding FROM habitus";
+            "SELECT * FROM habitus";
     //endregion
 }
 

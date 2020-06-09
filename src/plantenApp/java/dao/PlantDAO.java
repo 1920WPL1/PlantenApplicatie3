@@ -87,7 +87,7 @@ public class PlantDAO implements Queries {
         if (rs.next()) {
             plant = new Plant(
                     rs.getInt("plant_id"),
-                    rs.getString("type"),
+                    rs.getString("planttype"),
                     rs.getString("familie"),
                     rs.getString("geslacht"),
                     rs.getString("soort"),
@@ -124,19 +124,22 @@ public class PlantDAO implements Queries {
         if (rs.next()) {
             plant = new Plant(
                     rs.getInt("plant_id"),
-                    rs.getString("type"),
+                    rs.getString("planttype"),
                     rs.getString("familie"),
                     rs.getString("geslacht"),
                     rs.getString("soort"),
                     rs.getString("variatie"),
                     rs.getInt("plantdichtheid_min"),
                     rs.getInt("plantdichtheid_max"),
+
+
                     fotoDAO.getFotoById(id),
                     beheerDAO.getById(id),
                     abiotischeFactorenDAO.getById(id),
                     commensalismeDAO.getById(id),
                     fenotypeDAO.getById(id),
                     extraDAO.getExtraById(id)
+
             );
         }
 
