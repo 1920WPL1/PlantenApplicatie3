@@ -6,8 +6,6 @@ import plantenApp.java.model.data.RadiogroupData;
 import plantenApp.java.model.data.SliderLabelData;
 import plantenApp.java.model.data.enums.ERadiogroup;
 import plantenApp.java.model.data.enums.ESliderLabel;
-import plantenApp.java.utils.ERequestArrayData;
-import plantenApp.java.utils.ERequestData;
 import plantenApp.java.utils.DaoUtils;
 
 import java.sql.Connection;
@@ -71,11 +69,10 @@ public class ExtraDAO implements Queries {
     /**
      * @author Siebe
      * @param plantIds -> The ids that need to be filtered
-     * @param bindingData -> dataClass that consist of all the data of the bindings
      * @param guiData
      * @return The filtered ids
      */
-    public ArrayList<Integer> FilterOn(ArrayList<Integer> plantIds, BindingData bindingData, GUIdata guiData) throws SQLException {
+    public ArrayList<Integer> FilterOn(ArrayList<Integer> plantIds, GUIdata guiData) throws SQLException {
         //Dao
 
         //Items
@@ -106,32 +103,32 @@ public class ExtraDAO implements Queries {
         //bijvriendelijk
         RadiogroupData bijvriendelijk = guiData.radiogroupDEM.get(ERadiogroup.BIJVRIENDELIJK);
         //SearchRequest<RequestValueWBool[]> bijvriendelijk = bindingData.searchRequestArrayData.get(ERequestArrayData.BIJVRIENDELIJK);
-        stmtSelectIdsByExtra.setString(plantIds.size() + 6, bijvriendelijk.getActualValue());
-        stmtSelectIdsByExtra.setInt(plantIds.size() + 7, (bijvriendelijk.isDoSearch()) ? 0 : 1);
+        stmtSelectIdsByExtra.setString(plantIds.size() + 7, bijvriendelijk.getActualValue());
+        stmtSelectIdsByExtra.setInt(plantIds.size() + 8, (bijvriendelijk.isDoSearch()) ? 0 : 1);
 
         //Eetbaar
         RadiogroupData eetbaar = guiData.radiogroupDEM.get(ERadiogroup.EETBAAR);
         //SearchRequest<RequestValueWBool[]> eetbaar = bindingData.searchRequestArrayData.get(ERequestArrayData.EETBAAR);
-        stmtSelectIdsByExtra.setString(plantIds.size() + 8, eetbaar.getActualValue());
-        stmtSelectIdsByExtra.setInt(plantIds.size() + 9, (eetbaar.isDoSearch()) ? 0 : 1);
+        stmtSelectIdsByExtra.setString(plantIds.size() + 9, eetbaar.getActualValue());
+        stmtSelectIdsByExtra.setInt(plantIds.size() + 10, (eetbaar.isDoSearch()) ? 0 : 1);
 
         //kruidgebruik
         RadiogroupData kruidgebruik = guiData.radiogroupDEM.get(ERadiogroup.KRUIDGEBRUIK);
         //SearchRequest<RequestValueWBool[]> kruidgebruik = bindingData.searchRequestArrayData.get(ERequestArrayData.KRUIDGEBRUIK);
-        stmtSelectIdsByExtra.setString(plantIds.size() + 10, kruidgebruik.getActualValue());
-        stmtSelectIdsByExtra.setInt(plantIds.size() + 11, (kruidgebruik.isDoSearch()) ? 0 : 1);
+        stmtSelectIdsByExtra.setString(plantIds.size() + 11, kruidgebruik.getActualValue());
+        stmtSelectIdsByExtra.setInt(plantIds.size() + 12, (kruidgebruik.isDoSearch()) ? 0 : 1);
 
         //geurend
         RadiogroupData geurend = guiData.radiogroupDEM.get(ERadiogroup.GEUREND);
         //SearchRequest<RequestValueWBool[]> geurend = bindingData.searchRequestArrayData.get(ERequestArrayData.GEUREND);
-        stmtSelectIdsByExtra.setString(plantIds.size() + 12, geurend.getActualValue());
-        stmtSelectIdsByExtra.setInt(plantIds.size() + 13, (geurend.isDoSearch()) ? 0 : 1);
+        stmtSelectIdsByExtra.setString(plantIds.size() + 13, geurend.getActualValue());
+        stmtSelectIdsByExtra.setInt(plantIds.size() + 14, (geurend.isDoSearch()) ? 0 : 1);
 
         //vorstgevoelig
         RadiogroupData vorstgevoelig = guiData.radiogroupDEM.get(ERadiogroup.VORSTGEVOELIG);
         //SearchRequest<RequestValueWBool[]> vorstgevoelig = bindingData.searchRequestArrayData.get(ERequestArrayData.VORSTGEVOELIG);
-        stmtSelectIdsByExtra.setString(plantIds.size() + 14, vorstgevoelig.getActualValue());
-        stmtSelectIdsByExtra.setInt(plantIds.size() + 15, (vorstgevoelig.isDoSearch()) ? 0 : 1);
+        stmtSelectIdsByExtra.setString(plantIds.size() + 15, vorstgevoelig.getActualValue());
+        stmtSelectIdsByExtra.setInt(plantIds.size() + 16, (vorstgevoelig.isDoSearch()) ? 0 : 1);
 
         ResultSet rs = stmtSelectIdsByExtra.executeQuery();
         while (rs.next()) {

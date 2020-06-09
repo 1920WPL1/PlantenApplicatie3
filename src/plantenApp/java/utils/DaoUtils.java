@@ -1,12 +1,9 @@
 package plantenApp.java.utils;
 
-import plantenApp.java.model.RequestValueWBool;
-
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.List;
 
 public class DaoUtils {
     public static PreparedStatement ReadyStatement(Connection dbConnection, String query, ArrayList<Integer> plantIds) throws SQLException {
@@ -28,13 +25,5 @@ public class DaoUtils {
             stmt.setInt(i+1 , plantIds.get(i));
         }
         return stmt;
-    }
-    public static String GetCheckedValue(RequestValueWBool[] array){
-        for (int i = 0; i < array.length; i++) {
-            if (array[i].getIsSelected()){
-                return array[i].getValue();
-            }
-        }
-        return null;
     }
 }

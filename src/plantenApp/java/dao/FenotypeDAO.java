@@ -113,11 +113,10 @@ public class FenotypeDAO implements Queries {
     /**
      * @author Siebe
      * @param plantIds -> The ids that need to be filtered
-     * @param bindingData -> dataClass that consist of all the data of the bindings
      * @param guiData
      * @return The filtered ids
      */
-    public ArrayList<Integer> FilterOn(ArrayList<Integer> plantIds, BindingData bindingData, GUIdata guiData) throws SQLException {
+    public ArrayList<Integer> FilterOn(ArrayList<Integer> plantIds, GUIdata guiData) throws SQLException {
         //Dao
 
         //Items

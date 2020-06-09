@@ -22,7 +22,7 @@ public class SearchHandler {
 
 
     public SearchHandler(Connection dbConnection) throws SQLException {
-       this.abiotischeFactorenDAO = new AbiotischeFactorenDAO(dbConnection);
+        this.abiotischeFactorenDAO = new AbiotischeFactorenDAO(dbConnection);
         this.beheerDAO = beheerDAO = new BeheerDAO(dbConnection);
         this.commensalismeDAO = new CommensalismeDAO(dbConnection);
         this.extraDAO = new ExtraDAO(dbConnection);
@@ -33,24 +33,29 @@ public class SearchHandler {
         planten = new ArrayList<Plant>();
     }
 
-    public ArrayList<Plant> Search(BindingData bindingData, GUIdata guiData, Connection dbConnection) throws SQLException {
+    public ArrayList<Plant> Search(GUIdata guiData, Connection dbConnection) throws SQLException {
 
 
-        ids = plantDAO.FilterOn(bindingData, guiData);
+        ids = plantDAO.FilterOn(guiData);
         if (ids.size() != 0) {
-            ids = fenotypeDAO.FilterOn(ids, bindingData, guiData);
+            ids = fenotypeDAO.FilterOn(ids, guiData);
+            System.out.println(ids.toString());
         }
         if (ids.size() != 0) {
-            ids = commensalismeDAO.FilterOn(ids, bindingData, guiData);
+            ids = commensalismeDAO.FilterOn(ids, guiData);
+            System.out.println(ids.toString());
         }
         if (ids.size() != 0) {
-            ids = abiotischeFactorenDAO.FilterOn(ids, bindingData, guiData);
+            ids = abiotischeFactorenDAO.FilterOn(ids, guiData);
+            System.out.println(ids.toString());
         }
         if (ids.size() != 0) {
-            ids = extraDAO.FilterOn(ids, bindingData, guiData);
+            ids = extraDAO.FilterOn(ids, guiData);
+            System.out.println(ids.toString());
         }
         if (ids.size() != 0) {
-            ids = beheerDAO.FilterOn(ids, bindingData, guiData);
+            ids = beheerDAO.FilterOn(ids, guiData);
+            System.out.println(ids.toString());
         }
 
         for (int id : ids

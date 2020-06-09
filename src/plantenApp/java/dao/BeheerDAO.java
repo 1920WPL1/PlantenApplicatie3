@@ -6,7 +6,6 @@ import plantenApp.java.model.data.GUIdata;
 import plantenApp.java.model.data.SpinnerData;
 import plantenApp.java.model.data.enums.EComboBox;
 import plantenApp.java.model.data.enums.ESpinner;
-import plantenApp.java.utils.ERequestData;
 import plantenApp.java.utils.DaoUtils;
 
 import java.sql.Connection;
@@ -88,10 +87,9 @@ public class BeheerDAO implements Queries {
     /**
      * @author Siebe
      * @param plantIds -> The ids that need to be filtered
-     * @param bindingData -> dataClass that consist of all the data of the bindings
      * @return The filtered ids
      */
-    public ArrayList<Integer> FilterOn(ArrayList<Integer> plantIds, BindingData bindingData, GUIdata guiData) throws SQLException {
+    public ArrayList<Integer> FilterOn(ArrayList<Integer> plantIds, GUIdata guiData) throws SQLException {
         //Dao
 
         //Items

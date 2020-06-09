@@ -8,8 +8,6 @@ import plantenApp.java.model.data.RadiogroupData;
 import plantenApp.java.model.data.enums.EComboBox;
 import plantenApp.java.model.data.enums.EMultiCheckbox;
 import plantenApp.java.model.data.enums.ERadiogroup;
-import plantenApp.java.utils.ERequestArrayData;
-import plantenApp.java.utils.ERequestData;
 import plantenApp.java.utils.DaoUtils;
 
 import java.sql.Connection;
@@ -99,11 +97,10 @@ public class CommensalismeDAO implements Queries {
 
     /**
      * @param plantIds    -> The ids that need to be filtered
-     * @param bindingData -> dataClass that consist of all the data of the bindings
      * @return The filtered ids
      * @author Siebe
      */
-    public ArrayList<Integer> FilterOn(ArrayList<Integer> plantIds, BindingData bindingData, GUIdata guIdata) throws SQLException {
+    public ArrayList<Integer> FilterOn(ArrayList<Integer> plantIds, GUIdata guIdata) throws SQLException {
         //Dao
 
         //Items

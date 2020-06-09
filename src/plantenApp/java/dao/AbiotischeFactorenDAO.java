@@ -8,8 +8,6 @@ import plantenApp.java.model.data.SliderLabelData;
 import plantenApp.java.model.data.enums.EComCheckbox;
 import plantenApp.java.model.data.enums.EComboBox;
 import plantenApp.java.model.data.enums.ESliderLabel;
-import plantenApp.java.utils.ERequestArrayData;
-import plantenApp.java.utils.ERequestData;
 import plantenApp.java.utils.DaoUtils;
 
 import java.sql.*;
@@ -100,10 +98,9 @@ public class AbiotischeFactorenDAO implements Queries {
     /**
      * @author Siebe
      * @param plantIds -> The ids that need to be filtered
-     * @param bindingData -> dataClass that consist of all the data of the bindings
      * @return The filtered ids
      */
-    public ArrayList<Integer> FilterOn(ArrayList<Integer> plantIds, BindingData bindingData, GUIdata guiData) throws SQLException {
+    public ArrayList<Integer> FilterOn(ArrayList<Integer> plantIds, GUIdata guiData) throws SQLException {
         //Dao
 
         //Items

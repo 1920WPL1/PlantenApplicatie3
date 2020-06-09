@@ -2,7 +2,6 @@ package plantenApp;
 
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
-import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
@@ -11,14 +10,11 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
 import plantenApp.java.dao.Database;
 import plantenApp.java.dao.InfoTablesDAO;
-import plantenApp.java.model.BindingData;
 import plantenApp.java.model.InfoTables;
 import plantenApp.java.model.Plant;
 import plantenApp.java.model.SearchHandler;
 import plantenApp.java.model.data.GUIdata;
 import plantenApp.java.model.data.enums.*;
-import plantenApp.java.utils.ERequestArrayData;
-import plantenApp.java.utils.ERequestData;
 
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -356,7 +352,7 @@ public class Controller {
 
     private InfoTables infoTables;
     private Connection dbConnection;
-    BindingData bindingData;
+    GUIdata guiData;
     SearchHandler handler;
     ChangeListener<Plant> lsvChanged;
     ObservableList<Plant> plants;
@@ -368,6 +364,11 @@ public class Controller {
         /*infotabel object aanmaken*/
         InfoTablesDAO infotablesDAO = new InfoTablesDAO(dbConnection);
         infoTables = infotablesDAO.getInfoTables();
+        handler = new SearchHandler(dbConnection);
+
+
+
+
         guiData = new GUIdata();
         guiData.textFieldDEM.get(ETextfield.SEARCH).Bind(txtSearch);
         guiData.comboBoxDEM.get(EComboBox.TYPE).Bind(chkType, cboType);
@@ -386,7 +387,6 @@ public class Controller {
         guiData.comboBoxDEM.get(EComboBox.REACTIEANTAGONISTISCHEOMGEVING).Bind(chkReactieAntagonistischeOmg, cboReactieAnta);
         guiData.comboBoxDEM.get(EComboBox.SPRUITFENOLOGIE).Bind(chkSpruitfenologie, cboSpruitfenologie);
 
-        handler = new SearchHandler(dbConnection);
         guiData.spinnerDEM.get(ESpinner.PERXJAAR).Bind(chkPerXJaar, nudPerXJaar);
 
         guiData.sliderLabelDEM.get(ESliderLabel.BEZONNING).Bind(chkBezonning, sldBezonning, lblBezonning);
@@ -396,10 +396,35 @@ public class Controller {
         guiData.sliderLabelDEM.get(ESliderLabel.NECTARWAARDE).Bind(chkNectarwaarde, sldNectarwaarde, lblNectarwaarde);
 
         guiData.combinedCheckboxDEM.get(EComCheckbox.GRONDSOORT).Bind(chkGrondsoort, new CheckBox[]{chkGrondsoort_Z, chkGrondsoort_L, chkGrondsoort_K});
+
+        guiData.multiCheckboxDEM.get(EMultiCheckbox.SOCIABILITEIT).Bind(chkSociabiliteit, new CheckBox[]{chkSociabiliteit_1, chkSociabiliteit_2, chkSociabiliteit_3, chkSociabiliteit_4, chkSociabiliteit_5});
+
+        guiData.multiComboBoxDEM.get(EMultiComboBox.BLADKLEURPERMAAND).Bind(chkBladkleurPerMaand, new ComboBox[]{cboBladkleurJan, cboBladkleurFeb, cboBladkleurMaa, cboBladkleurApr, cboBladkleurMei, cboBladkleurJun, cboBladkleurJul, cboBladkleurAug, cboBladkleurSep, cboBladkleurOkt, cboBladkleurNov, cboBladkleurDec});
+        guiData.multiComboBoxDEM.get(EMultiComboBox.BLOEIKLEURPERMAAND).Bind(chkBloeikleurPerMaand, new ComboBox[]{cboBloeikleurJan, cboBloeikleurFeb, cboBloeikleurMaa, cboBloeikleurApr, cboBloeikleurMei, cboBloeikleurJun, cboBloeikleurJul, cboBloeikleurAug, cboBloeikleurSep, cboBloeikleurOkt, cboBloeikleurNov, cboBloeikleurDec});
+
+        guiData.multiSpinnerDEM.get(EMultiSpinner.BLOEIHOOGTE).Bind(chkBloeiHoogte, new Spinner[]{nudMinBloeihoogte, nudMaxBloeihoogte});
+        guiData.multiSpinnerDEM.get(EMultiSpinner.BLADHOOGTE).Bind(chkBladHoogte, new Spinner[]{nudMinBladhoogte, nudMaxBladhoogte});
+        guiData.multiSpinnerDEM.get(EMultiSpinner.MINBLOEIHOOGTEPERMAAND).Bind(chkMinBloeihoogtePerMaand, new Spinner[]{nudMinBloeihoogte_Jan, nudMinBloeihoogte_Feb, nudMinBloeihoogte_Maa, nudMinBloeihoogte_Apr, nudMinBloeihoogte_Mei, nudMinBloeihoogte_Jun, nudMinBloeihoogte_Jul, nudMinBloeihoogte_Aug, nudMinBloeihoogte_Sept, nudMinBloeihoogte_Okt, nudMinBloeihoogte_Nov, nudMinBloeihoogte_Dec});
+        guiData.multiSpinnerDEM.get(EMultiSpinner.MAXBLOEIHOOGTEPERMAAND).Bind(chkMaxBloeihoogtePerMaand, new Spinner[]{nudMaxBloeihoogte_Jan, nudMaxBloeihoogte_Feb, nudMaxBloeihoogte_Maa, nudMaxBloeihoogte_Apr, nudMaxBloeihoogte_Mei, nudMaxBloeihoogte_Jun, nudMaxBloeihoogte_Jul, nudMaxBloeihoogte_Aug, nudMaxBloeihoogte_Sept, nudMaxBloeihoogte_Okt, nudMaxBloeihoogte_Nov, nudMaxBloeihoogte_Dec});
+        guiData.multiSpinnerDEM.get(EMultiSpinner.MINBLADHOOGTEPERMAAND).Bind(chkMinBladhoogtePerMaand, new Spinner[]{nudMinBladhoogte_Jan, nudMinBladhoogte_Feb, nudMinBladhoogte_Maa, nudMinBladhoogte_Apr, nudMinBladhoogte_Mei, nudMinBladhoogte_Jun, nudMinBladhoogte_Jul, nudMinBladhoogte_Aug, nudMinBladhoogte_Sept, nudMinBladhoogte_Okt, nudMinBladhoogte_Nov, nudMinBladhoogte_Dec});
+        guiData.multiSpinnerDEM.get(EMultiSpinner.MAXBLADHOOGTEPERMAAND).Bind(chkMaxBladhoogtePerMaand, new Spinner[]{nudMaxBladhoogte_Jan, nudMaxBladhoogte_Feb, nudMaxBladhoogte_Maa, nudMaxBladhoogte_Apr, nudMaxBladhoogte_Mei, nudMaxBladhoogte_Jun, nudMaxBladhoogte_Jul, nudMaxBladhoogte_Aug, nudMaxBladhoogte_Sept, nudMaxBladhoogte_Okt, nudMaxBladhoogte_Nov, nudMaxBladhoogte_Dec});
+
+        guiData.radiogroupDEM.get(ERadiogroup.BIJVRIENDELIJK).Bind(chkBijvriendelijk, new RadioButton[]{rdbBijvriendelijk_Ja, rdbBijvriendelijk_Nee, rdbBijvriendelijk_Onbekend});
+        guiData.radiogroupDEM.get(ERadiogroup.VLINDERVRIENDELIJK).Bind(chkVlindervriendelijk, new RadioButton[]{rdbVlindervriendelijk_Ja, rdbVlindervriendelijk_Nee, rdbVlindervriendelijk_Onbekend});
+        guiData.radiogroupDEM.get(ERadiogroup.VORSTGEVOELIG).Bind(chkVorstgevoelig, new RadioButton[]{rdbVorstgevoelig_Ja, rdbVorstgevoelig_Nee, rdbVorstgevoelig_Onbekend});
+        guiData.radiogroupDEM.get(ERadiogroup.BLOEIWIJZE).Bind(chkBloeiwijze, new RadioButton[]{rdbBloeiwijze_Aar, rdbBloeiwijze_BredePluim, rdbBloeiwijze_Etage, rdbBloeiwijze_BolofKnop, rdbBloeiwijze_Margrietachtig, rdbBloeiwijze_Schotel, rdbBloeiwijze_Scherm, rdbBloeiwijze_SmallePluim});
+        guiData.radiogroupDEM.get(ERadiogroup.EETBAAR).Bind(chkEetbaar, new RadioButton[]{rdbEetbaar_Ja, rdbEetbaar_Nee, rdbEetbaar_Onbekend});
+        guiData.radiogroupDEM.get(ERadiogroup.HABITUS).Bind(chkHabitus, new RadioButton[]{rdbHabitus_1, rdbHabitus_2, rdbHabitus_3, rdbHabitus_4, rdbHabitus_5, rdbHabitus_6, rdbHabitus_7, rdbHabitus_8, rdbHabitus_9, rdbHabitus_10, rdbHabitus_11, rdbHabitus_12, rdbHabitus_13, rdbHabitus_14, rdbHabitus_15});
+        guiData.radiogroupDEM.get(ERadiogroup.GEUREND).Bind(chkGeurend, new RadioButton[]{rdbGeurend_Ja, rdbGeurend_Nee, rdbGeurend_Onbekend});
+        guiData.radiogroupDEM.get(ERadiogroup.KRUIDGEBRUIK).Bind(chkKruidgebruik, new RadioButton[]{rdbKruidgebruik_Ja, rdbKruidgebruik_Nee, rdbKruidgebruik_Onbekend});
+        guiData.radiogroupDEM.get(ERadiogroup.STRATEGIE).Bind(chkStrategie, new RadioButton[]{rdbStrategie_C, rdbStrategie_S, rdbStrategie_R, rdbStrategie_CS, rdbStrategie_CR, rdbStrategie_RS, rdbStrategie_CRS});
+        guiData.radiogroupDEM.get(ERadiogroup.LEVENSVORM).Bind(chkLevensvormVolgensRaunkhiaer, new RadioButton[]{rdbLevensvorm_1, rdbLevensvorm_2, rdbLevensvorm_3, rdbLevensvorm_4, rdbLevensvorm_5, rdbLevensvorm_6, rdbLevensvorm_7, rdbLevensvorm_8, rdbLevensvorm_9});
+
+
+
         InitListView();
         FillComboboxes(infoTables);
 
-        guiData.multiCheckboxDEM.get(EMultiCheckbox.SOCIABILITEIT).Bind(chkSociabiliteit, new CheckBox[]{chkSociabiliteit_1, chkSociabiliteit_2, chkSociabiliteit_3, chkSociabiliteit_4, chkSociabiliteit_5});
         ArrayList<ImageView> habitus = new ArrayList<>();
         habitus.add(imgTufted);
         habitus.add(imgUprightArching);
@@ -417,8 +442,6 @@ public class Controller {
         habitus.add(imgPollenvormers);
         habitus.add(imgParasolVormig);
 
-        guiData.multiComboBoxDEM.get(EMultiComboBox.BLADKLEURPERMAAND).Bind(chkBladkleurPerMaand, new ComboBox[]{cboBladkleurJan, cboBladkleurFeb, cboBladkleurMaa, cboBladkleurApr, cboBladkleurMei, cboBladkleurJun, cboBladkleurJul, cboBladkleurAug, cboBladkleurSep, cboBladkleurOkt, cboBladkleurNov, cboBladkleurDec});
-        guiData.multiComboBoxDEM.get(EMultiComboBox.BLOEIKLEURPERMAAND).Bind(chkBloeikleurPerMaand, new ComboBox[]{cboBloeikleurJan, cboBloeikleurFeb, cboBloeikleurMaa, cboBloeikleurApr, cboBloeikleurMei, cboBloeikleurJun, cboBloeikleurJul, cboBloeikleurAug, cboBloeikleurSep, cboBloeikleurOkt, cboBloeikleurNov, cboBloeikleurDec});
         ArrayList<RadioButton> habitusrdb = new ArrayList<>();
         habitusrdb.add(rdbHabitus_1);
         habitusrdb.add(rdbHabitus_2);
@@ -436,12 +459,6 @@ public class Controller {
         habitusrdb.add(rdbHabitus_14);
         habitusrdb.add(rdbHabitus_15);
 
-        guiData.multiSpinnerDEM.get(EMultiSpinner.BLOEIHOOGTE).Bind(chkBloeiHoogte, new Spinner[]{nudMinBloeihoogte, nudMaxBloeihoogte});
-        guiData.multiSpinnerDEM.get(EMultiSpinner.BLADHOOGTE).Bind(chkBladHoogte, new Spinner[]{nudMinBladhoogte, nudMaxBladhoogte});
-        guiData.multiSpinnerDEM.get(EMultiSpinner.MINBLOEIHOOGTEPERMAAND).Bind(chkMinBloeihoogtePerMaand, new Spinner[]{nudMinBloeihoogte_Jan, nudMinBloeihoogte_Feb, nudMinBloeihoogte_Maa, nudMinBloeihoogte_Apr, nudMinBloeihoogte_Mei, nudMinBloeihoogte_Jun, nudMinBloeihoogte_Jul, nudMinBloeihoogte_Aug, nudMinBloeihoogte_Sept, nudMinBloeihoogte_Okt, nudMinBloeihoogte_Nov, nudMinBloeihoogte_Dec});
-        guiData.multiSpinnerDEM.get(EMultiSpinner.MAXBLOEIHOOGTEPERMAAND).Bind(chkMaxBloeihoogtePerMaand, new Spinner[]{nudMaxBloeihoogte_Jan, nudMaxBloeihoogte_Feb, nudMaxBloeihoogte_Maa, nudMaxBloeihoogte_Apr, nudMaxBloeihoogte_Mei, nudMaxBloeihoogte_Jun, nudMaxBloeihoogte_Jul, nudMaxBloeihoogte_Aug, nudMaxBloeihoogte_Sept, nudMaxBloeihoogte_Okt, nudMaxBloeihoogte_Nov, nudMaxBloeihoogte_Dec});
-        guiData.multiSpinnerDEM.get(EMultiSpinner.MINBLADHOOGTEPERMAAND).Bind(chkMinBladhoogtePerMaand, new Spinner[]{nudMinBladhoogte_Jan, nudMinBladhoogte_Feb, nudMinBladhoogte_Maa, nudMinBladhoogte_Apr, nudMinBladhoogte_Mei, nudMinBladhoogte_Jun, nudMinBladhoogte_Jul, nudMinBladhoogte_Aug, nudMinBladhoogte_Sept, nudMinBladhoogte_Okt, nudMinBladhoogte_Nov, nudMinBladhoogte_Dec});
-        guiData.multiSpinnerDEM.get(EMultiSpinner.MAXBLADHOOGTEPERMAAND).Bind(chkMaxBladhoogtePerMaand, new Spinner[]{nudMaxBladhoogte_Jan, nudMaxBladhoogte_Feb, nudMaxBladhoogte_Maa, nudMaxBladhoogte_Apr, nudMaxBladhoogte_Mei, nudMaxBladhoogte_Jun, nudMaxBladhoogte_Jul, nudMaxBladhoogte_Aug, nudMaxBladhoogte_Sept, nudMaxBladhoogte_Okt, nudMaxBladhoogte_Nov, nudMaxBladhoogte_Dec});
         for(int i = 0; i<infoTables.getHabitusFotos().size(); i++){
             System.out.println(infoTables.getHabitusFotos().get(i).getWaarde());
             habitusrdb.get(i).textProperty().setValue(infoTables.getHabitusFotos().get(i).getWaarde());
@@ -449,17 +466,8 @@ public class Controller {
             habitus.get(i).setImage(infoTables.getHabitusFotos().get(i).getFoto());
         }
 
-        guiData.radiogroupDEM.get(ERadiogroup.BIJVRIENDELIJK).Bind(chkBijvriendelijk, new RadioButton[]{rdbBijvriendelijk_Ja, rdbBijvriendelijk_Nee, rdbBijvriendelijk_Onbekend});
-        guiData.radiogroupDEM.get(ERadiogroup.VLINDERVRIENDELIJK).Bind(chkVlindervriendelijk, new RadioButton[]{rdbVlindervriendelijk_Ja, rdbVlindervriendelijk_Nee, rdbVlindervriendelijk_Onbekend});
-        guiData.radiogroupDEM.get(ERadiogroup.VORSTGEVOELIG).Bind(chkVorstgevoelig, new RadioButton[]{rdbVorstgevoelig_Ja, rdbVorstgevoelig_Nee, rdbVorstgevoelig_Onbekend});
-        guiData.radiogroupDEM.get(ERadiogroup.BLOEIWIJZE).Bind(chkBloeiwijze, new RadioButton[]{rdbBloeiwijze_Aar, rdbBloeiwijze_BredePluim, rdbBloeiwijze_Etage, rdbBloeiwijze_BolofKnop, rdbBloeiwijze_Margrietachtig, rdbBloeiwijze_Schotel, rdbBloeiwijze_Scherm, rdbBloeiwijze_SmallePluim});
-        guiData.radiogroupDEM.get(ERadiogroup.EETBAAR).Bind(chkEetbaar, new RadioButton[]{rdbEetbaar_Ja, rdbEetbaar_Nee, rdbEetbaar_Onbekend});
-        guiData.radiogroupDEM.get(ERadiogroup.HABITUS).Bind(chkHabitus, new RadioButton[]{rdbHabitus_1, rdbHabitus_2, rdbHabitus_3, rdbHabitus_4, rdbHabitus_5, rdbHabitus_6, rdbHabitus_7, rdbHabitus_8, rdbHabitus_9, rdbHabitus_10, rdbHabitus_11, rdbHabitus_12, rdbHabitus_13, rdbHabitus_14, rdbHabitus_15});
-        guiData.radiogroupDEM.get(ERadiogroup.GEUREND).Bind(chkGeurend, new RadioButton[]{rdbGeurend_Ja, rdbGeurend_Nee, rdbGeurend_Onbekend});
-        guiData.radiogroupDEM.get(ERadiogroup.KRUIDGEBRUIK).Bind(chkKruidgebruik, new RadioButton[]{rdbKruidgebruik_Ja, rdbKruidgebruik_Nee, rdbKruidgebruik_Onbekend});
-        guiData.radiogroupDEM.get(ERadiogroup.STRATEGIE).Bind(chkStrategie, new RadioButton[]{rdbStrategie_C, rdbStrategie_S, rdbStrategie_R, rdbStrategie_CS, rdbStrategie_CR, rdbStrategie_RS, rdbStrategie_CRS});
-        guiData.radiogroupDEM.get(ERadiogroup.LEVENSVORM).Bind(chkLevensvormVolgensRaunkhiaer, new RadioButton[]{rdbLevensvorm_1, rdbLevensvorm_2, rdbLevensvorm_3, rdbLevensvorm_4, rdbLevensvorm_5, rdbLevensvorm_6, rdbLevensvorm_7, rdbLevensvorm_8, rdbLevensvorm_9});
-        /*TODO
+        //TODO familie link met type
+        /*
         cboType.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
             @Override
             public void changed(ObservableValue<? extends String> observableValue, String s, String t1) {
@@ -470,10 +478,9 @@ public class Controller {
                 }
                 cboFamilie.getItems().addAll(infotablesDAO.selectFamilyByType(bindingData.searchRequestData.get(ERequestData.TYPE).Value().))
             }
-        });*/
+        });
+        */
     }
-
-        //InitSliders();
     /**
      * @author bradley
      */
@@ -630,469 +637,6 @@ public class Controller {
     }
 
     /**
-     * @author bradley
-     */
-    public void InitSliders() {
-        sldNectarwaarde.valueProperty().addListener(new ChangeListener<Number>() {
-            @Override
-            public void changed(ObservableValue<? extends Number> observableValue, Number number, Number t1) {
-                lblNectarwaarde.setText(String.valueOf((int) sldNectarwaarde.getValue()));
-            }
-        });
-        sldPollenwaarde.valueProperty().addListener(new ChangeListener<Number>() {
-            @Override
-            public void changed(ObservableValue<? extends Number> observableValue, Number number, Number t1) {
-                lblPollenwaarde.setText(String.valueOf((int) sldPollenwaarde.getValue()));
-            }
-        });
-        sldVoedingsbehoefte.valueProperty().addListener(new ChangeListener<Number>() {
-            @Override
-            public void changed(ObservableValue<? extends Number> observableValue, Number number, Number t1) {
-                switch ((int) sldVoedingsbehoefte.getValue()) {
-                    case 1:
-                        lblVoedingsBehoefte.setText("arm");
-                        break;
-                    case 2:
-                        lblVoedingsBehoefte.setText("indifferent");
-                        break;
-                    case 3:
-                        lblVoedingsBehoefte.setText("matig");
-                        break;
-                    case 4:
-                        lblVoedingsBehoefte.setText("rijk");
-                        break;
-                }
-            }
-        });
-        sldBezonning.valueProperty().addListener(new ChangeListener<Number>() {
-            @Override
-            public void changed(ObservableValue<? extends Number> observableValue, Number number, Number t1) {
-                switch ((int) sldBezonning.getValue()) {
-                    case 1:
-                        lblBezonning.setText("S");
-                        break;
-                    case 2:
-                        lblBezonning.setText("HS-S");
-                        break;
-                    case 3:
-                        lblBezonning.setText("HS");
-                        break;
-                    case 4:
-                        lblBezonning.setText("Z-HS");
-                        break;
-                    case 5:
-                        lblBezonning.setText("Z");
-                        break;
-                }
-            }
-        });
-        sldVochtbehoefte.valueProperty().addListener(new ChangeListener<Number>() {
-            @Override
-            public void changed(ObservableValue<? extends Number> observableValue, Number number, Number t1) {
-                switch ((int) sldVochtbehoefte.getValue()) {
-                    case 1:
-                        lblVocht.setText("droog");
-                        break;
-                    case 2:
-                        lblVocht.setText("droog of fris");
-                        break;
-
-                    case 3:
-                        lblVocht.setText("fris");
-                        break;
-                    case 4:
-                        lblVocht.setText("fris of vochtig");
-                        break;
-                    case 5:
-                        lblVocht.setText("vochtig");
-                        break;
-                    case 6:
-                        lblVocht.setText("vochtig of nat");
-                        break;
-                    case 7:
-                        lblVocht.setText("nat");
-                        break;
-                }
-            }
-        });
-
-
-/*
-    public void InitSliders() {
-        SetSlider(sldNectarwaarde, 0, 5, false);
-        SetSlider(sldPollenwaarde, 0, 5, false);
-
-        //schaduw, halfschaduw-shacuw, half schaduw, halfschaduw-zon, zon
-        SetSlider(sldBezonning, 1, 5, false);
-
-        //droog, droog of fris, fris, fris of vochtig, vochtig, vochtig-nat, nat
-        SetSlider(sldVochtbehoefte, 1, 7, false);
-
-        //arm, indifferent, matig, rijk
-        SetSlider(sldVoedingsbehoefte, 1, 4, false);
-
-
-
-
-
-
-        
-    }
-
-
-    /**
-     * @param slider     in te stellen slider
-     * @param min        minimumwaarde van slider
-     * @param max        maximumwaarde van slider
-     * @param ticklabels moeten labels getoont worden met geselecteerde waarde
-     *                   <p>
-     *                   spinner instellen enkel major ticks in integers
-     * @author bradley
-     */
-/*
-    private void SetSlider(Slider slider, int min, int max, boolean ticklabels) {
-        slider.setMin(min);
-        slider.setMax(max);
-        slider.setMajorTickUnit(1);
-        slider.setMinorTickCount(0);
-        slider.setShowTickMarks(true);
-        slider.setShowTickLabels(ticklabels);
-        slider.setSnapToTicks(true);
-        slider.setValue(1);
-    }
-
- */
-
-/*
-    /**
-     * @author bradley
-     * Aanmaken van connectie bindings tussen verschillende controls
-     */
-/*
-    private void InitBindings() {
-        bindingData = new BindingData();
-
-        bindingData.searchRequestData.get(ERequestData.SEARCH).Value().valueProperty().bind(txtSearch.textProperty());
-
-        Bind(ERequestData.BLADVORM, chkBladvorm, cboBladvorm);
-        Bind(ERequestData.SPRUITFENOLOGIE, chkSpruitfenologie, cboSpruitfenologie);
-        Bind(ERequestData.VOEDINGSBEHOEFTE, chkVoedingsbehoefte, sldVoedingsbehoefte, lblVoedingsBehoefte);
-        Bind(ERequestData.BLADGROOTTE, chkBladgrootte, cboBladgrootte);
-        Bind(ERequestData.BLADHOOGTE, chkBladHoogte, nudMaxBladhoogte);
-        Bind(ERequestData.FAMILIE, chkFamilie, cboFamilie);
-        Bind(ERequestData.TYPE, chkType, cboType);
-        Bind(ERequestData.HABITAT, chkHabitat, cboHabitat);
-        Bind(ERequestData.BLADKLEUR, chkBladKleur, cboBladkleur);
-        Bind(ERequestData.BLOEIKLEUR, chkBloeiKleur, cboBloeikleur);
-        Bind(ERequestData.REACTIEANTAGONISTISCHEOMGEVING, chkReactieAntagonistischeOmg, cboReactieAnta);
-        Bind(ERequestData.ONTWIKKELINGSSNELHEID, chkOntwikkelingssnelheid, cboOntwikkel);
-        Bind(ERequestData.LEVENSDUUR, chkLevensduur_concurrentiekracht, cboLevensduur);
-        Bind(ERequestData.NECTARWAARDE, chkNectarwaarde, sldNectarwaarde, lblNectarwaarde);
-        Bind(ERequestData.POLLENWAARDE, chkPollenwaarde, sldPollenwaarde, lblPollenwaarde);
-        Bind(ERequestData.RATIOBLOEIBLAD, chkRatio_bloei_blad, cboRatioBloeiBlad);
-        Bind(ERequestData.BEHANDELING, chkBehandeling, cboBehandeling);
-        Bind(ERequestData.MAAND, chkMaand, cboMaand);
-        Bind(ERequestData.PERXJAAR, chkPerXJaar, nudPerXJaar);
-        Bind(ERequestData.BEZONNING, chkBezonning, sldBezonning, lblBezonning);
-        Bind(ERequestData.VOCHTBEHOEFTE, chkVochtBehoefte, sldVochtbehoefte, lblVocht);
-
-
-        ArrayList<RadioButton> rdbLevensvormen = new ArrayList<RadioButton>();
-        rdbLevensvormen.add(rdbLevensvorm_1);
-        rdbLevensvormen.add(rdbLevensvorm_2);
-        rdbLevensvormen.add(rdbLevensvorm_3);
-        rdbLevensvormen.add(rdbLevensvorm_4);
-        rdbLevensvormen.add(rdbLevensvorm_5);
-        rdbLevensvormen.add(rdbLevensvorm_6);
-        rdbLevensvormen.add(rdbLevensvorm_7);
-        rdbLevensvormen.add(rdbLevensvorm_8);
-        rdbLevensvormen.add(rdbLevensvorm_9);
-
-        BindRadiobutton(ERequestArrayData.LEVENSVORM, chkLevensvormVolgensRaunkhiaer, rdbLevensvormen);
-
-
-        /*ArrayList<RadioButton> rdbStrategieën = new ArrayList<RadioButton>();
-        rdbStrategieën.add(rdbStrategie_C);
-        rdbStrategieën.add(rdbStrategie_R);
-        rdbStrategieën.add(rdbStrategie_S);
-        rdbStrategieën.add(rdbStrategie_CR);
-        rdbStrategieën.add(rdbStrategie_CS);
-        rdbStrategieën.add(rdbStrategie_RS);
-        rdbStrategieën.add(rdbStrategie_CRS);
-        rdbStrategieën.add(rdbStrategie_Onbekend);
-        BindRadiobutton(ERequestArrayData.STRATEGIE, chkStrategie, rdbStrategieën);*/
-
-/*
-
-        ArrayList<RadioButton> rdbBijvriendelijken = new ArrayList<RadioButton>();
-        rdbBijvriendelijken.add(rdbBijvriendelijk_Ja);
-        rdbBijvriendelijken.add(rdbBijvriendelijk_Nee);
-        rdbBijvriendelijken.add(rdbBijvriendelijk_Onbekend);
-        BindRadiobutton(ERequestArrayData.BIJVRIENDELIJK, chkBijvriendelijk, rdbBijvriendelijken);
-
-        ArrayList<RadioButton> rdbVlindervriendelijken = new ArrayList<RadioButton>();
-        rdbVlindervriendelijken.add(rdbVlindervriendelijk_Ja);
-        rdbVlindervriendelijken.add(rdbVlindervriendelijk_Nee);
-        rdbVlindervriendelijken.add(rdbVlindervriendelijk_Onbekend);
-        BindRadiobutton(ERequestArrayData.VLINDERVRIENDELIJK, chkVlindervriendelijk, rdbVlindervriendelijken);
-
-        ArrayList<RadioButton> rdbGeurenden = new ArrayList<RadioButton>();
-        rdbGeurenden.add(rdbGeurend_Ja);
-        rdbGeurenden.add(rdbGeurend_Nee);
-        rdbGeurenden.add(rdbGeurend_Onbekend);
-        BindRadiobutton(ERequestArrayData.GEUREND, chkGeurend, rdbGeurenden);
-
-        ArrayList<RadioButton> rdbEetbaren = new ArrayList<RadioButton>();
-        rdbEetbaren.add(rdbEetbaar_Ja);
-        rdbEetbaren.add(rdbEetbaar_Nee);
-        rdbEetbaren.add(rdbEetbaar_Onbekend);
-        BindRadiobutton(ERequestArrayData.EETBAAR, chkEetbaar, rdbEetbaren);
-
-        ArrayList<RadioButton> rdkKruidgebruiken = new ArrayList<RadioButton>();
-        rdkKruidgebruiken.add(rdbKruidgebruik_Ja);
-        rdkKruidgebruiken.add(rdbKruidgebruik_Nee);
-        rdkKruidgebruiken.add(rdbKruidgebruik_Onbekend);
-        BindRadiobutton(ERequestArrayData.KRUIDGEBRUIK, chkKruidgebruik, rdkKruidgebruiken);
-
-        ArrayList<RadioButton> rdbVorstgevoeligen = new ArrayList<RadioButton>();
-        rdbVorstgevoeligen.add(rdbVorstgevoelig_Ja);
-        rdbVorstgevoeligen.add(rdbVorstgevoelig_Nee);
-        rdbVorstgevoeligen.add(rdbVorstgevoelig_Onbekend);
-        BindRadiobutton(ERequestArrayData.VORSTGEVOELIG, chkVorstgevoelig, rdbVorstgevoeligen);
-
-        ArrayList<RadioButton> rdbHabitusen = new ArrayList<RadioButton>();
-        rdbHabitusen.add(rdbHabitus_1);
-        rdbHabitusen.add(rdbHabitus_2);
-        rdbHabitusen.add(rdbHabitus_3);
-        rdbHabitusen.add(rdbHabitus_4);
-        rdbHabitusen.add(rdbHabitus_5);
-        rdbHabitusen.add(rdbHabitus_6);
-        rdbHabitusen.add(rdbHabitus_7);
-        rdbHabitusen.add(rdbHabitus_8);
-        rdbHabitusen.add(rdbHabitus_9);
-        rdbHabitusen.add(rdbHabitus_10);
-        rdbHabitusen.add(rdbHabitus_11);
-        rdbHabitusen.add(rdbHabitus_12);
-        rdbHabitusen.add(rdbHabitus_13);
-        rdbHabitusen.add(rdbHabitus_14);
-        rdbHabitusen.add(rdbHabitus_15);
-        BindRadiobutton(ERequestArrayData.HABITUS, chkHabitus, rdbHabitusen);
-
-        ArrayList<RadioButton> rdbBloeiwijzes = new ArrayList<RadioButton>();
-        rdbBloeiwijzes.add(rdbBloeiwijze_Etage);
-        rdbBloeiwijzes.add(rdbBloeiwijze_Aar);
-        rdbBloeiwijzes.add(rdbBloeiwijze_BolofKnop);
-        rdbBloeiwijzes.add(rdbBloeiwijze_BredePluim);
-        rdbBloeiwijzes.add(rdbBloeiwijze_Margrietachtig);
-        rdbBloeiwijzes.add(rdbBloeiwijze_Scherm);
-        rdbBloeiwijzes.add(rdbBloeiwijze_Schotel);
-        rdbBloeiwijzes.add(rdbBloeiwijze_SmallePluim);
-        BindRadiobutton(ERequestArrayData.BLOEIWIJZE, chkBloeiwijze, rdbBloeiwijzes);
-
-        ArrayList<CheckBox> chkSociabiliteiten = new ArrayList<CheckBox>();
-        chkSociabiliteiten.add(chkSociabiliteit_1);
-        chkSociabiliteiten.add(chkSociabiliteit_2);
-        chkSociabiliteiten.add(chkSociabiliteit_3);
-        chkSociabiliteiten.add(chkSociabiliteit_4);
-        chkSociabiliteiten.add(chkSociabiliteit_5);
-        BindCheckbox(ERequestArrayData.SOCIABILITEIT, chkSociabiliteit, chkSociabiliteiten);
-
-        ArrayList<CheckBox> chkGrondsoorten = new ArrayList<CheckBox>();
-
-        chkGrondsoorten.add(chkGrondsoort_Z);
-        chkGrondsoorten.add(chkGrondsoort_L);
-        chkGrondsoorten.add(chkGrondsoort_K);
-        BindCheckbox(ERequestArrayData.GRONDSOORT, chkGrondsoort, chkGrondsoorten);
-
-        ArrayList<Spinner<Integer>> nudBladhoogtes = new ArrayList<Spinner<Integer>>();
-        nudBladhoogtes.add(nudMinBladhoogte);
-        nudBladhoogtes.add(nudMaxBladhoogte);
-        BindSpinner(ERequestArrayData.BLADHOOGTE, chkBladHoogte, nudBladhoogtes);
-
-        ArrayList<Spinner<Integer>> nudBloeihoogtes = new ArrayList<Spinner<Integer>>();
-        nudBloeihoogtes.add(nudMinBloeihoogte);
-        nudBloeihoogtes.add(nudMaxBloeihoogte);
-        BindSpinner(ERequestArrayData.BLOEIHOOGTE, chkBloeiHoogte, nudBloeihoogtes);
-
-        ArrayList<Spinner<Integer>> nudMaxBladhoogteMaand = new ArrayList<Spinner<Integer>>();
-        nudMaxBladhoogteMaand.add(nudMaxBladhoogte_Jan);
-        nudMaxBladhoogteMaand.add(nudMaxBladhoogte_Feb);
-        nudMaxBladhoogteMaand.add(nudMaxBladhoogte_Maa);
-        nudMaxBladhoogteMaand.add(nudMaxBladhoogte_Apr);
-        nudMaxBladhoogteMaand.add(nudMaxBladhoogte_Mei);
-        nudMaxBladhoogteMaand.add(nudMaxBladhoogte_Jun);
-        nudMaxBladhoogteMaand.add(nudMaxBladhoogte_Jul);
-        nudMaxBladhoogteMaand.add(nudMaxBladhoogte_Aug);
-        nudMaxBladhoogteMaand.add(nudMaxBladhoogte_Sept);
-        nudMaxBladhoogteMaand.add(nudMaxBladhoogte_Okt);
-        nudMaxBladhoogteMaand.add(nudMaxBladhoogte_Nov);
-        nudMaxBladhoogteMaand.add(nudMaxBladhoogte_Dec);
-        BindSpinner(ERequestArrayData.MAXBLADHOOGTEPERMAAND, chkMaxBladhoogtePerMaand, nudMaxBladhoogteMaand);
-
-        ArrayList<Spinner<Integer>> nudMaxBloeihoogteMaand = new ArrayList<Spinner<Integer>>();
-        nudMaxBloeihoogteMaand.add(nudMaxBloeihoogte_Jan);
-        nudMaxBloeihoogteMaand.add(nudMaxBloeihoogte_Feb);
-        nudMaxBloeihoogteMaand.add(nudMaxBloeihoogte_Maa);
-        nudMaxBloeihoogteMaand.add(nudMaxBloeihoogte_Apr);
-        nudMaxBloeihoogteMaand.add(nudMaxBloeihoogte_Mei);
-        nudMaxBloeihoogteMaand.add(nudMaxBloeihoogte_Jun);
-        nudMaxBloeihoogteMaand.add(nudMaxBloeihoogte_Jul);
-        nudMaxBloeihoogteMaand.add(nudMaxBloeihoogte_Aug);
-        nudMaxBloeihoogteMaand.add(nudMaxBloeihoogte_Sept);
-        nudMaxBloeihoogteMaand.add(nudMaxBloeihoogte_Okt);
-        nudMaxBloeihoogteMaand.add(nudMaxBloeihoogte_Nov);
-        nudMaxBloeihoogteMaand.add(nudMaxBloeihoogte_Dec);
-        BindSpinner(ERequestArrayData.MAXBLOEIHOOGTEPERMAAND, chkMaxBloeihoogtePerMaand, nudMaxBloeihoogteMaand);
-
-        ArrayList<Spinner<Integer>> nudMinBloeihoogteMaand = new ArrayList<Spinner<Integer>>();
-        nudMinBloeihoogteMaand.add(nudMinBloeihoogte_Jan);
-        nudMinBloeihoogteMaand.add(nudMinBloeihoogte_Feb);
-        nudMinBloeihoogteMaand.add(nudMinBloeihoogte_Maa);
-        nudMinBloeihoogteMaand.add(nudMinBloeihoogte_Apr);
-        nudMinBloeihoogteMaand.add(nudMinBloeihoogte_Mei);
-        nudMinBloeihoogteMaand.add(nudMinBloeihoogte_Jun);
-        nudMinBloeihoogteMaand.add(nudMinBloeihoogte_Jul);
-        nudMinBloeihoogteMaand.add(nudMinBloeihoogte_Aug);
-        nudMinBloeihoogteMaand.add(nudMinBloeihoogte_Sept);
-        nudMinBloeihoogteMaand.add(nudMinBloeihoogte_Okt);
-        nudMinBloeihoogteMaand.add(nudMinBloeihoogte_Nov);
-        nudMinBloeihoogteMaand.add(nudMinBloeihoogte_Dec);
-        BindSpinner(ERequestArrayData.MINBLOEIHOOGTEPERMAAND, chkMinBloeihoogtePerMaand, nudMinBloeihoogteMaand);
-
-        ArrayList<ComboBox<String>> cboBladkleurMaand = new ArrayList<ComboBox<String>>();
-        cboBladkleurMaand.add(cboBladkleurJan);
-        cboBladkleurMaand.add(cboBladkleurFeb);
-        cboBladkleurMaand.add(cboBladkleurMaa);
-        cboBladkleurMaand.add(cboBladkleurApr);
-        cboBladkleurMaand.add(cboBladkleurMei);
-        cboBladkleurMaand.add(cboBladkleurJun);
-        cboBladkleurMaand.add(cboBladkleurJul);
-        cboBladkleurMaand.add(cboBladkleurAug);
-        cboBladkleurMaand.add(cboBladkleurSep);
-        cboBladkleurMaand.add(cboBladkleurOkt);
-        cboBladkleurMaand.add(cboBladkleurNov);
-        cboBladkleurMaand.add(cboBladkleurDec);
-        BindCombobox(ERequestArrayData.BLADKLEURPERMAAND, chkBladkleurPerMaand, cboBladkleurMaand);
-
-        ArrayList<ComboBox<String>> cboBloeikleurMaand = new ArrayList<ComboBox<String>>();
-        cboBloeikleurMaand.add(cboBloeikleurJan);
-        cboBloeikleurMaand.add(cboBloeikleurFeb);
-        cboBloeikleurMaand.add(cboBloeikleurMaa);
-        cboBloeikleurMaand.add(cboBloeikleurApr);
-        cboBloeikleurMaand.add(cboBloeikleurMei);
-        cboBloeikleurMaand.add(cboBloeikleurJun);
-        cboBloeikleurMaand.add(cboBloeikleurJul);
-        cboBloeikleurMaand.add(cboBloeikleurAug);
-        cboBloeikleurMaand.add(cboBloeikleurSep);
-        cboBloeikleurMaand.add(cboBloeikleurOkt);
-        cboBloeikleurMaand.add(cboBloeikleurNov);
-        cboBloeikleurMaand.add(cboBloeikleurDec);
-        BindCombobox(ERequestArrayData.BLOEIKLEURPERMAAND, chkBloeikleurPerMaand, cboBloeikleurMaand);
-
-
-    }
-*/
-/*
-    /**
-     * @param E        binding Enumeration
-     * @param checkBox welke checkbox gebind moet worden
-     * @author bradley
-     * @Author bradley
-     */
-/*
-    public void Bind(ERequestData E, CheckBox checkBox, Slider slider, Label label) {
-        slider.disableProperty().bind(checkBox.selectedProperty().not());
-        bindingData.searchRequestData.get(E).DoSearchProperty().bind(checkBox.selectedProperty());
-        bindingData.searchRequestData.get(E).Value().valueProperty().bind(label.textProperty());
-    }
-
-    /**
-     * @param E        enum Bindings
-     * @param checkBox te binden checkbox
-     * @param comboBox te binden combobox
-     * @author bradley
-     */
-/*
-    public void Bind(ERequestData E, CheckBox checkBox, ComboBox<String> comboBox) {
-        comboBox.disableProperty().bind(checkBox.selectedProperty().not());
-        bindingData.searchRequestData.get(E).DoSearchProperty().bind(checkBox.selectedProperty());
-        bindingData.searchRequestData.get(E).Value().valueProperty().bind(comboBox.valueProperty().asString());
-    }
-
-    /**
-     * @param E        enum Bindings
-     * @param checkBox te binden checkbox
-     * @param spinner  te binden spinner
-     * @author bradley
-     */
-/*
-    public void Bind(ERequestData E, CheckBox checkBox, Spinner<Integer> spinner) {
-        spinner.disableProperty().bind(checkBox.selectedProperty().not());
-        bindingData.searchRequestData.get(E).DoSearchProperty().bind(checkBox.selectedProperty());
-        bindingData.searchRequestData.get(E).Value().valueProperty().bind(spinner.valueProperty().asString());
-    }
-
-    /**
-     * @author bradley
-     **/
-    public void BindSpinner(ERequestArrayData E, CheckBox checkBox, ArrayList<Spinner<Integer>> listSpinner) {
-        bindingData.searchRequestArrayData.get(E).DoSearchProperty().bind(checkBox.selectedProperty());
-
-        for (int i = 0; i < bindingData.searchRequestArrayData.get(E).Value().length; i++) {
-            listSpinner.get(i).disableProperty().bind(checkBox.selectedProperty().not());
-            bindingData.searchRequestArrayData.get(E).Value()[i].valueProperty().bind(listSpinner.get(i).valueProperty().asString());
-
-        }
-    }
-
-    /**
-     * @author bradley
-     **/
-    public void BindRadiobutton(ERequestArrayData E, CheckBox checkBox, ArrayList<RadioButton> listRadioButton) {
-
-        bindingData.searchRequestArrayData.get(E).DoSearchProperty().bind(checkBox.selectedProperty());
-
-        for (int i = 0; i < bindingData.searchRequestArrayData.get(E).Value().length; i++) {
-
-
-            listRadioButton.get(i).disableProperty().bind(checkBox.selectedProperty().not());
-            bindingData.searchRequestArrayData.get(E).Value()[i].valueProperty().bind(listRadioButton.get(i).textProperty());
-            bindingData.searchRequestArrayData.get(E).Value()[i].isSelectedProperty().bind(listRadioButton.get(i).selectedProperty());
-
-        }
-    }
-
-    /**
-     * @author Bradley
-     */
-    public void BindCheckbox(ERequestArrayData E, CheckBox checkBox, ArrayList<CheckBox> listCheckbox) {
-        bindingData.searchRequestArrayData.get(E).DoSearchProperty().bind(checkBox.selectedProperty());
-
-        for (int i = 0; i < bindingData.searchRequestArrayData.get(E).Value().length; i++) {
-
-            listCheckbox.get(i).disableProperty().bind(checkBox.selectedProperty().not());
-            bindingData.searchRequestArrayData.get(E).Value()[i].valueProperty().bind(listCheckbox.get(i).textProperty());
-            bindingData.searchRequestArrayData.get(E).Value()[i].isSelectedProperty().bind(listCheckbox.get(i).selectedProperty());
-        }
-    }
-
-    /**
-     * @param E            Enum die aangesproken wordt
-     * @param checkBox     checkbox die je wil binden
-     * @param listComboBOx lijst van alle comboboxes die je wil binden
-     * @author bradley
-     */
-    public void BindCombobox(ERequestArrayData E, CheckBox checkBox, ArrayList<ComboBox<String>> listComboBOx) {
-        bindingData.searchRequestArrayData.get(E).DoSearchProperty().bind(checkBox.selectedProperty());
-
-        for (int i = 0; i < bindingData.searchRequestArrayData.get(E).Value().length; i++) {
-
-            listComboBOx.get(i).disableProperty().bind(checkBox.selectedProperty().not());
-            bindingData.searchRequestArrayData.get(E).Value()[i].valueProperty().bind(listComboBOx.get(i).valueProperty());
-        }
-    }
-*/
-    /**
      * @param infotables -> lijst van alle lijsten van gegevens uit de naakte tabellen
      * @author bradley, angelo
      * Functie om comboboxes te vullen met alle gegevens uit de database
@@ -1217,77 +761,15 @@ public class Controller {
         cboSpruitfenologie.getItems().addAll(infotables.getSpruitfenologieen());
         cboSpruitfenologie.getSelectionModel().selectFirst();
     }
-
-    /*
-
-
-    public void InitSpinners() {
-        setSpinner(nudPerXJaar, 10);
-
-        setSpinner(nudMinBloeihoogte, 1000);
-        setSpinner(nudMaxBloeihoogte, 1000);
-        setSpinner(nudMinBladhoogte, 1000);
-        setSpinner(nudMaxBladhoogte, 1000);
-
-        setSpinner(nudMinBloeihoogte_Jan, 1000);
-        setSpinner(nudMinBloeihoogte_Feb, 1000);
-        setSpinner(nudMinBloeihoogte_Maa, 1000);
-        setSpinner(nudMinBloeihoogte_Apr, 1000);
-        setSpinner(nudMinBloeihoogte_Mei, 1000);
-        setSpinner(nudMinBloeihoogte_Jun, 1000);
-        setSpinner(nudMinBloeihoogte_Jul, 1000);
-        setSpinner(nudMinBloeihoogte_Aug, 1000);
-        setSpinner(nudMinBloeihoogte_Sept, 1000);
-        setSpinner(nudMinBloeihoogte_Okt, 1000);
-        setSpinner(nudMinBloeihoogte_Nov, 1000);
-        setSpinner(nudMinBloeihoogte_Dec, 1000);
-
-        setSpinner(nudMaxBloeihoogte_Jan, 1000);
-        setSpinner(nudMaxBloeihoogte_Feb, 1000);
-        setSpinner(nudMaxBloeihoogte_Maa, 1000);
-        setSpinner(nudMaxBloeihoogte_Apr, 1000);
-        setSpinner(nudMaxBloeihoogte_Mei, 1000);
-        setSpinner(nudMaxBloeihoogte_Jun, 1000);
-        setSpinner(nudMaxBloeihoogte_Jul, 1000);
-        setSpinner(nudMaxBloeihoogte_Aug, 1000);
-        setSpinner(nudMaxBloeihoogte_Sept, 1000);
-        setSpinner(nudMaxBloeihoogte_Okt, 1000);
-        setSpinner(nudMaxBloeihoogte_Nov, 1000);
-        setSpinner(nudMaxBloeihoogte_Dec, 1000);
-
-        setSpinner(nudMaxBladhoogte_Jan, 1000);
-        setSpinner(nudMaxBladhoogte_Feb, 1000);
-        setSpinner(nudMaxBladhoogte_Maa, 1000);
-        setSpinner(nudMaxBladhoogte_Apr, 1000);
-        setSpinner(nudMaxBladhoogte_Mei, 1000);
-        setSpinner(nudMaxBladhoogte_Jun, 1000);
-        setSpinner(nudMaxBladhoogte_Jul, 1000);
-        setSpinner(nudMaxBladhoogte_Aug, 1000);
-        setSpinner(nudMaxBladhoogte_Sept, 1000);
-        setSpinner(nudMaxBladhoogte_Okt, 1000);
-        setSpinner(nudMaxBladhoogte_Nov, 1000);
-        setSpinner(nudMaxBladhoogte_Dec, 1000);
-    }
-
-    /**
-     * @author bradley
-     **/
-    public void setSpinner(Spinner<Integer> spinner, int MaxValue) {
-        spinner.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(0, MaxValue));
-    }
-
-    /**
-     * @author bradley
-     **/
     public void Click_Search(MouseEvent mouseEvent) throws SQLException {
         lsvOverzicht.getSelectionModel().selectedItemProperty().removeListener(lsvChanged);
 
-        System.out.println("voor listview clear: " + lsvOverzicht.getItems());
+        //System.out.println("voor listview clear: " + lsvOverzicht.getItems());
         lsvOverzicht.getItems().removeAll(lsvOverzicht.getItems());
-        System.out.println("na listview clear: " + lsvOverzicht.getItems());
+        //System.out.println("na listview clear: " + lsvOverzicht.getItems());
         forceListRefreshOn(lsvOverzicht);
 
-        System.out.println("na refresh listview " + lsvOverzicht.getItems());
+        //System.out.println("na refresh listview " + lsvOverzicht.getItems());
        lsvOverzicht.getSelectionModel().selectedItemProperty().addListener(lsvChanged);
         if (!pnlUitvoer.isVisible()) {
             pnlUitvoer.setVisible(true);
@@ -1298,11 +780,11 @@ public class Controller {
         }
 
         planten = new ArrayList<Plant>();
-        planten = handler.Search(bindingData, dbConnection);
+        planten = handler.Search(guiData, dbConnection);
 
        lsvOverzicht.getItems().addAll(planten);
 
-        System.out.println("na toevoegen: " + lsvOverzicht.getItems());
+        //System.out.println("na toevoegen: " + lsvOverzicht.getItems());
 
 
         lsvOverzicht.getSelectionModel().selectFirst();

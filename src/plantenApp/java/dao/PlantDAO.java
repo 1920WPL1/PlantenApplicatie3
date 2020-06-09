@@ -1,15 +1,11 @@
 package plantenApp.java.dao;
 
-import plantenApp.java.model.BindingData;
 import plantenApp.java.model.Plant;
-import plantenApp.java.model.SearchRequest;
-import plantenApp.java.model.RequestValue;
 import plantenApp.java.model.data.ComboBoxData;
 import plantenApp.java.model.data.GUIdata;
 import plantenApp.java.model.data.TextfieldData;
 import plantenApp.java.model.data.enums.EComboBox;
 import plantenApp.java.model.data.enums.ETextfield;
-import plantenApp.java.utils.ERequestData;
 import plantenApp.java.utils.DaoUtils;
 
 
@@ -151,7 +147,7 @@ public class PlantDAO implements Queries {
 
     //region FILTER
 
-    public ArrayList<Integer> FilterOn(BindingData bindingData, GUIdata guiData) throws SQLException {
+    public ArrayList<Integer> FilterOn(GUIdata guiData) throws SQLException {
         //Dao
 
         //Items
@@ -164,7 +160,7 @@ public class PlantDAO implements Queries {
         stmtSelectIdsByPlant.setInt(2, (type.isDoSearch()) ? 0 : 1);
 
         //familie
-        ComboBoxData familie = guiData.comboBoxDEM.get(EComboBox.TYPE);
+        ComboBoxData familie = guiData.comboBoxDEM.get(EComboBox.FAMILIE);
         //SearchRequest<RequestValue> familie = bindingData.searchRequestData.get(ERequestData.FAMILIE);
         stmtSelectIdsByPlant.setString(3, familie.getValue());
         stmtSelectIdsByPlant.setInt(4, (familie.isDoSearch()) ? 0 : 1);
