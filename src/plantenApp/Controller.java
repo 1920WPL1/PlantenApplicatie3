@@ -368,17 +368,43 @@ public class Controller {
 
 
 
-
-        guiData = new GUIdata();
+        guiData = new GUIdata(dbConnection);
         guiData.textFieldDEM.get(ETextfield.SEARCH).Bind(txtSearch);
         guiData.comboBoxDEM.get(EComboBox.TYPE).Bind(chkType, cboType);
+        guiData.comboBoxDEM.get(EComboBox.FAMILIE).Bind(chkFamilie, cboFamilie);
+
+        //Type aangeduid -> families beperkt
+        guiData.comboBoxDEM.get(EComboBox.TYPE).valueProperty().addListener((observableValue, s, t1) -> {
+            try {
+                ArrayList<String> list = infotablesDAO.selectFamiliesByType(guiData.comboBoxDEM.get(EComboBox.TYPE).getValue());
+                guiData.comboBoxDEM.get(EComboBox.FAMILIE).setPossibleValues(list);
+                guiData.comboBoxDEM.get(EComboBox.FAMILIE).updateComboBoxWithPossibleValues(cboFamilie);
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        });
+        guiData.comboBoxDEM.get(EComboBox.TYPE).doSearchProperty().addListener((observableValue, aBoolean, t1) -> {
+            if (guiData.comboBoxDEM.get(EComboBox.TYPE).isDoSearch()){
+                try {
+                    ArrayList<String> list = infotablesDAO.selectFamiliesByType(guiData.comboBoxDEM.get(EComboBox.TYPE).getValue());
+                    guiData.comboBoxDEM.get(EComboBox.FAMILIE).setPossibleValues(list);
+                    guiData.comboBoxDEM.get(EComboBox.FAMILIE).updateComboBoxWithPossibleValues(cboFamilie);
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+            else{
+                guiData.comboBoxDEM.get(EComboBox.FAMILIE).setPossibleValues(infoTables.getFamilies());
+                guiData.comboBoxDEM.get(EComboBox.FAMILIE).updateComboBoxWithPossibleValues(cboFamilie);
+            }
+        });
+
         guiData.comboBoxDEM.get(EComboBox.BEHANDELING).Bind(chkBehandeling, cboBehandeling);
         guiData.comboBoxDEM.get(EComboBox.BLADGROOTTE).Bind(chkBladgrootte, cboBladgrootte);
         guiData.comboBoxDEM.get(EComboBox.BLADKLEUR).Bind(chkBladKleur, cboBladkleur);
         guiData.comboBoxDEM.get(EComboBox.BLADVORM).Bind(chkBladvorm, cboBladvorm);
         guiData.comboBoxDEM.get(EComboBox.BLOEIKLEUR).Bind(chkBloeiKleur, cboBloeikleur);
         guiData.comboBoxDEM.get(EComboBox.BLADKLEUR).Bind(chkBladKleur, cboBladkleur);
-        guiData.comboBoxDEM.get(EComboBox.FAMILIE).Bind(chkFamilie, cboFamilie);
         guiData.comboBoxDEM.get(EComboBox.HABITAT).Bind(chkHabitat, cboHabitat);
         guiData.comboBoxDEM.get(EComboBox.LEVENSDUUR).Bind(chkLevensduur_concurrentiekracht, cboLevensduur);
         guiData.comboBoxDEM.get(EComboBox.MAAND).Bind(chkMaand, cboMaand);
@@ -412,7 +438,7 @@ public class Controller {
         guiData.radiogroupDEM.get(ERadiogroup.BIJVRIENDELIJK).Bind(chkBijvriendelijk, new RadioButton[]{rdbBijvriendelijk_Ja, rdbBijvriendelijk_Nee, rdbBijvriendelijk_Onbekend});
         guiData.radiogroupDEM.get(ERadiogroup.VLINDERVRIENDELIJK).Bind(chkVlindervriendelijk, new RadioButton[]{rdbVlindervriendelijk_Ja, rdbVlindervriendelijk_Nee, rdbVlindervriendelijk_Onbekend});
         guiData.radiogroupDEM.get(ERadiogroup.VORSTGEVOELIG).Bind(chkVorstgevoelig, new RadioButton[]{rdbVorstgevoelig_Ja, rdbVorstgevoelig_Nee, rdbVorstgevoelig_Onbekend});
-        guiData.radiogroupDEM.get(ERadiogroup.BLOEIWIJZE).Bind(chkBloeiwijze, new RadioButton[]{rdbBloeiwijze_Aar, rdbBloeiwijze_BredePluim, rdbBloeiwijze_Etage, rdbBloeiwijze_BolofKnop, rdbBloeiwijze_Margrietachtig, rdbBloeiwijze_Schotel, rdbBloeiwijze_Scherm, rdbBloeiwijze_SmallePluim});
+        guiData.radiogroupDEM.get(ERadiogroup.BLOEIWIJZE).Bind(chkBloeiwijze, new RadioButton[]{rdbBloeiwijze_Aar, rdbBloeiwijze_BredePluim, rdbBloeiwijze_Etage, rdbBloeiwijze_BolofKnop, rdbBloeiwijze_Margrietachtig, rdbBloeiwijze_Schotel}); //, rdbBloeiwijze_Scherm, rdbBloeiwijze_SmallePluim TODO fix de database
         guiData.radiogroupDEM.get(ERadiogroup.EETBAAR).Bind(chkEetbaar, new RadioButton[]{rdbEetbaar_Ja, rdbEetbaar_Nee, rdbEetbaar_Onbekend});
         guiData.radiogroupDEM.get(ERadiogroup.HABITUS).Bind(chkHabitus, new RadioButton[]{rdbHabitus_1, rdbHabitus_2, rdbHabitus_3, rdbHabitus_4, rdbHabitus_5, rdbHabitus_6, rdbHabitus_7, rdbHabitus_8, rdbHabitus_9, rdbHabitus_10, rdbHabitus_11, rdbHabitus_12, rdbHabitus_13, rdbHabitus_14, rdbHabitus_15});
         guiData.radiogroupDEM.get(ERadiogroup.GEUREND).Bind(chkGeurend, new RadioButton[]{rdbGeurend_Ja, rdbGeurend_Nee, rdbGeurend_Onbekend});
@@ -421,9 +447,8 @@ public class Controller {
         guiData.radiogroupDEM.get(ERadiogroup.LEVENSVORM).Bind(chkLevensvormVolgensRaunkhiaer, new RadioButton[]{rdbLevensvorm_1, rdbLevensvorm_2, rdbLevensvorm_3, rdbLevensvorm_4, rdbLevensvorm_5, rdbLevensvorm_6, rdbLevensvorm_7, rdbLevensvorm_8, rdbLevensvorm_9});
 
 
-
         InitListView();
-        FillComboboxes(infoTables);
+        //FillComboboxes(infoTables);
 
         ArrayList<ImageView> habitus = new ArrayList<>();
         habitus.add(imgTufted);
@@ -465,21 +490,6 @@ public class Controller {
 
             habitus.get(i).setImage(infoTables.getHabitusFotos().get(i).getFoto());
         }
-
-        //TODO familie link met type
-        /*
-        cboType.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
-            @Override
-            public void changed(ObservableValue<? extends String> observableValue, String s, String t1) {
-                try {
-                    InfoTablesDAO dao = new InfoTablesDAO(dbConnection);
-                } catch (SQLException e) {
-                    e.printStackTrace();
-                }
-                cboFamilie.getItems().addAll(infotablesDAO.selectFamilyByType(bindingData.searchRequestData.get(ERequestData.TYPE).Value().))
-            }
-        });
-        */
     }
     /**
      * @author bradley
@@ -636,131 +646,6 @@ public class Controller {
         lsvOverzicht.getSelectionModel().selectedItemProperty().addListener(lsvChanged);
     }
 
-    /**
-     * @param infotables -> lijst van alle lijsten van gegevens uit de naakte tabellen
-     * @author bradley, angelo
-     * Functie om comboboxes te vullen met alle gegevens uit de database
-     */
-    public void FillComboboxes(InfoTables infotables) {
-
-        //type
-
-        cboType.getItems().addAll(infotables.getTypes());
-
-        cboType.getSelectionModel().selectFirst();
-        //familie
-        cboFamilie.getItems().addAll(infotables.getFamilies());
-        cboFamilie.getSelectionModel().selectFirst();
-        //bladkleur
-
-        cboBladkleur.getItems().addAll(infotables.getKleuren());
-        cboBladkleur.getSelectionModel().select("nvt");
-        //bloeikleur
-
-        cboBloeikleur.getItems().addAll(infotables.getKleuren());
-        cboBloeikleur.getSelectionModel().select("nvt");
-        //bladgrootte
-        cboBladgrootte.getItems().addAll(infotables.getBladgroottes());
-        cboBladgrootte.getSelectionModel().selectFirst();
-        //habitat
-        cboHabitat.getItems().addAll(infotables.getHabitats());
-        cboHabitat.getSelectionModel().selectFirst();
-        //bladkleuren (per maand)
-
-        cboBladkleurJan.getItems().addAll(infotables.getKleuren());
-        cboBladkleurJan.getSelectionModel().select("nvt");
-
-        cboBladkleurFeb.getItems().addAll(infotables.getKleuren());
-        cboBladkleurFeb.getSelectionModel().select("nvt");
-
-        cboBladkleurMaa.getItems().addAll(infotables.getKleuren());
-        cboBladkleurMaa.getSelectionModel().select("nvt");
-
-        cboBladkleurApr.getItems().addAll(infotables.getKleuren());
-        cboBladkleurApr.getSelectionModel().select("nvt");
-
-        cboBladkleurMei.getItems().addAll(infotables.getKleuren());
-        cboBladkleurMei.getSelectionModel().select("nvt");
-
-        cboBladkleurJun.getItems().addAll(infotables.getKleuren());
-        cboBladkleurJun.getSelectionModel().select("nvt");
-
-        cboBladkleurJul.getItems().addAll(infotables.getKleuren());
-        cboBladkleurJul.getSelectionModel().select("nvt");
-
-        cboBladkleurAug.getItems().addAll(infotables.getKleuren());
-        cboBladkleurAug.getSelectionModel().select("nvt");
-
-        cboBladkleurSep.getItems().addAll(infotables.getKleuren());
-        cboBladkleurSep.getSelectionModel().select("nvt");
-
-        cboBladkleurOkt.getItems().addAll(infotables.getKleuren());
-        cboBladkleurOkt.getSelectionModel().select("nvt");
-
-        cboBladkleurNov.getItems().addAll(infotables.getKleuren());
-        cboBladkleurNov.getSelectionModel().select("nvt");
-
-        cboBladkleurDec.getItems().addAll(infotables.getKleuren());
-        cboBladkleurDec.getSelectionModel().select("nvt");
-        //bloeikleuren (per maand)
-
-        cboBloeikleurJan.getItems().addAll(infotables.getKleuren());
-        cboBloeikleurJan.getSelectionModel().select("nvt");
-
-        cboBloeikleurFeb.getItems().addAll(infotables.getKleuren());
-        cboBloeikleurFeb.getSelectionModel().select("nvt");
-
-        cboBloeikleurMaa.getItems().addAll(infotables.getKleuren());
-        cboBloeikleurMaa.getSelectionModel().select("nvt");
-
-        cboBloeikleurApr.getItems().addAll(infotables.getKleuren());
-        cboBloeikleurApr.getSelectionModel().select("nvt");
-
-        cboBloeikleurMei.getItems().addAll(infotables.getKleuren());
-        cboBloeikleurMei.getSelectionModel().select("nvt");
-
-        cboBloeikleurJun.getItems().addAll(infotables.getKleuren());
-        cboBloeikleurJun.getSelectionModel().select("nvt");
-
-        cboBloeikleurJul.getItems().addAll(infotables.getKleuren());
-        cboBloeikleurJul.getSelectionModel().select("nvt");
-
-        cboBloeikleurAug.getItems().addAll(infotables.getKleuren());
-        cboBloeikleurAug.getSelectionModel().select("nvt");
-
-        cboBloeikleurSep.getItems().addAll(infotables.getKleuren());
-        cboBloeikleurSep.getSelectionModel().select("nvt");
-
-        cboBloeikleurOkt.getItems().addAll(infotables.getKleuren());
-        cboBloeikleurOkt.getSelectionModel().select("nvt");
-
-        cboBloeikleurNov.getItems().addAll(infotables.getKleuren());
-        cboBloeikleurNov.getSelectionModel().select("nvt");
-
-        cboBloeikleurDec.getItems().addAll(infotables.getKleuren());
-        cboBloeikleurDec.getSelectionModel().select("nvt");
-        //reactie antagonistische omgeving
-        cboReactieAnta.getItems().addAll(infotables.getAntagonistischeOmgevingsReacties());
-        cboReactieAnta.getSelectionModel().selectFirst();
-        //ontwikkelingssnelheid
-        cboOntwikkel.getItems().addAll(infotables.getOnstwikkelingssnelheden());
-        cboOntwikkel.getSelectionModel().selectFirst();
-        //levensduur/concurrentiekracht
-        cboLevensduur.getItems().addAll(infotables.getConcurentiekrachten());
-        cboLevensduur.getSelectionModel().selectFirst();
-        //bladvorm
-        cboBladvorm.getItems().addAll(infotables.getBladvormen());
-        cboBladvorm.getSelectionModel().selectFirst();
-        cboMaand.getItems().addAll("januari", "februari", "maart", "april", "mei", "juni", "juli", "augustus", "september", "oktober", "november", "december");
-        cboMaand.getSelectionModel().selectFirst();
-        cboBehandeling.getItems().addAll("test", "test2", "test3");
-        cboBehandeling.getSelectionModel().selectFirst();
-
-        cboRatioBloeiBlad.getItems().addAll(infotables.getBloeiBladRatios());
-        cboRatioBloeiBlad.getSelectionModel().selectFirst();
-        cboSpruitfenologie.getItems().addAll(infotables.getSpruitfenologieen());
-        cboSpruitfenologie.getSelectionModel().selectFirst();
-    }
     public void Click_Search(MouseEvent mouseEvent) throws SQLException {
 
         lsvOverzicht.getItems().clear();
@@ -780,7 +665,6 @@ public class Controller {
 
         lsvOverzicht.getSelectionModel().selectFirst();
     }
-
 }
 
 

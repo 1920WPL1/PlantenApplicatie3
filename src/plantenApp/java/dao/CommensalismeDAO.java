@@ -111,13 +111,11 @@ public class CommensalismeDAO implements Queries {
 
         //Strategie
         RadiogroupData strategie = guIdata.radiogroupDEM.get(ERadiogroup.STRATEGIE);
-        //SearchRequest<RequestValueWBool[]> strategie = bindingData.searchRequestArrayData.get(ERequestArrayData.STRATEGIE);
         stmtSelectIdsByComm.setString(plantIds.size() + 1, strategie.getActualValue());
         stmtSelectIdsByComm.setInt(plantIds.size() + 2, (strategie.isDoSearch()) ? 0 : 1);
 
         //ontwikkelingssnelheid
         ComboBoxData ontwikkelingssnelheid = guIdata.comboBoxDEM.get(EComboBox.ONTWIKKELINGSSNELHEID);
-        //SearchRequest<RequestValue> ontwikkelingssnelheid = bindingData.searchRequestData.get(ERequestData.ONTWIKKELINGSSNELHEID);
         stmtSelectIdsByComm.setString(plantIds.size() + 3, ontwikkelingssnelheid.getValue());
         stmtSelectIdsByComm.setInt(plantIds.size() + 4, (ontwikkelingssnelheid.isDoSearch()) ? 0 : 1);
 
@@ -129,7 +127,6 @@ public class CommensalismeDAO implements Queries {
         //Multi
         //TODO redo zoeken op sociabiliteit, momenteel word er niet gezocht op de waardes die niet aanstaan mss onmogelijk door DB
         MultiCheckboxData sociabiliteit = guIdata.multiCheckboxDEM.get(EMultiCheckbox.SOCIABILITEIT);
-        //SearchRequest<RequestValueWBool[]> sociabiliteit = bindingData.searchRequestArrayData.get(ERequestArrayData.SOCIABILITEIT);
         if (sociabiliteit.isDoSearch()) {
             for (int i = 0; i < sociabiliteit.Length(); i++) {
                 if (sociabiliteit.getValue(i)) {

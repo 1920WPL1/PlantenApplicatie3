@@ -5,9 +5,19 @@
       <change beforePath="$PROJECT_DIR$/.idea/libraries/mssql_jdbc_7_4_1_jre11.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/mssql_jdbc_7_4_1_jre11.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/plantenApp/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/plantenApp/Controller.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/plantenApp/java/model/SearchHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/plantenApp/java/model/SearchHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/plantenApp/java/dao/AbiotischeFactorenDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/plantenApp/java/dao/AbiotischeFactorenDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/plantenApp/java/dao/BeheerDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/plantenApp/java/dao/BeheerDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/plantenApp/java/dao/CommensalismeDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/plantenApp/java/dao/CommensalismeDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/plantenApp/java/dao/ExtraDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/plantenApp/java/dao/ExtraDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/plantenApp/java/dao/FenotypeDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/plantenApp/java/dao/FenotypeDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/plantenApp/java/dao/InfoTablesDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/plantenApp/java/dao/InfoTablesDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/plantenApp/java/dao/PlantDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/plantenApp/java/dao/PlantDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/plantenApp/java/dao/Queries.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/plantenApp/java/dao/Queries.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/plantenApp/java/model/data/ComboBoxData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/plantenApp/java/model/data/ComboBoxData.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/plantenApp/java/model/data/GUIdata.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/plantenApp/java/model/data/GUIdata.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/plantenApp/java/model/data/MultiComboBoxData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/plantenApp/java/model/data/MultiComboBoxData.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/plantenApp/java/model/data/RadiogroupData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/plantenApp/java/model/data/RadiogroupData.java" afterDir="false" />
     </list>
-    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -59,7 +69,7 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="extract.method.default.visibility" value="private" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../Jar/sqljdbc_7.4/enu/mssql-jdbc-7.4.1.jre11.jar!/" />
+    <property name="last_opened_file_path" value="C:/Progs/Java/Libraries/mssql-jdbc-7.4.1.jre11.jar!/" />
     <property name="project.structure.last.edited" value="Libraries" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.30297872" />
@@ -68,18 +78,6 @@
     <key name="CreateClassDialog.RecentsKey">
       <recent name="plantenApp.java.model" />
     </key>
-  </component>
-  <component name="RunDashboard">
-    <option name="ruleStates">
-      <list>
-        <RuleState>
-          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
-        </RuleState>
-        <RuleState>
-          <option name="name" value="StatusDashboardGroupingRule" />
-        </RuleState>
-      </list>
-    </option>
   </component>
   <component name="RunManager">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
@@ -145,10 +143,10 @@
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="734" y="224" key="#com.intellij.ide.util.MemberChooser" timestamp="1591692391199">
+    <state x="734" y="224" key="#com.intellij.ide.util.MemberChooser" timestamp="1591705069899">
       <screen x="0" y="0" width="1858" height="1080" />
     </state>
-    <state x="734" y="224" key="#com.intellij.ide.util.MemberChooser/0.0.1858.1080@0.0.1858.1080" timestamp="1591692391199" />
+    <state x="734" y="224" key="#com.intellij.ide.util.MemberChooser/0.0.1858.1080@0.0.1858.1080" timestamp="1591705069899" />
     <state x="725" y="425" width="407" height="237" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes" timestamp="1591255791343">
       <screen x="0" y="0" width="1858" height="1080" />
     </state>
@@ -161,30 +159,30 @@
       <screen x="0" y="0" width="1858" height="1080" />
     </state>
     <state x="659" y="287" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1858.1080@0.0.1858.1080" timestamp="1591698540003" />
-    <state x="708" y="281" key="FileChooserDialogImpl" timestamp="1591697287527">
+    <state x="708" y="281" key="FileChooserDialogImpl" timestamp="1591705977696">
       <screen x="0" y="0" width="1858" height="1080" />
     </state>
-    <state x="708" y="281" key="FileChooserDialogImpl/0.0.1858.1080@0.0.1858.1080" timestamp="1591697287527" />
-    <state width="1815" height="326" key="GridCell.Tab.0.bottom" timestamp="1591698471771">
+    <state x="708" y="281" key="FileChooserDialogImpl/0.0.1858.1080@0.0.1858.1080" timestamp="1591705977696" />
+    <state width="1815" height="326" key="GridCell.Tab.0.bottom" timestamp="1591709875600">
       <screen x="0" y="0" width="1858" height="1080" />
     </state>
-    <state width="1815" height="326" key="GridCell.Tab.0.bottom/0.0.1858.1080@0.0.1858.1080" timestamp="1591698471771" />
-    <state width="1815" height="326" key="GridCell.Tab.0.center" timestamp="1591698471770">
+    <state width="1815" height="326" key="GridCell.Tab.0.bottom/0.0.1858.1080@0.0.1858.1080" timestamp="1591709875600" />
+    <state width="1815" height="326" key="GridCell.Tab.0.center" timestamp="1591709875600">
       <screen x="0" y="0" width="1858" height="1080" />
     </state>
-    <state width="1815" height="326" key="GridCell.Tab.0.center/0.0.1858.1080@0.0.1858.1080" timestamp="1591698471770" />
-    <state width="1815" height="326" key="GridCell.Tab.0.left" timestamp="1591698471770">
+    <state width="1815" height="326" key="GridCell.Tab.0.center/0.0.1858.1080@0.0.1858.1080" timestamp="1591709875600" />
+    <state width="1815" height="326" key="GridCell.Tab.0.left" timestamp="1591709875600">
       <screen x="0" y="0" width="1858" height="1080" />
     </state>
-    <state width="1815" height="326" key="GridCell.Tab.0.left/0.0.1858.1080@0.0.1858.1080" timestamp="1591698471770" />
-    <state width="1815" height="326" key="GridCell.Tab.0.right" timestamp="1591698471770">
+    <state width="1815" height="326" key="GridCell.Tab.0.left/0.0.1858.1080@0.0.1858.1080" timestamp="1591709875600" />
+    <state width="1815" height="326" key="GridCell.Tab.0.right" timestamp="1591709875600">
       <screen x="0" y="0" width="1858" height="1080" />
     </state>
-    <state width="1815" height="326" key="GridCell.Tab.0.right/0.0.1858.1080@0.0.1858.1080" timestamp="1591698471770" />
-    <state x="497" y="88" width="1040" height="878" key="SettingsEditor" timestamp="1591697289989">
+    <state width="1815" height="326" key="GridCell.Tab.0.right/0.0.1858.1080@0.0.1858.1080" timestamp="1591709875600" />
+    <state x="497" y="88" width="1040" height="878" key="SettingsEditor" timestamp="1591705979837">
       <screen x="0" y="0" width="1858" height="1080" />
     </state>
-    <state x="497" y="88" width="1040" height="878" key="SettingsEditor/0.0.1858.1080@0.0.1858.1080" timestamp="1591697289989" />
+    <state x="497" y="88" width="1040" height="878" key="SettingsEditor/0.0.1858.1080@0.0.1858.1080" timestamp="1591705979837" />
     <state width="498" height="446" key="SwitcherDM" timestamp="1591253860604">
       <screen x="0" y="0" width="1858" height="1080" />
     </state>

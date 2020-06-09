@@ -100,19 +100,16 @@ public class BeheerDAO implements Queries {
 
         //Behandeling
         ComboBoxData behandeling = guiData.comboBoxDEM.get(EComboBox.BEHANDELING);
-        //SearchRequest<RequestValue> behandeling = bindingData.searchRequestData.get(ERequestData.BEHANDELING);
         stmtSelectIdsByBeheer.setString(plantIds.size()+1 , behandeling.getValue());
         stmtSelectIdsByBeheer.setInt(plantIds.size() + 2, (behandeling.isDoSearch()) ? 0 : 1);
 
         //maand
         ComboBoxData maand = guiData.comboBoxDEM.get(EComboBox.MAAND);
-        //SearchRequest<RequestValue> maand = bindingData.searchRequestData.get(ERequestData.MAAND);
         stmtSelectIdsByBeheer.setString(plantIds.size() + 3, maand.getValue());
         stmtSelectIdsByBeheer.setInt(plantIds.size() + 4, (maand.isDoSearch()) ? 0 : 1);
 
         //perxjaar
         SpinnerData perXjaar = guiData.spinnerDEM.get(ESpinner.PERXJAAR);
-        //SearchRequest<RequestValue> perXjaar = bindingData.searchRequestData.get(ERequestData.PERXJAAR);
         stmtSelectIdsByBeheer.setInt(plantIds.size() + 5, perXjaar.getValue());
         stmtSelectIdsByBeheer.setInt(plantIds.size() + 6, (perXjaar.isDoSearch()) ? 0 : 1);
 

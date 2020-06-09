@@ -84,49 +84,41 @@ public class ExtraDAO implements Queries {
 
         //nectarwaarde
         SliderLabelData nectarwaarde = guiData.sliderLabelDEM.get(ESliderLabel.NECTARWAARDE);
-        //SearchRequest<RequestValue> nectarwaarde = bindingData.searchRequestData.get(ERequestData.NECTARWAARDE);
         stmtSelectIdsByExtra.setInt(plantIds.size() + 1, nectarwaarde.getValue());
         stmtSelectIdsByExtra.setInt(plantIds.size() + 2, (nectarwaarde.isDoSearch()) ? 0 : 1);
 
         //pollenwaard
         SliderLabelData pollenwaarde = guiData.sliderLabelDEM.get(ESliderLabel.POLLENWAARDE);
-        //SearchRequest<RequestValue> pollenwaarde = bindingData.searchRequestData.get(ERequestData.POLLENWAARDE);
         stmtSelectIdsByExtra.setInt(plantIds.size() + 3, pollenwaarde.getValue());
         stmtSelectIdsByExtra.setInt(plantIds.size() + 4, (pollenwaarde.isDoSearch()) ? 0 : 1);
 
         //vlindervriendelijk
         RadiogroupData vlindervriendelijk = guiData.radiogroupDEM.get(ERadiogroup.VLINDERVRIENDELIJK);
-        //SearchRequest<RequestValueWBool[]> bijvriendelijk = bindingData.searchRequestArrayData.get(ERequestArrayData.BIJVRIENDELIJK);
         stmtSelectIdsByExtra.setString(plantIds.size() + 5, vlindervriendelijk.getActualValue());
         stmtSelectIdsByExtra.setInt(plantIds.size() + 6, (vlindervriendelijk.isDoSearch()) ? 0 : 1);
 
         //bijvriendelijk
         RadiogroupData bijvriendelijk = guiData.radiogroupDEM.get(ERadiogroup.BIJVRIENDELIJK);
-        //SearchRequest<RequestValueWBool[]> bijvriendelijk = bindingData.searchRequestArrayData.get(ERequestArrayData.BIJVRIENDELIJK);
         stmtSelectIdsByExtra.setString(plantIds.size() + 7, bijvriendelijk.getActualValue());
         stmtSelectIdsByExtra.setInt(plantIds.size() + 8, (bijvriendelijk.isDoSearch()) ? 0 : 1);
 
         //Eetbaar
         RadiogroupData eetbaar = guiData.radiogroupDEM.get(ERadiogroup.EETBAAR);
-        //SearchRequest<RequestValueWBool[]> eetbaar = bindingData.searchRequestArrayData.get(ERequestArrayData.EETBAAR);
         stmtSelectIdsByExtra.setString(plantIds.size() + 9, eetbaar.getActualValue());
         stmtSelectIdsByExtra.setInt(plantIds.size() + 10, (eetbaar.isDoSearch()) ? 0 : 1);
 
         //kruidgebruik
         RadiogroupData kruidgebruik = guiData.radiogroupDEM.get(ERadiogroup.KRUIDGEBRUIK);
-        //SearchRequest<RequestValueWBool[]> kruidgebruik = bindingData.searchRequestArrayData.get(ERequestArrayData.KRUIDGEBRUIK);
         stmtSelectIdsByExtra.setString(plantIds.size() + 11, kruidgebruik.getActualValue());
         stmtSelectIdsByExtra.setInt(plantIds.size() + 12, (kruidgebruik.isDoSearch()) ? 0 : 1);
 
         //geurend
         RadiogroupData geurend = guiData.radiogroupDEM.get(ERadiogroup.GEUREND);
-        //SearchRequest<RequestValueWBool[]> geurend = bindingData.searchRequestArrayData.get(ERequestArrayData.GEUREND);
         stmtSelectIdsByExtra.setString(plantIds.size() + 13, geurend.getActualValue());
         stmtSelectIdsByExtra.setInt(plantIds.size() + 14, (geurend.isDoSearch()) ? 0 : 1);
 
         //vorstgevoelig
         RadiogroupData vorstgevoelig = guiData.radiogroupDEM.get(ERadiogroup.VORSTGEVOELIG);
-        //SearchRequest<RequestValueWBool[]> vorstgevoelig = bindingData.searchRequestArrayData.get(ERequestArrayData.VORSTGEVOELIG);
         stmtSelectIdsByExtra.setString(plantIds.size() + 15, vorstgevoelig.getActualValue());
         stmtSelectIdsByExtra.setInt(plantIds.size() + 16, (vorstgevoelig.isDoSearch()) ? 0 : 1);
 

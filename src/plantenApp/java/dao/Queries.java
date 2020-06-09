@@ -186,7 +186,7 @@ public interface Queries {
             "SELECT familie_naam FROM familie";
 
     String NTFAMILIEBYTYPE =
-            "SELECT familie_naam FROM familie where type_id = ?";
+            "SELECT familie_naam FROM familie where planttype_id = (SELECT planttype_id FROM planttype WHERE planttype_naam = ?)";
 
     String NTLEVENSDUURCONCURRENTIEKRACHT =
             "SELECT waarde FROM levensduur_concurrentiekracht";

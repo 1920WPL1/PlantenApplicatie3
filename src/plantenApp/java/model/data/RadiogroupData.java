@@ -10,18 +10,18 @@ import java.util.Arrays;
 
 public class RadiogroupData extends SearchBase {
     protected BooleanProperty[] values;
-    private String[] correspondingValues;
+    private ArrayList<String> correspondingValues;
 
     public RadiogroupData() {
     }
 
-    public void setCorrespondingValues(String[] correspondingValues) {
+    public void setCorrespondingValues(ArrayList<String> correspondingValues) {
         this.correspondingValues = correspondingValues;
     }
 
     public void Bind(CheckBox cbDoSearch, RadioButton[] radioButtons) {
         try {
-            if (correspondingValues.length != radioButtons.length){throw new IllegalArgumentException();}
+            if (correspondingValues.size() != radioButtons.length){throw new IllegalArgumentException();}
 
             doSearchProperty().bind(cbDoSearch.selectedProperty());
 
@@ -29,7 +29,7 @@ public class RadiogroupData extends SearchBase {
             for (int i = 0; i < radioButtons.length; i++) {
                 values[i] = new SimpleBooleanProperty(false);
 
-                radioButtons[i].setText(correspondingValues[i]);
+                radioButtons[i].setText(correspondingValues.get(i));
                 radioButtons[i].disableProperty().bind(cbDoSearch.selectedProperty().not());
                 valueProperty(i).bind(radioButtons[i].selectedProperty());
             }
@@ -42,7 +42,7 @@ public class RadiogroupData extends SearchBase {
             sb.append('\n').append(nex.getMessage());
             System.out.println(sb.toString());
         } catch (IllegalArgumentException iae){
-            System.out.println("!!!Problem loading data from radioButtons, does not correspond with values: " + Arrays.toString(correspondingValues));
+            System.out.println("!!!Problem loading data from radioButtons, does not correspond with values: " + correspondingValues.toString());
         }
     }
 
@@ -53,7 +53,7 @@ public class RadiogroupData extends SearchBase {
         String result = "";
         for (int i = 0; i < values.length; i++) {
             if (values[i].get()) {
-                result = correspondingValues[i];
+                result = correspondingValues.get(i);
             }
         }
         return result;

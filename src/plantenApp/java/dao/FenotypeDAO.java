@@ -128,43 +128,36 @@ public class FenotypeDAO implements Queries {
         //region StandaardFilter
         //bladvorm
         ComboBoxData bladvorm = guiData.comboBoxDEM.get(EComboBox.BLADVORM);
-        //SearchRequest<RequestValue> bladvorm = bindingData.searchRequestData.get(ERequestData.BLADVORM);
         stmtSelectIdsByFeno.setString(plantIds.size() + 1, bladvorm.getValue());
         stmtSelectIdsByFeno.setInt(plantIds.size() + 2, (bladvorm.isDoSearch()) ? 0 : 1);
 
         //levensvorm
         RadiogroupData levensvorm = guiData.radiogroupDEM.get(ERadiogroup.LEVENSVORM);
-        //SearchRequest<RequestValueWBool[]> levensvorm = bindingData.searchRequestArrayData.get(ERequestArrayData.LEVENSVORM);
         stmtSelectIdsByFeno.setString(plantIds.size() + 3, levensvorm.getActualValue());
         stmtSelectIdsByFeno.setInt(plantIds.size() + 4, (levensvorm.isDoSearch()) ? 0 : 1);
 
         //habitus
         RadiogroupData habitus = guiData.radiogroupDEM.get(ERadiogroup.LEVENSVORM);
-        //SearchRequest<RequestValueWBool[]> habitus = bindingData.searchRequestArrayData.get(ERequestArrayData.HABITUS);
         stmtSelectIdsByFeno.setString(plantIds.size() + 5, habitus.getActualValue());
         stmtSelectIdsByFeno.setInt(plantIds.size() + 6, (habitus.isDoSearch()) ? 0 : 1);
 
         //bloeiwijze
         RadiogroupData bloeiwijze = guiData.radiogroupDEM.get(ERadiogroup.LEVENSVORM);
-        //SearchRequest<RequestValueWBool[]> bloeiwijze = bindingData.searchRequestArrayData.get(ERequestArrayData.BLOEIWIJZE);
         stmtSelectIdsByFeno.setString(plantIds.size() + 7, bloeiwijze.getActualValue());
         stmtSelectIdsByFeno.setInt(plantIds.size() + 8, (bloeiwijze.isDoSearch()) ? 0 : 1);
 
         //bladgrootte
         ComboBoxData bladgrootte = guiData.comboBoxDEM.get(EComboBox.BLADGROOTTE);
-        //SearchRequest<RequestValue> bladgrootte = bindingData.searchRequestData.get(ERequestData.BLADGROOTTE);
         stmtSelectIdsByFeno.setInt(plantIds.size() + 9, Integer.parseInt(bladgrootte.getValue()));
         stmtSelectIdsByFeno.setInt(plantIds.size() + 10, (bladgrootte.isDoSearch()) ? 0 : 1);
 
         //ratiobloeiblad
         ComboBoxData ratiobloeiblad = guiData.comboBoxDEM.get(EComboBox.RATIOBLOEIBLAD);
-        //SearchRequest<RequestValue> ratiobloeiblad = bindingData.searchRequestData.get(ERequestData.RATIOBLOEIBLAD);
         stmtSelectIdsByFeno.setString(plantIds.size() + 11, ratiobloeiblad.getValue());
         stmtSelectIdsByFeno.setInt(plantIds.size() + 12, (ratiobloeiblad.isDoSearch()) ? 0 : 1);
 
         //spruitfenologie
         ComboBoxData spruitfenologie = guiData.comboBoxDEM.get(EComboBox.SPRUITFENOLOGIE);
-        //SearchRequest<RequestValue> spruitfenologie = bindingData.searchRequestData.get(ERequestData.SPRUITFENOLOGIE);
         stmtSelectIdsByFeno.setString(plantIds.size() + 13, spruitfenologie.getValue());
         stmtSelectIdsByFeno.setInt(plantIds.size() + 14, (spruitfenologie.isDoSearch()) ? 0 : 1);
 

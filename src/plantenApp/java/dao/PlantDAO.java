@@ -155,19 +155,16 @@ public class PlantDAO implements Queries {
 
         //type
         ComboBoxData type = guiData.comboBoxDEM.get(EComboBox.TYPE);
-        //SearchRequest<RequestValue> type = bindingData.searchRequestData.get(ERequestData.TYPE);
         stmtSelectIdsByPlant.setString(1, type.getValue());
         stmtSelectIdsByPlant.setInt(2, (type.isDoSearch()) ? 0 : 1);
 
         //familie
         ComboBoxData familie = guiData.comboBoxDEM.get(EComboBox.FAMILIE);
-        //SearchRequest<RequestValue> familie = bindingData.searchRequestData.get(ERequestData.FAMILIE);
         stmtSelectIdsByPlant.setString(3, familie.getValue());
         stmtSelectIdsByPlant.setInt(4, (familie.isDoSearch()) ? 0 : 1);
 
         //fgsv
         TextfieldData fgsv = guiData.textFieldDEM.get(ETextfield.SEARCH);
-        //SearchRequest<RequestValue> fgsv = bindingData.searchRequestData.get(ERequestData.SEARCH);
         stmtSelectIdsByPlant.setString(5, fgsv.getValue());
         stmtSelectIdsByPlant.setInt(6, (fgsv.isDoSearch()) ? 0 : 1);
 
