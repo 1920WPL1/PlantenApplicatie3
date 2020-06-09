@@ -43,8 +43,19 @@ public class Commensalisme {
     public ArrayList<Integer> getSociabiliteit() {
         ArrayList<Integer> sociabiliteit = new ArrayList<>();
         for (int i = 0; i < multiEigenschappen.size(); i++) {
-            sociabiliteit.add(Integer.parseInt(multiEigenschappen.get(i).getValue()));
+            if (multiEigenschappen.get(i).getNaam().equals("sociabiliteit")){
+                sociabiliteit.add(Integer.parseInt(multiEigenschappen.get(i).getValue()));
+            }
         }
         return sociabiliteit;
+    }
+    public ArrayList<String> getLevensduur() {
+        ArrayList<String> levensduur = new ArrayList<>();
+        for (int i = 0; i < multiEigenschappen.size(); i++) {
+            if (multiEigenschappen.get(i).getNaam().equals("levenduur_concurrentiekracht")){
+                levensduur.add(multiEigenschappen.get(i).getValue());
+            }
+        }
+        return levensduur;
     }
 }

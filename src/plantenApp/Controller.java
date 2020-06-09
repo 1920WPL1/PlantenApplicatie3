@@ -533,13 +533,10 @@ public class Controller {
 
                     //commensalisme
                     lblOntwikkelingsSnelheid.setText(newValue.getCommensalisme().getOntwikkelingssnelheid());
-                   /*if (newValue.getCommensalisme().getSociabiliteit().get(0) == 1){chkSocPlantI.setSelected(true);}
-                    if (newValue.getCommensalisme().getSociabiliteit().get(0) == 2){chkSocPlantII.setSelected(true);}
-                    if (newValue.getCommensalisme().getSociabiliteit().get(0) == 3){chkSocPlantIII.setSelected(true);}
-                    if (newValue.getCommensalisme().getSociabiliteit().get(0) == 4){chkSocPlantIV.setSelected(true);}
-                    if (newValue.getCommensalisme().getSociabiliteit().get(0) == 5){chkSocPlantV.setSelected(true);}*/
+
                     lblStrategie.setText(newValue.getCommensalisme().getStrategie());
-                    //TODO lsvLevensduur.setItems();
+                    lsvLevensduur.getItems().clear();
+                    lsvLevensduur.getItems().addAll(newValue.getCommensalisme().getLevensduur());
 
                     //abiotische factoren
                     lblBezonning2.setText(newValue.getAbiotischeFactoren().getBezonning());
@@ -547,7 +544,8 @@ public class Controller {
                     lblVoedingsBehoefte2.setText(newValue.getAbiotischeFactoren().getVoedingsbehoefte());
                     lblReactie.setText(newValue.getAbiotischeFactoren().getReactieAntagonistischeOmgeving());
                     lblGrondSoort.setText(newValue.getAbiotischeFactoren().getGrondsoort());
-                    //TODO lsvHabitat.setItems();
+                    lsvHabitat.getItems().clear();
+                    lsvHabitat.getItems().addAll(newValue.getAbiotischeFactoren().getHabitats());
 
                     //extra
                     lblNectarwaarde2.setText(String.valueOf(newValue.getExtra().getNectarwaarde()));
