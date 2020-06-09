@@ -3,12 +3,17 @@ package plantenApp;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.ObservableList;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
 import plantenApp.java.dao.Database;
 import plantenApp.java.dao.InfoTablesDAO;
 import plantenApp.java.model.InfoTables;
@@ -17,6 +22,7 @@ import plantenApp.java.model.SearchHandler;
 import plantenApp.java.model.data.GUIdata;
 import plantenApp.java.model.data.enums.*;
 
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -350,6 +356,7 @@ public class Controller {
     public ImageView imgPollenvormers;
     public ImageView imgParasolVormig;
 //endregion
+    public Button btnWijzigPlant;
 
     private InfoTables infoTables;
     private Connection dbConnection;
@@ -702,6 +709,16 @@ public class Controller {
         if (pnlAdvSearch.isExpanded()) {
             pnlAdvSearch.setExpanded(false);
         }
+    }
+    public void click_WijzigPlant(MouseEvent mouseEvent) throws IOException, SQLException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("view/PlantWijzigen.fxml"));
+        Parent root = loader.load();
+        Scene scene = new Scene(root);
+        Stage window = (Stage) ((Node) mouseEvent.getSource()).getScene().getWindow();
+        //TODO controller.initialize(Plant.getId()); //in de initialize van de nieuwe controller
+        Controller controller = loader.getController(); //naam van de controller waar je naar toe wil
+        window.setScene(scene);
+        window.show();
     }
 }
 
