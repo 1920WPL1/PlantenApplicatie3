@@ -209,7 +209,7 @@
                               </Button>
                            </children>
                         </FlowPane>
-                        <TitledPane fx:id="pnlAdvSearch" text="Advanced">
+                        <TitledPane fx:id="pnlAdvSearch" expanded="false" text="Advanced">
                            <content>
                               <VBox>
                                  <children>
@@ -1268,9 +1268,9 @@
             </TitledPane>
          </top>
          <center>
-            <BorderPane fx:id="pnlUitvoer" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+            <BorderPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                <center>
-                  <VBox BorderPane.alignment="CENTER">
+                  <VBox fx:id="pnlUitvoer" visible="false" BorderPane.alignment="CENTER">
                      <children>
                         <FlowPane>
                            <children>
