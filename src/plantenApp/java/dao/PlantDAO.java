@@ -82,7 +82,7 @@ public class PlantDAO implements Queries {
         if (rs.next()) {
             plant = new Plant(
                     rs.getInt("plant_id"),
-                    rs.getString("type"),
+                    rs.getString("planttype"),
                     rs.getString("familie"),
                     rs.getString("geslacht"),
                     rs.getString("soort"),
@@ -119,7 +119,7 @@ public class PlantDAO implements Queries {
         if (rs.next()) {
             plant = new Plant(
                     rs.getInt("plant_id"),
-                    rs.getString("type"),
+                    rs.getString("planttype"),
                     rs.getString("familie"),
                     rs.getString("geslacht"),
                     rs.getString("soort"),

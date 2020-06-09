@@ -35,7 +35,7 @@ public interface Queries {
     //region GETIDSBYKENMERKEN
     String GETIDSBYPLANT =
             "SELECT plant_id FROM plant " +
-                    "WHERE (type = ? OR  1=?) " +
+                    "WHERE (planttype = ? OR  1=?) " +
                     "AND (familie = ? OR 1=?) " +
                     "AND (fgsv LIKE ? OR 1=?) ";
 
@@ -179,7 +179,7 @@ public interface Queries {
     //region NAAKTETABELLEN
 
     String NTTYPE =
-            "SELECT type_naam FROM type";
+            "SELECT planttype_naam FROM planttype";
 
     String NTFAMILIE =
             "SELECT familie_naam FROM familie";
@@ -248,7 +248,7 @@ public interface Queries {
             "SELECT waarde FROM maxbladgrootte";
 
     String NTFOTOHABITUS =
-            "SELECT afbeelding FROM habitus";
+            "SELECT * FROM habitus";
     //endregion
 }
 

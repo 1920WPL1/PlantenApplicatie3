@@ -1,5 +1,8 @@
 package plantenApp.java.model;
 
+
+import javafx.scene.image.Image;
+
 import java.sql.Blob;
 import java.util.ArrayList;
 
@@ -19,7 +22,7 @@ public class InfoTables {
     private ArrayList<String> spruitfenologieen;
     private ArrayList<String> bloeiwijzes;
     private ArrayList<String> habitusMogelijkheden;
-    private ArrayList<Blob> habitusFotos;
+    private ArrayList<NTFotos> habitusFotos;
 
     //Abiotische factoren
     private ArrayList<String> bezonningsMogelijkheden;
@@ -52,7 +55,7 @@ public class InfoTables {
             ArrayList<String> spruitfenologieen,
             ArrayList<String> bloeiwijzes,
             ArrayList<String> habitusMogelijkheden,
-            ArrayList<Blob> habitusFotos,
+            ArrayList<NTFotos> habitusFotos,
             ArrayList<String> bezonningsMogelijkheden,
             ArrayList<String> grondsoorten,
             ArrayList<String> vochtbehoeftes,
@@ -92,6 +95,7 @@ public class InfoTables {
         this.beheerdaden = beheerdaden;
         this.nectarwaardes = nectarwaardes;
         this.pollenwaardes = pollenwaardes;
+
     }
 
     public ArrayList<String> getTypes() {
@@ -130,7 +134,7 @@ public class InfoTables {
         return habitusMogelijkheden;
     }
 
-    public ArrayList<Blob> getHabitusFotos() {
+    public ArrayList<NTFotos> getHabitusFotos() {
         return habitusFotos;
     }
 
