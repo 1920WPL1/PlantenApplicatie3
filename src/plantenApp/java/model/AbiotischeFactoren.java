@@ -13,6 +13,7 @@ public class AbiotischeFactoren {
     private String reactieAntagonistischeOmgeving;
     private ArrayList<AbioMulti_Eigenschap> multiEigenschappen;
 
+
     public AbiotischeFactoren(int id, int plant_id, String bezonning, String grondsoort, String vochtbehoefte, String voedingsbehoefte, String reactieAntagonistischeOmgeving, ArrayList<AbioMulti_Eigenschap> multiEigenschappen) {
         this.id = id;
         this.plant_id = plant_id;

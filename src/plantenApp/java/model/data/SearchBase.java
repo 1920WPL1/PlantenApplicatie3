@@ -10,7 +10,7 @@ public class SearchBase {
         return doSearch;
     }
     public boolean isDoSearch() {
-        System.out.println(doSearch.get());
+
         return doSearch.get();
     }
     public void setDoSearch(boolean doSearch) {

@@ -4,6 +4,7 @@ import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.ObservableList;
 import javafx.scene.control.*;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
@@ -21,6 +22,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class Controller {
+    //region Gui Elementen
     public ComboBox<String> cboBladkleur;
     public ComboBox<String> cboBloeikleur;
     public ComboBox<String> cboReactieAnta;
@@ -88,7 +90,6 @@ public class Controller {
     public CheckBox chkSociabiliteit_3;
     public CheckBox chkSociabiliteit_4;
     public CheckBox chkSociabiliteit_5;
-    public RadioButton rdbStrategie_Onbekend;
     public RadioButton rdbStrategie_C;
     public RadioButton rdbStrategie_CR;
     public RadioButton rdbStrategie_CRS;
@@ -211,8 +212,7 @@ public class Controller {
     public CheckBox chkBladgrootte;
     public ComboBox<String> cboBehandeling;
     public ComboBox<String> cboMaand;
-    public VBox VboxOutput;
-    public TitledPane pnlSearch;
+
     public TitledPane pnlAdvSearch;
     public Label lblVoedingsBehoefte;
     public Label lblBezonning;
@@ -280,7 +280,7 @@ public class Controller {
     public Label lblBloeikleurOkt;
     public Label lblBloeikleurNov;
     public Label lblBloeikleurDec;
-    public BorderPane pnlUitvoer;
+    public VBox pnlUitvoer;
     public Label lblMinBloeihoogteJan;
     public Label lblMinBloeihoogteFeb;
     public Label lblMinBloeihoogteMaa;
@@ -349,7 +349,7 @@ public class Controller {
     public ImageView imgSucculenten;
     public ImageView imgPollenvormers;
     public ImageView imgParasolVormig;
-
+//endregion
     private InfoTables infoTables;
     private Connection dbConnection;
     GUIdata guiData;
@@ -359,15 +359,49 @@ public class Controller {
     ArrayList<Plant> planten;
 
     public void initialize() throws SQLException {
-        pnlAdvSearch.setExpanded(false);
         dbConnection = Database.getInstance().getConnection();
         /*infotabel object aanmaken*/
         InfoTablesDAO infotablesDAO = new InfoTablesDAO(dbConnection);
         infoTables = infotablesDAO.getInfoTables();
         handler = new SearchHandler(dbConnection);
 
+        ArrayList<ImageView> habitus = new ArrayList<>();
+        habitus.add(imgTufted);
+        habitus.add(imgUprightArching);
+        habitus.add(imgArching);
+        habitus.add(imgUprightDivergent);
+        habitus.add(imgUprightErect);
+        habitus.add(imgMounded);
+        habitus.add(ImgKruipend);
+        habitus.add(imgWaaiervorming);
+        habitus.add(imgKussenVormend);
+        habitus.add(imgZuilvormig);
+        habitus.add(imgUitbuigend);
+        habitus.add(imgHabitus2); //TODO naam aanpassen
+        habitus.add(imgSucculenten);
+        habitus.add(imgPollenvormers);
+        habitus.add(imgParasolVormig);
 
 
+            habitus.get(i).setImage(infoTables.getHabitusFotos().get(i).getFoto());
+        }
+        for (int i = 0; i < infoTables.getHabitusFotos().size(); i++) {
+        habitusrdb.add(rdbHabitus_15);
+        habitusrdb.add(rdbHabitus_14);
+        habitusrdb.add(rdbHabitus_13);
+        habitusrdb.add(rdbHabitus_12);
+        habitusrdb.add(rdbHabitus_10);
+        habitusrdb.add(rdbHabitus_11);
+        habitusrdb.add(rdbHabitus_8);
+        habitusrdb.add(rdbHabitus_9);
+        habitusrdb.add(rdbHabitus_7);
+        habitusrdb.add(rdbHabitus_6);
+        habitusrdb.add(rdbHabitus_5);
+        habitusrdb.add(rdbHabitus_4);
+        habitusrdb.add(rdbHabitus_2);
+        habitusrdb.add(rdbHabitus_3);
+        habitusrdb.add(rdbHabitus_1);
+        ArrayList<RadioButton> habitusrdb = new ArrayList<>();
         guiData = new GUIdata(dbConnection);
         guiData.textFieldDEM.get(ETextfield.SEARCH).Bind(txtSearch);
         guiData.comboBoxDEM.get(EComboBox.TYPE).Bind(chkType, cboType);
@@ -445,57 +479,22 @@ public class Controller {
         guiData.radiogroupDEM.get(ERadiogroup.KRUIDGEBRUIK).Bind(chkKruidgebruik, new RadioButton[]{rdbKruidgebruik_Ja, rdbKruidgebruik_Nee, rdbKruidgebruik_Onbekend});
         guiData.radiogroupDEM.get(ERadiogroup.STRATEGIE).Bind(chkStrategie, new RadioButton[]{rdbStrategie_C, rdbStrategie_S, rdbStrategie_R, rdbStrategie_CS, rdbStrategie_CR, rdbStrategie_RS, rdbStrategie_CRS});
         guiData.radiogroupDEM.get(ERadiogroup.LEVENSVORM).Bind(chkLevensvormVolgensRaunkhiaer, new RadioButton[]{rdbLevensvorm_1, rdbLevensvorm_2, rdbLevensvorm_3, rdbLevensvorm_4, rdbLevensvorm_5, rdbLevensvorm_6, rdbLevensvorm_7, rdbLevensvorm_8, rdbLevensvorm_9});
+        //endregion
 
 
         InitListView();
         //FillComboboxes(infoTables);
 
-        ArrayList<ImageView> habitus = new ArrayList<>();
-        habitus.add(imgTufted);
-        habitus.add(imgUprightArching);
-        habitus.add(imgArching);
-        habitus.add(imgUprightDivergent);
-        habitus.add(imgUprightErect);
-        habitus.add(imgMounded);
-        habitus.add(ImgKruipend);
-        habitus.add(imgWaaiervorming);
-        habitus.add(imgKussenVormend);
-        habitus.add(imgZuilvormig);
-        habitus.add(imgUitbuigend);
-        habitus.add(imgHabitus2); //TODO naam aanpassen
-        habitus.add(imgSucculenten);
-        habitus.add(imgPollenvormers);
-        habitus.add(imgParasolVormig);
 
-        ArrayList<RadioButton> habitusrdb = new ArrayList<>();
-        habitusrdb.add(rdbHabitus_1);
-        habitusrdb.add(rdbHabitus_2);
-        habitusrdb.add(rdbHabitus_3);
-        habitusrdb.add(rdbHabitus_4);
-        habitusrdb.add(rdbHabitus_5);
-        habitusrdb.add(rdbHabitus_6);
-        habitusrdb.add(rdbHabitus_7);
-        habitusrdb.add(rdbHabitus_8);
-        habitusrdb.add(rdbHabitus_9);
-        habitusrdb.add(rdbHabitus_10);
-        habitusrdb.add(rdbHabitus_11);
-        habitusrdb.add(rdbHabitus_12);
-        habitusrdb.add(rdbHabitus_13);
-        habitusrdb.add(rdbHabitus_14);
-        habitusrdb.add(rdbHabitus_15);
 
-        for(int i = 0; i<infoTables.getHabitusFotos().size(); i++){
 
-            habitusrdb.get(i).textProperty().setValue(infoTables.getHabitusFotos().get(i).getWaarde());
-
-            habitus.get(i).setImage(infoTables.getHabitusFotos().get(i).getFoto());
-        }
     }
+
     /**
      * @author bradley
      */
     public void InitListView() {
-       lsvOverzicht.setCellFactory(param -> new ListCell<Plant>() {
+        lsvOverzicht.setCellFactory(param -> new ListCell<Plant>() {
             @Override
             protected void updateItem(Plant item, boolean empty) {
                 super.updateItem(item, empty);
@@ -532,8 +531,36 @@ public class Controller {
                     lblDichtheidY.setText(String.valueOf(newValue.getMaxPlantdichtheid()));
 
                     //commensalisme
+                    //TODO fix this
                     lblOntwikkelingsSnelheid.setText(newValue.getCommensalisme().getOntwikkelingssnelheid());
-
+                    System.out.println(newValue.getCommensalisme().getSociabiliteit().toString());
+                    for(int i = 0;i<newValue.getCommensalisme().getSociabiliteit().size();i++) {
+                        if (newValue.getCommensalisme().getSociabiliteit().get(i) == 1) {
+                            chkSocPlantI.setSelected(true);
+                        } else {
+                            chkSocPlantI.setSelected(false);
+                        }
+                        if (newValue.getCommensalisme().getSociabiliteit().get(i) == 2) {
+                            chkSocPlantII.setSelected(true);
+                        } else {
+                            chkSocPlantII.setSelected(false);
+                        }
+                        if (newValue.getCommensalisme().getSociabiliteit().get(i) == 3) {
+                            chkSocPlantIII.setSelected(true);
+                        } else {
+                            chkSocPlantIII.setSelected(false);
+                        }
+                        if (newValue.getCommensalisme().getSociabiliteit().get(i) == 4) {
+                            chkSocPlantIV.setSelected(true);
+                        } else {
+                            chkSocPlantIV.setSelected(false);
+                        }
+                        if (newValue.getCommensalisme().getSociabiliteit().get(i) == 5) {
+                            chkSocPlantV.setSelected(true);
+                        } else {
+                            chkSocPlantV.setSelected(false);
+                        }
+                    }
                     lblStrategie.setText(newValue.getCommensalisme().getStrategie());
                     lsvLevensduur.getItems().clear();
                     lsvLevensduur.getItems().addAll(newValue.getCommensalisme().getLevensduur());
@@ -634,9 +661,21 @@ public class Controller {
 
 
 
+                    for(int i = 0; i<infoTables.getHabitusFotos().size(); i++){
+
+                        if(infoTables.getHabitusFotos().get(i).getWaarde().equals(newValue.getFenotype().getHabitus())){
 
 
-                } catch (NullPointerException ex){
+                            Image image;
+                            image = infoTables.getHabitusFotos().get(i).getFoto();
+                            imgHabitus.setImage(image);
+
+                            break;
+                        }
+                    }
+
+
+                } catch (NullPointerException ex) {
                     ex.printStackTrace();
                 }
             }
@@ -645,23 +684,29 @@ public class Controller {
     }
 
     public void Click_Search(MouseEvent mouseEvent) throws SQLException {
-
+        lsvOverzicht.getSelectionModel().selectedItemProperty().removeListener(lsvChanged);
         lsvOverzicht.getItems().clear();
+        lsvOverzicht.getSelectionModel().selectedItemProperty().addListener(lsvChanged);
 
-        if (!pnlUitvoer.isVisible()) {
-            pnlUitvoer.setVisible(true);
-        }
-
-        if (pnlAdvSearch.isExpanded()) {
-            pnlAdvSearch.setExpanded(false);
-        }
 
         planten = new ArrayList<Plant>();
         planten = handler.Search(guiData, dbConnection);
 
-       lsvOverzicht.getItems().addAll(planten);
+        lsvOverzicht.getItems().addAll(planten);
 
         lsvOverzicht.getSelectionModel().selectFirst();
+
+
+        if (!pnlUitvoer.isVisible()){
+            pnlUitvoer.setVisible(true);
+        } else if(planten.size() == 0) {
+            pnlUitvoer.setVisible(false);
+        }
+
+
+        if (pnlAdvSearch.isExpanded()) {
+            pnlAdvSearch.setExpanded(false);
+        }
     }
 }
 

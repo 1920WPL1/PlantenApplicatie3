@@ -28,9 +28,6 @@ public class SearchHandler {
         this.extraDAO = new ExtraDAO(dbConnection);
         this.fenotypeDAO = new FenotypeDAO(dbConnection);
         this.plantDAO = new PlantDAO(dbConnection);
-
-
-
     }
 
     public ArrayList<Plant> Search(GUIdata guiData, Connection dbConnection) throws SQLException {
@@ -40,23 +37,18 @@ public class SearchHandler {
         ids = plantDAO.FilterOn(guiData);
         if (ids.size() != 0) {
             ids = fenotypeDAO.FilterOn(ids, guiData);
-            System.out.println(ids.toString());
         }
         if (ids.size() != 0) {
             ids = commensalismeDAO.FilterOn(ids, guiData);
-            System.out.println(ids.toString());
         }
         if (ids.size() != 0) {
             ids = abiotischeFactorenDAO.FilterOn(ids, guiData);
-            System.out.println(ids.toString());
         }
         if (ids.size() != 0) {
             ids = extraDAO.FilterOn(ids, guiData);
-            System.out.println(ids.toString());
         }
         if (ids.size() != 0) {
             ids = beheerDAO.FilterOn(ids, guiData);
-            System.out.println(ids.toString());
         }
 
         for (int id : ids
