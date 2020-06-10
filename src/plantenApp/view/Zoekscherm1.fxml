@@ -22,9 +22,7 @@
 <?import javafx.scene.text.Font?>
 
 <VBox prefHeight="859.0" prefWidth="1278.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" >
-    <stylesheets>
-        <URL value="@Zoekscherm.css" />
-    </stylesheets>
+
   <children>
       <ScrollPane prefHeight="916.0" prefWidth="1305.0">
          <content>
@@ -365,9 +363,7 @@
                   </Button>
                   <ComboBox fx:id="cboBladgrootte" layoutX="434.0" layoutY="27.0" prefHeight="25.0" prefWidth="168.0" promptText="bladgrootte" />
       
-                  <Button fx:id="btnExit" layoutX="1236.0" layoutY="-7.0" mnemonicParsing="false" prefHeight="14.0" prefWidth="16.0" styleClass="SystemTray" text="X" />
-                  <Button fx:id="btnminimize" layoutX="1163.0" layoutY="-13.0" mnemonicParsing="false" prefHeight="57.0" prefWidth="50.0" styleClass="SystemTray" text="–" />
-                  <Button fx:id="btnMaximize" layoutX="1199.0" layoutY="-13.0" mnemonicParsing="false" onMouseClicked="#Clicked_Resize" prefHeight="57.0" prefWidth="50.0" styleClass="SystemTray" text="■" />
+
                   <CheckBox fx:id="chkBezonning" layoutX="457.0" layoutY="92.0" mnemonicParsing="false" onMouseClicked="#Clicked_Bezonning" text="Bezonning" />
                   <CheckBox fx:id="chkVochtbehoefte" layoutX="457.0" layoutY="150.0" mnemonicParsing="false" onMouseClicked="#Clicked_Vochtbehoefte" text="Vochtbehoefte" />
                   <ListView fx:id="lsvUitvoer" layoutX="14.0" layoutY="789.0" prefHeight="800.0" prefWidth="1248.0" />
