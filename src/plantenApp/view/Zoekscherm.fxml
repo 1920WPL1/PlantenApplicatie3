@@ -1291,12 +1291,12 @@
                      <children>
                         <FlowPane>
                            <children>
-                              <Button fx:id="btnWijzigPlant" mnemonicParsing="false" onMouseClicked="#click_WijzigPlant" prefHeight="65.0" prefWidth="203.0" text="Wijzig Plant">
+                              <Button fx:id="btnWijzigPlant" mnemonicParsing="false" onMouseClicked="#click_WijzigPlant" text="Wijzig Plant">
                                  <font>
                                     <Font size="15.0" />
                                  </font>
                               </Button>
-                              <Button fx:id="btnBeheerPlant" mnemonicParsing="false" onMouseClicked="#click_WijzigPlant" prefHeight="64.0" prefWidth="155.0" text="Beheer">
+                              <Button fx:id="btnBeheerPlant" mnemonicParsing="false" onMouseClicked="#click_WijzigPlant" text="Beheer">
                                  <font>
                                     <Font size="15.0" />
                                  </font>
@@ -1430,7 +1430,7 @@
                                     </HBox>
                                     <HBox spacing="2.0">
                                        <children>
-                                          <ListView fx:id="lsvBeheer" prefHeight="30.0" prefWidth="150.0" >
+                                          <ListView fx:id="lsvBeheer" prefHeight="30.0" prefWidth="150.0">
 
                                           </ListView>
                                           <!--<Label prefHeight="30.0" prefWidth="70.0" text="Values" textFill="#808080" fx:id="lblFrequentie">
