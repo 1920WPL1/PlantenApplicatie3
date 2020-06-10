@@ -8,14 +8,15 @@ import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.Slider;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 
 public class SliderLabelData extends SearchBase {
     private IntegerProperty value = new SimpleIntegerProperty(0);
     private StringProperty actualValue = new SimpleStringProperty("");
-    private String[] correspondingValues;
+    private ArrayList<String> correspondingValues;
 
-    public void setCorrespondingValues(String[] correspondingValues) {
+    public void setCorrespondingValues(ArrayList<String> correspondingValues) {
         this.correspondingValues = correspondingValues;
     }
 
@@ -23,7 +24,7 @@ public class SliderLabelData extends SearchBase {
         try {
 
             slider.setMin(0);
-            slider.setMax(correspondingValues.length - 1);
+            slider.setMax(correspondingValues.size() - 1);
             slider.setMajorTickUnit(1);
             slider.setMinorTickCount(0);
             slider.setShowTickMarks(true);
@@ -32,7 +33,7 @@ public class SliderLabelData extends SearchBase {
             slider.setValue(1);
 
             slider.valueProperty().addListener((observableValue, aBoolean, t1) -> {
-                setActualValue(correspondingValues[getValue()]);
+                setActualValue(correspondingValues.get(getValue()));
             });
 
             doSearchProperty().bind(cbDoSearch.selectedProperty());

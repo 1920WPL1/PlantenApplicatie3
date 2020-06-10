@@ -24,7 +24,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<ScrollPane fitToWidth="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="plantenApp.Controller">
+<ScrollPane fitToWidth="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="1280.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="plantenApp.Controller">
    <content>
       <BorderPane maxWidth="1.7976931348623157E308">
          <top>
@@ -56,6 +56,36 @@
                                                    </font>
                                                 </CheckBox>
                                                 <ComboBox fx:id="cboFamilie" minHeight="30.0" prefWidth="150.0" />
+                                             </children>
+                                          </HBox>
+                                          <HBox>
+                                             <children>
+                                                <CheckBox fx:id="chkGeslacht" minHeight="30.0" mnemonicParsing="false" text="Geslacht">
+                                                   <font>
+                                                      <Font name="System Bold" size="14.0" />
+                                                   </font>
+                                                </CheckBox>
+                                                <ComboBox fx:id="cboGeslacht" minHeight="30.0" prefWidth="150.0" />
+                                             </children>
+                                          </HBox>
+                                          <HBox>
+                                             <children>
+                                                <CheckBox fx:id="chkSoort" minHeight="30.0" mnemonicParsing="false" text="Soort">
+                                                   <font>
+                                                      <Font name="System Bold" size="14.0" />
+                                                   </font>
+                                                </CheckBox>
+                                                <ComboBox fx:id="cboSoort" minHeight="30.0" prefWidth="150.0" />
+                                             </children>
+                                          </HBox>
+                                          <HBox>
+                                             <children>
+                                                <CheckBox fx:id="chkVariant" minHeight="30.0" mnemonicParsing="false" text="Variant">
+                                                   <font>
+                                                      <Font name="System Bold" size="14.0" />
+                                                   </font>
+                                                </CheckBox>
+                                                <ComboBox fx:id="cboVariant" minHeight="30.0" prefWidth="150.0" />
                                              </children>
                                           </HBox>
                                        </children>
@@ -160,7 +190,7 @@
                                     <HBox GridPane.columnIndex="1">
                                        <children>
                                           <Slider fx:id="sldBezonning" prefHeight="30.0" prefWidth="100.0" />
-                                          <Label fx:id="lblBezonning" prefHeight="30.0" prefWidth="50.0" text="Label">
+                                          <Label fx:id="lblBezonning" prefHeight="30.0" prefWidth="100.0" text="Label">
                                              <font>
                                                 <Font name="System Bold" size="14.0" />
                                              </font>
@@ -170,7 +200,7 @@
                                     <HBox GridPane.columnIndex="1" GridPane.rowIndex="1">
                                        <children>
                                           <Slider fx:id="sldVochtbehoefte" prefHeight="30.0" prefWidth="100.0" />
-                                          <Label fx:id="lblVocht" prefHeight="30.0" prefWidth="50.0" text="Label">
+                                          <Label fx:id="lblVocht" prefHeight="30.0" prefWidth="100.0" text="Label">
                                              <font>
                                                 <Font name="System Bold" size="14.0" />
                                              </font>
@@ -189,7 +219,7 @@
                                     <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                                  </FlowPane.margin>
                               </GridPane>
-                              <VBox>
+                              <VBox spacing="5.0">
                                  <children>
                                     <CheckBox fx:id="chkHabitat" mnemonicParsing="false" prefHeight="30.0" text="Habitat: ">
                                        <font>
@@ -202,14 +232,10 @@
                                     <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                                  </FlowPane.margin>
                               </VBox>
-                              <Button fx:id="btnSearch" mnemonicParsing="false" onMouseClicked="#Click_Search" prefHeight="50.0" prefWidth="253.0" text="Search">
-                                 <FlowPane.margin>
-                                    <Insets left="200.0" />
-                                 </FlowPane.margin>
-                              </Button>
+                              <Button fx:id="btnSearch" mnemonicParsing="false" onMouseClicked="#Click_Search" prefHeight="50.0" prefWidth="253.0" text="Search" />
                            </children>
                         </FlowPane>
-                        <TitledPane fx:id="pnlAdvSearch" expanded="false" text="Advanced">
+                        <TitledPane fx:id="pnlAdvSearch" text="Advanced">
                            <content>
                               <VBox>
                                  <children>
@@ -297,33 +323,33 @@
                                                          <children>
                                                             <HBox>
                                                                <children>
-                                                                  <Label prefHeight="30.0" prefWidth="30.0" />
-                                                                  <Label prefHeight="30.0" prefWidth="30.0" />
-                                                                  <RadioButton fx:id="rdbStrategie_C" mnemonicParsing="false" prefHeight="30.0" prefWidth="30.0" text="C">
+                                                                  <Label prefHeight="30.0" prefWidth="50.0" />
+                                                                  <Label prefHeight="30.0" prefWidth="50.0" />
+                                                                  <RadioButton fx:id="rdbStrategie_1" mnemonicParsing="false" prefHeight="30.0" prefWidth="50.0" text="C">
                                                                      <toggleGroup>
                                                                         <ToggleGroup fx:id="tglStrategie" />
                                                                      </toggleGroup>
                                                                   </RadioButton>
-                                                                  <Label prefHeight="30.0" prefWidth="30.0" />
-                                                                  <Label prefHeight="30.0" prefWidth="30.0" />
+                                                                  <Label prefHeight="30.0" prefWidth="50.0" />
+                                                                  <Label prefHeight="30.0" prefWidth="50.0" />
                                                                </children>
                                                             </HBox>
                                                             <HBox>
                                                                <children>
-                                                                  <Label prefHeight="30.0" prefWidth="30.0" />
-                                                                  <RadioButton fx:id="rdbStrategie_CR" mnemonicParsing="false" prefHeight="30.0" prefWidth="30.0" toggleGroup="$tglStrategie" />
-                                                                  <RadioButton fx:id="rdbStrategie_CRS" mnemonicParsing="false" prefHeight="30.0" prefWidth="30.0" toggleGroup="$tglStrategie" />
-                                                                  <RadioButton fx:id="rdbStrategie_CS" mnemonicParsing="false" prefHeight="30.0" prefWidth="30.0" toggleGroup="$tglStrategie" />
-                                                                  <Label prefHeight="30.0" prefWidth="30.0" />
+                                                                  <Label prefHeight="30.0" prefWidth="50.0" />
+                                                                  <RadioButton fx:id="rdbStrategie_2" mnemonicParsing="false" prefHeight="30.0" prefWidth="50.0" toggleGroup="$tglStrategie" />
+                                                                  <RadioButton fx:id="rdbStrategie_3" mnemonicParsing="false" prefHeight="30.0" prefWidth="50.0" toggleGroup="$tglStrategie" />
+                                                                  <RadioButton fx:id="rdbStrategie_4" mnemonicParsing="false" prefHeight="30.0" prefWidth="50.0" toggleGroup="$tglStrategie" />
+                                                                  <Label prefHeight="30.0" prefWidth="50.0" />
                                                                </children>
                                                             </HBox>
                                                             <HBox>
                                                                <children>
-                                                                  <RadioButton fx:id="rdbStrategie_R" mnemonicParsing="false" prefHeight="30.0" prefWidth="30.0" text="R" toggleGroup="$tglStrategie" />
-                                                                  <Label prefHeight="30.0" prefWidth="30.0" />
-                                                                  <RadioButton fx:id="rdbStrategie_RS" mnemonicParsing="false" prefHeight="30.0" prefWidth="30.0" toggleGroup="$tglStrategie" />
-                                                                  <Label prefHeight="30.0" prefWidth="30.0" />
-                                                                  <RadioButton fx:id="rdbStrategie_S" mnemonicParsing="false" prefHeight="30.0" prefWidth="30.0" text="S" toggleGroup="$tglStrategie" />
+                                                                  <RadioButton fx:id="rdbStrategie_5" mnemonicParsing="false" prefHeight="30.0" prefWidth="50.0" text="R" toggleGroup="$tglStrategie" />
+                                                                  <Label prefHeight="30.0" prefWidth="50.0" />
+                                                                  <RadioButton fx:id="rdbStrategie_6" mnemonicParsing="false" prefHeight="30.0" prefWidth="50.0" toggleGroup="$tglStrategie" />
+                                                                  <Label prefHeight="30.0" prefWidth="50.0" />
+                                                                  <RadioButton fx:id="rdbStrategie_7" mnemonicParsing="false" prefHeight="30.0" prefWidth="50.0" text="S" toggleGroup="$tglStrategie" />
                                                                </children>
                                                             </HBox>
                                                          </children>
@@ -840,7 +866,7 @@
                                                                   <ToggleGroup fx:id="tglHabitus" />
                                                                </toggleGroup>
                                                             </RadioButton>
-                                                            <ImageView fx:id="imgTufted" fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true" />
+                                                            <ImageView fx:id="imgHabitus_1" fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true" />
                                                          </children>
                                                          <padding>
                                                             <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
@@ -853,7 +879,7 @@
                                                                   <Font size="11.0" />
                                                                </font>
                                                             </RadioButton>
-                                                            <ImageView fx:id="imgUprightArching" fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
+                                                            <ImageView fx:id="imgHabitus_2" fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
                                                                <image>
                                                                   <Image url="@img/Habitus_02.png" />
                                                                </image>
@@ -866,7 +892,7 @@
                                                       <VBox>
                                                          <children>
                                                             <RadioButton fx:id="rdbHabitus_3" mnemonicParsing="false" prefHeight="30.0" prefWidth="100.0" text="Arching" toggleGroup="$tglHabitus" />
-                                                            <ImageView fx:id="imgArching" fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
+                                                            <ImageView fx:id="imgHabitus_3" fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
                                                                <image>
                                                                   <Image url="@img/Habitus_03.png" />
                                                                </image>
@@ -883,7 +909,7 @@
                                                                   <Font size="10.0" />
                                                                </font>
                                                             </RadioButton>
-                                                            <ImageView fx:id="imgUprightDivergent" fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
+                                                            <ImageView fx:id="imgHabitus_4" fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
                                                                <image>
                                                                   <Image url="@img/Habitus_04.png" />
                                                                </image>
@@ -896,7 +922,7 @@
                                                       <VBox>
                                                          <children>
                                                             <RadioButton fx:id="rdbHabitus_5" mnemonicParsing="false" prefHeight="30.0" prefWidth="100.0" text="Upright erect" toggleGroup="$tglHabitus" />
-                                                            <ImageView fx:id="imgUprightErect" fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
+                                                            <ImageView fx:id="imgHabitus_5" fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
                                                                <image>
                                                                   <Image url="@img/Habitus_05.png" />
                                                                </image>
@@ -913,7 +939,7 @@
                                                       <VBox>
                                                          <children>
                                                             <RadioButton fx:id="rdbHabitus_6" mnemonicParsing="false" prefHeight="30.0" prefWidth="100.0" text="Mounded" toggleGroup="$tglHabitus" />
-                                                            <ImageView fx:id="imgMounded" fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
+                                                            <ImageView fx:id="imgHabitus_6" fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
                                                                <image>
                                                                   <Image url="@img/Habitus_06.png" />
                                                                </image>
@@ -926,7 +952,7 @@
                                                       <VBox>
                                                          <children>
                                                             <RadioButton fx:id="rdbHabitus_7" mnemonicParsing="false" prefHeight="30.0" prefWidth="100.0" text="Kruipend" toggleGroup="$tglHabitus" />
-                                                            <ImageView fx:id="ImgKruipend" fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
+                                                            <ImageView fx:id="imgHabitus_7" fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
                                                                <image>
                                                                   <Image url="@img/Habitus_07.png" />
                                                                </image>
@@ -939,7 +965,7 @@
                                                       <VBox>
                                                          <children>
                                                             <RadioButton fx:id="rdbHabitus_8" mnemonicParsing="false" prefHeight="30.0" prefWidth="100.0" text="Waaiervormig" toggleGroup="$tglHabitus" />
-                                                            <ImageView fx:id="imgWaaiervorming" fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
+                                                            <ImageView fx:id="imgHabitus_8" fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
                                                                <image>
                                                                   <Image url="@img/Habitus_08.png" />
                                                                </image>
@@ -956,7 +982,7 @@
                                                                   <Font size="11.0" />
                                                                </font>
                                                             </RadioButton>
-                                                            <ImageView fx:id="imgKussenVormend" fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
+                                                            <ImageView fx:id="imgHabitus_9" fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
                                                                <image>
                                                                   <Image url="@img/Habitus_09.png" />
                                                                </image>
@@ -969,7 +995,7 @@
                                                       <VBox>
                                                          <children>
                                                             <RadioButton fx:id="rdbHabitus_10" mnemonicParsing="false" prefHeight="30.0" prefWidth="100.0" text="Zuilvormig" toggleGroup="$tglHabitus" />
-                                                            <ImageView fx:id="imgZuilvormig" fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
+                                                            <ImageView fx:id="imgHabitus_10" fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
                                                                <image>
                                                                   <Image url="@img/Habitus_10.png" />
                                                                </image>
@@ -986,7 +1012,7 @@
                                                       <VBox>
                                                          <children>
                                                             <RadioButton fx:id="rdbHabitus_11" mnemonicParsing="false" prefHeight="30.0" prefWidth="100.0" text="Uitbuigend" toggleGroup="$tglHabitus" />
-                                                            <ImageView fx:id="imgUitbuigend" fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
+                                                            <ImageView fx:id="imgHabitus_11" fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
                                                                <image>
                                                                   <Image url="@img/Habitus_11.png" />
                                                                </image>
@@ -999,7 +1025,7 @@
                                                       <VBox>
                                                          <children>
                                                             <RadioButton fx:id="rdbHabitus_12" mnemonicParsing="false" prefHeight="30.0" prefWidth="100.0" text="Habitus" toggleGroup="$tglHabitus" />
-                                                            <ImageView fx:id="imgHabitus2" fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
+                                                            <ImageView fx:id="imgHabitus_12" fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
                                                                <image>
                                                                   <Image url="@img/Habitus_12.png" />
                                                                </image>
@@ -1012,7 +1038,7 @@
                                                       <VBox>
                                                          <children>
                                                             <RadioButton fx:id="rdbHabitus_13" mnemonicParsing="false" prefHeight="30.0" prefWidth="100.0" text="Succulenten" toggleGroup="$tglHabitus" />
-                                                            <ImageView fx:id="imgSucculenten" fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
+                                                            <ImageView fx:id="imgHabitus_13" fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
                                                                <image>
                                                                   <Image url="@img/Habitus_13.png" />
                                                                </image>
@@ -1025,7 +1051,7 @@
                                                       <VBox>
                                                          <children>
                                                             <RadioButton fx:id="rdbHabitus_14" mnemonicParsing="false" prefHeight="30.0" prefWidth="100.0" text="Pollenvormers" toggleGroup="$tglHabitus" />
-                                                            <ImageView fx:id="imgPollenvormers" fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
+                                                            <ImageView fx:id="imgHabitus_14" fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
                                                                <image>
                                                                   <Image url="@img/Habitus_14.png" />
                                                                </image>
@@ -1038,7 +1064,7 @@
                                                       <VBox>
                                                          <children>
                                                             <RadioButton fx:id="rdbHabitus_15" mnemonicParsing="false" prefHeight="30.0" prefWidth="100.0" text="Parasolvormig" toggleGroup="$tglHabitus" />
-                                                            <ImageView fx:id="imgParasolVormig" fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
+                                                            <ImageView fx:id="imgHabitus_15" fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
                                                                <image>
                                                                   <Image url="@img/Habitus_15.png" />
                                                                </image>
@@ -1063,10 +1089,11 @@
                                              <children>
                                                 <VBox>
                                                    <children>
-                                                      <RadioButton fx:id="rdbBloeiwijze_Aar" mnemonicParsing="false" prefHeight="30.0" prefWidth="100.0" selected="true" text="Aar">
+                                                      <RadioButton fx:id="rdbBloeiwijze_1" mnemonicParsing="false" prefHeight="30.0" prefWidth="100.0" selected="true" text="Aar">
                                                          <toggleGroup>
                                                             <ToggleGroup fx:id="tglBloeiwijze" />
-                                                         </toggleGroup></RadioButton>
+                                                         </toggleGroup>
+                                                      </RadioButton>
                                                       <ImageView fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
                                                          <image>
                                                             <Image url="@img/aar.jpg" />
@@ -1079,7 +1106,7 @@
                                                 </VBox>
                                                 <VBox>
                                                    <children>
-                                                      <RadioButton fx:id="rdbBloeiwijze_BredePluim" mnemonicParsing="false" prefHeight="30.0" prefWidth="100.0" text="Brede pluim" toggleGroup="$tglBloeiwijze">
+                                                      <RadioButton fx:id="rdbBloeiwijze_2" mnemonicParsing="false" prefHeight="30.0" prefWidth="100.0" text="Brede pluim" toggleGroup="$tglBloeiwijze">
                                                       </RadioButton>
                                                       <ImageView fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
                                                          <image>
@@ -1093,7 +1120,7 @@
                                                 </VBox>
                                                 <VBox>
                                                    <children>
-                                                      <RadioButton fx:id="rdbBloeiwijze_Etage" mnemonicParsing="false" prefHeight="30.0" prefWidth="100.0" text="Etage" toggleGroup="$tglBloeiwijze">
+                                                      <RadioButton fx:id="rdbBloeiwijze_3" mnemonicParsing="false" prefHeight="30.0" prefWidth="100.0" text="Etage" toggleGroup="$tglBloeiwijze">
                                                       </RadioButton>
                                                       <ImageView fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
                                                          <image>
@@ -1107,7 +1134,7 @@
                                                 </VBox>
                                                 <VBox>
                                                    <children>
-                                                      <RadioButton fx:id="rdbBloeiwijze_BolofKnop" mnemonicParsing="false" prefHeight="30.0" prefWidth="100.0" text="Bol of knop" toggleGroup="$tglBloeiwijze">
+                                                      <RadioButton fx:id="rdbBloeiwijze_4" mnemonicParsing="false" prefHeight="30.0" prefWidth="100.0" text="Bol of knop" toggleGroup="$tglBloeiwijze">
                                                       </RadioButton>
                                                       <ImageView fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
                                                          <image>
@@ -1121,7 +1148,7 @@
                                                 </VBox>
                                                 <VBox>
                                                    <children>
-                                                      <RadioButton fx:id="rdbBloeiwijze_Margrietachtig" mnemonicParsing="false" prefHeight="30.0" prefWidth="100.0" text="Margrietachtig" toggleGroup="$tglBloeiwijze">
+                                                      <RadioButton fx:id="rdbBloeiwijze_5" mnemonicParsing="false" prefHeight="30.0" prefWidth="100.0" text="Margrietachtig" toggleGroup="$tglBloeiwijze">
                                                       </RadioButton>
                                                       <ImageView fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
                                                          <image>
@@ -1135,7 +1162,7 @@
                                                 </VBox>
                                                 <VBox>
                                                    <children>
-                                                      <RadioButton fx:id="rdbBloeiwijze_Schotel" mnemonicParsing="false" prefHeight="30.0" prefWidth="100.0" text="Schotel" toggleGroup="$tglBloeiwijze">
+                                                      <RadioButton fx:id="rdbBloeiwijze_6" mnemonicParsing="false" prefHeight="30.0" prefWidth="100.0" text="Schotel" toggleGroup="$tglBloeiwijze">
                                                       </RadioButton>
                                                       <ImageView fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
                                                          <image>
@@ -1149,7 +1176,7 @@
                                                 </VBox>
                                                 <VBox>
                                                    <children>
-                                                      <RadioButton fx:id="rdbBloeiwijze_Scherm" mnemonicParsing="false" prefHeight="30.0" prefWidth="100.0" text="Scherm" toggleGroup="$tglBloeiwijze">
+                                                      <RadioButton fx:id="rdbBloeiwijze_7" mnemonicParsing="false" prefHeight="30.0" prefWidth="100.0" text="Scherm" toggleGroup="$tglBloeiwijze">
                                                       </RadioButton>
                                                       <ImageView fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
                                                          <image>
@@ -1163,7 +1190,7 @@
                                                 </VBox>
                                                 <VBox>
                                                    <children>
-                                                      <RadioButton fx:id="rdbBloeiwijze_SmallePluim" mnemonicParsing="false" prefHeight="30.0" prefWidth="100.0" text="Smalle pluim" toggleGroup="$tglBloeiwijze">
+                                                      <RadioButton fx:id="rdbBloeiwijze_8" mnemonicParsing="false" prefHeight="30.0" prefWidth="100.0" text="Smalle pluim" toggleGroup="$tglBloeiwijze">
                                                       </RadioButton>
                                                       <ImageView fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
                                                          <image>
@@ -1262,6 +1289,7 @@
                               </VBox>
                            </content>
                         </TitledPane>
+                        <HBox prefHeight="100.0" prefWidth="200.0" />
                      </children>
                   </VBox>
                </content>
@@ -1270,8 +1298,22 @@
          <center>
             <BorderPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                <center>
-                  <VBox fx:id="pnlUitvoer" visible="false" BorderPane.alignment="CENTER">
+                  <VBox fx:id="pnlUitvoer" BorderPane.alignment="CENTER">
                      <children>
+                        <FlowPane>
+                           <children>
+                              <Button fx:id="btnWijzigPlant" mnemonicParsing="false" onMouseClicked="#click_WijzigPlant" prefHeight="64.0" prefWidth="155.0" text="Wijzig Plant">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
+                              </Button>
+                              <Button fx:id="btnBeheerPlant" mnemonicParsing="false" onMouseClicked="#click_WijzigPlant" prefHeight="64.0" prefWidth="155.0" text="Beheer">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
+                              </Button>
+                           </children>
+                        </FlowPane>
                         <FlowPane>
                            <children>
                               <VBox prefHeight="200.0" prefWidth="100.0">
@@ -1471,25 +1513,6 @@
                                           </CheckBox>
                                        </children>
                                     </HBox>
-                                 </children>
-                              </VBox>
-                              <VBox prefHeight="200.0" prefWidth="14.0">
-                                 <children>
-                                    <HBox prefHeight="100.0" prefWidth="14.0">
-                                       <children>
-                                          <VBox prefHeight="100.0" prefWidth="17.0" />
-                                       </children>
-                                    </HBox>
-                                 </children>
-                              </VBox>
-                              <VBox prefHeight="200.0" prefWidth="139.0">
-                                 <children>
-                                    <HBox prefHeight="29.0" prefWidth="100.0" />
-                                    <Button fx:id="btnWijzigPlant" mnemonicParsing="false" onMouseClicked="#click_WijzigPlant" prefHeight="64.0" prefWidth="155.0" text="Wijzig Plant">
-                                       <font>
-                                          <Font size="15.0" />
-                                       </font>
-                                    </Button>
                                  </children>
                               </VBox>
                            </children>
@@ -2421,6 +2444,9 @@
                </left>
             </BorderPane>
          </center>
+         <right>
+            <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER" />
+         </right>
       </BorderPane>
    </content>
 </ScrollPane>

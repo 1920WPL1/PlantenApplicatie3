@@ -18,19 +18,21 @@ public class CombinedCheckboxData extends SearchBase {
 
     public void Bind(CheckBox cbDoSearch, CheckBox[] checkboxes) {
         try {
+            //Controleert of het aantal meegegeven checkboxes voldoende zijn voor het aan mogelijke waardes
             if (correspondingValues.length != checkboxes.length) {
                 throw new IllegalArgumentException();
             }
 
-            doSearchProperty().bind(cbDoSearch.selectedProperty());
+            values = new BooleanProperty[checkboxes.length]; //Initialiseren van de values array, kijkt naar de hoeveelheid meegegeven waardes
 
-            values = new BooleanProperty[checkboxes.length];
+            doSearchProperty().bind(cbDoSearch.selectedProperty());//Bind de checkbox value aan doSearch
+
             for (int i = 0; i < checkboxes.length; i++) {
-                values[i] = new SimpleBooleanProperty(false);
+                values[i] = new SimpleBooleanProperty(false);//Initialiseren van de values
 
-                checkboxes[i].setText(correspondingValues[i]);
-                checkboxes[i].disableProperty().bind(cbDoSearch.selectedProperty().not());
-                valueProperty(i).bind(checkboxes[i].selectedProperty());
+                checkboxes[i].setText(correspondingValues[i]);//Zet de text van de checkbox naar de mogelijk waarde die hij representeert
+                checkboxes[i].disableProperty().bind(cbDoSearch.selectedProperty().not());//Verbind de disable van de control met de checkbox
+                valueProperty(i).bind(checkboxes[i].selectedProperty());//Verbind de value van de control met de
             }
         } catch (NullPointerException nex) {
             StringBuilder sb = new StringBuilder();
@@ -43,10 +45,6 @@ public class CombinedCheckboxData extends SearchBase {
         } catch (IllegalArgumentException iae) {
             System.out.println("!!!Problem loading data from checkboxes, does not correspond with values: " + Arrays.toString(correspondingValues));
         }
-    }
-
-    public int Length() {
-        return values.length;
     }
 
     /**

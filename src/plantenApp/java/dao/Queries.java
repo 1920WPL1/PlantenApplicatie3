@@ -186,7 +186,30 @@ public interface Queries {
             "SELECT familie_naam FROM familie";
 
     String NTFAMILIEBYTYPE =
-            "SELECT familie_naam FROM familie where planttype_id = (SELECT planttype_id FROM planttype WHERE planttype_naam = ?)";
+            "SELECT familie_naam FROM familie where planttype_id IN (SELECT planttype_id FROM planttype WHERE planttype_naam IN (?))";
+
+    String NTGESLACHT =
+            "SELECT geslacht_naam FROM geslacht";
+
+    String NTGESLACHTBYFAMILIE =
+            "SELECT geslacht_naam FROM geslacht where familie_id IN (SELECT familie_id FROM familie WHERE familie_naam IN (?))";
+
+    String NTSOORT =
+            "SELECT soort_naam FROM soort";
+
+    String NTSOORTBYGESLACHT =
+            "SELECT soort_naam FROM soort where geslacht_id IN (SELECT geslacht_id FROM geslacht WHERE geslacht_naam IN (?))";
+
+    String NTVARIATIE =
+            "SELECT variatie_naam FROM variatie";
+
+    String NTVARIATIEBYSOORT =
+            "SELECT variatie_naam FROM variatie where soort_id IN (SELECT soort_id FROM soort WHERE soort_naam IN (?))";
+
+
+
+
+
 
     String NTLEVENSDUURCONCURRENTIEKRACHT =
             "SELECT waarde FROM levensduur_concurrentiekracht";
@@ -249,7 +272,10 @@ public interface Queries {
             "SELECT waarde FROM maxbladgrootte";
 
     String NTFOTOHABITUS =
-            "SELECT * FROM habitus";
+            "SELECT afbeelding FROM habitus";
     //endregion
+
+    String INSERTFOTO =
+            "UPDATE habitus SET afbeelding = ? WHERE waarde = ?";
 }
 

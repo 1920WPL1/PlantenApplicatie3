@@ -30,10 +30,17 @@ public class GUIdata {
             new EnumMap<>(EComCheckbox.class);
     public EnumMap<ERadiogroup, RadiogroupData> radiogroupDEM =
             new EnumMap<>(ERadiogroup.class);
+    public EnumMap<EFoto,FotoData> fotoDEM =
+            new EnumMap<>(EFoto.class);
+
 
     public GUIdata(Connection dbConnection) throws SQLException {
         //TODO verander naamgeving van enum values array naar iets anders als a,b,c,...
         //Initialize all dataclasses depending on the enum classes
+        EFoto[] y = EFoto.values();
+        for (EFoto eFoto : y) {
+            fotoDEM.put(eFoto, new FotoData());
+        }
         ETextfield[] z = ETextfield.values();
         for (ETextfield eTextfield : z) {
             textFieldDEM.put(eTextfield, new TextfieldData());
@@ -72,12 +79,6 @@ public class GUIdata {
         }
 
         //Set the values for specific data objects
-        combinedCheckboxDEM.get(EComCheckbox.GRONDSOORT).setCorrespondingValues(new String[]{"Z", "L", "K"});
-        sliderLabelDEM.get(ESliderLabel.BEZONNING).setCorrespondingValues(new String[]{"schaduw", "shaduw - half schaduw", "half schaduw", "half schaduw - zon", "zon"});
-        sliderLabelDEM.get(ESliderLabel.NECTARWAARDE).setCorrespondingValues(new String[]{"0", "1", "2", "3", "4", "5"});
-        sliderLabelDEM.get(ESliderLabel.POLLENWAARDE).setCorrespondingValues(new String[]{"0", "1", "2", "3", "4", "5"});
-        sliderLabelDEM.get(ESliderLabel.VOCHTBEHOEFTE).setCorrespondingValues(new String[]{"droog", "droog of fris", "fris", "fris of vochtig", "vochtig", "vochtig-nat", "nat"});
-        sliderLabelDEM.get(ESliderLabel.VOEDINGSBEHOEFTE).setCorrespondingValues(new String[]{"arm", "indifferent", "matig", "rijk"});
 
         //Set the mins and max values of the spinners
         spinnerDEM.get(ESpinner.PERXJAAR).setSpinnerMinMaxValue(0, 100);
@@ -95,6 +96,9 @@ public class GUIdata {
         //Fills the comboboxes
         comboBoxDEM.get(EComboBox.TYPE).setPossibleValues(infoTables.getTypes());
         comboBoxDEM.get(EComboBox.FAMILIE).setPossibleValues(infoTables.getFamilies());
+        comboBoxDEM.get(EComboBox.GESLACHT).setPossibleValues(infoTables.getGeslachten());
+        comboBoxDEM.get(EComboBox.SOORT).setPossibleValues(infoTables.getSoorten());
+        comboBoxDEM.get(EComboBox.VARIANT).setPossibleValues(infoTables.getVariaties());
         comboBoxDEM.get(EComboBox.SPRUITFENOLOGIE).setPossibleValues(infoTables.getSpruitfenologieen());
         comboBoxDEM.get(EComboBox.RATIOBLOEIBLAD).setPossibleValues(infoTables.getBloeiBladRatios());
         comboBoxDEM.get(EComboBox.BLADGROOTTE).setPossibleValues(infoTables.getBladgroottes());
@@ -124,46 +128,39 @@ public class GUIdata {
         multiComboBoxDEM.get(EMultiComboBox.BLADKLEURPERMAAND).setPossibleValues(infoTables.getKleuren());
 
         //Fills the radio button
-        //TODO kijken welke gegevens ik uit de DB kan krijgen en welke niet
-        radiogroupDEM.get(ERadiogroup.BIJVRIENDELIJK).setCorrespondingValues(new ArrayList<String>() {{
+        radiogroupDEM.get(ERadiogroup.BIJVRIENDELIJK).setCorrespondingValues(new ArrayList<>() {{
             add("ja");
             add("nee");
             add("onbekend");
         }});
-        radiogroupDEM.get(ERadiogroup.VLINDERVRIENDELIJK).setCorrespondingValues(new ArrayList<String>() {{
+        radiogroupDEM.get(ERadiogroup.VLINDERVRIENDELIJK).setCorrespondingValues(new ArrayList<>() {{
             add("ja");
             add("nee");
             add("onbekend");
         }});
-        radiogroupDEM.get(ERadiogroup.VORSTGEVOELIG).setCorrespondingValues(new ArrayList<String>() {{
+        radiogroupDEM.get(ERadiogroup.VORSTGEVOELIG).setCorrespondingValues(new ArrayList<>() {{
             add("ja");
             add("nee");
             add("onbekend");
         }});
-        radiogroupDEM.get(ERadiogroup.GEUREND).setCorrespondingValues(new ArrayList<String>() {{
+        radiogroupDEM.get(ERadiogroup.GEUREND).setCorrespondingValues(new ArrayList<>() {{
             add("ja");
             add("nee");
             add("onbekend");
         }});
-        radiogroupDEM.get(ERadiogroup.KRUIDGEBRUIK).setCorrespondingValues(new ArrayList<String>() {{
+        radiogroupDEM.get(ERadiogroup.KRUIDGEBRUIK).setCorrespondingValues(new ArrayList<>() {{
             add("ja");
             add("nee");
             add("onbekend");
         }});
-        radiogroupDEM.get(ERadiogroup.EETBAAR).setCorrespondingValues(new ArrayList<String>() {{
+        radiogroupDEM.get(ERadiogroup.EETBAAR).setCorrespondingValues(new ArrayList<>() {{
             add("ja");
             add("nee");
             add("onbekend");
         }});
-
-        //radiogroupDEM.get(ERadiogroup.STRATEGIE).setCorrespondingValues(new String[]{"C", "S", "R", "CS", "CR", "SR", "CSR"});
         radiogroupDEM.get(ERadiogroup.STRATEGIE).setCorrespondingValues(infoTables.getStratergieen());
-
-        //radiogroupDEM.get(ERadiogroup.BLOEIWIJZE).setCorrespondingValues(new String[]{"aar", "brede pluim", "etage", "bol of knop", "margrietachtig", "schotel", "scherm", "smalle pluim"});
         radiogroupDEM.get(ERadiogroup.BLOEIWIJZE).setCorrespondingValues(infoTables.getBloeiwijzes());
-
-        //radiogroupDEM.get(ERadiogroup.LEVENSVORM).setCorrespondingValues(new String[]{"1.Hydrofyt", "2.Hydrofyt", "3.Helofyt", "4.Cryptophyt", "5.Cryptophyt", "6.Hemikryptofyt", "7.Chamaefyt", "8.Chamaefyt", "9.Fanerophyt"});
-        radiogroupDEM.get(ERadiogroup.LEVENSVORM).setCorrespondingValues(new ArrayList<String>() {{
+        radiogroupDEM.get(ERadiogroup.LEVENSVORM).setCorrespondingValues(new ArrayList<>() {{
             add("1.Hydrofyt");
             add("2.Hydrofyt");
             add("3.Helofyt");
@@ -174,8 +171,22 @@ public class GUIdata {
             add("8.Chamaefyt");
             add("9.Fanerophyt");
         }});
-
-        //radiogroupDEM.get(ERadiogroup.HABITUS).setCorrespondingValues(new String[]{"tufted", "upright arching", "arching", "upright divergent", "upright erect", "mounded", "kruipend", "waaiervormig", "kussenvormend", "zuilvormig", "uitbuigend", "NOG AAN TE PASSEN", "Succulenten", "Pollenvormers", "parasolvormig"});
         radiogroupDEM.get(ERadiogroup.HABITUS).setCorrespondingValues(infoTables.getHabitusMogelijkheden());
+
+        combinedCheckboxDEM.get(EComCheckbox.GRONDSOORT).setCorrespondingValues(new String[]{"Z", "L", "K"});
+        sliderLabelDEM.get(ESliderLabel.BEZONNING).setCorrespondingValues(infoTables.getBezonningsMogelijkheden());
+
+        ArrayList<String> l = new ArrayList<>();
+        for (int i = 0; i < infoTables.getNectarwaardes().size(); i++) {
+            l.add(String.valueOf(infoTables.getNectarwaardes().get(i)));
+        }
+        sliderLabelDEM.get(ESliderLabel.NECTARWAARDE).setCorrespondingValues(l);
+        sliderLabelDEM.get(ESliderLabel.POLLENWAARDE).setCorrespondingValues(l);
+        sliderLabelDEM.get(ESliderLabel.VOCHTBEHOEFTE).setCorrespondingValues(infoTables.getVochtbehoeftes());
+        sliderLabelDEM.get(ESliderLabel.VOEDINGSBEHOEFTE).setCorrespondingValues(infoTables.getVoedingsbehoeftes());
+
+        //fotoDEM.get(EFoto.BLOEIWIJZE).setImages();
+        fotoDEM.get(EFoto.HABITUS).setImages(infoTables.getHabitusFotos());
+        //fotoDEM.get(EFoto.LEVENSVORM).setImages();
     }
 }

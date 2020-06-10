@@ -165,7 +165,7 @@ public class PlantDAO implements Queries {
 
         //fgsv
         TextfieldData fgsv = guiData.textFieldDEM.get(ETextfield.SEARCH);
-        stmtSelectIdsByPlant.setString(5, fgsv.getValue());
+        stmtSelectIdsByPlant.setString(5, "%" + fgsv.getValue() + "%");
         stmtSelectIdsByPlant.setInt(6, (fgsv.isDoSearch()) ? 0 : 1);
 
         ResultSet rs = stmtSelectIdsByPlant.executeQuery();

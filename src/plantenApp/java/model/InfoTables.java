@@ -13,6 +13,9 @@ public class InfoTables {
     //Plant
     private ArrayList<String> types;
     private ArrayList<String> families;
+    private ArrayList<String> geslachten;
+    private ArrayList<String> soorten;
+    private ArrayList<String> variaties;
 
     //Fenotype
     private ArrayList<String> kleuren;
@@ -22,7 +25,7 @@ public class InfoTables {
     private ArrayList<String> spruitfenologieen;
     private ArrayList<String> bloeiwijzes;
     private ArrayList<String> habitusMogelijkheden;
-    private ArrayList<NTFotos> habitusFotos;
+    private ArrayList<Image> habitusFotos;
 
     //Abiotische factoren
     private ArrayList<String> bezonningsMogelijkheden;
@@ -48,6 +51,9 @@ public class InfoTables {
     public InfoTables(
             ArrayList<String> types,
             ArrayList<String> families,
+            ArrayList<String> geslachten,
+            ArrayList<String> soorten,
+            ArrayList<String> variaties,
             ArrayList<String> kleuren,
             ArrayList<String> bladgroottes,
             ArrayList<String> bladvormen,
@@ -55,7 +61,7 @@ public class InfoTables {
             ArrayList<String> spruitfenologieen,
             ArrayList<String> bloeiwijzes,
             ArrayList<String> habitusMogelijkheden,
-            ArrayList<NTFotos> habitusFotos,
+            ArrayList<Image> habitusFotos,
             ArrayList<String> bezonningsMogelijkheden,
             ArrayList<String> grondsoorten,
             ArrayList<String> vochtbehoeftes,
@@ -74,6 +80,9 @@ public class InfoTables {
 
         this.types = types;
         this.families = families;
+        this.geslachten = geslachten;
+        this.soorten = soorten;
+        this.variaties = variaties;
         this.kleuren = kleuren;
         this.bladgroottes = bladgroottes;
         this.bladvormen = bladvormen;
@@ -134,7 +143,7 @@ public class InfoTables {
         return habitusMogelijkheden;
     }
 
-    public ArrayList<NTFotos> getHabitusFotos() {
+    public ArrayList<Image> getHabitusFotos() {
         return habitusFotos;
     }
 
@@ -188,5 +197,17 @@ public class InfoTables {
 
     public ArrayList<Integer> getPollenwaardes() {
         return pollenwaardes;
+    }
+
+    public ArrayList<String> getGeslachten() {
+        return geslachten;
+    }
+
+    public ArrayList<String> getSoorten() {
+        return soorten;
+    }
+
+    public ArrayList<String> getVariaties() {
+        return variaties;
     }
 }

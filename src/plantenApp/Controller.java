@@ -2,26 +2,23 @@ package plantenApp;
 
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
-import javafx.collections.ObservableList;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
-import javafx.stage.Stage;
+import javafx.stage.FileChooser;
 import plantenApp.java.dao.Database;
+import plantenApp.java.dao.FotoDAO;
 import plantenApp.java.dao.InfoTablesDAO;
 import plantenApp.java.model.InfoTables;
 import plantenApp.java.model.Plant;
 import plantenApp.java.model.SearchHandler;
+import plantenApp.java.model.data.ComboBoxData;
 import plantenApp.java.model.data.GUIdata;
 import plantenApp.java.model.data.enums.*;
 
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -96,13 +93,13 @@ public class Controller {
     public CheckBox chkSociabiliteit_3;
     public CheckBox chkSociabiliteit_4;
     public CheckBox chkSociabiliteit_5;
-    public RadioButton rdbStrategie_C;
-    public RadioButton rdbStrategie_CR;
-    public RadioButton rdbStrategie_CRS;
-    public RadioButton rdbStrategie_CS;
-    public RadioButton rdbStrategie_R;
-    public RadioButton rdbStrategie_RS;
-    public RadioButton rdbStrategie_S;
+    public RadioButton rdbStrategie_1;
+    public RadioButton rdbStrategie_2;
+    public RadioButton rdbStrategie_4;
+    public RadioButton rdbStrategie_3;
+    public RadioButton rdbStrategie_5;
+    public RadioButton rdbStrategie_7;
+    public RadioButton rdbStrategie_6;
     public Slider sldNectarwaarde;
     public Slider sldPollenwaarde;
     public RadioButton rdbBijvriendelijk_Ja;
@@ -182,13 +179,13 @@ public class Controller {
     public RadioButton rdbHabitus_14;
     public RadioButton rdbHabitus_15;
     public CheckBox chkBloeiwijze;
-    public RadioButton rdbBloeiwijze_Aar;
-    public RadioButton rdbBloeiwijze_BredePluim;
-    public RadioButton rdbBloeiwijze_Etage;
-    public RadioButton rdbBloeiwijze_BolofKnop;
-    public RadioButton rdbBloeiwijze_Margrietachtig;
-    public RadioButton rdbBloeiwijze_Scherm;
-    public RadioButton rdbBloeiwijze_SmallePluim;
+    public RadioButton rdbBloeiwijze_1;
+    public RadioButton rdbBloeiwijze_2;
+    public RadioButton rdbBloeiwijze_3;
+    public RadioButton rdbBloeiwijze_4;
+    public RadioButton rdbBloeiwijze_5;
+    public RadioButton rdbBloeiwijze_7;
+    public RadioButton rdbBloeiwijze_8;
     public CheckBox chkLevensvormVolgensRaunkhiaer;
     public RadioButton rdbLevensvorm_1;
     public RadioButton rdbLevensvorm_2;
@@ -204,7 +201,7 @@ public class Controller {
     public ComboBox<String> cboBladgrootte;
     public ComboBox<String> cboHabitat;
     public ComboBox<String> cboBladvorm;
-    public RadioButton rdbBloeiwijze_Schotel;
+    public RadioButton rdbBloeiwijze_6;
     public CheckBox chkHabitat;
     public CheckBox chkType;
     public CheckBox chkFamilie;
@@ -340,23 +337,29 @@ public class Controller {
     public Label lblKruidgebruik;
     public ListView lsvLevensduur;
     public ListView lsvHabitat;
-    public ImageView imgTufted;
-    public ImageView imgUprightArching;
-    public ImageView imgArching;
-    public ImageView imgUprightDivergent;
-    public ImageView imgUprightErect;
-    public ImageView imgMounded;
-    public ImageView ImgKruipend;
-    public ImageView imgWaaiervorming;
-    public ImageView imgKussenVormend;
-    public ImageView imgZuilvormig;
-    public ImageView imgUitbuigend;
-    public ImageView imgHabitus2;
-    public ImageView imgSucculenten;
-    public ImageView imgPollenvormers;
-    public ImageView imgParasolVormig;
-//endregion
+    public ImageView imgHabitus_1;
+    public ImageView imgHabitus_2;
+    public ImageView imgHabitus_3;
+    public ImageView imgHabitus_4;
+    public ImageView imgHabitus_5;
+    public ImageView imgHabitus_6;
+    public ImageView imgHabitus_7;
+    public ImageView imgHabitus_8;
+    public ImageView imgHabitus_9;
+    public ImageView imgHabitus_10;
+    public ImageView imgHabitus_11;
+    public ImageView imgHabitus_12;
+    public ImageView imgHabitus_13;
+    public ImageView imgHabitus_14;
+    public ImageView imgHabitus_15;
     public Button btnWijzigPlant;
+    public CheckBox chkSoort;
+    public ComboBox<String> cboSoort;
+    public CheckBox chkGeslacht;
+    public ComboBox<String> cboGeslacht;
+    public CheckBox chkVariant;
+    public ComboBox<String> cboVariant;
+    //endregion
 
     private InfoTables infoTables;
     private Connection dbConnection;
@@ -371,74 +374,54 @@ public class Controller {
         infoTables = infotablesDAO.getInfoTables();
         handler = new SearchHandler(dbConnection);
 
-        ArrayList<ImageView> habitus = new ArrayList<>();
-        habitus.add(imgTufted);
-        habitus.add(imgUprightArching);
-        habitus.add(imgArching);
-        habitus.add(imgUprightDivergent);
-        habitus.add(imgUprightErect);
-        habitus.add(imgMounded);
-        habitus.add(ImgKruipend);
-        habitus.add(imgWaaiervorming);
-        habitus.add(imgKussenVormend);
-        habitus.add(imgZuilvormig);
-        habitus.add(imgUitbuigend);
-        habitus.add(imgHabitus2); //TODO naam aanpassen
-        habitus.add(imgSucculenten);
-        habitus.add(imgPollenvormers);
-        habitus.add(imgParasolVormig);
-        ArrayList<RadioButton> habitusrdb = new ArrayList<>();
-        habitusrdb.add(rdbHabitus_1);
-        habitusrdb.add(rdbHabitus_2);
-        habitusrdb.add(rdbHabitus_3);
-        habitusrdb.add(rdbHabitus_4);
-        habitusrdb.add(rdbHabitus_5);
-        habitusrdb.add(rdbHabitus_6);
-        habitusrdb.add(rdbHabitus_7);
-        habitusrdb.add(rdbHabitus_8);
-        habitusrdb.add(rdbHabitus_9);
-        habitusrdb.add(rdbHabitus_10);
-        habitusrdb.add(rdbHabitus_11);
-        habitusrdb.add(rdbHabitus_12);
-        habitusrdb.add(rdbHabitus_13);
-        habitusrdb.add(rdbHabitus_14);
-        habitusrdb.add(rdbHabitus_15);
-        for (int i = 0; i < infoTables.getHabitusFotos().size(); i++) {
-            habitusrdb.get(i).setText(infoTables.getHabitusFotos().get(i).getWaarde());
-            habitus.get(i).setImage(infoTables.getHabitusFotos().get(i).getFoto());
-        }
-
-
         guiData = new GUIdata(dbConnection);
         //region bindings
         guiData.textFieldDEM.get(ETextfield.SEARCH).Bind(txtSearch);
         guiData.comboBoxDEM.get(EComboBox.TYPE).Bind(chkType, cboType);
-        guiData.comboBoxDEM.get(EComboBox.FAMILIE).Bind(chkFamilie, cboFamilie);
-
-        //Type aangeduid -> families beperkt
-        guiData.comboBoxDEM.get(EComboBox.TYPE).valueProperty().addListener((observableValue, s, t1) -> {
-            try {
-                ArrayList<String> list = infotablesDAO.selectFamiliesByType(guiData.comboBoxDEM.get(EComboBox.TYPE).getValue());
-                guiData.comboBoxDEM.get(EComboBox.FAMILIE).setPossibleValues(list);
-                guiData.comboBoxDEM.get(EComboBox.FAMILIE).updateComboBoxWithPossibleValues(cboFamilie);
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
-        });
-        guiData.comboBoxDEM.get(EComboBox.TYPE).doSearchProperty().addListener((observableValue, aBoolean, t1) -> {
-            if (guiData.comboBoxDEM.get(EComboBox.TYPE).isDoSearch()) {
-                try {
-                    ArrayList<String> list = infotablesDAO.selectFamiliesByType(guiData.comboBoxDEM.get(EComboBox.TYPE).getValue());
-                    guiData.comboBoxDEM.get(EComboBox.FAMILIE).setPossibleValues(list);
-                    guiData.comboBoxDEM.get(EComboBox.FAMILIE).updateComboBoxWithPossibleValues(cboFamilie);
-                } catch (SQLException e) {
-                    e.printStackTrace();
+        guiData.comboBoxDEM.get(EComboBox.TYPE).doSearchProperty().addListener(new ChangeListener<Boolean>() {
+            @Override
+            public void changed(ObservableValue<? extends Boolean> observableValue, Boolean oldbool, Boolean newbool) {
+                chkFamilie.setVisible(newbool);
+                cboFamilie.setVisible(newbool);
+                if (oldbool){
+                    chkFamilie.setSelected(false);
                 }
-            } else {
-                guiData.comboBoxDEM.get(EComboBox.FAMILIE).setPossibleValues(infoTables.getFamilies());
-                guiData.comboBoxDEM.get(EComboBox.FAMILIE).updateComboBoxWithPossibleValues(cboFamilie);
             }
         });
+        guiData.comboBoxDEM.get(EComboBox.FAMILIE).Bind(chkFamilie, cboFamilie);
+        guiData.comboBoxDEM.get(EComboBox.FAMILIE).doSearchProperty().addListener(new ChangeListener<Boolean>() {
+            @Override
+            public void changed(ObservableValue<? extends Boolean> observableValue, Boolean oldbool, Boolean newbool) {
+                chkGeslacht.setVisible(newbool);
+                cboGeslacht.setVisible(newbool);
+                if (oldbool){
+                    chkGeslacht.setSelected(false);
+                }
+            }
+        });
+        guiData.comboBoxDEM.get(EComboBox.GESLACHT).Bind(chkGeslacht, cboGeslacht);
+        guiData.comboBoxDEM.get(EComboBox.GESLACHT).doSearchProperty().addListener(new ChangeListener<Boolean>() {
+            @Override
+            public void changed(ObservableValue<? extends Boolean> observableValue, Boolean oldbool, Boolean newbool) {
+                chkSoort.setVisible(newbool);
+                cboSoort.setVisible(newbool);
+                if (oldbool){
+                    chkSoort.setSelected(false);
+                }
+            }
+        });
+        guiData.comboBoxDEM.get(EComboBox.SOORT).Bind(chkSoort, cboSoort);
+        guiData.comboBoxDEM.get(EComboBox.SOORT).doSearchProperty().addListener(new ChangeListener<Boolean>() {
+            @Override
+            public void changed(ObservableValue<? extends Boolean> observableValue, Boolean oldbool, Boolean newbool) {
+                chkVariant.setVisible(newbool);
+                cboVariant.setVisible(newbool);
+                if (oldbool){
+                    chkVariant.setSelected(false);
+                }
+            }
+        });
+        guiData.comboBoxDEM.get(EComboBox.VARIANT).Bind(chkVariant, cboVariant);
 
         guiData.comboBoxDEM.get(EComboBox.BEHANDELING).Bind(chkBehandeling, cboBehandeling);
         guiData.comboBoxDEM.get(EComboBox.BLADGROOTTE).Bind(chkBladgrootte, cboBladgrootte);
@@ -479,13 +462,16 @@ public class Controller {
         guiData.radiogroupDEM.get(ERadiogroup.BIJVRIENDELIJK).Bind(chkBijvriendelijk, new RadioButton[]{rdbBijvriendelijk_Ja, rdbBijvriendelijk_Nee, rdbBijvriendelijk_Onbekend});
         guiData.radiogroupDEM.get(ERadiogroup.VLINDERVRIENDELIJK).Bind(chkVlindervriendelijk, new RadioButton[]{rdbVlindervriendelijk_Ja, rdbVlindervriendelijk_Nee, rdbVlindervriendelijk_Onbekend});
         guiData.radiogroupDEM.get(ERadiogroup.VORSTGEVOELIG).Bind(chkVorstgevoelig, new RadioButton[]{rdbVorstgevoelig_Ja, rdbVorstgevoelig_Nee, rdbVorstgevoelig_Onbekend});
-        guiData.radiogroupDEM.get(ERadiogroup.BLOEIWIJZE).Bind(chkBloeiwijze, new RadioButton[]{rdbBloeiwijze_Aar, rdbBloeiwijze_BredePluim, rdbBloeiwijze_Etage, rdbBloeiwijze_BolofKnop, rdbBloeiwijze_Margrietachtig, rdbBloeiwijze_Schotel}); //, rdbBloeiwijze_Scherm, rdbBloeiwijze_SmallePluim TODO fix de database
+        guiData.radiogroupDEM.get(ERadiogroup.BLOEIWIJZE).Bind(chkBloeiwijze, new RadioButton[]{rdbBloeiwijze_1, rdbBloeiwijze_2, rdbBloeiwijze_3, rdbBloeiwijze_4, rdbBloeiwijze_5, rdbBloeiwijze_6, rdbBloeiwijze_7, rdbBloeiwijze_8});
         guiData.radiogroupDEM.get(ERadiogroup.EETBAAR).Bind(chkEetbaar, new RadioButton[]{rdbEetbaar_Ja, rdbEetbaar_Nee, rdbEetbaar_Onbekend});
         guiData.radiogroupDEM.get(ERadiogroup.HABITUS).Bind(chkHabitus, new RadioButton[]{rdbHabitus_1, rdbHabitus_2, rdbHabitus_3, rdbHabitus_4, rdbHabitus_5, rdbHabitus_6, rdbHabitus_7, rdbHabitus_8, rdbHabitus_9, rdbHabitus_10, rdbHabitus_11, rdbHabitus_12, rdbHabitus_13, rdbHabitus_14, rdbHabitus_15});
         guiData.radiogroupDEM.get(ERadiogroup.GEUREND).Bind(chkGeurend, new RadioButton[]{rdbGeurend_Ja, rdbGeurend_Nee, rdbGeurend_Onbekend});
         guiData.radiogroupDEM.get(ERadiogroup.KRUIDGEBRUIK).Bind(chkKruidgebruik, new RadioButton[]{rdbKruidgebruik_Ja, rdbKruidgebruik_Nee, rdbKruidgebruik_Onbekend});
-        guiData.radiogroupDEM.get(ERadiogroup.STRATEGIE).Bind(chkStrategie, new RadioButton[]{rdbStrategie_C, rdbStrategie_S, rdbStrategie_R, rdbStrategie_CS, rdbStrategie_CR, rdbStrategie_RS, rdbStrategie_CRS});
+        guiData.radiogroupDEM.get(ERadiogroup.STRATEGIE).Bind(chkStrategie, new RadioButton[]{rdbStrategie_1, rdbStrategie_2, rdbStrategie_3, rdbStrategie_4, rdbStrategie_5, rdbStrategie_6, rdbStrategie_7});
         guiData.radiogroupDEM.get(ERadiogroup.LEVENSVORM).Bind(chkLevensvormVolgensRaunkhiaer, new RadioButton[]{rdbLevensvorm_1, rdbLevensvorm_2, rdbLevensvorm_3, rdbLevensvorm_4, rdbLevensvorm_5, rdbLevensvorm_6, rdbLevensvorm_7, rdbLevensvorm_8, rdbLevensvorm_9});
+
+        guiData.fotoDEM.get(EFoto.HABITUS).Bind(new ImageView[]{imgHabitus_1, imgHabitus_2, imgHabitus_3, imgHabitus_4, imgHabitus_5, imgHabitus_6, imgHabitus_7, imgHabitus_8, imgHabitus_9, imgHabitus_10, imgHabitus_11, imgHabitus_12, imgHabitus_13, imgHabitus_14, imgHabitus_15});
+
         //endregion
 
         InitListView();
@@ -661,6 +647,7 @@ public class Controller {
                     lblBloeikleurDec.setText(newValue.getFenotype().getBloeikleur().getDec());
 
 
+                    /*
                     for (int i = 0; i < infoTables.getHabitusFotos().size(); i++) {
 
                         if (infoTables.getHabitusFotos().get(i).getWaarde().equals(newValue.getFenotype().getHabitus())) {
@@ -674,6 +661,8 @@ public class Controller {
                         }
                     }
 
+                     */
+
 
                 } catch (NullPointerException ex) {
                     ex.printStackTrace();
@@ -684,7 +673,7 @@ public class Controller {
     }
 
     public void Click_Search(MouseEvent mouseEvent) throws SQLException {
-        ArrayList<Plant> planten= handler.Search(guiData, dbConnection);
+        ArrayList<Plant> planten = handler.Search(guiData, dbConnection);
 
         lsvOverzicht.getSelectionModel().selectedItemProperty().removeListener(lsvChanged);
         lsvOverzicht.getItems().clear();
@@ -704,7 +693,9 @@ public class Controller {
             pnlAdvSearch.setExpanded(false);
         }
     }
+
     public void click_WijzigPlant(MouseEvent mouseEvent) throws IOException, SQLException {
+        /*
         FXMLLoader loader = new FXMLLoader(getClass().getResource("view/PlantWijzigen.fxml"));
         Parent root = loader.load();
         Scene scene = new Scene(root);
@@ -713,6 +704,42 @@ public class Controller {
         Controller controller = loader.getController(); //naam van de controller waar je naar toe wil
         window.setScene(scene);
         window.show();
+
+         */
+
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.getExtensionFilters().addAll(
+                new FileChooser.ExtensionFilter("Image Files", "*.png", "*.jpg", "*.gif")
+        );
+        File selectedFile = fileChooser.showOpenDialog(lblBezonning.getScene().getWindow());
+        System.out.println(selectedFile);
+
+        byte[] blob = convertFileContentToBlob(selectedFile.getPath());
+        FotoDAO fotoDAO = new FotoDAO(dbConnection);
+        fotoDAO.InsertFoto("arching", blob);
+    }
+
+    public static byte[] convertFileContentToBlob(String filePath) throws IOException {
+        // create file object
+        File file = new File(filePath);
+        // initialize a byte array of size of the file
+        byte[] fileContent = new byte[(int) file.length()];
+        FileInputStream inputStream = null;
+        try {
+            // create an input stream pointing to the file
+            inputStream = new FileInputStream(file);
+            // read the contents of file into byte array
+            inputStream.read(fileContent);
+        } catch (IOException e) {
+            throw new IOException("Unable to convert file to byte array. " +
+                    e.getMessage());
+        } finally {
+            // close input stream
+            if (inputStream != null) {
+                inputStream.close();
+            }
+        }
+        return fileContent;
     }
 }
 

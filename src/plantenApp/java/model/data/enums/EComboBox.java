@@ -3,6 +3,9 @@ package plantenApp.java.model.data.enums;
 public enum EComboBox {
     TYPE,
     FAMILIE,
+    SOORT,
+    GESLACHT,
+    VARIANT,
     BLADKLEUR,
     BLOEIKLEUR,
     BLADGROOTTE,

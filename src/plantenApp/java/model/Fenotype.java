@@ -73,7 +73,7 @@ public class Fenotype {
 
     public FenoMulti_Eigenschap getBladhoogte() {
         for (int i = 0; i < multiEigenschappen.size(); i++) {
-            if (multiEigenschappen.get(i).getNaam() == "bladhoogte") {
+            if (multiEigenschappen.get(i).getNaam().equals("bladhoogte")) {
                 return multiEigenschappen.get(i);
             }
         }
@@ -82,7 +82,7 @@ public class Fenotype {
 
     public FenoMulti_Eigenschap getMinBloeihoogte() {
         for (int i = 0; i < multiEigenschappen.size(); i++) {
-            if (multiEigenschappen.get(i).getNaam() == "minbloeihoogte") {
+            if (multiEigenschappen.get(i).getNaam().equals("minbloeihoogte")) {
                 return multiEigenschappen.get(i);
             }
         }
@@ -91,7 +91,7 @@ public class Fenotype {
 
     public FenoMulti_Eigenschap getMaxBloeihoogte() {
         for (int i = 0; i < multiEigenschappen.size(); i++) {
-            if (multiEigenschappen.get(i).getNaam() == "maxbloeihoogte") {
+            if (multiEigenschappen.get(i).getNaam().equals("maxbloeihoogte")) {
                 return multiEigenschappen.get(i);
             }
         }
@@ -100,7 +100,7 @@ public class Fenotype {
 
     public FenoMulti_Eigenschap getBladkleur() {
         for (int i = 0; i < multiEigenschappen.size(); i++) {
-            if (multiEigenschappen.get(i).getNaam() == "bladkleur") {
+            if (multiEigenschappen.get(i).getNaam().equals("bladkleur")) {
                 return multiEigenschappen.get(i);
             }
         }
@@ -109,7 +109,7 @@ public class Fenotype {
 
     public FenoMulti_Eigenschap getBloeikleur() {
         for (int i = 0; i < multiEigenschappen.size(); i++) {
-            if (multiEigenschappen.get(i).getNaam() == "bloeikleur") {
+            if (multiEigenschappen.get(i).getNaam().equals("bloeikleur")) {
                 return multiEigenschappen.get(i);
             }
         }

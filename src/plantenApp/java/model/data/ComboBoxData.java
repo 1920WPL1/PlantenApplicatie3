@@ -15,9 +15,9 @@ public class ComboBoxData extends SearchBase {
     public void Bind(CheckBox cbDoSearch, ComboBox<String> comboBox) {
         try {
             updateComboBoxWithPossibleValues(comboBox);
-            doSearchProperty().bind(cbDoSearch.selectedProperty());
-            comboBox.disableProperty().bind(cbDoSearch.selectedProperty().not());
-            valueProperty().bind(comboBox.valueProperty());
+            doSearchProperty().bind(cbDoSearch.selectedProperty());//Bind checkbox met doSearch
+            comboBox.disableProperty().bind(cbDoSearch.selectedProperty().not());//Bind checkbox met disable
+            valueProperty().bind(comboBox.valueProperty());//Bind value
         } catch (NullPointerException nex) {
             StringBuilder sb = new StringBuilder();
             sb.append("Checkbox: ").append(cbDoSearch).append(" combobox: ").append(comboBox).append('\n').append(nex.getMessage());
@@ -33,10 +33,17 @@ public class ComboBoxData extends SearchBase {
         this.possibleValues = possibleValues;
     }
 
-    public void updateComboBoxWithPossibleValues(ComboBox<String> comboBox){
+    /**
+     * Update de inhoud van een een combobox met possibleValues
+     *
+     * @param comboBox -> combobox dat upgedate moet worden met de waardes
+     */
+    public void updateComboBoxWithPossibleValues(ComboBox<String> comboBox) {
         comboBox.getItems().clear();
         comboBox.getItems().addAll(possibleValues);
-        comboBox.getSelectionModel().selectFirst();
+        if (comboBox.getItems().size() > 0) {
+            comboBox.getSelectionModel().selectFirst();
+        }
     }
 
     //StringValue
