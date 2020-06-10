@@ -40,7 +40,7 @@
                                        <children>
                                           <HBox>
                                              <children>
-                                                <CheckBox fx:id="chkType" minHeight="30.0" mnemonicParsing="false" text="Type:">
+                                                <CheckBox fx:id="chkType" minHeight="30.0" mnemonicParsing="false" prefWidth="70.0" text="Type:">
                                                    <font>
                                                       <Font name="System Bold" size="14.0" />
                                                    </font>
@@ -50,7 +50,7 @@
                                           </HBox>
                                           <HBox>
                                              <children>
-                                                <CheckBox fx:id="chkFamilie" minHeight="30.0" mnemonicParsing="false" text="Familie:">
+                                                <CheckBox fx:id="chkFamilie" minHeight="30.0" mnemonicParsing="false" prefWidth="90.0" text="Familie:">
                                                    <font>
                                                       <Font name="System Bold" size="14.0" />
                                                    </font>
@@ -60,7 +60,7 @@
                                           </HBox>
                                           <HBox>
                                              <children>
-                                                <CheckBox fx:id="chkGeslacht" minHeight="30.0" mnemonicParsing="false" text="Geslacht">
+                                                <CheckBox fx:id="chkGeslacht" minHeight="30.0" mnemonicParsing="false" prefWidth="90.0" text="Geslacht:">
                                                    <font>
                                                       <Font name="System Bold" size="14.0" />
                                                    </font>
@@ -70,7 +70,7 @@
                                           </HBox>
                                           <HBox>
                                              <children>
-                                                <CheckBox fx:id="chkSoort" minHeight="30.0" mnemonicParsing="false" text="Soort">
+                                                <CheckBox fx:id="chkSoort" minHeight="30.0" mnemonicParsing="false" prefWidth="75.0" text="Soort:">
                                                    <font>
                                                       <Font name="System Bold" size="14.0" />
                                                    </font>
@@ -80,12 +80,12 @@
                                           </HBox>
                                           <HBox>
                                              <children>
-                                                <CheckBox fx:id="chkVariant" minHeight="30.0" mnemonicParsing="false" text="Variant">
+                                                <CheckBox fx:id="chkVariant" minHeight="30.0" mnemonicParsing="false" prefWidth="90.0" text="Variant:">
                                                    <font>
                                                       <Font name="System Bold" size="14.0" />
                                                    </font>
                                                 </CheckBox>
-                                                <ComboBox fx:id="cboVariant" minHeight="30.0" prefWidth="150.0" />
+                                                <ComboBox fx:id="cboVariant" minHeight="30.0" prefWidth="173.0" />
                                              </children>
                                           </HBox>
                                        </children>
@@ -226,7 +226,7 @@
                                           <Font name="System Bold" size="14.0" />
                                        </font>
                                     </CheckBox>
-                                    <ComboBox fx:id="cboHabitat" prefHeight="22.0" prefWidth="270.0" />
+                                    <ComboBox fx:id="cboHabitat" prefHeight="22.0" prefWidth="280.0" />
                                  </children>
                                  <FlowPane.margin>
                                     <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
@@ -255,8 +255,8 @@
                                                             <Font size="14.0" />
                                                          </font>
                                                       </CheckBox>
-                                                      <Slider fx:id="sldVoedingsbehoefte" prefHeight="30.0" prefWidth="100.0" />
-                                                      <Label fx:id="lblVoedingsBehoefte" prefHeight="30.0" prefWidth="50.0" text="Label">
+                                                      <Slider fx:id="sldVoedingsbehoefte" prefHeight="30.0" prefWidth="133.0" />
+                                                      <Label fx:id="lblVoedingsBehoefte" prefHeight="30.0" prefWidth="96.0" text="Label">
                                                          <font>
                                                             <Font size="14.0" />
                                                          </font>
@@ -270,7 +270,7 @@
                                                             <Font size="14.0" />
                                                          </font>
                                                       </CheckBox>
-                                                      <ComboBox fx:id="cboReactieAnta" prefHeight="30.0" prefWidth="165.0" />
+                                                      <ComboBox fx:id="cboReactieAnta" prefHeight="30.0" prefWidth="230.0" />
                                                    </children>
                                                 </HBox>
                                                 <Label prefHeight="30.0" text="Commensalisme: ">
@@ -285,17 +285,17 @@
                                                             <Font size="14.0" />
                                                          </font>
                                                       </CheckBox>
-                                                      <ComboBox fx:id="cboOntwikkel" prefHeight="30.0" prefWidth="165.0" />
+                                                      <ComboBox fx:id="cboOntwikkel" prefHeight="30.0" prefWidth="230.0" />
                                                    </children>
                                                 </HBox>
                                                 <HBox>
                                                    <children>
-                                                      <CheckBox fx:id="chkLevensduur_concurrentiekracht" mnemonicParsing="false" prefHeight="30.0" prefWidth="250.0" text="Levensduur/Concurrentiekracht: Levensduur/Concurrentiekracht: ">
+                                                      <CheckBox fx:id="chkLevensduur_concurrentiekracht" mnemonicParsing="false" prefHeight="30.0" prefWidth="250.0" text="Levensduur/Concurrentiekracht:">
                                                          <font>
                                                             <Font size="14.0" />
                                                          </font>
                                                       </CheckBox>
-                                                      <ComboBox fx:id="cboLevensduur" prefHeight="30.0" prefWidth="165.0" />
+                                                      <ComboBox fx:id="cboLevensduur" prefHeight="30.0" prefWidth="230.0" />
                                                    </children>
                                                 </HBox>
                                                 <HBox>
@@ -305,11 +305,11 @@
                                                             <Font size="14.0" />
                                                          </font>
                                                       </CheckBox>
-                                                      <CheckBox fx:id="chkSociabiliteit_1" mnemonicParsing="false" prefHeight="30.0" prefWidth="35.0" text="I" />
-                                                      <CheckBox fx:id="chkSociabiliteit_2" mnemonicParsing="false" prefHeight="30.0" prefWidth="35.0" text="II" />
-                                                      <CheckBox fx:id="chkSociabiliteit_3" mnemonicParsing="false" prefHeight="30.0" prefWidth="35.0" text="III" />
-                                                      <CheckBox fx:id="chkSociabiliteit_4" mnemonicParsing="false" prefHeight="30.0" prefWidth="35.0" text="IV" />
-                                                      <CheckBox fx:id="chkSociabiliteit_5" mnemonicParsing="false" prefHeight="30.0" prefWidth="35.0" text="V" />
+                                                      <CheckBox fx:id="chkSociabiliteit_1" mnemonicParsing="false" prefHeight="30.0" prefWidth="40.0" text="I" />
+                                                      <CheckBox fx:id="chkSociabiliteit_2" mnemonicParsing="false" prefHeight="30.0" prefWidth="40.0" text="II" />
+                                                      <CheckBox fx:id="chkSociabiliteit_3" mnemonicParsing="false" prefHeight="30.0" prefWidth="40.0" text="III" />
+                                                      <CheckBox fx:id="chkSociabiliteit_4" mnemonicParsing="false" prefHeight="30.0" prefWidth="40.0" text="IV" />
+                                                      <CheckBox fx:id="chkSociabiliteit_5" mnemonicParsing="false" prefHeight="30.0" prefWidth="40.0" text="V" />
                                                    </children>
                                                 </HBox>
                                                 <HBox>
@@ -644,7 +644,7 @@
                                           </VBox>
                                        </children>
                                     </FlowPane>
-                                    <TitledPane text="Blad en bloei">
+                                    <TitledPane expanded="false" text="Blad en bloei">
                                        <content>
                                           <VBox prefHeight="200.0" prefWidth="100.0" spacing="2.0">
                                              <children>
@@ -1291,7 +1291,7 @@
                      <children>
                         <FlowPane>
                            <children>
-                              <Button fx:id="btnWijzigPlant" mnemonicParsing="false" onMouseClicked="#click_WijzigPlant" prefHeight="64.0" prefWidth="155.0" text="Wijzig Plant">
+                              <Button fx:id="btnWijzigPlant" mnemonicParsing="false" onMouseClicked="#click_WijzigPlant" prefHeight="65.0" prefWidth="203.0" text="Wijzig Plant">
                                  <font>
                                     <Font size="15.0" />
                                  </font>
@@ -1632,7 +1632,7 @@
                                     </Label>
                                     <HBox>
                                        <children>
-                                          <Label prefHeight="30.0" prefWidth="125.0" text="Ontwikkelinkssnelheid: ">
+                                          <Label prefHeight="30.0" prefWidth="150.0" text="Ontwikkelinkssnelheid: ">
                                              <font>
                                                 <Font size="14.0" />
                                              </font>
@@ -1651,11 +1651,11 @@
                                                 <Font size="14.0" />
                                              </font>
                                           </Label>
-                                          <CheckBox fx:id="chkSocPlantI" disable="true" mnemonicParsing="false" prefHeight="30.0" prefWidth="35.0" text="I " />
-                                          <CheckBox fx:id="chkSocPlantII" disable="true" mnemonicParsing="false" prefHeight="30.0" prefWidth="35.0" text="II " />
-                                          <CheckBox fx:id="chkSocPlantIII" disable="true" mnemonicParsing="false" prefHeight="30.0" prefWidth="35.0" text="III " />
-                                          <CheckBox fx:id="chkSocPlantIV" disable="true" mnemonicParsing="false" prefHeight="30.0" prefWidth="35.0" text="IV " />
-                                          <CheckBox fx:id="chkSocPlantV" disable="true" mnemonicParsing="false" prefHeight="30.0" prefWidth="35.0" text="V " />
+                                          <CheckBox fx:id="chkSocPlantI" disable="true" mnemonicParsing="false" prefHeight="30.0" prefWidth="40.0" text="I " />
+                                          <CheckBox fx:id="chkSocPlantII" disable="true" mnemonicParsing="false" prefHeight="30.0" prefWidth="40.0" text="II " />
+                                          <CheckBox fx:id="chkSocPlantIII" disable="true" mnemonicParsing="false" prefHeight="30.0" prefWidth="40.0" text="III " />
+                                          <CheckBox fx:id="chkSocPlantIV" disable="true" mnemonicParsing="false" prefHeight="30.0" prefWidth="40.0" text="IV " />
+                                          <CheckBox fx:id="chkSocPlantV" disable="true" mnemonicParsing="false" prefHeight="30.0" prefWidth="40.0" text="V " />
                                        </children>
                                     </HBox>
                                     <HBox>
@@ -1681,7 +1681,7 @@
                                           </Label>
                                        </children>
                                     </VBox>
-                                    <ListView fx:id="lsvLevensduur" maxWidth="200.0" prefHeight="50.0" prefWidth="166.0" />
+                                    <ListView fx:id="lsvLevensduur" prefHeight="50.0" prefWidth="300.0" VBox.vgrow="ALWAYS" />
                                  </children>
                               </VBox>
                               <VBox spacing="5.0">
@@ -1770,7 +1770,7 @@
                                           </Label>
                                        </children>
                                     </VBox>
-                                    <ListView fx:id="lsvHabitat" maxWidth="200.0" prefHeight="50.0" prefWidth="203.0" />
+                                    <ListView fx:id="lsvHabitat" prefHeight="50.0" prefWidth="50.0" VBox.vgrow="ALWAYS" />
                                  </children>
                               </VBox>
                               <VBox spacing="5.0">
