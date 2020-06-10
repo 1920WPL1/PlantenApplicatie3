@@ -752,7 +752,7 @@ public class Controller {
         lsvOverzicht.getSelectionModel().selectFirst();
 
 
-        if (!pnlUitvoer.isVisible()) {
+        if (!pnlUitvoer.isVisible() && planten.size() != 0) {
             pnlUitvoer.setVisible(true);
         } else if (planten.size() == 0) {
             pnlUitvoer.setVisible(false);

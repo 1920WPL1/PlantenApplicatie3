@@ -1,63 +1,30 @@
 
-/*knoppen rechtsboven voor mnimaliseren, maximaliseren, en afsluiten programma*/
-.SystemTray:hover{
-    -fx-cursor: hand;
-}
-.SystemTray{
-    -fx-font-size: 20px;
-    -fx-text-fill: #8c8c8c;
-    -fx-background-color: none;
-    -fx-font-weight: bold;
-}
-#btnExit:hover{
-    -fx-text-fill: #cb0000;
-    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.7) , 10, 0.0 , 0 , 0 );
-}
-#btnminimize:hover{
-    -fx-text-fill: #0076dc;
-    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.7) , 10, 0.0 , 0 , 0 );
-}
-#btnMaximize:hover{
-    -fx-text-fill: #298e21;
-    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.7) , 10, 0.0 , 0 , 0 );
-}
-#btnminimize{
-    -fx-font-size: 25px;
-}
-
-.Zoekscherm{
-    -fx-skin: "plantenApp.view.CustomSearchControl"
-}
-
-
-#btnZoek{
-    -fx-background-color: #81bd3d;
+.button{
+    -fx-background-color: #93d745;
     -fx-font-family: "Arial Black";
     -fx-font-size: 30px;
-    -fx-background-radius: 10pt;
-    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 5, 0.0 , 0 , 0 );
-
+   /* -fx-background-radius: 10pt;*/
 }
-#btnZoek:hover{
+.button:hover{
     -fx-background-color: #9dc470;
     -fx-font-family: "Arial Black";
-    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 8, 0.0 , 0 , 0 );
+
 }
 
 .combo-box{
-     -fx-background-color: #514e4e;
+     -fx-background-color: #7c7878;
      -fx-font-family: "Arial";
      -fx-text-alignment: center;
      -fx-font-size: 13px;
-     -fx-background-radius: 5pt 5pt;
+   /*  -fx-background-radius: 5pt 5pt;*/
      -fx-text-fill: #efefef;
      -fx-prompt-text-fill: #d0d0d0;
-    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 5, 0.0 , 0 , 0 );
+
  }
 
 .combo-box .list-cell
 {
-    -fx-background:#514e4e;
+    -fx-background:#7c7878;
     -fx-background-color: transparent;
     -fx-text-fill: #efefef;
     -fx-text-alignment: center;
@@ -67,42 +34,42 @@
 
 .combo-box-popup .list-view
 {
-    -fx-background-color: #868181;
+    -fx-background-color: #7c7878;
     -fx-font-family: "Arial";
     -fx-text-alignment: center;
     -fx-font-size: 13px;
-    -fx-background-radius: 5pt 5pt;
-    -fx-text-fill: #efefef;
+   /* -fx-background-radius: 5pt 5pt;*/
+    -fx-text-fill: #4b4b4b;
     -fx-prompt-text-fill: #d0d0d0;
     -fx-background-insets: 0, 1;
-    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 8, 0.0 , 0 , 0 );
+
 }
 
 .combo-box-popup .list-view .list-cell
 {
     -fx-padding: 4 0 4 5;
     /* No alternate highlighting */
-    -fx-background-color: white;
+    -fx-background-color:  #7c7878;
 }
 
 .combo-box-popup .list-view .list-cell:filled:selected, .combo-box-popup .list-view .list-cell:filled:selected:hover
 {
     -fx-background: -fx-accent;
-    -fx-background-color: -fx-selection-bar;
+    -fx-background-color:  #93d745;
     -fx-text-fill: -fx-selection-bar-text;
 }
 
 .combo-box-popup .list-view .list-cell:filled:hover
 {
-    -fx-background-color: white;
+    -fx-background-color: #9dc470;
     -fx-text-fill: -fx-text-inner-color;
 }
 
 
 .combo-box-base:hover
 {
-    -fx-color: -fx-hover-base;
-    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 8, 0.0 , 0 , 0 );
+    -fx-color: #9dc470;
+
 }
 
 .combo-box-base:showing
@@ -111,27 +78,30 @@
 }
 
 .zoekbalk{
-    -fx-background-color: #514e4e;
+    -fx-background-color: #7c7878 ;
     -fx-text-fill: #efefef;
     -fx-font-size: 15pt;
     -fx-prompt-text-fill: #d0d0d0;
     -fx-font-family: Arial;
-    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 5, 0.0 , 0 , 0 );
+    -fx-border-color: #605d5d;
+    -fx-border-width: 2;
+    -fx-border-radius: 3pt;
+
 }
 /*sliders*/
 /* Styling the slider track */
 .slider > .track {
-    -fx-background-color: #514e4e;
-    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 5, 0.0 , 0 , 0 );
+    -fx-background-color: #7c7878;
+
 }
 /* Styling the slider thumb */
 .slider > .thumb {
-    -fx-background-color: green;
+    -fx-background-color: #93d745;
 }
 
 .check-box {
     mark-color: #efefef;
-    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 5, 0.0 , 0 , 0 );
+
 }
 
 .check-box:selected > .box {
@@ -141,7 +111,7 @@
 
 .check-box > .box {
     /* background color of unselected checkbox */
-    -fx-background-color: #514e4e;
+    -fx-background-color: #7c7878;
 }
 
 .check-box:selected > .box > .mark,
@@ -150,20 +120,12 @@
     -fx-background-color: mark-color;
 }
 
-.color-picker{
-    -fx-background-color: #514e4e;
-    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 5, 0.0 , 0 , 0 );
-}
 
-.spinner{
-    -fx-background-color: lightgrey;
-    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 5, 0.0 , 0 , 0 );
-    -fx-text-fill: #efefef;
-}
+
 
 
 .radio-button > .radio{
-    -fx-background-color: #514e4e;
+    -fx-background-color: #7c7878;
 }
 
 .radio-button:selected>.radio{
@@ -175,5 +137,33 @@
 }
 
 .radio-button:selected>.radio>.dot{
-    -fx-background-color: #efefef;
+    -fx-background-color: #9dc470;
 }
+
+.titled-pane > .title {
+    -fx-background-color: #b5db9d;
+   -fx-background-insets: 0, 1, 2;
+    -fx-background-radius: 5 5 0 0, 4 4 0 0, 3 3 0 0;
+    -fx-padding: 7; /* 2 10 3 10 */
+}
+
+.spinner{
+    -fx-background-color: #7c7878;
+
+    -fx-text-fill: #efefef;
+}
+
+.spinner .increment-arrow-button,
+.spinner .decrement-arrow-button
+{
+
+    -fx-body-color: #93d745;
+    -fx-border-color: none;
+}
+
+.spinner .increment-arrow-button:hover,
+.spinner .decrement-arrow-button:hover{
+    -fx-body-color: #9dc470;
+    -fx-border-color: none;
+}
+
