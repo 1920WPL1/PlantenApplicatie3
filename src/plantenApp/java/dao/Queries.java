@@ -182,33 +182,21 @@ public interface Queries {
     String NTTYPE =
             "SELECT planttype_naam FROM planttype";
 
-    String NTFAMILIE =
-            "SELECT familie_naam FROM familie";
-
     String NTFAMILIEBYTYPE =
-            "SELECT familie_naam FROM familie where planttype_id IN (SELECT planttype_id FROM planttype WHERE planttype_naam IN (?))";
-
-    String NTGESLACHT =
-            "SELECT geslacht_naam FROM geslacht";
+            "SELECT familie_naam FROM familie where planttype_id IN " +
+                    "(SELECT planttype_id FROM planttype WHERE planttype_naam = ?)";
 
     String NTGESLACHTBYFAMILIE =
-            "SELECT geslacht_naam FROM geslacht where familie_id IN (SELECT familie_id FROM familie WHERE familie_naam IN (?))";
-
-    String NTSOORT =
-            "SELECT soort_naam FROM soort";
+            "SELECT geslacht_naam FROM geslacht where familie_id IN " +
+                    "(SELECT familie_id FROM familie WHERE familie_naam = ? AND familie_naam IN (" + NTFAMILIEBYTYPE + "))";
 
     String NTSOORTBYGESLACHT =
-            "SELECT soort_naam FROM soort where geslacht_id IN (SELECT geslacht_id FROM geslacht WHERE geslacht_naam IN (?))";
-
-    String NTVARIATIE =
-            "SELECT variatie_naam FROM variatie";
+            "SELECT soort_naam FROM soort where geslacht_id IN " +
+                    "(SELECT geslacht_id FROM geslacht WHERE geslacht_naam = ? AND geslacht_naam IN (" + NTGESLACHTBYFAMILIE + "))";
 
     String NTVARIATIEBYSOORT =
-            "SELECT variatie_naam FROM variatie where soort_id IN (SELECT soort_id FROM soort WHERE soort_naam IN (?))";
-
-
-
-
+            "SELECT variatie_naam FROM variatie where soort_id IN " +
+                    "(SELECT soort_id FROM soort WHERE soort_naam = ? AND soort_naam IN (" + NTSOORTBYGESLACHT + "))";
 
 
     String NTLEVENSDUURCONCURRENTIEKRACHT =
@@ -273,9 +261,12 @@ public interface Queries {
 
     String NTFOTOHABITUS =
             "SELECT afbeelding FROM habitus";
+
+    String NTFOTOBLOEIWIJZE =
+            "SELECT afbeelding FROM bloeiwijze";
     //endregion
 
     String INSERTFOTO =
-            "UPDATE habitus SET afbeelding = ? WHERE waarde = ?";
+            "UPDATE bloeiwijze SET afbeelding = ? WHERE waarde = ?";
 }
 

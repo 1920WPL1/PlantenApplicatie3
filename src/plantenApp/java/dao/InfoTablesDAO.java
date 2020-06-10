@@ -2,7 +2,6 @@ package plantenApp.java.dao;
 
 import javafx.scene.image.Image;
 import plantenApp.java.model.InfoTables;
-import plantenApp.java.model.NTFotos;
 import plantenApp.java.utils.DaoUtils;
 
 import java.io.InputStream;
@@ -14,18 +13,26 @@ import java.util.ArrayList;
  */
 public class InfoTablesDAO implements Queries {
     private Connection dbConnection;
+    private PreparedStatement stmtSelectFamilieByType;
+    private PreparedStatement stmtSelectGeslachtByFamilie;
+    private PreparedStatement stmtSelectSoortByGeslacht;
+    private PreparedStatement stmtSelectVariatieBySoort;
 
     public InfoTablesDAO(Connection dbConnection) throws SQLException {
         this.dbConnection = dbConnection;
+        stmtSelectFamilieByType = dbConnection.prepareStatement(NTFAMILIEBYTYPE);
+        stmtSelectGeslachtByFamilie = dbConnection.prepareStatement(NTGESLACHTBYFAMILIE);
+        stmtSelectSoortByGeslacht = dbConnection.prepareStatement(NTSOORTBYGESLACHT);
+        stmtSelectVariatieBySoort = dbConnection.prepareStatement(NTVARIATIEBYSOORT);
     }
 
     //region GET
 
     /**
-     * @author Siebe
      * @param Query      -> de uit te voeren query
      * @param colomnName -> de naam van de kolom
      * @return -> lijst van strings met alle info van de colomn
+     * @author Siebe
      */
     private ArrayList<String> getInfoTableString(String Query, String colomnName) throws SQLException {
         //Dao
@@ -45,10 +52,10 @@ public class InfoTablesDAO implements Queries {
     }
 
     /**
-     * @author Siebe
      * @param Query      -> de uit te voeren query
      * @param colomnName -> de naam van de kolom
      * @return -> lijst van ints met alle info van de colomn
+     * @author Siebe
      */
     private ArrayList<Integer> getInfoTableInt(String Query, String colomnName) throws SQLException {
         //Dao
@@ -69,10 +76,9 @@ public class InfoTablesDAO implements Queries {
 
 
     /**
-     * @author Siebe
-
-     * @param Query      -> de uit te voeren query* @param colomnName -> de naam van de kolom
+     * @param Query -> de uit te voeren query* @param colomnName -> de naam van de kolom
      * @return -> lijst van blobs met alle info van de colomn
+     * @author Siebe
      */
     private ArrayList<Image> getInfoTableBlob(String Query, String colomnName) throws SQLException {
 
@@ -95,24 +101,21 @@ public class InfoTablesDAO implements Queries {
     }
 
     /**
-     * @author Siebe
      * @return -> InfoTables model met alle info van de naakte tabellen
+     * @author Siebe
      */
     public InfoTables getInfoTables() throws SQLException {
         InfoTables infoTables = new InfoTables(
                 getInfoTableString(NTTYPE, "planttype_naam"),
-                getInfoTableString(NTFAMILIE, "familie_naam"),
-                getInfoTableString(NTGESLACHT, "geslacht_naam"),
-                getInfoTableString(NTSOORT, "soort_naam"),
-                getInfoTableString(NTVARIATIE, "variatie_naam"),
                 getInfoTableString(NTKLEUREN, "kleur"),
                 getInfoTableString(NTBLADGROOTTE, "waarde"),
                 getInfoTableString(NTBLADVORM, "waarde"),
                 getInfoTableString(NTRATIOBLOEIBLAD, "waarde"),
                 getInfoTableString(NTSPRUITFENOLOGIE, "waarde"),
                 getInfoTableString(NTBLOEIWIJZE, "waarde"),
+                getInfoTableBlob(NTFOTOBLOEIWIJZE,"afbeelding"),
                 getInfoTableString(NTHABITUS, "waarde"),
-                getInfoTableBlob(NTFOTOHABITUS,"afbeelding"),
+                getInfoTableBlob(NTFOTOHABITUS, "afbeelding"),
                 getInfoTableString(NTBEZONNING, "waarde"),
                 getInfoTableString(NTGRONDSOORT, "waarde"),
                 getInfoTableString(NTVOCHTBEHOEFTE, "waarde"),
@@ -132,18 +135,13 @@ public class InfoTablesDAO implements Queries {
 
     //endregion
 
-    public ArrayList<String> selectFamiliesByType(ArrayList<String> types) throws SQLException {
+    public ArrayList<String> selectFamiliesByType(String type) throws SQLException {
         //Items
         ArrayList<String> families = new ArrayList<>();
 
-        if (types.size() == 0){
-            return families;
-        }
-        //Dao
-        PreparedStatement stmtSelectFamilyByType = DaoUtils.ReadyStatement(dbConnection,NTFAMILIEBYTYPE,types);
-
         //SqlCommand
-        ResultSet rs = stmtSelectFamilyByType.executeQuery();
+        stmtSelectFamilieByType.setString(1, type);
+        ResultSet rs = stmtSelectFamilieByType.executeQuery();
         while (rs.next()) {
             families.add(rs.getString("familie_naam"));
         }
@@ -151,18 +149,15 @@ public class InfoTablesDAO implements Queries {
         //Output
         return families;
     }
-    public ArrayList<String> selectGeslachtenByFamilie(ArrayList<String> families) throws SQLException {
+
+    public ArrayList<String> selectGeslachtenByFamilie(String familie,String type) throws SQLException {
         //Items
         ArrayList<String> geslachten = new ArrayList<>();
 
-        if (families.size() == 0){
-            return geslachten;
-        }
-        //Dao
-        PreparedStatement stmtSelectGeslachtByFamily = DaoUtils.ReadyStatement(dbConnection,NTGESLACHTBYFAMILIE,families);
-
         //SqlCommand
-        ResultSet rs = stmtSelectGeslachtByFamily.executeQuery();
+        stmtSelectGeslachtByFamilie.setString(1, familie);
+        stmtSelectGeslachtByFamilie.setString(2, type);
+        ResultSet rs = stmtSelectGeslachtByFamilie.executeQuery();
         while (rs.next()) {
             geslachten.add(rs.getString("geslacht_naam"));
         }
@@ -170,17 +165,15 @@ public class InfoTablesDAO implements Queries {
         //Output
         return geslachten;
     }
-    public ArrayList<String> selectSoortenByGeslacht(ArrayList<String> geslachten) throws SQLException {
+
+    public ArrayList<String> selectSoortenByGeslacht(String geslacht,String familie,String type) throws SQLException {
         //Items
         ArrayList<String> soorten = new ArrayList<>();
 
-        if (geslachten.size() == 0){
-            return soorten;
-        }
-        //Dao
-        PreparedStatement stmtSelectSoortByGeslacht = DaoUtils.ReadyStatement(dbConnection,NTSOORTBYGESLACHT,geslachten);
-
         //SqlCommand
+        stmtSelectSoortByGeslacht.setString(1, geslacht);
+        stmtSelectGeslachtByFamilie.setString(2, familie);
+        stmtSelectGeslachtByFamilie.setString(3, type);
         ResultSet rs = stmtSelectSoortByGeslacht.executeQuery();
         while (rs.next()) {
             soorten.add(rs.getString("soort_naam"));
@@ -189,18 +182,17 @@ public class InfoTablesDAO implements Queries {
         //Output
         return soorten;
     }
-    public ArrayList<String> selectVariantenBySoort(ArrayList<String> soorten) throws SQLException {
+
+    public ArrayList<String> selectVariantenBySoort(String variatie,String geslacht,String familie,String type) throws SQLException {
         //Items
         ArrayList<String> varianten = new ArrayList<>();
 
-        if (soorten.size() == 0){
-            return varianten;
-        }
-        //Dao
-        PreparedStatement stmtSelectVariantBySoort = DaoUtils.ReadyStatement(dbConnection,NTVARIATIEBYSOORT,soorten);
-
         //SqlCommand
-        ResultSet rs = stmtSelectVariantBySoort.executeQuery();
+        stmtSelectVariatieBySoort.setString(1, variatie);
+        stmtSelectSoortByGeslacht.setString(2, geslacht);
+        stmtSelectGeslachtByFamilie.setString(3, familie);
+        stmtSelectGeslachtByFamilie.setString(4, type);
+        ResultSet rs = stmtSelectVariatieBySoort.executeQuery();
         while (rs.next()) {
             varianten.add(rs.getString("variatie_naam"));
         }

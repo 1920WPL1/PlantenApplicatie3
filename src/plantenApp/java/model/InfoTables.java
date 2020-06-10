@@ -12,10 +12,6 @@ import java.util.ArrayList;
 public class InfoTables {
     //Plant
     private ArrayList<String> types;
-    private ArrayList<String> families;
-    private ArrayList<String> geslachten;
-    private ArrayList<String> soorten;
-    private ArrayList<String> variaties;
 
     //Fenotype
     private ArrayList<String> kleuren;
@@ -24,6 +20,7 @@ public class InfoTables {
     private ArrayList<String> bloeiBladRatios;
     private ArrayList<String> spruitfenologieen;
     private ArrayList<String> bloeiwijzes;
+    private ArrayList<Image> bloeiwijzeFotos;
     private ArrayList<String> habitusMogelijkheden;
     private ArrayList<Image> habitusFotos;
 
@@ -50,16 +47,13 @@ public class InfoTables {
 
     public InfoTables(
             ArrayList<String> types,
-            ArrayList<String> families,
-            ArrayList<String> geslachten,
-            ArrayList<String> soorten,
-            ArrayList<String> variaties,
             ArrayList<String> kleuren,
             ArrayList<String> bladgroottes,
             ArrayList<String> bladvormen,
             ArrayList<String> bloeiBladRatios,
             ArrayList<String> spruitfenologieen,
             ArrayList<String> bloeiwijzes,
+            ArrayList<Image> bloeiwijzeFotos,
             ArrayList<String> habitusMogelijkheden,
             ArrayList<Image> habitusFotos,
             ArrayList<String> bezonningsMogelijkheden,
@@ -79,16 +73,13 @@ public class InfoTables {
 
 
         this.types = types;
-        this.families = families;
-        this.geslachten = geslachten;
-        this.soorten = soorten;
-        this.variaties = variaties;
         this.kleuren = kleuren;
         this.bladgroottes = bladgroottes;
         this.bladvormen = bladvormen;
         this.bloeiBladRatios = bloeiBladRatios;
         this.spruitfenologieen = spruitfenologieen;
         this.bloeiwijzes = bloeiwijzes;
+        this.bloeiwijzeFotos = bloeiwijzeFotos;
         this.habitusMogelijkheden = habitusMogelijkheden;
         this.habitusFotos = habitusFotos;
         this.bezonningsMogelijkheden = bezonningsMogelijkheden;
@@ -109,10 +100,6 @@ public class InfoTables {
 
     public ArrayList<String> getTypes() {
         return types;
-    }
-
-    public ArrayList<String> getFamilies() {
-        return families;
     }
 
     public ArrayList<String> getKleuren() {
@@ -199,15 +186,7 @@ public class InfoTables {
         return pollenwaardes;
     }
 
-    public ArrayList<String> getGeslachten() {
-        return geslachten;
-    }
-
-    public ArrayList<String> getSoorten() {
-        return soorten;
-    }
-
-    public ArrayList<String> getVariaties() {
-        return variaties;
+    public ArrayList<Image> getBloeiwijzeFotos() {
+        return bloeiwijzeFotos;
     }
 }

@@ -6,6 +6,7 @@ import javafx.scene.image.Image;
 /**
  * @author bradley
  */
+@Deprecated
 public class NTFotos
 {
     String waarde;

@@ -94,11 +94,19 @@ public class GUIdata {
         InfoTables infoTables = infoTablesDAO.getInfoTables();
 
         //Fills the comboboxes
+        /*
         comboBoxDEM.get(EComboBox.TYPE).setPossibleValues(infoTables.getTypes());
-        comboBoxDEM.get(EComboBox.FAMILIE).setPossibleValues(infoTables.getFamilies());
-        comboBoxDEM.get(EComboBox.GESLACHT).setPossibleValues(infoTables.getGeslachten());
-        comboBoxDEM.get(EComboBox.SOORT).setPossibleValues(infoTables.getSoorten());
-        comboBoxDEM.get(EComboBox.VARIANT).setPossibleValues(infoTables.getVariaties());
+        String type = comboBoxDEM.get(EComboBox.TYPE).getPossibleValues().get(0);
+        comboBoxDEM.get(EComboBox.FAMILIE).setPossibleValues(infoTablesDAO.selectFamiliesByType(type));
+        String familie = comboBoxDEM.get(EComboBox.FAMILIE).getPossibleValues().get(0);
+        comboBoxDEM.get(EComboBox.GESLACHT).setPossibleValues(infoTablesDAO.selectGeslachtenByFamilie(familie,type));
+        String geslacht = comboBoxDEM.get(EComboBox.GESLACHT).getPossibleValues().get(0);
+        comboBoxDEM.get(EComboBox.SOORT).setPossibleValues(infoTablesDAO.selectSoortenByGeslacht(geslacht,familie,type));
+        String soort = comboBoxDEM.get(EComboBox.SOORT).getPossibleValues().get(0);
+        comboBoxDEM.get(EComboBox.VARIANT).setPossibleValues(infoTablesDAO.selectVariantenBySoort(soort,geslacht,familie,type));
+
+         */
+
         comboBoxDEM.get(EComboBox.SPRUITFENOLOGIE).setPossibleValues(infoTables.getSpruitfenologieen());
         comboBoxDEM.get(EComboBox.RATIOBLOEIBLAD).setPossibleValues(infoTables.getBloeiBladRatios());
         comboBoxDEM.get(EComboBox.BLADGROOTTE).setPossibleValues(infoTables.getBladgroottes());
@@ -185,7 +193,7 @@ public class GUIdata {
         sliderLabelDEM.get(ESliderLabel.VOCHTBEHOEFTE).setCorrespondingValues(infoTables.getVochtbehoeftes());
         sliderLabelDEM.get(ESliderLabel.VOEDINGSBEHOEFTE).setCorrespondingValues(infoTables.getVoedingsbehoeftes());
 
-        //fotoDEM.get(EFoto.BLOEIWIJZE).setImages();
+        fotoDEM.get(EFoto.BLOEIWIJZE).setImages(infoTables.getBloeiwijzeFotos());
         fotoDEM.get(EFoto.HABITUS).setImages(infoTables.getHabitusFotos());
         //fotoDEM.get(EFoto.LEVENSVORM).setImages();
     }

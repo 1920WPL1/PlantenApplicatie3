@@ -1094,11 +1094,7 @@
                                                             <ToggleGroup fx:id="tglBloeiwijze" />
                                                          </toggleGroup>
                                                       </RadioButton>
-                                                      <ImageView fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
-                                                         <image>
-                                                            <Image url="@img/aar.jpg" />
-                                                         </image>
-                                                      </ImageView>
+                                                      <ImageView fx:id="imgBloeiwijze_1" fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true" />
                                                    </children>
                                                    <FlowPane.margin>
                                                       <Insets bottom="1.0" left="1.0" right="1.0" top="1.0" />
@@ -1108,11 +1104,7 @@
                                                    <children>
                                                       <RadioButton fx:id="rdbBloeiwijze_2" mnemonicParsing="false" prefHeight="30.0" prefWidth="100.0" text="Brede pluim" toggleGroup="$tglBloeiwijze">
                                                       </RadioButton>
-                                                      <ImageView fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
-                                                         <image>
-                                                            <Image url="@img/bredepluim.jpg" />
-                                                         </image>
-                                                      </ImageView>
+                                                      <ImageView fx:id="imgBloeiwijze_2" fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true" />
                                                    </children>
                                                    <FlowPane.margin>
                                                       <Insets bottom="1.0" left="1.0" right="1.0" top="1.0" />
@@ -1122,11 +1114,7 @@
                                                    <children>
                                                       <RadioButton fx:id="rdbBloeiwijze_3" mnemonicParsing="false" prefHeight="30.0" prefWidth="100.0" text="Etage" toggleGroup="$tglBloeiwijze">
                                                       </RadioButton>
-                                                      <ImageView fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
-                                                         <image>
-                                                            <Image url="@img/etage.jpg" />
-                                                         </image>
-                                                      </ImageView>
+                                                      <ImageView fx:id="imgBloeiwijze_3" fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true" />
                                                    </children>
                                                    <FlowPane.margin>
                                                       <Insets bottom="1.0" left="1.0" right="1.0" top="1.0" />
@@ -1136,11 +1124,7 @@
                                                    <children>
                                                       <RadioButton fx:id="rdbBloeiwijze_4" mnemonicParsing="false" prefHeight="30.0" prefWidth="100.0" text="Bol of knop" toggleGroup="$tglBloeiwijze">
                                                       </RadioButton>
-                                                      <ImageView fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
-                                                         <image>
-                                                            <Image url="@img/knop.jpg" />
-                                                         </image>
-                                                      </ImageView>
+                                                      <ImageView fx:id="imgBloeiwijze_4" fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true" />
                                                    </children>
                                                    <FlowPane.margin>
                                                       <Insets bottom="1.0" left="1.0" right="1.0" top="1.0" />
@@ -1150,11 +1134,7 @@
                                                    <children>
                                                       <RadioButton fx:id="rdbBloeiwijze_5" mnemonicParsing="false" prefHeight="30.0" prefWidth="100.0" text="Margrietachtig" toggleGroup="$tglBloeiwijze">
                                                       </RadioButton>
-                                                      <ImageView fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
-                                                         <image>
-                                                            <Image url="@img/margrietachtig.jpg" />
-                                                         </image>
-                                                      </ImageView>
+                                                      <ImageView fx:id="imgBloeiwijze_5" fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true" />
                                                    </children>
                                                    <FlowPane.margin>
                                                       <Insets bottom="1.0" left="1.0" right="1.0" top="1.0" />
@@ -1164,11 +1144,7 @@
                                                    <children>
                                                       <RadioButton fx:id="rdbBloeiwijze_6" mnemonicParsing="false" prefHeight="30.0" prefWidth="100.0" text="Schotel" toggleGroup="$tglBloeiwijze">
                                                       </RadioButton>
-                                                      <ImageView fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
-                                                         <image>
-                                                            <Image url="@img/platscherm-schotel.jpg" />
-                                                         </image>
-                                                      </ImageView>
+                                                      <ImageView fx:id="imgBloeiwijze_6" fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true" />
                                                    </children>
                                                    <FlowPane.margin>
                                                       <Insets bottom="1.0" left="1.0" right="1.0" top="1.0" />
@@ -1178,11 +1154,7 @@
                                                    <children>
                                                       <RadioButton fx:id="rdbBloeiwijze_7" mnemonicParsing="false" prefHeight="30.0" prefWidth="100.0" text="Scherm" toggleGroup="$tglBloeiwijze">
                                                       </RadioButton>
-                                                      <ImageView fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
-                                                         <image>
-                                                            <Image url="@img/scherm.jpg" />
-                                                         </image>
-                                                      </ImageView>
+                                                      <ImageView fx:id="imgBloeiwijze_7" fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true" />
                                                    </children>
                                                    <FlowPane.margin>
                                                       <Insets bottom="1.0" left="1.0" right="1.0" top="1.0" />
@@ -1192,11 +1164,7 @@
                                                    <children>
                                                       <RadioButton fx:id="rdbBloeiwijze_8" mnemonicParsing="false" prefHeight="30.0" prefWidth="100.0" text="Smalle pluim" toggleGroup="$tglBloeiwijze">
                                                       </RadioButton>
-                                                      <ImageView fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
-                                                         <image>
-                                                            <Image url="@img/smallepluim.jpg" />
-                                                         </image>
-                                                      </ImageView>
+                                                      <ImageView fx:id="imgBloeiwijze_8" fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true" />
                                                    </children>
                                                    <FlowPane.margin>
                                                       <Insets bottom="1.0" left="1.0" right="1.0" top="1.0" />
