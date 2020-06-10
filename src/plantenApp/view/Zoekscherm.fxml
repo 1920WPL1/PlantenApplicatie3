@@ -28,7 +28,7 @@
    <content>
       <BorderPane maxWidth="1.7976931348623157E308">
          <top>
-                 <TitledPane stylesheets="@Zoekscherm.css" text="Search" BorderPane.alignment="CENTER">
+                 <TitledPane expanded="false" stylesheets="@Zoekscherm.css" text="Search" BorderPane.alignment="CENTER">
                <content>
                   <VBox styleClass="flow-pane">
                      <children>
@@ -226,7 +226,7 @@
                                           <Font name="System Bold" size="14.0" />
                                        </font>
                                     </CheckBox>
-                                    <ComboBox fx:id="cboHabitat" prefWidth="250.0" />
+                                    <ComboBox fx:id="cboHabitat" prefHeight="22.0" prefWidth="270.0" />
                                  </children>
                                  <FlowPane.margin>
                                     <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
@@ -235,7 +235,7 @@
                               <Button fx:id="btnSearch" mnemonicParsing="false" onMouseClicked="#Click_Search" prefHeight="50.0" prefWidth="253.0" text="Search" />
                            </children>
                         </FlowPane>
-                        <TitledPane fx:id="pnlAdvSearch" text="Advanced">
+                        <TitledPane fx:id="pnlAdvSearch" expanded="false" text="Advanced">
                            <content>
                               <VBox styleClass="titleBackground">
                                  <children>
@@ -250,7 +250,7 @@
                                                 </Label>
                                                 <HBox>
                                                    <children>
-                                                      <CheckBox fx:id="chkVoedingsbehoefte" mnemonicParsing="false" prefHeight="30.0" prefWidth="200.0" text="Voedingsbehoefte: ">
+                                                      <CheckBox fx:id="chkVoedingsbehoefte" mnemonicParsing="false" prefHeight="30.0" prefWidth="250.0" text="Voedingsbehoefte: ">
                                                          <font>
                                                             <Font size="14.0" />
                                                          </font>
@@ -265,12 +265,12 @@
                                                 </HBox>
                                                 <HBox>
                                                    <children>
-                                                      <CheckBox fx:id="chkReactieAntagonistischeOmg" mnemonicParsing="false" prefHeight="30.0" prefWidth="200.0" text="Reactie antagonistische omgeving: ">
+                                                      <CheckBox fx:id="chkReactieAntagonistischeOmg" mnemonicParsing="false" prefHeight="30.0" prefWidth="250.0" text="Reactie antagonistische omgeving: ">
                                                          <font>
                                                             <Font size="14.0" />
                                                          </font>
                                                       </CheckBox>
-                                                      <ComboBox fx:id="cboReactieAnta" prefHeight="30.0" prefWidth="150.0" />
+                                                      <ComboBox fx:id="cboReactieAnta" prefHeight="30.0" prefWidth="165.0" />
                                                    </children>
                                                 </HBox>
                                                 <Label prefHeight="30.0" text="Commensalisme: ">
@@ -280,41 +280,41 @@
                                                 </Label>
                                                 <HBox>
                                                    <children>
-                                                      <CheckBox fx:id="chkOntwikkelingssnelheid" mnemonicParsing="false" prefHeight="30.0" prefWidth="200.0" text="Ontwikkelingssnelheid: ">
+                                                      <CheckBox fx:id="chkOntwikkelingssnelheid" mnemonicParsing="false" prefHeight="30.0" prefWidth="250.0" text="Ontwikkelingssnelheid: ">
                                                          <font>
                                                             <Font size="14.0" />
                                                          </font>
                                                       </CheckBox>
-                                                      <ComboBox fx:id="cboOntwikkel" prefHeight="30.0" prefWidth="150.0" />
+                                                      <ComboBox fx:id="cboOntwikkel" prefHeight="30.0" prefWidth="165.0" />
                                                    </children>
                                                 </HBox>
                                                 <HBox>
                                                    <children>
-                                                      <CheckBox fx:id="chkLevensduur_concurrentiekracht" mnemonicParsing="false" prefHeight="30.0" prefWidth="200.0" text="Levensduur/Concurrentiekracht: Levensduur/Concurrentiekracht: ">
+                                                      <CheckBox fx:id="chkLevensduur_concurrentiekracht" mnemonicParsing="false" prefHeight="30.0" prefWidth="250.0" text="Levensduur/Concurrentiekracht: Levensduur/Concurrentiekracht: ">
                                                          <font>
                                                             <Font size="14.0" />
                                                          </font>
                                                       </CheckBox>
-                                                      <ComboBox fx:id="cboLevensduur" prefHeight="30.0" prefWidth="150.0" />
+                                                      <ComboBox fx:id="cboLevensduur" prefHeight="30.0" prefWidth="165.0" />
                                                    </children>
                                                 </HBox>
                                                 <HBox>
                                                    <children>
-                                                      <CheckBox fx:id="chkSociabiliteit" mnemonicParsing="false" prefHeight="30.0" prefWidth="200.0" text="Sociabiliteit: ">
+                                                      <CheckBox fx:id="chkSociabiliteit" mnemonicParsing="false" prefHeight="30.0" prefWidth="250.0" text="Sociabiliteit: ">
                                                          <font>
                                                             <Font size="14.0" />
                                                          </font>
                                                       </CheckBox>
-                                                      <CheckBox fx:id="chkSociabiliteit_1" mnemonicParsing="false" prefHeight="30.0" prefWidth="30.0" text="I" />
-                                                      <CheckBox fx:id="chkSociabiliteit_2" mnemonicParsing="false" prefHeight="30.0" prefWidth="30.0" text="II" />
-                                                      <CheckBox fx:id="chkSociabiliteit_3" mnemonicParsing="false" prefHeight="30.0" prefWidth="30.0" text="III" />
-                                                      <CheckBox fx:id="chkSociabiliteit_4" mnemonicParsing="false" prefHeight="30.0" prefWidth="30.0" text="IV" />
-                                                      <CheckBox fx:id="chkSociabiliteit_5" mnemonicParsing="false" prefHeight="30.0" prefWidth="30.0" text="V" />
+                                                      <CheckBox fx:id="chkSociabiliteit_1" mnemonicParsing="false" prefHeight="30.0" prefWidth="35.0" text="I" />
+                                                      <CheckBox fx:id="chkSociabiliteit_2" mnemonicParsing="false" prefHeight="30.0" prefWidth="35.0" text="II" />
+                                                      <CheckBox fx:id="chkSociabiliteit_3" mnemonicParsing="false" prefHeight="30.0" prefWidth="35.0" text="III" />
+                                                      <CheckBox fx:id="chkSociabiliteit_4" mnemonicParsing="false" prefHeight="30.0" prefWidth="35.0" text="IV" />
+                                                      <CheckBox fx:id="chkSociabiliteit_5" mnemonicParsing="false" prefHeight="30.0" prefWidth="35.0" text="V" />
                                                    </children>
                                                 </HBox>
                                                 <HBox>
                                                    <children>
-                                                      <CheckBox fx:id="chkStrategie" mnemonicParsing="false" prefHeight="30.0" prefWidth="200.0" text="Strategie: ">
+                                                      <CheckBox fx:id="chkStrategie" mnemonicParsing="false" prefHeight="30.0" prefWidth="250.0" text="Strategie: ">
                                                          <font>
                                                             <Font size="14.0" />
                                                          </font>
@@ -337,19 +337,19 @@
                                                             <HBox>
                                                                <children>
                                                                   <Label prefHeight="30.0" prefWidth="50.0" />
-                                                                  <RadioButton fx:id="rdbStrategie_2" mnemonicParsing="false" prefHeight="30.0" prefWidth="50.0" toggleGroup="$tglStrategie" />
-                                                                  <RadioButton fx:id="rdbStrategie_3" mnemonicParsing="false" prefHeight="30.0" prefWidth="50.0" toggleGroup="$tglStrategie" />
                                                                   <RadioButton fx:id="rdbStrategie_4" mnemonicParsing="false" prefHeight="30.0" prefWidth="50.0" toggleGroup="$tglStrategie" />
+                                                                  <RadioButton fx:id="rdbStrategie_7" mnemonicParsing="false" prefHeight="30.0" prefWidth="50.0" toggleGroup="$tglStrategie" />
+                                                                  <RadioButton fx:id="rdbStrategie_5" mnemonicParsing="false" prefHeight="30.0" prefWidth="50.0" toggleGroup="$tglStrategie" />
                                                                   <Label prefHeight="30.0" prefWidth="50.0" />
                                                                </children>
                                                             </HBox>
                                                             <HBox>
                                                                <children>
-                                                                  <RadioButton fx:id="rdbStrategie_5" mnemonicParsing="false" prefHeight="30.0" prefWidth="50.0" text="R" toggleGroup="$tglStrategie" />
+                                                                  <RadioButton fx:id="rdbStrategie_3" mnemonicParsing="false" prefHeight="30.0" prefWidth="50.0" text="R" toggleGroup="$tglStrategie" />
                                                                   <Label prefHeight="30.0" prefWidth="50.0" />
                                                                   <RadioButton fx:id="rdbStrategie_6" mnemonicParsing="false" prefHeight="30.0" prefWidth="50.0" toggleGroup="$tglStrategie" />
                                                                   <Label prefHeight="30.0" prefWidth="50.0" />
-                                                                  <RadioButton fx:id="rdbStrategie_7" mnemonicParsing="false" prefHeight="30.0" prefWidth="50.0" text="S" toggleGroup="$tglStrategie" />
+                                                                  <RadioButton fx:id="rdbStrategie_2" mnemonicParsing="false" prefHeight="30.0" prefWidth="50.0" text="S" toggleGroup="$tglStrategie" />
                                                                </children>
                                                             </HBox>
                                                          </children>
@@ -370,12 +370,12 @@
                                                 </Label>
                                                 <HBox>
                                                    <children>
-                                                      <CheckBox fx:id="chkNectarwaarde" mnemonicParsing="false" prefHeight="30.0" prefWidth="200.0" text="Nectarwaarde: ">
+                                                      <CheckBox fx:id="chkNectarwaarde" mnemonicParsing="false" prefHeight="30.0" prefWidth="150.0" text="Nectarwaarde: ">
                                                          <font>
                                                             <Font size="14.0" />
                                                          </font>
                                                       </CheckBox>
-                                                      <Slider fx:id="sldNectarwaarde" prefHeight="30.0" prefWidth="100.0" />
+                                                      <Slider fx:id="sldNectarwaarde" prefHeight="30.0" prefWidth="140.0" />
                                                       <Label fx:id="lblNectarwaarde" prefHeight="30.0" prefWidth="50.0" text="Label">
                                                          <font>
                                                             <Font size="14.0" />
@@ -385,12 +385,12 @@
                                                 </HBox>
                                                 <HBox>
                                                    <children>
-                                                      <CheckBox fx:id="chkPollenwaarde" mnemonicParsing="false" prefHeight="30.0" prefWidth="200.0" text="Pollenwaarde: ">
+                                                      <CheckBox fx:id="chkPollenwaarde" mnemonicParsing="false" prefHeight="30.0" prefWidth="150.0" text="Pollenwaarde: ">
                                                          <font>
                                                             <Font size="14.0" />
                                                          </font>
                                                       </CheckBox>
-                                                      <Slider fx:id="sldPollenwaarde" prefHeight="30.0" prefWidth="100.0" />
+                                                      <Slider fx:id="sldPollenwaarde" prefHeight="30.0" prefWidth="140.0" />
                                                       <Label fx:id="lblPollenwaarde" prefHeight="30.0" prefWidth="50.0" text="Label">
                                                          <font>
                                                             <Font size="14.0" />
@@ -400,12 +400,12 @@
                                                 </HBox>
                                                 <HBox>
                                                    <children>
-                                                      <CheckBox fx:id="chkBijvriendelijk" mnemonicParsing="false" prefHeight="30.0" prefWidth="200.0" text="Bijvriendelijk: ">
+                                                      <CheckBox fx:id="chkBijvriendelijk" mnemonicParsing="false" prefHeight="30.0" prefWidth="150.0" text="Bijvriendelijk: ">
                                                          <font>
                                                             <Font size="14.0" />
                                                          </font>
                                                       </CheckBox>
-                                                      <RadioButton fx:id="rdbBijvriendelijk_Onbekend" mnemonicParsing="false" prefHeight="30.0" prefWidth="50.0">
+                                                      <RadioButton fx:id="rdbBijvriendelijk_Onbekend" mnemonicParsing="false" prefHeight="30.0" prefWidth="95.0" text="onbekend">
                                                          <font>
                                                             <Font size="14.0" />
                                                          </font>
@@ -427,12 +427,12 @@
                                                 </HBox>
                                                 <HBox>
                                                    <children>
-                                                      <CheckBox fx:id="chkVlindervriendelijk" mnemonicParsing="false" prefHeight="30.0" prefWidth="200.0" text="Vlindervriendelijk: ">
+                                                      <CheckBox fx:id="chkVlindervriendelijk" mnemonicParsing="false" prefHeight="30.0" prefWidth="150.0" text="Vlindervriendelijk: ">
                                                          <font>
                                                             <Font size="14.0" />
                                                          </font>
                                                       </CheckBox>
-                                                      <RadioButton fx:id="rdbVlindervriendelijk_Onbekend" mnemonicParsing="false" prefHeight="30.0" prefWidth="50.0">
+                                                      <RadioButton fx:id="rdbVlindervriendelijk_Onbekend" mnemonicParsing="false" prefHeight="30.0" prefWidth="95.0" text="onbekend">
                                                          <font>
                                                             <Font size="14.0" />
                                                          </font>
@@ -454,12 +454,12 @@
                                                 </HBox>
                                                 <HBox>
                                                    <children>
-                                                      <CheckBox fx:id="chkEetbaar" mnemonicParsing="false" prefHeight="30.0" prefWidth="200.0" text="Eetbaar: ">
+                                                      <CheckBox fx:id="chkEetbaar" mnemonicParsing="false" prefHeight="30.0" prefWidth="150.0" text="Eetbaar: ">
                                                          <font>
                                                             <Font size="14.0" />
                                                          </font>
                                                       </CheckBox>
-                                                      <RadioButton fx:id="rdbEetbaar_Onbekend" mnemonicParsing="false" prefHeight="30.0" prefWidth="50.0">
+                                                      <RadioButton fx:id="rdbEetbaar_Onbekend" mnemonicParsing="false" prefHeight="30.0" prefWidth="95.0" text="onbekend">
                                                          <font>
                                                             <Font size="14.0" />
                                                          </font>
@@ -481,12 +481,12 @@
                                                 </HBox>
                                                 <HBox>
                                                    <children>
-                                                      <CheckBox fx:id="chkKruidgebruik" mnemonicParsing="false" prefHeight="30.0" prefWidth="200.0" text="Kruidgebruik: ">
+                                                      <CheckBox fx:id="chkKruidgebruik" mnemonicParsing="false" prefHeight="30.0" prefWidth="150.0" text="Kruidgebruik: ">
                                                          <font>
                                                             <Font size="14.0" />
                                                          </font>
                                                       </CheckBox>
-                                                      <RadioButton fx:id="rdbKruidgebruik_Onbekend" mnemonicParsing="false" prefHeight="30.0" prefWidth="50.0">
+                                                      <RadioButton fx:id="rdbKruidgebruik_Onbekend" mnemonicParsing="false" prefHeight="30.0" prefWidth="95.0" text="onbekend">
                                                          <font>
                                                             <Font size="14.0" />
                                                          </font>
@@ -508,12 +508,12 @@
                                                 </HBox>
                                                 <HBox>
                                                    <children>
-                                                      <CheckBox fx:id="chkGeurend" mnemonicParsing="false" prefHeight="30.0" prefWidth="200.0" text="Geurend: ">
+                                                      <CheckBox fx:id="chkGeurend" mnemonicParsing="false" prefHeight="30.0" prefWidth="150.0" text="Geurend: ">
                                                          <font>
                                                             <Font size="14.0" />
                                                          </font>
                                                       </CheckBox>
-                                                      <RadioButton fx:id="rdbGeurend_Onbekend" mnemonicParsing="false" prefHeight="30.0" prefWidth="50.0">
+                                                      <RadioButton fx:id="rdbGeurend_Onbekend" mnemonicParsing="false" prefHeight="30.0" prefWidth="95.0" text="onbekend">
                                                          <font>
                                                             <Font size="14.0" />
                                                          </font>
@@ -535,12 +535,12 @@
                                                 </HBox>
                                                 <HBox>
                                                    <children>
-                                                      <CheckBox fx:id="chkVorstgevoelig" mnemonicParsing="false" prefHeight="30.0" prefWidth="200.0" text="Vorstgevoelig: ">
+                                                      <CheckBox fx:id="chkVorstgevoelig" mnemonicParsing="false" prefHeight="30.0" prefWidth="150.0" text="Vorstgevoelig: ">
                                                          <font>
                                                             <Font size="14.0" />
                                                          </font>
                                                       </CheckBox>
-                                                      <RadioButton fx:id="rdbVorstgevoelig_Onbekend" mnemonicParsing="false" prefHeight="30.0" prefWidth="50.0">
+                                                      <RadioButton fx:id="rdbVorstgevoelig_Onbekend" mnemonicParsing="false" prefHeight="30.0" prefWidth="95.0" text="onbekend">
                                                          <font>
                                                             <Font size="14.0" />
                                                          </font>
@@ -574,7 +574,7 @@
                                                 </Label>
                                                 <HBox>
                                                    <children>
-                                                      <CheckBox fx:id="chkBladvorm" mnemonicParsing="false" prefHeight="30.0" prefWidth="200.0" text="Bladvorm:">
+                                                      <CheckBox fx:id="chkBladvorm" mnemonicParsing="false" prefHeight="30.0" prefWidth="150.0" text="Bladvorm:">
                                                          <font>
                                                             <Font size="14.0" />
                                                          </font>
@@ -584,7 +584,7 @@
                                                 </HBox>
                                                 <HBox>
                                                    <children>
-                                                      <CheckBox fx:id="chkRatio_bloei_blad" mnemonicParsing="false" prefHeight="30.0" prefWidth="200.0" text="Ratio bloei/blad: ">
+                                                      <CheckBox fx:id="chkRatio_bloei_blad" mnemonicParsing="false" prefHeight="30.0" prefWidth="150.0" text="Ratio bloei/blad: ">
                                                          <font>
                                                             <Font size="14.0" />
                                                          </font>
@@ -594,7 +594,7 @@
                                                 </HBox>
                                                 <HBox>
                                                    <children>
-                                                      <CheckBox fx:id="chkSpruitfenologie" mnemonicParsing="false" prefHeight="30.0" prefWidth="200.0" text="Spruitfenologie: ">
+                                                      <CheckBox fx:id="chkSpruitfenologie" mnemonicParsing="false" prefHeight="30.0" prefWidth="150.0" text="Spruitfenologie: ">
                                                          <font>
                                                             <Font size="14.0" />
                                                          </font>
@@ -609,7 +609,7 @@
                                                 </Label>
                                                 <HBox>
                                                    <children>
-                                                      <CheckBox fx:id="chkBehandeling" mnemonicParsing="false" prefHeight="30.0" prefWidth="200.0" text="Behandeling">
+                                                      <CheckBox fx:id="chkBehandeling" mnemonicParsing="false" prefHeight="30.0" prefWidth="150.0" text="Behandeling">
                                                          <font>
                                                             <Font size="14.0" />
                                                          </font>
@@ -619,7 +619,7 @@
                                                 </HBox>
                                                 <HBox>
                                                    <children>
-                                                      <CheckBox fx:id="chkMaand" mnemonicParsing="false" prefHeight="30.0" prefWidth="200.0" text="Maand">
+                                                      <CheckBox fx:id="chkMaand" mnemonicParsing="false" prefHeight="30.0" prefWidth="150.0" text="Maand">
                                                          <font>
                                                             <Font size="14.0" />
                                                          </font>
@@ -629,7 +629,7 @@
                                                 </HBox>
                                                 <HBox>
                                                    <children>
-                                                      <CheckBox fx:id="chkPerXJaar" mnemonicParsing="false" prefHeight="30.0" prefWidth="200.0" text="per x jaar">
+                                                      <CheckBox fx:id="chkPerXJaar" mnemonicParsing="false" prefHeight="30.0" prefWidth="150.0" text="per x jaar">
                                                          <font>
                                                             <Font size="14.0" />
                                                          </font>
@@ -1203,7 +1203,7 @@
                                        <content>
                                           <FlowPane rowValignment="TOP">
                                              <children>
-                                                <ImageView fitHeight="226.0" fitWidth="469.0" pickOnBounds="true" preserveRatio="true">
+                                                <ImageView fitHeight="300.0" fitWidth="550.0" pickOnBounds="true" preserveRatio="true">
                                                    <image>
                                                       <Image url="@img/LevensvormenvolgensRaunkiaer.gif" />
                                                    </image>
@@ -1430,76 +1430,74 @@
                                     </HBox>
                                     <HBox spacing="2.0">
                                        <children>
-                                          <Label prefHeight="30.0" prefWidth="150.0" text="Values" textFill="#808080">
+                                          <ListView fx:id="lsvBeheer" prefHeight="30.0" prefWidth="150.0" >
+
+                                          </ListView>
+                                          <!--<Label prefHeight="30.0" prefWidth="70.0" text="Values" textFill="#808080" fx:id="lblFrequentie">
                                              <font>
                                                 <Font size="14.0" />
                                              </font>
                                           </Label>
-                                          <Label prefHeight="30.0" prefWidth="70.0" text="Values" textFill="#808080">
-                                             <font>
-                                                <Font size="14.0" />
-                                             </font>
-                                          </Label>
-                                          <CheckBox alignment="CENTER" contentDisplay="GRAPHIC_ONLY" mnemonicParsing="false" prefHeight="30.0" prefWidth="30.0">
+                                          <CheckBox alignment="CENTER" contentDisplay="GRAPHIC_ONLY" mnemonicParsing="false" prefHeight="30.0" prefWidth="30.0" fx:id="chkBeheerJan">
                                              <font>
                                                 <Font size="14.0" />
                                              </font>
                                           </CheckBox>
-                                          <CheckBox alignment="CENTER" contentDisplay="GRAPHIC_ONLY" mnemonicParsing="false" prefHeight="30.0" prefWidth="30.0">
+                                          <CheckBox alignment="CENTER" contentDisplay="GRAPHIC_ONLY" mnemonicParsing="false" prefHeight="30.0" prefWidth="30.0" fx:id="chkBeheerFeb">
                                              <font>
                                                 <Font size="14.0" />
                                              </font>
                                           </CheckBox>
-                                          <CheckBox alignment="CENTER" contentDisplay="GRAPHIC_ONLY" mnemonicParsing="false" prefHeight="30.0" prefWidth="30.0">
+                                          <CheckBox alignment="CENTER" contentDisplay="GRAPHIC_ONLY" mnemonicParsing="false" prefHeight="30.0" prefWidth="30.0" fx:id="chkBeheerMaa">
                                              <font>
                                                 <Font size="14.0" />
                                              </font>
                                           </CheckBox>
-                                          <CheckBox alignment="CENTER" contentDisplay="GRAPHIC_ONLY" mnemonicParsing="false" prefHeight="30.0" prefWidth="30.0">
+                                          <CheckBox alignment="CENTER" contentDisplay="GRAPHIC_ONLY" mnemonicParsing="false" prefHeight="30.0" prefWidth="30.0" fx:id="chkBeheerApr">
                                              <font>
                                                 <Font size="14.0" />
                                              </font>
                                           </CheckBox>
-                                          <CheckBox alignment="CENTER" contentDisplay="GRAPHIC_ONLY" mnemonicParsing="false" prefHeight="30.0" prefWidth="30.0">
+                                          <CheckBox alignment="CENTER" contentDisplay="GRAPHIC_ONLY" mnemonicParsing="false" prefHeight="30.0" prefWidth="30.0" fx:id="chkBeheerMei">
                                              <font>
                                                 <Font size="14.0" />
                                              </font>
                                           </CheckBox>
-                                          <CheckBox alignment="CENTER" contentDisplay="GRAPHIC_ONLY" mnemonicParsing="false" prefHeight="30.0" prefWidth="30.0">
+                                          <CheckBox alignment="CENTER" contentDisplay="GRAPHIC_ONLY" mnemonicParsing="false" prefHeight="30.0" prefWidth="30.0" fx:id="chkBeheerJun">
                                              <font>
                                                 <Font size="14.0" />
                                              </font>
                                           </CheckBox>
-                                          <CheckBox alignment="CENTER" contentDisplay="GRAPHIC_ONLY" mnemonicParsing="false" prefHeight="30.0" prefWidth="30.0">
+                                          <CheckBox alignment="CENTER" contentDisplay="GRAPHIC_ONLY" mnemonicParsing="false" prefHeight="30.0" prefWidth="30.0" fx:id="chkBeheerJul">
                                              <font>
                                                 <Font size="14.0" />
                                              </font>
                                           </CheckBox>
-                                          <CheckBox alignment="CENTER" contentDisplay="GRAPHIC_ONLY" mnemonicParsing="false" prefHeight="30.0" prefWidth="30.0">
+                                          <CheckBox alignment="CENTER" contentDisplay="GRAPHIC_ONLY" mnemonicParsing="false" prefHeight="30.0" prefWidth="30.0" fx:id="chkBeheerAug">
                                              <font>
                                                 <Font size="14.0" />
                                              </font>
                                           </CheckBox>
-                                          <CheckBox alignment="CENTER" contentDisplay="GRAPHIC_ONLY" mnemonicParsing="false" prefHeight="30.0" prefWidth="30.0">
+                                          <CheckBox alignment="CENTER" contentDisplay="GRAPHIC_ONLY" mnemonicParsing="false" prefHeight="30.0" prefWidth="30.0" fx:id="chkBeheerSep">
                                              <font>
                                                 <Font size="14.0" />
                                              </font>
                                           </CheckBox>
-                                          <CheckBox alignment="CENTER" contentDisplay="GRAPHIC_ONLY" mnemonicParsing="false" prefHeight="30.0" prefWidth="30.0">
+                                          <CheckBox alignment="CENTER" contentDisplay="GRAPHIC_ONLY" mnemonicParsing="false" prefHeight="30.0" prefWidth="30.0" fx:id="chkBeheerOkt">
                                              <font>
                                                 <Font size="14.0" />
                                              </font>
                                           </CheckBox>
-                                          <CheckBox alignment="CENTER" contentDisplay="GRAPHIC_ONLY" mnemonicParsing="false" prefHeight="30.0" prefWidth="30.0">
+                                          <CheckBox alignment="CENTER" contentDisplay="GRAPHIC_ONLY" mnemonicParsing="false" prefHeight="30.0" prefWidth="30.0" fx:id="chkBeheerNov">
                                              <font>
                                                 <Font size="14.0" />
                                              </font>
                                           </CheckBox>
-                                          <CheckBox alignment="CENTER" contentDisplay="GRAPHIC_ONLY" mnemonicParsing="false" prefHeight="30.0" prefWidth="30.0">
+                                          <CheckBox alignment="CENTER" contentDisplay="GRAPHIC_ONLY" mnemonicParsing="false" prefHeight="30.0" prefWidth="30.0" fx:id="chkBeheerDec">
                                              <font>
                                                 <Font size="14.0" />
                                              </font>
-                                          </CheckBox>
+                                          </CheckBox>-->
                                        </children>
                                     </HBox>
                                  </children>

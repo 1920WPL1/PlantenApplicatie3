@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="ArtifactsWorkspaceSettings">
+    <artifacts-to-build>
+      <artifact name="PlantenApplicatie" />
+    </artifacts-to-build>
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="e3f371c2-5a62-4881-8767-e007751523f2" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/libraries/mssql_jdbc_7_4_1_jre11.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/mssql_jdbc_7_4_1_jre11.xml" afterDir="false" />
