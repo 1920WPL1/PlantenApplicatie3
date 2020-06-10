@@ -101,7 +101,6 @@
 
 .check-box {
     mark-color: #efefef;
-
 }
 
 .check-box:selected > .box {
@@ -112,6 +111,8 @@
 .check-box > .box {
     /* background color of unselected checkbox */
     -fx-background-color: #7c7878;
+    -fx-pref-width: 20; /*breedte van checkboxes*/
+    -fx-pref-height: 20; /*hoogte van checkboxes*/
 }
 
 .check-box:selected > .box > .mark,
@@ -165,5 +166,8 @@
 .spinner .decrement-arrow-button:hover{
     -fx-body-color: #9dc470;
     -fx-border-color: none;
+}
+
+.list-view{
 }
 
