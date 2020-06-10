@@ -137,12 +137,12 @@ public class FenotypeDAO implements Queries {
         stmtSelectIdsByFeno.setInt(plantIds.size() + 4, (levensvorm.isDoSearch()) ? 0 : 1);
 
         //habitus
-        RadiogroupData habitus = guiData.radiogroupDEM.get(ERadiogroup.LEVENSVORM);
+        RadiogroupData habitus = guiData.radiogroupDEM.get(ERadiogroup.HABITUS);
         stmtSelectIdsByFeno.setString(plantIds.size() + 5, habitus.getActualValue());
         stmtSelectIdsByFeno.setInt(plantIds.size() + 6, (habitus.isDoSearch()) ? 0 : 1);
 
         //bloeiwijze
-        RadiogroupData bloeiwijze = guiData.radiogroupDEM.get(ERadiogroup.LEVENSVORM);
+        RadiogroupData bloeiwijze = guiData.radiogroupDEM.get(ERadiogroup.BLOEIWIJZE);
         stmtSelectIdsByFeno.setString(plantIds.size() + 7, bloeiwijze.getActualValue());
         stmtSelectIdsByFeno.setInt(plantIds.size() + 8, (bloeiwijze.isDoSearch()) ? 0 : 1);
 

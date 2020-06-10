@@ -10,6 +10,7 @@ import javafx.stage.FileChooser;
 import plantenApp.java.dao.Database;
 import plantenApp.java.dao.FotoDAO;
 import plantenApp.java.dao.InfoTablesDAO;
+import plantenApp.java.model.Beheerdaad_Eigenschap;
 import plantenApp.java.model.InfoTables;
 import plantenApp.java.model.Plant;
 import plantenApp.java.model.SearchHandler;
@@ -375,6 +376,21 @@ public class Controller {
     public ImageView imgBloeiwijze_7;
     public ImageView imgBloeiwijze_8;
     public ToggleGroup tglLevensvorm;
+    public ComboBox cboBeheer;
+    public Label lblFrequentie;
+    public CheckBox chkBeheerJan;
+    public CheckBox chkBeheerFeb;
+    public CheckBox chkBeheerMaa;
+    public CheckBox chkBeheerApr;
+    public CheckBox chkBeheerMei;
+    public CheckBox chkBeheerJun;
+    public CheckBox chkBeheerJul;
+    public CheckBox chkBeheerAug;
+    public CheckBox chkBeheerSep;
+    public CheckBox chkBeheerOkt;
+    public CheckBox chkBeheerNov;
+    public CheckBox chkBeheerDec;
+    public ListView lsvBeheer;
     //endregion
 
     private InfoTables infoTables;
@@ -389,6 +405,8 @@ public class Controller {
         InfoTablesDAO infotablesDAO = new InfoTablesDAO(dbConnection);
         infoTables = infotablesDAO.getInfoTables();
         handler = new SearchHandler(dbConnection);
+
+
 
         guiData = new GUIdata(dbConnection);
         //region bindings
@@ -551,6 +569,21 @@ public class Controller {
      * @author bradley
      */
     public void InitListView() {
+        lsvBeheer.setCellFactory(param -> new ListCell<Beheerdaad_Eigenschap>() {
+            @Override
+            protected void updateItem(Beheerdaad_Eigenschap item, boolean empty) {
+                super.updateItem(item, empty);
+
+                if (empty || item == null || item.getNaam().equals("")) {
+                    setText(null);
+                    setGraphic(null);
+                } else {
+                    setText("behandeling: " + item.getNaam() + ", per " + item.getFrequentie() + " jaar, maand: " + item.getMaand());
+                }
+            }
+        });
+
+
         lsvOverzicht.setCellFactory(param -> new ListCell<Plant>() {
             @Override
             protected void updateItem(Plant item, boolean empty) {
@@ -716,22 +749,9 @@ public class Controller {
                     lblBloeikleurNov.setText(newValue.getFenotype().getBloeikleur().getNov());
                     lblBloeikleurDec.setText(newValue.getFenotype().getBloeikleur().getDec());
 
+                    lsvBeheer.getItems().clear();
+                    lsvBeheer.getItems().addAll(newValue.getBeheer().getMultiEigenschappen());
 
-                    /*
-                    for (int i = 0; i < infoTables.getHabitusFotos().size(); i++) {
-
-                        if (infoTables.getHabitusFotos().get(i).getWaarde().equals(newValue.getFenotype().getHabitus())) {
-
-
-                            Image image;
-                            image = infoTables.getHabitusFotos().get(i).getFoto();
-                            imgHabitus.setImage(image);
-
-                            break;
-                        }
-                    }
-
-                     */
 
 
                 } catch (NullPointerException ex) {
