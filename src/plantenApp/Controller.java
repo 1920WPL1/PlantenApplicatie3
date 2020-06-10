@@ -393,104 +393,12 @@ public class Controller {
         guiData = new GUIdata(dbConnection);
         //region bindings
         guiData.textFieldDEM.get(ETextfield.SEARCH).Bind(txtSearch);
-        /*
-        guiData.comboBoxDEM.get(EComboBox.TYPE).Bind(chkType, cboType);
-        guiData.comboBoxDEM.get(EComboBox.TYPE).doSearchProperty().addListener(new ChangeListener<Boolean>() {
-            @Override
-            public void changed(ObservableValue<? extends Boolean> observableValue, Boolean oldbool, Boolean newbool) {
-                chkFamilie.setVisible(newbool);
-                cboFamilie.setVisible(newbool);
-                //Van true -> false
-                if (oldbool){
-                    chkFamilie.setSelected(false);
-                }
-                //Van false -> true
-                else{
-                    try {
-                        guiData.comboBoxDEM.get(EComboBox.FAMILIE).setPossibleValues(infotablesDAO.selectFamiliesByType(
-                                guiData.comboBoxDEM.get(EComboBox.TYPE).getValue()
-                        ));
-                    } catch (SQLException e) {
-                        e.printStackTrace();
-                    }
-                }
-            }
-        });
-        guiData.comboBoxDEM.get(EComboBox.FAMILIE).Bind(chkFamilie, cboFamilie);
-        guiData.comboBoxDEM.get(EComboBox.FAMILIE).doSearchProperty().addListener(new ChangeListener<Boolean>() {
-            @Override
-            public void changed(ObservableValue<? extends Boolean> observableValue, Boolean oldbool, Boolean newbool) {
-                chkGeslacht.setVisible(newbool);
-                cboGeslacht.setVisible(newbool);
-                //Van true -> false
-                if (oldbool){
-                    chkGeslacht.setSelected(false);
-                }
-                //Van false -> true
-                else{
-                    try {
-                        guiData.comboBoxDEM.get(EComboBox.GESLACHT).setPossibleValues(infotablesDAO.selectGeslachtenByFamilie(
-                                guiData.comboBoxDEM.get(EComboBox.FAMILIE).getValue(),
-                                guiData.comboBoxDEM.get(EComboBox.TYPE).getValue()
-                        ));
-                    } catch (SQLException e) {
-                        e.printStackTrace();
-                    }
-                }
-            }
-        });
-        guiData.comboBoxDEM.get(EComboBox.GESLACHT).Bind(chkGeslacht, cboGeslacht);
-        guiData.comboBoxDEM.get(EComboBox.GESLACHT).doSearchProperty().addListener(new ChangeListener<Boolean>() {
-            @Override
-            public void changed(ObservableValue<? extends Boolean> observableValue, Boolean oldbool, Boolean newbool) {
-                chkSoort.setVisible(newbool);
-                cboSoort.setVisible(newbool);
-                //Van true -> false
-                if (oldbool){
-                    chkSoort.setSelected(false);
-                }
-                //Van false -> true
-                else{
-                    try {
-                        guiData.comboBoxDEM.get(EComboBox.SOORT).setPossibleValues(infotablesDAO.selectSoortenByGeslacht(
-                                guiData.comboBoxDEM.get(EComboBox.GESLACHT).getValue(),
-                                guiData.comboBoxDEM.get(EComboBox.FAMILIE).getValue(),
-                                guiData.comboBoxDEM.get(EComboBox.TYPE).getValue()
-                        ));
-                    } catch (SQLException e) {
-                        e.printStackTrace();
-                    }
-                }
-            }
-        });
-        guiData.comboBoxDEM.get(EComboBox.SOORT).Bind(chkSoort, cboSoort);
-        guiData.comboBoxDEM.get(EComboBox.SOORT).doSearchProperty().addListener(new ChangeListener<Boolean>() {
-            @Override
-            public void changed(ObservableValue<? extends Boolean> observableValue, Boolean oldbool, Boolean newbool) {
-                chkVariant.setVisible(newbool);
-                cboVariant.setVisible(newbool);
-                //Van true -> false
-                if (oldbool){
-                    chkVariant.setSelected(false);
-                }
-                //Van false -> true
-                else{
-                    try {
-                        guiData.comboBoxDEM.get(EComboBox.VARIANT).setPossibleValues(infotablesDAO.selectVariantenBySoort(
-                                guiData.comboBoxDEM.get(EComboBox.SOORT).getValue(),
-                                guiData.comboBoxDEM.get(EComboBox.GESLACHT).getValue(),
-                                guiData.comboBoxDEM.get(EComboBox.FAMILIE).getValue(),
-                                guiData.comboBoxDEM.get(EComboBox.TYPE).getValue()
-                        ));
-                    } catch (SQLException e) {
-                        e.printStackTrace();
-                    }
-                }
-            }
-        });
-        guiData.comboBoxDEM.get(EComboBox.VARIANT).Bind(chkVariant, cboVariant);
 
-         */
+        guiData.comboBoxDEM.get(EComboBox.TYPE).Bind(chkType, cboType);
+        guiData.comboBoxDEM.get(EComboBox.FAMILIE).Bind(chkFamilie, cboFamilie);
+        guiData.comboBoxDEM.get(EComboBox.GESLACHT).Bind(chkGeslacht, cboGeslacht);
+        guiData.comboBoxDEM.get(EComboBox.SOORT).Bind(chkSoort, cboSoort);
+        guiData.comboBoxDEM.get(EComboBox.VARIANT).Bind(chkVariant, cboVariant);
 
         guiData.comboBoxDEM.get(EComboBox.BEHANDELING).Bind(chkBehandeling, cboBehandeling);
         guiData.comboBoxDEM.get(EComboBox.BLADGROOTTE).Bind(chkBladgrootte, cboBladgrootte);
@@ -540,7 +448,7 @@ public class Controller {
         guiData.radiogroupDEM.get(ERadiogroup.LEVENSVORM).Bind(chkLevensvormVolgensRaunkhiaer, new RadioButton[]{rdbLevensvorm_1, rdbLevensvorm_2, rdbLevensvorm_3, rdbLevensvorm_4, rdbLevensvorm_5, rdbLevensvorm_6, rdbLevensvorm_7, rdbLevensvorm_8, rdbLevensvorm_9});
 
         guiData.fotoDEM.get(EFoto.HABITUS).Bind(new ImageView[]{imgHabitus_1, imgHabitus_2, imgHabitus_3, imgHabitus_4, imgHabitus_5, imgHabitus_6, imgHabitus_7, imgHabitus_8, imgHabitus_9, imgHabitus_10, imgHabitus_11, imgHabitus_12, imgHabitus_13, imgHabitus_14, imgHabitus_15});
-        guiData.fotoDEM.get(EFoto.BLOEIWIJZE).Bind(new ImageView[]{imgBloeiwijze_1,imgBloeiwijze_2,imgBloeiwijze_3,imgBloeiwijze_4,imgBloeiwijze_5,imgBloeiwijze_6,imgBloeiwijze_7,imgBloeiwijze_8});
+        guiData.fotoDEM.get(EFoto.BLOEIWIJZE).Bind(new ImageView[]{imgBloeiwijze_1, imgBloeiwijze_2, imgBloeiwijze_3, imgBloeiwijze_4, imgBloeiwijze_5, imgBloeiwijze_6, imgBloeiwijze_7, imgBloeiwijze_8});
 
         //endregion
 

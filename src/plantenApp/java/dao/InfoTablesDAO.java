@@ -13,17 +13,9 @@ import java.util.ArrayList;
  */
 public class InfoTablesDAO implements Queries {
     private Connection dbConnection;
-    private PreparedStatement stmtSelectFamilieByType;
-    private PreparedStatement stmtSelectGeslachtByFamilie;
-    private PreparedStatement stmtSelectSoortByGeslacht;
-    private PreparedStatement stmtSelectVariatieBySoort;
 
     public InfoTablesDAO(Connection dbConnection) throws SQLException {
         this.dbConnection = dbConnection;
-        stmtSelectFamilieByType = dbConnection.prepareStatement(NTFAMILIEBYTYPE);
-        stmtSelectGeslachtByFamilie = dbConnection.prepareStatement(NTGESLACHTBYFAMILIE);
-        stmtSelectSoortByGeslacht = dbConnection.prepareStatement(NTSOORTBYGESLACHT);
-        stmtSelectVariatieBySoort = dbConnection.prepareStatement(NTVARIATIEBYSOORT);
     }
 
     //region GET
@@ -107,6 +99,10 @@ public class InfoTablesDAO implements Queries {
     public InfoTables getInfoTables() throws SQLException {
         InfoTables infoTables = new InfoTables(
                 getInfoTableString(NTTYPE, "planttype_naam"),
+                getInfoTableString(NTFAMILIE, "familie_naam"),
+                getInfoTableString(NTGESLACHT, "geslacht_naam"),
+                getInfoTableString(NTSOORT, "soort_naam"),
+                getInfoTableString(NTVARIATIE, "variatie_naam"),
                 getInfoTableString(NTKLEUREN, "kleur"),
                 getInfoTableString(NTBLADGROOTTE, "waarde"),
                 getInfoTableString(NTBLADVORM, "waarde"),
@@ -134,72 +130,4 @@ public class InfoTablesDAO implements Queries {
     }
 
     //endregion
-
-    public ArrayList<String> selectFamiliesByType(String type) throws SQLException {
-        //Items
-        ArrayList<String> families = new ArrayList<>();
-
-        //SqlCommand
-        stmtSelectFamilieByType.setString(1, type);
-        ResultSet rs = stmtSelectFamilieByType.executeQuery();
-        while (rs.next()) {
-            families.add(rs.getString("familie_naam"));
-        }
-
-        //Output
-        return families;
-    }
-
-    public ArrayList<String> selectGeslachtenByFamilie(String familie,String type) throws SQLException {
-        //Items
-        ArrayList<String> geslachten = new ArrayList<>();
-
-        //SqlCommand
-        stmtSelectGeslachtByFamilie.setString(1, familie);
-        stmtSelectGeslachtByFamilie.setString(2, type);
-        ResultSet rs = stmtSelectGeslachtByFamilie.executeQuery();
-        while (rs.next()) {
-            geslachten.add(rs.getString("geslacht_naam"));
-        }
-
-        //Output
-        return geslachten;
-    }
-
-    public ArrayList<String> selectSoortenByGeslacht(String geslacht,String familie,String type) throws SQLException {
-        //Items
-        ArrayList<String> soorten = new ArrayList<>();
-
-        //SqlCommand
-        stmtSelectSoortByGeslacht.setString(1, geslacht);
-        stmtSelectGeslachtByFamilie.setString(2, familie);
-        stmtSelectGeslachtByFamilie.setString(3, type);
-        ResultSet rs = stmtSelectSoortByGeslacht.executeQuery();
-        while (rs.next()) {
-            soorten.add(rs.getString("soort_naam"));
-        }
-
-        //Output
-        return soorten;
-    }
-
-    public ArrayList<String> selectVariantenBySoort(String variatie,String geslacht,String familie,String type) throws SQLException {
-        //Items
-        ArrayList<String> varianten = new ArrayList<>();
-
-        //SqlCommand
-        stmtSelectVariatieBySoort.setString(1, variatie);
-        stmtSelectSoortByGeslacht.setString(2, geslacht);
-        stmtSelectGeslachtByFamilie.setString(3, familie);
-        stmtSelectGeslachtByFamilie.setString(4, type);
-        ResultSet rs = stmtSelectVariatieBySoort.executeQuery();
-        while (rs.next()) {
-            varianten.add(rs.getString("variatie_naam"));
-        }
-
-        System.out.println(varianten.toString());
-
-        //Output
-        return varianten;
-    }
 }

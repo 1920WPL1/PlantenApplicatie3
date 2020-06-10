@@ -94,18 +94,17 @@ public class GUIdata {
         InfoTables infoTables = infoTablesDAO.getInfoTables();
 
         //Fills the comboboxes
-        /*
         comboBoxDEM.get(EComboBox.TYPE).setPossibleValues(infoTables.getTypes());
-        String type = comboBoxDEM.get(EComboBox.TYPE).getPossibleValues().get(0);
-        comboBoxDEM.get(EComboBox.FAMILIE).setPossibleValues(infoTablesDAO.selectFamiliesByType(type));
-        String familie = comboBoxDEM.get(EComboBox.FAMILIE).getPossibleValues().get(0);
-        comboBoxDEM.get(EComboBox.GESLACHT).setPossibleValues(infoTablesDAO.selectGeslachtenByFamilie(familie,type));
-        String geslacht = comboBoxDEM.get(EComboBox.GESLACHT).getPossibleValues().get(0);
-        comboBoxDEM.get(EComboBox.SOORT).setPossibleValues(infoTablesDAO.selectSoortenByGeslacht(geslacht,familie,type));
-        String soort = comboBoxDEM.get(EComboBox.SOORT).getPossibleValues().get(0);
-        comboBoxDEM.get(EComboBox.VARIANT).setPossibleValues(infoTablesDAO.selectVariantenBySoort(soort,geslacht,familie,type));
-
-         */
+        comboBoxDEM.get(EComboBox.FAMILIE).setPossibleValues(infoTables.getFamilies());
+        ArrayList<String> l = infoTables.getGeslachten();
+        l.sort(String::compareTo);
+        comboBoxDEM.get(EComboBox.GESLACHT).setPossibleValues(l);
+        l = infoTables.getSoorten();
+        l.sort(String::compareTo);
+        comboBoxDEM.get(EComboBox.SOORT).setPossibleValues(l);
+        l = infoTables.getVariaties();
+        l.sort(String::compareTo);
+        comboBoxDEM.get(EComboBox.VARIANT).setPossibleValues(l);
 
         comboBoxDEM.get(EComboBox.SPRUITFENOLOGIE).setPossibleValues(infoTables.getSpruitfenologieen());
         comboBoxDEM.get(EComboBox.RATIOBLOEIBLAD).setPossibleValues(infoTables.getBloeiBladRatios());
@@ -184,11 +183,15 @@ public class GUIdata {
         combinedCheckboxDEM.get(EComCheckbox.GRONDSOORT).setCorrespondingValues(new String[]{"Z", "L", "K"});
         sliderLabelDEM.get(ESliderLabel.BEZONNING).setCorrespondingValues(infoTables.getBezonningsMogelijkheden());
 
-        ArrayList<String> l = new ArrayList<>();
+        l = new ArrayList<>();
         for (int i = 0; i < infoTables.getNectarwaardes().size(); i++) {
             l.add(String.valueOf(infoTables.getNectarwaardes().get(i)));
         }
         sliderLabelDEM.get(ESliderLabel.NECTARWAARDE).setCorrespondingValues(l);
+        l = new ArrayList<>();
+        for (int i = 0; i < infoTables.getPollenwaardes().size(); i++) {
+            l.add(String.valueOf(infoTables.getPollenwaardes().get(i)));
+        }
         sliderLabelDEM.get(ESliderLabel.POLLENWAARDE).setCorrespondingValues(l);
         sliderLabelDEM.get(ESliderLabel.VOCHTBEHOEFTE).setCorrespondingValues(infoTables.getVochtbehoeftes());
         sliderLabelDEM.get(ESliderLabel.VOEDINGSBEHOEFTE).setCorrespondingValues(infoTables.getVoedingsbehoeftes());

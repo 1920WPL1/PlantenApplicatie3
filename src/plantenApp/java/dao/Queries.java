@@ -37,6 +37,9 @@ public interface Queries {
             "SELECT plant_id FROM plant " +
                     "WHERE (planttype = ? OR  1=?) " +
                     "AND (familie = ? OR 1=?) " +
+                    "AND (geslacht = ? OR 1=?) " +
+                    "AND (soort = ? OR 1=?) " +
+                    "AND (variatie = ? OR 1=?) " +
                     "AND (fgsv LIKE ? OR 1=?) ";
 
     String GETIDSBYEXTRA =
@@ -182,22 +185,17 @@ public interface Queries {
     String NTTYPE =
             "SELECT planttype_naam FROM planttype";
 
-    String NTFAMILIEBYTYPE =
-            "SELECT familie_naam FROM familie where planttype_id IN " +
-                    "(SELECT planttype_id FROM planttype WHERE planttype_naam = ?)";
+    String NTFAMILIE =
+            "SELECT familie_naam FROM familie";
 
-    String NTGESLACHTBYFAMILIE =
-            "SELECT geslacht_naam FROM geslacht where familie_id IN " +
-                    "(SELECT familie_id FROM familie WHERE familie_naam = ? AND familie_naam IN (" + NTFAMILIEBYTYPE + "))";
+    String NTGESLACHT =
+            "SELECT geslacht_naam FROM geslacht";
 
-    String NTSOORTBYGESLACHT =
-            "SELECT soort_naam FROM soort where geslacht_id IN " +
-                    "(SELECT geslacht_id FROM geslacht WHERE geslacht_naam = ? AND geslacht_naam IN (" + NTGESLACHTBYFAMILIE + "))";
+    String NTSOORT =
+            "SELECT soort_naam FROM soort";
 
-    String NTVARIATIEBYSOORT =
-            "SELECT variatie_naam FROM variatie where soort_id IN " +
-                    "(SELECT soort_id FROM soort WHERE soort_naam = ? AND soort_naam IN (" + NTSOORTBYGESLACHT + "))";
-
+    String NTVARIATIE =
+            "SELECT variatie_naam FROM variatie";
 
     String NTLEVENSDUURCONCURRENTIEKRACHT =
             "SELECT waarde FROM levensduur_concurrentiekracht";

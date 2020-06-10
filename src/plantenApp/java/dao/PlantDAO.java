@@ -163,10 +163,25 @@ public class PlantDAO implements Queries {
         stmtSelectIdsByPlant.setString(3, familie.getValue());
         stmtSelectIdsByPlant.setInt(4, (familie.isDoSearch()) ? 0 : 1);
 
+        //geslacht
+        ComboBoxData geslacht = guiData.comboBoxDEM.get(EComboBox.GESLACHT);
+        stmtSelectIdsByPlant.setString(5, geslacht.getValue());
+        stmtSelectIdsByPlant.setInt(6, (geslacht.isDoSearch()) ? 0 : 1);
+
+        //soort
+        ComboBoxData soort = guiData.comboBoxDEM.get(EComboBox.SOORT);
+        stmtSelectIdsByPlant.setString(7, soort.getValue());
+        stmtSelectIdsByPlant.setInt(8, (soort.isDoSearch()) ? 0 : 1);
+
+        //variant
+        ComboBoxData variant = guiData.comboBoxDEM.get(EComboBox.VARIANT);
+        stmtSelectIdsByPlant.setString(9, variant.getValue());
+        stmtSelectIdsByPlant.setInt(10, (variant.isDoSearch()) ? 0 : 1);
+
         //fgsv
         TextfieldData fgsv = guiData.textFieldDEM.get(ETextfield.SEARCH);
-        stmtSelectIdsByPlant.setString(5, "%" + fgsv.getValue() + "%");
-        stmtSelectIdsByPlant.setInt(6, (fgsv.isDoSearch()) ? 0 : 1);
+        stmtSelectIdsByPlant.setString(11, "%" + fgsv.getValue() + "%");
+        stmtSelectIdsByPlant.setInt(12, (fgsv.isDoSearch()) ? 0 : 1);
 
         ResultSet rs = stmtSelectIdsByPlant.executeQuery();
         while (rs.next()) {
