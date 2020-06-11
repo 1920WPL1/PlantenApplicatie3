@@ -1441,7 +1441,7 @@
                                                       <Font name="System Bold" size="14.0" />
                                                    </font>
                                                 </Label>
-                                                <Label fx:id="lblType" prefHeight="30.0" prefWidth="150.0" text="Value">
+                                                <Label fx:id="lblType" prefHeight="30.0" prefWidth="150.0" text="Value" textFill="#0d0d0d">
                                                    <font>
                                                       <Font size="14.0" />
                                                    </font>
@@ -1455,7 +1455,7 @@
                                                       <Font name="System Bold" size="14.0" />
                                                    </font>
                                                 </Label>
-                                                <Label fx:id="lblFamilie" prefHeight="30.0" prefWidth="150.0" text="Value">
+                                                <Label fx:id="lblFamilie" prefHeight="30.0" prefWidth="150.0" text="Value" textFill="#0d0d0d">
                                                    <font>
                                                       <Font size="14.0" />
                                                    </font>
@@ -1469,7 +1469,7 @@
                                                       <Font name="System Bold" size="14.0" />
                                                    </font>
                                                 </Label>
-                                                <Label fx:id="lblGeslacht" prefHeight="30.0" prefWidth="150.0" text="Value">
+                                                <Label fx:id="lblGeslacht" prefHeight="30.0" prefWidth="150.0" text="Value" textFill="#0d0d0d">
                                                    <font>
                                                       <Font size="14.0" />
                                                    </font>
@@ -1483,7 +1483,7 @@
                                                       <Font name="System Bold" size="14.0" />
                                                    </font>
                                                 </Label>
-                                                <Label fx:id="lblSoort" prefHeight="30.0" prefWidth="150.0" text="Value">
+                                                <Label fx:id="lblSoort" prefHeight="30.0" prefWidth="150.0" text="Value" textFill="#0d0d0d">
                                                    <font>
                                                       <Font size="14.0" />
                                                    </font>
@@ -1497,7 +1497,7 @@
                                                       <Font name="System Bold" size="14.0" />
                                                    </font>
                                                 </Label>
-                                                <Label fx:id="lblVariant" prefHeight="30.0" prefWidth="150.0" text="Value">
+                                                <Label fx:id="lblVariant" prefHeight="30.0" prefWidth="150.0" text="Value" textFill="#0d0d0d">
                                                    <font>
                                                       <Font size="14.0" />
                                                    </font>
@@ -1525,7 +1525,7 @@
                                                             <Font size="14.0" />
                                                          </font>
                                                       </Label>
-                                                      <Label fx:id="lblDichtheidX" prefHeight="30.0" prefWidth="60.0" text="Value">
+                                                      <Label fx:id="lblDichtheidX" prefHeight="30.0" prefWidth="60.0" text="Value" textFill="#0d0d0d">
                                                          <font>
                                                             <Font size="14.0" />
                                                          </font>
@@ -1535,7 +1535,7 @@
                                                             <Font size="14.0" />
                                                          </font>
                                                       </Label>
-                                                      <Label fx:id="lblDichtheidY" prefHeight="30.0" prefWidth="60.0" text="Value">
+                                                      <Label fx:id="lblDichtheidY" prefHeight="30.0" prefWidth="60.0" text="Value" textFill="#0d0d0d">
                                                          <font>
                                                             <Font size="14.0" />
                                                          </font>
@@ -1553,7 +1553,7 @@
                               </VBox>
                            </content>
                         </TitledPane>
-                        <TitledPane text="Commensalisme">
+                        <TitledPane expanded="false" text="Commensalisme">
                            <content>
                               <VBox spacing="5.0">
                                  <children>
@@ -1620,7 +1620,7 @@
                               </VBox>
                            </content>
                         </TitledPane>
-                        <TitledPane text="Abiotische factoren">
+                        <TitledPane expanded="false" text="Abiotische factoren">
                            <content>
                               <VBox spacing="10.0">
                                  <children>
@@ -1711,7 +1711,7 @@
                               </VBox>
                            </content>
                         </TitledPane>
-                        <TitledPane prefHeight="200.0" prefWidth="200.0" text="Extra">
+                        <TitledPane expanded="false" prefHeight="200.0" prefWidth="200.0" text="Extra">
                            <content>
                               <VBox>
                                  <children>
@@ -1838,7 +1838,7 @@
                               </VBox>
                            </content>
                         </TitledPane>
-                        <TitledPane text="Fenotype">
+                        <TitledPane expanded="false" text="Fenotype">
                            <content>
                               <FlowPane hgap="20.0">
                                  <children>
@@ -2370,7 +2370,7 @@
                               </FlowPane>
                            </content>
                         </TitledPane>
-                        <TitledPane text="Beheer">
+                        <TitledPane expanded="false" text="Beheer">
                            <content>
                               <VBox>
                                  <children>
