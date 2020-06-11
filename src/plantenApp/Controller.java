@@ -507,6 +507,7 @@ public class Controller {
      * @author bradley
      */
     public void InitListView() {
+        /*instellen listview items*/
         lsvBeheer.setCellFactory(param -> new ListCell<Beheerdaad_Eigenschap>() {
             @Override
             protected void updateItem(Beheerdaad_Eigenschap item, boolean empty) {
@@ -536,6 +537,7 @@ public class Controller {
             }
         });
 
+        /*on selection changed waardes gaan aanpassen van labels*/
         lsvChanged = new ChangeListener<Plant>() {
             @Override
             public void changed(ObservableValue<? extends Plant> observable, Plant oldValue, Plant newValue) throws NullPointerException {
@@ -547,7 +549,6 @@ public class Controller {
                     e.printStackTrace();
 
                 }
-
                 try {
                     //standaard
                     lblType.setText(newValue.getType());
@@ -717,13 +718,11 @@ public class Controller {
 
     public void Click_Search(MouseEvent mouseEvent) throws SQLException {
         ArrayList<Plant> planten = handler.Search(guiData, dbConnection);
-
         lsvOverzicht.getSelectionModel().selectedItemProperty().removeListener(lsvChanged);
         lsvOverzicht.getItems().clear();
         lsvOverzicht.getSelectionModel().selectedItemProperty().addListener(lsvChanged);
         lsvOverzicht.getItems().addAll(planten);
         lsvOverzicht.getSelectionModel().selectFirst();
-
 
         if (!pnlUitvoer.isVisible() && planten.size() != 0) {
             pnlUitvoer.setVisible(true);
@@ -731,14 +730,12 @@ public class Controller {
             pnlUitvoer.setVisible(false);
         }
 
-
         if (pnlAdvSearch.isExpanded()) {
             pnlAdvSearch.setExpanded(false);
         }
     }
 
     public void click_WijzigPlant(MouseEvent mouseEvent) throws IOException, SQLException {
-
         FXMLLoader loader = new FXMLLoader(getClass().getResource("view/PlantWijzigen.fxml"));
         Parent root = loader.load();
         Scene scene = new Scene(root);
@@ -747,9 +744,8 @@ public class Controller {
         Controller controller = loader.getController(); //naam van de controller waar je naar toe wil
         window.setScene(scene);
         window.show();
-
-
     }
+
 }
 
 
