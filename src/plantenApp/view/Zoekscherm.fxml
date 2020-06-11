@@ -28,7 +28,7 @@
    <content>
       <BorderPane maxWidth="1.7976931348623157E308">
          <top>
-                 <TitledPane stylesheets="@Zoekscherm.css" text="Search" BorderPane.alignment="CENTER">
+                 <TitledPane expanded="false" stylesheets="@Zoekscherm.css" text="Search" BorderPane.alignment="CENTER">
                <content>
                   <VBox styleClass="flow-pane">
                      <children>
