@@ -7,11 +7,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e3f371c2-5a62-4881-8767-e007751523f2" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/artifacts/PlantenApplicatie_jar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/META-INF/MANIFEST.MF" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/libraries/mssql_jdbc_7_4_1_jre11.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/mssql_jdbc_7_4_1_jre11.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PlantenApplicatie.iml" beforeDir="false" afterPath="$PROJECT_DIR$/PlantenApplicatie.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/plantenApp/view/Zoekscherm.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/plantenApp/view/Zoekscherm.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/plantenApp/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/plantenApp/Controller.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/plantenApp/java/dao/FotoDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/plantenApp/java/dao/FotoDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/plantenApp/java/model/Foto_Eigenschap.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/plantenApp/java/model/Foto_Eigenschap.java" afterDir="false" />
     </list>
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -63,8 +67,8 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="extract.method.default.visibility" value="private" />
-    <property name="last_opened_file_path" value="C:/Progs/Java/Libraries/mssql-jdbc-7.4.1.jre11.jar!/" />
-    <property name="project.structure.last.edited" value="Libraries" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../Jar/sqljdbc_7.4/enu/mssql-jdbc-7.4.1.jre11.jar!/" />
+    <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.30297872" />
   </component>
@@ -72,6 +76,18 @@
     <key name="CreateClassDialog.RecentsKey">
       <recent name="plantenApp.java.model" />
     </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
   </component>
   <component name="RunManager">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
@@ -116,6 +132,7 @@
       <workItem from="1591701569029" duration="1723000" />
       <workItem from="1591703417071" duration="7727000" />
       <workItem from="1591771492150" duration="17058000" />
+      <workItem from="1591857606888" duration="6648000" />
     </task>
     <servers />
   </component>

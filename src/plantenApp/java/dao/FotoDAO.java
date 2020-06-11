@@ -4,6 +4,7 @@ import javafx.scene.image.Image;
 import plantenApp.java.model.Foto;
 import plantenApp.java.model.Foto_Eigenschap;
 
+import java.io.InputStream;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -89,5 +90,7 @@ public class FotoDAO implements Queries {
         //Output
 
     }
+
+
     //endregion
 }
