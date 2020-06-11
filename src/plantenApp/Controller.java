@@ -424,6 +424,47 @@ public class Controller {
         guiData.comboBoxDEM.get(EComboBox.SOORT).Bind(chkSoort, cboSoort);
         guiData.comboBoxDEM.get(EComboBox.VARIANT).Bind(chkVariant, cboVariant);
 
+        guiData.comboBoxDEM.get(EComboBox.TYPE).doSearchProperty().addListener((observableValue, aBoolean, t1) -> {
+            if (t1){
+                chkFamilie.setSelected(false);
+                chkGeslacht.setSelected(false);
+                chkSoort.setSelected(false);
+                chkVariant.setSelected(false);
+            }
+        });
+        guiData.comboBoxDEM.get(EComboBox.FAMILIE).doSearchProperty().addListener((observableValue, aBoolean, t1) -> {
+            if (t1){
+                chkType.setSelected(false);
+                chkGeslacht.setSelected(false);
+                chkSoort.setSelected(false);
+                chkVariant.setSelected(false);
+            }
+        });
+        guiData.comboBoxDEM.get(EComboBox.GESLACHT).doSearchProperty().addListener((observableValue, aBoolean, t1) -> {
+            if (t1){
+                chkType.setSelected(false);
+                chkFamilie.setSelected(false);
+                chkSoort.setSelected(false);
+                chkVariant.setSelected(false);
+            }
+        });
+        guiData.comboBoxDEM.get(EComboBox.SOORT).doSearchProperty().addListener((observableValue, aBoolean, t1) -> {
+            if (t1){
+                chkType.setSelected(false);
+                chkFamilie.setSelected(false);
+                chkGeslacht.setSelected(false);
+                chkVariant.setSelected(false);
+            }
+        });
+        guiData.comboBoxDEM.get(EComboBox.VARIANT).doSearchProperty().addListener((observableValue, aBoolean, t1) -> {
+            if (t1){
+                chkType.setSelected(false);
+                chkFamilie.setSelected(false);
+                chkGeslacht.setSelected(false);
+                chkSoort.setSelected(false);
+            }
+        });
+
         guiData.comboBoxDEM.get(EComboBox.BEHANDELING).Bind(chkBehandeling, cboBehandeling);
         guiData.comboBoxDEM.get(EComboBox.BLADGROOTTE).Bind(chkBladgrootte, cboBladgrootte);
         guiData.comboBoxDEM.get(EComboBox.BLADKLEUR).Bind(chkBladKleur, cboBladkleur);
@@ -563,6 +604,7 @@ public class Controller {
                     lblStrategie.setText(newValue.getCommensalisme().getStrategie());
                     lsvLevensduur.getItems().clear();
                     lsvLevensduur.getItems().addAll(newValue.getCommensalisme().getLevensduur());
+                    System.out.println(newValue.getCommensalisme().getLevensduur());
 
                     //abiotische factoren
                     lblBezonning2.setText(newValue.getAbiotischeFactoren().getBezonning());

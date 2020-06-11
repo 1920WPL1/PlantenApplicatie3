@@ -117,34 +117,7 @@ public class CommensalismeDAO implements Queries {
             ids.add(rs.getInt("plant_id"));
         }
 
-        /*
-        //Dao
-
-        //Items
-        ArrayList<Integer> ids = new ArrayList<>();
-
-        //SQLcommand
-        PreparedStatement stmtSelectIdsByComm = DaoUtils.ReadyStatement(dbConnection, GETIDSBYCOMM, plantIds);
-
-        //Strategie
-        RadiogroupData strategie = guIdata.radiogroupDEM.get(ERadiogroup.STRATEGIE);
-        stmtSelectIdsByComm.setString(plantIds.size() + 1, strategie.getActualValue());
-        stmtSelectIdsByComm.setInt(plantIds.size() + 2, (strategie.isDoSearch()) ? 0 : 1);
-
-        //ontwikkelingssnelheid
-        ComboBoxData ontwikkelingssnelheid = guIdata.comboBoxDEM.get(EComboBox.ONTWIKKELINGSSNELHEID);
-        stmtSelectIdsByComm.setString(plantIds.size() + 3, ontwikkelingssnelheid.getValue());
-        stmtSelectIdsByComm.setInt(plantIds.size() + 4, (ontwikkelingssnelheid.isDoSearch()) ? 0 : 1);
-
-        ResultSet rs = stmtSelectIdsByComm.executeQuery();
-        while (rs.next()) {
-            ids.add(rs.getInt("plant_id"));
-        }
-
-         */
-
         //Multi
-
         MultiCheckboxData sociabiliteit = guIdata.multiCheckboxDEM.get(EMultiCheckbox.SOCIABILITEIT);
         if (sociabiliteit.isDoSearch()) {
             for (int i = 0; i < sociabiliteit.Length(); i++) {
@@ -166,6 +139,24 @@ public class CommensalismeDAO implements Queries {
                     ids = localIds;
                 }
             }
+        }
+        ComboBoxData levensduur = guIdata.comboBoxDEM.get(EComboBox.LEVENSDUUR);
+        if (levensduur.isDoSearch()) {
+            ArrayList<Integer> localIds = new ArrayList<>();
+            QueryBuilder QBM = new QueryBuilder("plant_id", "commensalisme_multi");
+
+            QBM.AddIN("plant_id", plantIds);
+
+            QBM.AddBasicString("eigenschap", "levensduur");
+            QBM.AddBasicString("waarde", levensduur.getValue());
+
+            System.out.println(QBM.getQuery());
+
+            rs = QBM.PrepareStatement(dbConnection).executeQuery();
+            while (rs.next()) {
+                localIds.add(rs.getInt("plant_id"));
+            }
+            ids = localIds;
         }
 
         //Output
