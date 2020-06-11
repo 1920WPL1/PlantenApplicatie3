@@ -108,7 +108,7 @@ public class QueryBuilder {
         } else {
             query += " AND ";
         }
-        query += eigenschap + " > ? ";
+        query += eigenschap + " >= ? ";
         intValues.put(nextParam, value);
         nextParam++;
     }
@@ -120,7 +120,7 @@ public class QueryBuilder {
         } else {
             query += " AND ";
         }
-        query += eigenschap + " < ? ";
+        query += eigenschap + " <= ? ";
         intValues.put(nextParam, value);
         nextParam++;
     }
