@@ -81,7 +81,7 @@ public class GUIdata {
         //Set the values for specific data objects
 
         //Set the mins and max values of the spinners
-        spinnerDEM.get(ESpinner.PERXJAAR).setSpinnerMinMaxValue(-1, 200);
+        spinnerDEM.get(ESpinner.PERXJAAR).setSpinnerMinMaxValue(0, 200);
         multiSpinnerDEM.get(EMultiSpinner.BLADHOOGTE).setSpinnerMinMaxValue(-1, 200);
         multiSpinnerDEM.get(EMultiSpinner.BLOEIHOOGTE).setSpinnerMinMaxValue(-1, 200);
         multiSpinnerDEM.get(EMultiSpinner.MINBLADHOOGTEPERMAAND).setSpinnerMinMaxValue(-1, 200);

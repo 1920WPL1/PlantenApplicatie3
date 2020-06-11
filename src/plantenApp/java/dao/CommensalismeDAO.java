@@ -119,7 +119,7 @@ public class CommensalismeDAO implements Queries {
 
         //Multi
         MultiCheckboxData sociabiliteit = guIdata.multiCheckboxDEM.get(EMultiCheckbox.SOCIABILITEIT);
-        if (sociabiliteit.isDoSearch()) {
+        if (sociabiliteit.isDoSearch() && ids.size() > 0) {
             for (int i = 0; i < sociabiliteit.Length(); i++) {
                 if (sociabiliteit.getValue(i)) {
                     ArrayList<Integer> localIds = new ArrayList<>();
@@ -141,7 +141,7 @@ public class CommensalismeDAO implements Queries {
             }
         }
         ComboBoxData levensduur = guIdata.comboBoxDEM.get(EComboBox.LEVENSDUUR);
-        if (levensduur.isDoSearch()) {
+        if (levensduur.isDoSearch() && ids.size() > 0) {
             ArrayList<Integer> localIds = new ArrayList<>();
             QueryBuilder QBM = new QueryBuilder("plant_id", "commensalisme_multi");
 

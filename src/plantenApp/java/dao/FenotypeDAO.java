@@ -150,9 +150,9 @@ public class FenotypeDAO implements Queries {
         MultiSpinnerData bloeihoogte = guiData.multiSpinnerDEM.get(EMultiSpinner.BLOEIHOOGTE);
         ids = filterOnHoogte("minbloeihoogte", "maxbloeihoogte", minbloeihoogte, maxbloeihoogte, bloeihoogte, ids);
 
-        MultiSpinnerData maxbladhoogte = guiData.multiSpinnerDEM.get(EMultiSpinner.MAXBLOEIHOOGTEPERMAAND);
-        MultiSpinnerData minbladhoogte = guiData.multiSpinnerDEM.get(EMultiSpinner.MINBLOEIHOOGTEPERMAAND);
-        MultiSpinnerData bladhoogte = guiData.multiSpinnerDEM.get(EMultiSpinner.BLOEIHOOGTE);
+        MultiSpinnerData maxbladhoogte = guiData.multiSpinnerDEM.get(EMultiSpinner.MAXBLADHOOGTEPERMAAND);
+        MultiSpinnerData minbladhoogte = guiData.multiSpinnerDEM.get(EMultiSpinner.MINBLADHOOGTEPERMAAND);
+        MultiSpinnerData bladhoogte = guiData.multiSpinnerDEM.get(EMultiSpinner.BLADHOOGTE);
         ids = filterOnHoogte("bladhoogte", "bladhoogte", minbladhoogte, maxbladhoogte, bladhoogte, ids);
 
         ComboBoxData bloeikleur = guiData.comboBoxDEM.get(EComboBox.BLOEIKLEUR);
@@ -169,7 +169,7 @@ public class FenotypeDAO implements Queries {
 
     private ArrayList<Integer> filterOnKleur(String eigenschap, MultiComboBoxData permaand, ComboBoxData basic, ArrayList<Integer> ids) throws SQLException {
         ResultSet rs;
-        if (permaand.isDoSearch()) {
+        if (permaand.isDoSearch()&& ids.size() > 0) {
             ArrayList<Integer> localIds = new ArrayList<>();
             QueryBuilder QBM = new QueryBuilder("plant_id", "fenotype_multi");
             String valueToIgnore = "nvt";
@@ -198,7 +198,7 @@ public class FenotypeDAO implements Queries {
                 localIds.add(rs.getInt("plant_id"));
             }
             ids = localIds;
-        } else if (basic.isDoSearch()) {
+        } else if (basic.isDoSearch()&& ids.size() > 0) {
             ArrayList<Integer> localIds = new ArrayList<>();
             QueryBuilder QBM = new QueryBuilder("plant_id", "fenotype_multi");
             String kleur = basic.getValue();
@@ -236,7 +236,7 @@ public class FenotypeDAO implements Queries {
 
     public ArrayList<Integer> filterOnHoogte(String minEigenschap, String maxEigenschap, MultiSpinnerData minData, MultiSpinnerData maxData, MultiSpinnerData basicData, ArrayList<Integer> ids) throws SQLException {
         ResultSet rs;
-        if (minData.isDoSearch()) {
+        if (minData.isDoSearch()&& ids.size() > 0) {
             ArrayList<Integer> localIds = new ArrayList<>();
             QueryBuilder QBM = new QueryBuilder("plant_id", "fenotype_multi");
             int valueToIgnore = -1;
@@ -265,7 +265,7 @@ public class FenotypeDAO implements Queries {
                 localIds.add(rs.getInt("plant_id"));
             }
             ids = localIds;
-        } else if (basicData.isDoSearch()) {
+        } else if (basicData.isDoSearch()&& ids.size() > 0) {
             ArrayList<Integer> localIds = new ArrayList<>();
             QueryBuilder QBM = new QueryBuilder("plant_id", "fenotype_multi");
             int valueToIgnore = -1;
@@ -296,7 +296,7 @@ public class FenotypeDAO implements Queries {
             }
             ids = localIds;
         }
-        if (maxData.isDoSearch()) {
+        if (maxData.isDoSearch()&& ids.size() > 0) {
             ArrayList<Integer> localIds = new ArrayList<>();
             QueryBuilder QBM = new QueryBuilder("plant_id", "fenotype_multi");
             int valueToIgnore = -1;
@@ -325,7 +325,7 @@ public class FenotypeDAO implements Queries {
                 localIds.add(rs.getInt("plant_id"));
             }
             ids = localIds;
-        } else if (basicData.isDoSearch()) {
+        } else if (basicData.isDoSearch()&& ids.size() > 0) {
             ArrayList<Integer> localIds = new ArrayList<>();
             QueryBuilder QBM = new QueryBuilder("plant_id", "fenotype_multi");
             int valueToIgnore = -1;

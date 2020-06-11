@@ -122,50 +122,9 @@ public class AbiotischeFactorenDAO implements Queries {
             ids.add(rs.getInt("plant_id"));
         }
 
-        /*
-        //Dao
-
-        //Items
-        ArrayList<Integer> ids = new ArrayList<>();
-
-        //makes the prepared statement en fills in de IN (?)
-        PreparedStatement stmtSelectIdsByAbio = DaoUtils.ReadyStatement(dbConnection, GETIDSBYABIO, plantIds);
-
-        //Bezonning
-        SliderLabelData bezonning = guiData.sliderLabelDEM.get(ESliderLabel.BEZONNING);
-        stmtSelectIdsByAbio.setString(plantIds.size() + 1, bezonning.getActualValue());
-        stmtSelectIdsByAbio.setInt(plantIds.size() + 2, (bezonning.isDoSearch()) ? 0 : 1);
-
-        //Grondsoort
-        CombinedCheckboxData grondsoort = guiData.combinedCheckboxDEM.get(EComCheckbox.GRONDSOORT);
-        stmtSelectIdsByAbio.setString(plantIds.size() + 3, grondsoort.getActualValue());
-        stmtSelectIdsByAbio.setInt(plantIds.size() + 4, (grondsoort.isDoSearch()) ? 0 : 1);
-
-        //Vochtbehoefte
-        SliderLabelData vochtbehoefte = guiData.sliderLabelDEM.get(ESliderLabel.VOCHTBEHOEFTE);
-        stmtSelectIdsByAbio.setString(plantIds.size() + 5, vochtbehoefte.getActualValue());
-        stmtSelectIdsByAbio.setInt(plantIds.size() + 6, (vochtbehoefte.isDoSearch()) ? 0 : 1);
-
-        //voedingsbehoefte
-        SliderLabelData voedingsbehoefte = guiData.sliderLabelDEM.get(ESliderLabel.VOEDINGSBEHOEFTE);
-        stmtSelectIdsByAbio.setString(plantIds.size() + 7, voedingsbehoefte.getActualValue());
-        stmtSelectIdsByAbio.setInt(plantIds.size() + 8, (voedingsbehoefte.isDoSearch()) ? 0 : 1);
-
-        //reactieantaomgeving
-        ComboBoxData reactieantaomgeving = guiData.comboBoxDEM.get(EComboBox.REACTIEANTAGONISTISCHEOMGEVING);
-        stmtSelectIdsByAbio.setString(plantIds.size() + 9, reactieantaomgeving.getValue());
-        stmtSelectIdsByAbio.setInt(plantIds.size() + 10, (reactieantaomgeving.isDoSearch()) ? 0 : 1);
-
-        ResultSet rs = stmtSelectIdsByAbio.executeQuery();
-        while (rs.next()) {
-            ids.add(rs.getInt("plant_id"));
-        }
-
-         */
-
         //habitat
         ComboBoxData habitat = guiData.comboBoxDEM.get(EComboBox.HABITAT);
-        if (habitat.isDoSearch()) {
+        if (habitat.isDoSearch() && ids.size() > 0) {
             ArrayList<Integer> localIds = new ArrayList<>();
             QueryBuilder QBM = new QueryBuilder("plant_id", "abiotisch_multi");
 
