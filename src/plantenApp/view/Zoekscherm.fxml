@@ -28,7 +28,7 @@
    <content>
       <BorderPane maxWidth="1.7976931348623157E308">
          <top>
-                 <TitledPane stylesheets="@Zoekscherm.css" text="Search" BorderPane.alignment="CENTER">
+                 <TitledPane expanded="false" stylesheets="@Zoekscherm.css" text="Search" BorderPane.alignment="CENTER">
                <content>
                   <VBox styleClass="flow-pane">
                      <children>
@@ -1291,12 +1291,12 @@
                      <children>
                         <FlowPane>
                            <children>
-                              <Button fx:id="btnWijzigPlant" mnemonicParsing="false" onMouseClicked="#click_WijzigPlant" prefHeight="65.0" prefWidth="203.0" text="Wijzig Plant">
+                              <Button fx:id="btnWijzigPlant" mnemonicParsing="false" onMouseClicked="#click_WijzigPlant" text="Wijzig Plant">
                                  <font>
                                     <Font size="15.0" />
                                  </font>
                               </Button>
-                              <Button fx:id="btnBeheerPlant" mnemonicParsing="false" onMouseClicked="#click_WijzigPlant" prefHeight="64.0" prefWidth="155.0" text="Beheer">
+                              <Button fx:id="btnBeheerPlant" mnemonicParsing="false" onMouseClicked="#click_WijzigPlant" text="Beheer">
                                  <font>
                                     <Font size="15.0" />
                                  </font>
@@ -1602,7 +1602,7 @@
                                                       <Font size="14.0" />
                                                    </font>
                                                 </Label>
-                                                <Label fx:id="lblDichtheidX" prefHeight="30.0" text="Value">
+                                                <Label fx:id="lblDichtheidX" prefHeight="30.0" text="Value" textFill="#838383">
                                                    <font>
                                                       <Font size="14.0" />
                                                    </font>
@@ -1612,7 +1612,7 @@
                                                       <Font size="14.0" />
                                                    </font>
                                                 </Label>
-                                                <Label fx:id="lblDichtheidY" prefHeight="30.0" text="Value">
+                                                <Label fx:id="lblDichtheidY" prefHeight="30.0" text="Value" textFill="#838383">
                                                    <font>
                                                       <Font size="14.0" />
                                                    </font>
