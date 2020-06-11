@@ -8,8 +8,10 @@ import javafx.scene.control.SpinnerValueFactory;
 
 public class SpinnerData extends SearchBase {
     private IntegerProperty value = new SimpleIntegerProperty(0);
-    private int minSpinnerValue;
-    private int maxSpinnerValue;
+    private int minSpinnerValue=0;
+    private int maxSpinnerValue=100;
+    private int initialValue = 0;
+    private int step = 5;
 
     public void Bind(CheckBox cbDoSearch, Spinner<Integer> spinner) {
         try {

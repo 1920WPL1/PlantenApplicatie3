@@ -81,13 +81,13 @@ public class GUIdata {
         //Set the values for specific data objects
 
         //Set the mins and max values of the spinners
-        spinnerDEM.get(ESpinner.PERXJAAR).setSpinnerMinMaxValue(0, 100);
-        multiSpinnerDEM.get(EMultiSpinner.BLADHOOGTE).setSpinnerMinMaxValue(0, 100);
-        multiSpinnerDEM.get(EMultiSpinner.BLOEIHOOGTE).setSpinnerMinMaxValue(0, 100);
-        multiSpinnerDEM.get(EMultiSpinner.MINBLADHOOGTEPERMAAND).setSpinnerMinMaxValue(0, 100);
-        multiSpinnerDEM.get(EMultiSpinner.MAXBLADHOOGTEPERMAAND).setSpinnerMinMaxValue(0, 100);
-        multiSpinnerDEM.get(EMultiSpinner.MINBLOEIHOOGTEPERMAAND).setSpinnerMinMaxValue(0, 100);
-        multiSpinnerDEM.get(EMultiSpinner.MAXBLOEIHOOGTEPERMAAND).setSpinnerMinMaxValue(0, 100);
+        spinnerDEM.get(ESpinner.PERXJAAR).setSpinnerMinMaxValue(-1, 200);
+        multiSpinnerDEM.get(EMultiSpinner.BLADHOOGTE).setSpinnerMinMaxValue(-1, 200);
+        multiSpinnerDEM.get(EMultiSpinner.BLOEIHOOGTE).setSpinnerMinMaxValue(-1, 200);
+        multiSpinnerDEM.get(EMultiSpinner.MINBLADHOOGTEPERMAAND).setSpinnerMinMaxValue(-1, 200);
+        multiSpinnerDEM.get(EMultiSpinner.MAXBLADHOOGTEPERMAAND).setSpinnerMinMaxValue(-1, 200);
+        multiSpinnerDEM.get(EMultiSpinner.MINBLOEIHOOGTEPERMAAND).setSpinnerMinMaxValue(-1, 200);
+        multiSpinnerDEM.get(EMultiSpinner.MAXBLOEIHOOGTEPERMAAND).setSpinnerMinMaxValue(-1, 200);
 
 
         InfoTablesDAO infoTablesDAO = new InfoTablesDAO(dbConnection);
