@@ -7,48 +7,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e3f371c2-5a62-4881-8767-e007751523f2" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/mssql_jdbc_7_4_1_jre11.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/mssql_jdbc_7_4_1_jre11.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PlantenApplicatie.iml" beforeDir="false" afterPath="$PROJECT_DIR$/PlantenApplicatie.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/plantenApp/view/Zoekscherm.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/plantenApp/view/Zoekscherm.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/plantenApp/view/img/20-Figure4-1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/plantenApp/view/img/21-512.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/plantenApp/view/img/CRS-model.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/plantenApp/view/img/Habitus_01.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/plantenApp/view/img/Habitus_02.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/plantenApp/view/img/Habitus_03.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/plantenApp/view/img/Habitus_04.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/plantenApp/view/img/Habitus_05.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/plantenApp/view/img/Habitus_06.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/plantenApp/view/img/Habitus_07.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/plantenApp/view/img/Habitus_08.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/plantenApp/view/img/Habitus_09.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/plantenApp/view/img/Habitus_10.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/plantenApp/view/img/Habitus_11.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/plantenApp/view/img/Habitus_12.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/plantenApp/view/img/Habitus_13.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/plantenApp/view/img/Habitus_14.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/plantenApp/view/img/Habitus_15.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/plantenApp/view/img/aar.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/plantenApp/view/img/bredepluim.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/plantenApp/view/img/cheetah-10698-12140-550x550.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/plantenApp/view/img/etage.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/plantenApp/view/img/habitus1.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/plantenApp/view/img/habitus2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/plantenApp/view/img/habitus3.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/plantenApp/view/img/habitus4.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/plantenApp/view/img/habitus5.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/plantenApp/view/img/habitus6etc.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/plantenApp/view/img/knop.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/plantenApp/view/img/levensvormenRaunhkier.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/plantenApp/view/img/margrietachtig.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/plantenApp/view/img/platscherm-schotel.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/plantenApp/view/img/ratio bloei_blad_1_pachysandra.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/plantenApp/view/img/ratio bloei_blad_2_geranium.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/plantenApp/view/img/ratio bloei_blad_3_salvia.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/plantenApp/view/img/ratio bloei_blad_4_aster.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/plantenApp/view/img/scherm.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/plantenApp/view/img/smallepluim.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/plantenApp/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/plantenApp/Controller.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -110,6 +70,18 @@
     <key name="CreateClassDialog.RecentsKey">
       <recent name="plantenApp.java.model" />
     </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
   </component>
   <component name="RunManager">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
