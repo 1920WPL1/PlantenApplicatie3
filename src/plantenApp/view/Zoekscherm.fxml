@@ -28,7 +28,7 @@
    <content>
       <BorderPane maxWidth="1.7976931348623157E308">
          <top>
-                 <TitledPane expanded="false" stylesheets="@Zoekscherm.css" text="Search" BorderPane.alignment="CENTER">
+                 <TitledPane stylesheets="@Zoekscherm.css" text="Search" BorderPane.alignment="CENTER">
                <content>
                   <VBox styleClass="flow-pane">
                      <children>
@@ -228,7 +228,7 @@
                               <Button fx:id="btnSearch" mnemonicParsing="false" onMouseClicked="#Click_Search" prefHeight="50.0" prefWidth="253.0" text="Search" />
                            </children>
                         </FlowPane>
-                        <TitledPane fx:id="pnlAdvSearch" text="Advanced">
+                        <TitledPane fx:id="pnlAdvSearch" expanded="false" text="Advanced">
                            <content>
                               <VBox styleClass="titleBackground">
                                  <children>

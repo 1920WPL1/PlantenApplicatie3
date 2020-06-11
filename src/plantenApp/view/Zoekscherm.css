@@ -1,13 +1,15 @@
 
 .button{
-    -fx-background-color: #93d745;
+    -fx-background-color: #8CB865;
     -fx-font-family: "Arial Black";
     -fx-font-size: 30px;
-   /* -fx-background-radius: 10pt;*/
+    -fx-background-radius: 5;
+
 }
 .button:hover{
     -fx-background-color: #9dc470;
     -fx-font-family: "Arial Black";
+    -fx-text-fill: white;
 
 }
 
@@ -121,10 +123,6 @@
     -fx-background-color: mark-color;
 }
 
-
-
-
-
 .radio-button > .radio{
     -fx-background-color: #7c7878;
 }
@@ -172,6 +170,7 @@
     -fx-background-radius: 5;
     -fx-body-color: #9dc470;
     -fx-border-color: none;
+    -fx-background-color: #c1c1c1;
 }
 .list-cell{
     -fx-font-size: 14px;
@@ -204,4 +203,23 @@
 .scroll-bar > .thumb { /*de balk van de scroll bar*/
     -fx-fill: #d9d9d9;
     -fx-background-color: #d9d9d9;
+}
+.titled-pane > .title > .text{
+    -fx-fill: black;
+}
+
+.titled-pane > .title > .text:hover{
+    -fx-fill: white;
+}
+
+.titled-pane > .title:hover{
+    -fx-background-color: #8CB865;
+
+}
+.titled-pane > .title > .arrow-button .arrow { /*grootte pijlen*/
+    -fx-font-size: 20;
+}
+
+.titled-pane > .title > .arrow-button .arrow:hover {/*pijlen worden wit bij hover*/
+    -fx-background-color: white;
 }
