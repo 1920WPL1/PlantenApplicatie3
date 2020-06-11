@@ -1363,7 +1363,7 @@
          <center>
             <BorderPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                <center>
-                  <VBox fx:id="pnlUitvoer" spacing="10.0" BorderPane.alignment="CENTER">
+                  <VBox fx:id="pnlUitvoer" spacing="10.0" visible="false" BorderPane.alignment="CENTER">
                      <children>
                         <FlowPane>
                            <children>
