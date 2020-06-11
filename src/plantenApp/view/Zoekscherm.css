@@ -174,7 +174,7 @@
     -fx-border-color: none;
 }
 .list-cell{
-    -fx-font-size: 12px;
+    -fx-font-size: 14px;
 }
 .list-cell:even {
     -fx-background-color: #f1f8ec;
@@ -183,9 +183,25 @@
     -fx-background-color: #d5eac7;
 }
 .list-cell:hover {
-    -fx-progress-color: white;
+    -fx-progress-color: #b3b3b3;
     -fx-background: -fx-accent;
     -fx-background-color: #9dc470;
     -fx-text-fill: -fx-selection-bar-text;
-    -fx-font-size: 13px;
+    -fx-font-size: 15px;
+}
+.list-cell:selected {
+    -fx-text-fill: #7c7878;
+}
+
+.list-cell:empty { -fx-pref-tile-height: 0;
+    -fx-opacity: 0;
+}
+.scroll-bar{ /*de kleuren van de scroll bars (ook in list view)*/
+    -fx-background-color: #d5eac7;
+    -fx-border-color: #9dc470;
+}
+
+.scroll-bar > .thumb { /*de balk van de scroll bar*/
+    -fx-fill: #d9d9d9;
+    -fx-background-color: #d9d9d9;
 }
