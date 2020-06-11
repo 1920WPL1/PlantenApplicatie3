@@ -35,19 +35,19 @@ public interface Queries {
     //region NAAKTETABELLEN
 
     String NTTYPE =
-            "SELECT planttype_naam FROM planttype";
+            "SELECT DISTINCT planttype_naam FROM planttype";
 
     String NTFAMILIE =
-            "SELECT familie_naam FROM familie";
+            "SELECT DISTINCT familie_naam FROM familie";
 
     String NTGESLACHT =
-            "SELECT geslacht_naam FROM geslacht";
+            "SELECT DISTINCT geslacht_naam FROM geslacht";
 
     String NTSOORT =
-            "SELECT soort_naam FROM soort";
+            "SELECT DISTINCT soort_naam FROM soort";
 
     String NTVARIATIE =
-            "SELECT variatie_naam FROM variatie";
+            "SELECT DISTINCT variatie_naam FROM variatie";
 
     String NTLEVENSDUURCONCURRENTIEKRACHT =
             "SELECT waarde FROM levensduur_concurrentiekracht";

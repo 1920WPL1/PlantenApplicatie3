@@ -143,7 +143,6 @@ public class QueryBuilder {
         return stmt;
     }
 
-
     public String getQuery() {
         return query;
     }
