@@ -105,6 +105,7 @@ public class AbiotischeFactorenDAO implements Queries {
         SliderLabelData voedingsbehoefte = guiData.sliderLabelDEM.get(ESliderLabel.VOEDINGSBEHOEFTE);
         ComboBoxData reactieantaomgeving = guiData.comboBoxDEM.get(EComboBox.REACTIEANTAGONISTISCHEOMGEVING);
 
+        //Nieuwe querybuilder voor de standaard eigenschappen
         QueryBuilder QB = new QueryBuilder("plant_id", "abiotische_factoren");
 
         QB.AddIN("plant_id",plantIds);
@@ -122,7 +123,7 @@ public class AbiotischeFactorenDAO implements Queries {
             ids.add(rs.getInt("plant_id"));
         }
 
-        //habitat
+        //Indien op habitat gezocht word en het resultaat van de standaard filter niet leeg filter op habitat
         ComboBoxData habitat = guiData.comboBoxDEM.get(EComboBox.HABITAT);
         if (habitat.isDoSearch() && ids.size() > 0) {
             ArrayList<Integer> localIds = new ArrayList<>();

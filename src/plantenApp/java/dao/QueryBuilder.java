@@ -8,10 +8,14 @@ import java.util.HashMap;
 
 public class QueryBuilder {
     private Boolean firstWhere = true;
-    private Boolean firstOr = true;
+    private Boolean firstOr = false;
+
     private String query = "";
+
     private int nextParam = 1;
+
     private ArrayList<Integer> ids = new ArrayList<>();
+
     private HashMap<Integer, String> stringValues = new HashMap<>();
     private HashMap<Integer, Integer> intValues = new HashMap<>();
 
@@ -31,6 +35,7 @@ public class QueryBuilder {
                 list.append("?,");
             }
         }
+
         if (firstWhere) {
             query += " WHERE ";
             firstWhere = false;
@@ -48,43 +53,8 @@ public class QueryBuilder {
             query += " AND ";
         }
         query += eigenschap + " = ? ";
-        stringValues.put(nextParam, value);
-        nextParam++;
-    }
 
-    public void AddLIKEString(String eigenschap, String value) {
-        if (firstWhere) {
-            query += " WHERE ";
-            firstWhere = false;
-        } else {
-            query += " AND ";
-        }
-        query += eigenschap + " LIKE ? ";
-        stringValues.put(nextParam, value);
-        nextParam++;
-    }
-
-    public void StartOr() {
-        if (firstWhere) {
-            query += " WHERE ";
-            firstWhere = false;
-        } else {
-            query += " AND ";
-        }
-        query += " (";
-    }
-
-    public void EndOr() {
-        query += ") ";
-    }
-
-    public void AddORString(String eigenschap, String value) {
-        if (!firstOr) {
-            query += " OR ";
-        } else {
-            firstOr = false;
-        }
-        query += eigenschap + " = ? ";
+        //Voegt de value toe aan een map voor later via een veilige manier in de statement te steken
         stringValues.put(nextParam, value);
         nextParam++;
     }
@@ -97,11 +67,57 @@ public class QueryBuilder {
             query += " AND ";
         }
         query += eigenschap + " = ? ";
+
+        //Voegt de value toe aan een map voor later via een veilige manier in de statement te steken
         intValues.put(nextParam, value);
         nextParam++;
     }
 
-    public void AddIsBiggerThen(String eigenschap, int value) {
+    public void AddLIKEString(String eigenschap, String value) {
+        if (firstWhere) {
+            query += " WHERE ";
+            firstWhere = false;
+        } else {
+            query += " AND ";
+        }
+        query += eigenschap + " LIKE ? ";
+
+        //Voegt de value toe aan een map voor later via een veilige manier in de statement te steken
+        stringValues.put(nextParam, value);
+        nextParam++;
+    }
+
+    public void StartOr() {
+        if (firstWhere) {
+            query += " WHERE ";
+            firstWhere = false;
+        } else {
+            query += " AND ";
+        }
+
+        query += " (";
+        firstOr = true;
+    }
+
+    public void EndOr() {
+        query += ") ";
+        firstOr = false;
+    }
+
+    public void AddORString(String eigenschap, String value) {
+        if (!firstOr) {
+            query += " OR ";
+        } else {
+            firstOr = false;
+        }
+        query += eigenschap + " = ? ";
+
+        //Voegt de value toe aan een map voor later via een veilige manier in de statement te steken
+        stringValues.put(nextParam, value);
+        nextParam++;
+    }
+
+    public void AddIsBiggerThan(String eigenschap, int value) {
         if (firstWhere) {
             query += " WHERE ";
             firstWhere = false;
@@ -109,11 +125,13 @@ public class QueryBuilder {
             query += " AND ";
         }
         query += eigenschap + " >= ? ";
+
+        //Voegt de value toe aan een map voor later via een veilige manier in de statement te steken
         intValues.put(nextParam, value);
         nextParam++;
     }
 
-    public void AddIsSmallerThen(String eigenschap, int value) {
+    public void AddIsSmallerThan(String eigenschap, int value) {
         if (firstWhere) {
             query += " WHERE ";
             firstWhere = false;
@@ -121,6 +139,8 @@ public class QueryBuilder {
             query += " AND ";
         }
         query += eigenschap + " <= ? ";
+
+        //Voegt de value toe aan een map voor later via een veilige manier in de statement te steken
         intValues.put(nextParam, value);
         nextParam++;
     }
@@ -129,8 +149,10 @@ public class QueryBuilder {
         PreparedStatement stmt = connection.prepareStatement(query);
 
         for (int i = 1; i < nextParam; i++) {
+            //Indien de parameter thuishoort in de IN, pak een waarde uit de id list
             if (i - 1 < ids.size()) {
                 stmt.setInt(i, ids.get(i - 1));
+                //anders check uit de hashmap
             } else {
                 if (stringValues.containsKey(i)) {
                     stmt.setString(i, stringValues.get(i));

@@ -3,7 +3,6 @@ package plantenApp.java.dao;
 import plantenApp.java.model.*;
 import plantenApp.java.model.data.*;
 import plantenApp.java.model.data.enums.*;
-import plantenApp.java.utils.DaoUtils;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -169,7 +168,7 @@ public class FenotypeDAO implements Queries {
 
     private ArrayList<Integer> filterOnKleur(String eigenschap, MultiComboBoxData permaand, ComboBoxData basic, ArrayList<Integer> ids) throws SQLException {
         ResultSet rs;
-        if (permaand.isDoSearch()&& ids.size() > 0) {
+        if (permaand.isDoSearch() && ids.size() > 0) {
             ArrayList<Integer> localIds = new ArrayList<>();
             QueryBuilder QBM = new QueryBuilder("plant_id", "fenotype_multi");
             String valueToIgnore = "nvt";
@@ -198,7 +197,7 @@ public class FenotypeDAO implements Queries {
                 localIds.add(rs.getInt("plant_id"));
             }
             ids = localIds;
-        } else if (basic.isDoSearch()&& ids.size() > 0) {
+        } else if (basic.isDoSearch() && ids.size() > 0) {
             ArrayList<Integer> localIds = new ArrayList<>();
             QueryBuilder QBM = new QueryBuilder("plant_id", "fenotype_multi");
             String kleur = basic.getValue();
@@ -215,7 +214,6 @@ public class FenotypeDAO implements Queries {
             QBM.AddORString("mei", kleur);
             QBM.AddORString("jun", kleur);
             QBM.AddORString("jul", kleur);
-
             QBM.AddORString("aug", kleur);
             QBM.AddORString("sep", kleur);
             QBM.AddORString("okt", kleur);
@@ -236,7 +234,7 @@ public class FenotypeDAO implements Queries {
 
     public ArrayList<Integer> filterOnHoogte(String minEigenschap, String maxEigenschap, MultiSpinnerData minData, MultiSpinnerData maxData, MultiSpinnerData basicData, ArrayList<Integer> ids) throws SQLException {
         ResultSet rs;
-        if (minData.isDoSearch()&& ids.size() > 0) {
+        if (minData.isDoSearch() && ids.size() > 0) {
             ArrayList<Integer> localIds = new ArrayList<>();
             QueryBuilder QBM = new QueryBuilder("plant_id", "fenotype_multi");
             int valueToIgnore = -1;
@@ -245,18 +243,18 @@ public class FenotypeDAO implements Queries {
 
             QBM.AddBasicString("eigenschap", minEigenschap);
 
-            if (minData.getValue(0) != valueToIgnore) QBM.AddIsBiggerThen("jan", minData.getValue(0));
-            if (minData.getValue(1) != valueToIgnore) QBM.AddIsBiggerThen("feb", minData.getValue(1));
-            if (minData.getValue(2) != valueToIgnore) QBM.AddIsBiggerThen("maa", minData.getValue(2));
-            if (minData.getValue(3) != valueToIgnore) QBM.AddIsBiggerThen("apr", minData.getValue(3));
-            if (minData.getValue(4) != valueToIgnore) QBM.AddIsBiggerThen("mei", minData.getValue(4));
-            if (minData.getValue(5) != valueToIgnore) QBM.AddIsBiggerThen("jun", minData.getValue(5));
-            if (minData.getValue(6) != valueToIgnore) QBM.AddIsBiggerThen("jul", minData.getValue(6));
-            if (minData.getValue(7) != valueToIgnore) QBM.AddIsBiggerThen("aug", minData.getValue(7));
-            if (minData.getValue(8) != valueToIgnore) QBM.AddIsBiggerThen("sep", minData.getValue(8));
-            if (minData.getValue(9) != valueToIgnore) QBM.AddIsBiggerThen("okt", minData.getValue(9));
-            if (minData.getValue(10) != valueToIgnore) QBM.AddIsBiggerThen("nov", minData.getValue(10));
-            if (minData.getValue(11) != valueToIgnore) QBM.AddIsBiggerThen("dec", minData.getValue(11));
+            if (minData.getValue(0) != valueToIgnore) QBM.AddIsBiggerThan("jan", minData.getValue(0));
+            if (minData.getValue(1) != valueToIgnore) QBM.AddIsBiggerThan("feb", minData.getValue(1));
+            if (minData.getValue(2) != valueToIgnore) QBM.AddIsBiggerThan("maa", minData.getValue(2));
+            if (minData.getValue(3) != valueToIgnore) QBM.AddIsBiggerThan("apr", minData.getValue(3));
+            if (minData.getValue(4) != valueToIgnore) QBM.AddIsBiggerThan("mei", minData.getValue(4));
+            if (minData.getValue(5) != valueToIgnore) QBM.AddIsBiggerThan("jun", minData.getValue(5));
+            if (minData.getValue(6) != valueToIgnore) QBM.AddIsBiggerThan("jul", minData.getValue(6));
+            if (minData.getValue(7) != valueToIgnore) QBM.AddIsBiggerThan("aug", minData.getValue(7));
+            if (minData.getValue(8) != valueToIgnore) QBM.AddIsBiggerThan("sep", minData.getValue(8));
+            if (minData.getValue(9) != valueToIgnore) QBM.AddIsBiggerThan("okt", minData.getValue(9));
+            if (minData.getValue(10) != valueToIgnore) QBM.AddIsBiggerThan("nov", minData.getValue(10));
+            if (minData.getValue(11) != valueToIgnore) QBM.AddIsBiggerThan("dec", minData.getValue(11));
 
             System.out.println(QBM.getQuery());
 
@@ -265,7 +263,7 @@ public class FenotypeDAO implements Queries {
                 localIds.add(rs.getInt("plant_id"));
             }
             ids = localIds;
-        } else if (basicData.isDoSearch()&& ids.size() > 0) {
+        } else if (basicData.isDoSearch() && ids.size() > 0) {
             ArrayList<Integer> localIds = new ArrayList<>();
             QueryBuilder QBM = new QueryBuilder("plant_id", "fenotype_multi");
             int valueToIgnore = -1;
@@ -275,18 +273,18 @@ public class FenotypeDAO implements Queries {
 
             QBM.AddBasicString("eigenschap", minEigenschap);
 
-            if (min != valueToIgnore) QBM.AddIsBiggerThen("jan", min);
-            if (min != valueToIgnore) QBM.AddIsBiggerThen("feb", min);
-            if (min != valueToIgnore) QBM.AddIsBiggerThen("maa", min);
-            if (min != valueToIgnore) QBM.AddIsBiggerThen("apr", min);
-            if (min != valueToIgnore) QBM.AddIsBiggerThen("mei", min);
-            if (min != valueToIgnore) QBM.AddIsBiggerThen("jun", min);
-            if (min != valueToIgnore) QBM.AddIsBiggerThen("jul", min);
-            if (min != valueToIgnore) QBM.AddIsBiggerThen("aug", min);
-            if (min != valueToIgnore) QBM.AddIsBiggerThen("sep", min);
-            if (min != valueToIgnore) QBM.AddIsBiggerThen("okt", min);
-            if (min != valueToIgnore) QBM.AddIsBiggerThen("nov", min);
-            if (min != valueToIgnore) QBM.AddIsBiggerThen("dec", min);
+            if (min != valueToIgnore) QBM.AddIsBiggerThan("jan", min);
+            if (min != valueToIgnore) QBM.AddIsBiggerThan("feb", min);
+            if (min != valueToIgnore) QBM.AddIsBiggerThan("maa", min);
+            if (min != valueToIgnore) QBM.AddIsBiggerThan("apr", min);
+            if (min != valueToIgnore) QBM.AddIsBiggerThan("mei", min);
+            if (min != valueToIgnore) QBM.AddIsBiggerThan("jun", min);
+            if (min != valueToIgnore) QBM.AddIsBiggerThan("jul", min);
+            if (min != valueToIgnore) QBM.AddIsBiggerThan("aug", min);
+            if (min != valueToIgnore) QBM.AddIsBiggerThan("sep", min);
+            if (min != valueToIgnore) QBM.AddIsBiggerThan("okt", min);
+            if (min != valueToIgnore) QBM.AddIsBiggerThan("nov", min);
+            if (min != valueToIgnore) QBM.AddIsBiggerThan("dec", min);
 
             System.out.println(QBM.getQuery());
 
@@ -296,7 +294,7 @@ public class FenotypeDAO implements Queries {
             }
             ids = localIds;
         }
-        if (maxData.isDoSearch()&& ids.size() > 0) {
+        if (maxData.isDoSearch() && ids.size() > 0) {
             ArrayList<Integer> localIds = new ArrayList<>();
             QueryBuilder QBM = new QueryBuilder("plant_id", "fenotype_multi");
             int valueToIgnore = -1;
@@ -305,18 +303,18 @@ public class FenotypeDAO implements Queries {
 
             QBM.AddBasicString("eigenschap", maxEigenschap);
 
-            if (maxData.getValue(0) != valueToIgnore) QBM.AddIsSmallerThen("jan", maxData.getValue(0));
-            if (maxData.getValue(1) != valueToIgnore) QBM.AddIsSmallerThen("feb", maxData.getValue(1));
-            if (maxData.getValue(2) != valueToIgnore) QBM.AddIsSmallerThen("maa", maxData.getValue(2));
-            if (maxData.getValue(3) != valueToIgnore) QBM.AddIsSmallerThen("apr", maxData.getValue(3));
-            if (maxData.getValue(4) != valueToIgnore) QBM.AddIsSmallerThen("mei", maxData.getValue(4));
-            if (maxData.getValue(5) != valueToIgnore) QBM.AddIsSmallerThen("jun", maxData.getValue(5));
-            if (maxData.getValue(6) != valueToIgnore) QBM.AddIsSmallerThen("jul", maxData.getValue(6));
-            if (maxData.getValue(7) != valueToIgnore) QBM.AddIsSmallerThen("aug", maxData.getValue(7));
-            if (maxData.getValue(8) != valueToIgnore) QBM.AddIsSmallerThen("sep", maxData.getValue(8));
-            if (maxData.getValue(9) != valueToIgnore) QBM.AddIsSmallerThen("okt", maxData.getValue(9));
-            if (maxData.getValue(10) != valueToIgnore) QBM.AddIsSmallerThen("nov", maxData.getValue(10));
-            if (maxData.getValue(11) != valueToIgnore) QBM.AddIsSmallerThen("dec", maxData.getValue(11));
+            if (maxData.getValue(0) != valueToIgnore) QBM.AddIsSmallerThan("jan", maxData.getValue(0));
+            if (maxData.getValue(1) != valueToIgnore) QBM.AddIsSmallerThan("feb", maxData.getValue(1));
+            if (maxData.getValue(2) != valueToIgnore) QBM.AddIsSmallerThan("maa", maxData.getValue(2));
+            if (maxData.getValue(3) != valueToIgnore) QBM.AddIsSmallerThan("apr", maxData.getValue(3));
+            if (maxData.getValue(4) != valueToIgnore) QBM.AddIsSmallerThan("mei", maxData.getValue(4));
+            if (maxData.getValue(5) != valueToIgnore) QBM.AddIsSmallerThan("jun", maxData.getValue(5));
+            if (maxData.getValue(6) != valueToIgnore) QBM.AddIsSmallerThan("jul", maxData.getValue(6));
+            if (maxData.getValue(7) != valueToIgnore) QBM.AddIsSmallerThan("aug", maxData.getValue(7));
+            if (maxData.getValue(8) != valueToIgnore) QBM.AddIsSmallerThan("sep", maxData.getValue(8));
+            if (maxData.getValue(9) != valueToIgnore) QBM.AddIsSmallerThan("okt", maxData.getValue(9));
+            if (maxData.getValue(10) != valueToIgnore) QBM.AddIsSmallerThan("nov", maxData.getValue(10));
+            if (maxData.getValue(11) != valueToIgnore) QBM.AddIsSmallerThan("dec", maxData.getValue(11));
 
             System.out.println(QBM.getQuery());
 
@@ -325,7 +323,7 @@ public class FenotypeDAO implements Queries {
                 localIds.add(rs.getInt("plant_id"));
             }
             ids = localIds;
-        } else if (basicData.isDoSearch()&& ids.size() > 0) {
+        } else if (basicData.isDoSearch() && ids.size() > 0) {
             ArrayList<Integer> localIds = new ArrayList<>();
             QueryBuilder QBM = new QueryBuilder("plant_id", "fenotype_multi");
             int valueToIgnore = -1;
@@ -335,18 +333,18 @@ public class FenotypeDAO implements Queries {
 
             QBM.AddBasicString("eigenschap", maxEigenschap);
 
-            if (max != valueToIgnore) QBM.AddIsSmallerThen("jan", max);
-            if (max != valueToIgnore) QBM.AddIsSmallerThen("feb", max);
-            if (max != valueToIgnore) QBM.AddIsSmallerThen("maa", max);
-            if (max != valueToIgnore) QBM.AddIsSmallerThen("apr", max);
-            if (max != valueToIgnore) QBM.AddIsSmallerThen("mei", max);
-            if (max != valueToIgnore) QBM.AddIsSmallerThen("jun", max);
-            if (max != valueToIgnore) QBM.AddIsSmallerThen("jul", max);
-            if (max != valueToIgnore) QBM.AddIsSmallerThen("aug", max);
-            if (max != valueToIgnore) QBM.AddIsSmallerThen("sep", max);
-            if (max != valueToIgnore) QBM.AddIsSmallerThen("okt", max);
-            if (max != valueToIgnore) QBM.AddIsSmallerThen("nov", max);
-            if (max != valueToIgnore) QBM.AddIsSmallerThen("dec", max);
+            if (max != valueToIgnore) QBM.AddIsSmallerThan("jan", max);
+            if (max != valueToIgnore) QBM.AddIsSmallerThan("feb", max);
+            if (max != valueToIgnore) QBM.AddIsSmallerThan("maa", max);
+            if (max != valueToIgnore) QBM.AddIsSmallerThan("apr", max);
+            if (max != valueToIgnore) QBM.AddIsSmallerThan("mei", max);
+            if (max != valueToIgnore) QBM.AddIsSmallerThan("jun", max);
+            if (max != valueToIgnore) QBM.AddIsSmallerThan("jul", max);
+            if (max != valueToIgnore) QBM.AddIsSmallerThan("aug", max);
+            if (max != valueToIgnore) QBM.AddIsSmallerThan("sep", max);
+            if (max != valueToIgnore) QBM.AddIsSmallerThan("okt", max);
+            if (max != valueToIgnore) QBM.AddIsSmallerThan("nov", max);
+            if (max != valueToIgnore) QBM.AddIsSmallerThan("dec", max);
 
             System.out.println(QBM.getQuery());
 

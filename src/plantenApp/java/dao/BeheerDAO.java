@@ -113,37 +113,6 @@ public class BeheerDAO implements Queries {
             ids.add(rs.getInt("plant_id"));
         }
 
-        /*
-        //Dao
-
-        //Items
-        ArrayList<Integer> ids = new ArrayList<>();
-
-        //SQLcommand
-        PreparedStatement stmtSelectIdsByBeheer = DaoUtils.ReadyStatement(dbConnection,GETIDSBYBEHEER,plantIds);
-
-        //Behandeling
-        ComboBoxData behandeling = guiData.comboBoxDEM.get(EComboBox.BEHANDELING);
-        stmtSelectIdsByBeheer.setString(plantIds.size()+1 , behandeling.getValue());
-        stmtSelectIdsByBeheer.setInt(plantIds.size() + 2, (behandeling.isDoSearch()) ? 0 : 1);
-
-        //maand
-        ComboBoxData maand = guiData.comboBoxDEM.get(EComboBox.MAAND);
-        stmtSelectIdsByBeheer.setString(plantIds.size() + 3, maand.getValue());
-        stmtSelectIdsByBeheer.setInt(plantIds.size() + 4, (maand.isDoSearch()) ? 0 : 1);
-
-        //perxjaar
-        SpinnerData perXjaar = guiData.spinnerDEM.get(ESpinner.PERXJAAR);
-        stmtSelectIdsByBeheer.setInt(plantIds.size() + 5, perXjaar.getValue());
-        stmtSelectIdsByBeheer.setInt(plantIds.size() + 6, (perXjaar.isDoSearch()) ? 0 : 1);
-
-        ResultSet rs = stmtSelectIdsByBeheer.executeQuery();
-        while (rs.next()) {
-            ids.add(rs.getInt("plant_id"));
-        }
-
-         */
-
         //Output
         return ids;
     }

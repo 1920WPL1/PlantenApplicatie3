@@ -52,7 +52,7 @@ public class Commensalisme {
     public ArrayList<String> getLevensduur() {
         ArrayList<String> levensduur = new ArrayList<>();
         for (int i = 0; i < multiEigenschappen.size(); i++) {
-            if (multiEigenschappen.get(i).getNaam().equals("levenduur_concurrentiekracht")){
+            if (multiEigenschappen.get(i).getNaam().equals("levensduur")){
                 levensduur.add(multiEigenschappen.get(i).getValue());
             }
         }

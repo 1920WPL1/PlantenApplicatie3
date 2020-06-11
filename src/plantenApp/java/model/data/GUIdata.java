@@ -35,7 +35,6 @@ public class GUIdata {
 
 
     public GUIdata(Connection dbConnection) throws SQLException {
-        //TODO verander naamgeving van enum values array naar iets anders als a,b,c,...
         //Initialize all dataclasses depending on the enum classes
         EFoto[] eFotos = EFoto.values();
         for (EFoto eFoto : eFotos) {
@@ -77,8 +76,6 @@ public class GUIdata {
         for (ERadiogroup eRadiogroup : eRadiogroups) {
             radiogroupDEM.put(eRadiogroup, new RadiogroupData());
         }
-
-        //Set the values for specific data objects
 
         //Set the mins and max values of the spinners
         spinnerDEM.get(ESpinner.PERXJAAR).setSpinnerMinMaxValue(0, 200);
