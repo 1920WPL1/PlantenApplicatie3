@@ -160,18 +160,18 @@ public interface Queries {
                     "WHERE plant_id IN (?) " +
                     "AND eigenschap = ? " +
                     "AND " +
-                    "((jan BETWEEN ? AND ?) " +
-                    "OR (feb BETWEEN ? AND ?) " +
-                    "OR (maa BETWEEN ? AND ?) " +
-                    "OR (apr BETWEEN ? AND ?) " +
-                    "OR (mei BETWEEN ? AND ?) " +
-                    "OR (jun BETWEEN ? AND ?) " +
-                    "OR (jul BETWEEN ? AND ?) " +
-                    "OR (aug BETWEEN ? AND ?) " +
-                    "OR (sep BETWEEN ? AND ?) " +
-                    "OR (okt BETWEEN ? AND ?) " +
-                    "OR (nov BETWEEN ? AND ?) " +
-                    "OR (dec BETWEEN ? AND ?)) ";
+                    "(jan BETWEEN ? AND ?) " +
+                    "AND (feb BETWEEN ? AND ?) " +
+                    "AND (maa BETWEEN ? AND ?) " +
+                    "AND (apr BETWEEN ? AND ?) " +
+                    "AND (mei BETWEEN ? AND ?) " +
+                    "AND (jun BETWEEN ? AND ?) " +
+                    "AND (jul BETWEEN ? AND ?) " +
+                    "AND (aug BETWEEN ? AND ?) " +
+                    "AND (sep BETWEEN ? AND ?) " +
+                    "AND (okt BETWEEN ? AND ?) " +
+                    "AND (nov BETWEEN ? AND ?) " +
+                    "AND (dec BETWEEN ? AND ?) ";
     String GETIDSBYBEHEER =
             "SELECT plant_id FROM beheer_multi " +
                     "WHERE plant_id IN (?) " +
