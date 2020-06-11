@@ -382,20 +382,7 @@ public class Controller {
     public ImageView imgBloeiwijze_7;
     public ImageView imgBloeiwijze_8;
     public ToggleGroup tglLevensvorm;
-    public ComboBox cboBeheer;
-    public Label lblFrequentie;
-    public CheckBox chkBeheerJan;
-    public CheckBox chkBeheerFeb;
-    public CheckBox chkBeheerMaa;
-    public CheckBox chkBeheerApr;
-    public CheckBox chkBeheerMei;
-    public CheckBox chkBeheerJun;
-    public CheckBox chkBeheerJul;
-    public CheckBox chkBeheerAug;
-    public CheckBox chkBeheerSep;
-    public CheckBox chkBeheerOkt;
-    public CheckBox chkBeheerNov;
-    public CheckBox chkBeheerDec;
+
     public ListView lsvBeheer;
     //endregion
 
@@ -411,13 +398,9 @@ public class Controller {
         InfoTablesDAO infotablesDAO = new InfoTablesDAO(dbConnection);
         infoTables = infotablesDAO.getInfoTables();
         handler = new SearchHandler(dbConnection);
-
-
-
         guiData = new GUIdata(dbConnection);
         //region bindings
         guiData.textFieldDEM.get(ETextfield.SEARCH).Bind(txtSearch);
-
         guiData.comboBoxDEM.get(EComboBox.TYPE).Bind(chkType, cboType);
         guiData.comboBoxDEM.get(EComboBox.FAMILIE).Bind(chkFamilie, cboFamilie);
         guiData.comboBoxDEM.get(EComboBox.GESLACHT).Bind(chkGeslacht, cboGeslacht);
@@ -664,12 +647,15 @@ public class Controller {
                     if(newValue.getFoto().getFotos().size()!=0) {
                         for (int i = 0; i < newValue.getFoto().getFotos().size(); i++) {
                             switch (newValue.getFoto().getFotos().get(i).getEigenschap()) {
-                                case "habitus":
-                                    imgHabitus.setImage(new Image(newValue.getFoto().getFotos().get(i).getImage().getBinaryStream()));
                                 case "bloei":
+                                    imgHabitus.setImage(new Image(newValue.getFoto().getFotos().get(i).getImage().getBinaryStream()));
+                                    break;
+                                case "habitus":
                                     imgBloei.setImage(new Image(newValue.getFoto().getFotos().get(i).getImage().getBinaryStream()));
+                                    break;
                                 case "blad":
                                     imgBlad.setImage(new Image(newValue.getFoto().getFotos().get(i).getImage().getBinaryStream()));
+                                    break;
                             }
                         }
                     } else {
@@ -721,18 +707,7 @@ public class Controller {
         window.setScene(scene);
         window.show();
 
-        /*
-        FileChooser fileChooser = new FileChooser();
-        fileChooser.getExtensionFilters().addAll(
-                new FileChooser.ExtensionFilter("Image Files", "*.png", "*.jpg", "*.gif")
-        );
-        File selectedFile = fileChooser.showOpenDialog(lblBezonning.getScene().getWindow());
-        System.out.println(selectedFile);
 
-        byte[] blob = convertFileContentToBlob(selectedFile.getPath());
-        FotoDAO fotoDAO = new FotoDAO(dbConnection);
-        fotoDAO.InsertFoto("smalle pluim", blob);
-         */
     }
 
     public static byte[] convertFileContentToBlob(String filePath) throws IOException {
