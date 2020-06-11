@@ -207,6 +207,7 @@ public class FenotypeDAO implements Queries {
 
             QBM.AddBasicString("eigenschap", eigenschap);
 
+            QBM.StartOr();
             QBM.AddORString("jan", kleur);
             QBM.AddORString("feb", kleur);
             QBM.AddORString("maa", kleur);
@@ -214,11 +215,13 @@ public class FenotypeDAO implements Queries {
             QBM.AddORString("mei", kleur);
             QBM.AddORString("jun", kleur);
             QBM.AddORString("jul", kleur);
+
             QBM.AddORString("aug", kleur);
             QBM.AddORString("sep", kleur);
             QBM.AddORString("okt", kleur);
             QBM.AddORString("nov", kleur);
             QBM.AddORString("dec", kleur);
+            QBM.EndOr();
 
             System.out.println(QBM.getQuery());
 

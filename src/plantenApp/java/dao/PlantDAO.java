@@ -161,8 +161,8 @@ public class PlantDAO implements Queries {
         if (familie.isDoSearch()) QB.AddBasicString("familie", familie.getValue());
         if (geslacht.isDoSearch()) QB.AddBasicString("geslacht", geslacht.getValue());
         if (soort.isDoSearch()) QB.AddBasicString("soort", soort.getValue());
-        if (variant.isDoSearch()) QB.AddBasicString("variant", soort.getValue());
-        if (fgsv.isDoSearch()) QB.AddBasicString("variant", "%" + fgsv.getValue() + "%");
+        if (variant.isDoSearch()) QB.AddBasicString("variatie", soort.getValue());
+        if (fgsv.isDoSearch()) QB.AddLIKEString("fgsv", "%" + fgsv.getValue() + "%");
 
         System.out.println(QB.getQuery());
 

@@ -8,6 +8,7 @@ import java.util.HashMap;
 
 public class QueryBuilder {
     private Boolean firstWhere = true;
+    private Boolean firstOr = true;
     private String query = "";
     private int nextParam = 1;
     private ArrayList<Integer> ids = new ArrayList<>();
@@ -51,12 +52,37 @@ public class QueryBuilder {
         nextParam++;
     }
 
-    public void AddORString(String eigenschap, String value) {
+    public void AddLIKEString(String eigenschap, String value) {
         if (firstWhere) {
             query += " WHERE ";
             firstWhere = false;
         } else {
+            query += " AND ";
+        }
+        query += eigenschap + " LIKE ? ";
+        stringValues.put(nextParam, value);
+        nextParam++;
+    }
+
+    public void StartOr() {
+        if (firstWhere) {
+            query += " WHERE ";
+            firstWhere = false;
+        } else {
+            query += " AND ";
+        }
+        query += " (";
+    }
+
+    public void EndOr() {
+        query += ") ";
+    }
+
+    public void AddORString(String eigenschap, String value) {
+        if (!firstOr) {
             query += " OR ";
+        } else {
+            firstOr = false;
         }
         query += eigenschap + " = ? ";
         stringValues.put(nextParam, value);

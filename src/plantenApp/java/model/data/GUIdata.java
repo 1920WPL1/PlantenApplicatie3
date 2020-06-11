@@ -131,8 +131,10 @@ public class GUIdata {
         comboBoxDEM.get(EComboBox.BLOEIKLEUR).setPossibleValues(infoTables.getKleuren());
         comboBoxDEM.get(EComboBox.BLADVORM).setPossibleValues(infoTables.getBladvormen());
         comboBoxDEM.get(EComboBox.BEHANDELING).setPossibleValues(infoTables.getBeheerdaden());
-        multiComboBoxDEM.get(EMultiComboBox.BLOEIKLEURPERMAAND).setPossibleValues(infoTables.getKleuren());
-        multiComboBoxDEM.get(EMultiComboBox.BLADKLEURPERMAAND).setPossibleValues(infoTables.getKleuren());
+        ArrayList<String> kleurenMetNvt = infoTables.getKleuren();
+        kleurenMetNvt.add("nvt");
+        multiComboBoxDEM.get(EMultiComboBox.BLOEIKLEURPERMAAND).setPossibleValues(kleurenMetNvt);
+        multiComboBoxDEM.get(EMultiComboBox.BLADKLEURPERMAAND).setPossibleValues(kleurenMetNvt);
 
         //Fills the radio button
         radiogroupDEM.get(ERadiogroup.BIJVRIENDELIJK).setCorrespondingValues(new ArrayList<>() {{
