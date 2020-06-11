@@ -22,13 +22,11 @@ public class PlantDAO implements Queries {
 
     private Connection dbConnection;
     private PreparedStatement stmtSelectById;
-    private PreparedStatement stmtSelectIdsByPlant;
 
     public PlantDAO(Connection dbConnection) throws SQLException {
         this.dbConnection = dbConnection;
 
         stmtSelectById = dbConnection.prepareStatement(GETPLANTBYID);
-        stmtSelectIdsByPlant = dbConnection.prepareStatement(GETIDSBYPLANT);
     }
 
     //region GET
@@ -148,6 +146,33 @@ public class PlantDAO implements Queries {
     //region FILTER
 
     public ArrayList<Integer> FilterOn(GUIdata guiData) throws SQLException {
+        ArrayList<Integer> ids = new ArrayList<>();
+
+        ComboBoxData type = guiData.comboBoxDEM.get(EComboBox.TYPE);
+        ComboBoxData familie = guiData.comboBoxDEM.get(EComboBox.FAMILIE);
+        ComboBoxData geslacht = guiData.comboBoxDEM.get(EComboBox.GESLACHT);
+        ComboBoxData soort = guiData.comboBoxDEM.get(EComboBox.SOORT);
+        ComboBoxData variant = guiData.comboBoxDEM.get(EComboBox.VARIANT);
+        TextfieldData fgsv = guiData.textFieldDEM.get(ETextfield.SEARCH);
+
+        QueryBuilder QB = new QueryBuilder("plant_id", "plant");
+
+        if (type.isDoSearch()) QB.AddBasicString("planttype", type.getValue());
+        if (familie.isDoSearch()) QB.AddBasicString("familie", familie.getValue());
+        if (geslacht.isDoSearch()) QB.AddBasicString("geslacht", geslacht.getValue());
+        if (soort.isDoSearch()) QB.AddBasicString("soort", soort.getValue());
+        if (variant.isDoSearch()) QB.AddBasicString("variant", soort.getValue());
+        if (fgsv.isDoSearch()) QB.AddBasicString("variant", "%" + fgsv.getValue() + "%");
+
+        System.out.println(QB.getQuery());
+
+        ResultSet rs = QB.PrepareStatement(dbConnection).executeQuery();
+        while (rs.next()) {
+            ids.add(rs.getInt("plant_id"));
+        }
+
+
+        /*
         //Dao
 
         //Items
@@ -183,10 +208,14 @@ public class PlantDAO implements Queries {
         stmtSelectIdsByPlant.setString(11, "%" + fgsv.getValue() + "%");
         stmtSelectIdsByPlant.setInt(12, (fgsv.isDoSearch()) ? 0 : 1);
 
+
+
         ResultSet rs = stmtSelectIdsByPlant.executeQuery();
         while (rs.next()) {
             ids.add(rs.getInt("plant_id"));
         }
+
+         */
 
         //Output
         return ids;

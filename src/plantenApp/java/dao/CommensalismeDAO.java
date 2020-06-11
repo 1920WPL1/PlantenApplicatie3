@@ -1,13 +1,11 @@
 package plantenApp.java.dao;
 
 import plantenApp.java.model.*;
-import plantenApp.java.model.data.ComboBoxData;
-import plantenApp.java.model.data.GUIdata;
-import plantenApp.java.model.data.MultiCheckboxData;
-import plantenApp.java.model.data.RadiogroupData;
+import plantenApp.java.model.data.*;
 import plantenApp.java.model.data.enums.EComboBox;
 import plantenApp.java.model.data.enums.EMultiCheckbox;
 import plantenApp.java.model.data.enums.ERadiogroup;
+import plantenApp.java.model.data.enums.ESliderLabel;
 import plantenApp.java.utils.DaoUtils;
 
 import java.sql.Connection;
@@ -23,14 +21,12 @@ public class CommensalismeDAO implements Queries {
     private Connection dbConnection;
     private PreparedStatement stmtSelectCommeByID;
     private PreparedStatement stmtSelectCommeMultiByID;
-    private PreparedStatement stmtSelectIdsByCommMulti;
 
     public CommensalismeDAO(Connection dbConnection) throws SQLException {
         this.dbConnection = dbConnection;
 
         stmtSelectCommeByID = dbConnection.prepareStatement(GETCOMMENSALISMEBYPLANTID);
         stmtSelectCommeMultiByID = dbConnection.prepareStatement(GETCOMMENSALISMEMULTIBYPLANTID);
-        stmtSelectIdsByCommMulti = dbConnection.prepareStatement(GETIDSBYCOMMMULTI);
     }
 
     //region GET
@@ -96,11 +92,32 @@ public class CommensalismeDAO implements Queries {
     //region FILTER
 
     /**
-     * @param plantIds    -> The ids that need to be filtered
+     * @param plantIds -> The ids that need to be filtered
      * @return The filtered ids
      * @author Siebe
      */
     public ArrayList<Integer> FilterOn(ArrayList<Integer> plantIds, GUIdata guIdata) throws SQLException {
+        ArrayList<Integer> ids = new ArrayList<>();
+
+        RadiogroupData strategie = guIdata.radiogroupDEM.get(ERadiogroup.STRATEGIE);
+        ComboBoxData ontwikkelingssnelheid = guIdata.comboBoxDEM.get(EComboBox.ONTWIKKELINGSSNELHEID);
+
+        QueryBuilder QB = new QueryBuilder("plant_id", "commensalisme");
+
+        QB.AddIN("plant_id", plantIds);
+
+        if (strategie.isDoSearch()) QB.AddBasicString("strategie", strategie.getActualValue());
+        if (ontwikkelingssnelheid.isDoSearch())
+            QB.AddBasicString("ontwikkelingssnelheid", ontwikkelingssnelheid.getValue());
+
+        System.out.println(QB.getQuery());
+
+        ResultSet rs = QB.PrepareStatement(dbConnection).executeQuery();
+        while (rs.next()) {
+            ids.add(rs.getInt("plant_id"));
+        }
+
+        /*
         //Dao
 
         //Items
@@ -124,13 +141,29 @@ public class CommensalismeDAO implements Queries {
             ids.add(rs.getInt("plant_id"));
         }
 
+         */
+
         //Multi
-        //TODO redo zoeken op sociabiliteit, momenteel word er niet gezocht op de waardes die niet aanstaan mss onmogelijk door DB
+
         MultiCheckboxData sociabiliteit = guIdata.multiCheckboxDEM.get(EMultiCheckbox.SOCIABILITEIT);
         if (sociabiliteit.isDoSearch()) {
             for (int i = 0; i < sociabiliteit.Length(); i++) {
                 if (sociabiliteit.getValue(i)) {
-                    ids = FilterOnMulti("sociabiliteit", i + 1 + "", ids);
+                    ArrayList<Integer> localIds = new ArrayList<>();
+                    QueryBuilder QBM = new QueryBuilder("plant_id", "commensalisme_multi");
+
+                    QBM.AddIN("plant_id", plantIds);
+
+                    QBM.AddBasicString("eigenschap", "sociabiliteit");
+                    QBM.AddBasicInt("waarde", i + 1);
+
+                    System.out.println(QBM.getQuery());
+
+                    rs = QBM.PrepareStatement(dbConnection).executeQuery();
+                    while (rs.next()) {
+                        localIds.add(rs.getInt("plant_id"));
+                    }
+                    ids = localIds;
                 }
             }
         }
@@ -138,37 +171,4 @@ public class CommensalismeDAO implements Queries {
         //Output
         return ids;
     }
-
-    /**
-     * @param eigenschap -> name of the property to filter on
-     * @param value      -> value that the property should have
-     * @param plantIds   -> The ids that need to be filtered
-     * @return The filtered ids
-     * @author Siebe
-     */
-    private ArrayList<Integer> FilterOnMulti(String eigenschap, String value, ArrayList<Integer> plantIds) throws SQLException {
-        //Dao
-
-        //Items
-        ArrayList<Integer> ids = new ArrayList<>();
-
-        //makes the prepared statement en fills in de IN (?)
-        PreparedStatement stmtSelectIdsByCommMulti = DaoUtils.ReadyStatement(dbConnection, GETIDSBYCOMMMULTI, plantIds);
-
-        //SQLcommand
-        stmtSelectIdsByCommMulti.setString(plantIds.size() + 1, eigenschap);
-
-        stmtSelectIdsByCommMulti.setString(plantIds.size() + 2, value);
-
-        ResultSet rs = stmtSelectIdsByCommMulti.executeQuery();
-        while (rs.next()) {
-            ids.add(rs.getInt("plant_id"));
-        }
-
-        //Output
-        return ids;
-    }
-
-    //endregion
 }
-

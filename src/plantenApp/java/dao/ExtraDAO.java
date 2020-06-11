@@ -1,9 +1,11 @@
 package plantenApp.java.dao;
 
 import plantenApp.java.model.*;
+import plantenApp.java.model.data.ComboBoxData;
 import plantenApp.java.model.data.GUIdata;
 import plantenApp.java.model.data.RadiogroupData;
 import plantenApp.java.model.data.SliderLabelData;
+import plantenApp.java.model.data.enums.EComboBox;
 import plantenApp.java.model.data.enums.ERadiogroup;
 import plantenApp.java.model.data.enums.ESliderLabel;
 import plantenApp.java.utils.DaoUtils;
@@ -73,6 +75,38 @@ public class ExtraDAO implements Queries {
      * @return The filtered ids
      */
     public ArrayList<Integer> FilterOn(ArrayList<Integer> plantIds, GUIdata guiData) throws SQLException {
+        ArrayList<Integer> ids = new ArrayList<>();
+
+        SliderLabelData nectarwaarde = guiData.sliderLabelDEM.get(ESliderLabel.NECTARWAARDE);
+        SliderLabelData pollenwaarde = guiData.sliderLabelDEM.get(ESliderLabel.POLLENWAARDE);
+        RadiogroupData vlindervriendelijk = guiData.radiogroupDEM.get(ERadiogroup.VLINDERVRIENDELIJK);
+        RadiogroupData bijvriendelijk = guiData.radiogroupDEM.get(ERadiogroup.BIJVRIENDELIJK);
+        RadiogroupData eetbaar = guiData.radiogroupDEM.get(ERadiogroup.EETBAAR);
+        RadiogroupData kruidgebruik = guiData.radiogroupDEM.get(ERadiogroup.KRUIDGEBRUIK);
+        RadiogroupData geurend = guiData.radiogroupDEM.get(ERadiogroup.GEUREND);
+        RadiogroupData vorstgevoelig = guiData.radiogroupDEM.get(ERadiogroup.VORSTGEVOELIG);
+
+        QueryBuilder QB = new QueryBuilder("plant_id", "extra");
+
+        QB.AddIN("plant_id",plantIds);
+
+        if (nectarwaarde.isDoSearch()) QB.AddBasicInt("nectarwaarde", nectarwaarde.getValue());
+        if (pollenwaarde.isDoSearch()) QB.AddBasicInt("pollenwaarde", pollenwaarde.getValue());
+        if (vlindervriendelijk.isDoSearch()) QB.AddBasicString("vlindervriendelijk", vlindervriendelijk.getActualValue());
+        if (bijvriendelijk.isDoSearch()) QB.AddBasicString("bijvriendelijk", bijvriendelijk.getActualValue());
+        if (eetbaar.isDoSearch()) QB.AddBasicString("eetbaar", eetbaar.getActualValue());
+        if (kruidgebruik.isDoSearch()) QB.AddBasicString("kruidgebruik", kruidgebruik.getActualValue());
+        if (geurend.isDoSearch()) QB.AddBasicString("geurend", geurend.getActualValue());
+        if (vorstgevoelig.isDoSearch()) QB.AddBasicString("vorstgevoelig", vorstgevoelig.getActualValue());
+
+        System.out.println(QB.getQuery());
+
+        ResultSet rs = QB.PrepareStatement(dbConnection).executeQuery();
+        while (rs.next()) {
+            ids.add(rs.getInt("plant_id"));
+        }
+
+        /*
         //Dao
 
         //Items
@@ -126,6 +160,8 @@ public class ExtraDAO implements Queries {
         while (rs.next()) {
             ids.add(rs.getInt("plant_id"));
         }
+
+         */
 
 
 

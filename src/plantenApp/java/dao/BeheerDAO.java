@@ -4,8 +4,10 @@ import plantenApp.java.model.*;
 import plantenApp.java.model.data.ComboBoxData;
 import plantenApp.java.model.data.GUIdata;
 import plantenApp.java.model.data.SpinnerData;
+import plantenApp.java.model.data.TextfieldData;
 import plantenApp.java.model.data.enums.EComboBox;
 import plantenApp.java.model.data.enums.ESpinner;
+import plantenApp.java.model.data.enums.ETextfield;
 import plantenApp.java.utils.DaoUtils;
 
 import java.sql.Connection;
@@ -90,6 +92,28 @@ public class BeheerDAO implements Queries {
      * @return The filtered ids
      */
     public ArrayList<Integer> FilterOn(ArrayList<Integer> plantIds, GUIdata guiData) throws SQLException {
+        ArrayList<Integer> ids = new ArrayList<>();
+
+        ComboBoxData behandeling = guiData.comboBoxDEM.get(EComboBox.BEHANDELING);
+        ComboBoxData maand = guiData.comboBoxDEM.get(EComboBox.MAAND);
+        SpinnerData perXjaar = guiData.spinnerDEM.get(ESpinner.PERXJAAR);
+
+        QueryBuilder QB = new QueryBuilder("plant_id", "beheer_multi");
+
+        QB.AddIN("plant_id",plantIds);
+
+        if (behandeling.isDoSearch()) QB.AddBasicString("beheerdaad", behandeling.getValue());
+        if (maand.isDoSearch()) QB.AddBasicString("maand", maand.getValue());
+        if (perXjaar.isDoSearch()) QB.AddBasicInt("frequentie_jaar", perXjaar.getValue());
+
+        System.out.println(QB.getQuery());
+
+        ResultSet rs = QB.PrepareStatement(dbConnection).executeQuery();
+        while (rs.next()) {
+            ids.add(rs.getInt("plant_id"));
+        }
+
+        /*
         //Dao
 
         //Items
@@ -117,6 +141,8 @@ public class BeheerDAO implements Queries {
         while (rs.next()) {
             ids.add(rs.getInt("plant_id"));
         }
+
+         */
 
         //Output
         return ids;

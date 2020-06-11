@@ -2,11 +2,16 @@ package plantenApp;
 
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
 import javafx.stage.FileChooser;
+import javafx.stage.Stage;
 import plantenApp.java.dao.Database;
 import plantenApp.java.dao.FotoDAO;
 import plantenApp.java.dao.InfoTablesDAO;
@@ -529,34 +534,29 @@ public class Controller {
                     lblDichtheidY.setText(String.valueOf(newValue.getMaxPlantdichtheid()));
 
                     //commensalisme
-                    //TODO fix this
                     lblOntwikkelingsSnelheid.setText(newValue.getCommensalisme().getOntwikkelingssnelheid());
-                    System.out.println(newValue.getCommensalisme().getSociabiliteit().toString());
+                    chkSocPlantI.setSelected(false);
+                    chkSocPlantII.setSelected(false);
+                    chkSocPlantIII.setSelected(false);
+                    chkSocPlantIV.setSelected(false);
+                    chkSocPlantV.setSelected(false);
                     for (int i = 0; i < newValue.getCommensalisme().getSociabiliteit().size(); i++) {
-                        if (newValue.getCommensalisme().getSociabiliteit().get(i) == 1) {
-                            chkSocPlantI.setSelected(true);
-                        } else {
-                            chkSocPlantI.setSelected(false);
-                        }
-                        if (newValue.getCommensalisme().getSociabiliteit().get(i) == 2) {
-                            chkSocPlantII.setSelected(true);
-                        } else {
-                            chkSocPlantII.setSelected(false);
-                        }
-                        if (newValue.getCommensalisme().getSociabiliteit().get(i) == 3) {
-                            chkSocPlantIII.setSelected(true);
-                        } else {
-                            chkSocPlantIII.setSelected(false);
-                        }
-                        if (newValue.getCommensalisme().getSociabiliteit().get(i) == 4) {
-                            chkSocPlantIV.setSelected(true);
-                        } else {
-                            chkSocPlantIV.setSelected(false);
-                        }
-                        if (newValue.getCommensalisme().getSociabiliteit().get(i) == 5) {
-                            chkSocPlantV.setSelected(true);
-                        } else {
-                            chkSocPlantV.setSelected(false);
+                        switch (newValue.getCommensalisme().getSociabiliteit().get(i)){
+                            case (1):
+                                chkSocPlantI.setSelected(true);
+                                break;
+                            case (2):
+                                chkSocPlantII.setSelected(true);
+                                break;
+                            case (3):
+                                chkSocPlantIII.setSelected(true);
+                                break;
+                            case (4):
+                                chkSocPlantIV.setSelected(true);
+                                break;
+                            case (5):
+                                chkSocPlantV.setSelected(true);
+                                break;
                         }
                     }
                     lblStrategie.setText(newValue.getCommensalisme().getStrategie());
@@ -693,7 +693,7 @@ public class Controller {
     }
 
     public void click_WijzigPlant(MouseEvent mouseEvent) throws IOException, SQLException {
-        /*
+
         FXMLLoader loader = new FXMLLoader(getClass().getResource("view/PlantWijzigen.fxml"));
         Parent root = loader.load();
         Scene scene = new Scene(root);
@@ -702,8 +702,6 @@ public class Controller {
         Controller controller = loader.getController(); //naam van de controller waar je naar toe wil
         window.setScene(scene);
         window.show();
-
-         */
 
         /*
         FileChooser fileChooser = new FileChooser();

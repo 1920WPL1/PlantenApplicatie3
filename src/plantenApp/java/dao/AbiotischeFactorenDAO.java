@@ -1,13 +1,11 @@
 package plantenApp.java.dao;
 
 import plantenApp.java.model.*;
-import plantenApp.java.model.data.CombinedCheckboxData;
-import plantenApp.java.model.data.ComboBoxData;
-import plantenApp.java.model.data.GUIdata;
-import plantenApp.java.model.data.SliderLabelData;
+import plantenApp.java.model.data.*;
 import plantenApp.java.model.data.enums.EComCheckbox;
 import plantenApp.java.model.data.enums.EComboBox;
 import plantenApp.java.model.data.enums.ESliderLabel;
+import plantenApp.java.model.data.enums.ESpinner;
 import plantenApp.java.utils.DaoUtils;
 
 import java.sql.*;
@@ -20,14 +18,12 @@ public class AbiotischeFactorenDAO implements Queries {
     private Connection dbConnection;
     private PreparedStatement stmtSelectAbioByID;
     private PreparedStatement stmtSelectAbioMultiByID;
-    private PreparedStatement stmtSelectIdsByAbioMulti;
 
     public AbiotischeFactorenDAO(Connection dbConnection) throws SQLException {
         this.dbConnection = dbConnection;
 
         stmtSelectAbioByID = dbConnection.prepareStatement(GETABIOTISCHBYPLANTID);
         stmtSelectAbioMultiByID = dbConnection.prepareStatement(GETABIOTISCHBMULTIYPLANTID);
-        stmtSelectIdsByAbioMulti = dbConnection.prepareStatement(GETIDSBYABIOMULTI);
     }
 
     //region GET
@@ -101,6 +97,32 @@ public class AbiotischeFactorenDAO implements Queries {
      * @return The filtered ids
      */
     public ArrayList<Integer> FilterOn(ArrayList<Integer> plantIds, GUIdata guiData) throws SQLException {
+        ArrayList<Integer> ids = new ArrayList<>();
+
+        SliderLabelData bezonning = guiData.sliderLabelDEM.get(ESliderLabel.BEZONNING);
+        CombinedCheckboxData grondsoort = guiData.combinedCheckboxDEM.get(EComCheckbox.GRONDSOORT);
+        SliderLabelData vochtbehoefte = guiData.sliderLabelDEM.get(ESliderLabel.VOCHTBEHOEFTE);
+        SliderLabelData voedingsbehoefte = guiData.sliderLabelDEM.get(ESliderLabel.VOEDINGSBEHOEFTE);
+        ComboBoxData reactieantaomgeving = guiData.comboBoxDEM.get(EComboBox.REACTIEANTAGONISTISCHEOMGEVING);
+
+        QueryBuilder QB = new QueryBuilder("plant_id", "abiotische_factoren");
+
+        QB.AddIN("plant_id",plantIds);
+
+        if (bezonning.isDoSearch()) QB.AddBasicString("bezonning", bezonning.getActualValue());
+        if (grondsoort.isDoSearch()) QB.AddBasicString("grondsoort", grondsoort.getActualValue());
+        if (vochtbehoefte.isDoSearch()) QB.AddBasicString("vochtbehoefte", vochtbehoefte.getActualValue());
+        if (voedingsbehoefte.isDoSearch()) QB.AddBasicString("voedingsbehoefte", voedingsbehoefte.getActualValue());
+        if (reactieantaomgeving.isDoSearch()) QB.AddBasicString("reactie_antagonistische_omg", reactieantaomgeving.getValue());
+
+        System.out.println(QB.getQuery());
+
+        ResultSet rs = QB.PrepareStatement(dbConnection).executeQuery();
+        while (rs.next()) {
+            ids.add(rs.getInt("plant_id"));
+        }
+
+        /*
         //Dao
 
         //Items
@@ -139,40 +161,26 @@ public class AbiotischeFactorenDAO implements Queries {
             ids.add(rs.getInt("plant_id"));
         }
 
+         */
+
         //habitat
         ComboBoxData habitat = guiData.comboBoxDEM.get(EComboBox.HABITAT);
         if (habitat.isDoSearch()) {
-            ids = FilterOnMulti("habitat", habitat.getValue(), ids);
-        }
+            ArrayList<Integer> localIds = new ArrayList<>();
+            QueryBuilder QBM = new QueryBuilder("plant_id", "abiotisch_multi");
 
-        //Output
-        return ids;
-    }
+            QBM.AddIN("plant_id", plantIds);
 
-    /**
-     * @author Siebe
-     * @param eigenschap -> name of the property to filter on
-     * @param value -> value that the property should have
-     * @param plantIds -> The ids that need to be filtered
-     * @return The filtered ids
-     */
-    private ArrayList<Integer> FilterOnMulti(String eigenschap, String value, ArrayList<Integer> plantIds) throws SQLException {
-        //Dao
+            QBM.AddBasicString("eigenschap", "Habitat");
+            QBM.AddBasicString("waarde", habitat.getValue());
 
-        //Items
-        ArrayList<Integer> ids = new ArrayList<>();
+            System.out.println(QBM.getQuery());
 
-        //makes the prepared statement en fills in de IN (?)
-        PreparedStatement stmtSelectIdsByAbioMulti = DaoUtils.ReadyStatement(dbConnection, GETIDSBYABIOMULTI, plantIds);
-
-        //SQLcommand
-        stmtSelectIdsByAbioMulti.setString(plantIds.size() + 1, eigenschap);
-
-        stmtSelectIdsByAbioMulti.setString(plantIds.size() + 2, value);
-
-        ResultSet rs = stmtSelectIdsByAbioMulti.executeQuery();
-        while (rs.next()) {
-            ids.add(rs.getInt("plant_id"));
+            rs = QBM.PrepareStatement(dbConnection).executeQuery();
+            while (rs.next()) {
+                localIds.add(rs.getInt("plant_id"));
+            }
+            ids = localIds;
         }
 
         //Output
