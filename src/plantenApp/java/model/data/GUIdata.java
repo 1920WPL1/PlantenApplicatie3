@@ -37,44 +37,44 @@ public class GUIdata {
     public GUIdata(Connection dbConnection) throws SQLException {
         //TODO verander naamgeving van enum values array naar iets anders als a,b,c,...
         //Initialize all dataclasses depending on the enum classes
-        EFoto[] y = EFoto.values();
-        for (EFoto eFoto : y) {
+        EFoto[] eFotos = EFoto.values();
+        for (EFoto eFoto : eFotos) {
             fotoDEM.put(eFoto, new FotoData());
         }
-        ETextfield[] z = ETextfield.values();
-        for (ETextfield eTextfield : z) {
+        ETextfield[] eTextfields = ETextfield.values();
+        for (ETextfield eTextfield : eTextfields) {
             textFieldDEM.put(eTextfield, new TextfieldData());
         }
-        EComboBox[] a = EComboBox.values();
-        for (EComboBox eComboBox : a) {
+        EComboBox[] eComboBoxes = EComboBox.values();
+        for (EComboBox eComboBox : eComboBoxes) {
             comboBoxDEM.put(eComboBox, new ComboBoxData());
         }
-        EMultiComboBox[] b = EMultiComboBox.values();
-        for (EMultiComboBox eMultiComboBox : b) {
+        EMultiComboBox[] eMultiComboBoxes = EMultiComboBox.values();
+        for (EMultiComboBox eMultiComboBox : eMultiComboBoxes) {
             multiComboBoxDEM.put(eMultiComboBox, new MultiComboBoxData());
         }
-        ESliderLabel[] c = ESliderLabel.values();
-        for (ESliderLabel eSliderLabel : c) {
+        ESliderLabel[] eSliderLabels = ESliderLabel.values();
+        for (ESliderLabel eSliderLabel : eSliderLabels) {
             sliderLabelDEM.put(eSliderLabel, new SliderLabelData());
         }
-        ESpinner[] d = ESpinner.values();
-        for (ESpinner eSpinner : d) {
+        ESpinner[] eSpinners = ESpinner.values();
+        for (ESpinner eSpinner : eSpinners) {
             spinnerDEM.put(eSpinner, new SpinnerData());
         }
-        EMultiSpinner[] e = EMultiSpinner.values();
-        for (EMultiSpinner eMultiSpinner : e) {
+        EMultiSpinner[] eMultiSpinners = EMultiSpinner.values();
+        for (EMultiSpinner eMultiSpinner : eMultiSpinners) {
             multiSpinnerDEM.put(eMultiSpinner, new MultiSpinnerData());
         }
-        EMultiCheckbox[] g = EMultiCheckbox.values();
-        for (EMultiCheckbox eMultiCheckbox : g) {
+        EMultiCheckbox[] eMultiCheckboxes = EMultiCheckbox.values();
+        for (EMultiCheckbox eMultiCheckbox : eMultiCheckboxes) {
             multiCheckboxDEM.put(eMultiCheckbox, new MultiCheckboxData());
         }
-        EComCheckbox[] h = EComCheckbox.values();
-        for (EComCheckbox eComCheckbox : h) {
+        EComCheckbox[] eComCheckboxes = EComCheckbox.values();
+        for (EComCheckbox eComCheckbox : eComCheckboxes) {
             combinedCheckboxDEM.put(eComCheckbox, new CombinedCheckboxData());
         }
-        ERadiogroup[] j = ERadiogroup.values();
-        for (ERadiogroup eRadiogroup : j) {
+        ERadiogroup[] eRadiogroups = ERadiogroup.values();
+        for (ERadiogroup eRadiogroup : eRadiogroups) {
             radiogroupDEM.put(eRadiogroup, new RadiogroupData());
         }
 
