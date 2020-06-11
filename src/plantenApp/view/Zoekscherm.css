@@ -168,6 +168,24 @@
     -fx-border-color: none;
 }
 
-.list-view{
+.list-view {
+    -fx-background-radius: 5;
+    -fx-body-color: #9dc470;
+    -fx-border-color: none;
 }
-
+.list-cell{
+    -fx-font-size: 12px;
+}
+.list-cell:even {
+    -fx-background-color: #f1f8ec;
+}
+.list-cell:odd {
+    -fx-background-color: #d5eac7;
+}
+.list-cell:hover {
+    -fx-progress-color: white;
+    -fx-background: -fx-accent;
+    -fx-background-color: #9dc470;
+    -fx-text-fill: -fx-selection-bar-text;
+    -fx-font-size: 13px;
+}

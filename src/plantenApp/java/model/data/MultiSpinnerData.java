@@ -22,6 +22,7 @@ public class MultiSpinnerData extends SearchBase {
                 values[i] = new SimpleIntegerProperty(0);
 
                 spinners[i].setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(minSpinnerValue, maxSpinnerValue));
+
                 spinners[i].disableProperty().bind(cbDoSearch.selectedProperty().not());
                 valueProperty(i).bind(spinners[i].valueProperty());
             }

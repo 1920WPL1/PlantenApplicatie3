@@ -7,6 +7,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
@@ -23,9 +24,9 @@ import plantenApp.java.model.data.ComboBoxData;
 import plantenApp.java.model.data.GUIdata;
 import plantenApp.java.model.data.enums.*;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
+import javax.imageio.ImageIO;
+import java.awt.image.BufferedImage;
+import java.io.*;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -660,15 +661,32 @@ public class Controller {
                     lsvBeheer.getItems().clear();
                     lsvBeheer.getItems().addAll(newValue.getBeheer().getMultiEigenschappen());
 
+                    if(newValue.getFoto().getFotos().size()!=0) {
+                        for (int i = 0; i < newValue.getFoto().getFotos().size(); i++) {
+                            switch (newValue.getFoto().getFotos().get(i).getEigenschap()) {
+                                case "habitus":
+                                    imgHabitus.setImage(new Image(newValue.getFoto().getFotos().get(i).getImage().getBinaryStream()));
+                                case "bloei":
+                                    imgBloei.setImage(new Image(newValue.getFoto().getFotos().get(i).getImage().getBinaryStream()));
+                                case "blad":
+                                    imgBlad.setImage(new Image(newValue.getFoto().getFotos().get(i).getImage().getBinaryStream()));
+                            }
+                        }
+                    } else {
+                        imgHabitus.setImage(null);
+                        imgBloei.setImage(null);
+                        imgBlad.setImage(null);
+                    }
 
-
-                } catch (NullPointerException ex) {
+                } catch (NullPointerException | SQLException ex) {
                     ex.printStackTrace();
                 }
             }
         };
         lsvOverzicht.getSelectionModel().selectedItemProperty().addListener(lsvChanged);
     }
+
+
 
     public void Click_Search(MouseEvent mouseEvent) throws SQLException {
         ArrayList<Plant> planten = handler.Search(guiData, dbConnection);

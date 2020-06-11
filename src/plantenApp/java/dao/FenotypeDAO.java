@@ -265,7 +265,7 @@ public class FenotypeDAO implements Queries {
         } else if (basicData.isDoSearch()) {
             ArrayList<Integer> localIds = new ArrayList<>();
             QueryBuilder QBM = new QueryBuilder("plant_id", "fenotype_multi");
-            int valueToIgnore = 0;
+            int valueToIgnore = -1;
             int min = basicData.getValue(0);
 
             QBM.AddIN("plant_id", ids);
@@ -325,7 +325,7 @@ public class FenotypeDAO implements Queries {
         } else if (basicData.isDoSearch()) {
             ArrayList<Integer> localIds = new ArrayList<>();
             QueryBuilder QBM = new QueryBuilder("plant_id", "fenotype_multi");
-            int valueToIgnore = 0;
+            int valueToIgnore = -1;
             int max = basicData.getValue(1);
 
             QBM.AddIN("plant_id", ids);
